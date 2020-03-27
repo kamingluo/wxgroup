@@ -1,0 +1,47 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"  wx:if="{{crowd_id}}">
+  <view slot="backText">返回</view>
+  <view slot="content">兑换记录</view>
+</cu-custom>
+
+
+
+
+<view class="cu-list menu-avatar" wx:if="{{exchangelist.length > 0}}">
+  <view class="cu-item " wx:for="{{exchangelist}}" wx:key="item" data-data="{{item}}" bindtap="clicklist"  >
+    <view class="cu-avatar radius lg" style="background-image:url({{item.images}});"></view>
+    <view class="content">
+      <view class="text-orange">
+        <text class="text-cut">{{item.goodsname}}</text>
+      </view>
+      <view class="text-gray text-sm flex">
+        <text class="text-cut text-color">兑换人：{{item.nickName}}</text>
+      </view>
+      <view class="text-gray text-sm flex">
+        <text class="text-cut"  decode="{{true}}">{{item.create_time}}  &nbsp;&nbsp;&nbsp;&nbsp;  ( <text  wx:if="{{item.state==1}}" style="color:green" > 已发货</text>
+              <text  wx:elif="{{item.state==2}}" style="color:red"  > 审核失败</text>
+              <text wx:else  style="color:black" > 未发货</text> )</text>
+      </view>
+    </view>
+    <view class="action">
+      <text class="cuIcon-right  text-gray righticon "></text>
+    </view>
+  </view>
+   <view class='tips'>
+      <text>-----已经到底了-----</text>
+    </view>
+</view>
+
+
+
+<view wx:else>
+  <view class='default'>
+    <view>
+      <image src='http://littlebox.luojiaming.vip/default.png'></image>
+    </view>
+    <view>
+      <text>什么都还没有呢</text>
+    </view>
+    <view>
+    </view>
+  </view>
+</view>

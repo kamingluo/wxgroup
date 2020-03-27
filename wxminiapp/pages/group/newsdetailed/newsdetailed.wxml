@@ -1,0 +1,77 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">消息详情</view>
+</cu-custom>
+
+
+<view class="bg-img topimage u-img-slide" style="background-image: url('{{newsdetails.titleimage}}');height: 280rpx;">
+</view>
+
+
+<view class='centered'>
+  <view class='fabuzhe shadow-warp '>
+    <view class="cu-list menu-avatar">
+      <view class="cu-item ">
+        <view class="cu-avatar round lg" style="background-image:url({{newsdetails.headportrait}});"></view>
+        <view class="content flex-sub">
+          <view class="text-grey">{{newsdetails.publisher}}</view>
+          <view class="text-gray text-sm flex justify-between">
+           {{newsdetails.create_time}}
+            <view class="text-gray text-sm">
+              <text class="cuIcon-attentionfill margin-lr-xs"></text> {{newsdetails.watchnum + 1}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<view class="task-explain">
+  <view class="task-explain-body">
+    <view class="centered task-explain-body-view">
+      <text>{{newsdetails.content}}</text>
+    </view>
+  </view>
+</view>
+
+
+
+<!--审核图片开始 -->
+<view class="task-images"  >
+  <view class='centered  '>
+    <view class='information '>
+      <block wx:for="{{newsdetails.images}}" wx:key="item">
+      <view class='information-body '>
+        <image src='{{item}}' bindtap='clickimage' data-data='{{item}}'></image>
+      </view>
+
+      </block>
+    </view>
+  </view>
+</view>
+<!-- 审核图片结束 -->
+
+
+
+
+<view class='centered sumittask' wx:if="{{newsdetails.images.length > 0}}" >
+<button  class='cu-btn bg-blue round lg shadow'  bindtap='clickdownload' >下载全部图片</button>
+</view>
+
+
+
+
+<form bindsubmit="submitForm" wx:if="{{tankuang}}" report-submit>
+  <view class='tankuang'>
+   <view class='tankuangimage' >
+   <image src='{{taskimageurl}}' ></image>
+   </view>
+    <!-- 关闭按钮-->
+    <view bindtap='closetankuang' class='closetankuang'>
+      <image src='../../../images/close.png'></image>
+    </view>
+  </view>
+</form>

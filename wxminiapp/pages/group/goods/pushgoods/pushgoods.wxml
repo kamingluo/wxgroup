@@ -1,0 +1,69 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}" wx:if="{{crowd_id}}">
+  <view slot="backText">返回</view>
+  <view slot="content">上传商品</view>
+</cu-custom>
+
+
+
+
+
+
+<view class="centered">
+  <view class="cu-form-group  shadow shadow-lg bg-white ">
+    <view class="title">商品名称</view>
+    <input placeholder="请输入商品名称"  maxlength="40"  bindinput="groupname" ></input>
+  </view>
+</view>
+
+
+<view class="centered">
+  <view class="cu-form-group  shadow shadow-lg bg-white ">
+    <view class="title">商品积分</view>
+    <input placeholder="请输入兑换商品所需积分数"  maxlength="5"  type='number' bindinput="groupcode" ></input>
+  </view>
+</view>
+
+
+<view class='ui_cell'>
+  <view class='ui_cell_bd'>商品图片上传</view>
+  <!-- <view class='ui_cell_ft'>不上传则默认分配</view> -->
+</view>
+<view class="centered">
+  <view class='centered  '>
+    <view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="{{index}}">
+      <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20" color="red" />
+      <image bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
+    </view>
+    <view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}"></view>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+<!-- 文件上传 -->
+<!-- <view class='domes_title_1' bindtap='moredata'>空间简介</view>
+<view class="centered">
+  <view class="task_text">
+    <textarea maxlength="250" bindinput="grouptext" placeholder="请输入空间简介描述"></textarea>
+  </view>
+</view> -->
+
+
+
+
+
+<view class='sumittask centered'>
+  <button bindtap="sumittask" class="bg-blue">发布商品</button>
+</view>
+
+
+
+<view class='cu-load load-modal'  wx:if="{{loadModal}}">
+  <view class='cuIcon-loading2 text-orange'></view>
+  <view class='gray-text'>发布中...</view>
+</view>

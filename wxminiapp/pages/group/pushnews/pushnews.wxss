@@ -1,0 +1,119 @@
+.test{
+  margin-top: 10rpx;
+}
+
+
+
+
+
+.domes_title_1 {
+    font-size: 35rpx;
+    color: #000000;
+    margin-top: 20rpx;
+    text-align: center;
+}
+
+
+.imagesbody{
+  margin-bottom: 200rpx;
+
+
+}
+
+.ui_uploader_item{
+    float: left;
+    position: relative;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.ui_uploader {
+    float: left;
+    position: relative;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+    width: 200rpx;
+    height:200rpx;
+    border: 2rpx solid #d9d9d9;
+    box-sizing: border-box;
+}
+
+.ui_uploader_cell {
+    width: 95%;
+    padding: 10rpx;
+    box-sizing: border-box;
+}
+.task_text{
+  width: 90%;
+}
+
+.task_text textarea{
+  border: 2rpx solid #d9d9d9;
+  height: 150rpx;
+
+}
+
+
+
+.sumittask{
+  z-index: 888;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 130rpx;
+   margin-top: 80rpx;
+   background-color: white;
+}
+.sumittask button{
+  width: 300rpx;
+
+}
+
+
+
+.information{
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+  justify-content:space-around;
+  flex-wrap:wrap;
+  width: 95%;
+  margin-top: 20rpx;
+}
+
+.information-body image{
+  width: 340rpx;
+  height: 140rpx;
+}
+.information-body{
+  border-radius: 10rpx;
+  width: 340rpx;
+  height: 155rpx;
+  margin-bottom: 10rpx;
+}
+
+.choice{
+  border: 4rpx solid #0081ff;
+}
+
+
+.facehandler1{
+  border: 1rpx solid #d7d7d7;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 15rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  margin-top: 20rpx;
+}
+ 
+.choice{
+  background-color: #000000
+}
+
+.fbimg1{
+  width: 20rpx;
+  height: 20rpx;
+}

@@ -1,0 +1,20 @@
+/* pages/my/my_address/my_address.wxss */
+
+
+.address{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  width: 70%;
+  text-align:right;
+  
+}
+
+
+.Modify-address{
+  width: 70%;
+  margin-top: 25rpx;
+  margin-left: 15%;
+}

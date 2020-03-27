@@ -1,0 +1,225 @@
+/* pages/group/audittasks/audittasks.wxss */
+
+
+.top{
+  height: 200rpx;
+  width: 94%;
+  background-color: white;
+  margin-top: 20rpx;
+  border-radius: 20rpx; 
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+
+}
+.user{
+  height: 200rpx;
+  display: flex;
+   flex-direction:row;
+   justify-content:space-around;
+}
+.userAvatar{
+   display: flex;
+   flex-direction:row;
+   justify-content:space-around;
+   align-items:center;
+}
+.userAvatarurl{
+overflow:hidden;  
+display: block;   
+width: 140rpx;  
+height: 140rpx; 
+border-radius: 50%; 
+border: 2px solid #fff;  
+box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.username{
+display: flex;
+flex-direction: column;
+justify-content:space-around;
+align-items: left;
+flex-shrink: 0;
+flex-basis: 400rpx;
+}
+.userNickName{
+  display: flex;
+  position:relative;
+  font-size: 35rpx;
+  right:30rpx;  
+  top:13rpx; 
+}
+
+.id{
+  display: flex;
+  position:relative;
+  font-size: 28rpx;
+  right:30rpx; 
+  bottom: 10rpx;
+}
+
+
+
+.task-explain{
+  width: 98%;
+  margin-top: 20rpx;
+  
+}
+
+.task-explain-body{
+   align-items: center;
+   margin-left: 2%;
+   background-color: white;
+    border-radius: 15rpx; 
+}
+
+.task-explain-body-view{
+   align-items: center;
+   margin-left: 5%;
+  
+}
+
+.task-explain-body-view text{
+  margin-top: 20rpx;
+  margin-bottom: 15rpx;
+}
+
+.task-images{
+  margin-top: 20rpx;
+  margin-bottom: 100rpx;
+}
+
+
+
+.information{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  width: 98%;
+}
+
+.information-body {
+  border-radius: 10rpx;
+  width: 350rpx;
+  height:490rpx;
+  margin-bottom: 15rpx;
+}
+
+.information-body image{
+ border-radius: 10rpx; 
+ box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.share{
+    z-index: 999;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  height: 100rpx;
+}
+
+
+
+
+.sharebody{
+   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 95%;
+  font-size: 30rpx;
+}
+
+
+.sharebody button{
+  width: 250rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+/*主容器*/
+.stepper {
+  width:260rpx;
+  height:100rpx;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+/*加号和减号*/
+.stepper text {
+  float: left;
+  width: 75rpx;
+  line-height: 100rpx;
+  font-size: 50rpx;
+  text-align: center;
+}
+/*数值*/
+.stepper input {
+  width: 100rpx;
+  height: 98rpx;
+  float: left;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+/*普通样式*/
+.stepper .normal {
+  color:black;
+}
+/*禁用样式*/
+.stepper .disable {
+  color: #ccc;
+}
+
+
+
+
+
+/*弹框*/
+.tankuang {
+  position: fixed;
+  top: 0;
+  z-index: 888;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  
+}
+.tankuangimage{
+   display:flex;
+  flex-direction:column;
+  align-items:center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  margin-top: 180rpx;
+
+}
+.tankuangimage image{
+  width: 600rpx;
+  height: 900rpx;
+}
+
+.closetankuang{
+  width: 100%;
+  height: 100rpx;
+  display:flex;
+  flex-direction:column;
+  align-items:center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  margin-top: 20rpx;
+  /* margin-left: 580rpx; */
+
+}
+.closetankuang image{
+  width: 70rpx;
+  height: 70rpx;
+}
+

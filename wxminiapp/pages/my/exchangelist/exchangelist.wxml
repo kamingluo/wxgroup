@@ -1,0 +1,99 @@
+
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"  >
+  <view slot="backText">返回</view>
+  <view slot="content">兑换记录</view>
+</cu-custom>
+
+
+
+
+
+
+<view wx:if="{{exchangelist.length > 0}}">
+  <view  wx:for="{{exchangelist}}" wx:key="item" >
+    <view class="exchange-list  centered  radius shadow bg-white">
+      <view class="exchange-list-body ">
+        <view class="exchange-list-time-body">
+          <view class="exchange-list-order-body">
+            <view class="exchange-list-order">
+              <view>
+                <text>订单编号：{{item.id}}</text>
+              </view>
+              <view class="exchange-list-order-time">
+                <text>{{item.create_time}}</text>
+              </view>
+            </view>
+            <view>
+              <text  wx:if="{{item.state==1}}" style="color:green" > 已发货</text>
+              <text  wx:elif="{{item.state==2}}" style="color:red"  > 审核失败</text>
+              <text wx:else> 未发货</text>
+            </view>
+          </view>
+        </view>
+        <view class="exchange-list-goodsname-body">
+          <view class="exchange-list-goods-body ">
+            <view class="exchange-list-goods-body-img ">
+              <image src="{{item.images}}"></image>
+            </view>
+            <view class="exchange-list-goods-body-name  centered">
+            <view>
+              <view class="good-name">
+                <text>{{item.goodsname}}</text>
+              </view>
+              <view class="goods-score">{{item.price}}积分</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="exchange-list-adress-body">
+          <view class="exchange-list-adress">
+            <view class=" exchange-list-adress-icon">
+              <text class='cuIcon-locationfill  iconsize text-orange'></text> </view>
+            <view>
+            
+              <view>
+                <text decode="{{true}}">收货人：{{item.userName}} &nbsp;&nbsp;&nbsp;&nbsp;    {{item.telNumber}}</text>
+              </view>
+              <view class=" exchange-list-adress-location">
+                <text>收货地址：{{item.provinceName}}{{item.cityName}}{{item.countyName}}{{item.detailInfo}} </text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="exchange-list-express-body">
+          <view class="exchange-list-express">
+            <view class=" exchange-list-express-number">
+              <text>快递单号:{{item.expressnumber? item.expressnumber: "无快递信息"}}</text>
+            </view>
+            <view class="exchange-list-express-query" wx:if="{{item.expressnumber}}" >
+              <button class="cu-btn lines-blue round"   data-expressid="{{item.expressnumber}}" bindtap="queryexpress" >查询</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+<view wx:else>
+  <view class='default'>
+    <view>
+      <image src='http://littlebox.luojiaming.vip/default.png'></image>
+    </view>
+    <view>
+      <text>你还没有兑换记录呢</text>
+    </view>
+    <view>
+    </view>
+  </view>
+</view>

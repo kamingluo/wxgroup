@@ -1,0 +1,22 @@
+/* pages/test/test.wxss */
+
+.body{
+  height: 600rpx;
+}
+.task_text{
+  width: 90%;
+  margin-top: -20rpx;
+}
+
+.task_text textarea{
+  border: 2rpx solid #d9d9d9;
+  height: 150rpx;
+
+}
+.titlecolor{
+  color: white;
+}
+.backcolor{
+  background-color: #1cbbb4;
+}
+

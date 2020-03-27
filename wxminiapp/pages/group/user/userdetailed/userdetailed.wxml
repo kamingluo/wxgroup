@@ -1,0 +1,249 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}" wx:if="{{crowd_id}}">
+  <view slot="backText">返回</view>
+  <view slot="content">用户详情</view>
+</cu-custom>
+
+
+
+
+
+<view class='top radius shadow bg-white'>
+  <view class='user'>
+    <view class='userAvatar'>
+      <image class='userAvatarurl' src='{{userdata.avatarUrl?userdata.avatarUrl:"http://material.gzywudao.top/morencrowd.png"}}'></image>
+
+    </view>
+
+    <view class='username'>
+      <view class='userNickName' bindlongpress="testpages">
+        <text>{{userdata.nickName?userdata.nickName:"用户未授权"}}</text>
+      </view>
+      <view class='id'>
+        <kaming-button>
+          <text>群积分:{{userscore}}</text>
+          <text class='cuIcon-post xiugai' bindtap='showmodel' wx:if="{{role == 1 || role == 2 }}"></text> </kaming-button>
+      </view>
+      <!-- <view class='birthday'>
+        <text>生日:{{birthday?birthday:"未设置"}} </text>
+      </view> -->
+      <view class='birthday'>
+        <text>性别:{{userdata.gender == 1? "男" : userdata.gender == 2? "女" : "未知" }} </text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="cu-list menu  list">
+
+  <view class="cu-item">
+    <view class="content">
+      <text class="cuIcon-peoplefill text-red"></text>
+      <text class="text-grey">群角色</text>
+    </view>
+    <view class="action">
+      <text class="text-grey">{{userdata.user_type == 0? "群员" : userdata.user_type == 1 ? "群主" : "管理员" }}</text>
+    </view>
+  </view>
+
+
+  <view class="cu-item">
+    <view class="content">
+      <text class="cuIcon-tagfill text-orange"></text>
+      <text class="text-grey">备注</text>
+    </view>
+    <view class="action">
+      <text class="text-grey">{{userdata.remarks? userdata.remarks : "设置备注" }}</text>
+      <text class='cuIcon-post xiugai' bindtap='showremarksmodel' wx:if="{{role == 1 || role == 2 }}"></text>
+    </view>
+  </view>
+
+  <view class="cu-item">
+    <view class="content">
+      <text class="cuIcon-presentfill text-pink"></text>
+      <text class="text-grey">生日</text>
+    </view>
+    <view class="action">
+      <text class="text-grey">{{birthday?birthday:"未设置"}} </text>
+    </view>
+  </view>
+
+
+  <view class="cu-item">
+    <view class="content">
+      <text class="cuIcon-countdownfill text-cyan"></text>
+      <text class="text-grey">加入时间</text>
+    </view>
+    <view class="action">
+      <text class="text-grey ">{{userdata.joincrowd_time}}</text>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">
+      <text class="cuIcon-locationfill text-blue"></text>
+      <text class="text-grey">地区</text>
+    </view>
+    <view class="action">
+      <text class="text-grey" wx:if="{{userdata.country ||userdata.province||userdata.city }}">{{userdata.country}}{{userdata.province}}{{userdata.city}}</text>
+      <text class="text-grey" wx:else> 用户未授权 </text>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">
+      <text class="cuIcon-timefill text-green"></text>
+      <text class="text-grey">上次登录</text>
+    </view>
+    <view class="action">
+      <text class="text-grey ">{{userdata.update_time}}</text>
+    </view>
+  </view>
+  <view class="cu-item"  bindtap="querytasklist" >
+    <view class="content">
+      <text class="cuIcon-explorefill text-purple"></text>
+      <text class="text-grey">查询该用户本群任务记录</text>
+    </view>
+    <view class="action">
+      <text class="text-grey ">>>></text>
+    </view>
+  </view>
+
+</view>
+
+<view class='centered' wx:if="{{role == 1}}">
+  <view class='operation' wx:if="{{userdata.user_type == 0}}">
+    <button class='bg-green' bindtap='setupadministrators'>设置为管理员身份</button>
+  </view>
+  <view class='operation' wx:if="{{userdata.user_type == 2}}">
+    <button class='bg-blue' bindtap='canceladministrators'>取消管理员身份</button>
+  </view>
+</view>
+
+
+<view class='centered' wx:if="{{role == 1}}">
+  <view class='operation' wx:if="{{userdata.user_type == 0  ||  userdata.user_type == 2 }}">
+    <button class='bg-red' bindtap='deletegroupuser'>将此用户踢出群</button>
+  </view>
+</view>
+
+
+
+
+<view class="cu-modal show"   wx:if="{{model}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end backcolor">
+      <view class="content">
+        <text class="titlecolor">积分修改</text>
+      </view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red" bindtap="hidemodal"></text>
+      </view>
+    </view>
+    <view class="body">
+      <view class="cu-form-group">
+        <view class="title">成员昵称</view>
+        <text>{{userdata.nickName?userdata.nickName:"用户未授权"}}</text>
+      </view>
+      <view class="cu-form-group ">
+        <view class="title">当前积分</view>
+        <text>{{userscore}}</text>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">积分操作</view>
+        <view>
+          <radio class="greenmargin-left-sm" bindtap="add" checked="{{zengjia}}"></radio> 增加
+          <radio class="green margin-left-sm" bindtap="jian" checked="{{jianshao}}"></radio> 减少
+        </view>
+      </view>
+
+      <view class="cu-form-group">
+        <view class="title">积分数量</view>
+        <input  placeholder="积分数量要大于0"  focus="true" type="number"  maxlength="4"  value="{{operationscore}}"  bindinput="bindKeyInput"></input>
+      </view>
+      <view>
+        <view class="centered">
+          <view class="task_text">
+            <textarea maxlength="250" bindinput="remarktext" value='{{tasktext}}' placeholder="请输入备注"></textarea>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hidemodal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="sure">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!-- <view class="cu-modal show" wx:if="{{model}}">   //旧的加减积分
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">修改用户的积分数</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red" bindtap="hidemodal"></text>
+      </view>
+    </view>
+    <view class="padding-xl ">
+      <view class="stepper">
+        <text class='{{minusStatus}}' type='number' bindtap='bindMinus'>-</text>
+        <input type="number" value="{{num}}" disabled="true" />
+        <text bindtap='bindPlus'>+</text>
+      </view>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hidemodal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="sure">确定</button>
+      </view>
+    </view>
+  </view>
+</view> -->
+
+
+
+
+
+<view class="cu-modal show" wx:if="{{deletegroupusermodel}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">踢除用户</view>
+      <view class="action" bindtap="hidemodal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      确定要把此用户踢出群吗？
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hidemodal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="confirmdeleteuser">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+<view class="cu-modal show" wx:if="{{remarksmodal}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">设置备注</view>
+      <view class="action" bindtap="hidemodal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl     ">
+      <input placeholder="请输入备注" value="{{userdata.remarks? userdata.remarks :null}}" bindinput="remarksInput" maxlength="20" auto-focus/>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hidemodal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="confirmremarks">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,71 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/test/test",
+    "pages/my/my",
+    "pages/creategroup/creategroup",
+    "pages/group/groupdetails/groupdetails",
+    "pages/group/groupdetails/tasklist/tasklist",
+    "pages/group/groupdetails/scorelist/scorelist",
+    "pages/group/groupdetails/exchangelist/exchangelist",
+    "pages/group/groupdetails/exchangelist/exchangedetails/exchangedetails",
+    "pages/group/uptask/uptask",
+    "pages/group/audittasks/audittasks",
+    "pages/group/pushnews/pushnews",
+    "pages/group/qrcode/qrcode",
+    "pages/group/user/user",
+    "pages/webview/webview",
+    "pages/group/alltasklists/alltasklists",
+    "pages/group/goods/goodslist/goodslist",
+    "pages/group/goods/pushgoods/pushgoods",
+    "pages/group/goods/exchange/exchange",
+    "pages/group/goods/exchangelist/exchangelist",
+    "pages/group/user/userdetailed/userdetailed",
+    "pages/group/user/userdetailed/usertasklist/usertasklist",
+    "pages/group/newsdetailed/newsdetailed",
+    "pages/my/score_detailed/score_detailed",
+    "pages/my/my_address/my_address",
+    "pages/my/exchangelist/exchangelist",
+    "pages/my/score_detailed/task_detailed/task_detailed"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "ColorUI",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  },
+"navigateToMiniProgramAppIdList": [
+  "wxf1f0d92f69dd80db",
+  "wx86a0b67ccf04472a",
+  "wxd53f125c7e4c7d44",
+  "wxb7801d04db4a354c",
+  "wxdb8afdceb2e24d7a",
+  "wx3adb314c8e9a6ed1",
+  "wxc6fa3baccd00d0cb",
+  "wx18b75705b93bd908",
+  "wx1fc44821ba937d67",
+  "wxf1f0d92f69dd80db"
+],
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#d0d0d0",
+    "selectedColor": "#0066FF",
+    "backgroundColor": "#ffffff",
+    "borderStyle":"white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/config/index.png",
+        "selectedIconPath": "images/config/sindex.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/config/my.png",
+        "selectedIconPath": "images/config/smy.png"
+      }
+    ]
+  }
+}

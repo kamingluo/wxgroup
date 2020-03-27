@@ -1,0 +1,65 @@
+<view>
+
+  <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">创建空间</view>
+  </cu-custom>
+
+
+  <!-- <view class="centered">
+    <view class="cu-form-group  shadow shadow-lg bg-white ">
+      <view class="title">创建码</view>
+      <input placeholder="请输入创建码" maxlength="20" bindinput="groupcode"></input>
+    </view>
+  </view> -->
+
+  <view class="centered">
+    <view class="cu-form-group  shadow shadow-lg bg-white ">
+      <view class="title">空间名称</view>
+      <input placeholder="请输入空间名称" maxlength="10" bindinput="groupname"></input>
+    </view>
+  </view>
+
+  <view class='ui_cell'>
+    <view class='ui_cell_bd'>图标上传</view>
+    <view class='ui_cell_ft'>不上传则默认分配</view>
+  </view>
+  <view class="centered">
+    <view class='centered  '>
+      <view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="{{index}}">
+        <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20" color="red" />
+        <image bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
+      </view>
+      <view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}"></view>
+    </view>
+  </view>
+
+
+
+
+
+  <!-- 文件上传 -->
+  <view class='domes_title_1' bindtap='moredata'>空间说明</view>
+  <view class="centered">
+    <view class="task_text">
+      <textarea maxlength="250" bindinput="grouptext" placeholder="请输入空间说明"></textarea>
+    </view>
+  </view>
+
+
+
+  <view class='sumittask centered'>
+    <button bindtap="sumittask" class="bg-blue">创建空间</button>
+  </view>
+
+</view>
+
+
+
+
+
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <view class='cuIcon-loading2 text-orange'></view>
+  <view class='gray-text'>创建中...</view>
+</view>

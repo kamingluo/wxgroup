@@ -1,0 +1,172 @@
+/* pages/group/goods/exchange/exchange.wxss */
+
+
+.exchangename{
+  margin-top: 20rpx;
+}
+
+.address{
+  display: flex;
+  margin-top: 5rpx;
+  width: 96%;
+  margin-left: 2%;
+}
+
+.body{
+  color: black;
+ width: 100%;
+}
+.box {
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+ 
+}
+
+.dizhi{
+  width: 100%;
+  color: black;
+}
+
+
+.name text{
+   display: flex;
+  font-size: 35rpx;
+  font-weight: 600;
+  margin-top: -20rpx;
+
+}
+
+.city text{
+    display: flex;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-top: 15rpx;
+
+}
+
+.detailed  text{
+  display: flex;
+  font-size: 32rpx;
+  margin-top: 5rpx;
+}
+
+.youbian{
+  font-size: 30rpx;
+  margin-top: 5rpx;
+}
+
+
+.goods{
+   
+  display: flex;
+  margin-top: 5rpx;
+  width: 96%;
+  margin-left: 2%;
+
+}
+
+.goodsdetailed{
+   display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+
+.goodsimg{
+  width: 30%;
+}
+.goodsimg image{
+  width: 170rpx;
+  height: 170rpx;
+  border-radius: 10rpx;
+}
+
+.goodsname{
+  width: 70%;
+}
+.name{
+  font-size: 35rpx;
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.score{
+  display: flex;
+  color: red;
+  font-weight: 600;
+  margin-top: 20rpx;
+}
+
+.exchange-button{
+  margin-top: 30rpx;
+   display: flex;
+}
+.exchange-button button{
+  width: 300rpx;
+  background-color: #0081ff;
+  color: white;
+  font-weight: 600;
+  margin-left: 50rpx;
+}
+
+
+
+
+.remarks{
+  display: flex;
+  width: 96%;
+  margin-top: 10rpx;
+}
+
+.remarks-text {
+   width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
+  font-weight: bold;
+}
+
+
+.state-text {
+   width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
+  font-weight: bold;
+}
+
+.name-text{
+  width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
+  font-weight: bold;
+  color: #f37b1d;
+  
+}
+
+
+
+.input {
+  margin-top: 20rpx;
+  width: 100%;
+ 
+}
+
+.scancode {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+
+.tips{
+  display: flex;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #f37b1d;
+}

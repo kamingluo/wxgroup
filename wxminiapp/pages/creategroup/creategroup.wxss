@@ -1,0 +1,70 @@
+/* pages/creategroup/creategroup.wxss */
+
+
+
+.domes_title_1 {
+    font-size: 35rpx;
+    color: #000000;
+    margin-top: 30rpx;
+    text-align: center;
+    margin-bottom: -20rpx;
+}
+
+.ui_uploader_item{
+    float: left;
+    position: relative;
+    margin-right: 30rpx;
+    margin-top: 15rpx;
+    margin-bottom: 20rpx;
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.ui_uploader {
+    float: left;
+    position: relative;
+    margin-top: 15rpx;
+    margin-right: 25rpx;
+    margin-bottom: 25rpx;
+    width: 200rpx;
+    height:200rpx;
+    border: 2rpx solid #d9d9d9;
+    box-sizing: border-box;
+}
+
+
+.groupcode{
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  width: 96%;
+}
+
+.cu-form-group{
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+  width: 96%;
+}
+
+
+.task_text{
+  width: 90%;
+}
+
+.task_text textarea{
+  border: 2rpx solid #d9d9d9;
+  height: 250rpx;
+
+}
+
+
+
+.sumittask{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 30rpx;
+}
+.sumittask button{
+  width: 300rpx;
+
+}

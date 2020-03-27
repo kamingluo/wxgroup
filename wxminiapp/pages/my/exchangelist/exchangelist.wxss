@@ -1,0 +1,173 @@
+/* pages/group/goods/exchangelist/exchangelist.wxss */
+
+.cu-item{
+  margin-bottom: 5rpx;
+
+}
+.righticon{
+  font-size: 40rpx;
+}
+
+
+
+.exchange-list{
+   color: black;
+  width: 100%;
+  height: 550rpx;
+  background-color: white;
+  margin-bottom: 15rpx;
+}
+
+.exchange-list-body{
+  width: 96%;
+  height: 510rpx;
+  background-color: #aaaaaa;
+}
+
+.exchange-list-time-body{
+  background-color: white;
+  width: 102%;
+  height: 100rpx;
+}
+
+.exchange-list-goodsname-body{
+   background-color: white;
+  width: 102%;
+  height: 160rpx;
+  margin-top: 2rpx;
+}
+
+.exchange-list-adress-body{
+   background-color: white;
+  width: 102%;
+  height: 170rpx;
+  margin-top: 2rpx;
+}
+.exchange-list-express-body{
+ background-color: white;
+  width: 102%;
+  height: 85rpx;
+  margin-top: 2rpx;
+}
+
+.good-name{
+  font-weight: 600;
+  color: black;
+}
+.good-name text{
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  align-content: center;
+
+}
+
+.exchange-list-order-body{
+  display: flex;
+  flex-direction:row;
+  justify-content:space-around;
+  align-items:center;
+  height: 100%;
+  width: 100%;
+}
+
+.exchange-list-order{
+  margin-right: 180rpx;
+
+  text-align: left;
+}
+.exchange-list-order-time{
+  margin-top: 10rpx;
+}
+
+.exchange-list-goods-body{
+   display: flex;
+  flex-direction:row;
+  justify-content:flex-start;
+ 
+  height: 100%;
+}
+
+.exchange-list-goods-body-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 25%;
+}
+.exchange-list-goods-body-img image{
+  border-radius: 5%;
+  width: 130rpx;
+  height: 130rpx;
+}
+
+.goods-score{
+ margin-top: 15rpx;
+ font-weight: 600;
+ color: red;
+}
+
+.exchange-list-adress{
+    display: flex;
+  flex-direction:row;
+  justify-content:space-around;
+  align-items:center;
+  height: 100%;
+
+}
+.exchange-list-adress-icon{
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 12%;
+  width: 12%;
+}
+
+.exchange-list-adress-location text{
+  font-size: 30rpx;
+   
+}
+.exchange-list-adress-location{
+text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  align-content: center;
+  width: 95%;
+}
+
+
+.exchange-list-express{
+   height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+ margin-left: 2%;
+}
+
+.exchange-list-express-number{
+    text-align: left;
+}
+
+
+.exchange-list-express-query{
+  margin-top: 10rpx;
+}
+.exchange-list-express-query button{
+  width: 140rpx;
+  height: 70rpx;
+  margin-right: 50rpx;
+}
+
+
+
+.iconsize{
+  font-size: 45rpx;
+}

@@ -1,0 +1,29 @@
+/* pages/group/goods/exchangelist/exchangelist.wxss */
+
+.cu-item{
+  margin-bottom: 5rpx;
+
+}
+.righticon{
+  font-size: 40rpx;
+}
+
+.tips{
+  text-align: center;
+}
+.tips text{
+  text-align: center;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+  color:#aaaaaa;
+  
+}
+.text-color{
+  color: black;
+}
+
+.text-gray{
+   margin-top: -10rpx;
+   /* color: black; */
+}

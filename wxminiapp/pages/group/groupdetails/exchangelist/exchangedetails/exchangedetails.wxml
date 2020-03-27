@@ -1,0 +1,161 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">记录详情</view>
+</cu-custom>
+
+
+
+
+<view class="centered  exchangename ">
+  <view class="remarks bg-white  radius shadow">
+    <view class="padding-sm radius shadow ">
+      <view class="name-text">
+        <text>兑换人： {{changedata.nickName}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="address  centered">
+  <view class="padding-sm radius shadow bg-white  body ">
+    <view class="box">
+      <view class="dizhi">
+        <view class="name">
+          <text>{{changedata.userName}} {{changedata.telNumber}}</text>
+        </view>
+        <view class="city">
+          <text>{{changedata.provinceName}}{{changedata.cityName}}{{changedata.countyName}}</text>
+        </view>
+        <view class="detailed">
+          <text>{{changedata.detailInfo}}</text>
+        </view>
+        <view class="youbian">
+          <text>邮编：{{changedata.postalCode}}</text>
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>
+
+
+<view class="goods">
+  <view class="padding-sm radius shadow bg-white  body">
+    <view class="goodsdetailed">
+      <view class="goodsimg">
+        <image src="{{changedata.images}}"> </image>
+      </view>
+      <view class="goodsname">
+        <view class="name">
+          <text>{{changedata.goodsname}}</text>
+        </view>
+        <view class="score">
+          <text>积分：{{changedata.price}}积分</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+<view class="centered">
+  <view class="remarks  radius shadow bg-white">
+    <view class="padding-sm radius shadow  ">
+      <view class="remarks-text">
+        <text>备注：{{changedata.remarks? changedata.remarks: "无备注"}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!-- 根据状态展示不同的 -->
+<view>
+  <view class="exchange-button" wx:if="{{changedata.state==0}}">
+    <view>
+      <button bindtap="notpass" style="background-color: #e54d42"> 不通过</button>
+    </view>
+    <view>
+      <button bindtap="adopt" style="background-color: #39b54a"> 通过发货</button>
+    </view>
+  </view>
+
+  <view class="centered" wx:else>
+    <view class="remarks  radius shadow bg-white">
+      <view class="padding-sm radius shadow  ">
+        <view class="state-text">
+          <view>
+            <text wx:if="{{changedata.state==1}}" style="color:green" >已通过,{{changedata.expressnumber?"快递单号" + changedata.expressnumber:"无快递信息" }}</text>
+            <text wx:else  style="color:red" > 审核不通过</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+
+
+
+<view class="cu-modal show" wx:if="{{adoptmodel}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">确认发货</view>
+      <view class="action" bindtap="hidemodel">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      输入或者点击扫码填入订单号
+
+      <view class="cu-form-group input  ">
+        <input bindinput="expressnumber" value="{{expressnumber}}" maxlength='25' placeholder="请输入快递单号"></input>
+        <image bindtap='expressScancode' class='scancode' src='/images/scancode.svg'></image>
+
+      </view>
+      <view class="centered">
+        <text class="tips">Tips:可以不填写为空</text>
+      </view>
+
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hidemodel">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="confirmadopt">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<view class="cu-modal show" wx:if="{{notpassmodel}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">审核不通过</view>
+      <view class="action" bindtap="hidemodel">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      审核不通过，不发货！
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hidemodel">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="confirmnotpass">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <!-- <view class='cuIcon-emojifill text-orange'></view> -->
+  <image src='../../../../../images/common/loading.svg' class='png' mode='aspectFit'></image>
+  <view style='margin-top: 10rpx;' class='gray-text'>加载中</view>
+</view>

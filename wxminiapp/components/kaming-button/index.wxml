@@ -1,0 +1,7 @@
+<!--旧的button组件，方便手机formid，现在改为订阅消息，就不用了-->
+<!-- <form class='button-form' bindsubmit="formSubmit" report-submit="true" catchtap='{{catch ? "catchtap" : ""}}'> -->
+<form class='button-form'  catchtap='{{catch ? "catchtap" : ""}}'>
+  <button formType="submit"  bindtap='tapEvent'  class="button-wrap" open-type='{{openType}}' bindgetuserinfo="bindgetuserinfo">
+    <slot></slot>
+  </button>
+</form>

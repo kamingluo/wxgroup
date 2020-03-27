@@ -1,0 +1,83 @@
+
+
+
+
+<!-- 全部开始 -->
+<view  wx:if="{{crowd_id}}" >
+
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">发布消息</view>
+</cu-custom>
+
+
+  <view class='domes_title_1' >选择封面</view>
+<!-- 选择标题开始 -->
+<view>
+  <view class='centered  '>
+    <view class='information '>
+      <block wx:for="{{faceList}}" wx:key="item">
+        <view data-data='{{item}}' class='information-body {{item.id == isChecked ? "choice" : ""}} ' bindtap="facehandler">
+          <image src='{{item.image}}' data-data='{{item}}' class='u-img-slide '></image>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+<!-- 选择标题开始 -->
+
+
+
+<!-- 文件上传 -->
+
+  <view class='domes_title_1' bindtap='moredata'>消息描述</view>
+
+  <view>
+    <view class="centered">
+      <view class="task_text">
+        <textarea maxlength="250" bindinput="tasktext" value='{{tasktext}}' placeholder="请输入消息文字描述"></textarea>
+      </view>
+    </view>
+  </view>
+
+  <view class='ui_cell   '>
+    <view class='ui_cell_bd'>消息图片上传</view>
+    <view class='ui_cell_ft'>{{uploaderNum}}/9</view>
+  </view>
+  <view class="centered imagesbody">
+    <view class='ui_uploader_cell  '>
+      <view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="{{index}}">
+        <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20" color="red" />
+        <image bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
+      </view>
+      <view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}"></view>
+    </view>
+  </view>
+
+
+
+<view class='sumittask centered'>
+  <button bindtap="sumittask" class="bg-blue">发布消息</button>
+</view>
+
+
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <view class='cuIcon-loading2 text-orange'></view>
+  <!-- <image src='/images/logo.png' class='png' mode='aspectFit'></image> -->
+  <view class='gray-text'>提交中...</view>
+</view>
+
+
+</view>
+
+<!-- 全部结束 -->
+
+
+<view wx:else>
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">群记分</view>
+</cu-custom>
+
+</view>

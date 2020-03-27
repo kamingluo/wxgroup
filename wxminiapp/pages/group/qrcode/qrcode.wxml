@@ -1,0 +1,37 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"  wx:if="{{crowd_name}}" >
+  <view slot="backText">返回</view>
+  <view slot="content">空间二维码</view>
+</cu-custom>
+
+
+
+
+<view>
+  <view class='container'>
+    <view class='qrcode'>
+      <image wx:if="{{imgurl}}" src='{{imgurl}}'></image>
+    </view>
+    <view class='dowload'>
+      <kaming-button>
+        <button class=' bg-blue' bindtap='dowloadimg'>下载二维码</button>
+      </kaming-button>
+    </view>
+  </view>
+</view>
+
+
+<view  class='tips' >
+  <view class='went'  >
+    <view>
+      <text>1.《{{crowd_name}}》的群二维码</text> </view>
+    <view>
+      <text>2.好友扫码可直接加入《{{crowd_name}}》</text> </view>
+    <view>
+      <text></text> </view>
+  </view>
+</view>
+
+
+<view class='adbrush' >
+<ad capture-bind:tap="gdtbannerclick" data-adid="adunit-9d16e8380e901760" unit-id="adunit-9d16e8380e901760"></ad>
+</view>

@@ -1,0 +1,51 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}"  wx:if="{{crowd_id}}" >
+  <view slot="backText">返回</view>
+  <view slot="content">用户管理</view>
+</cu-custom>
+
+
+<view class='ui_searchBox'>
+  <view class='ui_search'>
+    <input class='ui_searchInput' type='text' bindinput='search' placeholder='请输入昵称'></input>
+    <icon size='15' type='search' class='ui_searchIcon'  bindtap='clickquery'  ></icon>
+  </view>
+  <view class='centered  tips'>昵称如：kaming-凯文,输入kaming或者凯文即可查询</view>
+</view>
+
+
+
+<view wx:if="{{groupuserlist.length <= 0}}">
+  <view class='default'>
+    <view>
+      <image src='http://littlebox.luojiaming.vip/default.png'></image>
+    </view>
+    <view>
+      <text>没有查到相关用户,换一个试试</text>
+    </view>
+    <view>
+    </view>
+  </view>
+</view>
+
+<view  class='user-list' >
+<view class="cu-list menu-avatar "   >
+  <view class="cu-item"  wx:for="{{groupuserlist}}" wx:key="item"    data-data="{{item}}"  bindtap='clickuserlist' >
+    <view class="cu-avatar round lg" style="background-image:url({{item.avatarUrl?item.avatarUrl:'http://material.gzywudao.top/morencrowd.png'}});">
+      <!-- <view class="cu-tag badge">99+</view> 这是头像上面的东西啊-->
+    </view>
+    <view class="content">
+      <view class="text-grey">
+        <text class="text-cut name ">{{item.nickName?item.nickName:"用户未授权"  }} <text wx:if="{{item.remarks}}">({{item.remarks}}）</text> </text>
+        <view class="cu-tag round bg-orange sm">{{item.user_type == 0? "群员" : item.user_type == 1 ? "群主" : "管理员" }}</view>
+      </view>
+      <view class="text-gray text-sm flex">
+        <text class="text-cut">群积分：{{item.score}}</text>
+      </view>
+    </view>
+    <view class="action">
+      <!-- <view class="text-grey text-xs">22:20</view> -->
+      <view class="cuIcon-right text-black"></view>
+    </view>
+  </view>
+</view>
+</view>

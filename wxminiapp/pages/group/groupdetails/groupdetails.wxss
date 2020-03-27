@@ -1,0 +1,234 @@
+/* pages/groupdetails/groupdetails.wxss */
+
+.top {
+  height: 240rpx;
+  width: 100%;
+}
+
+.user {
+  height: 240rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.userAvatar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+}
+
+.userAvatarurl {
+  overflow: hidden;
+  display: block;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 10rpx;
+  border: 2px solid #fff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.username {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  flex-shrink: 0;
+  flex-basis: 400rpx;
+  margin-left: -50rpx;
+}
+
+.userNickName {
+  display: flex;
+  position: relative;
+  font-size: 35rpx;
+  font-weight: 600;
+  right: 30rpx;
+  top: 25rpx;
+  color: #fff;
+}
+
+.id {
+  display: flex;
+  position: relative;
+  font-size: 30rpx;
+  right: 30rpx;
+  color: #e7ebed;
+}
+
+.qunchengyuan {
+  display: flex;
+  position: relative;
+  font-size: 30rpx;
+  right: 30rpx;
+  color: #e7ebed;
+  top: -20rpx;
+}
+
+.crowdright {
+  position:absolute;
+  margin-top: 80rpx;
+  margin-left: 270rpx;
+  
+}
+.crowdright image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.icon-top {
+  margin-top: -10rpx;
+}
+
+.bg-icon {
+  background-color: white;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  height: 150rpx;
+}
+
+.icon-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.icon-text {
+  margin-top: 10rpx;
+  font-size: 25rpx;
+}
+
+.icon-body image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.tab {
+  /* width: 96%; */
+  /* height: 600rpx; */
+  /* border: 2rpxsolid #ccc; */
+  margin-top: 20rpx;
+  margin-bottom: 130rpx;
+}
+
+.tab .btns {
+  height: 90rpx;
+  background: #eee;
+  display: flex;
+}
+
+.tab .btns view {
+  flex: 1;
+  text-align: center;
+  line-height: 90rpx;
+}
+
+.tab .btns .cur {
+  background: #fff;
+  font-size: 40rpx;
+  font-weight: 600;
+  box-shadow: 0px 2px 0px #0081ff;
+}
+
+.tab .cons view {
+  height: 480rpx;
+  display: none;
+  text-align: center;
+  line-height: 480rpx;
+  font-size: 60rpx;
+}
+
+.tab .cons .cur {
+  display: block;
+  
+}
+
+.bottomtips{
+  margin-top: 10rpx;
+}
+
+.cu-card{
+  margin-bottom: -40rpx;
+}
+
+
+.groupnews{
+  margin-top: -10rpx;
+}
+
+.text-cut-test{
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  align-content: center;
+}
+.titleimg{
+  height: 250rpx;
+}
+
+
+.clearicon{
+  position:absolute;
+   left: 88%;
+}
+
+.clear{
+   position: relative;
+   z-index: 99;
+   width: 60rpx;
+   height: 60rpx;
+}
+
+
+
+
+
+
+.share{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  height: 120rpx;
+  margin-bottom: 2rpx;
+  box-shadow: 1px 1px 2px 3px #aaaaaa;
+   z-index: 999;
+  
+}
+
+
+
+
+.sharebody{
+   display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 95%;
+  font-size: 35rpx;
+  font-weight: 600;
+}
+.wxlogo{
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 10rpx;
+}
+.xian{
+  background-color: #01111675;
+  width: 4rpx;
+  height: 120rxp;
+  font-size: 100rpx;
+  color: #fff;
+
+}
+
+.erweima2{
+ width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
+}

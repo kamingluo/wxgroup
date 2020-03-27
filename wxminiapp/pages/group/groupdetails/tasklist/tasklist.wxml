@@ -1,0 +1,60 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}" wx:if="{{crowd_id}}">
+  <view slot="backText">返回</view>
+  <view slot="content">任务记录</view>
+</cu-custom>
+
+
+<view class='cu-load load-modal'  wx:if="{{loadModal}}" >
+  <!-- <view class='cuIcon-emojifill text-orange'></view> -->
+  <image src='../../../../images/common/loading.svg' class='png' mode='aspectFit'></image>
+  <view  style='margin-top: 10rpx;'  class='gray-text'>加载中</view>
+</view>
+
+
+<view wx:if="{{usertasklist.length <= 0}}">
+  <view class='default'>
+    <view>
+      <image src='http://littlebox.luojiaming.vip/default.png'></image>
+    </view>
+    <view>
+      <text>空空如也呢</text>
+    </view>
+    <view>
+      <!-- <kaming-button>
+            <button class="bg-gradual-blue"  bindtap='exchange' >立即去兑换</button>
+      </kaming-button> -->
+    </view>
+  </view>
+</view>
+
+<view  wx:else >
+  <view class='centered' wx:for="{{usertasklist}}" wx:key="item">
+    <view class='exchangelist  shadow-warp bg-white' bindtap='clicktasklist'  data-id='{{item.id}}' >
+      <view class='exchangedata '>
+        <view class='exchangegood'>
+          任务群:
+          <text style='font-weight: 600; color:#1cbbb4 ; font-size:30rpx; '>{{item.crowd_name}}</text>
+        </view>
+        <view class='exchangetime'>
+          提交时间:{{item.create_time}}
+        </view>
+        <view style='color:red' class='exchangetime' wx:if="{{item.state == 2}}">
+          失败原因:{{item.result}}
+        </view>
+         <view style='color:green' class='exchangetime' wx:if="{{item.state == 1}}">
+          获得积分:{{item.score}}分
+        </view>
+      </view>
+      <view class='exchangedata exchangstate'>
+        <text style='color:#000000' wx:if="{{item.state == 0}}">待审核</text>
+        <text style='color:green' wx:elif="{{item.state == 1}}">审核成功</text>
+        <text style='color:red' wx:else>审核失败</text>
+      </view>
+    </view>
+  </view>
+
+  <view style='margin-top: 10rpx;color:#aaaaaa' class='centered'>
+    <text>-------已经到底啦-------</text>
+  </view>
+</view>
+

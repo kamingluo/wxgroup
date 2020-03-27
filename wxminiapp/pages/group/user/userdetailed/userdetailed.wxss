@@ -1,0 +1,156 @@
+/* pages/group/user/userdetailed/userdetailed.wxss */
+
+.top{
+  height: 240rpx;
+  width: 100%;
+
+}
+.user{
+  height: 240rpx;
+  display: flex;
+   flex-direction:row;
+   justify-content:space-around;
+}
+.userAvatar{
+   display: flex;
+   flex-direction:row;
+   justify-content:space-around;
+   align-items:center;
+  color: #fff;
+}
+.userAvatarurl{
+overflow:hidden;  
+display: block;   
+width: 160rpx;  
+height: 160rpx; 
+border-radius: 50%; 
+border: 2px solid #fff;  
+box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.username{
+display: flex;
+flex-direction: column;
+justify-content:space-around;
+align-items: left;
+flex-shrink: 0;
+flex-basis: 400rpx;
+}
+.userNickName{
+  display: flex;
+  position:relative;
+  font-size: 40rpx;
+  right:30rpx;  
+  top:20rpx; 
+
+}
+
+.id{
+  display: flex;
+  position:relative;
+  font-size: 35rpx;
+  right:30rpx; 
+
+   margin-top: -10rpx;
+}
+
+.birthday{
+  display: flex;
+  position:relative;
+  font-size: 30rpx;
+  right:30rpx; 
+
+ margin-top: -40rpx;
+}
+
+.xiugai{
+  margin-left: 10rpx;
+  margin-top: -2rpx;
+  font-size: 40rpx;
+}
+
+
+
+.list{
+  margin-top: 5rpx;
+
+}
+
+
+.operation{
+  width: 70%;
+  margin-top: 20rpx;
+}
+.operation  button {
+border-radius: 10rpx; 
+}
+
+
+
+
+
+
+
+
+/*主容器*/
+.stepper {
+  width:260rpx;
+  height:100rpx;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+/*加号和减号*/
+.stepper text {
+  float: left;
+  width: 75rpx;
+  line-height: 100rpx;
+  font-size: 50rpx;
+  text-align: center;
+}
+/*数值*/
+.stepper input {
+  width: 100rpx;
+  height: 98rpx;
+  float: left;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+/*普通样式*/
+.stepper .normal {
+  color:black;
+}
+/*禁用样式*/
+.stepper .disable {
+  color: #ccc;
+}
+
+
+
+
+
+/* pages/test/test.wxss */
+
+.body{
+  height: 600rpx;
+}
+.task_text{
+  width: 90%;
+  margin-top: -20rpx;
+}
+
+.task_text textarea{
+  border: 2rpx solid #d9d9d9;
+  height: 150rpx;
+
+}
+.titlecolor{
+  color: white;
+}
+.backcolor{
+  background-color: #1cbbb4;
+}
+

@@ -1,0 +1,91 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">我的地址</view>
+</cu-custom>
+
+
+
+  <view class="cu-list menu  list"  wx:if="{{addressdata}}">
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-peoplefill text-orange"></text>
+        <text class="text-grey">收货人</text>
+      </view>
+      <view class="action">
+        <text class="text-grey">{{addressdata.userName}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-dianhua text-mauve"></text>
+        <text class="text-grey">电话号码</text>
+      </view>
+      <view class="action">
+        <text class="text-grey">{{addressdata.telNumber}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-global text-pink"></text>
+        <text class="text-grey">省份</text>
+      </view>
+      <view class="action">
+        <text class="text-grey">{{addressdata.provinceName}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-activityfill text-cyan"></text>
+        <text class="text-grey">城市</text>
+      </view>
+      <view class="action">
+        <text class="text-grey ">{{addressdata.cityName}}、{{addressdata.countyName}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-locationfill text-blue"></text>
+        <text class="text-grey">详细地址</text>
+      </view>
+      <view class='address'>
+        <text class="text-grey">{{addressdata.detailInfo}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-discover text-green"></text>
+        <text class="text-grey">邮政编码</text>
+      </view>
+      <view class="action">
+        <text class="text-grey ">{{addressdata.postalCode}}</text>
+      </view>
+    </view>
+  </view>
+
+
+
+
+
+<view  wx:else >
+  <view class='default'>
+    <view>
+      <image src='http://littlebox.luojiaming.vip/default.png'></image>
+    </view>
+    <view>
+      <text>你还没有添加地址呢</text>
+    </view>
+    <view>
+    </view>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+<view class='Modify-address '>
+  <button bindtap='add' class="bg-blue">{{addressdata? "修改地址":"添加地址"}}</button>
+</view>

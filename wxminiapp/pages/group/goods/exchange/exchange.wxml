@@ -1,0 +1,87 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"   wx:if="{{crowd_id}}" >
+  <view slot="backText">返回</view>
+  <view slot="content">确认</view>
+</cu-custom>
+
+
+<view class="address  centered"  wx:if="{{useraddress}}"  bindtap="modifyaddress">
+  <view class="padding-xl radius shadow bg-white  body ">
+    <view class="box">
+      <view class="dizhi">
+        <view class="name">
+          <text>{{useraddress.userName}} {{useraddress.telNumber}}</text>
+        </view>
+        <view class="city">
+          <text>{{useraddress.provinceName}}{{useraddress.cityName}}{{useraddress.countyName}}</text>
+        </view>
+        <view class="detailed">
+          <text>{{useraddress.detailInfo}}</text>
+        </view>
+        <view class="youbian">
+          <text>邮编：{{useraddress.postalCode}}</text>
+        </view>
+      </view>
+      <view class="xiugaidizhi centered">
+        <text class="cuIcon-right text-blue iconsize"></text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="address  centered"  wx:else    bindtap="modifyaddress" >
+  <view class="padding-xl radius shadow bg-white  body ">
+    <view class="box">
+      <view class="dizhi">
+        <view class="detailed">
+          <text>添加收货地址</text>
+        </view>
+      </view>
+      <view class="xiugaidizhi centered">
+        <text class="cuIcon-right text-blue iconsize"></text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+<view class="goods">
+  <view class="padding-xl radius shadow bg-white  body">
+    <view class="goodsdetailed">
+      <view class="goodsimg">
+        <image src="{{goodsdata.images}}"> </image>
+      </view>
+      <view class="goodsname">
+        <view class="name">
+          <text>{{goodsdata.goodsname}}</text>
+        </view>
+        <view class="score">
+          <text>所需积分：{{goodsdata.price}}积分</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+  <view>
+    <view class="centered">
+      <view class="remarks">
+        <textarea maxlength="250" bindinput="remarks"  placeholder="请输入兑换备注"></textarea>
+      </view>
+    </view>
+  </view>
+
+
+
+
+
+
+
+<view  class="exchange-button" >
+
+<button   bindtap="clickexchange"   > <kaming-button >立即兑换</kaming-button ></button>
+
+</view>
