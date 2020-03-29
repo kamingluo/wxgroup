@@ -191,7 +191,7 @@ function msgpushnew($openid,$access_token,$crowd_name){
       $access_token=$access_token;
       // $access_token=wxtoken();//拿到token
       $temid = 'fIbB90FHxqlRURZGGo0PmcdAKWaUoxziV_loz90ftVs';
-      $page = 'pages/my/my?exchangelist=true';
+      $page = 'pages/index/index';
       $url = 'https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token='.$access_token;
       $explan="群:".$crowd_name."有新消息;";
       $time =date('Y-m-d H:i:s',time());//获取当前时间

@@ -29,6 +29,11 @@ function register(e) {
 
 
 
+
+
+
+
+
 function authorized(e) {
   var data = e
   wx.login({
