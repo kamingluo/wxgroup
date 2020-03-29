@@ -44,7 +44,7 @@
             submitForm(formName) {
             console.log(this.ruleForm.username)
 
-            if(this.ruleForm.username ==  'admin' && this.ruleForm.password == '123456'  ){
+            if(this.ruleForm.username ==  'kaming' && this.ruleForm.password == 'kaming666'  ){
                  this.$refs[formName].validate((valid) => {
                     if (valid) {
                         localStorage.setItem('ms_username',this.ruleForm.username);
