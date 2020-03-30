@@ -32,12 +32,12 @@ class Desgroup
            if($crowd_name){
               //名称不为空
               $countnumber=db('crowd')->where('crowd_name','like',"%$crowd_name%")->count();
-              $sql="select count(1) as count,a.* from crowd a,user_crowd b where a.id=b.crowd_id and a.crowd_name like '%".$crowd_name."%' group by a.id ORDER BY a.id DESC LIMIT ".$number.",10;";
+              $sql="select count(1) as count,a.* from crowd a,user_crowd b where a.id=b.crowd_id and a.crowd_name like '%".$crowd_name."%' group by a.id ORDER BY count DESC LIMIT ".$number.",10;";
               $data = Db::query($sql); //拿到数据
            }
            else{
             $countnumber=db('crowd')->count();
-            $sql="select count(1) as count,a.* from crowd a,user_crowd b where a.id=b.crowd_id group by a.id ORDER BY a.id DESC LIMIT ".$number.",10;";
+            $sql="select count(1) as count,a.* from crowd a,user_crowd b where a.id=b.crowd_id group by a.id ORDER BY count DESC LIMIT ".$number.",10;";
             $data = Db::query($sql); //拿到数据
            }
            $state=['state'   => '200','message'  => "群列表查询成功" ];
