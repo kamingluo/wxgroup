@@ -48,7 +48,7 @@
       </div> -->
       <div class="handle-box"></div>
       <el-table :data="tableData" border class="table" ref="multipleTable">
-        <el-table-column prop="id" label="群id" width="80"> </el-table-column>
+        <el-table-column prop="crowd_id" label="群id" width="80"> </el-table-column>
         <el-table-column prop="crowd_name" label="群名称" width="150">
         </el-table-column>
         <el-table-column prop="logo" label="任务图片" width="300">
