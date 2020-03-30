@@ -30,6 +30,11 @@ export default new Router({
           path: '/tasks',
           component: resolve => require(['../components/page/Tasks.vue'], resolve),
           meta: { title: '任务记录' }
+        },
+        {
+          path: '/news',
+          component: resolve => require(['../components/page/News.vue'], resolve),
+          meta: { title: '群消息' }
         }
       ]
     },
