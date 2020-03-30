@@ -61,6 +61,8 @@
         </el-table-column>
         <el-table-column prop="introduce" label="群介绍" width="300">
         </el-table-column>
+        <el-table-column prop="count" label="群人数" width="150">
+        </el-table-column>
         <el-table-column prop="create_time" label="创建时间" width="200">
         </el-table-column>
         <el-table-column label="操作" width="180" align="center">
