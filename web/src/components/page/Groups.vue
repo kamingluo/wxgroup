@@ -266,7 +266,7 @@ export default {
         console.log("删除群返回", res);
         this.$message.success(`操作成功`);
         this.delVisible=false;
-        this.getData();
+        this.gosearch();
       });
     },
 

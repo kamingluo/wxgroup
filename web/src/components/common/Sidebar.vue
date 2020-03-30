@@ -47,13 +47,12 @@
                         icon: 'el-icon-lx-cascades',
                         index: 'groups',
                         title: '群列表'
-                     }
-                    // },
-                    // {
-                    //     icon: 'el-icon-lx-cascades',
-                    //     index: 'tasks',
-                    //     title: '任务记录'
-                    // }
+                    },
+                    {
+                        icon: 'el-icon-lx-cascades',
+                        index: 'tasks',
+                        title: '任务记录'
+                    }
                 ]
             }
         },
