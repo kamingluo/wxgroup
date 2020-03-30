@@ -22,6 +22,11 @@ export default new Router({
           meta: { title: '系统首页' }
         },
         {
+          path: '/users',
+          component: resolve => require(['../components/page/Users.vue'], resolve),
+          meta: { title: '用户列表' }
+        },
+        {
           path: '/groups',
           component: resolve => require(['../components/page/Groups.vue'], resolve),
           meta: { title: '群列表' }

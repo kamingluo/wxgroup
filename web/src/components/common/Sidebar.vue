@@ -43,18 +43,23 @@
                         index: 'dashboard',
                         title: '系统首页'
                     },
+                    {
+                        icon: 'el-icon-lx-people',
+                        index: 'users',
+                        title: '用户列表'
+                    },
                      {
-                        icon: 'el-icon-lx-cascades',
+                        icon: 'el-icon-lx-group',
                         index: 'groups',
                         title: '群列表'
                     },
                     {
-                        icon: 'el-icon-lx-cascades',
+                        icon: 'el-icon-lx-present',
                         index: 'tasks',
                         title: '任务记录'
                     },
                      {
-                        icon: 'el-icon-lx-cascades',
+                        icon: 'el-icon-lx-news',
                         index: 'news',
                         title: '群消息'
                     }

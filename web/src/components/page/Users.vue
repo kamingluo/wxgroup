@@ -6,7 +6,7 @@
     <div class="crumbs">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item
-          ><i class="el-icon-lx-cascades"></i> 总消息数：{{datapages}}</el-breadcrumb-item
+          ><i class="el-icon-lx-cascades"></i> 总用户数：{{datapages}}</el-breadcrumb-item
         >
       </el-breadcrumb>
     </div>
@@ -19,7 +19,7 @@
           class="handle-select mr10"
         >
           <!-- <el-option key="1" label="群名称" value="0" ></el-option>-->
-          <el-option key="2" label="群ID" value="1"></el-option>
+          <el-option key="2" label="用户ID" value="1"></el-option>
         </el-select>
         <el-input
           v-model="select_word"
@@ -48,36 +48,38 @@
       </div> -->
       <div class="handle-box"></div>
       <el-table :data="tableData" border class="table" ref="multipleTable">
-        <el-table-column prop="crowd_id" label="群id" width="80"> </el-table-column>
-        <el-table-column prop="logo" label="消息图片" width="300">
-        <template slot-scope="scope">
-        <div class="imgscrollable"> <img class="taskimg" v-for="img in JSON.parse(scope.row.images)" :src="img"  @click="clickimg" ></img> </div>
-         <!-- <div v-for="img in JSON.parse(scope.row.images)" >
-            <img class="logo" :src="img"></img>
-          </div>-->
-            <!-- <img class="logo" :src="scope.row.logo"></img>-->
-             <!--  <el-text v-for="img in JSON.parse(scope.row.images)">{{'列表内容 ' + img}}</el-text>-->
-          <!-- <el-text>{{scope.row.images}}</el-text>-->
+        <el-table-column prop="id" label="用户id" width="80"> </el-table-column>
+
+
+         <el-table-column prop="nickName" label="用户昵称" width="160">
+         <template slot-scope="scope" style="height:100px">
+            <el-text>{{scope.row.nickName?scope.row.nickName:"未授权"}}</el-text>
           </template>
         </el-table-column>
-         <el-table-column prop="publisher" label="用户昵称" width="120">
-        </el-table-column>
-        <el-table-column prop="headportrait" label="用户头像" width="120">
+
+         <el-table-column prop="avatarUrl" label="用户头像" width="120">
           <template slot-scope="scope" style="height:100px">
-            <img class="logo" :src="scope.row.headportrait"></img>
+            <img class="logo" :src="scope.row.avatarUrl"></img>
           </template>
         </el-table-column>
+
+          <el-table-column prop="gender" label="性别" width="120">
+         <template slot-scope="scope" style="height:100px">
+            <el-text>{{scope.row.gender == 2?"女":scope.row.gender == 1 ?"男":"未知"}}</el-text>
+          </template>
         </el-table-column>
-        <el-table-column prop="content" label="消息描述" width="260">
+
+         <el-table-column prop="openid" label="openid" width="270">
+        </el-table-column>
+     
+        <el-table-column prop="channel" label="渠道" width="100">
         </el-table-column>
         <el-table-column prop="create_time" label="创建时间" width="160">
         </el-table-column>
-        <el-table-column prop="watchnum" label="观看次数" width="120">
-       
+        <el-table-column prop="update_time" label="最后活跃" width="160">
         </el-table-column>
         <el-table-column label="操作" width="150" align="center">
           <template slot-scope="scope">
-            <!--<el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">审核</el-button>-->
             <el-button
               type="text"
               icon="el-icon-delete"
@@ -205,9 +207,9 @@ export default {
     },
 
     getData() {
-      this.url = "configure/news/newslist";
+      this.url = "configure/userdata/userlist";
       this.$axios.post(this.url, { pages: this.cur_page }).then(res => {
-        console.log("群列表信息", res);
+        console.log("用户列表信息", res);
         this.tableData = res.data.data;
         this.datapages = res.data.countnumber;
       });
@@ -217,7 +219,7 @@ export default {
         this.cur_page = 1;
         this.select_word="";
         this.select_cate="1";
-        let url = "configure/news/newslist";
+        let url = "configure/userdata/userlist";
         this.$axios.post(url, { pages:1 }).then(res => {
         console.log("群列表信息", res);
         this.tableData = res.data.data;
@@ -258,7 +260,7 @@ export default {
                 crowd_name:select_word
             };
         }
-        let url = "configure/news/newslist";
+        let url = "configure/userdata/userlist";
         this.$axios.post(url,resdata).then(res => {
         console.log("搜索群返回", res);
         this.$message.success(`操作成功`);
@@ -279,9 +281,9 @@ export default {
     //确认删除
     confirmdelete(){
      let id=this.deleteid;
-     let url = "configure/news/deletenew?id=" + id;
+     let url = "configure/userdata/deleteuser?id=" + id;
       this.$axios(url).then(res => {
-        console.log("删除消息返回", res);
+        console.log("删除用户返回", res);
         this.$message.success(`操作成功`);
         this.delVisible=false;
         this.gosearch();
