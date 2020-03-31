@@ -16,6 +16,7 @@ Page({
     groupname: null,
     groupcode: null,
     loadModal: false,
+    wxnumber:null
   },
   // 删除图片
   clearImg: function(e) {
@@ -92,6 +93,12 @@ Page({
     })
   },
 
+  wxnumber:function(e){
+    this.setData({
+      wxnumber: e.detail.value,
+    })
+  },
+
 
   sumittask: function(e) {
     // console.log(this.data.grouptext)
@@ -126,6 +133,7 @@ Page({
     var crowd_name = this.data.groupname
     var groupcode = this.data.groupcode
     var introduce = this.data.grouptext
+    let wxnumber = this.data.wxnumber
     var logo = logo
     wx.login({
       success: res => {

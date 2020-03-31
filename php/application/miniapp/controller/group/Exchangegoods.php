@@ -63,11 +63,15 @@ class Exchangegoods
 
     	$id=$request->param("exchange_id");//兑换记录id
     	$expressnumber=$request->param("expressnumber");//快递单号
-    	$state=$request->param("state");//状态
-
+        $state=$request->param("state");//状态
+        $exchange_type=$request->param("exchange_type");//状态
+        if(!$exchange_type){
+            //不填写的默认是0，快递发货
+            $exchange_type=0;
+        }
     	if($state == 1){
     		//审核通过发货
-    		$dbdata= db('exchange_record')->where('id',$id)->update(['expressnumber' => $expressnumber,'state' => 1]);
+    		$dbdata= db('exchange_record')->where('id',$id)->update(['expressnumber' => $expressnumber,'exchange_type' => $exchange_type,'state' => 1]);
     		$state=['state'   => '200','message'  => "发货成功" ];
             $resdata=array_merge($state,array('dbdata'=>$dbdata));
            

@@ -88,7 +88,7 @@ class Groupgoods
 
 
        //增加兑换记录
-        $exchangedata = ['id'=>'','user_id' =>$user_data["id"],'openid' => $openid,'nickName' => $user_data["nickName"],'crowd_id' => $crowd_id,'crowd_name' => $crowd_name,'userName' =>  $address_data["userName"],'postalCode' => $address_data["postalCode"],'provinceName'=>$address_data["provinceName"],'cityName' =>$address_data["cityName"],'countyName' =>$address_data["countyName"],'detailInfo' => $address_data["detailInfo"],'nationalCode' =>$address_data["nationalCode"],'telNumber' => $address_data["telNumber"],'goodsname' => $goods_data["goodsname"],'images'=> $goods_data["images"],'price' => $goods_data["price"],'expressnumber' =>null,'remarks' => $remarks,'state' => 0,'create_time' =>$time];
+        $exchangedata = ['id'=>'','user_id' =>$user_data["id"],'openid' => $openid,'nickName' => $user_data["nickName"],'crowd_id' => $crowd_id,'crowd_name' => $crowd_name,'userName' =>  $address_data["userName"],'postalCode' => $address_data["postalCode"],'provinceName'=>$address_data["provinceName"],'cityName' =>$address_data["cityName"],'countyName' =>$address_data["countyName"],'detailInfo' => $address_data["detailInfo"],'nationalCode' =>$address_data["nationalCode"],'telNumber' => $address_data["telNumber"],'goodsname' => $goods_data["goodsname"],'images'=> $goods_data["images"],'price' => $goods_data["price"],'expressnumber' =>null,'remarks' => $remarks,'state' => 0,'exchange_type' =>null,'create_time' =>$time];
          $exchange_id= db('exchange_record')->insertGetId($exchangedata);//返回自增ID
 
 
