@@ -30,6 +30,7 @@
        <el-table-column prop="id" label="id" width="80"> </el-table-column>
 
         <el-table-column prop="crowd_id" label="群id" width="80"> </el-table-column>
+        <el-table-column prop="crowd_ownerid" label="群主用户id" width="100"> </el-table-column>
         <el-table-column prop="user_id" label="用户id" width="80"> </el-table-column>
         <el-table-column prop="crowd_name" label="群名称" width="200"> </el-table-column>
 
