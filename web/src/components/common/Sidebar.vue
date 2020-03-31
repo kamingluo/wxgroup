@@ -62,6 +62,11 @@
                         icon: 'el-icon-lx-news',
                         index: 'news',
                         title: '群消息'
+                    },
+                    {
+                        icon: 'el-icon-lx-news',
+                        index: 'groupjurisdiction',
+                        title: '群权限'
                     }
                 ]
             }

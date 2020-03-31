@@ -50,6 +50,22 @@ Page({
 
   },
 
+  copydata: function (e) {
+    let expressnumber = e.currentTarget.dataset.expressnumber
+    console.log("点击复制", expressnumber)
+    wx.setClipboardData({
+      data: expressnumber,
+      success: function (res) {
+        wx.showToast({
+          title: '复制成功',
+          icon: 'success',
+          duration: 2000,
+        })
+
+      }
+    })
+  }
+
 
 
 })

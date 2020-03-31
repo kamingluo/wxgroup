@@ -147,7 +147,7 @@ Page({
     var state = 0; //state记录当前已经上传到第几张图片
     if (that.data.uploaderList.length == 0){
       //没有上传图片，给个0
-       let imgList = 0
+       let imgList = null
       that.uploadtask(imgList)
 
     }else{
@@ -184,6 +184,8 @@ Page({
   uploadtask: function(imgList) {
     var that = this
     var imgList = imgList
+    // console.log("没有图片的时候", imgList)
+    // return;
     var checkedimg = this.data.checkedimg
     var crowd_id = this.data.crowd_id
     if (this.data.tasktext == null) {

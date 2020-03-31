@@ -144,7 +144,8 @@ Page({
             crowd_name: crowd_name,
             groupcode: groupcode,
             introduce: introduce,
-            logo: logo
+            logo: logo,
+            wxnumber: wxnumber
           },
           success: res => {
             this.setData({

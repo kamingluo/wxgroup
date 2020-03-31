@@ -90,12 +90,15 @@
 
 
 <view class="create-group" >
-  <view wx:if="{{ifauthorized}}">
+  <view >
+    <button class=' bg-gradual-blue' bindtap="clickgroup"> 创建空间 </button>
+  </view>
+  <!-- <view wx:if="{{ifauthorized}}">
     <button class=' bg-gradual-blue' bindtap="clickgroup"> 创建空间 </button>
   </view>
   <view wx:else>
     <button class='bg-gradual-blue' open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 创建空间</button>
-  </view>
+  </view> -->
 </view>
 <!-- <view class='cu-tabbar-height'></view> -->
 

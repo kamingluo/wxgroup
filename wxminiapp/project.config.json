@@ -54,7 +54,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 7,
 			"list": [
 				{
 					"id": 0,
@@ -107,9 +107,9 @@
 				},
 				{
 					"id": 7,
-					"name": "用户兑换记录",
-					"pathName": "pages/group/goods/exchangelist/exchangelist",
-					"query": "crowd_id=2",
+					"name": "用户兑换详情",
+					"pathName": "pages/group/groupdetails/exchangelist/exchangedetails/exchangedetails",
+					"query": "changeid=68",
 					"scene": null
 				},
 				{

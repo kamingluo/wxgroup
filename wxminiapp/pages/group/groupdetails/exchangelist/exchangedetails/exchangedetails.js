@@ -16,6 +16,9 @@ Page({
     adoptmodel:false,
     notpassmodel:false,
     loadModal:false,
+    sendkuaidi:true,
+    sendother:false,
+    exchange_type:0
 
 
   },
@@ -24,6 +27,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("进来的", options.changeid)
     this.setData({
       change_id: options.changeid,
     })
@@ -33,6 +37,7 @@ Page({
 
   changedata: function (changeid) {
     var change_id = this.data.change_id
+    console.log("请求的", change_id)
     request({
       service: 'group/Exchangegoods/exchangedetails',
       method: 'GET',
@@ -55,6 +60,23 @@ Page({
     this.setData({
       expressnumber: e.detail.value
     })
+  },
+
+  sendkuaidi:function(){
+    this.setData({
+      sendkuaidi: true,
+      sendother: false,
+      exchange_type: 0
+    })
+
+  },
+  sendother: function () {
+    this.setData({
+      sendkuaidi: false,
+      sendother: true,
+      exchange_type: 1
+    })
+
   },
 
 
@@ -112,6 +134,7 @@ Page({
     })
     var expressnumber = this.data.expressnumber
     var exchange_id = this.data.change_id
+    var exchange_type = this.data.exchange_type
     var that = this
     request({
       service: 'group/Exchangegoods/sendoutgoods',
@@ -119,6 +142,7 @@ Page({
         exchange_id: exchange_id,
         expressnumber: expressnumber,
         state: 1,
+        exchange_type: exchange_type
       },
       success: res => {
         console.log('确认通过发货', res);

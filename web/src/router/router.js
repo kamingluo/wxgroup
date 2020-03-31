@@ -40,6 +40,11 @@ export default new Router({
           path: '/news',
           component: resolve => require(['../components/page/News.vue'], resolve),
           meta: { title: '群消息' }
+        },
+        {
+          path: '/groupjurisdiction',
+          component: resolve => require(['../components/page/Groupjurisdiction.vue'], resolve),
+          meta: { title: '群权限' }
         }
       ]
     },

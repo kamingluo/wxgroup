@@ -88,8 +88,10 @@
       <view class="padding-sm radius shadow  ">
         <view class="state-text">
           <view>
-            <text wx:if="{{changedata.state==1}}" style="color:green" >已通过,{{changedata.expressnumber?"快递单号" + changedata.expressnumber:"无快递信息" }}</text>
-            <text wx:else  style="color:red" > 审核不通过</text>
+            <text wx:if="{{changedata.state==1}}" style="color:green">已通过,
+            <text>{{changedata.exchange_type ==  1 ?"奖励信息：":"快递信息:" }} {{changedata.expressnumber?changedata.expressnumber:"无任何信息" }}</text>
+            </text>
+            <text wx:else style="color:red"> 审核不通过</text>
           </view>
         </view>
       </view>
@@ -104,23 +106,40 @@
 <view class="cu-modal show" wx:if="{{adoptmodel}}">
   <view class="cu-dialog">
     <view class="cu-bar bg-white justify-end">
-      <view class="content">确认发货</view>
+      <view class="content">发送奖励</view>
       <view class="action" bindtap="hidemodel">
         <text class="cuIcon-close text-red"></text>
       </view>
     </view>
-    <view class="padding-xl">
-      输入或者点击扫码填入订单号
 
+    <view class="sendtype">
+      <radio class="greenmargin-left-sm" bindtap="sendkuaidi" checked="{{sendkuaidi}}"></radio> 快递发货
+      <radio class="green margin-left-sm" bindtap="sendother" checked="{{sendother}}"></radio> 其他
+    </view>
+
+
+    <view class="padding-xl" wx:if="{{sendkuaidi}}">
+      输入或者点击扫码填入订单号
       <view class="cu-form-group input  ">
         <input bindinput="expressnumber" value="{{expressnumber}}" maxlength='25' placeholder="请输入快递单号"></input>
         <image bindtap='expressScancode' class='scancode' src='/images/scancode.svg'></image>
-
       </view>
       <view class="centered">
         <text class="tips">Tips:可以不填写为空</text>
       </view>
+    </view>
 
+    <view class="padding-x" wx:else>
+     下发奖励信息
+      <view class="cu-form-group input  ">
+        <!-- <input bindinput="expressnumber" value="{{expressnumber}}" maxlength='100' placeholder="请输入奖励信息"></input> -->
+        <view class="task_text">
+          <textarea  type="text" fixed maxlength="200" bindinput="expressnumber" placeholder="请输入奖励信息"></textarea>
+        </view>
+      </view>
+      <view class="centered">
+        <text class="tips">Tips:可以不填写为空</text>
+      </view>
     </view>
     <view class="cu-bar bg-white justify-end">
       <view class="action">

@@ -11,9 +11,9 @@ Page({
    */
   data: {
     exchangelist: null,
-    crowd_id:null
+    crowd_id: null
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.setData({
       crowd_id: options.crowd_id
     })
@@ -21,7 +21,7 @@ Page({
   },
 
   //查询该群该用户的兑换列表
-  userexchangelist: function () {
+  userexchangelist: function() {
     var user_id = wx.getStorageSync('userdata').id
     var crowd_id = this.data.crowd_id
     request({
@@ -40,16 +40,32 @@ Page({
     })
   },
 
-  queryexpress:function(e){
+  queryexpress: function(e) {
     console.log(e.currentTarget.dataset.expressid)
-    let expressid = e.currentTarget.dataset.expressid
+    let expressnumber = e.currentTarget.dataset.expressnumber
 
     wx.navigateToMiniProgram({
       appId: 'wxf1f0d92f69dd80db',
-      path: '/pages/index/index?channel=1006' + '&expressNumber=' + expressid,
+      path: '/pages/index/index?channel=1006' + '&expressNumber=' + expressnumber,
     })
 
   },
+
+  copydata: function(e) {
+    let expressnumber = e.currentTarget.dataset.expressnumber
+    console.log("点击复制", expressnumber)
+    wx.setClipboardData({
+      data: expressnumber,
+      success: function(res) {
+        wx.showToast({
+          title: '复制成功',
+          icon: 'success',
+          duration: 2000,
+        })
+        
+      }
+    })
+  }
 
 
 
