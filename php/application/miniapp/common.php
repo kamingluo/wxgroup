@@ -13,7 +13,7 @@ use think\Config;
 */
 function openid($wxcode){
     if($wxcode == 'kaming'){
-        $openid='o3XMA0eQOt1z2SH8FcoXf2n5ga7Y';
+        $openid='o1mXc4u68Fff1XGk7gTYyDD2tomU';
         return $openid;
     }
     $url = 'https://api.weixin.qq.com/sns/jscode2session';

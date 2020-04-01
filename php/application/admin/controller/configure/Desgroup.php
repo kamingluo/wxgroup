@@ -21,14 +21,30 @@ class Desgroup
               $resdata=array_merge($state,array('countnumber'=>$countnumber),array('data'=>$data));
               return $resdata ;
            }
+
            $pages=$request->param("pages");
-           $crowd_name=$request->param("crowd_name");
            if($pages == 1 || $pages==null  ){
              $number=0;
            }
            else{
              $number=($pages - 1)*10 ;
            }
+            
+           $wxnumberif=$request->param("wxnumberif");
+           if($wxnumberif){
+            $countnumber=db('crowd')->where('wxnumber','neq',"未填写")->count();
+
+            $sql="select count(1) as count,a.* from crowd a,user_crowd b where a.id=b.crowd_id and a.wxnumber != '未填写'  group by a.id ORDER BY count DESC LIMIT ".$number.",10;";
+            $data = Db::query($sql); //拿到数据
+
+
+            //$data=db('crowd')->where('wxnumber','neq',"未填写")->order('id desc')->limit($number,10)->select();
+            $state=['state'   => '200','message'  => "群列表查询成功(微信号不为空)" ];
+            $resdata=array_merge($state,array('countnumber'=>$countnumber),array('data'=>$data));
+            return $resdata ;
+           }
+
+           $crowd_name=$request->param("crowd_name");
            if($crowd_name){
               //名称不为空
               $countnumber=db('crowd')->where('crowd_name','like',"%$crowd_name%")->count();

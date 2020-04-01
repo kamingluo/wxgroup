@@ -31,6 +31,8 @@
         >
         <el-button type="primary" icon="search" class="search" @click="newsearch"
           >重置</el-button
+        ><el-button type="primary" icon="search" class="search" @click="havewxnumber"
+          >查询有微信号的</el-button
         >
       </div>
 
@@ -62,6 +64,11 @@
         <el-table-column prop="introduce" label="群介绍" width="300">
         </el-table-column>
         <el-table-column prop="count" label="群人数" width="150">
+        </el-table-column>
+         <el-table-column prop="wxnumber" label="群主微信" width="200">
+         <template slot-scope="scope">
+         <el-text>{{scope.row.wxnumber?scope.row.wxnumber:"未填写"}}</el-text>
+         </template>
         </el-table-column>
         <el-table-column prop="create_time" label="创建时间" width="200">
         </el-table-column>
@@ -146,6 +153,7 @@ export default {
       adminuserdata: null,
       admintaskdata: null,
       admincoinsdata: null,
+      wxnumberif:null,
       form: {
         name: "",
         date: "",
@@ -186,9 +194,16 @@ export default {
       }
     },
 
+    havewxnumber(){
+      this.wxnumberif=true;
+      this.getData()
+
+    },
+
     getData() {
       this.url = "configure/desgroup/groupslist";
-      this.$axios.post(this.url, { pages: this.cur_page }).then(res => {
+      let wxnumberif=this.wxnumberif;
+      this.$axios.post(this.url, { pages: this.cur_page,wxnumberif:wxnumberif}).then(res => {
         console.log("群列表信息", res);
         this.tableData = res.data.data;
         this.datapages = res.data.countnumber;
@@ -227,11 +242,12 @@ export default {
     gosearch(pages){
         let select_cate=this.select_cate;//筛选方式
         let select_word=this.select_word;//关键词
+        let ifwxnumber=this.ifwxnumber;//是否有微信号
         console.log("开始筛选",pages)
         if(select_cate == "1"){
             var resdata={
                 pages:pages,
-                id:select_word
+                id:select_word,
             };
         }
         else{
