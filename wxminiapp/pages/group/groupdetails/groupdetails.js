@@ -52,7 +52,7 @@ Page({
   signinseting:function(){
     let crowd_id = this.data.crowd_id
     wx.navigateTo({
-      url: '/pages/group/signseting/signseting?crowd_id' + crowd_id,
+      url: '/pages/group/signseting/signseting?crowd_id=' + crowd_id,
     })
 
 
@@ -60,7 +60,7 @@ Page({
   signindata: function () {
     let crowd_id = this.data.crowd_id
     wx.navigateTo({
-      url: '/pages/group/signdata/signdata?crowd_id' + crowd_id,
+      url: '/pages/group/signdata/signdata?crowd_id=' + crowd_id,
     })
   },
 
