@@ -1,0 +1,83 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">签到设置</view>
+</cu-custom>
+
+<view class="body">
+  <!-- <form bindsubmit="formSubmit" bindreset="formReset"> -->
+
+  <form>
+
+    <view class="cu-form-group ">
+      <view class="title">是否开启活动</view>
+      <switch name="state" checked="{{state==0?true:false}}" bindchange="statechange"></switch>
+    </view>
+
+
+    <view class="cu-form-group ">
+      <view class="title">签到奖励积分</view>
+      <input name="score" maxlength="5"  type='number' placeholder="设置0积分表示不奖励" bindinput="score" value='{{score}}'></input>
+    </view>
+
+
+    <view class="cu-form-group">
+      <view class="title">开始日期</view>
+      <picker mode="date" name="start_time" value="{{start_time}}" start="2020-04-01" end="2025-09-01" bindchange="startDateChange">
+        <view class="picker">
+          {{start_time}}
+        </view>
+      </picker>
+    </view>
+
+
+    <view class="cu-form-group">
+      <view class="title">结束日期</view>
+      <picker mode="date" name="end_time" value="{{end_time}}" start="2020-04-01" end="2025-09-01" bindchange="endDateChange">
+        <view class="picker">
+          {{end_time}}
+        </view>
+      </picker>
+    </view>
+
+
+    <view class="cu-form-group  ">
+      <view class="title">是否开启连续签到奖励</view>
+      <switch name="continuity_signin" checked="{{continuity_signin==0?true:false}}" bindchange="continuitychange"></switch>
+    </view>
+
+
+    <!--连续签到设置-->
+    <view wx:if="{{continuity_signin==0?true:false}}">
+      <view class="cu-form-group  continuity-magin">
+        <view class="title">连续签到要求天数</view>
+        <input  maxlength="3"  type='number' name="continuity_signin_day" placeholder="天数要大于1" bindinput="continuityday" value='{{continuity_signin_day}}'></input>
+      </view>
+      <view class="cu-form-group ">
+        <view class="title">达到连续签到奖励积分</view>
+        <input maxlength="5"  type='number' name="continuity_signin_score" placeholder="设置0积分表示不奖励" bindinput="continuityscore" value='{{continuity_signin_score}}'></input>
+      </view>
+    </view>
+
+
+    <view>
+      <view class="centered">
+        <view class="task_text">
+          <textarea maxlength="50" bindinput="tips" value='{{tips}}' placeholder="请输入签到提示"></textarea>
+        </view>
+      </view>
+    </view>
+
+    <view class="btn-area centered">
+      <!-- <button formType="submit">提交</button> -->
+      <!-- <button formType="reset">重置</button> -->
+      <button bindtap="updatesigninconfig">提交</button>
+    </view>
+
+    <!-- <view class="databtn centered">
+      <button bindtap="updatesigninconfig">查看签到数据</button>
+    </view> -->
+
+
+  </form>
+
+</view>

@@ -4,15 +4,13 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
 		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -20,7 +18,9 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.4",
@@ -54,7 +54,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
@@ -64,100 +64,9 @@
 					"scene": 1047
 				},
 				{
-					"id": 1,
-					"name": "我的页面",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": 1011
-				},
-				{
-					"id": 2,
-					"name": "上传商品",
-					"pathName": "pages/group/goods/pushgoods/pushgoods",
-					"query": "",
-					"scene": 1011
-				},
-				{
-					"id": 3,
-					"name": "群兑换记录",
-					"pathName": "pages/group/groupdetails/exchangelist/exchangelist",
-					"query": "crowd_id=2&crowd_name=测试&user_type=1",
-					"scene": null
-				},
-				{
-					"id": 4,
-					"name": "商品列表",
-					"pathName": "pages/group/goods/goodslist/goodslist",
-					"query": "crowd_id=5",
-					"scene": null
-				},
-				{
 					"id": -1,
 					"name": "创建群",
 					"pathName": "pages/creategroup/creategroup",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "兑换确认",
-					"pathName": "pages/group/goods/exchange/exchange",
-					"query": "goods_id=1&crowd_id=5&crowd_name=测试兑换",
-					"scene": null
-				},
-				{
-					"id": 7,
-					"name": "用户兑换详情",
-					"pathName": "pages/group/groupdetails/exchangelist/exchangedetails/exchangedetails",
-					"query": "changeid=68",
-					"scene": null
-				},
-				{
-					"id": 8,
-					"name": "创建",
-					"pathName": "pages/creategroup/creategroup",
-					"query": "",
-					"scene": 1001
-				},
-				{
-					"id": -1,
-					"name": "群用户管理",
-					"pathName": "pages/group/user/user",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "群用户",
-					"pathName": "pages/group/user/user",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "确认兑换",
-					"pathName": "pages/group/groupdetails/exchangelist/exchangedetails/exchangedetails",
-					"query": "exchangeid=8",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "兑换发货",
-					"pathName": "pages/group/groupdetails/exchangelist/exchangedetails/exchangedetails",
-					"query": "changeid=7",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "非shenhe进入",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": 1011
-				},
-				{
-					"id": -1,
-					"name": "测试页面",
-					"pathName": "pages/test/test",
 					"query": "",
 					"scene": null
 				},
@@ -173,6 +82,20 @@
 					"name": "我的页面",
 					"pathName": "pages/my/my",
 					"query": "exchangelist=true",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "签到设置",
+					"pathName": "pages/group/signseting/signseting",
+					"query": "crowd_id=14",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "签到数据",
+					"pathName": "pages/group/signdata/signdata",
+					"query": "crowd_id=14",
 					"scene": null
 				}
 			]

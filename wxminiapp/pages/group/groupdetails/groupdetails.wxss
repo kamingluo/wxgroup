@@ -69,7 +69,7 @@
 
 .crowdright {
   position:absolute;
-  margin-top: 80rpx;
+  margin-top: 40rpx;
   margin-left: 270rpx;
   
 }
@@ -77,6 +77,19 @@
   width: 80rpx;
   height: 80rpx;
 }
+.signinbtn{
+  left: 40rpx;
+}
+
+.signinseting{
+  margin-top: 10rpx;
+
+}
+
+.signindata{
+  margin-top: 25rpx;
+}
+
 
 .icon-top {
   margin-top: -10rpx;

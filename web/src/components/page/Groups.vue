@@ -214,6 +214,7 @@ export default {
         this.cur_page = 1;
         this.select_word="";
         this.select_cate="1";
+        this.wxnumberif=null;
         let url = "configure/desgroup/groupslist";
         this.$axios.post(url, { pages:1 }).then(res => {
         console.log("群列表信息", res);

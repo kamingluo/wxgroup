@@ -48,8 +48,7 @@ class Signin
     }
 
 
-    //用户签到
-
+//用户签到
 public function usersignin(Request $request)
     {
         $wxcode =$request->param("code");
@@ -141,11 +140,15 @@ public function usersignin(Request $request)
 
 
 
+      //群的签到配置查询
 
+      public function signindata(Request $request){
+        $crowd_id=$request->param("crowd_id");
+        $signindata=db('signin_crowd_config')->where('crowd_id',$crowd_id)->find(); //拿到群签到配置信息
+        $state=['state'   => '200','message'  => "群的签到配置查询",'signindata'=> $signindata ];
+        return $state;
 
-
-
-
+      }
 
     //群的签到配置
     public function signinconfig(Request $request)
@@ -185,6 +188,38 @@ public function usersignin(Request $request)
         }
 
     }
+
+
+    //查看群的签到排行累计签到和连续签到和最后签到时间
+
+    public function signinrankinglist(Request $request){
+        $crowd_id=$request->param("crowd_id");
+
+        $sql="select a.*,b.nickName,b.avatarUrl from sigin_user_crowd_data a,user b where a.user_id=b.id and a.crowd_id=".$crowd_id." ORDER BY a.all_signin_number DESC;";
+        $data = Db::query($sql); //拿到数据
+        $state=['state'   => '200','message'  => "群的签到排行累计签到和连续签到和最后签到时间" ,'data' => $data];
+        return $state;
+
+    }
+
+
+    //今日签到数据
+    public function todaysigninlist(Request $request){
+        $crowd_id=$request->param("crowd_id");
+        $sql="select a.*,b.nickName,b.avatarUrl from signin_user_data a,user b where a.user_id=b.id and TO_DAYS(a.create_time) = TO_DAYS(NOW()) and a.crowd_id=".$crowd_id." ORDER BY a.id DESC;";
+        $data = Db::query($sql); //拿到数据
+        $state=['state'   => '200','message'  => "今日签到数据" ,'data' => $data];
+        return $state;
+    }
+
+
+
+
+
+
+
+
+
     
 
 }
