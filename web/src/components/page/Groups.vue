@@ -195,6 +195,7 @@ export default {
     },
 
     havewxnumber(){
+      this.cur_page = 1;
       this.wxnumberif=true;
       this.getData()
 
