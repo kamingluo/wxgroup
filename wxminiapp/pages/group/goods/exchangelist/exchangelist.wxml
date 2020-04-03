@@ -66,8 +66,8 @@
               <text>{{item.exchange_type==1?"奖励信息：":"快递单号："}}{{item.expressnumber? item.expressnumber: "无任何信息"}}</text>
             </view>
             <view class="exchange-list-express-query" wx:if="{{item.expressnumber}}" >
-              <!-- <button class="cu-btn lines-blue round"   data-expressid="{{item.expressnumber}}" bindtap="queryexpress" >查询</button> -->
-               <button class="cu-btn lines-blue round"   data-expressnumber="{{item.expressnumber}}" bindtap="copydata" >复制</button>
+               <button class="cu-btn lines-blue round"  wx:if="{{item.exchange_type == 1}}" data-expressnumber="{{item.expressnumber}}" bindtap="copydata" >复制</button>
+               <button class="cu-btn lines-blue round"  wx:else  data-expressnumber="{{item.expressnumber}}" bindtap="queryexpress" >查询</button>
             </view>
           </view>
         </view>

@@ -1,22 +1,87 @@
-/* pages/test/test.wxss */
+/*弹框开始*/
+.tankuang {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.body{
+.beijing {
+  width: 80%;
   height: 600rpx;
 }
-.task_text{
-  width: 90%;
-  margin-top: -20rpx;
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*垂直居中*/
+  justify-content: center;
+  /*水平居中*/
+  margin-top: 50rpx;
 }
 
-.task_text textarea{
-  border: 2rpx solid #d9d9d9;
-  height: 150rpx;
-
+.blessing text {
+  font-size: 40rpx;
+  color: red;
+  font-weight: 600;
+  margin-bottom: 80rpx;
 }
-.titlecolor{
+
+.reward-body{
+  margin-top: 40rpx;
+}
+.reward {
+  margin-top: 5rpx;
+  margin-right: 190rpx;
+}
+
+.reward text {
+  font-size: 30rpx;
+  color: #ffa042;
+  font-weight: 800;
+}
+
+.tixiantips {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*垂直居中*/
+  justify-content: center;
+  /*水平居中*/
+  margin-top: 30rpx;
+}
+.tixiantips text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  color: #666666;
+  font-weight: 600;
+  font-size: 25rpx;
+}
+
+.closetankuang {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*垂直居中*/
+  justify-content: center;
+  /*水平居中*/
+  margin-top: 130rpx;
+}
+
+.closetankuang button{
   color: white;
 }
-.backcolor{
-  background-color: #1cbbb4;
+.fork {
+  height: 70rpx;
+  width: 70rpx;
 }
-
+/*弹框结束*/

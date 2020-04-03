@@ -47,7 +47,7 @@
             <text class="text-cut">签到时间：{{item.create_time}}</text>
           </view>
         </view>
-        <view class="action">
+        <view class="action"  wx:if="{{user_type == 1 ||user_type == 2}}">
           <view class="cuIcon-right text-black"></view>
         </view>
       </view>
@@ -89,7 +89,7 @@
             <text class="text-cut name">连续签到次数：{{item.continuity_number >= 0?item.continuity_number:"0"}}</text>
           </view>
         </view>
-        <view class="action">
+        <view class="action" wx:if="{{user_type == 1 ||user_type == 2}}">
           <view class="cuIcon-right text-black"></view>
         </view>
       </view>

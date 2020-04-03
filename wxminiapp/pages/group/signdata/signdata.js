@@ -83,6 +83,10 @@ Page({
   //点击用户列表
   clickuserlist: function (e) {
     console.log("点击用户列表", e.currentTarget.dataset.data)
+    if(this.data.user_type != 1 || this.data.user_type != 2 ){
+      console.log("你是群员，不能跳转")
+      return ;
+    }
     let data = e.currentTarget.dataset.data
     wx.navigateTo({
       url: '/pages/group/user/userdetailed/userdetailed' + '?crowd_id=' + this.data.crowd_id + '&user_id=' + data.user_id + '&role=' + this.data.user_type,

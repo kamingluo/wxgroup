@@ -30,11 +30,11 @@
      <image src="http://qiniu.luojiaming.vip/grouptips5.png" ></image>
     </view> -->
 
-		<view class="crowdright" wx:if="{{user_type == 1 ||user_type == 2 ? true:false }}">
-			<view class='  signinseting ' bindtap="signinseting">
+		<view class="crowdright" >
+			<view class='  signinseting '  wx:if="{{user_type == 1 ||user_type == 2 ? true:false }}" bindtap="signinseting">
 				<button class=" cu-btn bg-cyan  round  shadow signinbtn">签到设置</button>
 			</view>
-			<view class='  signindata ' bindtap="signindata">
+			<view class='signindata'  wx:if="{{user_type == 1 ||user_type == 2 || todaywhethersignin ? true:false }}" bindtap="signindata">
 				<button class="cu-btn bg-olive   round shadow signinbtn">签到数据</button>
 			</view>
 		</view>
@@ -71,9 +71,9 @@
 
 
 <!-- 签到浮动icon -->
-<view class="signinbody"  wx:if="{{todaywhethersignin}}">
+<view class="signinbody" wx:if="{{todaywhethersignin}}">
 	<view class="signinicon" bindtap="usersignin">
-		<image src="https://material.gzywudao.top/rebbao.gif"></image>
+		<image src="https://material.gzywudao.top/groupsignin.gif"></image>
 	</view>
 </view>
 
@@ -223,3 +223,41 @@
 		</view>
 	</view>
 </view>
+
+
+
+
+<!-- /*签到成功弹框开始*/ -->
+<view class='tankuang' wx:if="{{signintankuang}}">
+	<view class='beijing' style="background-image: url('http://littlebox.luojiaming.vip/image/sign/daily_red_pack_opened_bg.png');background-size: cover ">
+		<view class='result'>
+			<view class='blessing'>
+				<text>签到成功！</text>
+			</view>
+			<view class="reward-body">
+				<view class='reward'>
+					<text>获得积分:{{signindata.score}}</text>
+				</view>
+				<view class='reward'>
+					<text>连续签到:{{new_continuity_number}}天</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="centered">
+			<view class='tixiantips'>
+				<view><text>群主寄语：{{signindata.tips?signindata.tips:"生活就像海洋，只有意志坚定的人，才能到达彼岸!"}}</text></view>
+			</view>
+		</view>
+
+		<view bindtap='closesignintankuang' class='closetankuang'>
+			<view>
+				<button class="cu-btn bg-yellow round lg shadow">我知道了</button>
+			</view>
+			<!-- <view>
+					<image class='fork' src='../../images/close.png'></image>
+				</view> -->
+		</view>
+	</view>
+</view>
+<!-- /*签到成功弹框结束*/ -->

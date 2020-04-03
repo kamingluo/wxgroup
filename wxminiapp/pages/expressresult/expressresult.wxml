@@ -1,0 +1,57 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">查询结果</view>
+</cu-custom>
+
+
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+	<view class='cuIcon-search text-blue'></view>
+	<view class='gray-text'>查询中....</view>
+</view>
+
+<view wx:else>
+
+	<view class='empty' wx:if="{{!expressdata.Success}}">
+		<image src='/images/default.png' class='emptypng' mode='aspectFit'></image>
+		<text class="text-black text-bold">很遗憾！没有此快递的任何信息</text>
+		<text class="text-grey">请检查快递单号是否错误</text>
+	</view>
+
+
+	<view wx:else>
+		<view class=' top bg-cyan'>
+			<view class='topbody'>
+				<view class='expressname'>{{expressdata.ShipperName}}</view>
+				<view class='expressnumber'>快递单号:{{expressdata.LogisticCode}}</view>
+				<!-- <view class='share' > <image src='/images/share.svg'></image></view> -->
+				<!-- <view class='share'>
+					<button data-number='{{expressdata.LogisticCode}}' data-name='{{expressdata.ShipperName}}' open-type='share' plain='true'>
+						<image src='../../images/sharenumber.svg'></image>
+					</button>
+					<text>分享单号</text>
+				</view> -->
+			</view>
+		</view>
+
+		<view wx:if="{{lastdata == null}}">
+			<view class='empty'>
+				<image src='/images/default.png' class='emptypng' mode='aspectFit'></image>
+				<text class="text-black text-bold">暂无此快递的具体物流信息</text>
+				<text class="text-grey">请检查快递单号是否错误或稍后再查询</text>
+			</view>
+		</view>
+
+		<view class="cu-timeline" wx:else>
+			<view class="cu-time">{{expressdata.ShipperCode}}</view>
+			<view class="cu-item text-blue">
+				<view class="bg-blue content">
+					<text>{{lastdata.AcceptTime}}</text>{{lastdata.AcceptStation}}
+				</view>
+				<view class="content grey shadow-blur" wx:for="{{fristdata}}" wx:key="item">
+					<text>{{item.AcceptTime}}</text> {{item.AcceptStation}}
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

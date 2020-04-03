@@ -97,6 +97,13 @@
 					"pathName": "pages/group/signdata/signdata",
 					"query": "crowd_id=14&user_type=1",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "快递查询",
+					"pathName": "pages/expressresult/expressresult",
+					"query": "number= 75337697037623",
+					"scene": null
 				}
 			]
 		}

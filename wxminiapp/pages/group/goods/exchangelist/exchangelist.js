@@ -40,14 +40,19 @@ Page({
     })
   },
 
-  queryexpress: function(e) {
-    console.log(e.currentTarget.dataset.expressid)
+  queryexpress: function (e) {
+    console.log(e.currentTarget.dataset.expressnumber)
     let expressnumber = e.currentTarget.dataset.expressnumber
-
-    wx.navigateToMiniProgram({
-      appId: 'wxf1f0d92f69dd80db',
-      path: '/pages/index/index?channel=1006' + '&expressNumber=' + expressnumber,
+    //直接跳转快递查询页面
+    wx.navigateTo({
+      url: '/pages/expressresult/expressresult?number=' + expressnumber
     })
+
+    //跳转快递查询小程序
+    // wx.navigateToMiniProgram({
+    //   appId: 'wxf1f0d92f69dd80db',
+    //   path: '/pages/index/index?channel=1006' + '&expressNumber=' + expressnumber,
+    // })
 
   },
 

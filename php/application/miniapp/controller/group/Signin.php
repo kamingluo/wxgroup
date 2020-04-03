@@ -16,7 +16,7 @@ class Signin
          $time =date('Y-m-d H:i:s',time());
          $signindata=db('signin_crowd_config')->where('crowd_id',$crowd_id)->find(); //拿到群签到配置信息
          $signinopen=['state'   => '200','message'  => "查询签到该群签到配置成功",'ifsignin' => true,'signindata'=> $signindata ];
-         $signinClose=['state'   => '200','message'  => "查询签到该群签到配置成功",'ifsignin' => false,'signindata'=> $signindata  ];
+         $signinClose=['state'   => '200','message'  => "查询签到该群签到配置成功",'ifsignin' => false,'viewdata' => false,'signindata'=> $signindata  ];
          if($signindata == null){
              //没有配置信息，不开启签到
              return $signinClose;
@@ -29,13 +29,14 @@ class Signin
              $signinstate=$signindata['state'];
              if( $signinstate == 0 && $now >=$start && $now<=$end ){
                 //在规则之内，查看改用户在该群今天有没有签到
+                //在规则之内。开启了活动，这时候应该开启群员查看数据的入口
                 $dbsigninnum =db('signin_user_data')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();
                 if($dbsigninnum>=1){
-                 $state=['state'=> '200','message'  => "用户今天已经签到",'ifsignin' => false,'signindata'=> $signindata ];
+                 $state=['state'=> '200','message'  => "用户今天已经签到",'ifsignin' => false,'viewdata' => true,'signindata'=> $signindata ];
                  return $state;
                 }
                 else{
-                 $state=['state'   => '200','message'  => "用户今天还没有签到" ,'ifsignin' => true,'signindata'=> $signindata ];
+                 $state=['state'   => '200','message'  => "用户今天还没有签到" ,'ifsignin' => true,'viewdata' => true,'signindata'=> $signindata ];
                  return $state;
                 }
              }

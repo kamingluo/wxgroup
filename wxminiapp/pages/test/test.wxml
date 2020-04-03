@@ -1,61 +1,44 @@
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
-  <view slot="backText">返回</view>
-  <view slot="content">测试页面</view>
+	<view slot="backText">返回</view>
+	<view slot="content">测试页面</view>
 </cu-custom>
 
 
 
 
-<view>
 
-<button bindtap="webview" >跳转webv</button>
 
-</view>
 
-<!-- <view class="cu-modal show">
-  <view class="cu-dialog">
-    <view class="cu-bar bg-white justify-end backcolor">
-      <view class="content">
-        <text class="titlecolor">积分修改</text>
-      </view>
-      <view class="action" bindtap="hideModal">
-        <text class="cuIcon-close text-red" bindtap="hidemodal"></text>
-      </view>
-    </view>
-    <view class="body">
-      <view class="cu-form-group">
-        <view class="title">成员昵称</view>
-        <text>kaing啦啦啦啦</text>
-      </view>
-      <view class="cu-form-group ">
-        <view class="title">当前积分</view>
-        <text>23</text>
-      </view>
-      <view class="cu-form-group">
-        <view class="title">积分操作</view>
-        <view>
-          <radio class="greenmargin-left-sm" bindtap="add" checked="{{zengjia}}"></radio> 增加
-          <radio class="green margin-left-sm" bindtap="jian" checked="{{jianshao}}"></radio> 减少
-        </view>
-      </view>
 
-      <view class="cu-form-group">
-        <view class="title">积分数量</view>
-        <input placeholder="积分数量要大于0"></input>
-      </view>
+	<view class='tankuang'>
+		<view class='beijing' style="background-image: url('http://littlebox.luojiaming.vip/image/sign/daily_red_pack_opened_bg.png');background-size: cover ">
+			<view class='result'>
+				<view class='blessing'>
+					<text>签到成功！</text>
+				</view>
+				<view class="reward-body">
+					<view class='reward'>
+						<text>获得积分:10</text>
+					</view>
+					<view class='reward'>
+						<text>连续签到：1天</text>
+					</view>
+				</view>
+			</view>
+
+			<view class="centered">
+				<view class='tixiantips'>
+					<view><text>群主寄语：生活就像海洋，只有意志坚定的人，才能到达彼岸!</text></view>
+				</view>
+			</view>
+
+			<view bindtap='closetankuang' class='closetankuang'>
       <view>
-        <view class="centered">
-          <view class="task_text">
-            <textarea maxlength="250" bindinput="tasktext" value='{{tasktext}}' placeholder="请输入备注"></textarea>
-          </view>
-        </view>
+      <button class="cu-btn bg-yellow round lg shadow">我知道了</button>
       </view>
-    </view>
-    <view class="cu-bar bg-white justify-end">
-      <view class="action">
-        <button class="cu-btn line-green text-green" bindtap="hidemodal">取消</button>
-        <button class="cu-btn bg-green margin-left" bindtap="sure">确定</button>
-      </view>
-    </view>
-  </view>
-</view> -->
+				<!-- <view>
+					<image class='fork' src='../../images/close.png'></image>
+				</view> -->
+			</view>
+		</view>
+	</view>

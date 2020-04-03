@@ -26,6 +26,7 @@ Page({
     introducemodel: false,
     todaywhethersignin:false,//是否能签到
     signindata:{},//签到配置数据
+    signintankuang:false,//签到弹框
   },
 
   /**
@@ -50,6 +51,7 @@ Page({
     }
     this.incondata()
     this.groupdata(options.id)
+    this.todaywhethersignin()
     
   },
 
@@ -249,7 +251,7 @@ Page({
   onShow: function () {
     let id = this.data.crowd_id
     this.groupnewslist(id)
-    this.todaywhethersignin()
+    // this.todaywhethersignin()
   },
 
 
@@ -266,7 +268,7 @@ Page({
         user_id:user_id,
       },
       success: res => {
-        console.log("今天是否能签到查询")
+        //console.log("今天是否能签到查询")
         console.log(res)
         this.setData({
           signindata: res.signindata,//签到配置数据
@@ -293,13 +295,15 @@ Page({
           },
           success: res => {
             console.log("签到成功", res)
-            wx.showToast({
-              title: '签到成功',
-              icon: 'success',
-              duration: 2000,
-            })
+            // wx.showToast({
+            //   title: '签到成功',
+            //   icon: 'success',
+            //   duration: 2000,
+            // })
             that.setData({
               todaywhethersignin: false,//是否能签到
+              signintankuang:true,//签到弹框
+              new_continuity_number:res.new_continuity_number,//连续签到天数
             })
           },
           fail: res => {
@@ -310,6 +314,12 @@ Page({
     });
   },
 
+
+  closesignintankuang:function(){
+    this.setData({
+      signintankuang:false,//签到弹框
+    })
+  },
 
 
 
