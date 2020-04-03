@@ -92,10 +92,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 5,
 					"name": "签到数据",
 					"pathName": "pages/group/signdata/signdata",
-					"query": "crowd_id=14",
+					"query": "crowd_id=14&user_type=1",
 					"scene": null
 				}
 			]

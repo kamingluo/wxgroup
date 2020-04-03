@@ -31,7 +31,7 @@ class Signin
                 //在规则之内，查看改用户在该群今天有没有签到
                 $dbsigninnum =db('signin_user_data')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();
                 if($dbsigninnum>=1){
-                 $state=['state'=> '400','message'  => "用户今天已经签到",'ifsignin' => false,'signindata'=> $signindata ];
+                 $state=['state'=> '200','message'  => "用户今天已经签到",'ifsignin' => false,'signindata'=> $signindata ];
                  return $state;
                 }
                 else{

@@ -245,3 +245,15 @@
   height: 50rpx;
   margin-right: 10rpx;
 }
+
+.signinbody{
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+}
+
+.signinicon image{
+  width: 250rpx;
+  height: 250rpx;
+  right: 65rpx;
+}

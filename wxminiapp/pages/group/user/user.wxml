@@ -9,7 +9,7 @@
     <input class='ui_searchInput' type='text' bindinput='search' placeholder='请输入昵称'></input>
     <icon size='15' type='search' class='ui_searchIcon'  bindtap='clickquery'  ></icon>
   </view>
-  <view class='centered  tips'>昵称如：kaming-凯文,输入kaming或者凯文即可查询</view>
+  <view class='centered  tips'>昵称如：kaming-嘉明,输入kaming或者嘉明即可查询</view>
 </view>
 
 

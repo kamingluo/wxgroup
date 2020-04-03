@@ -131,6 +131,19 @@ function haveopenid() {
   })
 }
 
+function havewxcode() {
+  return new Promise(function(resolve, reject) {
+    wx.login({
+      success: function(res) {
+        console.log("公共方法拿的微信code",res)
+        resolve(res.code);
+      }
+    });
+  })
+}
+
+
+
 
 
 function recordmsg(e){
@@ -157,5 +170,6 @@ module.exports = {
   xmaddata: xmaddata,
   shareconfig: shareconfig,
   haveopenid: haveopenid,
+  havewxcode:havewxcode,
   recordmsg: recordmsg
 }

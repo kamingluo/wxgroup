@@ -2,6 +2,8 @@
 const {
   request
 } = require('./../../../utils/request.js');
+const common = require('./../../../utils/common.js');
+const app = getApp();
 Page({
 
   /**
@@ -22,6 +24,8 @@ Page({
     deletenewsid:null,
     deletenewsmodel: false,
     introducemodel: false,
+    todaywhethersignin:false,//是否能签到
+    signindata:{},//签到配置数据
   },
 
   /**
@@ -51,16 +55,18 @@ Page({
 
   signinseting:function(){
     let crowd_id = this.data.crowd_id
+    let user_type = this.data.user_type
     wx.navigateTo({
-      url: '/pages/group/signseting/signseting?crowd_id=' + crowd_id,
+      url: '/pages/group/signseting/signseting?crowd_id=' + crowd_id + '&user_type=' + user_type,
     })
 
 
   },
   signindata: function () {
     let crowd_id = this.data.crowd_id
+    let user_type = this.data.user_type
     wx.navigateTo({
-      url: '/pages/group/signdata/signdata?crowd_id=' + crowd_id,
+      url: '/pages/group/signdata/signdata?crowd_id=' + crowd_id + '&user_type=' + user_type,
     })
   },
 
@@ -243,7 +249,69 @@ Page({
   onShow: function () {
     let id = this.data.crowd_id
     this.groupnewslist(id)
+    this.todaywhethersignin()
   },
+
+
+
+  //检查今天是否还能签到
+  todaywhethersignin:function(){
+    let crowd_id = this.data.crowd_id
+    let user_id = wx.getStorageSync('userdata').id
+    request({
+      service: 'group/signin/todaywhethersignin',
+      method: 'GET',
+      data: {
+        crowd_id: crowd_id,
+        user_id:user_id,
+      },
+      success: res => {
+        console.log("今天是否能签到查询")
+        console.log(res)
+        this.setData({
+          signindata: res.signindata,//签到配置数据
+          todaywhethersignin: res.ifsignin,//是否能签到
+        })
+      }
+    })
+  },
+
+
+  //用户签到
+  usersignin:function(){
+    var that =this
+    let crowd_id = this.data.crowd_id
+    let user_id = wx.getStorageSync('userdata').id
+    wx.login({
+      success: function(res) {
+        request({
+          service: 'group/signin/usersignin',
+          data: {
+            crowd_id:crowd_id,
+            user_id:user_id,
+            code: res.code,
+          },
+          success: res => {
+            console.log("签到成功", res)
+            wx.showToast({
+              title: '签到成功',
+              icon: 'success',
+              duration: 2000,
+            })
+            that.setData({
+              todaywhethersignin: false,//是否能签到
+            })
+          },
+          fail: res => {
+            console.log("签到失败", res)
+          },
+        })
+      }
+    });
+  },
+
+
+
 
 
 
