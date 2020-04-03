@@ -27,6 +27,7 @@ Page({
     todaywhethersignin:false,//是否能签到
     signindata:{},//签到配置数据
     signintankuang:false,//签到弹框
+    viewdata:false,//群员是否能看签到数据
   },
 
   /**
@@ -273,6 +274,7 @@ Page({
         this.setData({
           signindata: res.signindata,//签到配置数据
           todaywhethersignin: res.ifsignin,//是否能签到
+          viewdata:res.viewdata,//群员是否能看数据
         })
       }
     })

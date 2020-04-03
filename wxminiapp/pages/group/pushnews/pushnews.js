@@ -16,7 +16,7 @@ Page({
     crowd_id: null,
     crowd_name: "默认群",
     faceList: [{
-      "image": "http://material.gzywudao.top/image/group/news/quntongzhi.jpg",
+      "image": "https://material.gzywudao.top/image/group/news/imagegrouptongzhi.png",
         "id": 0
       },
       {

@@ -34,7 +34,7 @@
 			<view class='  signinseting '  wx:if="{{user_type == 1 ||user_type == 2 ? true:false }}" bindtap="signinseting">
 				<button class=" cu-btn bg-cyan  round  shadow signinbtn">签到设置</button>
 			</view>
-			<view class='signindata'  wx:if="{{user_type == 1 ||user_type == 2 || todaywhethersignin ? true:false }}" bindtap="signindata">
+			<view class='signindata'  wx:if="{{user_type == 1 ||user_type == 2 || viewdata ? true:false }}" bindtap="signindata">
 				<button class="cu-btn bg-olive   round shadow signinbtn">签到数据</button>
 			</view>
 		</view>
@@ -229,7 +229,7 @@
 
 <!-- /*签到成功弹框开始*/ -->
 <view class='tankuang' wx:if="{{signintankuang}}">
-	<view class='beijing' style="background-image: url('http://littlebox.luojiaming.vip/image/sign/daily_red_pack_opened_bg.png');background-size: cover ">
+	<view class='beijing' style="background-image: url('https://material.gzywudao.top/group_sign_bac.png');background-size: cover ">
 		<view class='result'>
 			<view class='blessing'>
 				<text>签到成功！</text>
