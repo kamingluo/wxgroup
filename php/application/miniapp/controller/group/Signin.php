@@ -119,11 +119,11 @@ public function usersignin(Request $request)
         $ifcontinuity_signin=false;//先把用户这次是否完成连续签到默认置为关闭的
         if($crowdsignindata['continuity_signin'] == 0){
             //该群设置有连续签到
-            $user_yesterday_signin=db('signin_user_data')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->whereTime('create_time', 'yesterday')->find(); //用户昨天在该群有没有签到过
+            // $user_yesterday_signin=db('signin_user_data')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->whereTime('create_time', 'yesterday')->find(); //用户昨天在该群有没有签到过
             $continuity_signin_day=$crowdsignindata['continuity_signin_day'];//连续签到几天给奖励
             $continuity_signin_score=$crowdsignindata['continuity_signin_score'];//给奖励的积分数
             //判断用户连续签到天数满足不,满足条件为：连续签到天数达到要求，奖励分数大于0，昨天有签到(这里有一种可能，就是先没开启连续签到，但是用户累计签到达到了数量，也给下发奖励，然后清O连续签到数量)
-            if($new_continuity_number >=$continuity_signin_day && $continuity_signin_score > 0 && $user_yesterday_signin != null ){
+            if($new_continuity_number >=$continuity_signin_day && $continuity_signin_score > 0 ){
                 //达到连续签到的要求且积分数大于0，加积分
                 $addscore= db('user_crowd')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->setInc('score',$continuity_signin_score);//找到该用户的群账户加积分
                 //加积分记录
