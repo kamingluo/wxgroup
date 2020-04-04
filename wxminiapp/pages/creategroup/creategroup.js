@@ -4,6 +4,7 @@ const qiniuUploader = require("../../utils/sdk/qiniu/qiniuUploader");
 const {
   request
 } = require('./../../utils/request.js');
+const common = require('./../../utils/common.js') //公共函数
 const app = getApp();
 
 Page({
@@ -99,6 +100,16 @@ Page({
     })
   },
 
+  textcheck:function(){
+    console.log("测试文案审核")
+    let content="习近平";
+    common.echecktext(content).then(function (e) {
+      console.log("返回的结果",e)
+      console.log("返回结果后")
+    })
+
+  },
+
 
   sumittask: function(e) {
     // console.log(this.data.grouptext)
@@ -127,8 +138,36 @@ Page({
     }
   },
 
+  creategroup:function(logo){
+    var that = this
+    let crowd_name = this.data.groupname
+    let introduce = this.data.grouptext
+    let wxnumber = this.data.wxnumber
+    var logo =logo
+    //内容审核
+    let content = crowd_name + introduce + wxnumber
+    common.echecktext(content).then(function (e) {
+      if (e.data == 1) {
+        wx.showToast({
+          title: '内容不安全,请重新输入',
+          icon: 'none',
+          duration: 2500,
+        })
+        that.setData({
+          loadModal: false,
+        })
+        return;
+      }
+      else{
+        that.confirmcreategroup(logo)
+      }
+    })
+  },
 
-  creategroup: function(logo) {
+
+
+
+  confirmcreategroup: function(logo) {
     var that = this
     var crowd_name = this.data.groupname
     var groupcode = this.data.groupcode

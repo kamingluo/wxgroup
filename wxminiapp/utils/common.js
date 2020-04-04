@@ -143,9 +143,6 @@ function havewxcode() {
 }
 
 
-
-
-
 function recordmsg(e){
   console.log("传过来的推送信息",e)
   request({
@@ -161,6 +158,30 @@ function recordmsg(e){
 }
 
 
+//内容审核
+function echecktext(content) {
+  return new Promise(function (resolve, reject) {
+        request({
+          service: 'currency/echecktext',
+          data: {
+            content: content,
+          },
+          success: res => {
+            // console.log("内容审核结果", res)
+            resolve(res);
+          },
+          fail: res => {
+            console.log("内容审核结果失败",res)
+          },
+        })
+  })
+}
+
+
+
+
+
+
 
 
 module.exports = {
@@ -171,5 +192,6 @@ module.exports = {
   shareconfig: shareconfig,
   haveopenid: haveopenid,
   havewxcode:havewxcode,
-  recordmsg: recordmsg
+  recordmsg: recordmsg,
+  echecktext: echecktext
 }
