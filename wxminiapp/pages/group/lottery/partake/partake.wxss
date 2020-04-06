@@ -1,0 +1,66 @@
+/* 参与抽奖页面开始 */
+.cu-card>.cu-item {
+	display: block;
+	background-color: var(--white);
+	overflow: hidden;
+	border-radius: 10rpx;
+	margin: 10rpx;
+}
+.text-cut-test {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.cu-card.case .image .cu-bar {
+  padding: 0rpx 15rpx;
+}
+
+.cu-list {
+  width: 100%;
+  height: 100rpx;
+}
+
+.cu-list-text {
+  height: 45rpx;
+  padding: 10rpx 20rpx;
+}
+.partakebtn{
+  width: 85%;
+  margin-top: 20rpx;
+}
+.partakenumber{
+  margin-top: 20rpx;
+  font-size: 35rpx;
+}
+.partakeimg{
+  margin-top: 10rpx;
+
+}
+.partakeimg image{
+  width: 80rpx;
+  height: 100rpx;
+}
+
+.cu-avatar {
+	width: 85rpx;
+	height: 85rpx;
+}
+
+.tips-body{
+  width: 90%;
+  height: 300rpx;
+  background-color: white;
+  margin-top: 30rpx;
+  margin-bottom: 50rpx;
+
+}
+.tips{
+  width: 96%;
+  margin-left: 2%;
+  margin-top: 10rpx;
+
+}
+
+/* 参与抽奖页面结束 */

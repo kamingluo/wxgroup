@@ -1,0 +1,102 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">发布抽奖活动</view>
+</cu-custom>
+
+
+
+<view class="cu-form-group">
+  <view class="title">奖品名称</view>
+  <input placeholder="请输入商品名称"></input>
+</view>
+
+<view class='ui_cell'>
+  <view class='ui_cell_bd'>奖品图片上传</view>
+  <view class='ui_cell_ft'>图片不能为空</view>
+</view>
+<view class="centered">
+  <view class='centered  '>
+    <view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="{{index}}">
+      <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20" color="red" />
+      <image bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
+    </view>
+    <view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}"></view>
+  </view>
+</view>
+
+
+
+
+
+<view class="cu-form-group">
+  <view class="title">参与所需积分</view>
+  <input placeholder="0或者空为不需要"></input>
+</view>
+<view class="cu-form-group">
+  <view class="title">开奖方式</view>
+  <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+    <view class="picker">
+      {{index?picker[index]:'禁止换行，超出容器部分会以 ... 方式截断'}}
+    </view>
+  </picker>
+</view>
+<view class="cu-form-group">
+  <view class="title">满多少人开奖</view>
+  <input placeholder="数值大于或等于1"></input>
+</view>
+<view class="cu-form-group">
+  <view class="title">日期选择</view>
+  <picker mode="date" value="{{date?data:'2020-05-01'}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+    <view class="picker">
+      {{date?data:'2020-05-01'}}
+    </view>
+  </picker>
+</view>
+
+
+<view class="cu-form-group">
+  <view class="title">时间选择</view>
+  <picker bindchange="TimeChange" value="{{time}}" range="{{timepicker}}">
+    <view class="picker">
+      {{timepicker[time]}}
+    </view>
+  </picker>
+</view>
+
+
+<view class="cu-form-group">
+  <view class="title">中奖方式</view>
+  <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+    <view class="picker">
+      {{index?picker[index]:'禁止换行，超出容器部分会以 ... 方式截断'}}
+    </view>
+  </picker>
+</view>
+
+<view class="cu-form-group">
+  <view class="title">中奖人数</view>
+  <input placeholder="大于等于1"></input>
+</view>
+<view class="cu-form-group">
+  <view class="title">中奖概率</view>
+  <input placeholder="百分之多少"></input>
+</view>
+
+<view class="cu-form-group">
+  <view class="title">群主微信</view>
+  <input placeholder="方便中奖兑奖"></input>
+</view>
+
+<view>
+  <view class="centered">
+    <view class="task_text">
+      <textarea maxlength="50" bindinput="tips" value='{{tips}}' placeholder="请输入抽奖备注"></textarea>
+    </view>
+  </view>
+</view>
+
+
+
+<view class="btn-area centered">
+  <button bindtap="updatesigninconfig">提交</button>
+</view>

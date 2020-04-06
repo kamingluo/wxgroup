@@ -45,14 +45,15 @@ position: fixed;
    width: 100%;
 }
 .default image {
-  height: 450rpx;
-  width: 500rpx;
-  margin-bottom: 30rpx;
+  height: 350rpx;
+  width: 450rpx;
+  margin-bottom: 20rpx;
 }
 .default text{
   color: #e21717;
-  font-size: 35rpx;
+  font-size: 30rpx;
   font-weight: 600;
+  margin-right: 30rpx;
 
 }
 

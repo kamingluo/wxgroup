@@ -1,145 +1,146 @@
 <cu-custom bgColor="bg-blue" isBack="{{true}}">
-	<view slot="backText">返回</view>
-	<view slot="content">空间详情</view>
+  <view slot="backText">返回</view>
+  <view slot="content">空间详情</view>
 </cu-custom>
 
 
 
 <!-- <view class='top bg-gradual-blue'> -->
 <view class='top bg-blue'>
-	<view class='user'>
+  <view class='user'>
 
-		<view class='userAvatar' bindlongpress='showcrowdid'>
-			<image src='{{crowddata.groupdata.logo}}' class='userAvatarurl'></image>
-		</view>
+    <view class='userAvatar' bindlongpress='showcrowdid'>
+      <image src='{{crowddata.groupdata.logo}}' class='userAvatarurl'></image>
+    </view>
 
-		<view class='username'>
-			<view class='userNickName' bindlongpress="testpages">
-				<text>{{crowddata.groupdata.crowd_name}}</text>
-			</view>
-			<view class='id' wx:if="{{user_type != 3}}">
-				<!-- <text>群ID:{{crowddata.groupdata.id}}</text> -->
-				<text>我的群积分: {{score}}分</text>
-			</view>
-			<view class='qunchengyuan'>
-				<text>成员:共{{crowddata.groupnumber}}人</text>
-			</view>
-		</view>
+    <view class='username'>
+      <view class='userNickName' bindlongpress="testpages">
+        <text>{{crowddata.groupdata.crowd_name}}</text>
+      </view>
+      <view class='id' wx:if="{{user_type != 3}}">
+        <!-- <text>群ID:{{crowddata.groupdata.id}}</text> -->
+        <text>我的群积分: {{score}}分</text>
+      </view>
+      <view class='qunchengyuan'>
+        <text>成员:共{{crowddata.groupnumber}}人</text>
+      </view>
+    </view>
 
-		<!-- <view class='crowdright'  bindtap="showintroducemodel" >
+    <!-- <view class='crowdright'  bindtap="showintroducemodel" >
      <image src="http://qiniu.luojiaming.vip/grouptips5.png" ></image>
     </view> -->
 
-		<view class="crowdright" >
-			<view class='  signinseting '  wx:if="{{user_type == 1 ||user_type == 2 ? true:false }}" bindtap="signinseting">
-				<button class=" cu-btn bg-cyan  round  shadow signinbtn">签到设置</button>
-			</view>
-			<view class='signindata'  wx:if="{{user_type == 1 ||user_type == 2 || viewdata ? true:false }}" bindtap="signindata">
-				<button class="cu-btn bg-olive   round shadow signinbtn">签到数据</button>
-			</view>
-		</view>
+    <view class="crowdright">
+      <view class='  signinseting ' wx:if="{{user_type == 1 ||user_type == 2 ? true:false }}" bindtap="signinseting">
+        <button class=" cu-btn bg-cyan  round  shadow signinbtn">签到设置</button>
+      </view>
+      <view class='signindata' wx:if="{{user_type == 1 ||user_type == 2 || viewdata ? true:false }}" bindtap="signindata">
+        <button class="cu-btn bg-olive   round shadow signinbtn">签到数据</button>
+      </view>
+    </view>
 
-	</view>
+  </view>
 </view>
 
 <view class="flex padding justify-around  bg-icon ">
-	<view wx:for="{{icondata}}" wx:key="item" class='icon-top'>
-		<view class='icon-body' bindtap='clickicon' data-data="{{item}}">
-			<view class="centered">
-				<image src='{{item.imagesurl}}'></image>
-			</view>
-			<view class="centered">
-				<text class='icon-text centered'>{{item.text}}</text>
-			</view>
-		</view>
-	</view>
+  <view wx:for="{{icondata}}" wx:key="item" class='icon-top'>
+    <view class='icon-body' bindtap='clickicon' data-data="{{item}}">
+      <view class="centered">
+        <image src='{{item.imagesurl}}'></image>
+      </view>
+      <view class="centered">
+        <text class='icon-text centered'>{{item.text}}</text>
+      </view>
+    </view>
+  </view>
 </view>
 
 
 <view class="flex padding justify-around  bg-icon " wx:if="{{user_type == 1 ||user_type == 2 ? true:false }}">
-	<view wx:for="{{adminicon}}" wx:key="item" class='icon-top'>
-		<view class='icon-body' bindtap='clickicon' data-data="{{item}}">
-			<view class="centered">
-				<image src='{{item.imagesurl}}'></image>
-			</view>
-			<view class="centered">
-				<text class='icon-text centered'>{{item.text}}</text>
-			</view>
-		</view>
-	</view>
+  <view wx:for="{{adminicon}}" wx:key="item" class='icon-top'>
+    <view class='icon-body' bindtap='clickicon' data-data="{{item}}">
+      <view class="centered">
+        <image src='{{item.imagesurl}}'></image>
+      </view>
+      <view class="centered">
+        <text class='icon-text centered'>{{item.text}}</text>
+      </view>
+    </view>
+  </view>
 </view>
 
 
 <!-- 签到浮动icon -->
 <view class="signinbody" wx:if="{{todaywhethersignin}}">
-	<view class="signinicon" bindtap="usersignin">
-		<image src="https://material.gzywudao.top/groupsignin.gif"></image>
-	</view>
+  <view class="signinicon" bindtap="usersignin">
+    <image src="https://material.gzywudao.top/groupsignin.gif"></image>
+  </view>
 </view>
 
 
 
 <view class="tab ">
-	<!-- <view class="btns">
-    <view wx:for="{{btns}}" class="{{index==active?'cur':''}}" data-index="{{index}}" bindtap="toggle">
-      <text class='fontsize'>{{item}}</text>
+
+  <scroll-view scroll-x class="bg-white nav">
+    <view class="flex text-center">
+      <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{2}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+        {{index==0?"群消息":"群抽奖"}}
+      </view>
     </view>
-  </view> -->
+  </scroll-view>
 
-	<view wx:if="{{active == 0}}" class='groupnews'>
+  <view wx:if="{{TabCur == 0}}" class='groupnews'>
 
-		<view wx:if="{{groupnewslist.length > 0}}">
-			<view class="cu-card case" wx:for="{{groupnewslist}}" wx:key="item" wx:if="{{groupnewslist.length > 0}}">
-				<view class="cu-item shadow" bindtap='clicknewslist' data-id='{{item.id}}'>
-					<view class='clearicon' catchtap='deletenews' data-id='{{item.id}}' wx:if="{{usertype}}">
-						<image class="clear" src="/images/common/delete.png" mode="aspectFix"></image>
-					</view>
-					<view class="image">
-						<image class="titleimg" src="{{item.titleimage}}" mode="aspectFix"></image>
-						<view class="cu-bar bg-shadeBottom">
-							<text class="text-cut-test">{{item.content}}</text>
-						</view>
-					</view>
-					<view class="cu-list menu-avatar">
-						<view class="cu-item">
-							<view class="cu-avatar round lg" style="background-image:url({{item.headportrait}});"></view>
-							<view class="content flex-sub">
-								<view class="text-grey">{{item.publisher}}</view>
-								<view class="text-gray text-sm flex justify-between">
-									{{item.create_time}}
-									<view class="text-gray text-sm">
-										<text class="cuIcon-attentionfill margin-lr-xs"></text> {{item.watchnum}}
-										<!-- <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
+    <view wx:if="{{groupnewslist.length > 0}}">
+      <view class="cu-card case" wx:for="{{groupnewslist}}" wx:key="item" wx:if="{{groupnewslist.length > 0}}">
+        <view class="cu-item shadow" bindtap='clicknewslist' data-id='{{item.id}}'>
+          <view class='clearicon' catchtap='deletenews' data-id='{{item.id}}' wx:if="{{usertype}}">
+            <image class="clear" src="/images/common/delete.png" mode="aspectFix"></image>
+          </view>
+          <view class="image">
+            <image class="titleimg" src="{{item.titleimage}}" mode="aspectFix"></image>
+            <view class="cu-bar bg-shadeBottom">
+              <text class="text-cut-test">{{item.content}}</text>
+            </view>
+          </view>
+          <view class="cu-list menu-avatar">
+            <view class="cu-item">
+              <view class="cu-avatar round lg" style="background-image:url({{item.headportrait}});"></view>
+              <view class="content flex-sub">
+                <view class="text-grey">{{item.publisher}}</view>
+                <view class="text-gray text-sm flex justify-between">
+                  {{item.create_time}}
+                  <view class="text-gray text-sm">
+                    <text class="cuIcon-attentionfill margin-lr-xs"></text> {{item.watchnum}}
+                    <!-- <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
               <text class="cuIcon-messagefill margin-lr-xs"></text> 30 -->
-									</view>
-								</view>
-							</view>
-						</view>
-					</view>
-				</view>
-			</view>
-			<view class='centered   bottomtips'>
-				<text>----已经到底了---</text>
-			</view>
-		</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='centered   bottomtips'>
+        <text>----已经到底了---</text>
+      </view>
+    </view>
+    <view wx:else>
+      <view>
+        <view class='default'>
+          <view>
+            <image src='http://littlebox.luojiaming.vip/default.png'></image>
+          </view>
+          <view>
+            <text>空空如也！</text>
+          </view>
+          <view>
+          </view>
+        </view>
+      </view>
+    </view>
 
-		<view wx:else>
-			<view>
-				<view class='default'>
-					<view>
-						<image src='http://littlebox.luojiaming.vip/default.png'></image>
-					</view>
-					<view>
-						<text>空空如也！</text>
-					</view>
-					<view>
-					</view>
-				</view>
-			</view>
-		</view>
-
-
-	</view>
+  </view>
 
 
 
@@ -147,9 +148,51 @@
 
 
 
-	<view wx:else>
-		2222222
-	</view>
+  <view wx:else>
+    <!-- 群抽奖开始 -->
+    <view wx:if="{{groupnewslist.length > 0}}">
+      <view class="cu-card case ">
+        <view class="cu-item shadow bg-white">
+          <view class="image">
+            <image src="http://material.gzywudao.top/image/choujiang/macbook.png" mode="aspectFit"></image>
+            <view class="cu-tag bg-blue">进行中</view>
+            <view class="cu-bar bg-shadeBottom">
+              <text class="text-cut-test">第0001期，奖品：Apple 2019款 MacBook Pro 13.3【带触控栏】八代i5 8G 256G RP645显卡 银色 笔记本电脑 MUHR2CH/A.</text>
+            </view>
+          </view>
+          <view class="cu-list-lottery">
+            <view class="col-1 ">
+              <view class="cu-list-text">
+                <text>开奖说明：2020-04-12 14:00:00开奖</text>
+              </view>
+              <view class="cu-list-text ">
+                <text>现在参与人数：500人 <text style="color:red">(参与积分：100)</text></text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class='centered   bottomtips'>
+        <text>----已经到底了---</text>
+      </view>
+    </view>
+    <view wx:else>
+      <view>
+        <view class='default'>
+          <view>
+            <image src='http://littlebox.luojiaming.vip/default.png'></image>
+          </view>
+          <view>
+            <text>空空如也！</text>
+          </view>
+          <view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 群抽奖结束 -->
+  </view>
 
 
 </view>
@@ -165,19 +208,19 @@
 <!-- 
 邀请好友 -->
 <view class='share centered' wx:if="{{usertype}}">
-	<view class='sharebody centered'>
-		<view>
-			<kaming-button open-type='share'>
-				<image class='wxlogo' src='/images/common/wxlogo.png'></image> 邀好友入群
-			</kaming-button>
-		</view>
-		<view class='xian'>1</view>
-		<view>
-			<kaming-button bindtap='qrcode'>
-				<image class='erweima2' src='/images/common/erweima2.svg'></image> 生成邀请码
-			</kaming-button>
-		</view>
-	</view>
+  <view class='sharebody centered'>
+    <view>
+      <kaming-button open-type='share'>
+        <image class='wxlogo' src='/images/common/wxlogo.png'></image> 邀好友入群
+      </kaming-button>
+    </view>
+    <view class='xian'>1</view>
+    <view>
+      <kaming-button bindtap='qrcode'>
+        <image class='erweima2' src='/images/common/erweima2.svg'></image> 生成邀请码
+      </kaming-button>
+    </view>
+  </view>
 </view>
 
 
@@ -185,23 +228,23 @@
 
 
 <view class="cu-modal show" wx:if="{{deletenewsmodel}}">
-	<view class="cu-dialog">
-		<view class="cu-bar bg-white justify-end">
-			<view class="content">删除消息</view>
-			<view class="action" bindtap="hideModal">
-				<text class="cuIcon-close text-red"></text>
-			</view>
-		</view>
-		<view class="padding-xl">
-			确定要删除此条消息吗？
-		</view>
-		<view class="cu-bar bg-white justify-end">
-			<view class="action">
-				<button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-				<button class="cu-btn bg-green margin-left" bindtap="confirmdeletenews">确定</button>
-			</view>
-		</view>
-	</view>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">删除消息</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      确定要删除此条消息吗？
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="confirmdeletenews">确定</button>
+      </view>
+    </view>
+  </view>
 </view>
 
 
@@ -211,17 +254,17 @@
 
 
 <view class="cu-modal show" wx:if="{{introducemodel}}">
-	<view class="cu-dialog">
-		<view class="cu-bar bg-white justify-end">
-			<view class="content">群说明</view>
-			<view class="action" bindtap="hideModal">
-				<text class="cuIcon-close text-red"></text>
-			</view>
-		</view>
-		<view class="padding-xl">
-			{{crowddata.groupdata.introduce? crowddata.groupdata.introduce : "暂无说明" }}
-		</view>
-	</view>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">群说明</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      {{crowddata.groupdata.introduce? crowddata.groupdata.introduce : "暂无说明" }}
+    </view>
+  </view>
 </view>
 
 
@@ -229,35 +272,37 @@
 
 <!-- /*签到成功弹框开始*/ -->
 <view class='tankuang' wx:if="{{signintankuang}}">
-	<view class='beijing' style="background-image: url('https://material.gzywudao.top/group_sign_bac.png');background-size: cover ">
-		<view class='result'>
-			<view class='blessing'>
-				<text>签到成功！</text>
-			</view>
-			<view class="reward-body">
-				<view class='reward'>
-					<text>获得积分:{{signindata.score}}</text>
-				</view>
-				<view class='reward'>
-					<text>连续签到:{{new_continuity_number}}天</text>
-				</view>
-			</view>
-		</view>
+  <view class='beijing' style="background-image: url('https://material.gzywudao.top/group_sign_bac.png');background-size: cover ">
+    <view class='result'>
+      <view class='blessing'>
+        <text>签到成功！</text>
+      </view>
+      <view class="reward-body">
+        <view class='reward'>
+          <text>获得积分:{{signindata.score}}</text>
+        </view>
+        <view class='reward'>
+          <text>连续签到:{{new_continuity_number}}天</text>
+        </view>
+      </view>
+    </view>
 
-		<view class="centered">
-			<view class='tixiantips'>
-				<view><text>群主寄语：{{signindata.tips?signindata.tips:"生活就像海洋，只有意志坚定的人，才能到达彼岸!"}}</text></view>
-			</view>
-		</view>
+    <view class="centered">
+      <view class='tixiantips'>
+        <view>
+          <text>群主寄语：{{signindata.tips?signindata.tips:"生活就像海洋，只有意志坚定的人，才能到达彼岸!"}}</text>
+        </view>
+      </view>
+    </view>
 
-		<view bindtap='closesignintankuang' class='closetankuang'>
-			<view>
-				<button class="cu-btn bg-yellow round lg shadow">我知道了</button>
-			</view>
-			<!-- <view>
+    <view bindtap='closesignintankuang' class='closetankuang'>
+      <view>
+        <button class="cu-btn bg-yellow round lg shadow">我知道了</button>
+      </view>
+      <!-- <view>
 					<image class='fork' src='../../images/close.png'></image>
 				</view> -->
-		</view>
-	</view>
+    </view>
+  </view>
 </view>
 <!-- /*签到成功弹框结束*/ -->

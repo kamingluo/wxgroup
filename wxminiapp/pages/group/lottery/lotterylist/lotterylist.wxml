@@ -1,0 +1,42 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">抽奖列表</view>
+</cu-custom>
+
+<view class="cu-list menu-avatar">
+
+  <view class="cu-item">
+    <view class="cu-avatar radius lg" style="background-image:url(http://material.gzywudao.top/image/choujiang/macbook.png);"></view>
+    <view class="content">
+      <view>
+        <text class="text-cut">这是商品名称 啊啊啊啊砂夹石的哈就收到货啊啥时间段和</text>
+      </view>
+      <view class="text-gray text-sm flex">
+        <text class="text-cut"> 创建时间：2020-05-20 14:00:00</text>
+      </view>
+    </view>
+    <view class="action">
+      <view class="cu-tag round bg-red sm">0002期</view>
+      <view class="text-sm" style="font-weight: 600;">未开奖</view>
+    </view>
+  </view>
+
+  <view class="cu-item ">
+    <view class="cu-avatar radius lg" style="background-image:url(http://material.gzywudao.top/image/choujiang/macbook.png);"></view>
+    <view class="content">
+      <view>
+        <text class="text-cut">这是商品名称 啊啊啊啊砂夹石的哈就收到货啊啥时间段和</text>
+      </view>
+      <view class="text-gray text-sm flex">
+        <text class="text-cut"> 创建时间：2020-05-20 14:00:00</text>
+      </view>
+    </view>
+    <view class="action">
+      <view class="cu-tag round bg-red sm">0001期</view>
+      <view class="text-sm"> <text class="green">已开奖</text> </view>
+
+    </view>
+  </view>
+
+
+</view>

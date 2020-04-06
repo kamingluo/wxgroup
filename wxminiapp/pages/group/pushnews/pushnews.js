@@ -33,7 +33,7 @@ Page({
       },
     ],
     isChecked: 0,
-    checkedimg:"http://material.gzywudao.top/image/group/news/quntongzhi.jpg"
+    checkedimg:"https://material.gzywudao.top/image/group/news/imagegrouptongzhi.png"
   },
 
 

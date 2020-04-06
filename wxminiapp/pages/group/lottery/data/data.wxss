@@ -1,0 +1,24 @@
+.name{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  font-size: 28rpx;
+}
+.time{
+  margin-top: 10rpx;
+}
+.padding-tb-sm {
+	padding-top: 20rpx;
+	padding-bottom: 20rpx;
+  padding-right: 20rpx;
+}
+.red{
+  color: red;
+}
+.green{
+  color: green;
+}
+.cu-item{
+  margin-bottom: 3rpx;
+}

@@ -1,0 +1,20 @@
+
+  <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">参与用户列表</view>
+  </cu-custom>
+ 
+
+
+  
+
+ 
+  <view class="cu-list menu-avatar">
+    <view class="cu-item " style="margin-bottom:3rpx;" wx:for="{{4}}" wx:key>
+      <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big2100{{index+1}}.jpg);"></view>
+      <view class="content">
+        <view><text class="name">这是用户昵称啊啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</text></view>
+        <view class="text-gray text-sm time">参与时间:2020-04-12 12:00:00</view>
+      </view>
+    </view>
+  </view>

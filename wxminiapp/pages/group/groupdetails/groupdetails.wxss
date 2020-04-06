@@ -158,7 +158,7 @@
 }
 
 .bottomtips{
-  margin-top: 10rpx;
+  margin-top: 30rpx;
 }
 
 .cu-card{
@@ -351,3 +351,26 @@
   width: 70rpx;
 }
 /*签到成功弹框结束*/
+
+
+
+
+
+
+/* 抽奖列表开始 */
+
+.cu-card.case .image .cu-bar {
+  padding: 0rpx 15rpx;
+}
+
+.cu-list-lottery{
+  width: 100%;
+  height: 100rpx;
+}
+
+.cu-list-text {
+  height: 45rpx;
+  padding: 10rpx 20rpx;
+}
+
+/* 抽奖列表结束 */

@@ -14,7 +14,6 @@ Page({
     adminicon:[],
     usertype:false,
     btns: ["群消息", "群成员"],
-    active: 0,//控制当前显示盒子 
     isCard: false,
     groupnewslist:null,
     user_type:null,
@@ -28,6 +27,8 @@ Page({
     signindata:{},//签到配置数据
     signintankuang:false,//签到弹框
     viewdata:false,//群员是否能看签到数据
+    TabCur: 0,//下面tab切换
+    scrollLeft: 0
   },
 
   /**
@@ -197,14 +198,6 @@ Page({
 
 
 
-  toggle: function (e) {
-   // console.log(e.currentTarget.dataset.index)
-      this.setData({
-        //设置active的值为用户点击按钮的索引值
-        active: e.currentTarget.dataset.index,
-      })
-
-  },
 
 
 
@@ -384,6 +377,14 @@ Page({
         })
         that.groupnewslist(crowd_id)
       }
+    })
+  },
+
+
+  tabSelect(e) {
+    this.setData({
+      TabCur: e.currentTarget.dataset.id,
+      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
     })
   },
 

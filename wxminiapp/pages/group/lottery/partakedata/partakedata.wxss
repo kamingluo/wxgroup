@@ -1,0 +1,10 @@
+/* pages/group/lottery/partakedata/partakedata.wxss */
+.name{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.time{
+  margin-top: 10rpx;
+}

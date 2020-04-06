@@ -1,0 +1,15 @@
+/* pages/group/lottery/lotterylist/lotterylist.wxss */
+
+.cu-item{
+  margin-bottom: 5rpx;
+}
+.cu-tag.sm {
+	font-size: 20rpx;
+	padding: 0rpx 12rpx;
+	height: 32rpx;
+  right: 10rpx;
+}
+.green{
+  color: green;
+  font-weight: 600;
+}

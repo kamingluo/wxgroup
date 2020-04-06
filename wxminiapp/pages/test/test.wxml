@@ -1,44 +1,27 @@
-<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
-	<view slot="backText">返回</view>
-	<view slot="content">测试页面</view>
-</cu-custom>
+
+  <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">列表</view>
+  </cu-custom>
 
 
-
-
-
-
-
-
-	<view class='tankuang'>
-		<view class='beijing' style="background-image: url('http://littlebox.luojiaming.vip/image/sign/daily_red_pack_opened_bg.png');background-size: cover ">
-			<view class='result'>
-				<view class='blessing'>
-					<text>签到成功！</text>
-				</view>
-				<view class="reward-body">
-					<view class='reward'>
-						<text>获得积分:10</text>
-					</view>
-					<view class='reward'>
-						<text>连续签到：1天</text>
-					</view>
-				</view>
-			</view>
-
-			<view class="centered">
-				<view class='tixiantips'>
-					<view><text>群主寄语：生活就像海洋，只有意志坚定的人，才能到达彼岸!</text></view>
-				</view>
-			</view>
-
-			<view bindtap='closetankuang' class='closetankuang'>
-      <view>
-      <button class="cu-btn bg-yellow round lg shadow">我知道了</button>
+  <view class="cu-list menu-avatar">
+    <view class="cu-item grayscale">
+      <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81007.jpg);"></view>
+      <view class="content">
+        <view>
+          <text class="text-cut">伊泽瑞尔</text>
+          <view class="cu-tag round bg-orange sm">断开连接...</view>
+        </view>
+        <view class="text-gray text-sm flex">
+          <text class="text-cut"> 创建时间：2020-05-20 14:00:00</text>
+        </view>
       </view>
-				<!-- <view>
-					<image class='fork' src='../../images/close.png'></image>
-				</view> -->
-			</view>
-		</view>
-	</view>
+      <view class="action">
+        <view class="text-grey text-xs">22:20</view>
+        <view class="cu-tag round bg-red sm">5</view>
+      </view>
+    </view>
+  </view>
+
+  

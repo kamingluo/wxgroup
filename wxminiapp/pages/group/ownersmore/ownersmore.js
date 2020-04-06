@@ -1,11 +1,7 @@
 const app = getApp();
-Component({
-  options: {
-    addGlobalClass: true,
-  },
+
+Page({
   data: {
-    StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
     list: [{
       title: '签到数据',
       img: 'https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg',
@@ -28,11 +24,10 @@ Component({
     }
     ]
   },
-  methods: {
-    toChild(e) {
-      wx.navigateTo({
-        url: '/pages/plugin' + e.currentTarget.dataset.url
-      })
-    },
-  }
-});
+  toChild(e) {
+    wx.navigateTo({
+      url: '/pages/plugin' + e.currentTarget.dataset.url
+    })
+  },
+
+})

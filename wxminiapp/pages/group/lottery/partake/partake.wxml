@@ -1,0 +1,74 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">参与抽奖</view>
+</cu-custom>
+
+
+
+
+
+
+<!-- /* 参与抽奖页面开始 */ -->
+
+<view class="cu-card case ">
+  <view class="cu-item shadow bg-white">
+    <view class="image">
+      <image src="http://material.gzywudao.top/image/choujiang/macbook.png" mode="aspectFit"></image>
+      <view class="cu-tag bg-blue">进行中</view>
+      <view class="cu-bar bg-shadeBottom">
+        <text class="text-cut-test">第0001期，奖品：Apple 2019款 MacBook Pro 13.3【带触控栏】八代i5 8G 256G RP645显卡 银色 笔记本电脑 MUHR2CH/A.</text>
+      </view>
+    </view>
+    <view class="cu-list">
+      <view class="col-1 ">
+        <view class="cu-list-text">
+          <text>开奖说明：2020-04-12 14:00:00开奖</text>
+        </view>
+        <view class="cu-list-text ">
+          <text>现在参与人数：500人 <text style="color:red">(参与积分：100)</text></text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view>
+  <view>
+    <button class="bg-blue partakebtn">参与抽奖</button>
+    <!-- <button class="bg-grey partakebtn">已经参与</button>
+    <button class="bg-grey partakebtn">已经结束</button> -->
+  </view>
+</view>
+
+
+<view class="container  partakenumber">
+  <view>
+    <text>已有500人参与, <text style="color:blue">查看全部>>></text></text>
+  </view>
+  <view class="action  partakeimg ">
+    <view class="cu-avatar-group">
+      <view class="cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10004.jpg);"></view>
+      <view class="cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10003.jpg);"></view>
+      <view class="cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10002.jpg);"></view>
+      <view class="cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+      <view class="cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10004.jpg);"></view>
+      <view class="cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10003.jpg);"></view>
+      <view class="cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10002.jpg);"></view>
+      <view class="cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+      <view class="cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10004.jpg);"></view>
+      <view class="cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10003.jpg);"></view>
+    </view>
+  </view>
+</view>
+
+<view class="centered">
+<view class="tips-body  shadow bg-white ">
+<view class="tips ">
+<text decode="{{true}}">&nbsp;这是参与备注啊!这是参与备注啊!这是参与备注啊!这是参与备注啊!这是参与备注啊!这是参与备注啊!这是参与备注啊!这是参与备注啊!</text>
+</view>
+</view>
+
+</view>
+
+
+<!-- /* 参与抽奖页面结束 */ -->

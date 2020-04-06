@@ -26,7 +26,6 @@
 
 <view class='ui_cell'>
   <view class='ui_cell_bd'>商品图片上传</view>
-  <!-- <view class='ui_cell_ft'>不上传则默认分配</view> -->
 </view>
 <view class="centered">
   <view class='centered  '>
