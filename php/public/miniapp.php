@@ -12,6 +12,8 @@
 // [ 应用入口文件 ]
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
+//公共类库
+define('EXTEND_PATH','../extend');
 //自定义配置文件
 define('CONF_PATH', __DIR__ . '/../conf/');
 define('APP_DEBUG',True);
