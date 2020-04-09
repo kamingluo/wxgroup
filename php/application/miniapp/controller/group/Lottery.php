@@ -37,6 +37,36 @@ class Lottery
     }
 
 
+    //用户进入活动详情，查询是否能参与活动
+
+    public function userifpartake(Request $request)
+    {
+        $lottery_id=$request->param("lottery_id");//抽奖id
+        $user_id=$request->param("user_id");//用户id
+        //先查询用户有没有参与过活动
+        $lottery_data=db('lottery_crowd_list')->where('id',$lottery_id)->find(); //拿到抽奖活动信息
+        $crowd_id=$lottery_data['crowd_id'];//群id
+        $state=$lottery_data['state'];//开奖状态
+        
+        //拿到参与该活动的最近10个的用户头像
+        $topsql="select b.avatarUrl from lottery_partake_list a,user b where a.user_id=b.id and a.lottery_id=".$lottery_id." ORDER BY a.id DESC LIMIT 10;";
+        $topdata = Db::query($topsql); //拿到数据
+
+        //参与活动的用户总数
+        $allcount=db('lottery_partake_list')->where('lottery_id',$lottery_id)->count();
+
+        $count=db('lottery_partake_list')->where('lottery_id',$lottery_id)->where('crowd_id',$crowd_id)->where('user_id',$user_id)->count(); //用户是否参与该活动
+        if($count >= 1 || $state == 1 ){
+            $state=['state'   => '200','message'  => "用户已经参与活动或者活动已经开奖",'partakeif'  => false,'lottery_data'=>$lottery_data,'topuser'=>$topdata,'allcount'=>$allcount ];
+            return $state ;
+        }
+        else{
+            $state=['state'   => '200','message'  => "用户未参与活动且活动未开奖",'partakeif'  => true,'lottery_data'=>$lottery_data,'topuser'=>$topdata,'allcount'=>$allcount ];
+            return $state ;
+        }
+    }
+
+
      //参与抽奖活动
     public function partakelottery(Request $request){
         $lottery_id=$request->param("lottery_id");//抽奖id
@@ -49,7 +79,7 @@ class Lottery
         $lottery_data=db('lottery_crowd_list')->where('id',$lottery_id)->find(); //拿到抽奖活动信息
         $crowd_id=$lottery_data['crowd_id'];//群id
         $score=$lottery_data['score'];//配置的分数
-        $count=db('lottery_partake_list')->where('lottery_id',$lottery_id)->where('crowd_id',$crowd_id)->where('user_id',$user_id)->count(); //拿到抽奖活动信息
+        $count=db('lottery_partake_list')->where('lottery_id',$lottery_id)->where('crowd_id',$crowd_id)->where('user_id',$user_id)->count(); //用户是否参与该活动
         if($count >= 1){
             $state=['state'   => '400','message'  => "你已经参与活动了",'partake_id'  => 0 ];
             return $state ;
