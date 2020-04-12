@@ -7,7 +7,7 @@
 
 <view class="cu-form-group">
   <view class="title">奖品名称</view>
-  <input placeholder="请输入商品名称"></input>
+  <input placeholder="请输入商品名称" bindinput="goodsname"></input>
 </view>
 
 <view class='ui_cell'>
@@ -30,67 +30,81 @@
 
 <view class="cu-form-group">
   <view class="title">参与所需积分</view>
-  <input placeholder="0或者空为不需要"></input>
+  <input maxlength="5" type='number' placeholder="0或者空为不需要" bindinput="score" value="{{score}}"></input>
 </view>
+
+
 <view class="cu-form-group">
   <view class="title">开奖方式</view>
-  <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+  <picker bindchange="PickerChange" value="{{luck_mode}}" range="{{picker}}">
     <view class="picker">
-      {{index?picker[index]:'禁止换行，超出容器部分会以 ... 方式截断'}}
-    </view>
-  </picker>
-</view>
-<view class="cu-form-group">
-  <view class="title">满多少人开奖</view>
-  <input placeholder="数值大于或等于1"></input>
-</view>
-<view class="cu-form-group">
-  <view class="title">日期选择</view>
-  <picker mode="date" value="{{date?data:'2020-05-01'}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
-    <view class="picker">
-      {{date?data:'2020-05-01'}}
+      {{luck_mode?picker[luck_mode]:'请选择方式'}}
     </view>
   </picker>
 </view>
 
+<view>
 
-<view class="cu-form-group">
-  <view class="title">时间选择</view>
-  <picker bindchange="TimeChange" value="{{time}}" range="{{timepicker}}">
-    <view class="picker">
-      {{timepicker[time]}}
+  <view class="cu-form-group" wx:if="{{luck_mode==0}}">
+    <view class="title">满多少人开奖</view>
+    <input maxlength="5" type='number' placeholder="数值大于或等于1" bindinput="packedlottery" value="{{packed_lottery}}"></input>
+  </view>
+
+  <view wx:else>
+    <view class="cu-form-group">
+      <view class="title">日期选择</view>
+      <picker mode="date" value="{{datetime?datetime:'2020-06-01'}}" start="2020-04-01" end="2021-09-01" bindchange="DateChange">
+        <view class="picker">
+          {{datetime?datetime:'2020-06-01'}}
+        </view>
+      </picker>
     </view>
-  </picker>
+    <view class="cu-form-group">
+      <view class="title">时间选择</view>
+      <picker bindchange="TimeChange" value="{{time}}" range="{{timepicker}}">
+        <view class="picker">
+          {{timepicker[time]}}
+        </view>
+      </picker>
+    </view>
+  </view>
 </view>
+
+
 
 
 <view class="cu-form-group">
   <view class="title">中奖方式</view>
-  <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+  <picker bindchange="lotteryPickerChange" value="{{lottery_mode}}" range="{{openpicker}}">
     <view class="picker">
-      {{index?picker[index]:'禁止换行，超出容器部分会以 ... 方式截断'}}
+      {{lottery_mode?openpicker[lottery_mode]:'请选择中奖方式'}}
     </view>
   </picker>
 </view>
 
-<view class="cu-form-group">
-  <view class="title">中奖人数</view>
-  <input placeholder="大于等于1"></input>
+<view>
+  <view class="cu-form-group" wx:if="{{lottery_mode ==0}}">
+    <view class="title">中奖概率</view>
+    <input placeholder="百分之多少" value="{{lottery_probability}}" maxlength="2" type='number' bindinput="lotteryprobability" ></input>
+  </view>
+  <view class="cu-form-group" wx:else>
+    <view class="title">中奖人数</view>
+    <input placeholder="大于等于1" value="{{lottery_number}}"   maxlength="5" type='number' bindinput="lotterynumber"></input>
+  </view>
 </view>
-<view class="cu-form-group">
-  <view class="title">中奖概率</view>
-  <input placeholder="百分之多少"></input>
-</view>
+
+
 
 <view class="cu-form-group">
   <view class="title">群主微信</view>
-  <input placeholder="方便中奖兑奖"></input>
+  <input placeholder="方便中奖兑奖" maxlength="50" type='number' bindinput="wxnumber"></input>
 </view>
+
 
 <view>
   <view class="centered">
     <view class="task_text">
-      <textarea maxlength="50" bindinput="tips" value='{{tips}}' placeholder="请输入抽奖备注"></textarea>
+      <textarea maxlength="50" bindinput="remarks" value='{{remarks}}' placeholder="请输入抽奖备注"></textarea>
     </view>
   </view>
 </view>
@@ -98,5 +112,14 @@
 
 
 <view class="btn-area centered">
-  <button bindtap="updatesigninconfig">提交</button>
+  <button bindtap="pushlottery">发布</button>
+</view>
+
+
+
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <view class='cuIcon-loading2 text-orange'></view>
+  <!-- <image src='/images/logo.png' class='png' mode='aspectFit'></image> -->
+  <view class='gray-text'>发布中...</view>
 </view>

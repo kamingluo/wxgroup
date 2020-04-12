@@ -99,9 +99,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 6,
 					"name": "发布抽奖活动",
 					"pathName": "pages/group/lottery/pushlottery/pushlottery",
+					"query": "crowd_id=14",
 					"scene": null
 				}
 			]
