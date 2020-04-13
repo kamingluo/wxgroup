@@ -73,7 +73,39 @@ Page({
     this.setData({
       display: app.globalData.display || false
     })
+
+    this.haveopenid()
+
   },
+
+
+  haveopenid:function() {
+      wx.login({
+        success: function(res) {
+          request({
+            service: 'user/obtainopenid',
+            data: {
+              code: res.code,
+            },
+            success: res => {
+              console.log("fanfaopenid", res)
+            },
+            fail: res => {
+              console.log(res)
+            },
+          })
+        }
+      });
+  },
+
+getPhoneNumber: function(e) { 
+    // console.log(e.detail.errMsg) 
+    // console.log(e.detail.iv) 
+     console.log(e.detail.encryptedData) 
+    // encodeURIComponent
+    let test=encodeURIComponent(e.detail.encryptedData);
+    console.log(test)
+},
 
   grouptext: function(e) {
     // console.log(e.detail.value)
