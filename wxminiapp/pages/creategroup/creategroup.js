@@ -17,7 +17,8 @@ Page({
     groupname: null,
     groupcode: null,
     loadModal: false,
-    wxnumber:null
+    wxnumber:null,
+    userlogin:null,//用户登录状态
   },
   // 删除图片
   clearImg: function(e) {
@@ -80,15 +81,19 @@ Page({
 
 
   haveopenid:function() {
+    var that =this;
       wx.login({
         success: function(res) {
           request({
-            service: 'user/obtainopenid',
+            service: 'user/userlogin',
             data: {
               code: res.code,
             },
             success: res => {
-              console.log("fanfaopenid", res)
+              console.log("fanfaopenid", res.userlogin)
+              that.setData({
+                userlogin:res.userlogin,
+              })
             },
             fail: res => {
               console.log(res)
@@ -98,13 +103,11 @@ Page({
       });
   },
 
+  //获取用户手机号码
 getPhoneNumber: function(e) { 
-    // console.log(e.detail.errMsg) 
-    // console.log(e.detail.iv) 
+    console.log(e.detail.errMsg) 
+    console.log(e.detail.iv) 
      console.log(e.detail.encryptedData) 
-    // encodeURIComponent
-    let test=encodeURIComponent(e.detail.encryptedData);
-    console.log(test)
 },
 
   grouptext: function(e) {

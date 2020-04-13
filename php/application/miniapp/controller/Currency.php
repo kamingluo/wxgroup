@@ -197,6 +197,55 @@ public function getqrcode(Request $request)
 
 
 
+      //加密信息解密,获取手机号码
+      public  function phonedecrypt(Request $request)
+      {
+        // return "wxdatacrypt";
+        $appid=Config('appid');
+        $sessionKey=$request->param("session_key");
+        $encryptedData=$request->param("encryptedData");
+        $iv=$request->param("iv");
+
+        if (strlen($sessionKey) != 24) {
+          return "解密错误";
+          // return ErrorCode::$IllegalAesKey;
+        }
+        $aesKey=base64_decode($sessionKey);
+    
+            
+        if (strlen($iv) != 24) {
+          return "解密错误";
+          // return ErrorCode::$IllegalIv;
+        }
+        $aesIV=base64_decode($iv);
+    
+        $aesCipher=base64_decode($encryptedData);
+    
+        $result=openssl_decrypt( $aesCipher, "AES-128-CBC", $aesKey, 1, $aesIV);
+    
+        $dataObj=json_decode( $result );
+        if( $dataObj  == NULL )
+        {
+          return "解密错误";
+          // return ErrorCode::$IllegalBuffer;
+        }
+        if( $dataObj->watermark->appid != $appid )
+        {
+          return "解密错误";
+          // return ErrorCode::$IllegalBuffer;
+        }
+        $data = $result;
+        // return ErrorCode::$OK;
+        $newdata = json_decode($data,true);
+
+        // $phoneNumber=$newdata['phoneNumber'];
+        return $newdata;
+      } 
+
+
+
+
+
 
 
 
