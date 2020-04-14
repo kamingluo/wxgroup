@@ -105,9 +105,45 @@ Page({
 
   //获取用户手机号码
 getPhoneNumber: function(e) { 
-    console.log(e.detail.errMsg) 
-    console.log(e.detail.iv) 
-     console.log(e.detail.encryptedData) 
+  var that =this
+    // console.log(e.detail.errMsg)
+    // console.log(e.detail.iv) 
+    //  console.log(e.detail.encryptedData) 
+    let encryptedData=e.detail.encryptedData;
+    let iv=e.detail.iv;
+    let session_key=this.data.userlogin.session_key;
+    let user_openid=this.data.userlogin.openid;
+    let user_id=wx.getStorageSync('userdata').id
+    if(encryptedData){
+      request({
+        service: 'currency/phonedecrypt',
+        data: {
+          encryptedData: encryptedData,
+          iv: iv,
+          session_key: session_key,
+          user_id: user_id,
+          user_openid: user_openid,
+        },
+        success: res => {
+          // console.log("fanfaopenid", res.userlogin)
+          that.sumittask()
+          // that.setData({
+          //   loadModal: true,
+          // })
+        },
+        fail: res => {
+          console.log(res)
+        },
+      })
+    }
+    else{
+      wx.showToast({
+        title: '请允许授权',
+        icon: 'none',
+        duration: 2500,
+      })
+
+    }
 },
 
   grouptext: function(e) {
@@ -155,6 +191,9 @@ getPhoneNumber: function(e) {
         title: '信息不能为空',
         icon: 'none',
         duration: 2500,
+      })
+      this.setData({
+        loadModal: false,
       })
       return;
     } else if (this.data.uploaderNum == 0) {

@@ -5,13 +5,13 @@
 </cu-custom>
 <scroll-view scroll-y class="scrollPage">
   <view class="cu-card">
-    <!-- <view class="cu-item bg-img shadow-blur" style="background-image:url({{item.img}})" bindtap="toChild" data-url="{{item.url}}" wx:for="{{list}}" wx:key> -->
-    <view class="cu-item bg-img shadow-blur" style="background-color:#0081ff" bindtap="toChild" data-url="{{item.url}}" wx:for="{{list}}" wx:key>
+    <view class="cu-item bg-img shadow-blur" style="background-image:url({{item.img}})" bindtap="toChild" data-url="{{item.url}}" wx:for="{{list}}" wx:key>
+    <!-- <view class="cu-item bg-img shadow-blur" style="background-color:#0081ff" bindtap="toChild" data-url="{{item.url}}" wx:for="{{list}}" wx:key> -->
       <view class="cardTitle">
         {{item.title}}
       </view>
       <view class="jieshao">
-        这是介绍啊啊啊啊是的阿萨德爱上的
+        {{item.introduce}}
       </view>
     </view>
   </view>

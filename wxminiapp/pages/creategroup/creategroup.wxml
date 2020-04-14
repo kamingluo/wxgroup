@@ -57,9 +57,10 @@
 
 
   <view class='sumittask centered'>
-    <button bindtap="sumittask" class="bg-blue">创建空间</button>
+     <!-- <button bindtap="sumittask" class="bg-blue">创建空间</button> -->
+     <button  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="bg-blue">创建空间</button>
      <!-- <button bindtap="textcheck" class="bg-blue">测试文案审核</button> -->
-     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 手机号</button>
+     <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 手机号</button> -->
   </view>
 
 </view>

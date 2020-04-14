@@ -16,6 +16,7 @@ Page({
     btns: ["群消息", "群成员"],
     isCard: false,
     groupnewslist:null,
+    lotteryopenlist:null,
     user_type:null,
     crowddata: null,
     crowd_id:null,
@@ -148,10 +149,16 @@ Page({
       },
       {
         id: 5,
-        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/useroperation1.png",
-        text: "用户管理",
-        joumurl: '/pages/group/user/user'
+        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/more.png",
+        text: "更多功能",
+        joumurl: '/pages/group/ownersmore/ownersmore'
       },
+      // {
+      //   id: 5,
+      //   imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/useroperation1.png",
+      //   text: "用户管理",
+      //   joumurl: '/pages/group/user/user'
+      // },
     ];
 
 
@@ -197,6 +204,22 @@ Page({
   },
 
 
+  crowdlotteryopenlist: function (crowd_id) {
+    request({
+      service: 'group/lottery/crowdlotteryopenlist',
+      method: 'GET',
+      data: {
+        crowd_id: crowd_id
+      },
+      success: res => {
+        this.setData({
+          lotteryopenlist: res.data,
+        })
+      }
+    })
+  },
+
+
 
 
 
@@ -205,7 +228,6 @@ Page({
     
     console.log("点击icon", e.currentTarget.dataset.data.joumurl)
     let joumurl = e.currentTarget.dataset.data.joumurl
-
     if (joumurl ==666){
       //多加一个，展示群说明
       this.setData({
@@ -213,8 +235,6 @@ Page({
       })
       return;
     }
-
-
     let crowd_id = this.data.crowddata.groupdata.id
     let crowd_name = this.data.crowddata.groupdata.crowd_name
     let user_type = this.data.user_type
@@ -243,8 +263,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let id = this.data.crowd_id
-    this.groupnewslist(id)
+    let crowd_id = this.data.crowd_id
+    this.groupnewslist(crowd_id)
+    this.crowdlotteryopenlist(crowd_id)
     // this.todaywhethersignin()
   },
 

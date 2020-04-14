@@ -87,12 +87,12 @@
     </button>
   </view>
 
-  <!-- <view class="cu-item arrow">
+  <view class="cu-item arrow">
     <button class="cu-btn content" open-type="feedback">
       <text class="cuIcon-edit text-red  iconsize"></text>
-      <text class="text-grey">意见反馈</text>
+      <text class="text-grey">投诉建议</text>
     </button>
-  </view> -->
+  </view>
 <!-- 
   <view class="cu-item arrow">
     <view class="content" hover-class="none">
