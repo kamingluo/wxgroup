@@ -200,22 +200,29 @@ public function getqrcode(Request $request)
       //加密信息解密,获取手机号码
       public  function phonedecrypt(Request $request)
       {
+        // public static $OK = 0;
+        // public static $IllegalAesKey = -41001;
+        // public static $IllegalIv = -41002;
+        // public static $IllegalBuffer = -41003;
+        // public static $DecodeBase64Error = -41004;
         // return "wxdatacrypt";
         $appid=Config('appid');
         $sessionKey=$request->param("session_key");
         $encryptedData=$request->param("encryptedData");
         $iv=$request->param("iv");
+        $user_id=$request->param("user_id");
+        $user_openid=$request->param("user_openid");
+        $time =date('Y-m-d H:i:s',time());
+
 
         if (strlen($sessionKey) != 24) {
-          return "解密错误";
-          // return ErrorCode::$IllegalAesKey;
+          return ['state'   => '200','message'  => "解密错误",'Code' => '41001'];
         }
         $aesKey=base64_decode($sessionKey);
     
             
         if (strlen($iv) != 24) {
-          return "解密错误";
-          // return ErrorCode::$IllegalIv;
+          return ['state'   => '200','message'  => "解密错误",'Code' => '41002'];
         }
         $aesIV=base64_decode($iv);
     
@@ -226,20 +233,28 @@ public function getqrcode(Request $request)
         $dataObj=json_decode( $result );
         if( $dataObj  == NULL )
         {
-          return "解密错误";
-          // return ErrorCode::$IllegalBuffer;
+          return ['state'   => '200','message'  => "解密错误",'Code' => '41003'];
         }
         if( $dataObj->watermark->appid != $appid )
         {
-          return "解密错误";
-          // return ErrorCode::$IllegalBuffer;
+          return ['state'   => '200','message'  => "解密错误",'Code' => '41003'];
         }
-        $data = $result;
-        // return ErrorCode::$OK;
-        $newdata = json_decode($data,true);
+        $data = json_decode($result,true);
 
-        // $phoneNumber=$newdata['phoneNumber'];
-        return $newdata;
+        $phone=$data['phoneNumber'];
+
+        $dbnum =db('user_phone')->where('user_id',$user_id)->find();//查询是否有信息
+        if($dbnum==null){
+          $dbdata = ['id'=>'','user_id' =>$user_id,'user_openid' => $user_openid,'phone' => $phone,'update_time' =>$time];
+          $phone_id= db('user_phone')->insertGetId($dbdata);//返回自增ID
+        }
+        else{
+          $dbreturn= db('user_phone')->where('user_id',$user_id)->update(['update_time' => $time,'phone' => $phone]);
+
+        }
+
+        return ['state'   => '200','message'  => "获取用户手机号成功",'data'=>$data ];
+
       } 
 
 
