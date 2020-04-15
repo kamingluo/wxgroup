@@ -244,12 +244,24 @@ Page({
   },
 
 
-
+ //跳转新闻详情
   clicknewslist:function(e){
     console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
-      url: '/pages/group/newsdetailed/newsdetailed' + '?id=' + e.currentTarget.dataset.id ,
+      url: '/pages/group/newsdetailed/newsdetailed?id=' + e.currentTarget.dataset.id ,
     })
+  },
+
+
+  //跳转抽奖详情
+  clicklotterylist:function(e){
+    let id=e.currentTarget.dataset.id;
+    let crowd_id=this.data.crowd_id;
+    let user_type = this.data.user_type
+    wx.navigateTo({
+      url: '/pages/group/partake/partake?id='+ id +'&crowd_id=' + crowd_id + '&user_type=' + user_type ,
+    })
+
   },
 
   /**

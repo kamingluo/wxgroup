@@ -152,12 +152,12 @@
     <!-- 群抽奖开始 -->
     <view wx:if="{{lotteryopenlist.length > 0}}">
       <view class="cu-card case " wx:for="{{lotteryopenlist}}" wx:key="item" wx:if="{{lotteryopenlist.length > 0}}">
-        <view class="cu-item shadow bg-white">
+        <view class="cu-item shadow bg-white"  bindtap='clicklotterylist' data-id='{{item.id}}'>
           <view class="image">
             <image src="{{item.goods_img}}" mode="aspectFit"></image>
-            <view class="cu-tag bg-blue">进行中</view>
+            <view class="cu-tag bg-blue">{{item.id}}期</view>
             <view class="cu-bar bg-shadeBottom">
-              <text class="text-cut-test">第{{item.id}}期，奖品：{{item.goods_name}}</text>
+              <text class="text-cut-test">奖品：{{item.goods_name}}</text>
             </view>
           </view>
           <view class="cu-list-lottery">
@@ -167,7 +167,7 @@
                 <text wx:else>开奖说明：{{item.time_lottery}}开奖</text>
               </view>
               <view class="cu-list-text ">
-                <text>现在参与人数：500人 <text style="color:red" wx:if="{{item.score > 0}}">(参与积分：{{item.score}})</text></text>
+                <text>现在参与人数：{{item.count}}人 <text style="color:red" wx:if="{{item.score > 0}}">(参与积分：{{item.score}})</text></text>
               </view>
             </view>
           </view>

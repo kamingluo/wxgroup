@@ -43,7 +43,7 @@
 
 <view class="container  partakenumber">
   <view>
-    <text>已有500人参与, <text style="color:blue">查看全部>>></text></text>
+    <text>已有500人参与, <text style="color:blue" bindtap="seeall">查看全部>>></text></text>
   </view>
   <view class="action  partakeimg ">
     <view class="cu-avatar-group">

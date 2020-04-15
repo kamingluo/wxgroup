@@ -137,10 +137,9 @@ class Lottery
     //该群发布的所有未开奖的抽奖活动
     public function crowdlotteryopenlist(Request $request){
         $crowd_id=$request->param("crowd_id");//抽奖id
-        $data=db('lottery_crowd_list')-> where('crowd_id',$crowd_id)->where('state',0)->order('id desc')->select();
+        // $data=db('lottery_crowd_list')-> where('crowd_id',$crowd_id)->where('state',0)->order('id desc')->select();
 
-        // $sql = "SELECT u.*,count(p.lottery_id) FROM `lottery_crowd_list` u LEFT JOIN lottery_partake_list p ON u.id = p.lottery_id GROUP BY u.id;";
-        // SELECT u.*,count(p.lottery_id) as count FROM `lottery_crowd_list` u  LEFT JOIN lottery_partake_list p ON u.id = p.lottery_id and u.crowd_id=14 GROUP BY u.id;
+        $sql = "SELECT u.*,count(p.lottery_id) as count FROM `lottery_crowd_list` u  LEFT JOIN lottery_partake_list p ON u.id = p.lottery_id  WHERE u.crowd_id =" .$crowd_id. " and u.state=0 GROUP BY u.id;";
         $data = Db::query($sql); //拿到数据
         $state=['state'   => '200','message'  => "该群发布的所有未开奖的抽奖活动" ,'data' => $data];
         return $state;
