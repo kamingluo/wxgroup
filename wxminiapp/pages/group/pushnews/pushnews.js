@@ -15,6 +15,7 @@ Page({
     tasktext: null,
     crowd_id: null,
     crowd_name: "默认群",
+    userlogin:null,//用户登录状态
     faceList: [{
       "image": "https://material.gzywudao.top/image/group/news/imagegrouptongzhi.png",
         "id": 0
@@ -38,6 +39,65 @@ Page({
 
 
 
+  haveopenid:function() {
+    var that =this;
+      wx.login({
+        success: function(res) {
+          request({
+            service: 'user/userlogin',
+            data: {
+              code: res.code,
+            },
+            success: res => {
+              console.log("fanfaopenid", res.userlogin)
+              that.setData({
+                userlogin:res.userlogin,
+              })
+            },
+            fail: res => {
+              console.log(res)
+            },
+          })
+        }
+      });
+  },
+
+   //获取用户手机号码
+getPhoneNumber: function(e) { 
+  var that =this
+    let encryptedData=e.detail.encryptedData;
+    let iv=e.detail.iv;
+    let session_key=this.data.userlogin.session_key;
+    let user_openid=this.data.userlogin.openid;
+    let user_id=wx.getStorageSync('userdata').id
+    if(encryptedData){
+      request({
+        service: 'currency/phonedecrypt',
+        data: {
+          encryptedData: encryptedData,
+          iv: iv,
+          session_key: session_key,
+          user_id: user_id,
+          user_openid: user_openid,
+        },
+        success: res => {
+          that.sumittask()
+        },
+        fail: res => {
+          console.log(res)
+        },
+      })
+    }
+    else{
+      wx.showToast({
+        title: '请允许授权',
+        icon: 'none',
+        duration: 2500,
+      })
+
+    }
+},
+
   facehandler(e) {
     var id = e.currentTarget.dataset.data.id;
     var checkedimg = e.currentTarget.dataset.data.image;
@@ -47,10 +107,6 @@ Page({
       checkedimg: checkedimg
     })
   },
-
-
-
-
 
 
   // 删除图片
@@ -111,6 +167,7 @@ Page({
       crowd_id: options.crowd_id,
       crowd_name: options.crowd_name
     })
+    this.haveopenid()
   },
 
 

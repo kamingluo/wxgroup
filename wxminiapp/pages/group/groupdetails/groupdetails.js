@@ -147,18 +147,18 @@ Page({
         text: "发布消息",
         joumurl: '/pages/group/pushnews/pushnews'
       },
-      {
-        id: 5,
-        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/more.png",
-        text: "更多功能",
-        joumurl: '/pages/group/ownersmore/ownersmore'
-      },
       // {
       //   id: 5,
-      //   imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/useroperation1.png",
-      //   text: "用户管理",
-      //   joumurl: '/pages/group/user/user'
+      //   imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/more.png",
+      //   text: "更多功能",
+      //   joumurl: '/pages/group/ownersmore/ownersmore'
       // },
+      {
+        id: 5,
+        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/useroperation1.png",
+        text: "用户管理",
+        joumurl: '/pages/group/user/user'
+      },
     ];
 
 
@@ -259,7 +259,7 @@ Page({
     let crowd_id=this.data.crowd_id;
     let user_type = this.data.user_type
     wx.navigateTo({
-      url: '/pages/group/partake/partake?id='+ id +'&crowd_id=' + crowd_id + '&user_type=' + user_type ,
+      url: '/pages/group/lottery/partake/partake?id='+ id +'&crowd_id=' + crowd_id + '&user_type=' + user_type ,
     })
 
   },

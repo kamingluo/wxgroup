@@ -155,7 +155,7 @@
         <view class="cu-item shadow bg-white"  bindtap='clicklotterylist' data-id='{{item.id}}'>
           <view class="image">
             <image src="{{item.goods_img}}" mode="aspectFit"></image>
-            <view class="cu-tag bg-blue">{{item.id}}期</view>
+            <view class="cu-tag bg-blue">第{{item.id}}期</view>
             <view class="cu-bar bg-shadeBottom">
               <text class="text-cut-test">奖品：{{item.goods_name}}</text>
             </view>

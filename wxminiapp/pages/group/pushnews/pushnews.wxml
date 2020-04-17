@@ -57,7 +57,8 @@
 
 
 <view class='sumittask centered'>
-  <button bindtap="sumittask" class="bg-blue">发布消息</button>
+  <!-- <button bindtap="sumittask" class="bg-blue">发布消息</button> -->
+   <button  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="bg-blue">发布消息</button>
 </view>
 
 

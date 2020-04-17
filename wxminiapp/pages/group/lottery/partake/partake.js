@@ -47,7 +47,7 @@ Page({
       },
       success: res => {
         this.setData({
-          lottery_data: res.data,
+          lottery_data: res.lottery_data,
           topuser:res.topuser,
           allcount:res.allcount
         })

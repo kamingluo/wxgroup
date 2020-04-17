@@ -14,20 +14,21 @@
   <view class="cu-item shadow bg-white">
     <view class="image">
       <image src="http://material.gzywudao.top/image/choujiang/macbook.png" mode="aspectFit"></image>
-      <view class="cu-tag bg-blue">进行中</view>
+      <view class="cu-tag bg-blue">第{{lottery_data.id}}期</view>
       <view class="cu-bar bg-shadeBottom">
-        <text class="text-cut-test">第0001期，奖品：Apple 2019款 MacBook Pro 13.3【带触控栏】八代i5 8G 256G RP645显卡 银色 笔记本电脑 MUHR2CH/A.</text>
+        <text class="text-cut-test">奖品：{{lottery_data.goods_name}}</text>
       </view>
     </view>
     <view class="cu-list">
       <view class="col-1 ">
-        <view class="cu-list-text">
-          <text>开奖说明：2020-04-12 14:00:00开奖</text>
-        </view>
-        <view class="cu-list-text ">
-          <text>现在参与人数：500人 <text style="color:red">(参与积分：100)</text></text>
-        </view>
-      </view>
+              <view class="cu-list-text">
+                <text wx:if="{{item.luck_mode==0}}">开奖说明：满 {{lottery_data.packed_lottery}}人开奖</text>
+                <text wx:else>开奖说明：{{lottery_data.time_lottery}}开奖</text>
+              </view>
+              <view class="cu-list-text ">
+                <text>现在参与人数：{{allcount}}人 <text style="color:red" wx:if="{{lottery_data.score > 0}}">(参与积分：{{lottery_data.score}})</text></text>
+              </view>
+            </view>
     </view>
   </view>
 </view>
@@ -43,7 +44,7 @@
 
 <view class="container  partakenumber">
   <view>
-    <text>已有500人参与, <text style="color:blue" bindtap="seeall">查看全部>>></text></text>
+    <text>已有{{allcount}}人参与, <text style="color:blue" bindtap="seeall">查看全部>>></text></text>
   </view>
   <view class="action  partakeimg ">
     <view class="cu-avatar-group">
