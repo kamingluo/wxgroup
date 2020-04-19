@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -64,17 +64,17 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "参与抽奖",
 					"pathName": "pages/group/lottery/partake/partake",
-					"query": "",
+					"query": "user_id=10048&id=5&crowd_id=14&user_type=2",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "参与人列表",
 					"pathName": "pages/group/lottery/partakedata/partakedata",
-					"query": "",
+					"query": "lottery_id=5",
 					"scene": null
 				},
 				{
@@ -103,6 +103,13 @@
 					"name": "发布抽奖活动",
 					"pathName": "pages/group/lottery/pushlottery/pushlottery",
 					"query": "crowd_id=14",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "群主进入抽奖详情",
+					"pathName": "pages/group/lottery/lotterylist/lotterydata/lotterydata",
+					"query": "lottery_id=5&crowd_id=14",
 					"scene": null
 				}
 			]

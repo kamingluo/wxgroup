@@ -1,4 +1,8 @@
-// pages/group/lottery/pushlottery/pushlottery.js
+const qiniuUploader = require("../../../../utils/sdk/qiniu/qiniuUploader");
+const {
+  request
+} = require('./../../../../utils/request.js');
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -218,7 +222,7 @@ Page({
     }).then(function(imgList) {
       console.log("多张图片返回结果上传数据库的", imgList[0])
       let imgurl = imgList[0];//拿到图片链接，然后触发上传
-      //that.createlottery(imgurl)
+      that.createlottery(imgurl)
     })
   },
 
@@ -241,14 +245,40 @@ Page({
     let wxnumber=that.data.wxnumber;//群主微信号
     let remaks=that.data.remaks;//开奖备注
 
-
-
-
-
+    request({
+      service: 'group/lottery/pushlottery',
+      method: 'POST',
+      data: {
+        crowd_id:crowd_id,
+        goods_name: goodsname,
+        goods_img: imgurl,
+        score: score,
+        luck_mode: luck_mode,
+        packed_lottery: packed_lottery,
+        time_lottery: time_lottery,
+        lottery_mode: lottery_mode,
+        lottery_probability: lottery_probability,
+        lottery_number: lottery_number,
+        wxnumber: wxnumber,
+        remarks: remaks
+      },
+      success: res => {
+        that.setData({
+          loadModal: false,
+        })
+        wx.showToast({
+          title: '发布成功',
+          icon: 'success',
+          duration: 2000,
+        })
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 1500) 
+      }
+    })
   },
-
-
-
 
   //提交发布
   pushlottery:function(){

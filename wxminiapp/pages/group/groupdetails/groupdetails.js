@@ -75,6 +75,14 @@ Page({
     })
   },
 
+  lotterydata:function(){
+    let crowd_id = this.data.crowd_id
+    let user_type = this.data.user_type
+    wx.navigateTo({
+      url: '/pages/group/lottery/data/data?crowd_id=' + crowd_id + '&user_type=' + user_type,
+    })
+  },
+
   showcrowdid:function(){
     let user_type=this.data.user_type;
     let crowd_id = this.data.crowd_id
@@ -135,11 +143,17 @@ Page({
         text: "任务审核",
         joumurl: '/pages/group/audittasks/audittasks'
       },
+      // {
+      //   id: 3,
+      //   imagesurl: "https://groupqiniu.luojiaming.vip/%2Fimage%2Fgroup%2Ficon%2Falltasklists.png",
+      //   text: "全部任务",
+      //   joumurl: '/pages/group/alltasklists/alltasklists'
+      // },
       {
         id: 3,
         imagesurl: "https://groupqiniu.luojiaming.vip/%2Fimage%2Fgroup%2Ficon%2Falltasklists.png",
-        text: "全部任务",
-        joumurl: '/pages/group/alltasklists/alltasklists'
+        text: "发布抽奖",
+        joumurl: '/pages/group/lottery/pushlottery/pushlottery'
       },
       {
         id: 4,
@@ -147,18 +161,18 @@ Page({
         text: "发布消息",
         joumurl: '/pages/group/pushnews/pushnews'
       },
-      // {
-      //   id: 5,
-      //   imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/more.png",
-      //   text: "更多功能",
-      //   joumurl: '/pages/group/ownersmore/ownersmore'
-      // },
       {
         id: 5,
-        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/useroperation1.png",
-        text: "用户管理",
-        joumurl: '/pages/group/user/user'
+        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/more.png",
+        text: "更多功能",
+        joumurl: '/pages/group/ownersmore/ownersmore'
       },
+      // {
+      //   id: 5,
+      //   imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/useroperation1.png",
+      //   text: "用户管理",
+      //   joumurl: '/pages/group/user/user'
+      // },
     ];
 
 

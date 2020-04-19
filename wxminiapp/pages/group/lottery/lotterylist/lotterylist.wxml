@@ -1,42 +1,41 @@
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
   <view slot="backText">返回</view>
-  <view slot="content">抽奖列表</view>
+  <view slot="content">发布的抽奖列表</view>
 </cu-custom>
 
-<view class="cu-list menu-avatar">
-
+<view wx:if="{{crowdlotterylist.length >0 }}">
+<view class="cu-list menu-avatar"  wx:for="{{crowdlotterylist}}" wx:key="item">
   <view class="cu-item">
-    <view class="cu-avatar radius lg" style="background-image:url(http://material.gzywudao.top/image/choujiang/macbook.png);"></view>
+    <view class="cu-avatar radius lg" style="background-image:url({{item.goods_img}});"></view>
     <view class="content">
       <view>
-        <text class="text-cut">这是商品名称 啊啊啊啊砂夹石的哈就收到货啊啥时间段和</text>
+        <text class="text-cut">{{item.goods_name}}</text>
       </view>
       <view class="text-gray text-sm flex">
-        <text class="text-cut"> 创建时间：2020-05-20 14:00:00</text>
+        <text class="text-cut"> 创建时间：{{item.create_time}}</text>
       </view>
     </view>
     <view class="action">
-      <view class="cu-tag round bg-red sm">0002期</view>
-      <view class="text-sm" style="font-weight: 600;">未开奖</view>
-    </view>
-  </view>
-
-  <view class="cu-item ">
-    <view class="cu-avatar radius lg" style="background-image:url(http://material.gzywudao.top/image/choujiang/macbook.png);"></view>
-    <view class="content">
+      <view class="cu-tag round bg-red sm">{{item.id}}期</view>
       <view>
-        <text class="text-cut">这是商品名称 啊啊啊啊砂夹石的哈就收到货啊啥时间段和</text>
+      <view class="text-sm" style="font-weight: 600;" wx:if="{{item.state == 0}}">未开奖</view>
+      <view class="text-sm" wx:else> <text class="green">已开奖</text> </view>
       </view>
-      <view class="text-gray text-sm flex">
-        <text class="text-cut"> 创建时间：2020-05-20 14:00:00</text>
-      </view>
-    </view>
-    <view class="action">
-      <view class="cu-tag round bg-red sm">0001期</view>
-      <view class="text-sm"> <text class="green">已开奖</text> </view>
-
     </view>
   </view>
+</view>
+</view>
 
 
+<view wx:else>
+  <view class='default'>
+    <view>
+      <image src='http://littlebox.luojiaming.vip/default.png'></image>
+    </view>
+    <view>
+      <text>空空如也!</text>
+    </view>
+    <view>
+    </view>
+  </view>
 </view>

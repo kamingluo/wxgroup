@@ -8,24 +8,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    partakeuserlist:[]
+    partakeuserlist: []
 
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    let lottery_id= options.lottery_id;
+  onLoad: function(options) {
+    let lottery_id = options.lottery_id;
+    if (!lottery_id) {
+      return;
+    }
     request({
       service: 'group/lottery/partakeuserlist',
       method: 'GET',
       data: {
-        lottery_id:lottery_id
+        lottery_id: lottery_id
       },
       success: res => {
         this.setData({
-          partakeuserlist:res.data
+          partakeuserlist: res.data
         })
       }
     })

@@ -5,20 +5,30 @@
 
 
 
+<view wx:if="{{userlotterylist.length >0 }}">
+  <view class="cu-list menu" wx:for="{{userlotterylist}}" wx:key="item">
 
-<view class="cu-list menu">
-  <view class="cu-item">
-    <view class="content padding-tb-sm">
-      <view>
-        <text class="name">第0001期,这是商品标题啊啊啊啊啊啊啊啊啦啦啦啦啦啦拉升到拉萨快乐的快乐阿萨德看了</text>
+    <view class="cu-item">
+      <view class="content padding-tb-sm">
+        <view>
+          <text class="name">第{{item.id}}期,{{item.goods_name}}</text>
+        </view>
+        <view class="text-gray text-sm time">参与时间:{{item.create_time}}</view>
       </view>
-      <view class="text-gray text-sm time">参与时间:2020-04-12 12:00:00</view>
-    </view>
-    <view class="action">
-      <text class="red">未中奖</text>
+      <view class="action">
+        <view wx:if="{{item.state == 1}}">
+          <text>未开奖</text>
+        </view>
+        <view wx:else>
+          <text class="red" wx:if="{{item.prize == 1 }}">未中奖</text>
+          <text class="green" wx:else>中奖啦</text>
+        </view>
+      </view>
     </view>
   </view>
-  <view class="cu-item">
+</view>
+
+<!-- <view class="cu-item">
     <view class="content padding-tb-sm">
       <view>
         <text class="name">这是商品标题啊啊啊啊啊啊啊啊啦啦啦啦啦啦拉升到拉萨快乐的快乐阿萨德看了</text>
@@ -28,8 +38,8 @@
     <view class="action">
       <text>未开奖</text>
     </view>
-  </view>
-  <view class="cu-item">
+  </view> -->
+<!-- <view class="cu-item">
     <view class="content padding-tb-sm">
       <view>
         <text class="name">这是商品标题啊啊啊啊啊啊啊啊啦啦啦啦啦啦拉升到拉萨快乐的快乐阿萨德看了</text>
@@ -39,11 +49,14 @@
     <view class="action">
       <text class="green">中奖啦</text>
     </view>
-  </view>
-</view>
+  </view> -->
 
 
-<view>
+
+
+
+
+<view wx:else>
   <view class='default'>
     <view>
       <image src='http://littlebox.luojiaming.vip/default.png'></image>

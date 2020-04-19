@@ -31,11 +31,15 @@
     </view> -->
 
     <view class="crowdright">
-      <view class='  signinseting ' wx:if="{{user_type == 1 ||user_type == 2 ? true:false }}" bindtap="signinseting">
+      <!-- <view class='  signinseting ' wx:if="{{user_type == 1 ||user_type == 2 ? true:false }}" bindtap="signinseting">
         <button class=" cu-btn bg-cyan  round  shadow signinbtn">签到设置</button>
+      </view> -->
+      <view class='signinseting ' bindtap="lotterydata">
+        <button class=" cu-btn bg-cyan  round  shadow signinbtn">抽奖记录</button>
       </view>
+
       <view class='signindata' wx:if="{{user_type == 1 ||user_type == 2 || viewdata ? true:false }}" bindtap="signindata">
-        <button class="cu-btn bg-olive   round shadow signinbtn">签到数据</button>
+        <button class="cu-btn bg-olive   round shadow signinbtn">签到记录</button>
       </view>
     </view>
 
@@ -167,7 +171,7 @@
                 <text wx:else>开奖说明：{{item.time_lottery}}开奖</text>
               </view>
               <view class="cu-list-text ">
-                <text>现在参与人数：{{item.count}}人 <text style="color:red" wx:if="{{item.score > 0}}">(参与积分：{{item.score}})</text></text>
+                <text>现在参与人数：{{item.count}}人 <text style="color:red" wx:if="{{item.score > 0}}">(参与需要积分:{{item.score}})</text></text>
               </view>
             </view>
           </view>

@@ -10,7 +10,6 @@ Page({
    */
   data: {
     crowdlotterylist:[]
-
   },
 
   onLoad: function (options) {

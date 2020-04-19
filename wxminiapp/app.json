@@ -23,6 +23,7 @@
     "pages/group/lottery/partakedata/partakedata",
     "pages/group/lottery/data/data",
     "pages/group/lottery/lotterylist/lotterylist",
+    "pages/group/lottery/lotterylist/lotterydata/lotterydata",
     "pages/group/lottery/pushlottery/pushlottery",
     "pages/group/ownersmore/ownersmore",
     "pages/group/goods/goodslist/goodslist",

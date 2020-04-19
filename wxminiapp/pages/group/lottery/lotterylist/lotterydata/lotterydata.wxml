@@ -69,32 +69,4 @@
 
 </view>
 
-<view class="centered "  wx:if="{{lottery_data.remarks}}">
-  <view class="tips-body shadow bg-white ">
-    <view class="tips ">
-      <text decode="{{true}} ">&nbsp;{{lottery_data.remarks}}</text>
-    </view>
-  </view>
-</view>
-
-
-
-<view class="centered "  wx:if="{{lottery_data.wxnumber}}">
-  <view class="wxnumber-body">
-    <view class="centered wxnumber-title ">
-      <text style="color:#666666;font-size:35rpx; ">群主微信号,添加好友方便领奖哦</text>
-    </view>
-    <view class="centered">
-      <view class="wxnumber centered">
-        <text style="color:#a5673f;font-size:35rpx; ">{{lottery_data.wxnumber}}</text>
-      </view>
-    </view>
-
-    <view class="centered wxnumber-anniu "  bindtap="copywxnumber">
-      <button class="cu-btn lines-orange round   shadow">一键复制</button>
-    </view>
-
-  </view>
-</view>
-
 <!-- /* 参与抽奖页面结束 */ -->
