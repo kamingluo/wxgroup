@@ -72,7 +72,7 @@ class Lottery
         $lottery_id=$request->param("lottery_id");//抽奖id
         $user_id=$request->param("user_id");//用户id
         $user_openid=$request->param("openid");//用户openid
-        $state=1;//是否开奖，0是已经开奖，1是未开奖
+        $state=0;//是否开奖，0是未开奖，1是已经开奖
         $prize=1;//0是中奖，1是未中奖
         $send=1;//0是已发奖，1是未发奖
         $time =date('Y-m-d H:i:s',time());//创建时间
