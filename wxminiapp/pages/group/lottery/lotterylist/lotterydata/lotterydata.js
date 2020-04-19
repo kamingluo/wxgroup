@@ -9,10 +9,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loadModal:false,
+    deletemodel:false,
+    openlotterymodel: false,
     lottery_id:null,
     crowd_id:null,
+    allcount:null,
+    topuser:[],
+    prizeuserlist:[],
 
-    crowdlotterylist: []
+    lotterydata: null
   },
 
   onLoad: function (options) {
@@ -37,9 +43,152 @@ Page({
         lottery_id: lottery_id,
       },
       success: res => {
-        // this.setData({
-        //   crowdlotterylist: res.data,
-        // })
+        this.setData({
+          lotterydata: res.data,
+          allcount: res.allcount,
+          topuser: res.topuser,
+        })
+        if (res.data.state == 1){
+          this.prizeuserlist()//已经开奖就查询一下中奖列表
+        } 
+        this.hideModal()//关闭
+      }
+    })
+  },
+
+  
+  //查询活动中所有的中奖用户
+  prizeuserlist:function(){
+    let lottery_id = this.data.lottery_id;
+    request({
+      service: 'group/lottery/prizeuserlist',
+      method: 'GET',
+      data: {
+        lottery_id: lottery_id,
+      },
+      success: res => {
+        this.setData({
+          prizeuserlist: res.data
+        })
+      }
+    })
+  },
+
+  seeall:function(){
+    let lottery_id = this.data.lottery_id;
+    wx.navigateTo({
+      url: '/pages/group/lottery/partakedata/partakedata?lottery_id=' + lottery_id,
+    })
+
+  },
+
+  hideModal:function(){
+    this.setData({
+      loadModal: false,
+      deletemodel: false,
+      openlotterymodel: false,
+    })
+  },
+
+
+
+  //马上开奖
+  openlottery:function(){
+    if(this.data.allcount < 1){
+      wx.showToast({
+        title: '没用户参与不能开奖',
+        icon: 'none',
+        duration: 2000,
+      })
+      return;
+
+    }
+
+    this.setData({
+      openlotterymodel: true,
+    })
+
+  },
+  //确认马上开奖
+  confirmopenlottery:function(){
+    var that=this
+    that.setData({
+      loadModal: true,
+      openlotterymodel: false,
+    })
+    let lottery_id = that.data.lottery_id;
+    request({
+      service: 'group/openlottery/manual',
+      method: 'GET',
+      data: {
+        id: lottery_id,
+      },
+      success: res => {
+        that.lotterydetails() //开奖成功刷新一下信息
+      }
+    })
+  },
+
+  
+  //删除群抽奖
+  deletelottery:function(){
+    this.setData({
+      deletemodel: true,
+    })
+  },
+
+  confirmdelete:function(){
+    var that = this
+    let lottery_id = this.data.lottery_id;
+    this.setData({
+      deletemodel: false,
+      loadModal:true
+    })
+    request({
+      service: 'group/lottery/deletelottery',
+      method: 'GET',
+      data: {
+        id: lottery_id,
+      },
+      success: res => {
+        that.setData({
+          deletemodel: false,
+        })
+        wx.showToast({
+          title: '删除成功',
+          icon: 'none',
+          duration: 2000,
+        })
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 1500) 
+      }
+    })
+
+
+  },
+
+  //标记为发奖
+  send:function(e){
+    console.log(e)
+    let id = e.currentTarget.dataset.id;
+    let index = e.currentTarget.dataset.index;
+    let data = this.data.prizeuserlist;
+    data[index].send =0;
+    console.log(data)
+    this.setData({
+      prizeuserlist: data,
+    })
+    request({
+      service: 'group/lottery/handlelotteryuser',
+      method: 'GET',
+      data: {
+        partake_id: id,
+      },
+      success: res => {
+        console.log("处理成功",res)
       }
     })
   },

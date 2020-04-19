@@ -110,7 +110,11 @@ class Lottery
     public function lotterydetails(Request $request){
         $lottery_id=$request->param("lottery_id");//抽奖id
         $data=db('lottery_crowd_list')-> where('id',$lottery_id)->find();
-        $state=['state'   => '200','message'  => "查询一个活动的详细全部信息" ,'data' => $data];
+        $allcount=db('lottery_partake_list')->where('lottery_id',$lottery_id)->count();
+        //拿到参与该活动的最近10个的用户头像
+        $topsql="select b.avatarUrl from lottery_partake_list a,user b where a.user_id=b.id and a.lottery_id=".$lottery_id." ORDER BY a.id DESC LIMIT 10;";
+        $topdata = Db::query($topsql); //拿到数据
+        $state=['state'   => '200','message'  => "查询一个活动的详细全部信息" ,'data' => $data,'allcount' =>$allcount,'topuser' =>$topdata];
         return $state;
     }
 
@@ -176,6 +180,23 @@ class Lottery
             $state=['state'   => '400','message'  => "发奖失败" ];
             return $state;
        }
+    }
+
+
+
+    //删除抽奖
+    public function deletelottery(Request $request)
+    {
+        $id=$request->param("id");
+        $cleardata=db('lottery_crowd_list')-> where('id',$id)->delete();
+        $cleardata2=db('lottery_partake_list')-> where('lottery_id',$id)->delete();
+        if($cleardata ==1){
+             $state=['state'   => '200','message'  => "删除成功" ];
+        }
+        else{
+             $state=['state'   => '400','message'  => "删除失败" ];
+        }
+        return  $state;
     }
 
 

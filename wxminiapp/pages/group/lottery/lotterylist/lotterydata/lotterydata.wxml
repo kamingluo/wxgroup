@@ -13,37 +13,37 @@
 <view class="cu-card case ">
   <view class="cu-item shadow bg-white">
     <view class="image">
-      <image src="{{lottery_data.goods_img}}" mode="aspectFit"></image>
-      <view class="cu-tag bg-blue">第{{lottery_data.id}}期</view>
+      <image src="{{lotterydata.goods_img}}" mode="aspectFit"></image>
+      <view class="cu-tag bg-blue">第{{lotterydata.id}}期</view>
       <view class="cu-bar bg-shadeBottom">
-        <text class="text-cut-test">奖品：{{lottery_data.goods_name}}</text>
+        <text class="text-cut-test">奖品：{{lotterydata.goods_name}}</text>
       </view>
     </view>
     <view class="cu-list">
       <view class="col-1 ">
         <view class="cu-list-text">
-          <text wx:if="{{item.luck_mode==0}}">开奖说明：满 {{lottery_data.packed_lottery}}人开奖</text>
-          <text wx:else>开奖说明：{{lottery_data.time_lottery}}开奖</text>
+          <text wx:if="{{item.luck_mode==0}}">开奖说明：满 {{lotterydata.packed_lottery}}人开奖</text>
+          <text wx:else>开奖说明：{{lotterydata.time_lottery}}开奖</text>
         </view>
         <view class="cu-list-text ">
-          <text>现在参与人数：{{allcount}}人 <text style="color:red" wx:if="{{lottery_data.score > 0}}">(参与积分：{{lottery_data.score}})</text></text>
+          <text>现在参与人数：{{allcount}}人 <text style="color:red" wx:if="{{lotterydata.score > 0}}">(参与积分：{{lotterydata.score}})</text></text>
         </view>
       </view>
     </view>
   </view>
 </view>
 
+
 <view>
   <view>
-    <view wx:if="{{lottery_data.state==1}}">
+    <view wx:if="{{lotterydata.state == 1}}">
       <button class="bg-grey partakebtn ">已经开奖</button>
     </view>
 
     <view wx:else>
       <view>
-
-        <button class="bg-blue partakebtn " wx:if="{{partakeif}}" bindtap="partakelottery">参与抽奖</button>
-        <button class="bg-grey partakebtn " wx:else>已经参与</button>
+        <button class="bg-blue partakebtn " bindtap="openlottery">马上开奖</button>
+        <button class="bg-red partakebtn " bindtap="deletelottery">删除抽奖</button>
       </view>
     </view>
   </view>
@@ -69,4 +69,85 @@
 
 </view>
 
-<!-- /* 参与抽奖页面结束 */ -->
+<view class="prizeuserlist-body" wx:if="{{lotterydata.state ==1}}">
+  <view class="cu-bar bg-white solid-bottom">
+    <view class='action'>
+      <text class='cuIcon-titles text-orange '></text> 中奖用户列表(共{{prizeuserlist.length}}名)
+    </view>
+  </view>
+
+  <view>
+    <view class="cu-list menu-avatar">
+      <view class="cu-item " style="margin-bottom:3rpx;" wx:for="{{prizeuserlist}}" wx:key="item">
+        <view class="cu-avatar round lg" style="background-image:url({{item.avatarUrl}});"></view>
+        <view class="content">
+          <view>
+            <text class="name">{{item.nickName}}</text>
+          </view>
+          <view class="text-gray text-sm time">参与时间:{{item.create_time}}</view>
+        </view>
+        <view> 
+        <view wx:if="{{item.send ==0}}"> <text>已发奖</text></view>
+        <view wx:else> <button class="cu-btn bg-olive  round shadow" bindtap="send" data-id="{{item.id}}" data-index="{{index}}">标记为发奖</button></view>
+         </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='centered'>
+    <text>----已经到底了---</text>
+  </view>
+
+</view>
+
+
+
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <view class='cuIcon-loading2 text-orange'></view>
+  <view class='gray-text'>处理中...</view>
+</view>
+
+
+
+<view class="cu-modal show" wx:if="{{openlotterymodel}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">确认开奖</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      确定要开奖吗？开奖后不可恢复！！！请谨慎操作。
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="confirmopenlottery">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<view class="cu-modal show" wx:if="{{deletemodel}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">删除消息</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      确定要删除此这条抽奖吗？删除后不可恢复！！！请谨慎操作。
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="confirmdelete">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

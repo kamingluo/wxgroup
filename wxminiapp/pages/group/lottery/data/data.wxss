@@ -22,3 +22,7 @@
 .cu-item{
   margin-bottom: 3rpx;
 }
+
+.cu-list+.cu-list {
+	margin-top: 1rpx
+}

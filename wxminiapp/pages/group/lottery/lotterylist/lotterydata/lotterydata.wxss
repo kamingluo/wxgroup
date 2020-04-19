@@ -48,43 +48,24 @@
 	height: 85rpx;
 }
 
-.tips-body{
-  width: 90%;
-  height: 100%;
-  min-height: 150rpx;
-  background-color: white;
-  margin-top: 30rpx;
-  margin-bottom: 10rpx;
 
+
+
+.prizeuserlist-body{
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
 }
-.tips{
-  width: 96%;
-  margin-left: 2%;
+
+.name{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.time{
   margin-top: 10rpx;
-
 }
 
-
-.wxnumber-body{
-  width: 90%;
-  height: 320rpx;
-  background-color: white;
-  margin-top: 10rpx;
-  margin-bottom: 50rpx;
-  border:3px solid #ede1d9;
-
+.cu-list.menu-avatar {
+	overflow: visible;
 }
-.wxnumber-title{
-  margin-top: 8rpx;
-}
-.wxnumber{
-  margin-top: 25rpx;
-  width: 80%;
-  height: 110rpx;
-  background-color: #ede1d9;
-
-}
-.wxnumber-anniu{
-     margin-top: 25rpx;
-}
-/* 参与抽奖页面结束 */
