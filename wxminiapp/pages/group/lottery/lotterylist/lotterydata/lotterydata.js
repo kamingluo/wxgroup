@@ -121,7 +121,7 @@ Page({
       service: 'group/openlottery/manual',
       method: 'GET',
       data: {
-        id: lottery_id,
+        lottery_id: lottery_id,
       },
       success: res => {
         that.lotterydetails() //开奖成功刷新一下信息
