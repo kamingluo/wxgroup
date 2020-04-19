@@ -113,7 +113,7 @@ class Openlottery
               //计算中奖人数
               $opennumber=$Lotterynum -> opennumber($lottery_id);
               //先将全部人设置为未中奖和已经开奖
-              $dbreturn= db('lottery_partake_list')->where('lottery_id',$lottery_id)->update(['prize' => 1,'state' => 0]);
+              $dbreturn= db('lottery_partake_list')->where('lottery_id',$lottery_id)->update(['prize' => 1,'state' => 1]);
 
               //再根据中奖人数，随机挑选设置为中奖
               $sql="UPDATE lottery_partake_list SET prize=0 WHERE  lottery_id =".$lottery_id." and id in ( SELECT F.id FROM (SELECT * FROM lottery_partake_list ORDER BY RAND() LIMIT ".$opennumber.") F);";
