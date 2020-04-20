@@ -97,7 +97,7 @@
 
 <view class="cu-form-group">
   <view class="title">群主微信</view>
-  <input placeholder="方便中奖兑奖" maxlength="50" type='number' bindinput="wxnumber"></input>
+  <input placeholder="方便中奖兑奖" maxlength="50"  bindinput="wxnumber"></input>
 </view>
 
 

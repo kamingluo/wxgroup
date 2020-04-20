@@ -12,13 +12,15 @@ Page({
     loadModal:false,
     deletemodel:false,
     openlotterymodel: false,
+    sendmodel:false,
     lottery_id:null,
     crowd_id:null,
     allcount:null,
     topuser:[],
     prizeuserlist:[],
-
-    lotterydata: null
+    lotterydata: null,
+    sendid:null,
+    sendindex:null,
   },
 
   onLoad: function (options) {
@@ -87,6 +89,7 @@ Page({
       loadModal: false,
       deletemodel: false,
       openlotterymodel: false,
+      sendmodel:false,
     })
   },
 
@@ -170,16 +173,29 @@ Page({
 
   },
 
-  //标记为发奖
   send:function(e){
     console.log(e)
     let id = e.currentTarget.dataset.id;
     let index = e.currentTarget.dataset.index;
+    this.setData({
+      sendid: id,
+      sendindex: index,
+      sendmodel:true,
+    })
+
+  },
+
+  //标记为发奖
+  confirmsend:function(e){
+    console.log(e)
+    let id =this.data.sendid;
+    let index = this.data.sendindex;
     let data = this.data.prizeuserlist;
     data[index].send =0;
     console.log(data)
     this.setData({
       prizeuserlist: data,
+      sendmodel:false,
     })
     request({
       service: 'group/lottery/handlelotteryuser',

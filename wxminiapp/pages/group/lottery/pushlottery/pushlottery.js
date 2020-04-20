@@ -309,7 +309,7 @@ Page({
       let startTime = new Date(Date.parse(time1));
       let endTime = new Date(Date.parse(time2));
       if (startTime > endTime) {
-        this.wxtoast("开奖时间错误")
+        this.wxtoast("开奖时间不规范")
         return;
       }
     }

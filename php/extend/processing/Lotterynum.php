@@ -35,7 +35,7 @@ class Lotterynum{
             //中奖方式为人数
             $number=$lottery_data['lottery_number'];//中奖人数等于设置的中奖人数值
         }
-        if($number <= 0){
+        if($number < 1){
             $number=1;
         }
         return $number;
