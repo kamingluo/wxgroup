@@ -11,69 +11,25 @@ class Statistics
 {
    
     //统计前一天的相关数据，一般是凌晨执行
-    public function payscore()
+    public function statistics()
     {
 
         set_time_limit(0);//设置超时时间
+        $registerusers=db('user')->whereTime('create_time', 'today')->count();//今天注册用户数
+        $activeusers=db('user')->whereTime('update_time', 'today')->count();//今天活跃用户数
+        $builtcrowd=db('crowd')->whereTime('create_time', 'today')->count();//今天创建群数量
+        $joincrowd=db('user_crowd')->where('user_type',0)->whereTime('create_time', 'today')->count();//今天加入群人数，去除创建的
+        $crowd_news=db('crowd_news')->whereTime('create_time', 'today')->count();//今天发布新闻数量
+        $task_record=db('task_record')->whereTime('create_time', 'today')->count();//今天上传任务兑换商品发布新闻数量
+        $sigin=db('signin_user_data')->whereTime('create_time', 'today')->count();//今日签到用户次数
+        $lottery=db('lottery_partake_list')->whereTime('create_time', 'today')->count();//今日抽奖用户次数
+        
+        $data = ['registerusers' =>$registerusers,'activeusers'=>$activeusers,'builtcrowd'=>$builtcrowd,'joincrowd'=>$joincrowd,'crowd_news'=>$crowd_news,
+        'sigin'=>$sigin,'lottery'=>$lottery,'task_record'=>$task_record];
+        $state=['state'   => '200','message'  => "常规数据" ];
+        $resdata=array_merge($state,array('data'=>$data));
+        return $resdata;
 
-
-         //所有的支出
-        $all=db('score_record')->whereTime('create_time', 'yesterday')->sum('score');
-
-        //签到支出
-        $sign=db('sign')->whereTime('create_time', 'yesterday')->sum('score');
-
-         //广点通广告
-        $gdtad=db('gdt_ad_record')->whereTime('create_time', 'yesterday')->sum('score');
-
-         //miniapp广告
-        $miniappad=db('miniapp_ad_record')->whereTime('create_time', 'yesterday')->sum('score');
-
-         //微量广告
-        $wlad=db('wl_ad_record')->whereTime('create_time', 'yesterday')->sum('score');
-
-         //分享
-        $share=db('share_record')->whereTime('create_time', 'yesterday')->sum('score');
-
-        //进贡
-        $paytribute=db('score_record')-> where('explain',"徒弟进贡")->whereTime('create_time', 'yesterday')->sum('score');
-
-        //骰子赢得
-        $dicewin=db('score_record')-> where('explain',"猜大小赢得")->whereTime('create_time', 'yesterday')->sum('score');
-
-        //骰子输了
-        $dicelose=db('score_record')-> where('explain',"猜大小输了")->whereTime('create_time', 'yesterday')->sum('score');
-
-
-        //猜拳赢得
-        $caiquanwin=db('score_record')-> where('explain',"猜拳赢得")->whereTime('create_time', 'yesterday')->sum('score');
-
-        //猜拳输了
-        $caiquanlose=db('score_record')-> where('explain',"猜拳输了")->whereTime('create_time', 'yesterday')->sum('score');
-
-        //提现金币数
-        $exchangecoin=db('score_record')-> where('explain',"金币兑换礼品")->whereTime('create_time', 'yesterday')->sum('score');
-
-         //添加微信客服支出
-         $addweixinscore=db('addweixin')->whereTime('create_time', 'yesterday')->sum('score');
-
-
-
-         $time =date("Y-m-d H:i:s", strtotime("-1 day"));//获取当前时间的前一天
-
-        if($sign >= 0&&$all >= 0 && $gdtad >=0 && $miniappad >= 0&& $wlad >= 0){
-
-          $dbdata = ['id'=>'','whole' =>$all,'gdtad' =>$gdtad,'wlad' =>$wlad,'miniappad' =>$miniappad,'sign' =>$sign,'share' =>$share,'paytribute' =>$paytribute,'dicewin' =>$dicewin,'dicelose' =>$dicelose,'caiquanwin' =>$caiquanwin,'caiquanlose' =>$caiquanlose,'exchangecoin' =>$exchangecoin,'addweixin' =>$addweixinscore,'create_time' =>$time];
-          $resdata=db('statistics')->insert($dbdata);
-
-          return "统计成功(1为成功)-->" . $resdata ;
-
-
-
-        }
-        else{
-        	 return  "统计失败";
-        }
 
     }
    
