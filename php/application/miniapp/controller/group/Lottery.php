@@ -154,7 +154,7 @@ class Lottery
       public function userlotterylist(Request $request){
         $user_id=$request->param("user_id");//抽奖id
         $crowd_id=$request->param("crowd_id");//群id
-        $sql="select a.*,b.goods_name,b.goods_img from lottery_partake_list a,lottery_crowd_list b where a.lottery_id=b.id and a.user_id=".$user_id." and a.crowd_id=".$crowd_id." ORDER BY a.id DESC;";
+        $sql="select a.*,b.goods_name,b.goods_img from lottery_partake_list a,lottery_crowd_list b where a.lottery_id=b.id and a.user_id=".$user_id." and b.crowd_id=".$crowd_id." ORDER BY a.id DESC;";
         $data = Db::query($sql); //拿到数据
         $state=['state'   => '200','message'  => "用户参与的所有抽奖活动" ,'data' => $data];
         return $state;
