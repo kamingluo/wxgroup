@@ -28,7 +28,8 @@ class Openlottery
         $dbreturn= db('lottery_partake_list')->where('lottery_id',$lottery_id)->update(['prize' => 1,'state' => 1]);
 
         //再根据中奖人数，随机挑选设置为中奖
-        $sql="UPDATE lottery_partake_list SET prize=0 WHERE  lottery_id =".$lottery_id." and id in ( SELECT F.id FROM (SELECT * FROM lottery_partake_list ORDER BY RAND() LIMIT ".$opennumber.") F);";
+        // $sql="UPDATE lottery_partake_list SET prize=0 WHERE  lottery_id =".$lottery_id." and id in ( SELECT F.id FROM (SELECT * FROM lottery_partake_list ORDER BY RAND() LIMIT ".$opennumber.") F);";
+        $sql="update lottery_partake_list set prize = 0 WHERE lottery_id =".$lottery_id." order by rand() limit ".$opennumber.";";
         // $Model = new Model();
 
         $updatenum = Db::execute($sql); //执行，随机选取中奖人数
@@ -75,7 +76,8 @@ class Openlottery
                 $dbreturn= db('lottery_partake_list')->where('lottery_id',$lottery_id)->update(['prize' => 1,'state' => 1]);
 
                 //再根据中奖人数，随机挑选设置为中奖
-                $sql="UPDATE lottery_partake_list SET prize=0 WHERE  lottery_id =".$lottery_id." and id in ( SELECT F.id FROM (SELECT * FROM lottery_partake_list ORDER BY RAND() LIMIT ".$opennumber.") F);";
+                // $sql="UPDATE lottery_partake_list SET prize=0 WHERE  lottery_id =".$lottery_id." and id in ( SELECT F.id FROM (SELECT * FROM lottery_partake_list ORDER BY RAND() LIMIT ".$opennumber.") F);";
+                $sql="update lottery_partake_list set prize = 0 WHERE lottery_id =".$lottery_id." order by rand() limit ".$opennumber.";";
                 // $Model = new Model();
 
                 $updatenum = Db::execute($sql); //执行，随机选取中奖人数
@@ -116,8 +118,10 @@ class Openlottery
               //先将全部人设置为未中奖和已经开奖
               $dbreturn= db('lottery_partake_list')->where('lottery_id',$lottery_id)->update(['prize' => 1,'state' => 1]);
 
+
               //再根据中奖人数，随机挑选设置为中奖
-              $sql="UPDATE lottery_partake_list SET prize=0 WHERE  lottery_id =".$lottery_id." and id in ( SELECT F.id FROM (SELECT * FROM lottery_partake_list ORDER BY RAND() LIMIT ".$opennumber.") F);";
+              // $sql="UPDATE lottery_partake_list SET prize=0 WHERE  lottery_id =".$lottery_id." and id in ( SELECT F.id FROM (SELECT * FROM lottery_partake_list ORDER BY RAND() LIMIT ".$opennumber.") F);";
+              $sql="update lottery_partake_list set prize = 0 WHERE lottery_id =".$lottery_id." order by rand() limit ".$opennumber.";";
               // $Model = new Model();
 
               $updatenum = Db::execute($sql); //执行，随机选取中奖人数
