@@ -33,10 +33,12 @@ Page({
 
   userlotterylist:function(){
     let user_id = wx.getStorageSync('userdata').id;
+    let crowd_id = this.data.crowd_id;
     request({
       service: 'group/lottery/userlotterylist',
       method: 'GET',
       data: {
+        crowd_id:crowd_id,
         user_id: user_id,
       },
       success: res => {

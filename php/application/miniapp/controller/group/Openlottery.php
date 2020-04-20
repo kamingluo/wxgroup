@@ -67,8 +67,9 @@ class Openlottery
             }
             else{
                 //有用户参与，开奖
-                Log::record("执行开奖");
                 $opennumber=$Lotterynum -> opennumber($lottery_id);
+                Log::record("执行开奖,下面是开奖人数");
+                Log::record($opennumber);
 
                 //先将全部人设置为未中奖和已经开奖
                 $dbreturn= db('lottery_partake_list')->where('lottery_id',$lottery_id)->update(['prize' => 1,'state' => 1]);
