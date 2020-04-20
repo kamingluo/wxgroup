@@ -124,7 +124,7 @@ Page({
       },
       {
         id: 5,
-        imagesurl: "https://groupqiniu.luojiaming.vip/%2Fimage%2Fgroup%2Ficon%2Fnewshuoming.png",
+        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/newshuoming.png",
         text: "群说明",
         joumurl: 666
       }
@@ -151,7 +151,7 @@ Page({
       // },
       {
         id: 3,
-        imagesurl: "https://groupqiniu.luojiaming.vip/%2Fimage%2Fgroup%2Ficon%2Falltasklists.png",
+        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/alltasklists.png",
         text: "发布抽奖",
         joumurl: '/pages/group/lottery/pushlottery/pushlottery'
       },

@@ -9,11 +9,12 @@ use Qiniu\Storage\UploadManager;
 
 class Qiniu
 {
+     //微信小程序上传的时候拿的token
     public function qiniu()
     {
 
     	  // Vendor('phpmailer.phpmailer'); 
-    	  $accessKey = 'cOtKv4WjF_QrS7Cb98oOo0zQrmzbJNmJGeoCsQB3';
+    	     $accessKey = 'cOtKv4WjF_QrS7Cb98oOo0zQrmzbJNmJGeoCsQB3';
           $secretKey = 'tk2gLlSppyxjOWP6LGOsK4SNboyjIh44BAicYBXB';
           $auth = new Auth($accessKey, $secretKey);
           $bucket = 'group';
