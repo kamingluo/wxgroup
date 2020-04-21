@@ -11,22 +11,22 @@ class News
     //任务列表页面
    public function newslist(Request $request){
      $id=$request->param("id");
+     $pages=$request->param("pages");
+     $crowd_name=$request->param("crowd_name");
+     if($pages == 1 || $pages==null  ){
+      $number=0;
+    }
+    else{
+      $number=($pages - 1)*10 ;
+    }
      if($id){
-        //根据id查询的
-        $data=db('crowd_news')->where('id',$id)->select();
-        $countnumber=1;
+        $data=db('crowd_news')->where('crowd_id',$id)->order('id desc')->limit($number,10)->select();
+        $countnumber=db('crowd_news')->where('crowd_id',$id)->count();
         $state=['state'   => '200','message'  => "消息查询成功" ];
         $resdata=array_merge($state,array('countnumber'=>$countnumber),array('data'=>$data));
         return $resdata ;
      }
-     $pages=$request->param("pages");
-     $crowd_name=$request->param("crowd_name");
-     if($pages == 1 || $pages==null  ){
-       $number=0;
-     }
-     else{
-       $number=($pages - 1)*10 ;
-     }
+    
      if($crowd_name){
         //名称不为空
         $countnumber=db('crowd_news')->where('crowd_name','like',"%$crowd_name%")->count();

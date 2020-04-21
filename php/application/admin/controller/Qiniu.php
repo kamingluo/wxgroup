@@ -12,8 +12,8 @@ class Qiniu
      //获取七牛token
     public function token()
     {
-    	     $accessKey = 'cOtKv4WjF_QrS7Cb98oOo0zQrmzbJNmJGeoCsQB3';
-          $secretKey = 'tk2gLlSppyxjOWP6LGOsK4SNboyjIh44BAicYBXB';
+    	     $accessKey = Config('qiniuaccessKey');
+          $secretKey = Config('qiniusecretKey');
           $auth = new Auth($accessKey, $secretKey);
           $bucket = 'group';
           // 生成上传Token
@@ -29,8 +29,8 @@ class Qiniu
      public function deleteimg(){
           // return "删除图片";
 
-          $accessKey = 'cOtKv4WjF_QrS7Cb98oOo0zQrmzbJNmJGeoCsQB3';
-          $secretKey = 'tk2gLlSppyxjOWP6LGOsK4SNboyjIh44BAicYBXB';
+          $accessKey = Config('qiniuaccessKey');
+          $secretKey = Config('qiniusecretKey');
           $bucket =  'group';
           //key就是存储在七牛的文件名称，要去除前缀
           $key = "tmp_08612e91732ad572b578c16e3a9e0ca09505399917ee29bc.jpg";

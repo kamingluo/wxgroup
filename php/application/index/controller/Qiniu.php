@@ -14,8 +14,8 @@ class Qiniu
     {
 
     	  // Vendor('phpmailer.phpmailer'); 
-    	     $accessKey = 'cOtKv4WjF_QrS7Cb98oOo0zQrmzbJNmJGeoCsQB3';
-          $secretKey = 'tk2gLlSppyxjOWP6LGOsK4SNboyjIh44BAicYBXB';
+          $accessKey = Config('qiniuaccessKey');
+          $secretKey = Config('qiniusecretKey');
           $auth = new Auth($accessKey, $secretKey);
           $bucket = 'group';
           // 生成上传Token
