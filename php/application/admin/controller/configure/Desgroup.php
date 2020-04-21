@@ -106,9 +106,9 @@ class Desgroup
        return $state;
     }
     else{
-       //删除七牛文件
-       $deletefile = new Deletefile();
-       $deleteresult=$deletefile -> one($crowd_data['logo']);
+       //删除七牛文件，暂时不能删除，因为有些是使用默认图片的
+      //  $deletefile = new Deletefile();
+      //  $deleteresult=$deletefile -> one($crowd_data['logo']);
 
        $crowd=db('crowd')-> where('id',$crowd_id)->delete();
        $crowd_goods=db('crowd_goods')-> where('crowd_id',$crowd_id)->delete();
