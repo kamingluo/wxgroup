@@ -16,7 +16,7 @@
 
 }
 .user{
-  height: 240rpx;
+  height: 220rpx;
   display: flex;
    flex-direction:row;
    justify-content:space-around;
@@ -31,8 +31,8 @@
 .userAvatarurl{
 overflow:hidden;  
 display: block;   
-width: 160rpx;  
-height: 160rpx; 
+width: 130rpx;  
+height: 130rpx; 
 border-radius: 50%; 
 border: 2px solid #fff;  
 box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
@@ -49,7 +49,7 @@ flex-basis: 400rpx;
 .userNickName{
   display: flex;
   position:relative;
-  font-size: 45rpx;
+  font-size: 35rpx;
   right:30rpx;  
   top:20rpx; 
   color: #ffffff;
@@ -58,10 +58,10 @@ flex-basis: 400rpx;
 .id{
   display: flex;
   position:relative;
-  font-size: 35rpx;
+  font-size: 30rpx;
   right:30rpx; 
   color: #ffffff;
-   margin-top: -10rpx;
+   margin-top: -25rpx;
 }
 .xiugai{
   margin-left: 10rpx;
@@ -72,10 +72,10 @@ flex-basis: 400rpx;
 .birthday{
   display: flex;
   position:relative;
-  font-size: 30rpx;
+  font-size: 27rpx;
   right:30rpx; 
   color: #ffffff;
- margin-top: -40rpx;
+ margin-top: -60rpx;
 }
 
 .erweima{
