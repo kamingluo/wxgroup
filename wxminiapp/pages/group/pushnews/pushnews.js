@@ -224,7 +224,7 @@ getPhoneNumber: function(e) {
               region: 'NCN',
               uploadURL: 'https://up-z1.qiniup.com',
               domain: 'https://groupqiniu.luojiaming.vip/',
-              uptokenURL: 'https://littlefun.gzywudao.top/php/public/index.php/index/qiniu/qiniu',
+              uptokenURL: 'https://group.gzywudao.top/php/public/miniapp.php/currency/qiniu',
             })
         }
       }).then(function (imgList) {

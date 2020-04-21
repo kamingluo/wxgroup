@@ -52,6 +52,10 @@ class Qiniu
 
      //批量群任务删除文件
      public function bulkdelete(){
+          // $str='https://groupqiniu.luojiaming.vip/tmp_5aea01fafa1d8a47d0145f32f45eec76.jpg';
+          // // 截取最后一个斜杠后面的内容可以这样来：
+          //  $url= trim(strrchr($str, '/'),'/');
+          //  return $url;
 
           $data=db('task_record')->where('id', 270)->find();//拿到数据
           $images=json_decode( $data['images']);//先取出值，反转义一下
@@ -59,7 +63,8 @@ class Qiniu
           $array_push = array();//定义数组
           for($x=0;$x<$arrlength;$x++)
           {
-          $url= substr($images[$x], 34);//截取字符串，把前面的域名去除掉
+          // $url= substr($images[$x], 34);//截取字符串，把前面的域名去除掉
+          $url= trim(strrchr($images[$x], '/'),'/');//截取最后一个斜杠后面的内容可以这样来：
           array_push($array_push,$url);//添加到数组里面
           }
           $ret = array('message' => "批量删除文件处理文件链接",'oid' => $images,'new' => $array_push);//输出新旧，好产生对比

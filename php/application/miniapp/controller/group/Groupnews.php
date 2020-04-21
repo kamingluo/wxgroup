@@ -3,6 +3,7 @@ namespace app\miniapp\controller\group;
 use think\Db;
 use think\Request;
 use think\Config;
+use qiniu\Deletefile;
 
 class Groupnews
 {
@@ -71,13 +72,19 @@ class Groupnews
     {
 
         $id=$request->param("id");
+        $data=db('crowd_news')->where('id',$id)->find();
+
+        $deletefile = new Deletefile();
+        $deleteresult=$deletefile -> more($data['images']);
+
+
         $cleardata=db('crowd_news')-> where('id',$id)->delete();
 
         if($cleardata ==1){
-             $state=['state'   => '200','message'  => "删除成功" ];
+             $state=['state'   => '200','message'  => "删除成功",'deleteresult' => $deleteresult];
         }
         else{
-             $state=['state'   => '400','message'  => "删除失败" ];
+             $state=['state'   => '400','message'  => "删除失败",'deleteresult' => $deleteresult ];
         }
         return  $state;
       

@@ -2,7 +2,6 @@
 namespace temmsg;
 use think\Db;
 use think\Request;
-use temmsg\Lotterymsg;
 use think\Log;
 
 class Lotterymsg{
