@@ -3,6 +3,7 @@ namespace app\miniapp\controller\group;
 use think\Db;
 use think\Request;
 use think\Config;
+use qiniu\Deletefile;
 
 class Lottery
 {
@@ -189,6 +190,14 @@ class Lottery
     public function deletelottery(Request $request)
     {
         $id=$request->param("id");
+
+
+        //从七牛删除资源
+        $data=db('lottery_crowd_list')->where('id',$id)->find();
+        $deletefile = new Deletefile();
+        $deleteresult=$deletefile -> one($data['goods_img']);
+
+
         $cleardata=db('lottery_crowd_list')-> where('id',$id)->delete();
         $cleardata2=db('lottery_partake_list')-> where('lottery_id',$id)->delete();
         if($cleardata ==1){

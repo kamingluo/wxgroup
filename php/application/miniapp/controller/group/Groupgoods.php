@@ -3,6 +3,7 @@ namespace app\miniapp\controller\group;
 use think\Db;
 use think\Request;
 use think\Config;
+use qiniu\Deletefile;
 
 class Groupgoods
 {
@@ -52,6 +53,14 @@ class Groupgoods
     public function deletegoods(Request $request)
     {
          $goods_id=$request->param("goods_id");
+
+         //从七牛删除资源，暂时不能删除，后面 兑换的商品有用到这个商品链接
+     //    $data=db('crowd_goods')->where('id',$id)->find();
+     //    $deletefile = new Deletefile();
+     //    $deleteresult=$deletefile -> one($data['images']);
+
+
+
          $cleardata=db('crowd_goods')-> where('id',$goods_id)->delete();
 
         if($cleardata ==1){

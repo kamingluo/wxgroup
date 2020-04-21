@@ -3,7 +3,7 @@ namespace app\admin\controller\configure;
 use think\Db;
 use think\Request;
 use think\Config;
-
+use qiniu\Deletefile;
 class Desgroup
 {
 
@@ -98,11 +98,18 @@ class Desgroup
    public function deletegroup(Request $request){
     $crowd_id =$request->param("id");
     $crowd_data =db('crowd')->where('id',$crowd_id)->find();
+
+
+
     if($crowd_data == null ){
        $state=['state'   => '200','message'  => "不存在的群" ];
        return $state;
     }
     else{
+       //删除七牛文件
+       $deletefile = new Deletefile();
+       $deleteresult=$deletefile -> one($crowd_data['logo']);
+
        $crowd=db('crowd')-> where('id',$crowd_id)->delete();
        $crowd_goods=db('crowd_goods')-> where('crowd_id',$crowd_id)->delete();
        $crowd_news=db('crowd_news')-> where('crowd_id',$crowd_id)->delete();

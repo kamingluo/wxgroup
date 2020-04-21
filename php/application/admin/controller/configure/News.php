@@ -2,6 +2,8 @@
 namespace app\admin\controller\configure;
 use think\Db;
 use think\Request;
+use qiniu\Deletefile;
+
 
 class News
 {
@@ -41,7 +43,15 @@ class News
 
    //删除一条任务
    public function deletenew(Request $request){
-        $data=db('crowd_news')-> where('id', $request->param("id"))->delete();
+        $id=$request->param("id");
+        
+        //七牛删除文件资源
+        $data=db('crowd_news')->where('id',$id)->find();
+        $deletefile = new Deletefile();
+        $deleteresult=$deletefile -> more($data['images']);
+
+
+        $data=db('crowd_news')-> where('id', $id)->delete();
         $state=['state'   => '200','message'  => "消息删除成功" ];
         $resdata=array_merge($state,array('data'=>$data));
         return $resdata ;

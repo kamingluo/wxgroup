@@ -2,7 +2,7 @@
 namespace app\admin\controller\configure;
 use think\Db;
 use think\Request;
-
+use qiniu\Deletefile;
 class Tasks
 {
    
@@ -47,7 +47,16 @@ class Tasks
 
    //删除一条任务
    public function deletetask(Request $request){
-        $data=db('task_record')-> where('id', $request->param("id"))->delete();
+        $id=$request->param("id");
+
+        //七牛删除文件资源
+        $data=db('task_record')->where('id',$id)->find();
+        $deletefile = new Deletefile();
+        $deleteresult=$deletefile -> more($data['images']);
+
+
+
+        $data=db('task_record')-> where('id', $id)->delete();
         $state=['state'   => '200','message'  => "任务删除成功" ];
         $resdata=array_merge($state,array('data'=>$data));
         return $resdata ;
