@@ -1,5 +1,5 @@
 <?php
-namespace temmsg;
+namespace qiniu;
 vendor('Qiniu.autoload');
 use think\Db;
 use think\Config;
