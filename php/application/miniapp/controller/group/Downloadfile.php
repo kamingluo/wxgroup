@@ -17,8 +17,8 @@ class Downloadfile
     //下载兑换表格
     public function exchangelist(Request $request)
     {
-     $crowd_id=$request->param("crowd_id");//群id
-    	$list=db('exchange_record')->where('crowd_id',$crowd_id)->order('id desc')->select();
+    //  $crowd_id=$request->param("crowd_id");//群id
+    	$list=db('exchange_record')->where('crowd_id',14)->order('id desc')->select();
 	$file_name = date('Y-m-d_His').'.xls';
      $path = dirname(__FILE__);
     //  return $path;
