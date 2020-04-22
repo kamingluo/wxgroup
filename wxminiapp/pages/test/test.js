@@ -10,7 +10,7 @@ Page({
 
   ceshi:function(){
     wx.downloadFile({
-      url: 'https://group.gzywudao.top/php/public/miniapp.php/group/downloadfile/exchangelist',
+      url: 'https://group.gzywudao.top/php/public/miniapp.php/group/downloadfile/exchangelist?crowd_id=14&state=1',
       success: function (res) {
         console.log("下载成功", res);
         console.log("保存地址",res.tempFilePath)

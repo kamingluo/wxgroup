@@ -4,16 +4,11 @@ use think\Db;
 use think\Request;
 use think\Config;
 use qiniu\Deletefile;
-
 use think\Controller;
-// use PHPExcel;
-// use PHPExcel_IOFactory;
-// use PHPExcel_Cell;
 use think\Loader;
 
 class Downloadfile
 {
-
     //下载兑换表格
     public function exchangelist(Request $request)
     {
@@ -30,15 +25,12 @@ class Downloadfile
      }
 	 $file_name = date('Y-m-d_His').'.xls';
      $path = dirname(__FILE__);
-    //  return $path;
-     //    Loader::import('PHPExcel.Classes.PHPExcel.php');
-     //    Loader::import('PHPExcel.Classes.PHPExcel.IOFactory.PHPExcel_IOFactory');
+     
+    //  $user_path=$_SERVER['DOCUMENT_ROOT']."/uploads/up/"; 保存到服务器指定路径
      Loader::import('PHPExcel.php'); //加载所需的类文件，必须引入 use think\Loader;命名空间，否则loader无法加载
+     Loader::import('PHPExcel.Reader.Excel2007'); 
 
-     Loader::import('PHPExcel.Reader.Excel2007');
-        
      $PHPExcel = new \PHPExcel();
-     //    return "11111";   
         $PHPSheet = $PHPExcel->getActiveSheet();
         $PHPSheet->setTitle("用户兑换记录");
         $PHPSheet->setCellValue("A1","用户微信昵称");
@@ -60,7 +52,6 @@ class Downloadfile
                 $type="未发货";
             }
             elseif ($value['state']==0){
-
                 $type="已发货";
             }
             else{
@@ -85,6 +76,7 @@ class Downloadfile
         header('Content-Disposition: attachment;filename='.$file_name);
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         $PHPWriter->save("php://output");  
+        // $objWriter->save($user_path.$filename);保存到服务器指定路径
         return "生成表格成功";    
         
     }
