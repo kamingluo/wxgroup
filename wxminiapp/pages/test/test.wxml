@@ -24,4 +24,4 @@
     </view>
   </view>
 
-  
+  <button bindtap="ceshi">下载文档</button>

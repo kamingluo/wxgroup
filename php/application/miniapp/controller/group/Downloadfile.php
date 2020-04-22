@@ -17,9 +17,18 @@ class Downloadfile
     //下载兑换表格
     public function exchangelist(Request $request)
     {
-    //  $crowd_id=$request->param("crowd_id");//群id
-    	$list=db('exchange_record')->where('crowd_id',14)->order('id desc')->select();
-	$file_name = date('Y-m-d_His').'.xls';
+     $crowd_id=$request->param("crowd_id");//群id
+     $state=$request->param("state");//状态
+    //  状态，0，未发货，1，已发货，2，审核不通过
+     if($state==0){
+         //查询未发货的
+         $list=db('exchange_record')->where('crowd_id',$crowd_id)->where('state',0)->order('id desc')->select();
+     }
+     else{
+         //查询全部
+        $list=db('exchange_record')->where('crowd_id',$crowd_id)->order('id desc')->select();
+     }
+	 $file_name = date('Y-m-d_His').'.xls';
      $path = dirname(__FILE__);
     //  return $path;
      //    Loader::import('PHPExcel.Classes.PHPExcel.php');
@@ -31,38 +40,38 @@ class Downloadfile
      $PHPExcel = new \PHPExcel();
      //    return "11111";   
         $PHPSheet = $PHPExcel->getActiveSheet();
-        $PHPSheet->setTitle("代理商");
-        $PHPSheet->setCellValue("A1","ID");
-        $PHPSheet->setCellValue("B1","名字");
-        $PHPSheet->setCellValue("C1","电话");
-        $PHPSheet->setCellValue("D1","编号");
-        $PHPSheet->setCellValue("E1","负责区域");
-        $PHPSheet->setCellValue("F1","代理商编号");
-        $PHPSheet->setCellValue("G1","管理员id");
-        $PHPSheet->setCellValue("H1","联系人");
-        $PHPSheet->setCellValue("I1","代理商级别");
-        $PHPSheet->setCellValue("J1","代理商所在地址");
+        $PHPSheet->setTitle("用户兑换记录");
+        $PHPSheet->setCellValue("A1","用户微信昵称");
+        $PHPSheet->setCellValue("B1","收件人");
+        $PHPSheet->setCellValue("C1","邮政编码");
+        $PHPSheet->setCellValue("D1","省份");
+        $PHPSheet->setCellValue("E1","城市");
+        $PHPSheet->setCellValue("F1","地区");
+        $PHPSheet->setCellValue("G1","详细地址");
+        $PHPSheet->setCellValue("H1","电话号码");
+        $PHPSheet->setCellValue("I1","兑换商品");
+        $PHPSheet->setCellValue("J1","兑换时间");
  
  
         $i = 2;
 		foreach($list as $key => $value){
-        	$PHPSheet->setCellValue('A'.$i,''.$value['id']);
-        	$PHPSheet->setCellValue('B'.$i,''.$value['id']);
-        	$PHPSheet->setCellValue('C'.$i,''.$value['id']);
-        	$PHPSheet->setCellValue('D'.$i,''.$value['id']);
-        	$PHPSheet->setCellValue('E'.$i,''.$value['id']);
-        	$PHPSheet->setCellValue('F'.$i,''.$value['id']);
-        	$PHPSheet->setCellValue('G'.$i,''.$value['id']);
-        	$PHPSheet->setCellValue('H'.$i,''.$value['id']);
-        	$PHPSheet->setCellValue('I'.$i,''.$value['id']);
-        	$PHPSheet->setCellValue('J'.$i,''.$value['id']);
+        	$PHPSheet->setCellValue('A'.$i,''.$value['nickName']);
+        	$PHPSheet->setCellValue('B'.$i,''.$value['userName']);
+        	$PHPSheet->setCellValue('C'.$i,''.$value['postalCode']);
+        	$PHPSheet->setCellValue('D'.$i,''.$value['provinceName']);
+        	$PHPSheet->setCellValue('E'.$i,''.$value['cityName']);
+        	$PHPSheet->setCellValue('F'.$i,''.$value['countyName']);
+        	$PHPSheet->setCellValue('G'.$i,''.$value['detailInfo']);
+        	$PHPSheet->setCellValue('H'.$i,''.$value['telNumber']);
+        	$PHPSheet->setCellValue('I'.$i,''.$value['goodsname']);
+        	$PHPSheet->setCellValue('J'.$i,''.$value['create_time']);
         	$i++;
     	}
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel,"Excel2007");
         header('Content-Disposition: attachment;filename='.$file_name);
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         $PHPWriter->save("php://output");  
-        return "11111";    
+        return "生成表格成功";    
         
     }
 
