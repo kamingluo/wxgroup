@@ -50,11 +50,22 @@ class Downloadfile
         $PHPSheet->setCellValue("G1","详细地址");
         $PHPSheet->setCellValue("H1","电话号码");
         $PHPSheet->setCellValue("I1","兑换商品");
-        $PHPSheet->setCellValue("J1","兑换时间");
- 
- 
+        $PHPSheet->setCellValue("J1","消耗积分");
+        $PHPSheet->setCellValue("K1","兑换备注");
+        $PHPSheet->setCellValue("L1","状态");
+        $PHPSheet->setCellValue("M1","兑换时间");
         $i = 2;
 		foreach($list as $key => $value){
+            if($value['state']==0){
+                $type="未发货";
+            }
+            elseif ($value['state']==0){
+
+                $type="已发货";
+            }
+            else{
+                $type="审核不通过";
+            }
         	$PHPSheet->setCellValue('A'.$i,''.$value['nickName']);
         	$PHPSheet->setCellValue('B'.$i,''.$value['userName']);
         	$PHPSheet->setCellValue('C'.$i,''.$value['postalCode']);
@@ -64,7 +75,10 @@ class Downloadfile
         	$PHPSheet->setCellValue('G'.$i,''.$value['detailInfo']);
         	$PHPSheet->setCellValue('H'.$i,''.$value['telNumber']);
         	$PHPSheet->setCellValue('I'.$i,''.$value['goodsname']);
-        	$PHPSheet->setCellValue('J'.$i,''.$value['create_time']);
+            $PHPSheet->setCellValue('J'.$i,''.$value['price']);
+            $PHPSheet->setCellValue('K'.$i,''.$value['remarks']);
+            $PHPSheet->setCellValue('L'.$i,''.$type);
+            $PHPSheet->setCellValue('M'.$i,''.$value['create_time']);
         	$i++;
     	}
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel,"Excel2007");
