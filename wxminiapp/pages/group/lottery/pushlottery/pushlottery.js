@@ -243,7 +243,7 @@ Page({
     let lottery_probability=that.data.lottery_probability;//中奖概率
     let lottery_number = that.data.lottery_number;//中奖人数
     let wxnumber=that.data.wxnumber;//群主微信号
-    let remaks=that.data.remaks;//开奖备注
+    let remarks=that.data.remarks;//开奖备注
 
     request({
       service: 'group/lottery/pushlottery',
@@ -260,7 +260,7 @@ Page({
         lottery_probability: lottery_probability,
         lottery_number: lottery_number,
         wxnumber: wxnumber,
-        remarks: remaks
+        remarks: remarks
       },
       success: res => {
         that.setData({

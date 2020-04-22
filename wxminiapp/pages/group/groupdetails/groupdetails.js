@@ -29,7 +29,8 @@ Page({
     signintankuang:false,//签到弹框
     viewdata:false,//群员是否能看签到数据
     TabCur: 0,//下面tab切换
-    scrollLeft: 0
+    scrollLeft: 0,
+    userdata:null,
   },
 
   /**
@@ -293,6 +294,10 @@ Page({
     this.groupnewslist(crowd_id)
     this.crowdlotteryopenlist(crowd_id)
     // this.todaywhethersignin()
+    let userdata = wx.getStorageSync('userdata');
+    this.setData({
+      userdata: userdata,
+    })
   },
 
 
@@ -433,6 +438,40 @@ Page({
       TabCur: e.currentTarget.dataset.id,
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60
     })
+  },
+
+
+
+  //消息订阅
+  subscribe:function(){
+    var that = this
+    wx.requestSubscribeMessage({
+      tmplIds: ['fIbB90FHxqlRURZGGo0PmcdAKWaUoxziV_loz90ftVs'],
+      success(res) {
+        console.log("同意了请求，统计一下")
+        //先写死一个推送id
+        let tmpid = 'fIbB90FHxqlRURZGGo0PmcdAKWaUoxziV_loz90ftVs';
+        let openid = wx.getStorageSync('userdata').openid
+        let crowd_id = that.data.crowd_id
+        let user_id = wx.getStorageSync('userdata').id
+        let sendata = {
+          openid: openid,
+          temmsg_id: tmpid,
+          crowd_id: crowd_id,
+          user_id: user_id
+        }
+        common.recordmsg(sendata)
+        wx.showToast({
+          title: '订阅成功',
+          icon: 'success',
+          duration: 2000,
+        })
+      },
+      complete() {
+        // that.newsumittask() //成功不成功都执行下一步
+      }
+    })
+
   },
 
   /**

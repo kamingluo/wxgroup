@@ -121,8 +121,9 @@
   /* width: 96%; */
   /* height: 600rpx; */
   /* border: 2rpxsolid #ccc; */
-  margin-top: 20rpx;
+  margin-top: 10rpx;
   margin-bottom: 130rpx;
+  
 }
 
 .tab .btns {
