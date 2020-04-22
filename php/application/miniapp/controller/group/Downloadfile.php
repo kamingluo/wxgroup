@@ -21,7 +21,7 @@ class Downloadfile
     	$list=db('exchange_record')->where('crowd_id',$crowd_id)->order('id desc')->select();
 	$file_name = date('Y-m-d_His').'.xls';
      $path = dirname(__FILE__);
-     return $path;
+    //  return $path;
      //    Loader::import('PHPExcel.Classes.PHPExcel.php');
      //    Loader::import('PHPExcel.Classes.PHPExcel.IOFactory.PHPExcel_IOFactory');
      Loader::import('PHPExcel.php'); //加载所需的类文件，必须引入 use think\Loader;命名空间，否则loader无法加载
