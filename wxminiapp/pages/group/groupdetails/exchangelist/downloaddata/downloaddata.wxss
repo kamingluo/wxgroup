@@ -1,0 +1,30 @@
+/* pages/group/groupdetails/exchangelist/downloaddata/downloaddata.wxss */
+.tips-body{
+  width: 100%;
+  height: 300rpx;
+  background-color: #fadbd9;
+  margin-bottom: 60rpx;
+  margin-top: 40rpx;
+}
+.tips{
+  width: 98%;
+  height: 280rpx;
+  background-color: white;
+  
+}
+.tips-text{
+  margin-top: 5rpx;
+  width: 100%;
+  word-break:break-all; 
+  margin-bottom: 8rpx;
+ 
+  
+}
+.tips-textbody{
+  width: 96%;
+  
+
+}
+.tips-text text{
+  font-size: 28rpx;
+}

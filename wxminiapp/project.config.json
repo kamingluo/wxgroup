@@ -111,6 +111,13 @@
 					"pathName": "pages/group/lottery/lotterylist/lotterydata/lotterydata",
 					"query": "lottery_id=5&crowd_id=14",
 					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "下载数据",
+					"pathName": "pages/group/groupdetails/exchangelist/downloaddata/downloaddata",
+					"query": "crowd_id=14",
+					"scene": null
 				}
 			]
 		}

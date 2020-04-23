@@ -79,7 +79,7 @@
 			<text class="cuIcon-title text-blue"></text><text style="font-weight: 600;">联系客服回复“团购”入团购群</text>
 		</view>
 		<view class="action" hover-class="none">
-			<button class="cu-btn block bg-blue margin-tb-sm round " open-type="contact"   session-from='{"nickName":"{{userdata.nickName}}{{userdata.id}}","avatarUrl":"{{userdata.avatarUrl}}"}'>
+			<button class="cu-btn block bg-blue margin-tb-sm round " open-type="contact" session-from='{"nickName":"{{userdata.nickName}}{{userdata.id}}","avatarUrl":"{{userdata.avatarUrl}}"}'>
 				<text class="cuIcon-hotfill"></text> 马上进群</button>
 		</view>
 	</view>
@@ -108,12 +108,12 @@
 		<view style="margin-top: 15rpx;">
 			<view class="cu-bar bg-white solid-bottom">
 				<view class="action">
-				<text class="cuIcon-title text-blue"></text>	<text style="font-weight: 600;">群记分，消息通知提醒</text>
+					<text class="cuIcon-title text-blue"></text> <text style="font-weight: 600;">群记分，消息通知提醒</text>
 				</view>
 				<view class="action" hover-class="none">
 					<button class="cu-btn block bg-blue margin-tb-sm  round" bindtap="subscribe">
 						<text class="cuIcon-weixin"></text> 点击订阅</button>
-						
+
 				</view>
 			</view>
 		</view>

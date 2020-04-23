@@ -50,6 +50,13 @@ Page({
     })
   },
 
+  downloaddata:function(){
+    let crowd_id = this.data.crowd_id;
+    wx.navigateTo({
+      url: '/pages/group/groupdetails/exchangelist/downloaddata/downloaddata?crowd_id=' + crowd_id,
+    })
+
+  },
 
   clicklist: function (e) {
     //console.log(e.currentTarget.dataset.data.id)

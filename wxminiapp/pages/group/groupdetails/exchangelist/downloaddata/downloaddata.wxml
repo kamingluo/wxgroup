@@ -1,0 +1,57 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">下载数据</view>
+</cu-custom>
+
+
+
+<view style="margin-top: 1rpx;margin-bottom: 5rpx;">
+	<view class="cu-bar bg-white solid-bottom">
+		<view class="action">
+			<text class="cuIcon-title text-blue"></text> <text style="font-weight: 600;">下载查看群用户兑换记录excel表格</text>
+		</view>
+	</view>
+</view>
+<view class="cu-form-group">
+	<view class="title">下载数据</view>
+	<picker bindchange="dataPickerChange" value="{{data_mode}}" range="{{datatype}}">
+		<view class="picker">
+			{{data_mode?datatype[data_mode]:'请选择下载数据'}}
+		</view>
+	</picker>
+</view>
+
+
+<view class="cu-form-group">
+	<view class="title">发送方式</view>
+	<picker bindchange="sendPickerChange" value="{{send_mode}}" range="{{sendtype}}">
+		<view class="picker">
+			{{send_mode?sendtype[send_mode]:'请选择下载数据'}}
+		</view>
+	</picker>
+</view>
+
+<view class="cu-form-group" wx:if="{{send_mode ==1}}">
+	<view class="title">邮箱地址</view>
+	<input maxlength="20" type='number' placeholder="请输入邮箱地址" bindinput="email" value="{{email}}"></input>
+</view>
+
+<view class="centered" style="margin-top: 25rpx;">
+	<view>
+		<button class="cu-btn bg-blue round lg sgadow" bindtap="send">{{ send_mode ==0 ?"在线查看表格":"表格发送到邮箱"}}</button>
+	</view>
+</view>
+
+
+
+
+<view class="tips-body centered shadow ">
+	<view class="tips centered ">
+  <view class="tips-textbody">
+  <view class="tips-text"> <text>1.下载查看的所有群员的兑换记录的excel表格。</text></view>
+  <view class="tips-text"> <text>2.在线查看表格，小程序能直接打开表格，但是苹果手机不支持编辑表格。</text></view>
+   <view class="tips-text"> <text>3.建议手机安装《QQ浏览器》方便查看和编辑表格。</text></view>
+   <view class="tips-text"> <text>4.如有其它问题，请联系我们。</text></view>
+  </view>
+</view>
+</view>
