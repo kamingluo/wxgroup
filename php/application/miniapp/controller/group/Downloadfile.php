@@ -13,9 +13,8 @@ class Downloadfile
     public function exchangelist(Request $request)
     {
      $crowd_id=$request->param("crowd_id");//群id
-     $state=$request->param("state");//状态
-     $user_email=$request->param("user_email");//状态
-    //  状态，0，未发货，1，已发货，2，审核不通过
+     $state=$request->param("state");//兑换记录的状态，状态值：0，未发货，1，已发货，2，审核不通过
+     $sendmode=$request->param("sendmode");//发送方式，0是直接下载列表。1是发送到邮箱
      if($state==0){
          //查询未发货的
          $list=db('exchange_record')->where('crowd_id',$crowd_id)->where('state',0)->order('id desc')->select();
@@ -26,7 +25,6 @@ class Downloadfile
      }
 	 $file_name = date('Y-m-d_His').'.xls';
      $path = dirname(__FILE__); //找到当前脚本所在路径
-    // $user_path=$_SERVER['DOCUMENT_ROOT']."/uploads/up/"; //保存到服务器指定路径
      Loader::import('PHPExcel.php'); //加载所需的类文件，必须引入 use think\Loader;命名空间，否则loader无法加载
      Loader::import('PHPExcel.Reader.Excel2007'); 
 
@@ -75,13 +73,21 @@ class Downloadfile
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel,"Excel2007");
         header('Content-Disposition: attachment;filename='.$file_name);
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        // $PHPWriter->save("php://output");  
-        $excelpath='./excel/'.$file_name;
-        $PHPWriter->save($excelpath);//保存到服务器指定路径
-       
 
-        $emaildata=sendEmail([['user_email'=>$user_email,'content'=>'群记分兑换商品统计表格','excel'=>$excelpath]]);
-        return "生成表格成功并发送邮件成功";    
+        if($sendmode == 0){
+            $PHPWriter->save("php://output");  
+            return "直接输出报告";
+
+        }
+        else{
+            $user_email=$request->param("user_email");//接受邮箱
+            $excelpath='./excel/'.$file_name;
+            $PHPWriter->save($excelpath);//保存到服务器指定路径
+            $emaildata=sendEmail([['user_email'=>$user_email,'content'=>'群记分兑换商品统计表格','excel'=>$excelpath]]);
+            $state=['state'   => '200','message'  => "邮件发送成功，请注意查收" ];
+             return  $state;    
+        }
+        
         
     }
 
