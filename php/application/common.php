@@ -64,30 +64,34 @@ function sendEmail($data = []) {
 
 
   $mail->IsSMTP(); // 启用SMTP
-  $mail->Host = 'smtp.163.com'; //SMTP服务器 以126邮箱为例子 
-  $mail->Port = 994;  //邮件发送端口
+  $mail->Host = 'smtp.qq.com'; //SMTP服务器 以126邮箱为例子 
+  $mail->Port = 465;  //邮件发送端口
   $mail->SMTPAuth = true;  //启用SMTP认证
   $mail->SMTPSecure = "ssl";   // 设置安全验证方式为ssl
 
   $mail->CharSet = "UTF-8"; //字符集
   $mail->Encoding = "base64"; //编码方式
 
-  $mail->Username = 'kaming_001@163.com';  //你的邮箱 
-  $mail->Password = 'a123456';  //你的密码 
-  $mail->Subject = '11111'; //邮件标题  
+  $mail->Username = '954087620@qq.com';  //你的邮箱 
+  $mail->Password = 'tpvxkvrinllobbig';  //你的密码 
+  $mail->Subject = "群记分"; //邮件标题  
 
-  $mail->From = 'kaming_001@163.com';  //发件人地址（也就是你的邮箱）
-  $mail->FromName = 'kaming';  //发件人姓名
+  $mail->From = '954087620@qq.com';  //发件人地址（也就是你的邮箱）
+  $mail->FromName = "群记分";  //发件人姓名
 
   if($data && is_array($data)){
     foreach ($data as $k=>$v){
-      $mail->AddAddress($v['user_email'], "亲"); //添加收件人（地址，昵称）
+      $mail->AddAddress($v['user_email'], "亲爱的群记分用户"); //添加收件人（地址，昵称）
       $mail->IsHTML(true); //支持html格式内容
+      //附件
+    //   define('APP_PATH', __DIR__ . '/../application/');
+      $mail->addAttachment($v['excel']);         // Add attachments
+     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
       $mail->Body = $v['content']; //邮件主体内容
 
       //发送成功就删除
       if ($mail->Send()) {
-        return "success";
+        return "邮件发送成功";
       }else{
           return "Mailer Error: ".$mail->ErrorInfo;// 输出错误信息  
       }

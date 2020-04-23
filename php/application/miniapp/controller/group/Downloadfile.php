@@ -14,6 +14,7 @@ class Downloadfile
     {
      $crowd_id=$request->param("crowd_id");//群id
      $state=$request->param("state");//状态
+     $user_email=$request->param("user_email");//状态
     //  状态，0，未发货，1，已发货，2，审核不通过
      if($state==0){
          //查询未发货的
@@ -24,9 +25,8 @@ class Downloadfile
         $list=db('exchange_record')->where('crowd_id',$crowd_id)->order('id desc')->select();
      }
 	 $file_name = date('Y-m-d_His').'.xls';
-     $path = dirname(__FILE__);
-     
-    //  $user_path=$_SERVER['DOCUMENT_ROOT']."/uploads/up/"; 保存到服务器指定路径
+     $path = dirname(__FILE__); //找到当前脚本所在路径
+    // $user_path=$_SERVER['DOCUMENT_ROOT']."/uploads/up/"; //保存到服务器指定路径
      Loader::import('PHPExcel.php'); //加载所需的类文件，必须引入 use think\Loader;命名空间，否则loader无法加载
      Loader::import('PHPExcel.Reader.Excel2007'); 
 
@@ -75,9 +75,13 @@ class Downloadfile
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel,"Excel2007");
         header('Content-Disposition: attachment;filename='.$file_name);
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        $PHPWriter->save("php://output");  
-        // $objWriter->save($user_path.$filename);保存到服务器指定路径
-        return "生成表格成功";    
+        // $PHPWriter->save("php://output");  
+        $excelpath='./excel/'.$file_name;
+        $PHPWriter->save($excelpath);//保存到服务器指定路径
+       
+
+        $emaildata=sendEmail([['user_email'=>$user_email,'content'=>'群记分兑换商品统计表格','excel'=>$excelpath]]);
+        return "生成表格成功并发送邮件成功";    
         
     }
 
