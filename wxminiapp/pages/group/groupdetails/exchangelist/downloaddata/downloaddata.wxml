@@ -33,7 +33,7 @@
 
 <view class="cu-form-group" wx:if="{{send_mode ==1}}">
 	<view class="title">邮箱地址</view>
-	<input maxlength="20" type='number' placeholder="请输入邮箱地址" bindinput="email" value="{{email}}"></input>
+	<input maxlength="25"  placeholder="请输入邮箱地址" bindinput="email" value="{{email}}"></input>
 </view>
 
 <view class="centered" style="margin-top: 25rpx;">

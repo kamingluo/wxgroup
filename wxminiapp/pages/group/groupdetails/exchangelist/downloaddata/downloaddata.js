@@ -85,7 +85,7 @@ Page({
         console.log('发送成功', res);
         wx.showToast({
           title: '发送成功请到邮箱查收。',
-          icon: 'success',
+          icon: 'none',
           duration: 2000,
         })
        
