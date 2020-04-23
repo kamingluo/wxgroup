@@ -5,7 +5,7 @@
 
 
 
-<view style="margin-top: 1rpx;margin-bottom: 5rpx;">
+<view style="margin-top: 1rpx;margin-bottom: 5rpx;" wx:if="{{exchangelist.length > 0}}">
 	<view class="cu-bar bg-white solid-bottom">
 		<view class="action">
 			<text class="cuIcon-title text-blue"></text> <text style="font-weight: 600;">下载用户兑换记录excel表格</text>
