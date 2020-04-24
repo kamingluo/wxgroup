@@ -55,3 +55,11 @@
   </view>
 </view>
 </view>
+
+
+
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <view class='cuIcon-loading2 text-orange'></view>
+  <view class='gray-text'>处理中...</view>
+</view>

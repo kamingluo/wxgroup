@@ -126,7 +126,7 @@ Page({
       {
         id: 5,
         imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/newshuoming.png",
-        text: "群说明",
+        text: "空间说明",
         joumurl: 666
       }
     ];
@@ -507,7 +507,7 @@ Page({
     return {
       title: nickName + "邀请你加入群" + "《" + crowd_name + "》",
       desc: nickName + "邀请你加入群" + "《" + crowd_name + "》",
-      imageUrl: 'http://588ku.izihun.com/element_origin_min_pic/18/07/07/f7c2df27ff4d14cd4bb92054ff1dad3e.jpg%21/fw/820/quality/100/unsharp/true/compress/true/format/jpeg',
+      imageUrl: 'https://material.gzywudao.top/image/group/groupicon.png',
       path: '/pages/index/index?channel=1001&ald_media_id=33542&ald_link_key=c99244f0802f9f06' +  '&crowd_id=' + crowd_id, // 路径，传递参数到指定页面。
     }
 

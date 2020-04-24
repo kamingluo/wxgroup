@@ -205,7 +205,7 @@ getPhoneNumber: function(e) {
         loadModal: true,
       })
       //console.log("图片为空")
-      let logo = "http://material.gzywudao.top/morencrowd.png"
+      let logo = "https://material.gzywudao.top/image/group/groupicon.png"
       this.creategroup(logo)
     } else {
       this.setData({

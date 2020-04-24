@@ -19,6 +19,7 @@ Page({
      sendtype: ['在线查看', '邮箱接收'],
 
      email:null,
+     loadModal:false,
 
   },
 
@@ -36,6 +37,9 @@ Page({
   },
 
   send:function(){
+    this.setData({
+      loadModal: true,
+    })
     
     let send_mode=this.data.send_mode;
     if(send_mode==0){
@@ -57,6 +61,7 @@ Page({
 
 
   emailsend:function(){
+    var that =this;
     let email=this.data.email;
 
     let str = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/; 
@@ -65,6 +70,9 @@ Page({
         title: '邮箱不规范，请重新输入',
         icon: 'none',
         duration: 2000,
+      })
+      that.setData({
+        loadModal: false,
       })
       return ;
     } 
@@ -83,6 +91,9 @@ Page({
       },
       success: res => {
         console.log('发送成功', res);
+        that.setData({
+          loadModal: false,
+        })
         wx.showToast({
           title: '发送成功请到邮箱查收。',
           icon: 'none',
@@ -100,6 +111,7 @@ Page({
   },
 
   online:function(){
+    var that =this;
     //在线查看
     let crowd_id =this.data.crowd_id;
     let data_mode=this.data.data_mode;
@@ -110,6 +122,9 @@ Page({
       success: function (res) {
         console.log("下载成功", res);
         console.log("保存地址",res.tempFilePath)
+        that.setData({
+          loadModal: false,
+        })
         //图片保存到本地
         wx.saveFile({
           tempFilePath: res.tempFilePath,
