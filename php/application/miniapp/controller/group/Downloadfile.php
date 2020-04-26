@@ -84,7 +84,7 @@ class Downloadfile
             $excelpath='./excel/'.$file_name;
             $PHPWriter->save($excelpath);//保存到服务器指定路径
             $emaildata=sendEmail([['user_email'=>$user_email,'content'=>'群记分兑换商品统计表格','excel'=>$excelpath]]);
-            $state=['state'   => '200','message'  => "邮件发送成功，请注意查收" ];
+            $state=['state'   => '200','message'  => "邮件发送成功，请注意查收",'emaildata'  => $emaildata];
              return  $state;    
         }
         

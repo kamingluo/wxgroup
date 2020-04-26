@@ -65,10 +65,10 @@ function sendEmail($data = []) {
 
   $mail->IsSMTP(); // 启用SMTP
 
-  // $mail->Host = 'smtp.qq.com'; //SMTP服务器 以126邮箱为例子 
+  $mail->Host = 'smtp.qq.com'; //SMTP服务器 以126邮箱为例子 
 
-  //使用ssl链接方式发送邮件
-  $mail->Host="ssl://smtp.exmail.qq.com";
+  // //使用ssl链接方式发送邮件
+  // $mail->Host="ssl://smtp.exmail.qq.com";
   $mail->Port = 465;  //邮件发送端口
   $mail->SMTPAuth = true;  //启用SMTP认证
   $mail->SMTPSecure = "ssl";   // 设置安全验证方式为ssl
@@ -76,18 +76,19 @@ function sendEmail($data = []) {
   $mail->CharSet = "UTF-8"; //字符集
   $mail->Encoding = "base64"; //编码方式
 
-  $mail->Username = '954087620@qq.com';  //你的邮箱 
-  $mail->Password = 'tpvxkvrinllobbig';  //你的密码 
+  // $mail->Username = '954087620@qq.com';  //你的邮箱 
+  // $mail->Password = 'tpvxkvrinllobbig';  //你的密码 
+  // $mail->From = '954087620@qq.com';  //发件人地址（也就是你的邮箱）
 
-  // $mail->Username = '3538187083@qq.com';  //你的邮箱 
-  // $mail->Password = 'aaetygidfndudahj';  //你的密码 
+  $mail->Username = '3538187083@qq.com';  //你的邮箱 
+  $mail->Password = 'wkcvjqvxsjjpcijf';  //你的密码 
+  $mail->From = '3538187083@qq.com';  //发件人地址（也就是你的邮箱）
 
 
-
+  $mail->FromName = "群记分";  //发件人姓名
   $mail->Subject = "群记分"; //邮件标题  
 
-  $mail->From = '954087620@qq.com';  //发件人地址（也就是你的邮箱）
-  $mail->FromName = "群记分";  //发件人姓名
+
 
   if($data && is_array($data)){
     foreach ($data as $k=>$v){
