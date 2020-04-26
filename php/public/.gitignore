@@ -1,0 +1,3 @@
+#用于忽略folder文件夹所有文件
+/excel/*
+/qrcode/*
