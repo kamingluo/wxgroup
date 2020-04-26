@@ -64,7 +64,12 @@
                         title: '群消息'
                     },
                     {
-                        icon: 'el-icon-lx-news',
+                        icon: 'el-icon-lx-goods',
+                        index: 'exchanges',
+                        title: '兑换信息'
+                    },
+                    {
+                        icon: 'el-icon-lx-unlock',
                         index: 'groupjurisdiction',
                         title: '群权限'
                     }

@@ -19,20 +19,17 @@ class Index
         
     }
 
-    // public function usersdata()
-    // {
-    //     $allusersnumber=db('user')->count();//总注册用户数
-    //     $todayregisterusersnumber=db('user')->whereTime('create_time', 'today')->count();//今天注册用户数
-    //     $todayactiveusersnumber=db('user')->whereTime('updata_time', 'today')->count();//今天活跃用户数
-    //     $todaypupilnumber=db('tribute_table')->whereTime('create_time', 'today')->count();//今天收徒数
-    //     $yesterdayregisterusersnumber=db('user')->whereTime('create_time', 'yesterday')->count();//昨天注册用户数
-    //     $yesterdayactiveusersnumber=db('user')->whereTime('updata_time', 'yesterday')->count();//昨天活跃用户数
-    //     $yesterdaypupilnumber=db('tribute_table')->whereTime('create_time', 'yesterday')->count();//昨天收徒数
-    //     $data = ['allusersnumber' =>$allusersnumber,'todayregisterusersnumber'=>$todayregisterusersnumber,'todayactiveusersnumber'=>$todayactiveusersnumber,'todaypupilnumber'=>$todaypupilnumber,'yesterdayregisterusersnumber'=>$yesterdayregisterusersnumber,'yesterdayactiveusersnumber'=>$yesterdayactiveusersnumber,'yesterdaypupilnumber'=>$yesterdaypupilnumber];
-    //     $state=['state'   => '200','message'  => "用户数据" ];
-    //     $resdata=array_merge($state,array('data'=>$data));
-    //     return $resdata;
-    // }
+    public function usersdata()
+    {
+        $allusersnumber=db('user')->count();//总注册用户数
+        $todayregisterusersnumber=db('user')->whereTime('create_time', 'today')->count();//今天注册用户数
+        $todayactiveusersnumber=db('user')->whereTime('update_time', 'today')->count();//今天活跃用户数
+        $yesterdayregisterusersnumber=db('user')->whereTime('create_time', 'yesterday')->count();//昨天注册用户数
+        $data = ['allusersnumber' =>$allusersnumber,'todayregisterusersnumber'=>$todayregisterusersnumber,'todayactiveusersnumber'=>$todayactiveusersnumber,'yesterdayregisterusersnumber'=>$yesterdayregisterusersnumber];
+        $state=['state'   => '200','message'  => "用户数据" ];
+        $resdata=array_merge($state,array('data'=>$data));
+        return $resdata;
+    }
 
 
    

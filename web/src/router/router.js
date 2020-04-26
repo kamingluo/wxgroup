@@ -42,6 +42,11 @@ export default new Router({
           meta: { title: '群消息' }
         },
         {
+          path: '/exchanges',
+          component: resolve => require(['../components/page/Exchanges.vue'], resolve),
+          meta: { title: '兑换信息' }
+        },
+        {
           path: '/groupjurisdiction',
           component: resolve => require(['../components/page/Groupjurisdiction.vue'], resolve),
           meta: { title: '群权限' }

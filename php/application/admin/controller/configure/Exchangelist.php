@@ -41,14 +41,17 @@ class Exchangelist
      return $resdata ;
     }
 
-   //删除一条任务
+   //删除一条兑换信息
    public function deleteexchange(Request $request){
         $id=$request->param("id");
         
         //七牛删除文件资源
         $data=db('exchange_record')->where('id',$id)->find();
-        $deletefile = new Deletefile();
-        $deleteresult=$deletefile -> more($data['images']);
+
+
+        //这里不能删除图片，一删除所有的都没了
+      //   $deletefile = new Deletefile();
+      //   $deleteresult=$deletefile -> more($data['images']);
 
 
         $data=db('exchange_record')-> where('id', $id)->delete();

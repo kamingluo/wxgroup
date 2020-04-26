@@ -13,7 +13,7 @@ let config = {
   //生产环境
    baseURL: 'https://group.gzywudao.top/php/public/admin.php/',
   //测试环境
-  //baseURL: 'http://127.0.0.1/myproject/wxgroup/php/public/admin.php/',
+  // baseURL: 'http://127.0.0.1/myproject/wxgroup/php/public/admin.php/',
 
 
   //暂时用不到
