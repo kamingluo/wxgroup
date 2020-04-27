@@ -85,6 +85,18 @@
 	</view>
 </view>
 
+<view style="margin-top: 5rpx;"  wx:if="{{crowd_id==466 ||crowd_id == 617 }}">
+	<view class="cu-bar bg-white solid-bottom">
+		<view class="action">
+			<text class="cuIcon-title text-blue"></text><text style="font-weight: 600;">火把小助手视频教程</text>
+		</view>
+		<view class="action" hover-class="none">
+			<button class="cu-btn block bg-blue margin-tb-sm round " bindtap="video">
+				<text class="cuIcon-hotfill"></text> 点击播放</button>
+		</view>
+	</view>
+</view>
+
 <!-- 签到浮动icon -->
 <view class="signinbody" wx:if="{{todaywhethersignin}}">
 	<view class="signinicon" bindtap="usersignin">

@@ -199,6 +199,13 @@ Page({
     })
   },
 
+  video:function(){
+    let url ='/pages/webview/webview?url=https://v.utaojs.com'
+    wx.navigateTo({
+      url: url
+    })
+  },
+
 
   groupnewslist: function (crowd_id) {
     request({
