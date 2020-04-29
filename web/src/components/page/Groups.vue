@@ -54,7 +54,6 @@
         <el-table-column prop="logo" label="群图标" width="140">
           <template slot-scope="scope" style="height:100px">
             <img class="logo" :src="scope.row.logo"></img>
-            <!--<el-text>{{scope.row.logo}}</el-text>-->
           </template>
         </el-table-column>
         <el-table-column prop="crowd_name" label="群名称" width="200">
@@ -65,16 +64,16 @@
         </el-table-column>
         <el-table-column prop="count" label="群人数" width="150">
         </el-table-column>
-         <el-table-column prop="wxnumber" label="群主微信" width="200">
+  <el-table-column prop="wxnumber" label="群主微信" width="200">
          <template slot-scope="scope">
-         <el-text>{{scope.row.wxnumber?scope.row.wxnumber:"未填写"}}</el-text>
+         <el-text >{{scope.row.wxnumber?scope.row.wxnumber:"未填写"}}</el-text>
          </template>
         </el-table-column>
         <el-table-column prop="create_time" label="创建时间" width="200">
         </el-table-column>
         <el-table-column label="操作" width="180" align="center">
           <template slot-scope="scope">
-            <!--<el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">审核</el-button>-->
+            <el-button type="text" icon="el-icon-edit" class="green" @click="seetodaydata(scope.$index, scope.row)">查看今日数据</el-button>
             <el-button
               type="text"
               icon="el-icon-delete"
@@ -100,35 +99,28 @@
 
      <!-- 编辑弹出框 -->
     <el-dialog title="删除群" :visible.sync="delVisible" width="30%">
-      <el-form ref="form" :model="form" label-width="120px">
+      <el-form ref="form" label-width="120px">
         <el-text>确认删除？？</el-text>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="delVisible = false">取 消</el-button>
         <el-button type="primary" @click="confirmdelete">确 定</el-button>
       </span>
-    </el-dialog>
+    </el-dialog>id
 
-
-    <!-- 编辑弹出框 -->
-    <el-dialog title="编辑" :visible.sync="editVisible" width="30%">
-      <el-form ref="form" :model="form" label-width="120px">
-        <el-form-item label="id">
-          <el-input v-model="form.id"></el-input>
-        </el-form-item>
-        <el-form-item label="支付宝姓名">
-          <el-input v-model="form.alipayName"></el-input>
-        </el-form-item>
-        <el-form-item label="支付宝账号">
-          <el-input v-model="form.alipayNumber"></el-input>
-        </el-form-item>
-        <el-form-item label="state(1过2失败)">
-          <el-input v-model="form.state"></el-input>
-        </el-form-item>
+    <!-- 群今日数据弹出框 -->
+    <el-dialog title="群今日数据" :visible.sync="grouptodaydataVisible" width="30%">
+      <el-form ref="form" :model="grouptodaydata" label-width="120px">
+       <div><el-text>今日注册人数：{{grouptodaydata.groupregister}}   </el-text></div>
+      <div> <el-text >今日活跃人数：{{grouptodaydata.groupactive}}</el-text></div>
+      <div> <el-text >今日签到人数：{{grouptodaydata.groupsigins}}</el-text></div>
+     <div>  <el-text >今日上传任务数：{{grouptodaydata.grouptasks}}</el-text></div>
+       <div><el-text >今日抽奖人数：{{grouptodaydata.grouplotterys}}</el-text></div>
+      <div> <el-text >今日兑换人数：{{grouptodaydata.groupexchanges}}</el-text></div>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="editVisible = false">取 消</el-button>
-        <el-button type="primary" @click="saveEdit">确 定</el-button>
+        <el-button @click="grouptodaydataVisible = false">取 消</el-button>
+        <el-button type="primary" @click="grouptodaydataVisible = false">确 定</el-button>
       </span>
     </el-dialog>
 
@@ -154,15 +146,12 @@ export default {
       admintaskdata: null,
       admincoinsdata: null,
       wxnumberif:null,
-      form: {
-        name: "",
-        date: "",
-        address: ""
-      },
       idx: -1,
       delVisible: false,
       deleteid: "",
-      datapages: 0
+      datapages: 0,
+      grouptodaydata:{},
+      grouptodaydataVisible:false
     };
   },
   created() {
@@ -288,27 +277,20 @@ export default {
       });
     },
 
-    handleEdit(index, row) {
-      console.log("点击编辑");
-      this.idx = index;
-      const item = this.tableData[index];
-      this.form = item;
-      this.editVisible = true;
-    },
-    // 保存编辑
-    saveEdit() {
-      this.$set(this.tableData, this.idx, this.form);
-      console.log("提交修改信息", this.form);
-      this.editVisible = false;
-      this.$message.success(`操作成功`);
+    seetodaydata(index, row) {
+      console.log("点击查看今日数据");
+       let id=row.id;
+       let url = "configure/desgroup/groupdetails?id=" + id;
+      this.$axios(url).then(res => {
+        console.log("查询群今日数据返回", res.data.data);
+        this.grouptodaydata=res.data.data;
+        // this.$message.success(`操作成功`);
+        this.grouptodaydataVisible=true;
+      });
 
-      this.$axios
-        .post("/admin.php/configure/examine/sendrewards", this.form)
-        .then(res => {
-          console.log("修改信息返回数据", res);
-          this.getData();
-        });
+
     },
+   
 
     getuserData(openid) {
       this.url = "/admin.php/configure/dataquery/userdata";
