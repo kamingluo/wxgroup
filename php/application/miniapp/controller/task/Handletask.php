@@ -31,9 +31,21 @@ class Handletask
      //查询该群的全部任务，审核和未审核都任务
      public function alltasklists(Request $request)
      {
+         $pages=$request->param("pages");//页数
          $crowd_id =$request->param("crowd_id");//群id
-         $dballtasklists =db('task_record')->where('crowd_id',$crowd_id)->order('id desc')->select();
-         $state=['state'   => '200','message'  => "查询该群的全部任务" ];
+         if($pages){
+             //有传pages
+             $newpages= ($pages-1) * 20;//一页20条
+             $dballtasklists =db('task_record')->where('crowd_id',$crowd_id)->order('id desc')->limit($newpages,20)->select();
+         }
+         else{
+             //兼容没有传页数，返回全部信息
+            $dballtasklists =db('task_record')->where('crowd_id',$crowd_id)->order('id desc')->select();
+         }
+
+         $count =db('task_record')->where('crowd_id',$crowd_id)->count();
+
+         $state=['state'   => '200','message'  => "查询该群的全部任务",'conut'=>$count ];
          $resdata=array_merge($state,array('alltasklists'=>$dballtasklists));
          return $resdata ;
      }
