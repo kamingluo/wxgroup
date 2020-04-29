@@ -127,11 +127,15 @@ class Desgroup
 
       //群今日新增人数
       $registersql="select count(*) as count from user a,user_crowd b where  a.id=b.user_id and b.crowd_id=".$crowd_id." and to_days(a.create_time) = to_days(now());";
-      $groupregister = Db::query($registersql); //拿到数据
+      $oldgroupregister = Db::query($registersql); //拿到数据
+      $groupregister=$oldgroupregister[0]['count'];
 
       //群今日活跃用户数
       $activesql="select count(*) as count from user a,user_crowd b where  a.id=b.user_id and b.crowd_id=".$crowd_id." and to_days(a.update_time) = to_days(now());";
-      $groupactive = Db::query($activesql); //拿到数据
+      $oldgroupactive = Db::query($activesql); //拿到数据
+      $groupactive=$oldgroupactive[0]['count'];
+
+
       //群今日提交任务数
       $grouptasks=db('task_record')-> where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();//今天上传任务数
       //群今日签到次数
