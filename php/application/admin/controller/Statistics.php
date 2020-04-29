@@ -20,7 +20,7 @@ class Statistics
         $builtcrowd=db('crowd')->whereTime('create_time', 'today')->count();//今天创建群数量
         $joincrowd=db('user_crowd')->where('user_type',0)->whereTime('create_time', 'today')->count();//今天加入群人数，去除创建的
         $crowd_news=db('crowd_news')->whereTime('create_time', 'today')->count();//今天发布新闻数量
-        $task_record=db('task_record')->whereTime('create_time', 'today')->count();//今天上传任务兑换商品发布新闻数量
+        $task_record=db('task_record')->whereTime('create_time', 'today')->count();//今天上传任务
         $sigin=db('signin_user_data')->whereTime('create_time', 'today')->count();//今日签到用户次数
         $lottery=db('lottery_partake_list')->whereTime('create_time', 'today')->count();//今日抽奖用户次数
         

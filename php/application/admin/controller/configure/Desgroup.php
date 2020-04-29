@@ -98,9 +98,6 @@ class Desgroup
    public function deletegroup(Request $request){
     $crowd_id =$request->param("id");
     $crowd_data =db('crowd')->where('id',$crowd_id)->find();
-
-
-
     if($crowd_data == null ){
        $state=['state'   => '200','message'  => "不存在的群" ];
        return $state;
@@ -109,7 +106,6 @@ class Desgroup
        //删除七牛文件，暂时不能删除，因为有些是使用默认图片的
       //  $deletefile = new Deletefile();
       //  $deleteresult=$deletefile -> one($crowd_data['logo']);
-
        $crowd=db('crowd')-> where('id',$crowd_id)->delete();
        $crowd_goods=db('crowd_goods')-> where('crowd_id',$crowd_id)->delete();
        $crowd_news=db('crowd_news')-> where('crowd_id',$crowd_id)->delete();
@@ -122,6 +118,44 @@ class Desgroup
         
     }
    }
+
+
+
+   public function groupdetails(Request $request){
+
+      $crowd_id =$request->param("id");
+
+      //群今日新增人数
+      $registersql="select count(*) as count from user a,user_crowd b where  a.id=b.user_id and b.crowd_id=".$crowd_id." and to_days(a.create_time) = to_days(now());";
+      $groupregister = Db::query($registersql); //拿到数据
+
+      //群今日活跃用户数
+      $activesql="select count(*) as count from user a,user_crowd b where  a.id=b.user_id and b.crowd_id=".$crowd_id." and to_days(a.update_time) = to_days(now());";
+      $groupactive = Db::query($activesql); //拿到数据
+      //群今日提交任务数
+      $grouptasks=db('task_record')-> where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();//今天上传任务数
+      //群今日签到次数
+      $groupsigins=db('signin_user_data')-> where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();//今天签到人数
+      //群今日抽奖次数
+      $grouplotterys=db('lottery_partake_list')-> where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();//今天抽奖人数
+      //群今日兑换次数
+      $groupexchanges=db('exchange_record')-> where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();//今天兑换次数
+
+
+      $state=['state'   => '200','message'  => "查询群今日数据成功" ];
+
+      $data=['groupregister'   => $groupregister,'groupactive'   => $groupactive,'grouptasks'   => $grouptasks,'groupsigins'   => $groupsigins,'grouplotterys'   => $grouplotterys,'groupexchanges'   => $groupexchanges];
+
+      $resdata=array_merge($state,array('data'=>$data));
+      return $resdata ;
+   }
+
+
+
+
+
+
+
 
 
 }
