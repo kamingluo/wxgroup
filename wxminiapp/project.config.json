@@ -62,62 +62,6 @@
 					"pathName": "pages/test/test",
 					"query": "",
 					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "参与抽奖",
-					"pathName": "pages/group/lottery/partake/partake",
-					"query": "user_id=10048&id=5&crowd_id=14&user_type=2",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "参与人列表",
-					"pathName": "pages/group/lottery/partakedata/partakedata",
-					"query": "lottery_id=5",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "抽奖参与记录",
-					"pathName": "pages/group/lottery/data/data",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "群主更多功能",
-					"pathName": "pages/group/ownersmore/ownersmore",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "群主的抽奖列表",
-					"pathName": "pages/group/lottery/lotterylist/lotterylist",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "发布抽奖活动",
-					"pathName": "pages/group/lottery/pushlottery/pushlottery",
-					"query": "crowd_id=14",
-					"scene": null
-				},
-				{
-					"id": 7,
-					"name": "群主进入抽奖详情",
-					"pathName": "pages/group/lottery/lotterylist/lotterydata/lotterydata",
-					"query": "lottery_id=5&crowd_id=14",
-					"scene": null
-				},
-				{
-					"id": 8,
-					"name": "下载数据",
-					"pathName": "pages/group/groupdetails/exchangelist/downloaddata/downloaddata",
-					"query": "crowd_id=14",
-					"scene": null
 				}
 			]
 		}

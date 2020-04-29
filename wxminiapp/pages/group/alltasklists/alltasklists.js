@@ -10,8 +10,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    alltasklists: null,
+    alltasklists: [],
     loadModal: true,
+    crowd_id:null,
+    pages:1,
+    count:0
 
   },
 
@@ -19,33 +22,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    
+    this.setData({
+      crowd_id: options.crowd_id,
+    })
 
-    console.log("查看全部任务", options)
-    let crowd_id = options.crowd_id
+    this.havedata(1)
+
+  },
+
+
+  havedata:function(pages){
+    var that=this;
+    let crowd_id = that.data.crowd_id;
+
     request({
       service: 'task/handletask/alltasklists',
       data: {
+        pages:pages,
         crowd_id: crowd_id,
       },
       success: res => {
-        console.log('查询该群的全部任务，审核和未审核都任务', res);
-        this.setData({
-          alltasklists: res.alltasklists,
+        let alltasklists=this.data.alltasklists;
+        var newalltasklists=[...alltasklists,...res.alltasklists];
+        that.setData({
+          alltasklists: newalltasklists,
+          count: res.count,
           loadModal: false,
         })
       },
     })
 
-    // request({
-    //   service: 'appdata/home/swiperdata',
-    //   method: 'GET',
-    //   success: res => {
-    //     this.setData({
-    //       swiperdata: res.swiperdata,
-    //     })
-    //   }
-    // })
   },
+
 
   clicktasklist: function(e) {
     console.log(e.currentTarget.dataset.id)
@@ -55,52 +64,25 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    var that=this
 
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
+    var count=that.data.count;//拿到总数
+    var pages =that.data.pages;
+    if(pages * 20 >= count){
+      return;
+    }
+    else{
+     let  newpages=pages + 1 ;
+      that.setData({
+        pages: newpages
+      })
+      that.havedata(newpages)
+    }
   }
 })

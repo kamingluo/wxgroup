@@ -12,6 +12,8 @@ Page({
     userscorerecord: [],  //信息流数组
     loadModal: true,
     crowd_id:null,
+    pages:1,
+    count:0
 
   },
 
@@ -23,70 +25,52 @@ Page({
     this.setData({
       crowd_id: options.crowd_id,
     })
-    var user_id = wx.getStorageSync('userdata').id
+    this.havedata(1)
+  },
+
+  //获取数据
+  havedata:function(pages){
+    var that=this
+    var crowd_id=this.data.crowd_id;
+    var user_id = wx.getStorageSync('userdata').id;
     request({
       service: 'group/userdata/usergroupscorelist',
       data: {
+        pages:pages,
         user_id: user_id,
-        crowd_id: options.crowd_id
+        crowd_id: crowd_id
       },
       success: res => {
-        //console.log('用户兑换列表页面', res);
-        this.setData({
-          userscorerecord: res.userscorelist,
+        let userscorerecord=this.data.userscorerecord;
+        var newuserscorerecord=[...userscorerecord,...res.userscorelist];
+        that.setData({
+          userscorerecord: newuserscorerecord,
+          count: res.count,
           loadModal: false,
         })
       },
     })
-
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    var that=this
 
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    var count=that.data.count;//拿到总数
+    var pages =that.data.pages;
+    if(pages * 20 >= count){
+      return;
+      console.log("达到数量，不加载")
+    }
+    else{
+     let  newpages=pages + 1 ;
+      that.setData({
+        pages: newpages
+      })
+      that.havedata(newpages)
+    }
   }
 })
