@@ -29,6 +29,7 @@
 
 <view  class='user-list' >
 <view class="cu-list menu-avatar "   >
+
   <view class="cu-item"  wx:for="{{groupuserlist}}" wx:key="item"    data-data="{{item}}"  bindtap='clickuserlist' >
     <view class="cu-avatar round lg" style="background-image:url({{item.avatarUrl?item.avatarUrl:'http://material.gzywudao.top/morencrowd.png'}});">
       <!-- <view class="cu-tag badge">99+</view> 这是头像上面的东西啊-->
@@ -48,4 +49,8 @@
     </view>
   </view>
 </view>
+
+  <view style='margin-top: 10rpx;color:#aaaaaa' class='centered'>
+    <text>-------已经到底啦-------</text>
+  </view>
 </view>

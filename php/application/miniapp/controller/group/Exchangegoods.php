@@ -48,9 +48,21 @@ class Exchangegoods
      //群主查看群兑换列表
     public function groupexchangelist(Request $request)
     {
-    	$crowd_id=$request->param("crowd_id");//群id
-    	$data=db('exchange_record')->where('crowd_id',$crowd_id)->order('id desc')->select();
-    	$state=['state'   => '200','message'  => "群兑换列表" ];
+        $pages=$request->param("pages");//页数
+        $crowd_id=$request->param("crowd_id");//群id
+        if($pages){
+            //有传pages
+            $newpages= ($pages-1) * 20;//一页20条
+            $data =db('exchange_record')->where('crowd_id',$crowd_id)->order('id desc')->limit($newpages,20)->select();
+        }
+        else{
+            //兼容没有传页数，返回全部信息
+            $data=db('exchange_record')->where('crowd_id',$crowd_id)->order('id desc')->select();
+        }
+
+        $count =db('exchange_record')->where('crowd_id',$crowd_id)->count();
+        
+    	$state=['state'   => '200','message'  => "群兑换列表" ,'count'=>$count];
         $resdata=array_merge($state,array('data'=>$data));
         return $resdata ;
     }
