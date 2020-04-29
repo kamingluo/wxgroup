@@ -12,8 +12,20 @@ class Usertask
     {
     	$wxcode =$request->param("code");
         $openid=openid($wxcode);
-        $usertasklist =db('task_record')->where('openid',$openid)->order('id desc')->select();
-        $state=['state'   => '200','message'  => "查询用户的任务列表数据成功" ];
+        $pages=$request->param("pages");//页数
+        if($pages){
+            //有传pages
+            $newpages= ($pages-1) * 20;//一页20条
+            $usertasklist =db('task_record')->where('openid',$openid)->order('id desc')->limit($newpages,20)->select();
+        }
+        else{
+            //兼容没有传页数，返回全部信息
+            $usertasklist =db('task_record')->where('openid',$openid)->order('id desc')->select();
+        }
+
+        $count =db('task_record')->where('openid',$openid)->count();
+
+        $state=['state'   => '200','message'  => "查询用户的任务列表数据成功" ,'count'=>$count];
         $resdata=array_merge($state,array('usertasklist'=>$usertasklist));
         return $resdata ;
       

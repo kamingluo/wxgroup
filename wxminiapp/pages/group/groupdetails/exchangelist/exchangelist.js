@@ -13,38 +13,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-    exchangelist: null,
+    exchangelist: [],
     crowd_id: null,
     crowd_name: null,
     user_type: 0,
+    pages:1,
+    count:0
   },
   onLoad: function (options) {
+
     this.setData({
       crowd_id: options.crowd_id,
       crowd_name: options.crowd_name,
       user_type: options.user_type
     })
+    this.userexchangelist(1)
    
   },
 
-  onShow:function(){
-    this.userexchangelist()
-
-  },
 
   //查询该群兑换列表
-  userexchangelist: function () {
-    var crowd_id = this.data.crowd_id
+  userexchangelist: function (pages) {
+    var that =this
+    var crowd_id = that.data.crowd_id
     request({
       service: 'group/Exchangegoods/groupexchangelist',
       method: 'GET',
       data: {
+        pages:pages,
         crowd_id: crowd_id,
       },
       success: res => {
-        console.log('群兑换列表', res);
-        this.setData({
-          exchangelist: res.data,
+        let exchangelist=that.data.exchangelist;
+        var newexchangelist=[...exchangelist,...res.data];
+        that.setData({
+          exchangelist: newexchangelist,
+          count: res.count,
+          loadModal: false,
         })
       },
     })
@@ -67,6 +72,26 @@ Page({
    
 
   },
+
+   /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function() {
+    var that=this
+
+    var count=that.data.count;//拿到总数
+    var pages =that.data.pages;
+    if(pages * 20 >= count){
+      return;
+    }
+    else{
+     let  newpages=pages + 1 ;
+      that.setData({
+        pages: newpages
+      })
+      that.userexchangelist(newpages)
+    }
+  }
 
 
 })

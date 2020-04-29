@@ -12,10 +12,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    groupuserlist:null,
+    groupuserlist:[],
     searchInput:null,
     crowd_id:null,
     user_type: null,
+    pages:1,
+    count:0
   },
 
   /**
@@ -32,20 +34,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-
     this.setData({
       crowd_id: options.crowd_id,
       user_type: options.user_type
     })
-
-    
-
+    this.userlist(1)
   },
 
 
-  userlist:function(e){
-
+  userlist:function(pages){
     var that = this
     var crowd_id = this.data.crowd_id
     request({
@@ -53,12 +50,15 @@ Page({
       method: 'GET',
       data: {
         crowd_id: crowd_id,
-        pages:1
+        pages:pages
       },
       success: res => {
-        console.log("群用户列表", res.groupuserlist)
+        let groupuserlist=this.data.groupuserlist;
+        var newagroupuserlist=[...groupuserlist,...res.groupuserlist];
         that.setData({
-          groupuserlist: res.groupuserlist,
+          groupuserlist: newagroupuserlist,
+          count: res.count,
+          loadModal: false,
         })
       },
     })
@@ -110,7 +110,6 @@ Page({
   },
 
   onShow: function () {
-    this.userlist()
   },
 
 
@@ -118,6 +117,19 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    var that=this
+    var count=that.data.count;//拿到总数
+    var pages =that.data.pages;
+    if(pages * 20 >= count){
+      return;
+    }
+    else{
+     let  newpages=pages + 1 ;
+      that.setData({
+        pages: newpages
+      })
+      that.userlist(newpages)
+    }
 
   }
 })
