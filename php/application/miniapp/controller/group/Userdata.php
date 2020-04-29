@@ -39,7 +39,7 @@ class Userdata
         }
         $count =db('score_record')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->count();
 
-        $state=['state'   => '200','message'  => "查询用户对应群积分列表" ,'conut'=>$count ];
+        $state=['state'   => '200','message'  => "查询用户对应群积分列表" ,'count'=>$count ];
         $resdata=array_merge($state,array('userscorelist'=>$userscorelist));
         return $resdata ;
       

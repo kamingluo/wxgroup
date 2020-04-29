@@ -45,7 +45,7 @@ class Handletask
 
          $count =db('task_record')->where('crowd_id',$crowd_id)->count();
 
-         $state=['state'   => '200','message'  => "查询该群的全部任务",'conut'=>$count ];
+         $state=['state'   => '200','message'  => "查询该群的全部任务",'count'=>$count ];
          $resdata=array_merge($state,array('alltasklists'=>$dballtasklists));
          return $resdata ;
      }
