@@ -88,11 +88,9 @@ function doUpload(filePath, success, fail, options) {
             //do something
             var imageUrl = config.qiniuImageURLPrefix + dataObject.key;
             dataObject.imageURL = imageUrl;
-            console.log(dataObject);
             success(dataObject);
         },
         fail: function (error) {
-            console.log(error);
             fail(error);
         }
     })
@@ -107,9 +105,6 @@ function getQiniuToken(callback) {
       if (callback) {
           callback();
       }
-    },
-    fail: function (error) {
-      console.log(error);
     }
   })
 }

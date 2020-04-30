@@ -54,7 +54,7 @@ Page({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function(res) {
-        console.log("返回选定照片的本地文件路径列表", res)
+        //console.log("返回选定照片的本地文件路径列表", res)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths;
         let uploaderList = that.data.uploaderList.concat(tempFilePaths);
@@ -90,14 +90,10 @@ Page({
               code: res.code,
             },
             success: res => {
-              console.log("fanfaopenid", res.userlogin)
               that.setData({
                 userlogin:res.userlogin,
               })
-            },
-            fail: res => {
-              console.log(res)
-            },
+            }
           })
         }
       });
@@ -130,10 +126,7 @@ getPhoneNumber: function(e) {
           // that.setData({
           //   loadModal: true,
           // })
-        },
-        fail: res => {
-          console.log(res)
-        },
+        }
       })
     }
     else{
@@ -171,18 +164,6 @@ getPhoneNumber: function(e) {
     })
   },
 
-  textcheck:function(){
-    console.log("测试文案审核")
-    let content="习近平";
-    common.echecktext(content).then(function (e) {
-      console.log("返回的结果",e)
-      console.log("返回结果后")
-    })
-
-  },
-
-
-  
 
   sumittask: function(e) {
     let userdata = wx.getStorageSync('userdata').openid;
@@ -304,7 +285,7 @@ getPhoneNumber: function(e) {
         qiniuUploader.upload(that.data.uploaderList[i], (res) => { //that.data.uploaderList逐个取出来去上传
           state++;
           imgList.push(res.imageURL);
-          console.log(state) //输出上传到第几个了
+          //console.log(state) //输出上传到第几个了
           if (state == that.data.uploaderList.length) {
             resolve(imgList);
           }
@@ -319,7 +300,7 @@ getPhoneNumber: function(e) {
         })
       }
     }).then(function(imgList) {
-      console.log("多张图片返回结果上传数据库的", imgList[0])
+      //console.log("多张图片返回结果上传数据库的", imgList[0])
       let logo = imgList[0]
       that.creategroup(logo)
     })

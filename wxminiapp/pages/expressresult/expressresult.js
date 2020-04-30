@@ -29,7 +29,7 @@ Page({
         "Content-type": "application/json",
       },
       success: function(res) {
-        console.log("查询快递返回的信息",res)
+        //console.log("查询快递返回的信息",res)
         that.setData({
           loadModal: false
         })

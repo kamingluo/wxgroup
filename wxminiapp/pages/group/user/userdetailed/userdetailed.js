@@ -29,8 +29,6 @@ Page({
   },
 
   onLoad: function (options) {
-    console.log(options)
-
     this.setData({
       role: options.role,
       crowd_id: options.crowd_id,
@@ -56,7 +54,6 @@ Page({
         user_id: user_id,
       },
       success: res => {
-        console.log("查询该群该用户的详细信息", res)
         that.setData({
           userdata: res.querygroupuserdata[0],
           num: res.querygroupuserdata[0].score,
@@ -164,7 +161,6 @@ Page({
 
 
   bindKeyInput:function(e){
-    console.log(e.detail.value)
     this.setData({
       operationscore: e.detail.value,
     })
@@ -345,7 +341,6 @@ Page({
   },
 
   confirmremarks:function(){
-    //console.log("备注啊",this.data.remarksValue)
     if (this.data.remarksValue){
       this.reviseremarks()
     }else{

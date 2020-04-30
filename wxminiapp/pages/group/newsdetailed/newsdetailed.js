@@ -35,7 +35,6 @@ Page({
       },
       method: 'GET',
       success: res => {
-        // console.log('消息详情页面', res.newsdetails);
         this.setData({
           newsdetails: res.newsdetails,
         })
@@ -46,7 +45,6 @@ Page({
 
 
   clickimage: function(e) {
-    //console.log(e.currentTarget.dataset.data)
     this.setData({
       tankuang: true,
       taskimageurl: e.currentTarget.dataset.data
@@ -68,7 +66,6 @@ Page({
     var imgSrc = this.data.imgurl
     wx.getSetting({
       success(res) {
-        console.log(res)
         var writePhotosAlbum = wx.getStorageSync('writePhotosAlbum')
         if (!res.authSetting['scope.writePhotosAlbum'] && writePhotosAlbum) {
           wx.showToast({
@@ -77,7 +74,7 @@ Page({
           })
           that.openSetting()
         } else {
-          console.log("开始下载图片")
+          //console.log("开始下载图片")
           that.downloadimages()
           
         }
@@ -93,16 +90,15 @@ Page({
         wx.downloadFile({
           url: that.data.newsdetails.images[i],
           success: function (res) {
-            console.log("下载图片成功", res);
+            //console.log("下载图片成功", res);
             //图片保存到本地
             wx.saveImageToPhotosAlbum({
               filePath: res.tempFilePath,
               success: function (data) {
-                console.log("下载成功", data);
+                //console.log("下载成功", data);
                 resolve("kaming");
               },
               fail: function (res) {
-                console.log(res)
                 wx.setStorageSync('writePhotosAlbum', true)
                 reject('error');
               }
@@ -131,7 +127,7 @@ Page({
         qiniuUploader.upload(that.data.uploaderList[i], (res) => { //that.data.uploaderList逐个取出来去上传
           state++;
           imgList.push(res.imageURL);
-          console.log(state) //输出上传到第几个了
+         // console.log(state) //输出上传到第几个了
           if (state == that.data.uploaderList.length) {
             resolve(imgList);
           }
@@ -146,8 +142,7 @@ Page({
           })
       }
     }).then(function (imgList) {
-      console.log("多张图片返回结果上传数据库的", imgList)
-
+     // console.log("多张图片返回结果上传数据库的", imgList)
       that.uploadtask(imgList)
 
     })

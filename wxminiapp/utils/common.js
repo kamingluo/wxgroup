@@ -150,10 +150,7 @@ function recordmsg(e){
     data: e,
     success: res => {
       console.log("记录推送", res)
-    },
-    fail: res => {
-      console.log(res)
-    },
+    }
   })
 }
 
@@ -167,7 +164,6 @@ function echecktext(content) {
             content: content,
           },
           success: res => {
-            // console.log("内容审核结果", res)
             resolve(res);
           },
           fail: res => {

@@ -90,11 +90,9 @@
         var p = JSON.parse(q);
         var n = d.qiniuImageURLPrefix + p.key;
         p.imageURL = n;
-        console.log(p);
         l(p)
       },
       fail: function(n) {
-        console.log(n);
         g(n)
       }
     })
@@ -109,9 +107,6 @@
         if (g) {
           g()
         }
-      },
-      fail: function(h) {
-        console.log(h)
       }
     })
   }

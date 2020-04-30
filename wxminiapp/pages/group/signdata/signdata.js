@@ -19,7 +19,6 @@ Page({
     scrollLeft: 0
   },
   tabSelect(e) {
-    console.log(e.currentTarget.dataset.id)
     this.setData({
       TabCur: e.currentTarget.dataset.id,
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60
@@ -53,7 +52,6 @@ Page({
         crowd_id: crowd_id,
       },
       success: res => {
-        console.log("今日签到数据",res.data)
         this.setData({
           todaysigninlist: res.data,
         })
@@ -71,7 +69,6 @@ Page({
         crowd_id: crowd_id,
       },
       success: res => {
-        console.log("历史签到数据", res.data)
         this.setData({
           signinrankinglist: res.data,
         })
@@ -82,9 +79,7 @@ Page({
 
   //点击用户列表
   clickuserlist: function (e) {
-    console.log("点击用户列表", e.currentTarget.dataset.data)
     if(this.data.user_type == 1 || this.data.user_type == 2 ){
-      console.log("你不是群员，能跳转")
       let data = e.currentTarget.dataset.data
       wx.navigateTo({
         url: '/pages/group/user/userdetailed/userdetailed' + '?crowd_id=' + this.data.crowd_id + '&user_id=' + data.user_id + '&role=' + this.data.user_type,

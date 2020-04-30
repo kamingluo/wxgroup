@@ -33,7 +33,6 @@ Page({
         crowd_id: options.crowd_id
       },
       success: res => {
-        //console.log('用户兑换列表页面', res);
         this.setData({
           usertasklist: res.usertasklist,
           loadModal: false,
@@ -43,7 +42,6 @@ Page({
   },
 
   clicktasklist: function (e) {
-    console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
       url: '/pages/my/score_detailed/task_detailed/task_detailed?id=' + e.currentTarget.dataset.id
     })

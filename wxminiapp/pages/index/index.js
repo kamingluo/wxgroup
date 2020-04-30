@@ -71,7 +71,6 @@ Page({
 
   //点击轮播图
   clickSwiper: function (e) {
-    //console.log("点击轮播图数据", e.currentTarget.dataset.data)
     common.insidejump(e.currentTarget.dataset.data)
   },
 
@@ -104,7 +103,6 @@ Page({
 
   //用户加入群列表2,http://material.gzywudao.top/moren.jpg
   usergroup2: function () {
-    //console.log("再拿一次用户的群组数据")
     var that = this
     wx.login({
       success: res => {
@@ -130,7 +128,6 @@ Page({
 
   //用户加入群列表3,再拿一次
   usergroup3: function () {
-    //console.log("再拿一次用户的群组数据")
     var that = this
     wx.login({
       success: res => {
@@ -154,7 +151,6 @@ Page({
 
 
   clickusergrouplist:function(e){
-   // console.log("点击群列表", e.currentTarget.dataset.data)
     wx.navigateTo({
       url: '/pages/group/groupdetails/groupdetails?id=' + e.currentTarget.dataset.data.id + '&user_type=' + e.currentTarget.dataset.data.user_type + '&score=' + e.currentTarget.dataset.data.score,
     })
@@ -171,7 +167,6 @@ Page({
 
  //判断用户有没有授权
   getUserInfoif:function(){
-    console.log("222222222")
     var that = this
     wx.getSetting({
       success(res) {
@@ -225,9 +220,7 @@ Page({
   aaaaaaa() {
     wx.getSetting({
       success(res) {
-        console.log("vres.authSetting['scope.address']：", res.authSetting['scope.address'])
         if (res.authSetting['scope.address']) {
-          console.log("11111")
           wx.chooseAddress({
             success(res) {
               console.log(res)
@@ -237,14 +230,12 @@ Page({
 
         } else {
           if (res.authSetting['scope.address'] == false) {
-            console.log("22222222")
             wx.openSetting({
               success(res) {
                 console.log(res.authSetting)
               }
             })
           } else {
-            console.log("eeeeeee")
             wx.chooseAddress({
               success(res) {
                 console.log(res)

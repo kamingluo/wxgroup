@@ -2,7 +2,6 @@
 const common = require('./utils/common.js') //公共函数
 const { request } = require('./utils/request.js')//公共请求方法
 const ald = require('./utils/sdk/ald/ald-stat.js') //阿拉丁统计
-// const wlad = require('./utils/sdk/wlad/wlad_sdk.min.js'); //微量广告
 var App = require('./utils/sdk/xmad/xmadx_sdk.min.js').xmad(App, 'App').xmApp; //小盟广告
 App({
   globalData: {
@@ -80,7 +79,6 @@ App({
     let scene = e.scene
     let channel = e.query.channel || 0
     if (channel == 0 && scene == 1001 || scene == 1129 ) {
-      console.log("11111111")
       this.globalData.display = false;
     }
     else {

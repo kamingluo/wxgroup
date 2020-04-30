@@ -3,7 +3,6 @@ const request = (config) => {
   if (config == null) {
     return false;
   }
-  // console.log("config", channel)
   const data = config.data || {}
   const adddata={
     channel: wx.getStorageSync('userdata').channel || 0,
@@ -11,7 +10,6 @@ const request = (config) => {
   }
 
   const requestdata = Object.assign(adddata, data);//合并的时候adddata放前面,是后面的data覆盖前面的adddata
-  //console.log("data", requestdata)
   config.loading && wx.showLoading({
     title: '正在加载',
     mask: true
@@ -31,7 +29,6 @@ const request = (config) => {
         })
         config.fail && config.fail(data);
       } else {
-        //console.log("接口返回值",res)
         const data = res.data;
         if (data.state == 200) {
           config.success && config.success(data);

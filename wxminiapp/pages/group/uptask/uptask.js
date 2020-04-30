@@ -52,7 +52,6 @@ Page({
       sizeType: ['compressed'], // 只有压缩图
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function(res) {
-        console.log("返回选定照片的本地文件路径列表", res)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths;
         let uploaderList = that.data.uploaderList.concat(tempFilePaths);
@@ -70,7 +69,6 @@ Page({
   },
 
   onLoad: function(options) {
-    console.log("提交任务页面logo", options)
     this.setData({
       //设置active的值为用户点击按钮的索引值
       crowd_id: options.crowd_id,
@@ -92,7 +90,7 @@ Page({
     wx.requestSubscribeMessage({
       tmplIds: ['fIbB90FHxqlRURZGGo0PmcdAKWaUoxziV_loz90ftVs'],
       success(res) {
-        console.log("同意了请求，统计一下")
+        //console.log("同意了请求，统计一下")
         //先写死一个推送id
         let tmpid = 'fIbB90FHxqlRURZGGo0PmcdAKWaUoxziV_loz90ftVs';
         let openid = wx.getStorageSync('userdata').openid
@@ -120,7 +118,6 @@ Page({
     //   loadModal: true,
     // })
     // return;
-    console.log(this.data.uploaderList.length)
     if (this.data.uploaderList.length == 0) {
       // wx: wx.showToast({
       //   title: "审核图片不能为空",
@@ -151,7 +148,6 @@ Page({
         qiniuUploader.upload(that.data.uploaderList[i], (res) => { //that.data.uploaderList逐个取出来去上传
           state++;
           imgList.push(res.imageURL);
-          console.log(state) //输出上传到第几个了
           if (state == that.data.uploaderList.length) {
             resolve(imgList);
           }
@@ -166,8 +162,6 @@ Page({
         })
       }
     }).then(function(imgList) {
-      console.log("多张图片返回结果上传数据库的", imgList)
-
       that.uploadtask(imgList)
 
     })

@@ -37,7 +37,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("跳转携带过来的参数", options)
+    //console.log("跳转携带过来的参数", options)
     if (options.user_type == 1 || options.user_type == 2 ){
       this.setData({
         user_type: options.user_type,
@@ -216,8 +216,6 @@ Page({
         pages:1
       },
       success: res => {
-        console.log("----------------------")
-        console.log(res)
         this.setData({
           groupnewslist: res.data,
         })
@@ -322,7 +320,7 @@ Page({
       },
       success: res => {
         //console.log("今天是否能签到查询")
-        console.log(res)
+        //console.log(res)
         this.setData({
           signindata: res.signindata,//签到配置数据
           todaywhethersignin: res.ifsignin,//是否能签到
@@ -348,7 +346,7 @@ Page({
             code: res.code,
           },
           success: res => {
-            console.log("签到成功", res)
+            //console.log("签到成功", res)
             // wx.showToast({
             //   title: '签到成功',
             //   icon: 'success',

@@ -24,7 +24,6 @@ Page({
    * 输入框输入值
    */
   search: function (e) {
-    console.log(e.detail.value)
     this.setData({
       searchInput: e.detail.value
     })
@@ -74,7 +73,6 @@ Page({
   clickquery:function(){
     var that=this
     if (that.data.searchInput){
-      console.log("输入信息不为空")
       var nickName = that.data.searchInput
       var crowd_id = that.data.crowd_id
       request({
@@ -85,7 +83,6 @@ Page({
           nickName: nickName
         },
         success: res => {
-          console.log("查询的群用户", res.querygroupuser)
           that.setData({
             groupuserlist: res.querygroupuser,
           })
@@ -101,7 +98,6 @@ Page({
 
    //点击用户列表
   clickuserlist:function(e){
-    console.log("点击用户列表", e.currentTarget.dataset.data)
     let data = e.currentTarget.dataset.data
     wx.navigateTo({
       url: '/pages/group/user/userdetailed/userdetailed' + '?crowd_id=' + this.data.crowd_id + '&user_id=' + data.id + '&role=' + this.data.user_type,

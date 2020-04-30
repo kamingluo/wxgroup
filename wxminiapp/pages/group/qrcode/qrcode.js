@@ -51,7 +51,7 @@ Page({
         crowd_id: crowd_id,
       },
       success: res => {
-        console.log('生成二维码成功', res);
+       // console.log('生成二维码成功', res);
         wx.hideLoading()
         this.setData({
           imgurl: 'https://group.gzywudao.top/php/public/qrcode/' + crowd_id + '.png',
@@ -67,7 +67,6 @@ Page({
     var imgSrc = this.data.imgurl
     wx.getSetting({
       success(res) {
-        console.log(res)
         var writePhotosAlbum = wx.getStorageSync('writePhotosAlbum')
         if (!res.authSetting['scope.writePhotosAlbum'] && writePhotosAlbum) {
           that.openSetting()
@@ -80,19 +79,16 @@ Page({
           wx.downloadFile({
             url: imgSrc,
             success: function (res) {
-              console.log("下载图片成功", res);
               //图片保存到本地
               wx.saveImageToPhotosAlbum({
                 filePath: res.tempFilePath,
                 success: function (data) {
-                  console.log(data);
                   wx.showToast({
                     title: "下载成功",
                     icon: 'none'
                   })
                 },
                 fail: function (res) {
-                  console.log(res)
                   wx.setStorageSync('writePhotosAlbum', true)
                 }
               })

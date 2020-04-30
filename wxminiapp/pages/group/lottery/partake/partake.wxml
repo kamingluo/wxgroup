@@ -22,7 +22,7 @@
     <view class="cu-list">
       <view class="col-1 ">
         <view class="cu-list-text">
-          <text wx:if="{{item.luck_mode==0}}">开奖说明：满 {{lottery_data.packed_lottery}}人开奖</text>
+          <text wx:if="{{lottery_data.luck_mode==0}}">开奖说明：满 {{lottery_data.packed_lottery}}人开奖</text>
           <text wx:else>开奖说明：{{lottery_data.time_lottery}}开奖</text>
         </view>
         <view class="cu-list-text ">

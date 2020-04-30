@@ -49,14 +49,10 @@ Page({
               code: res.code,
             },
             success: res => {
-              console.log("fanfaopenid", res.userlogin)
               that.setData({
                 userlogin:res.userlogin,
               })
-            },
-            fail: res => {
-              console.log(res)
-            },
+            }
           })
         }
       });
@@ -82,10 +78,7 @@ getPhoneNumber: function(e) {
         },
         success: res => {
           that.sumittask()
-        },
-        fail: res => {
-          console.log(res)
-        },
+        }
       })
     }
     else{
@@ -101,7 +94,6 @@ getPhoneNumber: function(e) {
   facehandler(e) {
     var id = e.currentTarget.dataset.data.id;
     var checkedimg = e.currentTarget.dataset.data.image;
-    console.log(id, checkedimg)
     this.setData({
       isChecked: id,
       checkedimg: checkedimg
@@ -144,7 +136,6 @@ getPhoneNumber: function(e) {
       sizeType: ['compressed'], // 只有压缩图
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function(res) {
-        console.log("返回选定照片的本地文件路径列表", res)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths;
         let uploaderList = that.data.uploaderList.concat(tempFilePaths);
@@ -162,7 +153,6 @@ getPhoneNumber: function(e) {
   },
 
   onLoad: function(options) {
-    console.log("提交任务页面logo", options)
     this.setData({
       //设置active的值为用户点击按钮的索引值
       crowd_id: options.crowd_id,
@@ -180,7 +170,6 @@ getPhoneNumber: function(e) {
   },
 
   sumittask: function(e) {
-    console.log(this.data.uploaderList.length)
     if (this.data.uploaderList.length == 0 && this.data.tasktext == null ) {
       wx: wx.showToast({
         title: "图片或者描述不能为空",
@@ -214,7 +203,6 @@ getPhoneNumber: function(e) {
           qiniuUploader.upload(that.data.uploaderList[i], (res) => { //that.data.uploaderList逐个取出来去上传
             state++;
             imgList.push(res.imageURL);
-            console.log(state) //输出上传到第几个了
             if (state == that.data.uploaderList.length) {
               resolve(imgList);
             }
@@ -229,7 +217,6 @@ getPhoneNumber: function(e) {
             })
         }
       }).then(function (imgList) {
-        console.log("多张图片返回结果上传数据库的", imgList)
         that.uploadtask(imgList)
       })
 

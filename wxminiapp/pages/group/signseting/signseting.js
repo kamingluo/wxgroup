@@ -28,7 +28,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("dakai", options)
     this.setData({
       crowd_id: options.crowd_id,
     })
@@ -105,7 +104,6 @@ upconfig: function() {
     method: 'POST',
     data: updata,
     success: res => {
-      console.log(res)
       wx.showToast({
         title: '提交成功',
         icon: 'success',
@@ -131,7 +129,6 @@ upconfig: function() {
 
 
   statechange: function(e) {
-    console.log('开关选择', e)
     let value = e.detail.value ? 0 : 1;
     this.setData({
       state: value
@@ -140,7 +137,6 @@ upconfig: function() {
   },
 
   score: function(e) {
-    console.log('签到奖励', e.detail.value)
     this.setData({
       score: e.detail.value
     })
@@ -153,14 +149,12 @@ upconfig: function() {
 
   },
   continuityday: function(e) {
-    console.log('连续签到天数', e.detail.value)
     this.setData({
       continuity_signin_day: e.detail.value
     })
 
   },
   continuityscore: function(e) {
-    console.log('连续签到奖励', e.detail.value)
     this.setData({
       continuity_signin_score: e.detail.value
     })
@@ -168,7 +162,6 @@ upconfig: function() {
   },
 
   continuitychange: function(e) {
-    console.log('是否开启连续签到', e.detail.value)
     let value = e.detail.value ? 0 : 1;
     this.setData({
       continuity_signin: value
@@ -177,13 +170,11 @@ upconfig: function() {
   },
 
   startDateChange(e) {
-    console.log('开始时间', e)
     this.setData({
       start_time: e.detail.value
     })
   },
   endDateChange(e) {
-    console.log('结束时间', e)
     this.setData({
       end_time: e.detail.value
     })

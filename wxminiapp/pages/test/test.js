@@ -12,8 +12,6 @@ Page({
     wx.downloadFile({
       url: 'https://group.gzywudao.top/php/public/miniapp.php/group/downloadfile/exchangelist?crowd_id=14&state=1',
       success: function (res) {
-        console.log("下载成功", res);
-        console.log("保存地址",res.tempFilePath)
         //图片保存到本地
         wx.saveFile({
           tempFilePath: res.tempFilePath,
@@ -23,20 +21,18 @@ Page({
               duration: 2000,
               icon: 'none',
             })
-            console.log("保存成功", res);
             // const savedFilePath = res.savedFilePath;
             var savedFilePath = res.savedFilePath;
-            console.log('文件已下载到' + savedFilePath);
            // 打开文件
             wx.openDocument({
               filePath: savedFilePath,
               success: function (res) {
-                console.log('打开文档成功')
+                //console.log('打开文档成功')
               },
             });
           },
           fail: function (err) {
-            console.log('保存失败：', err)
+            //console.log('保存失败：', err)
           }
         });
       }
