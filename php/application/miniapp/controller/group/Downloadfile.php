@@ -49,7 +49,7 @@ class Downloadfile
             if($value['state']==0){
                 $type="未发货";
             }
-            elseif ($value['state']==0){
+            elseif ($value['state']==1){
                 $type="已发货";
             }
             else{
