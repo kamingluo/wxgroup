@@ -24,7 +24,7 @@ class User
         $dbnum =db('user')->where('openid',$openid)->find();//查询用户信息
         //return  $dbnum["channel"];
         if($dbnum==null){
-                $dbdata = ['id'=>'','openid' =>$openid,'channel' => $channel,'scene' => $scene,'nickName' => null,'avatarUrl' => null,'gender' => null,'province' => null,'city' => null,'country' => null,'birthday' => null,'create_time' =>$time ,'update_time' =>$time];
+                $dbdata = ['id'=>'','openid' =>$openid,'channel' => $channel,'scene' => $scene,'coin' => 0,'nickName' => null,'avatarUrl' => null,'gender' => null,'province' => null,'city' => null,'country' => null,'birthday' => null,'create_time' =>$time ,'update_time' =>$time];
                 $userId= db('user')->insertGetId($dbdata);//返回自增ID
 
                  $userjoingroup= joingroup($crowd_id, $userId, $openid);
@@ -79,7 +79,7 @@ class User
         $dbnum =db('user')->where('openid',$openid)->find();//查询用户信息
         //return  $dbnum["channel"];
         if($dbnum==null){
-                $dbdata = ['id'=>'','openid' =>$openid,'channel' => $channel,'scene' => $scene,'nickName' => $nickName,'avatarUrl' =>$avatarUrl,'gender' =>$gender,'province' => $province,'city' => $city,'country' => $country,'birthday' => null,'create_time' =>$time ,'update_time' =>$time];
+                $dbdata = ['id'=>'','openid' =>$openid,'channel' => $channel,'scene' => $scene,'coin' => 0,'nickName' => $nickName,'avatarUrl' =>$avatarUrl,'gender' =>$gender,'province' => $province,'city' => $city,'country' => $country,'birthday' => null,'create_time' =>$time ,'update_time' =>$time];
                 
                 $userId= db('user')->insertGetId($dbdata);//返回自增ID
                 $userjoingroup= joingroup($crowd_id, $userId, $openid);
