@@ -12,29 +12,38 @@ Page({
     coins:{},//配置的金币奖励数
     coinmodal:false,//获得金币弹框
     coinmodalnumber:null,//弹框显示金币数
-    banneradshow:true,//banner广告模块是否展示
-    gridadshow:true,//格子广告是否展示
+    banneradshow:false,//banner广告模块是否展示
+    gridadshow:false,//格子广告是否展示
 
   },
 
   onLoad: function (options) {
     this.usertodayads()
-
   },
 
   onShow: function () {
     this.createvideoad()//提前加载视频广告
-
   },
 
+
+
+//广告加载成功或者失败展示交互
+  banneradsuccess:function(){
+    this.setData({
+      banneradshow: true
+    })
+  },
   banneraderr:function(){
     console.log("banner广告加载失败")
     this.setData({
       banneradshow: false
     })
   },
-
-
+  gridadsuccess:function(){
+    this.setData({
+      gridadshow: true
+    })
+  },
   gridaderr: function () {
     console.log("格子广告加载失败")
     this.setData({
@@ -46,22 +55,14 @@ Page({
 
 
 
-
-
-
-
-
-
-
-
-  //跳转创建群按钮
+//跳转创建群按钮
   creategroup: function () {
     wx.navigateTo({
       url: '/pages/creategroup/creategroup',
     })
   },
 
-  //用户今天的广告数据
+//用户今天的广告数据
   usertodayads:function(){
     var that =this
     let user_id = wx.getStorageSync('userdata').id;
@@ -91,14 +92,14 @@ Page({
     })
 
   },
-  //关闭弹框
+//关闭弹框
   closemodal:function(){
     this.setData({
       coinmodal:false,
     })
   },
 
-  //预先创建视频广告
+//预先创建视频广告
   createvideoad:function(){
     var that = this;
     // 在页面中定义激励视频广告
@@ -126,7 +127,7 @@ Page({
     }
   },
 
-  //点击播放视频广告
+//点击播放视频广告
   showvideoad:function(){
     var that = this;
     console.log("观看视频广告")
@@ -144,7 +145,7 @@ Page({
     }
   },
  
-  //看视频完成加奖励
+//看视频完成加奖励
   lookvideoad: function (adid) {
     var that = this;
     var nowTime = Date.now();
@@ -177,9 +178,14 @@ Page({
     })
 
   },
-
-
-  onShareAppMessage: function () {
-
+//用户分享
+ onShareAppMessage: function () {
+  return {
+    title: "群记分小程序，一款好用的群管理工具。",
+    desc: "群记分小程序，一款好用的群管理工具。",
+    imageUrl: 'https://material.gzywudao.top/image/group/groupicon.png',
+    path: '/pages/index/index?channel=1001&ald_media_id=33542&ald_link_key=c99244f0802f9f06', // 路径，传递参数到指定页面。
   }
+
+ }
 })

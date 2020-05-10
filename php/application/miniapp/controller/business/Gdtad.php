@@ -39,7 +39,7 @@ class Gdtad
         $user_id =$request->param("user_id");
         $channel=$request->param("channel");
         $adid=$request->param("adid");
-        $coin = 100; //写死多少金币
+        $coin = 80; //写死多少金币
     	$time =date('Y-m-d H:i:s',time());//获取当前时间
     	$dbnum =db('gdt_ad_record')->where('openid',$openid)->where('adtype',1)->whereTime('create_time', 'today')->count();//查询今日点广告数
     	if($dbnum >= 2){
@@ -79,7 +79,7 @@ class Gdtad
         $user_id =$request->param("user_id");
         $channel=$request->param("channel");
         $adid=$request->param("adid");
-        $coin = 80; //写死多少金币
+        $coin = 70; //写死多少金币
     	$time =date('Y-m-d H:i:s',time());//获取当前时间
     	$dbnum =db('gdt_ad_record')->where('openid',$openid)->where('adtype',3)->whereTime('create_time', 'today')->count();//查询今日点广告数
     	if($dbnum >= 2){
@@ -118,7 +118,7 @@ class Gdtad
         $user_id =$request->param("user_id");
         $channel=$request->param("channel");
         $adid=$request->param("adid");
-        $coin = 50; //写死多少金币
+        $coin = 40; //写死多少金币
     	$time =date('Y-m-d H:i:s',time());//获取当前时间
     	$dbnum =db('gdt_ad_record')->where('openid',$openid)->where('adtype',2)->whereTime('create_time', 'today')->count();//查询今日点广告数
     	if($dbnum >= 5){

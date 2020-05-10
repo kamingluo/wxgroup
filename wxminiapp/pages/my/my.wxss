@@ -117,7 +117,7 @@ flex-basis: 400rpx;
   height: 40rpx;
   width: 40rpx;
   margin-left: 8rpx;
-  margin-top: 5rpx;
+  margin-top: 3rpx;
 }
 
 .score_button button{

@@ -9,7 +9,7 @@
   <view class="centered top">
     <view class="explain">
       <view class="title">
-        <text>方法一:创建群并邀请好友加入</text>
+        <text>创建群并邀请好友加入</text>
       </view>
       <view class="content">
         <text>创建一个群空间，并邀请新用户加入。</text> </view>
@@ -48,7 +48,7 @@
   <view class="centered top">
     <view class="explain">
       <view class="title">
-        <text>方法二:看视频广告得奖励</text>
+        <text>看视频广告得奖励</text>
       </view>
       <view class="content">
         <text>点击下面去观看按钮打开视频。</text> </view>
@@ -84,14 +84,14 @@
 
 
 
-<view wx:if="{{banneradshow}}">
-  <view class="centered adtop">
+<view>
+  <view class="centered adtop" wx:if="{{banneradshow}}">
     <view class="explain">
       <view class="title">
-        <text>方法三:体验广告得奖励</text>
+        <text>体验广告得奖励</text>
       </view>
       <view class="content">
-        <text>点击下面广告体验15秒即可获得<text style="color:red; font-weight: 600;font-size: 35rpx;">{{coins.banner}}金币</text>奖励。</text>
+        <text>点击下面广告体验12秒即可获得<text style="color:red; font-weight: 600;font-size: 35rpx;">{{coins.banner}}金币</text>奖励。</text>
       </view>
       <view class="content">
         <text>每天2次机会,当前次数：<text style="color:red;">{{clickdata.banner}}/2</text> </text>
@@ -102,7 +102,7 @@
   <!-- 广点通banner广告开始-->
   <view class='centered'>
     <view class='gdtad'>
-      <ad capture-bind:tap="gdtbannerclick" unit-id="adunit-53f29d2c52baa487"  ad-intervals="30"  binderror="banneraderr"></ad>
+      <ad capture-bind:tap="gdtbannerclick" unit-id="adunit-53f29d2c52baa487"  ad-intervals="30"  bindload="banneradsuccess" binderror="banneraderr"></ad>
     </view>
   </view>
   <!--广点通banner广告结束-->
@@ -111,14 +111,14 @@
 
 
 
-<view wx:if="{{gridadshow}}">
-  <view class="centered adtop">
+<view class="gridadbody">
+  <view class="centered adtop" wx:if="{{gridadshow}}">
     <view class="explain">
       <view class="title">
-        <text>方法四:体验游戏得奖励</text>
+        <text>体验游戏得奖励</text>
       </view>
       <view class="content">
-        <text>点击体验下面任意小游戏15秒即可获得<text style="color:red; font-weight: 600;font-size: 35rpx;">{{coins.grid}}金币</text>奖励。</text>
+        <text>点击体验下面任意小游戏12秒即可获得<text style="color:red; font-weight: 600;font-size: 35rpx;">{{coins.grid}}金币</text>奖励。</text>
       </view>
       <view class="content">
         <text>每天2次机会,当前次数：<text style="color:red;">{{clickdata.grid}}/2</text> </text>
@@ -129,7 +129,7 @@
   <!-- 广点通格子广告开始-->
   <view class='centered'>
     <view class='gdtad'>
-      <ad  capture-bind:tap="gdtgridclick" unit-id="adunit-1d1320feca860080" ad-intervals="30"  ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="black"  binderror="gridaderr"></ad>
+      <ad  capture-bind:tap="gdtgridclick" unit-id="adunit-1d1320feca860080" ad-intervals="30"  ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="black"  bindload="gridadsuccess" binderror="gridaderr"></ad>
     </view>
   </view>
   <!--广点通格子广告结束-->

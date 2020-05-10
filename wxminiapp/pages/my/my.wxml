@@ -77,7 +77,7 @@
     <kaming-button>
       <view class="content ">
         <text class="cuIcon-pay text-blue iconsize"></text>
-        <text class="text-grey">任务记录</text>
+        <text class="text-grey">群任务记录</text>
       </view>
     </kaming-button>
   </view>
@@ -85,7 +85,7 @@
     <kaming-button>
       <view class="content ">
         <text class="cuIcon-present text-red iconsize"></text>
-        <text class="text-grey">兑换记录</text>
+        <text class="text-grey">群兑换记录</text>
       </view>
     </kaming-button>
   </view>
