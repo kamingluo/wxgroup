@@ -24,7 +24,7 @@ class Gdtad
         $grid =db('gdt_ad_record')->where('user_id',$user_id)->where('adtype',3)->whereTime('create_time', 'today')->count();//查询今日点击格子广告数
         $state=['state' => '200','message' => "用户今日点击广告数" ];
         $data=['banner' => $banner,'video' => $video,'grid' => $grid];
-        $coins=['banner' => 100,'video' => 50,'grid' =>80];//配置奖励金币数
+        $coins=['invitation' => 30,'banner' => 80,'video' => 40,'grid' =>70];//配置奖励金币数
         $resdata=array_merge($state,array('clickdata'=>$data),array('coins'=>$coins));
         return $resdata;
     }

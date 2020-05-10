@@ -39,16 +39,35 @@
   </view>
 </view>
 
-<!-- <view class='score'>
+<view class='score'>
   <view class='score_text'>
-    当前共有：
-    <text>{{userdata.score}}</text>
+    <text>我的金币：<text style="color:red">{{userdata.coin}}</text></text>
+
     <image src='../../images/common/coin.svg'></image>
   </view>
-  <view class='score_button'>
-    <button bindtap='exchange' class=' bg-blue'>立即兑换</button>
+</view>
+
+
+<view class="cu-list grid col-3">
+  <view class="cu-item"  data-jumpid="1" bindtap="business">
+    <view class="cuIcon-rechargefill text-yellow">
+    </view>
+    <text>去赚金币</text>
   </view>
-</view> -->
+
+  <view class="cu-item" data-jumpid="2" bindtap="business" >
+    <view class="cuIcon-presentfill text-red">
+    </view>
+    <text>兑换商城</text>
+  </view>
+
+ <view class="cu-item" data-jumpid="3" bindtap="business" >
+    <view class="cuIcon-formfill text-cyan">
+    </view>
+    <text>兑换记录</text>
+  </view>
+
+</view>
 
 
 
@@ -71,7 +90,7 @@
     </kaming-button>
   </view>
 
-  <view class="cu-item arrow"  bindtap='myaddress' >
+  <view class="cu-item arrow" bindtap='myaddress'>
     <view class="content" hover-class="none">
       <text class="cuIcon-locationfill text-yellow iconsize"></text>
       <text class="text-grey">我的地址</text>
@@ -80,7 +99,7 @@
 
   <view class="cu-item arrow">
     <!-- <button class="cu-btn content" open-type="contact"   session-from='{"nickName":"{{userdata.nickName}}{{userdata.id}}"},"avatarUrl":"{{userdata.avatarUrl}}"}'> -->
-      <button class="cu-btn content" open-type="contact"   session-from='{"nickName":"{{userdata.nickName}}{{userdata.id}}","avatarUrl":"{{userdata.avatarUrl}}"}'>
+    <button class="cu-btn content" open-type="contact" session-from='{"nickName":"{{userdata.nickName}}{{userdata.id}}","avatarUrl":"{{userdata.avatarUrl}}"}'>
       <!-- <image src="/images/logo.png" class="png" mode="aspectFit"></image> -->
       <text class="cuIcon-service text-cyan  iconsize"></text>
       <text class="text-grey">联系我们</text>
@@ -93,7 +112,7 @@
       <text class="text-grey">投诉建议</text>
     </button>
   </view>
-<!-- 
+  <!-- 
   <view class="cu-item arrow">
     <view class="content" hover-class="none">
       <text class="cuIcon-creativefill text-orange iconsize"></text>

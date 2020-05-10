@@ -157,8 +157,6 @@ Page({
   },
 
   clickgroup:function(){
-    let userdata = wx.getStorageSync('userdata').openid;
-    app.aldstat.sendEvent('首页创建群按钮', userdata);
     wx.navigateTo({
       url: '/pages/creategroup/creategroup',
     })

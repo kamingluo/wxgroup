@@ -11,8 +11,9 @@
 
 
 .top{
-  height: 240rpx;
+  height: 220rpx;
   width: 100%;
+  margin-top: -20rpx;
 
 }
 .user{
@@ -20,6 +21,7 @@
   display: flex;
    flex-direction:row;
    justify-content:space-around;
+   margin-bottom:100rpx;
 }
 .userAvatar{
    display: flex;
@@ -94,7 +96,6 @@ flex-basis: 400rpx;
   height: 100rpx;
   display: flex;
   flex-direction:row;
-  justify-content:space-around;
   text-align: center;
   align-items:center;
   background-color: #ffffff;
@@ -103,19 +104,20 @@ flex-basis: 400rpx;
 }
 .score_text{
   display: flex;
-  align-items:center;
   font-size: 40rpx;
+  margin-left: 30rpx;
 }
 
 .score_text text{
-  font-size: 50rpx;
+  font-size: 35rpx;
   font-weight: 600;
 } 
 
 .score_text image{
-  height: 50rpx;
-  width: 50rpx;
-  margin-left: 10rpx;
+  height: 40rpx;
+  width: 40rpx;
+  margin-left: 8rpx;
+  margin-top: 5rpx;
 }
 
 .score_button button{
@@ -137,4 +139,16 @@ flex-basis: 400rpx;
   width: 94%;
   border-radius: 15rpx;
   margin-bottom: 20rpx;
+}
+
+
+.cu-list.card-menu {
+	overflow: hidden;
+	margin-right: 0rpx;
+	margin-left: 0rpx;
+	border-radius: 0rpx
+}
+
+.cu-list+.cu-list {
+	margin-top: 15rpx
 }

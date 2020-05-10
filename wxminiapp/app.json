@@ -37,7 +37,10 @@
     "pages/my/score_detailed/score_detailed",
     "pages/my/my_address/my_address",
     "pages/my/exchangelist/exchangelist",
-    "pages/my/score_detailed/task_detailed/task_detailed"
+    "pages/my/score_detailed/task_detailed/task_detailed",
+    "pages/business/gdtad/gdtad",
+    "pages/business/exchange_detailed/exchange_detailed",
+    "pages/business/exchange/exchange"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -29,7 +29,7 @@ page {
 	--oliveLight: #e8f4d9;
 	--greenLight: #d7f0db;
 	--cyanLight: #d2f1f0;
-	--blueLight: #1cbbb4;
+	--blueLight: #cce6ff;
 	--purpleLight: #e1d7f0;
 	--mauveLight: #ebd4ef;
 	--pinkLight: #f9d7ea;

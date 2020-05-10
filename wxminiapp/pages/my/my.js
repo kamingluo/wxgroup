@@ -80,6 +80,23 @@ Page({
   //   })
 
   // },
+
+  business:function(e){
+    let jumpid = e.currentTarget.dataset.jumpid;
+    if (jumpid ==1){
+      var url = '/pages/business/gdtad/gdtad';
+    }
+    else if (jumpid == 2){
+      var url = '/pages/business/exchange/exchange';
+    }
+    else{
+      var url = '/pages/business/exchange_detailed/exchange_detailed';
+    }
+    wx.navigateTo({
+      url: url
+    })
+
+  },
  
   myaddress:function(){
     wx.navigateTo({

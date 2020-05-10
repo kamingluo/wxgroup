@@ -1,0 +1,164 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">赚金币</view>
+</cu-custom>
+
+
+
+<view>
+  <view class="centered top">
+    <view class="explain">
+      <view class="title">
+        <text>方法一:创建群并邀请好友加入</text>
+      </view>
+      <view class="content">
+        <text>创建一个群空间，并邀请新用户加入。</text> </view>
+      <view class="content">
+        <text>不限次数,轻松赚金币。</text> </view>
+      <view class="content">
+        <text>金币可兑换各种奖品！前往：我的页面，打开兑换商城即可操作。</text> </view>
+    </view>
+  </view>
+
+
+  <view>
+    <view class='exchangelist'>
+      <view class='exchangedata coin '>
+        <button class="cu-btn bg-orange shadow">{{coins.invitation}}金币</button>
+      </view>
+      <view class='exchangedata exchangeexplain '>
+        <view class="exchangedata">
+          <view class='exchangegood'>
+            创建群空间并邀请好友
+          </view>
+          <view>
+            <text style='font-weight: 600; color:red ; font-size:30rpx; '>+{{coins.invitation}}金币/人</text>
+          </view>
+        </view>
+      </view>
+      <view class=' anniu' bindtap="creategroup">
+        <button class="cu-btn bg-orange round shadow">去创建</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view>
+  <view class="centered top">
+    <view class="explain">
+      <view class="title">
+        <text>方法二:看视频广告得奖励</text>
+      </view>
+      <view class="content">
+        <text>点击下面去观看按钮打开视频。</text> </view>
+      <view class="content">
+        <text>每天4次机会,当前次数：<text style="color:red;">{{clickdata.video}}/4</text> </text>
+      </view>
+    </view>
+  </view>
+
+
+  <view>
+    <view class='exchangelist'>
+      <view class='exchangedata coin '>
+        <button class="cu-btn bg-orange shadow">{{coins.video}}金币</button>
+      </view>
+      <view class='exchangedata exchangeexplain '>
+        <view class="exchangedata">
+          <view class='exchangegood'>
+            观看完整视频
+          </view>
+          <view>
+            <text style='font-weight: 600; color:red ; font-size:30rpx; '>+{{coins.video}}金币/次</text>
+          </view>
+        </view>
+      </view>
+      <view class='anniutwo' bindtap="showvideoad">
+        <button class="cu-btn bg-orange round shadow">去观看</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+<view wx:if="{{banneradshow}}">
+  <view class="centered adtop">
+    <view class="explain">
+      <view class="title">
+        <text>方法三:体验广告得奖励</text>
+      </view>
+      <view class="content">
+        <text>点击下面广告体验15秒即可获得<text style="color:red; font-weight: 600;font-size: 35rpx;">{{coins.banner}}金币</text>奖励。</text>
+      </view>
+      <view class="content">
+        <text>每天2次机会,当前次数：<text style="color:red;">{{clickdata.banner}}/2</text> </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 广点通banner广告开始-->
+  <view class='centered'>
+    <view class='gdtad'>
+      <ad capture-bind:tap="gdtbannerclick" unit-id="adunit-53f29d2c52baa487"  ad-intervals="30"  binderror="banneraderr"></ad>
+    </view>
+  </view>
+  <!--广点通banner广告结束-->
+</view>
+
+
+
+
+<view wx:if="{{gridadshow}}">
+  <view class="centered adtop">
+    <view class="explain">
+      <view class="title">
+        <text>方法四:体验游戏得奖励</text>
+      </view>
+      <view class="content">
+        <text>点击体验下面任意小游戏15秒即可获得<text style="color:red; font-weight: 600;font-size: 35rpx;">{{coins.grid}}金币</text>奖励。</text>
+      </view>
+      <view class="content">
+        <text>每天2次机会,当前次数：<text style="color:red;">{{clickdata.grid}}/2</text> </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 广点通格子广告开始-->
+  <view class='centered'>
+    <view class='gdtad'>
+      <ad  capture-bind:tap="gdtgridclick" unit-id="adunit-1d1320feca860080" ad-intervals="30"  ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="black"  binderror="gridaderr"></ad>
+    </view>
+  </view>
+  <!--广点通格子广告结束-->
+</view>
+
+
+
+<!-- 广点通视频广告开始-->
+<view class='centered' wx:if="{{!gridadshow && !banneradshow}}">
+  <view class='gdtad'>
+    <ad unit-id="adunit-eb3e08b94b84f91e" ad-type="video" ad-theme="white"></ad>
+  </view>
+</view>
+<!--广点通视频广告结束-->
+
+
+
+
+<!-- /*签到成功弹框开始*/ -->
+<view class='tankuang' wx:if="{{coinmodal}}">
+	<view class='beijing'>
+ 
+  <view class="coin-modal-title centered"> <text>恭喜你</text>  </view>
+  <view class="coin-modal-image centered"> <image src='../../../images/default.png' ></image> </view>
+
+  <view class="coin-modal-number centered"> <text>获得 <text style="color:red">金币+{{coinmodalnumber}}</text></text>  </view>
+
+  <view class="  coin-modal-button centered" bindtap="closemodal"> <button class="cu-btn bg-orange round shadow">我知道了</button> </view>
+
+	</view>
+</view>
+<!-- /*签到成功弹框结束*/ -->
