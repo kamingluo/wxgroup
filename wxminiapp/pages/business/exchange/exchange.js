@@ -142,7 +142,20 @@ Page({
     }
     else{
       //console.log("开始兑换")
-      that.exchange()
+      
+      wx.requestSubscribeMessage({
+        tmplIds: ['yXsOU_XloUNY1ihCb_bwm8bjstgw4P3SErpqi4AwMNE'],
+        success(res) {
+          console.log("授权成功")
+        },
+        complete() {
+          that.exchange() //成功不成功都执行下一步
+        }
+      })
+
+
+
+
     }
 
   },

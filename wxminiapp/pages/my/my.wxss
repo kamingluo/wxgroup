@@ -126,7 +126,7 @@ flex-basis: 400rpx;
   align-items:center;
   height: 60rpx;
   width: 160rpx;
-  font-size: 27rpx;
+  font-size: 25rpx;
   margin-left: 180rpx;
 
 }
