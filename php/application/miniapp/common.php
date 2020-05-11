@@ -41,7 +41,7 @@ function openid($wxcode){
    * 传入值code从小程序login API获取
    * @return string
 */
-function joingroup($crowd_id, $user_id, $user_openid){
+function joingroup($crowd_id, $user_id, $user_openid,$ifinvitation=0){
         if($crowd_id == 0 || $crowd_id == null){
             return  "不执行加群，直接返回";
         }
@@ -53,6 +53,21 @@ function joingroup($crowd_id, $user_id, $user_openid){
         }else{
             $dbdata = ['id'=>'','user_id' =>$user_id,'user_openid' => $user_openid,'crowd_id' => $crowd_id,'user_type' => 0,'score' =>0,'remarks' =>null,'create_time' =>$time];
             $user_crowdid= db('user_crowd')->insertGetId($dbdata);//返回自增ID
+            //群主邀请新人加入，加积分,是1才是证明是邀请的新用户
+            if($ifinvitation == 1){
+                $coin=30;//奖励金币数
+                //根据群id查群主id
+                $dbuserid =db('user_crowd')->where('user_type',1)->where('crowd_id',$crowd_id)->value('user_id');//查询群的群主用户id
+                $dbuser =db('user')->where('id',$dbuserid)->find();//查询群主的用户信息
+                $openid=$dbuser['openid'];//群主openid
+                $channel=$dbuser['channel'];//群主openid
+                //加积分
+                $addscore= db('user')->where('openid',$openid)->setInc('coin',$coin);
+                //增加积分变化记录
+                $datares = ['id'=>'','user_id' =>$dbuserid,'openid' =>$openid,'coin' =>$coin,'explain' =>"邀请入群",'channel' =>$channel,'state' =>0,'create_time' =>$time];
+                $data=db('coin_record')->insert($datares);
+            }
+
             $state=['state'   => '200','message'  => "用户加入群成功" ];
             $resdata=array_merge($state,array('user_crowdid'=>$user_crowdid));
             return $resdata;
