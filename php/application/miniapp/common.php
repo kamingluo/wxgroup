@@ -64,7 +64,7 @@ function joingroup($crowd_id, $user_id, $user_openid,$ifinvitation=0){
                 //加积分
                 $addscore= db('user')->where('openid',$openid)->setInc('coin',$coin);
                 //增加积分变化记录
-                $datares = ['id'=>'','user_id' =>$dbuserid,'openid' =>$openid,'coin' =>$coin,'explain' =>"邀请入群",'channel' =>$channel,'state' =>0,'create_time' =>$time];
+                $datares = ['id'=>'','user_id' =>$dbuserid,'openid' =>$openid,'coin' =>$coin,'explain' =>"邀请好友入群",'channel' =>$channel,'state' =>0,'create_time' =>$time];
                 $data=db('coin_record')->insert($datares);
             }
 

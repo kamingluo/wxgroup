@@ -16,16 +16,40 @@ Page({
     gridadshow:false,//格子广告是否展示
     setInter: '',//计时器
     num: 0,//计时秒数
+    display: false, //是否展示内容
+    gdtaddisplay: false, //广告是否展示
 
   },
 
   onLoad: function (options) {
     this.usertodayads()
+    this.addisplay()
   },
 
   onShow: function () {
     this.createvideoad()//提前加载视频广告
     this.playtask()//查看是否完成任务
+  },
+
+
+
+//判断是否能显示广告
+  addisplay: function() {
+    this.setData({
+      display: app.globalData.display || false
+    })
+
+    let userchannel = wx.getStorageSync('userdata').channel
+    let scene = wx.getStorageSync('userdata').scene
+    if (userchannel == null || userchannel == 0 && scene == 1047) {
+      this.setData({
+        gdtaddisplay: false
+      })
+    } else {
+      this.setData({
+        gdtaddisplay: true
+      })
+    }
   },
 
 

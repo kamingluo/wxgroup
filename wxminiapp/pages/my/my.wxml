@@ -129,7 +129,7 @@
 <!-- 广点通格子开始-->
 <view class='centered'>
   <view class='gdtad'>
-    <ad unit-id="adunit-ebe56349b990bdf6" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+    <ad unit-id="adunit-1d1320feca860080" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
   </view>
 </view>
 <!--广点通格子广告结束-->

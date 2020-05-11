@@ -10,7 +10,6 @@ Page({
   data: {
     userscorerecord: [],  //信息流数组
     loadModal: true,
-    crowd_id:null,
     pages:1,
     count:0
 
@@ -20,24 +19,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    this.setData({
-      crowd_id: options.crowd_id,
-    })
     this.havedata(1)
   },
 
   //获取数据
   havedata:function(pages){
     var that=this
-    var crowd_id=this.data.crowd_id;
     var user_id = wx.getStorageSync('userdata').id;
     request({
-      service: 'group/userdata/usergroupscorelist',
+      service: 'business/coins/usercoinrecord',
       data: {
         pages:pages,
         user_id: user_id,
-        crowd_id: crowd_id
       },
       success: res => {
         let userscorerecord=this.data.userscorerecord;

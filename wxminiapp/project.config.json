@@ -76,6 +76,12 @@
 					"pathName": "pages/business/gdtad/gdtad",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"scene": 1005
 				}
 			]
 		}

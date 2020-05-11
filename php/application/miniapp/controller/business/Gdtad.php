@@ -53,7 +53,7 @@ class Gdtad
     		$adres = ['id'=>'','user_id' =>$user_id,'openid' =>$openid,'channel' =>$channel,'adid' =>$adid,'adtype' =>1,'coin' =>$coin,'create_time' =>$time];
     	    $addata=db('gdt_ad_record')->insert($adres);
     	    //增加积分变化记录
-    	    $datares = ['id'=>'','user_id' =>$user_id,'openid' =>$openid,'coin' =>$coin,'explain' =>"点击广告",'channel' =>$channel,'state' =>0,'create_time' =>$time];
+    	    $datares = ['id'=>'','user_id' =>$user_id,'openid' =>$openid,'coin' =>$coin,'explain' =>"点击banner广告",'channel' =>$channel,'state' =>0,'create_time' =>$time];
         	$data=db('coin_record')->insert($datares);
 
         	if($addscore==1&&$addata==1&&$data==1){
@@ -93,7 +93,7 @@ class Gdtad
     		$adres = ['id'=>'','user_id' =>$user_id,'openid' =>$openid,'channel' =>$channel,'adid' =>$adid,'adtype' =>3,'coin' =>$coin,'create_time' =>$time];
     	    $addata=db('gdt_ad_record')->insert($adres);
     	    //增加积分变化记录
-    	    $datares = ['id'=>'','user_id' =>$user_id,'openid' =>$openid,'coin' =>$coin,'explain' =>"点击广告",'channel' =>$channel,'state' =>0,'create_time' =>$time];
+    	    $datares = ['id'=>'','user_id' =>$user_id,'openid' =>$openid,'coin' =>$coin,'explain' =>"点击格子广告",'channel' =>$channel,'state' =>0,'create_time' =>$time];
         	$data=db('coin_record')->insert($datares);
 
         	if($addscore==1&&$addata==1&&$data==1){

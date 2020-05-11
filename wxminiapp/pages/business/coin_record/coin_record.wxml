@@ -1,12 +1,12 @@
-<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"  wx:if="{{crowd_id}}">
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
   <view slot="backText">返回</view>
-  <view slot="content">积分记录</view>
+  <view slot="content">金币记录</view>
 </cu-custom>
 
 
 
 <view class='cu-load load-modal'  wx:if="{{loadModal}}" >
-  <image src='../../../../images/common/loading.svg' class='png' mode='aspectFit'></image>
+  <image src='../../../images/common/loading.svg' class='png' mode='aspectFit'></image>
   <view  style='margin-top: 10rpx;'  class='gray-text'>加载中</view>
 </view>
 
@@ -35,7 +35,7 @@
         <text>操作</text>
       </view>
       <view class='top_score'>
-        <text>积分数</text>
+        <text>金币数</text>
       </view>
       <view class='top_time'>
         <text>时间</text>
@@ -47,8 +47,8 @@
           <text>{{item.explain}}</text>
         </view>
         <view class='bootm_score'>
-        <text  class='jia' wx:if="{{item.state==0}}">加{{item.score}}</text>
-          <text  class='jian' wx:else>减{{item.score}}</text>
+        <text  class='jia' wx:if="{{item.state==0}}">加{{item.coin}}</text>
+          <text  class='jian' wx:else>减{{item.coin}}</text>
         </view>
         <view class='bootm_time'>
           <text>{{item.create_time}}</text>
