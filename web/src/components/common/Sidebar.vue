@@ -66,12 +66,17 @@
                     {
                         icon: 'el-icon-lx-goods',
                         index: 'exchanges',
-                        title: '兑换信息'
+                        title: '空间兑换信息'
                     },
                     {
                         icon: 'el-icon-lx-unlock',
                         index: 'groupjurisdiction',
                         title: '群权限'
+                    },
+                     {
+                        icon: 'el-icon-lx-cascades',
+                        index: 'examine',
+                        title: '金币兑换列表'
                     }
                 ]
             }

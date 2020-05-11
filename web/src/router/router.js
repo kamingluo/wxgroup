@@ -50,7 +50,12 @@ export default new Router({
           path: '/groupjurisdiction',
           component: resolve => require(['../components/page/Groupjurisdiction.vue'], resolve),
           meta: { title: '群权限' }
-        }
+        },
+        {
+          path: '/examine',
+          component: resolve => require(['../components/page/Examine.vue'], resolve),
+          meta: { title: '金币兑换列表' }
+        },
       ]
     },
     {
