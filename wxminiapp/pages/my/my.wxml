@@ -42,8 +42,10 @@
 <view class='score'>
   <view class='score_text'>
     <text>我的金币：<text style="color:red">{{userdata.coin}}</text></text>
-
     <image src='../../images/common/coin.svg'></image>
+  </view>
+  <view class='score_button'>
+    <button bindtap='coinrecord' class=' bg-blue'>金币记录</button>
   </view>
 </view>
 

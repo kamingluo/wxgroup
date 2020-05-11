@@ -81,6 +81,12 @@ Page({
 
   // },
 
+  coinrecord:function(){
+    wx.navigateTo({
+      url: '/pages/business/coin_record/coin_record'
+    })
+  },
+
   business:function(e){
     let jumpid = e.currentTarget.dataset.jumpid;
     if (jumpid ==1){

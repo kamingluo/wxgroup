@@ -16,6 +16,12 @@ return [
     'qiniuaccessKey'=>'cOtKv4WjF_QrS7Cb98oOo0zQrmzbJNmJGeoCsQB3',//七牛云的accessKey
     'qiniusecretKey'=>'tk2gLlSppyxjOWP6LGOsK4SNboyjIh44BAicYBXB',//七牛云的secretKey
 
+    // +----------------------------------------------------------------------
+    // | 微信小程序设置
+    // +----------------------------------------------------------------------
+    'appid'=>'wx0e060ad90f7f41c4',//微信小程序appid
+    'secret'=>'1590c193503e580ed296b0c8fb3797d6',//微信小程序appscret
+
 
 
     // +----------------------------------------------------------------------

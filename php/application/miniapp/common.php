@@ -175,7 +175,7 @@ function delivergoods($exchange_id,$expressnumber){
 
 //微信token获取
 function wxtoken(){
-    $dbres =db('wxtoken')->where('id',1)->find();//查询用户有没有加入群
+    $dbres =db('wxtoken')->where('id',1)->find();
     $token_time=$dbres["update_time"];
     $time =date('Y-m-d H:i:s',time());//获取当前时间
     $second=floor((strtotime($time)-strtotime($token_time)));//对比两个时间，拿到时间差

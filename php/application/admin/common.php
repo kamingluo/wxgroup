@@ -1,169 +1,87 @@
 <?php
 // +----------------------------------------------------------------------
-// | wxcarminiapp公共方法
+// | 后台管理公共方法
 // +----------------------------------------------------------------------
 
 use think\Log;
-use phpmailer\phpmailer;
+use think\Db;
+use think\Request;
+use think\Controller;
+use think\Config;
 
 
 //测试方法
 function test(){
     return "test";
-
-}
-
-
-/**
-   * 调取微信接口获取openid
-   * 传入值code从小程序login API获取
-   * @return string
-*/
-function openid($wxcode){
-    if($wxcode == 'kaming'){
-        $openid='o3XMA0enuFRZsOCOCeqjB70exjr4';
-        return $openid;
-
-    }
-    $url = 'https://api.weixin.qq.com/sns/jscode2session';
-    $data['appid']=Config('appid');
-    $data['secret']= Config('secret');
-    $data['js_code']= $wxcode;
-    $data['grant_type']= 'authorization_code';
-    $wxopenid = http($url, $data, 'GET');
-    $openiddata=json_decode($wxopenid,true);
-    $rest=array_key_exists("errcode",$openiddata);//判断返回值存在errcode证明code有误
-        if($rest){ 
-             Log::record('code错误或者过期了！传入微信code-->'.$wxcode,'error');
-            echo  json_encode(['state'   => '400','message'  => "code错误或者过期了！" ] ) ;
-            die ();
-        }
-        else{
-        	$openid=$openiddata['openid'];
-        	return $openid;
-        }
 }
 
 
 
-function signtemMsg($formid,$openid,$access_token)
-{
-    $formid = $formid;
-    $temid = 'iClWDGVGgzkixCkJPeaZ5iqPkJfHzgapJ8oA7A6wTRQ';
-    $page = 'pages/index/index?ald_media_id=20276&ald_link_key=e2f83910477fd11f';
-    $openid =$openid;
-    if(!$formid)die('failed!');//openid有出现等于0的情况，所以不判断了
-    $url = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token='.$access_token;
-    $data = array(//这里一定要按照微信给的格式
-        "touser"=>$openid,
+
+//用户兑换给群主通知新的
+function exchangemsg($exchangeid){
+    //根据群id找到群主的openid
+      $senuser=db('coin_exchange_record')->where('id',$exchangeid)->find(); //拿到兑换记录
+      $senopenid=$senuser['openid'];//拿到openid
+      $goodsname=$senuser['goodsName'];//拿到兑换商品
+      $alipayName=$senuser['alipayName'];//拿到兑换支付者姓名
+      $time =date('Y-m-d H:i:s',time());//获取当前时间
+      $access_token=wxtoken();//拿到token
+      $temid = 'yXsOU_XloUNY1ihCb_bwm8bjstgw4P3SErpqi4AwMNE';
+      $page = 'pages/index/index';
+      $url = 'https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token='.$access_token;
+       //   $explan="用户:".$nickName.",兑换商品";
+      $data = array(//这里一定要按照微信给的格式
+        "touser"=>$senopenid,
         "template_id"=>$temid,
         "page"=>$page,
-        "form_id"=>$formid,
+        "miniprogram_state"=>"formal",
+        "lang"=>"zh_CN",
         "data"=>array(
-            "keyword1"=>array(
-                "value"=>"每日签到",
-                "color"=>"#173177"
+            "thing1"=>array(
+                "value"=>$alipayName
             ),
-            "keyword2"=>array(
-                "value"=>"轻轻一点签到既有奖励，更多任务奖励等你来领取！",
-                "color"=>"#173177"
+            "thing2"=>array(
+                "value"=>$goodsname
             ),
-            "keyword3"=>array(
-                "value"=>"点击进入签到>>>",
-                "color"=>"#173177"
-            ),
-            "keyword4"=>array(
-                "value"=>"未签到！",
-                "color"=>"#930000"
+            "time3"=>array(
+                "value"=>$time
             )
-        ),
-        "emphasis_keyword"=>"keyword5.DATA",//需要进行加大的消息
-    );
+         )
+      );
     $res = postCurl($url,$data,'json');//将data数组转换为json数据
     if($res){
-        echo "1";
+       return "用户兑换成功推送成功";
        // echo json_encode(array('state'=>4,'msg'=>$res));
     }else{
-         echo "222";
+        return "用户兑换成功推送失败";
         // echo json_encode(array('state'=>5,'msg'=>$res));
     }
 }
 
 
 
-
-function profit($formid,$openid,$access_token)
-{
-    $formid = $formid;
-    $temid = 'LtBmBA2Q6NrFzpz4fvl_pkRUzwKRJUkJ64T4P1X5vHE';
-    $page = 'pages/index/index?ald_media_id=20276&ald_link_key=e2f83910477fd11f';
-    $openid =$openid;
-    if(!$formid)die('failed!');//openid有出现等于0的情况，所以不判断了
-    $url = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token='.$access_token;
-    $data = array(//这里一定要按照微信给的格式
-        "touser"=>$openid,
-        "template_id"=>$temid,
-        "page"=>$page,
-        "form_id"=>$formid,
-        "data"=>array(
-            "keyword1"=>array(
-                "value"=>"一点好玩",
-                "color"=>"#173177"
-            ),
-            "keyword2"=>array(
-                "value"=>"100金币！",
-                "color"=>"#173177"
-            ),
-            "keyword3"=>array(
-                "value"=>"新增添加客服任务，100金币快速到手，更多任务等你来！",
-                "color"=>"#173177"
-            ),
-            "keyword4"=>array(
-                "value"=>"常规任务！",
-                "color"=>"#930000"
-            )
-        ),
-        "emphasis_keyword"=>"keyword5.DATA",//需要进行加大的消息
-    );
-    $res = postCurl($url,$data,'json');//将data数组转换为json数据
-    if($res){
-        echo "1";
-       // echo json_encode(array('state'=>4,'msg'=>$res));
-    }else{
-         echo "222";
-        // echo json_encode(array('state'=>5,'msg'=>$res));
+//微信token获取
+function wxtoken(){
+    $dbres =db('wxtoken')->where('id',1)->find();
+    $token_time=$dbres["update_time"];
+    $time =date('Y-m-d H:i:s',time());//获取当前时间
+    $second=floor((strtotime($time)-strtotime($token_time)));//对比两个时间，拿到时间差
+    if($second > 3600){
+        //一小时更新一次,超过一小时再去调一次
+        $data['appid']=Config('appid');
+        $data['secret']= Config('secret');
+        $data['grant_type']= 'client_credential';
+        $api = "https://api.weixin.qq.com/cgi-bin/token";//拿token接口
+        $str = http($api, $data,'GET');
+        $token = json_decode($str,true);
+        $access_token=$token['access_token'];//拿到token
+        //更新一下数据库的access_token和时间
+        $updatedata= db('wxtoken')->where('id',1)->update(['update_time' => $time,'access_token' => $access_token]);
     }
-}
+    else{
+        $access_token=$dbres["access_token"];//直接拿到数据库存储的token
+    }
+    return $access_token;
 
-
-
-
-
-
-/*
- * 发送邮件
- * @param $to string
- * @param $title string
- * @param $content string
- * @return bool
- * */
-function sendMail($to, $title, $content) {
- // Vendor('PHPMailer.PHPMailerAutoload');
-  Vendor('phpmailer.phpmailer'); 
- $mail = new PHPMailer(); //实例化
- $mail->IsSMTP(); // 启用SMTP
- $mail->Host='smtp.163.com'; //smtp服务器的名称（这里以QQ邮箱为例）
- $mail->SMTPAuth = true; //启用smtp认证
- $mail->Username ='kaming_001@163.com'; //发件人邮箱名
- $mail->Password = 'a123456'; //163邮箱发件人授权密码
- $mail->From ='kaming_001@163.com'; //发件人地址（也就是你的邮箱地址）
- $mail->FromName = 'kaming'; //发件人姓名
- $mail->AddAddress("954087620@qq.com");
- $mail->WordWrap = 50; //设置每行字符长度
- $mail->IsHTML(true); // 是否HTML格式邮件
- $mail->CharSet='utf-8'; //设置邮件编码
- $mail->Subject =$title; //邮件主题
- $mail->Body = $content; //邮件内容
- $mail->AltBody = "这是一个纯文本的身体在非营利的HTML电子邮件客户端"; //邮件正文不支持HTML的备用显示
- return($mail->Send());
 }

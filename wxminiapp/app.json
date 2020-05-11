@@ -40,7 +40,8 @@
     "pages/my/score_detailed/task_detailed/task_detailed",
     "pages/business/gdtad/gdtad",
     "pages/business/exchange_detailed/exchange_detailed",
-    "pages/business/exchange/exchange"
+    "pages/business/exchange/exchange",
+    "pages/business/coin_record/coin_record"
   ],
   "window": {
     "backgroundTextStyle": "light",

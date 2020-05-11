@@ -14,6 +14,8 @@ Page({
     coinmodalnumber:null,//弹框显示金币数
     banneradshow:false,//banner广告模块是否展示
     gridadshow:false,//格子广告是否展示
+    setInter: '',//计时器
+    num: 0,//计时秒数
 
   },
 
@@ -23,7 +25,131 @@ Page({
 
   onShow: function () {
     this.createvideoad()//提前加载视频广告
+    this.playtask()//查看是否完成任务
   },
+
+
+//点击banner广告
+  gdtbannerclick:function(){
+    this.startSetInter()//启动计时器
+    this.setData({
+      taskid: 1,
+    })
+  },
+
+
+//点击格子广告
+gdtgridclick:function(){
+  this.startSetInter()//启动计时器
+  this.setData({
+    taskid: 3,
+  })
+},
+
+//计时器
+  startSetInter: function() {
+    var that = this;
+    //将计时器赋值给setInter
+    that.data.setInter = setInterval(
+      function() {
+        if (that.data.num > 40) {
+          //console.log('大于40啦');
+          clearInterval(that.data.setInter)
+        }
+        var numVal = that.data.num + 1;
+        that.setData({
+          num: numVal
+        });
+        //console.log('当前计时时间==' + that.data.num);
+      }, 1000);
+  },
+
+//页面显示查看是否完成任务
+ playtask: function() {
+    var that = this
+    clearInterval(that.data.setInter)
+    if (that.data.taskid == null || that.data.num == 0 || that.data.taskid == "") {
+      //console.log("时间等于0或者任务id等于空")
+      return;
+    }
+    let tasktime = 12;//任务时长，写死12秒
+    if (that.data.num < tasktime) {
+      that.wxshowToast("体验满12秒才能获得奖励哦！")
+      this.setData({
+        num: 0,
+        taskid: "",
+      });
+      return;
+    }
+
+    if (that.data.taskid == 1) { 
+      //banner广告任务成功
+      that.clickbanneradsuccess()
+    } else { 
+      //格子广告任务成功
+      that.clickgridadsuccess()
+    }
+    //console.log("将时间恢复0")
+    this.setData({
+      num: 0,
+      taskid: "",
+    });
+  },
+
+//banner广告成功完成奖励
+  clickbanneradsuccess:function(){
+    var that = this;
+    var user_id = wx.getStorageSync('userdata').id;
+    wx.login({
+      success: res => {
+        request({
+          service: 'business/gdtad/clickbannerad',
+          data: {
+            code: res.code,
+            user_id: user_id,
+            adid: 'adunit-53f29d2c52baa487',
+          },
+          success: res => {
+            let number=that.data.coins.banner;
+            that.setData({
+              coinmodal: true,
+              coinmodalnumber: number
+            })
+            that.usertodayads()
+          },
+        })
+      }
+    })
+  },
+
+
+//格子广告成功完成奖励
+clickgridadsuccess:function(){
+  var that = this;
+  var user_id = wx.getStorageSync('userdata').id;
+  wx.login({
+    success: res => {
+      request({
+        service: 'business/gdtad/clickgridad',
+        data: {
+          code: res.code,
+          user_id: user_id,
+          adid: 'adunit-1d1320feca860080',
+        },
+        success: res => {
+          let number=that.data.coins.grid;
+          that.setData({
+            coinmodal: true,
+            coinmodalnumber: number
+          })
+          that.usertodayads()
+        },
+      })
+    }
+  })
+},
+
+
 
 
 
@@ -50,10 +176,6 @@ Page({
       gridadshow: false
     })
   },
-
-
-
-
 
 //跳转创建群按钮
   creategroup: function () {

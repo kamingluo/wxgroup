@@ -124,10 +124,10 @@ flex-basis: 400rpx;
   color: #ffffff;
   display: flex;
   align-items:center;
-  height: 70rpx;
-  width: 190rpx;
-  font-size: 30rpx;
-  margin-left: 80rpx;
+  height: 60rpx;
+  width: 160rpx;
+  font-size: 27rpx;
+  margin-left: 180rpx;
 
 }
 
