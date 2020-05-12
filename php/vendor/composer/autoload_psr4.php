@@ -17,4 +17,5 @@ return array(
     'app\\' => array($baseDir . '/application'),
     'Workerman\\' => array($vendorDir . '/workerman/workerman', $vendorDir . '/workerman/workerman-for-win'),
     'Phinx\\' => array($vendorDir . '/topthink/think-migration/phinx/src/Phinx'),
+    'GatewayClient\\' => array($vendorDir . '/workerman/gatewayclient'),
 );

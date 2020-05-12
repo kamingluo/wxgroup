@@ -504,3 +504,31 @@ Stack trace:
 #18 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\server.php(6): require('E:\\install\\phps...')
 #19 {main}
 2020-05-12 18:09:21 pid:1 Worker process terminated
+2020-05-12 18:21:30 pid:1 exception 'think\exception\ErrorException' with message 'PDO::prepare(): MySQL server has gone away' in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\thinkphp\library\think\db\Connection.php:365
+Stack trace:
+#0 [internal function]: think\Error::appError(2, 'PDO::prepare():...', 'E:\\install\\phps...', 365, Array)
+#1 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\thinkphp\library\think\db\Connection.php(365): PDO->prepare('SELECT `openid`...')
+#2 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\thinkphp\library\think\db\Query.php(255): think\db\Connection->query('SELECT `openid`...', Array, false, true)
+#3 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\thinkphp\library\think\db\Query.php(2470): think\db\Query->query('SELECT `openid`...', Array, false, true)
+#4 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\thinkphp\library\think\db\Query.php(441): think\db\Query->getPdo()
+#5 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\index\controller\Worker.php(26): think\db\Query->value('openid')
+#6 [internal function]: app\index\controller\Worker->onMessage(Object(Workerman\Connection\TcpConnection), 'wwwww')
+#7 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\workerman\Connection\TcpConnection.php(650): call_user_func(Array, Object(Workerman\Connection\TcpConnection), 'wwwww')
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #73)
+#9 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\workerman\Events\Select.php(289): call_user_func_array(Array, Array)
+#10 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\workerman\Worker.php(2235): Workerman\Events\Select->loop()
+#11 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\workerman\Worker.php(1225): Workerman\Worker->run()
+#12 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\workerman\Worker.php(1168): Workerman\Worker::forkWorkersForWindows()
+#13 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\workerman\Worker.php(478): Workerman\Worker::forkWorkers()
+#14 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\topthink\think-worker\src\Server.php(48): Workerman\Worker::runAll()
+#15 [internal function]: think\worker\Server->__construct()
+#16 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\thinkphp\library\think\App.php(359): ReflectionClass->newInstanceArgs(Array)
+#17 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\thinkphp\library\think\Loader.php(479): think\App::invokeClass('app\\index\\contr...')
+#18 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\thinkphp\library\think\App.php(581): think\Loader::controller('worker', 'controller', false, 'Error')
+#19 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\thinkphp\library\think\App.php(457): think\App::module(Array, Array, NULL)
+#20 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\thinkphp\library\think\App.php(139): think\App::exec(Array, Array)
+#21 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\thinkphp\start.php(19): think\App::run()
+#22 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\server.php(6): require('E:\\install\\phps...')
+#23 {main}
+2020-05-12 18:21:30 pid:1 Worker process terminated
+2020-05-12 18:29:31 pid:1 Worker process terminated with ERROR: E_ERROR "Call to a member function send() on a non-object in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\index\controller\Worker.php on line 54"
