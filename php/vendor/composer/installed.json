@@ -15,7 +15,7 @@
             "shasum": "",
             "mirrors": [
                 {
-                    "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
                     "preferred": true
                 }
             ]
@@ -74,7 +74,7 @@
             "shasum": "",
             "mirrors": [
                 {
-                    "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
                     "preferred": true
                 }
             ]
@@ -118,7 +118,7 @@
             "shasum": "",
             "mirrors": [
                 {
-                    "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
                     "preferred": true
                 }
             ]
@@ -162,7 +162,7 @@
             "shasum": "",
             "mirrors": [
                 {
-                    "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
                     "preferred": true
                 }
             ]
@@ -210,7 +210,7 @@
             "shasum": "",
             "mirrors": [
                 {
-                    "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
                     "preferred": true
                 }
             ]
@@ -259,7 +259,7 @@
             "shasum": "",
             "mirrors": [
                 {
-                    "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
                     "preferred": true
                 }
             ]
@@ -306,7 +306,7 @@
             "shasum": "",
             "mirrors": [
                 {
-                    "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
                     "preferred": true
                 }
             ]
@@ -348,7 +348,7 @@
             "shasum": "",
             "mirrors": [
                 {
-                    "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
                     "preferred": true
                 }
             ]
@@ -393,7 +393,7 @@
             "shasum": "",
             "mirrors": [
                 {
-                    "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
                     "preferred": true
                 }
             ]
@@ -446,7 +446,7 @@
             "shasum": "",
             "mirrors": [
                 {
-                    "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
                     "preferred": true
                 }
             ]
@@ -491,7 +491,7 @@
             "shasum": "",
             "mirrors": [
                 {
-                    "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
                     "preferred": true
                 }
             ]
@@ -504,6 +504,57 @@
         },
         "time": "2018-08-04T12:41:54+00:00",
         "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Workerman\\": "./"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "walkor",
+                "email": "walkor@workerman.net",
+                "homepage": "http://www.workerman.net",
+                "role": "Developer"
+            }
+        ],
+        "description": "An asynchronous event driven PHP framework for easily building fast, scalable network applications.",
+        "homepage": "http://www.workerman.net",
+        "keywords": [
+            "asynchronous",
+            "event-loop"
+        ]
+    },
+    {
+        "name": "workerman/workerman-for-win",
+        "version": "v3.5.1",
+        "version_normalized": "3.5.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/walkor/workerman-for-win.git",
+            "reference": "cbaae3193e4567fd9cfc8099931c63d9b12174ee"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/walkor/workerman-for-win/zipball/cbaae3193e4567fd9cfc8099931c63d9b12174ee",
+            "reference": "cbaae3193e4567fd9cfc8099931c63d9b12174ee",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "php": ">=5.3"
+        },
+        "time": "2017-08-28T10:05:00+00:00",
+        "type": "project",
         "installation-source": "dist",
         "autoload": {
             "psr-4": {

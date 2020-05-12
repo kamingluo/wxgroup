@@ -81,6 +81,7 @@ class ComposerStaticInit2bc4f313dba415539e266f7ac2c87dcd
         'Workerman\\' => 
         array (
             0 => __DIR__ . '/..' . '/workerman/workerman',
+            1 => __DIR__ . '/..' . '/workerman/workerman-for-win',
         ),
         'Phinx\\' => 
         array (
