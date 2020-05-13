@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c86ec03acb11fcfd0a89aefcb608239",
+    "content-hash": "110a0f2082894e7719d98b687ba01303",
     "packages": [
         {
             "name": "topthink/framework",
@@ -461,6 +461,46 @@
             ],
             "description": "workerman extend for thinkphp5",
             "time": "2016-10-08T06:07:03+00:00"
+        },
+        {
+            "name": "workerman/gateway-worker-for-win",
+            "version": "v3.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/GatewayWorker-for-win.git",
+                "reference": "ea75b5d581db1762e9928f5729200a1abcaba496"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/walkor/GatewayWorker-for-win/zipball/ea75b5d581db1762e9928f5729200a1abcaba496",
+                "reference": "ea75b5d581db1762e9928f5729200a1abcaba496",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "workerman/workerman-for-win": ">=3.1.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GatewayWorker\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "homepage": "http://www.workerman.net",
+            "keywords": [
+                "communication",
+                "distributed"
+            ],
+            "time": "2017-06-26T14:51:29+00:00"
         },
         {
             "name": "workerman/gatewayclient",
