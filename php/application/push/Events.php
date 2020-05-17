@@ -53,10 +53,11 @@ class Events
     public static function onConnect($client_id)
     {
 
+
         // 向当前client_id发送数据 
         Gateway::sendToClient($client_id, "Hello $client_id\r\n");
         // 向所有人发送
-        Gateway::sendToAll("$client_id login\r\n");
+        Gateway::sendToAll("$client_id lo3333gin\r\n");
     }
     
    /**
@@ -68,11 +69,15 @@ class Events
    {
 
         
-        $ret= self::$db->select('*')->from('user')->where('id=10048')->query();
-        $state=['state'   => '200','message'  => "返回的数据" ];
-        $resdata=array_merge($state,array('data'=>$ret));
+        // $ret= self::$db->select('*')->from('user')->where('id=10048')->query();
+        // $state=['state'   => '200','message'  => "返回的数据" ];
+        // $resdata=array_merge($state,array('data'=>$ret));
         // 打印结果
-        return Gateway::sendToAll(json_encode($resdata, JSON_UNESCAPED_UNICODE));//JSON_UNESCAPED_UNICODE解决中文Json不要编码Unicode.
+
+        $kaming=json_decode($message);
+        return Gateway::sendToAll(json_encode($kaming, JSON_UNESCAPED_UNICODE));//JSON_UNESCAPED_UNICODE解决中文Json不要编码Unicode.
+
+        return Gateway::sendToAll($message);
 
         // print_r(json_encode($dbdata));
         // //  Log::record("发送消息");
