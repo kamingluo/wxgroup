@@ -26,7 +26,7 @@ $gateway = new Gateway("websocket://0.0.0.0:8282");
 // gateway名称，status方便查看
 $gateway->name = 'pushGateway';
 // gateway进程数
-$gateway->count = 4;
+$gateway->count = 1;
 
 //------------------------
 // 开启SSL，websocket+SSL 即wss

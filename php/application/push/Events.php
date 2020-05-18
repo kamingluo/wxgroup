@@ -94,6 +94,6 @@ class Events
    {
     // Log::record("断开连接");
        // 向所有人发送 
-       GateWay::sendToAll("$client_id logout\r\n");
+    //    GateWay::sendToAll("$client_id logout\r\n");
    }
 }
