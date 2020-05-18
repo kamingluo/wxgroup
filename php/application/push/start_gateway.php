@@ -35,7 +35,7 @@ $gateway->lanIp = '47.106.253.110';
 $gateway->startPort = 2900;
 // 服务注册地址
 // $gateway->registerAddress = '127.0.0.1:1238';
-$gateway->registerAddress = '127.0.0.1:8282';
+$gateway->registerAddress = '47.106.253.110:8282';
 
 // 心跳间隔
 $gateway->pingInterval = 55;
