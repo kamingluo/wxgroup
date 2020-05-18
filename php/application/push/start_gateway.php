@@ -38,7 +38,7 @@ $gateway->count = 4;
 $gateway->lanIp = '47.106.253.110';
 // 内部通讯起始端口，假如$gateway->count=4，起始端口为4000
 // 则一般会使用4000 4001 4002 4003 4个端口作为内部通讯端口 
-$gateway->startPort = 2900;
+$gateway->startPort = 2901;
 // 服务注册地址
 $gateway->registerAddress = '127.0.0.1:1238';
 // $gateway->registerAddress = '127.0.0.1:8282';
