@@ -33,9 +33,19 @@ require_once __DIR__ . '/vendor/autoload.php';
 // {
 //     require_once $start_file;
 // }
-foreach(glob(__DIR__.'/Applications/*/start_*.php') as $start_file)
-{
-    require_once $start_file;
-}
+
+// 加载所有Applications/push/start.php，以便启动所有服务
+// foreach(glob(__DIR__.'/Applications/push/start_*.php') as $start_file)
+// {
+//     require_once $start_file;
+// }
+
+//加载所有的项目，启动（kaming）
+require_once __DIR__ . '/Applications/push/start_register.php';
+require_once __DIR__ . '/Applications/push/start_gateway.php';
+require_once __DIR__ . '/Applications/push/start_businessworker.php';
+
+
+
 // 运行所有服务
 Worker::runAll();
