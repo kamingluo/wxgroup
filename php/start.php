@@ -41,9 +41,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 // }
 
 //加载所有的项目，启动（kaming）
-require_once __DIR__ . '/Applications/push/start_register.php';
-require_once __DIR__ . '/Applications/push/start_gateway.php';
-require_once __DIR__ . '/Applications/push/start_businessworker.php';
+require_once __DIR__ . '/applications/push/start_register.php';
+require_once __DIR__ . '/applications/push/start_gateway.php';
+require_once __DIR__ . '/applications/push/start_businessworker.php';
 
 
 
