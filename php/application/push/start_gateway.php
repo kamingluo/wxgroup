@@ -26,7 +26,13 @@ $gateway = new Gateway("websocket://0.0.0.0:8282");
 // gateway名称，status方便查看
 $gateway->name = 'pushGateway';
 // gateway进程数
-$gateway->count = 1;
+$gateway->count = 4;
+
+//------------------------
+// 开启SSL，websocket+SSL 即wss
+// $gateway->transport = 'ssl';
+//------------------------
+
 // 本机ip，分布式部署时使用内网ip
 // $gateway->lanIp = '127.0.0.1';
 $gateway->lanIp = '47.106.253.110';
