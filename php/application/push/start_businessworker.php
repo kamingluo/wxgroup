@@ -27,8 +27,8 @@ $worker->name = 'pushBusinessWorker';
 // bussinessWorker进程数量
 $worker->count = 4;
 // 服务注册地址
-// $worker->registerAddress = '127.0.0.1:1238';
-$worker->registerAddress = '127.0.0.1:8282';
+$worker->registerAddress = '127.0.0.1:1238';
+// $worker->registerAddress = '127.0.0.1:8282';
 
 // 如果不是在根目录启动，则运行runAll方法
 if(!defined('GLOBAL_START'))
