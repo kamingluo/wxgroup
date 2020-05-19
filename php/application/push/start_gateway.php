@@ -28,10 +28,6 @@ $gateway->name = 'pushGateway';
 // gateway进程数
 $gateway->count = 1;
 
-//------------------------
-// 开启SSL，websocket+SSL 即wss
-// $gateway->transport = 'ssl';
-//------------------------
 
 // 本机ip，分布式部署时使用内网ip
 $gateway->lanIp = '127.0.0.1';
