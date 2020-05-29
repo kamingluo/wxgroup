@@ -2,3 +2,36 @@
 2020-05-13 05:40:11 pid:1 Worker process terminated with ERROR: E_ERROR "Call to undefined function db() in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 55"
 2020-05-13 06:01:07 pid:1 Worker process terminated with ERROR: E_ERROR "Call to a member function select() on a non-object in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 60"
 2020-05-13 06:02:13 pid:1 Worker process terminated with ERROR: E_ERROR "Call to a member function select() on a non-object in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 60"
+2020-05-28 02:20:20 pid:1 exception 'Exception' with message '$_SESSION['room_id'] not set. client_ip:127.0.0.1' in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php:122
+Stack trace:
+#0 [internal function]: Events::onMessage('7f0000010b55000...', '{\n\t"type": "say...')
+#1 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\gateway-worker\src\BusinessWorker.php(404): call_user_func('Events::onMessa...', '7f0000010b55000...', '{\n\t"type": "say...')
+#2 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#3 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\workerman\Connection\TcpConnection.php(660): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #31)
+#5 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\workerman\Events\Select.php(292): call_user_func_array(Array, Array)
+#6 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\workerman\Worker.php(2408): Workerman\Events\Select->loop()
+#7 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#8 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\workerman\Worker.php(1404): GatewayWorker\BusinessWorker->run()
+#9 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\workerman\Worker.php(1347): Workerman\Worker::forkWorkersForWindows()
+#10 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\workerman\Worker.php(546): Workerman\Worker::forkWorkers()
+#11 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\start_businessworker.php(35): Workerman\Worker::runAll()
+#12 {main}
+2020-05-28 02:20:20 pid:1 Worker process terminated
+2020-05-28 02:49:29 pid:1 Worker process terminated with ERROR: E_PARSE "syntax error, unexpected '$client_name' (T_VARIABLE) in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 96"
+2020-05-28 02:49:30 pid:1 Worker process terminated with ERROR: E_PARSE "syntax error, unexpected '$client_name' (T_VARIABLE) in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 96"
+2020-05-28 02:49:31 pid:1 Worker process terminated with ERROR: E_PARSE "syntax error, unexpected '$client_name' (T_VARIABLE) in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 96"
+2020-05-28 02:49:32 pid:1 Worker process terminated with ERROR: E_PARSE "syntax error, unexpected '$client_name' (T_VARIABLE) in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 96"
+2020-05-28 02:49:33 pid:1 Worker process terminated with ERROR: E_PARSE "syntax error, unexpected '$client_name' (T_VARIABLE) in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 96"
+2020-05-28 02:49:34 pid:1 Worker process terminated with ERROR: E_PARSE "syntax error, unexpected '$client_name' (T_VARIABLE) in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 96"
+2020-05-28 02:49:35 pid:1 Worker process terminated with ERROR: E_PARSE "syntax error, unexpected '$client_name' (T_VARIABLE) in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 96"
+2020-05-28 02:49:36 pid:1 Worker process terminated with ERROR: E_PARSE "syntax error, unexpected '$client_name' (T_VARIABLE) in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 96"
+2020-05-28 02:49:37 pid:1 Worker process terminated with ERROR: E_PARSE "syntax error, unexpected '$client_name' (T_VARIABLE) in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 96"
+2020-05-28 02:49:38 pid:1 Worker process terminated with ERROR: E_PARSE "syntax error, unexpected '$client_name' (T_VARIABLE) in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 96"
+2020-05-28 02:49:39 pid:1 Register auth timeout (127.0.0.1). See http://doc2.workerman.net/register-auth-timeout.html
+2020-05-28 02:49:39 pid:1 Worker process terminated with ERROR: E_PARSE "syntax error, unexpected '$client_name' (T_VARIABLE) in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 96"
+2020-05-28 02:49:40 pid:1 Register auth timeout (127.0.0.1). See http://doc2.workerman.net/register-auth-timeout.html
+2020-05-28 02:49:40 pid:1 Worker process terminated with ERROR: E_PARSE "syntax error, unexpected '$client_name' (T_VARIABLE) in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 96"
+2020-05-28 02:49:41 pid:1 Worker process terminated with ERROR: E_PARSE "syntax error, unexpected '$client_name' (T_VARIABLE) in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 96"
+2020-05-28 02:49:41 pid:1 Register auth timeout (127.0.0.1). See http://doc2.workerman.net/register-auth-timeout.html
+2020-05-29 06:50:41 pid:1 Worker process terminated with ERROR: E_ERROR "Call to a member function insert() on a non-object in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php on line 113"
