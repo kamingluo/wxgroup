@@ -137,6 +137,14 @@ Page({
     var that = this
     var crowd_id = that.data.crowd_id //群id
     var score = this.data.num //分数
+    if(score < 1){
+      wx.showToast({
+        title: '分数错误',
+        icon: 'none',
+        duration: 1500,
+      })
+      return;
+    }
     var id = this.data.taskdata.taskdetails.id //任务id
     var user_id = this.data.taskdata.taskdetails.user_id //提交任务用户id
     that.hidetasksuccessmodal()

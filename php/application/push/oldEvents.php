@@ -19,6 +19,10 @@
  */
 //declare(ticks=1);
 
+
+
+//worker启动之后不能关闭,参考文档http://doc.workerman.net/315234
+
 use \GatewayWorker\Lib\Gateway;
 require_once '/Connection.php'; //引入数据库连接文件
 header("Content-Type:text/html;charset=utf-8");

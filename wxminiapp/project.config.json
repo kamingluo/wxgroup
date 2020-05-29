@@ -81,7 +81,15 @@
 					"id": -1,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
+					"query": "",
 					"scene": 1005
+				},
+				{
+					"id": -1,
+					"name": "聊天页面",
+					"pathName": "pages/group/chat/chat",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
