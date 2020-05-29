@@ -15,7 +15,7 @@ class Events
      */
     public static function onWorkerStart($worker)
     {
-        self::$db = new \Workerman\MySQL\Connection('47.106.253.110', '3306', 'crowd', 'crowd', 'crowd');
+        // self::$db = new \Workerman\MySQL\Connection('47.106.253.110', '3306', 'crowd', 'crowd', 'crowd');
     }
 
     /**
@@ -110,14 +110,14 @@ class Events
                 $time=date('Y-m-d H:i:s');
 
                 // 插入数据到数据表
-                $insert_id = self::$db->insert('chat_data')->cols(array(
-                    'crowd_id'=>$room_id,
-                    'user_id'=>$user_id,
-                    'name'=>$client_name,
-                    'imgurl'=>$imgurl,
-                    'say_type'=> $say_type,
-                    'content'=>$content,
-                    'create_time'=>$time))->query();
+                // $insert_id = self::$db->insert('chat_data')->cols(array(
+                //     'crowd_id'=>$room_id,
+                //     'user_id'=>$user_id,
+                //     'name'=>$client_name,
+                //     'imgurl'=>$imgurl,
+                //     'say_type'=> $say_type,
+                //     'content'=>$content,
+                //     'create_time'=>$time))->query();
 
                 
                 $new_message = array(
