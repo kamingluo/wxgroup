@@ -29,7 +29,7 @@ class Events
             'type'=>'connect', 
             "message"=>"连接成功，返回消息",
             'from_client_id'=>$client_id,
-            'time'=>date('Y-m-d H:i:s'),
+            'create_time'=>date('Y-m-d H:i:s'),
         );
         return Gateway::sendToCurrentClient(json_encode($new_message,JSON_UNESCAPED_UNICODE));
     }
@@ -90,7 +90,7 @@ class Events
                     'from_client_id'=>$client_id,
                     'from_client_name' =>$client_name,
                     'groupnum'=>$groupnum,
-                    'time'=>$time,
+                    'create_time'=>$time,
                 );
                 return Gateway::sendToGroup($room_id ,json_encode($new_message,JSON_UNESCAPED_UNICODE));
                 
@@ -131,7 +131,7 @@ class Events
                     'to_client_id'=>'all',
                     'say_type'=>$say_type,
                     'content'=>$content,
-                    'time'=>$time,
+                    'create_time'=>$time,
                 );
                 return Gateway::sendToGroup($send_roomid ,json_encode($new_message,JSON_UNESCAPED_UNICODE));
             
@@ -145,7 +145,7 @@ class Events
                     "message"=>"群主操作禁言",
                     'offchat'=>$offchat,
                     'to_client_id'=>'all',
-                    'time'=>date('Y-m-d H:i:s'),
+                    'create_time'=>date('Y-m-d H:i:s'),
                 );
                 return Gateway::sendToGroup($room_id ,json_encode($new_message,JSON_UNESCAPED_UNICODE));
 
@@ -167,7 +167,7 @@ class Events
         "message"=>"群员离开房间",
         'to_client_id'=>'all',
         'groupnum'=>$groupnum,
-        'time'=>date('Y-m-d H:i:s'),
+        'create_time'=>date('Y-m-d H:i:s'),
     );
     return Gateway::sendToGroup($room_id ,json_encode($new_message,JSON_UNESCAPED_UNICODE));
    

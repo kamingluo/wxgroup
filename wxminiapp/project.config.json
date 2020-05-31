@@ -85,10 +85,10 @@
 					"scene": 1005
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "聊天页面",
 					"pathName": "pages/group/chat/chat",
-					"query": "",
+					"query": "crowd_id=14",
 					"scene": null
 				}
 			]
