@@ -1,16 +1,22 @@
 var app = getApp();
+const qiniuUploader = require("../../../utils/sdk/qiniu/qiniuUploader");
+const {
+  request
+} = require('./../../../utils/request.js');
+const common = require('./../../../utils/common.js');
 var socketOpen = false;
 var frameBuffer_Data, session, SocketTask;
-var url = 'wss://group.gzywudao.top/wss';
+var url = 'wss://group.gzywudao.top/wss';//长链接接口
 Page({
   data: {
     inputValue: '',
     InputBottom: 0,//输入框交互
     crowd_id:null,//群id
     owner_id:null,//群主id
-    user_id: 10084,//用户id
+    user_id: null,//用户id
     chatdata: [],//聊天记录数据
     groupnum:0,//在线人数
+    offchat:0,//是否禁言。0正常1禁言
   },
 
 //输入框交互
@@ -34,7 +40,8 @@ Page({
       user_id: user_id
     })
 
-    this.textdata()
+    // this.textdata()
+    this.chatconfig()
   },
   onShow: function(e) {
     if (!socketOpen) {
@@ -42,102 +49,127 @@ Page({
     }
   },
 
-
-  textdata: function() {
-    let data = [{
-        type: "say",
-        message: "发送消息出去",
-        user_id: 10084,
-        imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-        client_name: "kamng2",
-        say_type: "text",
-        content: "微信小程序",
-        create_time: "2018-03-23 13:23"
+  //获取配置信息
+  chatconfig:function(){
+    let crowd_id = this.data.crowd_id;
+    request({
+      service: 'group//chat/chatconfig',
+      method: 'GET',
+      data: {
+        crowd_id:crowd_id,
       },
-      {
-        type: "say",
-        message: "发送消息出去",
-        user_id: 10084,
-        imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-        client_name: "kamng2",
-        say_type: "image",
-        content: "https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg",
-        create_time: "2018-03-23 13:23"
-      },
-
-      {
-        type: "say",
-        message: "发送消息出去",
-        user_id: 10086,
-        imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-        client_name: "kamng2",
-        say_type: "text",
-        content: "微信小程序",
-        create_time: "2018-03-23 13:23"
-      },
-      {
-        type: "say",
-        message: "发送消息出去",
-        user_id: 10086,
-        imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-        client_name: "kamng2",
-        say_type: "image",
-        content: "https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg",
-        create_time: "2018-03-23 13:23"
-      },
-      {
-        type: "say",
-        message: "发送消息出去",
-        user_id: 10084,
-        imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-        client_name: "kamng2",
-        say_type: "text",
-        content: "微信小程序",
-        create_time: "2018-03-23 13:23"
-      },
-      {
-        type: "say",
-        message: "发送消息出去",
-        user_id: 10084,
-        imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-        client_name: "kamng2",
-        say_type: "image",
-        content: "https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg",
-        create_time: "2018-03-23 13:23"
-      },
-
-      {
-        type: "say",
-        message: "发送消息出去",
-        user_id: 10086,
-        imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-        client_name: "kamng2",
-        say_type: "text",
-        content: "微信小程序",
-        create_time: "2018-03-23 13:23"
-      },
-      {
-        type: "say",
-        message: "发送消息出去",
-        user_id: 10086,
-        imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-        client_name: "kamng2",
-        say_type: "image",
-        content: "https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg",
-        create_time: "2018-03-23 13:23"
+      success: res => {
+        console.log("配置信息",res)
+        this.setData({
+          chatdata: res.chatdata,
+          owner_id:res.configdata.owner_id,
+          offchat:res.configdata.offchat,
+        })
       }
-    ];
-    this.setData({
-      chatdata: data,
-    })
-
-    //回到最底部,数值那么大，保证回到底部
-    wx.pageScrollTo({
-      scrollTop: 10000000,  
     })
   },
+
+
+
+//假数据
+  // textdata: function() {
+  //   let data = [{
+  //       type: "say",
+  //       message: "发送消息出去",
+  //       user_id: 10084,
+  //       imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
+  //       client_name: "kamng2",
+  //       say_type: "text",
+  //       content: "微信小程序",
+  //       create_time: "2018-03-23 13:23"
+  //     },
+  //     {
+  //       type: "say",
+  //       message: "发送消息出去",
+  //       user_id: 10084,
+  //       imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
+  //       client_name: "kamng2",
+  //       say_type: "image",
+  //       content: "https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg",
+  //       create_time: "2018-03-23 13:23"
+  //     },
+
+  //     {
+  //       type: "say",
+  //       message: "发送消息出去",
+  //       user_id: 10086,
+  //       imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
+  //       client_name: "kamng2",
+  //       say_type: "text",
+  //       content: "微信小程序",
+  //       create_time: "2018-03-23 13:23"
+  //     },
+  //     {
+  //       type: "say",
+  //       message: "发送消息出去",
+  //       user_id: 10086,
+  //       imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
+  //       client_name: "kamng2",
+  //       say_type: "image",
+  //       content: "https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg",
+  //       create_time: "2018-03-23 13:23"
+  //     },
+  //     {
+  //       type: "say",
+  //       message: "发送消息出去",
+  //       user_id: 10084,
+  //       imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
+  //       client_name: "kamng2",
+  //       say_type: "text",
+  //       content: "微信小程序",
+  //       create_time: "2018-03-23 13:23"
+  //     },
+  //     {
+  //       type: "say",
+  //       message: "发送消息出去",
+  //       user_id: 10084,
+  //       imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
+  //       client_name: "kamng2",
+  //       say_type: "image",
+  //       content: "https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg",
+  //       create_time: "2018-03-23 13:23"
+  //     },
+
+  //     {
+  //       type: "say",
+  //       message: "发送消息出去",
+  //       user_id: 10086,
+  //       imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
+  //       client_name: "kamng2",
+  //       say_type: "text",
+  //       content: "微信小程序",
+  //       create_time: "2018-03-23 13:23"
+  //     },
+  //     {
+  //       type: "say",
+  //       message: "发送消息出去",
+  //       user_id: 10086,
+  //       imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
+  //       client_name: "kamng2",
+  //       say_type: "image",
+  //       content: "https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg",
+  //       create_time: "2018-03-23 13:23"
+  //     }
+  //   ];
+  //   this.setData({
+  //     chatdata: data,
+  //   })
+
+  //   //回到最底部,数值那么大，保证回到底部
+  //   wx.pageScrollTo({
+  //     scrollTop: 10000000,  
+  //   })
+  // },
   // 页面加载完成
-  onReady: function () {
+  
+  
+//页面加载链接长链接
+onReady: function () {
     console.log("开始加载")
     var that = this;
     SocketTask.onOpen(res => {
@@ -279,6 +311,7 @@ Page({
 
   },
 
+//用户输入文字
   bindKeyInput: function(e) {
     console.log("输入框输入文档", e.detail.value)
     this.setData({
@@ -298,9 +331,30 @@ Page({
         // console.log("返回选定照片的本地文件路径列表", res)
         // // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths[0];
-        console.log("打印上传照片的本地路径", res.tempFilePaths[0])
-        that.sendmsg(tempFilePaths, "image")
+        //console.log("打印上传照片的本地路径", res.tempFilePaths[0])
+        that.qiuniuupload(tempFilePaths)//拿到本地链接，去调用七牛上传
       }
+    })
+  },
+//把图片上传到七牛
+  qiuniuupload: function(tempFilePaths) {
+    var that = this;
+    new Promise(function(resolve, reject) {
+        qiniuUploader.upload(tempFilePaths, (res) => {
+          let qiniuimgurl=res.imageURL;
+            resolve(qiniuimgurl);
+            //console.log('上传七牛返回: ' , qiniuimgurl);
+        }, (error) => {
+          reject('error');
+          console.log('error: ' + error);
+        }, {
+          region: 'SCN',//华南代号
+          uploadURL: 'https://up-z2.qiniup.com',
+          domain: 'http://groupchat.luojiaming.vip/',
+          uptokenURL: 'https://group.gzywudao.top/php/public/miniapp.php/currency/qiniugroupchatdata',
+        })
+    }).then(function(qiniuimgurl) {
+      that.sendmsg(qiniuimgurl,"image")//拿到图片地址去发送消息
     })
   },
 

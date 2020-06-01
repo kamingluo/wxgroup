@@ -1,6 +1,8 @@
 page{
   padding-bottom: 100rpx;
 }
+
+
 .cu-chat .cu-item {
 	display: flex;
 	padding: 20rpx 30rpx 60rpx;
@@ -26,5 +28,149 @@ page{
 }
 
 .textareabody{
-  height: 100rpx;
+	height: 100rpx;
+}
+
+.more{
+	position: fixed;
+	bottom: 100rpx;
+	height: 70rpx;
+	width: 100%;
+	background-color: #f1f1f1;
+	margin-bottom: 1rpx;
+	z-index: 999;
+}
+.more-body{
+	width: 94%;
+	height: 60rpx;
+	margin-left: 3%;
+}
+
+.more-button button{
+	margin-top:10rpx;
+}
+
+
+
+/* ==================
+         聊天
+ ==================== */
+
+ .cu-chat {
+	display: flex;
+	flex-direction: column;
+}
+
+
+.cu-chat .cu-item>.cu-avatar {
+	width: 80rpx;
+	height: 80rpx;
+}
+
+.cu-chat .cu-item>.main {
+	max-width: calc(100% - 260rpx);
+	margin: 0 40rpx;
+	display: flex;
+	align-items: center;
+}
+
+.cu-chat .cu-item>image {
+	height: 320rpx;
+}
+
+.cu-chat .cu-item>.main .content {
+	padding: 20rpx;
+	border-radius: 6rpx;
+	display: inline-flex;
+	max-width: 100%;
+	align-items: center;
+	font-size: 30rpx;
+	position: relative;
+	min-height: 80rpx;
+	line-height: 40rpx;
+	text-align: left;
+}
+
+.cu-chat .cu-item>.main .content:not([class*="bg-"]) {
+	background-color: var(--white);
+	color: var(--black);
+}
+
+.cu-chat .cu-item .date {
+	position: absolute;
+	font-size: 24rpx;
+	color: var(--grey);
+	width: calc(100% - 320rpx);
+	bottom: 20rpx;
+	left: 160rpx;
+}
+
+.cu-chat .cu-item .action {
+	padding: 0 30rpx;
+	display: flex;
+	align-items: center;
+}
+
+.cu-chat .cu-item>.main .content::after {
+	content: "";
+	top: 27rpx;
+	transform: rotate(45deg);
+	position: absolute;
+	z-index: 100;
+	display: inline-block;
+	overflow: hidden;
+	width: 24rpx;
+	height: 24rpx;
+	left: -12rpx;
+	right: initial;
+	background-color: inherit;
+}
+
+.cu-chat .cu-item.self>.main .content::after {
+	left: auto;
+	right: -12rpx;
+}
+
+.cu-chat .cu-item>.main .content::before {
+	content: "";
+	top: 30rpx;
+	transform: rotate(45deg);
+	position: absolute;
+	z-index: -1;
+	display: inline-block;
+	overflow: hidden;
+	width: 24rpx;
+	height: 24rpx;
+	left: -12rpx;
+	right: initial;
+	background-color: inherit;
+	filter: blur(5rpx);
+	opacity: 0.3;
+}
+
+.cu-chat .cu-item>.main .content:not([class*="bg-"])::before {
+	background-color: var(--black);
+	opacity: 0.1;
+}
+
+.cu-chat .cu-item.self>.main .content::before {
+	left: auto;
+	right: -12rpx;
+}
+
+.cu-chat .cu-item.self {
+	justify-content: flex-end;
+	text-align: right;
+}
+
+.cu-chat .cu-info {
+	display: inline-block;
+	margin: 20rpx auto;
+	font-size: 24rpx;
+	padding: 8rpx 12rpx;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 6rpx;
+	color: var(--white);
+	max-width: 400rpx;
+	line-height: 1.4;
 }

@@ -2091,6 +2091,7 @@ button.icon.lg {
 .cu-chat {
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 60rpx;
 }
 
 .cu-chat .cu-item {

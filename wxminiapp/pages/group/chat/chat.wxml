@@ -1,49 +1,63 @@
 <cu-custom bgColor="bg-blue" isBack="{{true}}">
-  <view slot="backText">返回</view>
-  <view slot="content">当前在线:{{groupnum}}人</view>
+	<view slot="backText">返回</view>
+	<view slot="content">当前在线:{{groupnum}}人</view>
 </cu-custom>
 
 
 
 <scroll-view scroll-y="true" scroll-with-animation scroll-top="{{scrollTop}}">
-  <view class="cu-chat">
-    <view wx:for="{{chatdata}}" wx:key="item">
-      <view wx:if="{{item.user_id == user_id}}">
-        <view class="cu-item self">
-          <view class="main">
-            <view class="content bg-green shadow" wx:if="{{item.say_type=='text'}}">
-              <text>{{item.content}}</text>
-            </view>
-            <image wx:else src="{{item.content}}" class="radius" mode="widthFix"></image>
-          </view>
-          <view class="cu-avatar radius" style="background-image:url({{item.imgurl}});"></view>
-          <view class="date">{{item.create_time}}</view>
-        </view>
-      </view>
-      <view wx:else>
-        <view class="cu-item">
-          <view class="cu-avatar radius" style="background-image:url({{item.imgurl}});"></view>
-          <view class="main ">
-            <view class="content  shadow" wx:if="{{item.say_type=='text'}}">
-              <text>{{item.content}}</text>
-            </view>
-            <image wx:else src="{{item.content}}" class="radius" mode="widthFix"></image>
-          </view>
-          <view class="date "> {{item.create_time}}</view>
-        </view>
-      </view>
-    </view>
-  </view>
+	<view class="cu-chat">
+		<view wx:for="{{chatdata}}" wx:key="item">
+			<view wx:if="{{item.user_id == user_id}}">
+				<view class="cu-item self">
+					<view class="main">
+						<view class="content bg-green shadow" wx:if="{{item.say_type=='text'}}">
+							<text>{{item.content}}</text>
+						</view>
+						<image wx:else src="{{item.content}}" class="radius" mode="widthFix"></image>
+					</view>
+					<view class="cu-avatar radius" style="background-image:url({{item.imgurl}});"></view>
+					<view class="date">{{item.create_time}}</view>
+				</view>
+			</view>
+			<view wx:else>
+				<view class="cu-item">
+					<view class="cu-avatar radius" style="background-image:url({{item.imgurl}});"></view>
+					<view class="main ">
+						<view class="content  shadow" wx:if="{{item.say_type=='text'}}">
+							<text>{{item.content}}</text>
+						</view>
+						<image wx:else src="{{item.content}}" class="radius" mode="widthFix"></image>
+					</view>
+					<view class="date "> {{item.create_time}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
 </scroll-view>
 
+
+<view class=" foot more" wx:if="{{owner_id==user_id}}">
+	<view class="more-body">
+		<view class="more-button">
+			<button class="cu-btn line-orange round sm shadow"> {{offchat==0? "全员禁言":"关闭禁言"}}</button>
+		</view>
+	</view>
+</view>
+
+
 <view class="cu-bar foot input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px">
-  <view class="action">
-    <text class="cuIcon-roundadd text-grey" bindtap="upload"></text>
-  </view>
-  <input class="solid-bottom" bindfocus="InputFocus" maxlength="250" value="{{inputValue}}" bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="300" cursor-spacing="10"  bindinput="bindKeyInput"  ></input>
-  
-  <!-- <view class="action">
+
+	<view class="action">
+		<text class="cuIcon-roundadd text-grey" bindtap="upload"></text>
+	</view>
+
+	<input wx:if="{{offchat==0 || owner_id==user_id }}" class="solid-bottom" bindfocus="InputFocus" maxlength="250" value="{{inputValue}}" bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="300" cursor-spacing="10" bindinput="bindKeyInput"></input>
+	<input wx:else  disabled="false"  class="solid-bottom" bindfocus="InputFocus" maxlength="250" value="全员禁言中..." bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="300" cursor-spacing="10" bindinput="bindKeyInput"></input>
+
+
+	<!-- <view class="action">
     <text class="cuIcon-emojifill text-grey"></text>
   </view> -->
-  <button class="cu-btn bg-green shadow"  bindtap="submitTo">发送</button>
+	<button class="cu-btn bg-green shadow" bindtap="submitTo">发送</button>
 </view>

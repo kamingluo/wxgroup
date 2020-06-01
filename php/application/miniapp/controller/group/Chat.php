@@ -41,6 +41,16 @@ class Chat
         return $resdata ;  
     }
 
+    //修改禁言
+    public function offchat(Request $request)
+    {
+        $crowd_id =$request->param("crowd_id");
+        $offchat =$request->param("offchat");
+        $dbreturn= db('chat_config')->where('crowd_id',$crowd_id)->update(['offchat' => $offchat]);//修改禁言状态
+        $state=['state'   => '200','message'  => "修改禁言状态成功" ];
+        return $state ;  
+    }
+
 
 
 
