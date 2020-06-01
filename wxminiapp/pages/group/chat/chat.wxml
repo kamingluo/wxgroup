@@ -40,7 +40,7 @@
 <view class=" foot more" wx:if="{{owner_id==user_id}}">
 	<view class="more-body">
 		<view class="more-button">
-			<button class="cu-btn line-orange round sm shadow"> {{offchat==0? "全员禁言":"关闭禁言"}}</button>
+			<button class="cu-btn line-orange round sm shadow"  bindtap="clickoffchat"> {{offchat==0? "全员禁言":"关闭禁言"}}</button>
 		</view>
 	</view>
 </view>

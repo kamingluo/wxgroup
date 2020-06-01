@@ -37,7 +37,7 @@ page{
 	height: 70rpx;
 	width: 100%;
 	background-color: #f1f1f1;
-	margin-bottom: 1rpx;
+	margin-bottom: -1rpx;
 	z-index: 999;
 }
 .more-body{

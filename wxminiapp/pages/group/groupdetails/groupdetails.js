@@ -126,9 +126,15 @@ Page({
       {
         id: 5,
         imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/newshuoming.png",
-        text: "空间说明",
-        joumurl: 666
+        text: "群聊天室",
+        joumurl: '/pages/group/chat/chat'
       }
+      // {
+      //   id: 5,
+      //   imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/newshuoming.png",
+      //   text: "空间说明",
+      //   joumurl: 666
+      // }
     ];
 
     let adminicon = [
