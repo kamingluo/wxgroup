@@ -1,6 +1,7 @@
 page{
-  padding-bottom: 100rpx;
+	padding-bottom: 100rpx;
 }
+
 
 
 .cu-chat .cu-item {
@@ -11,7 +12,7 @@ page{
 
 
 .cu-chat .cu-item>.main {
-	max-width: calc(100% - 260rpx);
+	max-width: calc(100% - 160rpx);
 	margin: 0 40rpx;
 	display: flex;
 	align-items: center;
@@ -23,9 +24,18 @@ page{
 	position: absolute;
 	font-size: 28rpx;
 	width: calc(100% - 320rpx);
-  top:-18rpx;
-	left: 160rpx;
+  top:1rpx;
+	left: 180rpx;
 }
+.name2{
+  z-index: 999;
+	position: absolute;
+	font-size: 28rpx;
+	width: calc(100% - 320rpx);
+  top:1rpx;
+	left: 140rpx;
+}
+
 
 .textareabody{
 	height: 100rpx;
@@ -41,13 +51,14 @@ page{
 	z-index: 999;
 }
 .more-body{
-	width: 94%;
+	width: 98%;
 	height: 60rpx;
-	margin-left: 3%;
+	margin-left: 1%;
 }
 
 .more-button button{
 	margin-top:10rpx;
+	margin-left: 18rpx;
 }
 
 
@@ -69,7 +80,7 @@ page{
 
 .cu-chat .cu-item>.main {
 	max-width: calc(100% - 260rpx);
-	margin: 0 40rpx;
+	margin: 30rpx 32rpx 0rpx;
 	display: flex;
 	align-items: center;
 }
@@ -79,12 +90,12 @@ page{
 }
 
 .cu-chat .cu-item>.main .content {
-	padding: 20rpx;
+	padding: 15rpx;
 	border-radius: 6rpx;
 	display: inline-flex;
 	max-width: 100%;
 	align-items: center;
-	font-size: 30rpx;
+	font-size: 25rpx;
 	position: relative;
 	min-height: 80rpx;
 	line-height: 40rpx;
@@ -96,13 +107,32 @@ page{
 	color: var(--black);
 }
 
-.cu-chat .cu-item .date {
+/* .cu-chat .cu-item .date {
 	position: absolute;
-	font-size: 24rpx;
+	font-size: 20rpx;
 	color: var(--grey);
 	width: calc(100% - 320rpx);
-	bottom: 20rpx;
+	bottom: 28rpx;
 	left: 160rpx;
+} */
+.name{
+	position: absolute;
+}
+.date1 {
+	position: absolute;
+	font-size: 20rpx;
+	color: var(--grey);
+	width: calc(100% - 320rpx);
+	bottom: 28rpx;
+	left: 180rpx;
+}
+.date2{
+	position: absolute;
+	font-size: 20rpx;
+	color: var(--grey);
+	width: calc(100% - 320rpx);
+	bottom: 28rpx;
+	left: 140rpx;
 }
 
 .cu-chat .cu-item .action {
@@ -161,6 +191,7 @@ page{
 .cu-chat .cu-item.self {
 	justify-content: flex-end;
 	text-align: right;
+	margin: 20rpx auto;
 }
 
 .cu-chat .cu-info {
@@ -173,4 +204,141 @@ page{
 	color: var(--white);
 	max-width: 400rpx;
 	line-height: 1.4;
+}
+
+
+
+
+
+
+
+/* ==================
+         抽屉
+ ==================== */
+
+
+
+
+.DrawerPage{
+	position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0vw;
+  background-color: #f1f1f1;
+  transition: all 0.4s;
+}
+
+
+.DrawerPage.show {
+  transform: scale(0.9, 0.9);
+  left: 85vw;
+  box-shadow: 0 0 60rpx rgba(0, 0, 0, 0.2);
+  transform-origin: 0;
+}
+
+
+
+
+
+.DrawerWindow {
+	background-image: var(--gradualBlue);
+  position: absolute;
+  width: 85vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  transform: scale(0.9, 0.9) translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s;
+}
+
+.DrawerWindow.show {
+  transform: scale(1, 1) translateX(0%);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.DrawerClose {
+  position: absolute;
+  width: 40vw;
+  height: 100vh;
+  right: 0;
+  top: 0;
+  color: transparent;
+  padding-bottom: 30rpx;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-image: linear-gradient(100deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9));
+  letter-spacing: 5px;
+  font-size: 50rpx;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s;
+}
+
+.DrawerClose.show {
+  opacity: 1;
+  pointer-events: all;
+  width: 15vw;
+  color: #fff;
+}
+
+.DrawerPage .cu-bar.tabbar .action button.icon {
+  width: 64rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  margin: 0;
+  display: inline-block;
+}
+
+.DrawerPage .cu-bar.tabbar .action .cu-avatar {
+  margin: 0;
+}
+
+.DrawerPage .nav {
+  flex: 1;
+}
+
+.DrawerPage .nav .cu-item.cur {
+  border-bottom: 0;
+  position: relative;
+}
+
+.DrawerPage .nav .cu-item.cur::after {
+  content: "";
+  width: 10rpx;
+  height: 10rpx;
+  background-color: currentColor;
+  position: absolute;
+  bottom: 10rpx;
+  border-radius: 10rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.DrawerPage.cu-bar.tabbar .action {
+  flex: initial;
+}
+
+
+
+
+
+
+
+.cu-list.menu>.cu-item {
+	position: relative;
+	display: flex;
+	padding: 0 30rpx;
+	min-height: 90rpx;
+	background-color: var(--white);
+	justify-content: space-between;
+	align-items: center
+}
+
+.online-name{
+	margin-left: 20rpx;
 }

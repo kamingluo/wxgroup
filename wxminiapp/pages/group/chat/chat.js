@@ -7,17 +7,21 @@ const common = require('./../../../utils/common.js');
 var socketOpen = false;
 var frameBuffer_Data, session, SocketTask;
 var url = 'wss://group.gzywudao.top/wss'; //长链接接口
-var timing;//定时
+var timing; //定时
 Page({
   data: {
     inputValue: '',
     InputBottom: 0, //输入框交互
     crowd_id: null, //群id
+    crowd_name: null, //群名称
     owner_id: null, //群主id
     user_id: null, //用户id
     chatdata: [], //聊天记录数据
     groupnum: 0, //在线人数
     offchat: 0, //是否禁言。0正常1禁言
+    modalName: null,
+    scrollTop: 10000000,
+
   },
 
   //输入框交互
@@ -38,6 +42,7 @@ Page({
     let user_id = wx.getStorageSync('userdata').id;
     this.setData({
       crowd_id: e.crowd_id,
+      crowd_name: e.crowd_name,
       user_id: user_id
     })
 
@@ -427,6 +432,17 @@ Page({
     })
   },
 
+  //图片点击事件
+  imgYu: function (event) {
+    var src = event.currentTarget.dataset.src; //获取data-src
+    var imgList = [src]; //获取data-list
+    //图片预览
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: imgList // 需要预览的图片http链接列表
+    })
+  },
+
 
   //页面隐藏就关闭连接
   onHide: function () {
@@ -436,6 +452,21 @@ Page({
 
     clearInterval(timing)
 
+  },
+
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+   
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+    wx.pageScrollTo({
+      scrollTop: 10000000,
+    })
   },
 
   //页面卸载就关闭连接

@@ -82,14 +82,17 @@ class Events
                  //获取当前在线用户数
                 $groupnum=Gateway::getUidCountByGroup($room_id);
                 $time=date('Y-m-d H:i:s');
+                $onlinelist= Gateway::getClientSessionsByGroup($room_id);
+                // $newonlinelist=array($onlinelist);
 
                 $new_message = array(
                     'type'=>'login', 
                     'user_id'=>$user_id,
-                    "message"=>"登录成功,并返回群人数，告诉全部人，包括用户自己",
+                    "message"=>"登录成功,并返回群人数，告诉全部人，包括用户自己11",
                     'from_client_id'=>$client_id,
                     'from_client_name' =>$client_name,
                     'groupnum'=>$groupnum,
+                    'onlinelist'=>$onlinelist,
                     'create_time'=>$time,
                 );
                 return Gateway::sendToGroup($room_id ,json_encode($new_message,JSON_UNESCAPED_UNICODE));
@@ -162,11 +165,13 @@ class Events
     $room_id = $_SESSION['room_id'];
      //获取当前在线用户数
     $groupnum=Gateway::getUidCountByGroup($room_id);
+    $onlinelist= Gateway::getClientSessionsByGroup($room_id);
     $new_message = array(
         'type'=>'bye', 
         "message"=>"群员离开房间",
         'to_client_id'=>'all',
         'groupnum'=>$groupnum,
+        'onlinelist'=>$onlinelist,
         'create_time'=>date('Y-m-d H:i:s'),
     );
     return Gateway::sendToGroup($room_id ,json_encode($new_message,JSON_UNESCAPED_UNICODE));

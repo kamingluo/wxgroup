@@ -88,7 +88,7 @@
 					"id": 4,
 					"name": "聊天页面",
 					"pathName": "pages/group/chat/chat",
-					"query": "crowd_id=14",
+					"query": "crowd_id=14&crowd_name=群名称",
 					"scene": null
 				}
 			]
