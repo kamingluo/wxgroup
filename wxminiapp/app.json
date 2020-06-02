@@ -28,6 +28,7 @@
     "pages/group/lottery/pushlottery/pushlottery",
     "pages/group/ownersmore/ownersmore",
     "pages/group/chat/chat",
+    "pages/group/chat/pushnotice/pushnotice",
     "pages/group/goods/goodslist/goodslist",
     "pages/group/goods/pushgoods/pushgoods",
     "pages/group/goods/exchange/exchange",

@@ -66,9 +66,9 @@ class Events
                 $room_id = $message_data['room_id'];
                 $user_id=$message_data['user_id'];
                 $imgurl=$message_data['imgurl'];
-                $client_name = htmlspecialchars($message_data['client_name']);
+                $name = htmlspecialchars($message_data['name']);
                 $_SESSION['room_id'] = $room_id;
-                $_SESSION['client_name'] = $client_name;
+                $_SESSION['name'] = $name;
                 $_SESSION['user_id'] =$user_id;
                 $_SESSION['imgurl'] =$imgurl;
               
@@ -90,7 +90,7 @@ class Events
                     'user_id'=>$user_id,
                     "message"=>"登录成功,并返回群人数，告诉全部人，包括用户自己11",
                     'from_client_id'=>$client_id,
-                    'from_client_name' =>$client_name,
+                    'name' =>$name,
                     'groupnum'=>$groupnum,
                     'onlinelist'=>$onlinelist,
                     'create_time'=>$time,
@@ -105,7 +105,7 @@ class Events
                     throw new \Exception("\$_SESSION['room_id'] not set. client_ip:{$_SERVER['REMOTE_ADDR']}");
                 }
                 $room_id = $_SESSION['room_id'];
-                $client_name = $_SESSION['client_name'];
+                $name = $_SESSION['name'];
                 $user_id = $_SESSION['user_id'];
                 $imgurl = $_SESSION['imgurl'];
                 $send_roomid=$message_data['room_id'];//发送到哪个群
@@ -117,7 +117,7 @@ class Events
                 $insert_id = self::$db->insert('chat_data')->cols(array(
                     'crowd_id'=>$room_id,
                     'user_id'=>$user_id,
-                    'name'=>$client_name,
+                    'name'=>$name,
                     'imgurl'=>$imgurl,
                     'say_type'=> $say_type,
                     'content'=>$content,
@@ -130,7 +130,7 @@ class Events
                     'user_id'=>$user_id,
                     'imgurl'=>$imgurl,
                     'from_client_id'=>$client_id,
-                    'from_client_name' =>$client_name,
+                    'name' =>$name,
                     'to_client_id'=>'all',
                     'say_type'=>$say_type,
                     'content'=>$content,

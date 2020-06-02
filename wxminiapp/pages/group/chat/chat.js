@@ -21,9 +21,10 @@ Page({
     offchat: 0, //是否禁言。0正常1禁言
     modalName: null,
     scrollTop: 10000000,
+    CustomBar: app.globalData.CustomBar,
     onlinelist:[],//在线人数列表
     hideNotice: false,//关闭公告
-    notice: '群主发布公告的功能还没做啊！',//公告内容
+    notice:'',//公告内容
 
   },
 
@@ -39,7 +40,13 @@ Page({
     })
   },
 
-
+//跳转发送公告页面
+  pushnotice:function(){
+    let crowd_id = this.data.crowd_id;
+    wx.navigateTo({
+      url: '/pages/group/chat/pushnotice/pushnotice?crowd_id=' + crowd_id
+    })
+  },
 
   //公告开始
   noticestart:function(){
@@ -139,6 +146,7 @@ Page({
           chatdata: res.chatdata,
           owner_id: res.configdata.owner_id,
           offchat: res.configdata.offchat,
+          notice: res.configdata.notice,
         })
         setTimeout(function () {
           wx.pageScrollTo({
@@ -192,101 +200,7 @@ Page({
 
 
 
-  //假数据
-  //  textdata: function() {
-  //     let data = [{
-  //         type: "say",
-  //         message: "发送消息出去",
-  //         user_id: 10084,
-  //         imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-  //         client_name: "kamng2",
-  //         say_type: "text",
-  //         content: "微信小程序",
-  //         create_time: "2018-03-23 13:23"
-  //       },
-  //       {
-  //         type: "say",
-  //         message: "发送消息出去",
-  //         user_id: 10084,
-  //         imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-  //         client_name: "kamng2",
-  //         say_type: "image",
-  //         content: "https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg",
-  //         create_time: "2018-03-23 13:23"
-  //       },
-
-  //       {
-  //         type: "say",
-  //         message: "发送消息出去",
-  //         user_id: 10086,
-  //         imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-  //         client_name: "kamng2",
-  //         say_type: "text",
-  //         content: "微信小程序",
-  //         create_time: "2018-03-23 13:23"
-  //       },
-  //       {
-  //         type: "say",
-  //         message: "发送消息出去",
-  //         user_id: 10086,
-  //         imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-  //         client_name: "kamng2",
-  //         say_type: "image",
-  //         content: "https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg",
-  //         create_time: "2018-03-23 13:23"
-  //       },
-  //       {
-  //         type: "say",
-  //         message: "发送消息出去",
-  //         user_id: 10084,
-  //         imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-  //         client_name: "kamng2",
-  //         say_type: "text",
-  //         content: "微信小程序",
-  //         create_time: "2018-03-23 13:23"
-  //       },
-  //       {
-  //         type: "say",
-  //         message: "发送消息出去",
-  //         user_id: 10084,
-  //         imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-  //         client_name: "kamng2",
-  //         say_type: "image",
-  //         content: "https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg",
-  //         create_time: "2018-03-23 13:23"
-  //       },
-
-  //       {
-  //         type: "say",
-  //         message: "发送消息出去",
-  //         user_id: 10086,
-  //         imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-  //         client_name: "kamng2",
-  //         say_type: "text",
-  //         content: "微信小程序",
-  //         create_time: "2018-03-23 13:23"
-  //       },
-  //       {
-  //         type: "say",
-  //         message: "发送消息出去",
-  //         user_id: 10086,
-  //         imgurl: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-  //         client_name: "kamng2",
-  //         say_type: "image",
-  //         content: "https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg",
-  //         create_time: "2018-03-23 13:23"
-  //       }
-  //     ];
-  //     this.setData({
-  //       chatdata: data,
-  //     })
-
-  //     //回到最底部,数值那么大，保证回到底部
-  //     wx.pageScrollTo({
-  //       scrollTop: 10000000,  
-  //     })
-  // },
-
+  
 
 
   //页面加载链接长链接
@@ -359,7 +273,7 @@ Page({
       message: "返回的数据",
       user_id: user_id,
       imgurl: avatarUrl,
-      client_name: user_name,
+      name: user_name,
       to_client_id: "all",
       room_id: crowd_id
     }
@@ -381,7 +295,7 @@ Page({
       message: "发送给服务器的数据",
       user_id: user_id,
       imgurl: avatarUrl,
-      client_name: user_name,
+      name: user_name,
       to_client_id: "all",
       say_type: say_type,
       content: content,
@@ -419,6 +333,9 @@ Page({
       fail: function (err) {
         wx.showToast({
           title: '网络异常！',
+        })
+        wx.navigateBack({
+          delta: 1
         })
         console.log(err)
       },
@@ -510,6 +427,7 @@ Page({
   },
 
   showModal(e) {
+    console.log("在线人员",this.data.onlinelist)
     this.setData({
       modalName: e.currentTarget.dataset.target
     })
