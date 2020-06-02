@@ -4,7 +4,48 @@ Page({
    * 页面的初始数据
    */
   data: {
+    hideNotice: false,
+    notice: '这是公告啊奥术大师多 暗刷大厦大厦的暗刷发暗刷大厦大厦发暗示法阿发算法算法啊算法算法暗示法暗刷发暗刷发阿发沙发上',
 
+  },
+
+  onLoad: function () {
+    let data = {};
+    var that = this;
+    var length = that.data.notice.length * 12; //文字长度，写死12
+    var windowWidth = wx.getSystemInfoSync().windowWidth; // 屏幕宽度
+    that.setData({
+      length,
+      windowWidth
+    });
+    //marqueeDistance: 10, //初始滚动距离
+    that.setData({
+      marqueeDistance: windowWidth
+    });
+    that.run1();
+  },
+
+  run1: function () {
+    var that = this;
+    that.data.countTime = setInterval(function () {
+      if (-that.data.marqueeDistance < that.data.length) {
+        that.setData({
+          marqueeDistance: that.data.marqueeDistance - 1,//1是滚动速度
+        });
+      } else {
+        clearInterval(that.data.countTime);
+        that.setData({
+          marqueeDistance: that.data.windowWidth
+        });
+        that.run1();
+      }
+    }, 20);//20是时间间隔，写死
+  },
+
+  switchNotice: function () {
+    this.setData({
+      hideNotice: true
+    })
   },
 
 
@@ -77,9 +118,6 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -116,12 +154,12 @@ Page({
       "create_time": "2020-06-02 08:23:02"
     };
     var kaming = data.onlinelist;
-    var onlinelist=[];
+    var onlinelist = [];
     for (let key in kaming) {
       console.log(kaming[key])
       onlinelist.push(kaming[key])
     }
-    console.log("处理之后的数据",onlinelist)
+    console.log("处理之后的数据", onlinelist)
 
 
 

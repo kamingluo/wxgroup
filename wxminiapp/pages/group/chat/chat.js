@@ -21,6 +21,9 @@ Page({
     offchat: 0, //是否禁言。0正常1禁言
     modalName: null,
     scrollTop: 10000000,
+    onlinelist:[],//在线人数列表
+    hideNotice: false,//关闭公告
+    notice: '群主发布公告的功能还没做啊！',//公告内容
 
   },
 
@@ -37,6 +40,51 @@ Page({
   },
 
 
+
+  //公告开始
+  noticestart:function(){
+    let data = {};
+    var that = this;
+    var length = that.data.notice.length * 12; //文字长度，写死12
+    var windowWidth = wx.getSystemInfoSync().windowWidth; // 屏幕宽度
+    that.setData({
+      length,
+      windowWidth
+    });
+    //marqueeDistance: 10, //初始滚动距离
+    that.setData({
+      marqueeDistance: windowWidth
+    });
+    that.noticerun();
+  },
+
+  //公告动起来
+  noticerun: function () {
+    var that = this;
+    that.data.countTime = setInterval(function () {
+      if (-that.data.marqueeDistance < that.data.length) {
+        that.setData({
+          marqueeDistance: that.data.marqueeDistance - 1,//1是滚动速度
+        });
+      } else {
+        clearInterval(that.data.countTime);
+        that.setData({
+          marqueeDistance: that.data.windowWidth
+        });
+        that.noticerun();
+      }
+    }, 20);//20是时间间隔，写死
+  },
+
+  //关闭公告
+  closeNotice:function(){
+    this.setData({
+      hideNotice: true
+    })
+
+  },
+
+
   // 页面加载
   onLoad: function (e) {
     let user_id = wx.getStorageSync('userdata').id;
@@ -47,6 +95,7 @@ Page({
     })
 
     // this.textdata()
+    this.noticestart()//公告动起来
     this.chatconfig()
   },
   onShow: function (e) {
@@ -263,11 +312,17 @@ Page({
       if (onMessage_data.type == "connect") {
         console.log("长链接创建成功")
         that.userlogin()
-      } else if (onMessage_data.type == "login") {
+      } else if (onMessage_data.type == "login" || onMessage_data.type == "bye" ) {
         console.log("用户登录成功，信息绑定成功")
         let groupnum = onMessage_data.groupnum; //在线人数
+        let onlinelistdata = onMessage_data.onlinelist; //在线列表
+        var onlinelist=[];
+        for (let key in onlinelistdata) {
+          onlinelist.push(onlinelistdata[key])
+        }
         that.setData({
           groupnum: groupnum,
+          onlinelist:onlinelist
         })
       } else if (onMessage_data.type == "say") {
         console.log("有消息进来，判断一下是不是自己的,不是自己发的才set到数据上去")

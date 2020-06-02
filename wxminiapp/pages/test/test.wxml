@@ -1,11 +1,30 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">列表</view>
+</cu-custom>
+<!--   
+  <view class='notice-wrap' hidden='{{hideNotice}}'>
+　　<view class='tongzhitext'>
+　　　　<text class="tongzhi-text"><text class="cuIcon-notificationfill text-grey"></text>{{notice}}</text>
+　　</view>
+　　<view bindtap='switchNotice' class="closeView"><text class="cuIcon-close text-grey"></text></view>
+</view> -->
 
-  <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
-    <view slot="backText">返回</view>
-    <view slot="content">列表</view>
-  </cu-custom>
 
 
-  <view class="cu-list menu-avatar">
+<view class='notice-wrap' hidden='{{hideNotice}}'>
+	<view class='notice ovh font28 relative'>
+		<view class="marquee_text" style="left:{{marqueeDistance}}px;">
+			<text class="cuIcon-notificationfill text-grey"></text> {{notice}}
+		</view>
+	</view>
+	　<view bindtap='switchNotice' class="closeView"><text class="cuIcon-close text-grey"></text></view>
+</view>
+
+
+
+
+<!-- <view class="cu-list menu-avatar">
     <view class="cu-item grayscale">
       <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81007.jpg);"></view>
       <view class="content">
@@ -24,4 +43,4 @@
     </view>
   </view>
 
-  <button bindtap="ceshi">下载文档</button>
+  <button bindtap="ceshi">下载文档</button> -->

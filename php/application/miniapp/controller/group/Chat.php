@@ -18,7 +18,7 @@ class Chat
           $time =date('Y-m-d H:i:s',time());
           $owner_id =db('crowd')->where('id',$crowd_id)->value("crowd_ownerid");//查询群主id
           // return $owner_id;
-          $configdata = ['id'=>'','crowd_id' =>$crowd_id,'owner_id' => $owner_id,'offchat' => 0,'create_time' =>$time];
+          $configdata = ['id'=>'','crowd_id' =>$crowd_id,'owner_id' => $owner_id,'notice' => null,'offchat' => 0,'create_time' =>$time];
           $insertId= db('chat_config')->insertGetId($configdata);//返回自增ID
         }
         $chatdata =db('chat_data')->where('crowd_id',$crowd_id)->order('id desc')->limit(100)->select(); //取出最近100条聊天记录

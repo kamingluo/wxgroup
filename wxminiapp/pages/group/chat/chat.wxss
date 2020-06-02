@@ -342,3 +342,42 @@ page{
 .online-name{
 	margin-left: 20rpx;
 }
+
+
+
+/* 公告 */
+.closeView {
+  position: fixed;
+  right: 20rpx;
+  text-align: center;
+  font-size: 40rpx;
+  top: 130rpx;
+} 
+.notice-wrap {
+	z-index: 99999;
+	width: 100%;
+	position: fixed;
+  background: #ffebda;
+  padding: 10rpx 70rpx 10rpx 0;
+  height: 60rpx;
+}
+
+.ovh {
+	overflow: hidden;
+	font-size: 28rpx;
+	position: relative;
+}
+
+
+
+.notice {
+  width: 100%;
+  height: 40rpx;
+}
+
+.marquee_text {
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+}
+
