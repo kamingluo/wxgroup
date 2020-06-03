@@ -52,6 +52,18 @@ class Chat
     }
 
 
+    
+    //修改公告
+    public function notice(Request $request)
+    {
+        $crowd_id =$request->param("crowd_id");
+        $offchat =$request->param("notice");
+        $dbreturn= db('chat_config')->where('crowd_id',$crowd_id)->update(['notice' => $notice]);//修改禁言状态
+        $state=['state'   => '200','message'  => "发布新的公告成功" ];
+        return $state ;  
+    }
+
+
 
 
 }
