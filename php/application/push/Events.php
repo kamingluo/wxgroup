@@ -1,7 +1,7 @@
 <?php
 use \GatewayWorker\Lib\Gateway;
 require_once 'Connection.php'; //引入数据库连接文件
-header("Content-Type:text/html;charset=utf-8");
+header("Content-Type:text/html;charset=utf8mb4");
 // use think\Log;
 class Events
 {
@@ -121,7 +121,7 @@ class Events
                     'imgurl'=>$imgurl,
                     'say_type'=> $say_type,
                     'content'=>$content,
-                    'create_time'=>$time))->query('set names utf8mb4');
+                    'create_time'=>$time))->query();
 
                 
                 $new_message = array(
