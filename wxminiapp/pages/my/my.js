@@ -30,11 +30,12 @@ Page({
       this.exchangelist()
     }
     this.addisplay()
-    this.getUserInfoif() //判断用户有没有授权
+    
   },
 
   onShow: function () {
     this.userdata()
+    this.getUserInfoif() //判断用户有没有授权
 
   },
 

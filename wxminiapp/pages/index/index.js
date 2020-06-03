@@ -33,7 +33,7 @@ Page({
    */
   onLoad: function (options) {
     this.indexData() //拿到首页轮播图数据
-    this.getUserInfoif() //判断用户有没有授权
+    
 
     this.setData({
       display: app.globalData.display || false
@@ -53,6 +53,7 @@ Page({
    */
   onShow: function (e) {
     this.usergroup()
+    this.getUserInfoif() //判断用户有没有授权
     
   },
 
