@@ -6,6 +6,7 @@ const {
 const {
   share
 } = require('./../../utils/share.js');
+const common = require('./../../utils/common.js') //公共函数
 var Page = require('../../utils/sdk/xmad/xmadx_sdk.min.js').xmad(Page).xmPage; //小盟广告
 
 Page({
@@ -13,6 +14,7 @@ Page({
     userdata:'',
     birthday:null,
     gdtaddisplay: false,
+    ifauthorized:false,
     xmad: { //小盟广告
       adData: {},
       ad: {
@@ -28,6 +30,7 @@ Page({
       this.exchangelist()
     }
     this.addisplay()
+    this.getUserInfoif() //判断用户有没有授权
   },
 
   onShow: function () {
@@ -177,6 +180,48 @@ Page({
       }
     })
 
+  },
+
+  //判断用户有没有授权
+  getUserInfoif:function(){
+    var that = this
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          that.setData({
+            ifauthorized: true ,
+          })
+        }
+      }
+    })
+
+  },
+
+
+
+  getUserInfo: function (e) {
+    let that = this;
+    var data = {
+      channel: wx.getStorageSync('userdata').channel,
+      crowd_id: 0,
+      scene: wx.getStorageSync('userdata').scene,
+    }
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success(res) {
+              //console.log("更新信息啦")
+              let userdata = Object.assign(data, res.userInfo);
+              common.authorized(userdata) //用户注册已经授权
+              that.setData({
+                ifauthorized: true,
+              })
+            }
+          })
+        }
+      }
+    })
   },
 
 

@@ -131,6 +131,14 @@ Page({
     })
   },
 
+  inputnum:function(e){
+    console.log("编辑任务通过分数", e.detail.value)
+    this.setData({
+      num: e.detail.value,
+    })
+
+  },
+
   //任务合格确定
   tasksuccesssure: function() {
 

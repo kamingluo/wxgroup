@@ -51,10 +51,11 @@
       </view>
     </view>
   </view>
-  <!-- </scroll-view> -->
 
 
-  <view class=" foot more">
+</scroll-view>
+
+ <view class=" foot more">
     <view class="more-body">
       <view class="more-button">
         <button wx:if="{{owner_id==user_id}}" class="cu-btn line-red round sm shadow" bindtap="clickoffchat"> {{offchat==0? "全员禁言":"关闭禁言"}}</button>
@@ -70,14 +71,13 @@
     <view class="action">
       <text class="cuIcon-roundadd text-grey" bindtap="upload"></text>
     </view>
-    <input wx:if="{{offchat==0 || owner_id==user_id }}" class="solid-bottom" bindfocus="InputFocus" maxlength="250" value="{{inputValue}}" bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="300" cursor-spacing="10" bindinput="bindKeyInput"></input>
+    <input wx:if="{{offchat==0 || owner_id==user_id }}" class="solid-bottom" bindfocus="InputFocus" maxlength="250" value="{{inputValue}}" bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" placeholder="输入文字" maxlength="300" cursor-spacing="10" bindinput="bindKeyInput"></input>
     <input wx:else disabled="false" class="solid-bottom" bindfocus="InputFocus" maxlength="250" value="全员禁言中..." bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="300" cursor-spacing="10" bindinput="bindKeyInput"></input>
     <!-- <view class="action">
 			<text class="cuIcon-emojifill text-grey"></text>
 		</view> -->
     <button class="cu-btn bg-green shadow" bindtap="submitTo">发送</button>
   </view>
-</scroll-view>
 
 
 
