@@ -45,14 +45,6 @@ function authorized(e) {
         success: res => {
           // console.log('注册成功', res);
           wx.setStorageSync('userdata', res.userdata)
-          if(res.authorization==0){ //授权的用户
-            wx.showToast({
-              title: '授权成功',
-              icon: 'success',
-              duration: 2000,
-            })
-          }
-         
         },
         fail: res => {
           //console.log('错误捕捉', res);

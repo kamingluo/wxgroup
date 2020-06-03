@@ -195,6 +195,11 @@ Page({
               //console.log("更新信息啦")
               let userdata = Object.assign(data, res.userInfo);
               common.authorized(userdata) //用户注册已经授权
+              wx.showToast({
+                title: '授权成功',
+                icon: 'success',
+                duration: 2000,
+              })
               that.setData({
                 ifauthorized: true,
               })

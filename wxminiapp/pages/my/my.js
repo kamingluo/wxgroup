@@ -214,6 +214,14 @@ Page({
               //console.log("更新信息啦")
               let userdata = Object.assign(data, res.userInfo);
               common.authorized(userdata) //用户注册已经授权
+              setTimeout(function() {
+                that.userdata()//等注册完成，隔2秒拿一下新的信息
+              }, 2000)
+              wx.showToast({
+                title: '授权成功',
+                icon: 'success',
+                duration: 2000,
+              })
               that.setData({
                 ifauthorized: true,
               })
