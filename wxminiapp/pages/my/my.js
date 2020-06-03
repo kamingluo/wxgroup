@@ -218,11 +218,11 @@ Page({
               setTimeout(function() {
                 that.userdata()//等注册完成，隔2秒拿一下新的信息
               }, 2000)
-              wx.showToast({
-                title: '授权成功',
-                icon: 'success',
-                duration: 2000,
-              })
+              // wx.showToast({
+              //   title: '授权成功',
+              //   icon: 'success',
+              //   duration: 2000,
+              // })
               that.setData({
                 ifauthorized: true,
               })
