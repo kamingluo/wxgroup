@@ -1689,7 +1689,8 @@ class Connection
      * @param string $db_name
      * @param string $charset
      */
-    public function __construct($host, $port, $user, $password, $db_name, $charset = 'utf8')
+    // public function __construct($host, $port, $user, $password, $db_name, $charset = 'utf8')
+    public function __construct($host, $port, $user, $password, $db_name, $charset = 'utf8mb4')
     {
         $this->settings = array(
             'host'     => $host,
