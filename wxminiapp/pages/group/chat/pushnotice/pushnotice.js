@@ -4,66 +4,47 @@ const {
 } = require('./../../../../utils/request.js');
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    crowd_id:null,
+    notice:null,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad: function (e) {
+    this.setData({
+      crowd_id: e.crowd_id,
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  inputtext: function(e) {
+    // console.log(e.detail.value)
+    this.setData({
+      notice: e.detail.value,
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  pushnotice: function () {
+      let crowd_id = this.data.crowd_id;
+      let notice = this.data.notice;
+      request({
+        service: 'group//chat/notice',
+        method: 'GET',
+        data: {
+          crowd_id: crowd_id,
+          notice: notice
+        },
+        success: res => {
+          console.log("发布公告成功", res)
+          wx.showToast({
+            title: '发布成功',
+            icon: 'success',
+            duration: 2500,
+          })
+          setTimeout(function() {
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 1500)
+        }
+      })
+    },
 })

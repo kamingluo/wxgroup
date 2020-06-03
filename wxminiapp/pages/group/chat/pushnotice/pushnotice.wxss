@@ -1,1 +1,19 @@
 /* pages/group/chat/pushnotice/pushnotice.wxss */
+
+.task_text{
+  width: 90%;
+}
+
+.task_text textarea{
+  border: 4rpx solid #d9d9d9;
+  height: 300rpx;
+  background-color: white;
+
+}
+
+.pushbutton{
+  width: 350rpx;
+  height: 90rpx;
+  background-color: #0081ff;
+  color: white;
+}

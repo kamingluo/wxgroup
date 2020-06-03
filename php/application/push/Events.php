@@ -110,7 +110,7 @@ class Events
                 $imgurl = $_SESSION['imgurl'];
                 $send_roomid=$message_data['room_id'];//发送到哪个群
                 $say_type=$message_data['say_type'];//发送消息的方式，图片还是文案
-                $content=$message_data['content'];//发送消息的方式，图片还是文案
+                $content=$message_data['content'];//发送消息内容
                 $time=date('Y-m-d H:i:s');
 
                 // 插入数据到数据表
@@ -121,12 +121,12 @@ class Events
                     'imgurl'=>$imgurl,
                     'say_type'=> $say_type,
                     'content'=>$content,
-                    'create_time'=>$time))->query();
+                    'create_time'=>$time))->query('set names utf8mb4');
 
                 
                 $new_message = array(
                     'type'=>'say', 
-                    "message"=>"群员发送消息",
+                    "message"=>"群员发送消息！",
                     'user_id'=>$user_id,
                     'imgurl'=>$imgurl,
                     'from_client_id'=>$client_id,

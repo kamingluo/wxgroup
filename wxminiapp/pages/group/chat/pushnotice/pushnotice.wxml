@@ -2,3 +2,15 @@
   <view slot="backText">返回</view>
   <view slot="content">发布公告</view>
 </cu-custom>
+
+
+
+  <view class="centered">
+    <view class="task_text">
+      <textarea maxlength="250" bindinput="inputtext" placeholder="请输入公告内容，250字以内"></textarea>
+    </view>
+  </view>
+
+  <view class="centered">
+  <button  bindtap="pushnotice" class="pushbutton">发布</button>
+  </view>

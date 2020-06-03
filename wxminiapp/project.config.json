@@ -90,6 +90,13 @@
 					"pathName": "pages/group/chat/chat",
 					"query": "crowd_id=14&crowd_name=群名称",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布聊天公告",
+					"pathName": "pages/group/chat/pushnotice/pushnotice",
+					"query": "crowd_id=14",
+					"scene": null
 				}
 			]
 		}
