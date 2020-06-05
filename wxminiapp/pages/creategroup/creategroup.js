@@ -5,11 +5,12 @@ const {
   request
 } = require('./../../utils/request.js');
 const common = require('./../../utils/common.js') //公共函数
+let baseConfig = require('./../../utils/config.js')
 const app = getApp();
 
 Page({
   data: {
-    display:false,
+    display: false,
     uploaderList: [],
     uploaderNum: 0,
     showUpload: true,
@@ -17,11 +18,12 @@ Page({
     groupname: null,
     groupcode: null,
     loadModal: false,
-    wxnumber:null,
-    userlogin:null,//用户登录状态
+    wxnumber: null,
+    userlogin: null, //用户登录状态
+    checked: true //用户协议
   },
   // 删除图片
-  clearImg: function(e) {
+  clearImg: function (e) {
     var nowList = []; //新数据
     var uploaderList = this.data.uploaderList; //原数据
 
@@ -39,7 +41,7 @@ Page({
     })
   },
   //展示图片
-  showImg: function(e) {
+  showImg: function (e) {
     var that = this;
     wx.previewImage({
       urls: that.data.uploaderList,
@@ -47,13 +49,13 @@ Page({
     })
   },
   //上传图片
-  upload: function(e) {
+  upload: function (e) {
     var that = this;
     wx.chooseImage({
       count: 1 - that.data.uploaderNum, // 默认1
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function(res) {
+      success: function (res) {
         //console.log("返回选定照片的本地文件路径列表", res)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths;
@@ -70,7 +72,7 @@ Page({
       }
     })
   },
-  onLoad: function() {
+  onLoad: function () {
     this.setData({
       display: app.globalData.display || false
     })
@@ -80,37 +82,37 @@ Page({
   },
 
 
-  haveopenid:function() {
-    var that =this;
-      wx.login({
-        success: function(res) {
-          request({
-            service: 'user/userlogin',
-            data: {
-              code: res.code,
-            },
-            success: res => {
-              that.setData({
-                userlogin:res.userlogin,
-              })
-            }
-          })
-        }
-      });
+  haveopenid: function () {
+    var that = this;
+    wx.login({
+      success: function (res) {
+        request({
+          service: 'user/userlogin',
+          data: {
+            code: res.code,
+          },
+          success: res => {
+            that.setData({
+              userlogin: res.userlogin,
+            })
+          }
+        })
+      }
+    });
   },
 
   //获取用户手机号码
-getPhoneNumber: function(e) { 
-  var that =this
+  getPhoneNumber: function (e) {
+    var that = this
     // console.log(e.detail.errMsg)
     // console.log(e.detail.iv) 
     //  console.log(e.detail.encryptedData) 
-    let encryptedData=e.detail.encryptedData;
-    let iv=e.detail.iv;
-    let session_key=this.data.userlogin.session_key;
-    let user_openid=this.data.userlogin.openid;
-    let user_id=wx.getStorageSync('userdata').id
-    if(encryptedData){
+    let encryptedData = e.detail.encryptedData;
+    let iv = e.detail.iv;
+    let session_key = this.data.userlogin.session_key;
+    let user_openid = this.data.userlogin.openid;
+    let user_id = wx.getStorageSync('userdata').id
+    if (encryptedData) {
       request({
         service: 'currency/phonedecrypt',
         data: {
@@ -128,8 +130,7 @@ getPhoneNumber: function(e) {
           // })
         }
       })
-    }
-    else{
+    } else {
       wx.showToast({
         title: '请允许授权',
         icon: 'none',
@@ -137,16 +138,16 @@ getPhoneNumber: function(e) {
       })
 
     }
-},
+  },
 
-  grouptext: function(e) {
+  grouptext: function (e) {
     // console.log(e.detail.value)
     this.setData({
       grouptext: e.detail.value,
     })
   },
 
-  groupname: function(e) {
+  groupname: function (e) {
     this.setData({
       groupname: e.detail.value,
     })
@@ -158,20 +159,38 @@ getPhoneNumber: function(e) {
     })
   },
 
-  wxnumber:function(e){
+  wxnumber: function (e) {
     this.setData({
       wxnumber: e.detail.value,
     })
   },
 
 
-  sumittask: function(e) {
+  //跳转服务隐私页面
+  joinagreement:function(){
+    let url =baseConfig.host+'webviewa/agreement';
+    wx.navigateTo({
+      url:url
+    })
+  },
+
+  sumittask: function (e) {
     let userdata = wx.getStorageSync('userdata').openid;
     app.aldstat.sendEvent('创建空间按钮', userdata);
     // console.log(this.data.grouptext)
     // console.log(this.data.groupname)
     // if (this.data.grouptext == null || this.data.groupname == null || this.data.groupcode == null) {
-    if (this.data.groupname == null ) {
+    if (!this.data.checked) {
+      wx.showToast({
+        title: '请阅读并同意协议',
+        icon: 'none',
+        duration: 2500,
+      })
+      return;
+
+
+    }
+    if (this.data.groupname == null) {
       wx.showToast({
         title: '信息不能为空',
         icon: 'none',
@@ -197,12 +216,12 @@ getPhoneNumber: function(e) {
     }
   },
 
-  creategroup:function(logo){
+  creategroup: function (logo) {
     var that = this
     let crowd_name = this.data.groupname
     let introduce = this.data.grouptext
     let wxnumber = this.data.wxnumber
-    var logo =logo
+    var logo = logo
     //内容审核
     let content = crowd_name + introduce + wxnumber
     common.echecktext(content).then(function (e) {
@@ -216,8 +235,7 @@ getPhoneNumber: function(e) {
           loadModal: false,
         })
         return;
-      }
-      else{
+      } else {
         that.confirmcreategroup(logo)
       }
     })
@@ -226,7 +244,7 @@ getPhoneNumber: function(e) {
 
 
 
-  confirmcreategroup: function(logo) {
+  confirmcreategroup: function (logo) {
     var that = this
     var crowd_name = this.data.groupname
     var groupcode = this.data.groupcode
@@ -254,7 +272,7 @@ getPhoneNumber: function(e) {
               icon: 'none',
               duration: 2500,
             })
-            setTimeout(function() {
+            setTimeout(function () {
               wx.switchTab({
                 url: '/pages/index/index'
               })
@@ -273,14 +291,24 @@ getPhoneNumber: function(e) {
 
   },
 
-  
+  checked: function (e) {
+    console.log("点击协议", e)
+    let checked = this.data.checked;
+    this.setData({
+      checked: !checked,
+    })
 
 
-  moredata: function() {
+  },
+
+
+
+
+  moredata: function () {
     var that = this;
     var imgList = []; //多张图片地址，保存到一个数组当中
     var state = 0; //state记录当前已经上传到第几张图片
-    new Promise(function(resolve, reject) {
+    new Promise(function (resolve, reject) {
       for (var i = 0; i < that.data.uploaderList.length; i++) {
         qiniuUploader.upload(that.data.uploaderList[i], (res) => { //that.data.uploaderList逐个取出来去上传
           state++;
@@ -299,7 +327,7 @@ getPhoneNumber: function(e) {
           uptokenURL: 'https://group.gzywudao.top/php/public/miniapp.php/currency/qiniumaterial',
         })
       }
-    }).then(function(imgList) {
+    }).then(function (imgList) {
       //console.log("多张图片返回结果上传数据库的", imgList[0])
       let logo = imgList[0]
       that.creategroup(logo)

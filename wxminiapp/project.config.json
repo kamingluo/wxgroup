@@ -97,6 +97,12 @@
 					"pathName": "pages/group/chat/pushnotice/pushnotice",
 					"query": "crowd_id=14",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/creategroup/creategroup",
+					"pathName": "pages/creategroup/creategroup",
+					"scene": null
 				}
 			]
 		}

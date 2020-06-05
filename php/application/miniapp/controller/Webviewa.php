@@ -11,5 +11,10 @@ class Webviewa extends \think\Controller
         //return $this->fetch('032513293304');
         return view('032513293304');
     }
+
+    public function agreement(Request $request)
+    {
+        return view('agreement');
+    }
     
 }
