@@ -55,11 +55,13 @@
 	</view>
 
 	<view class="agreement-body centered">
-		<view class="agreement">
-			<label class="checkbox-body">
-				<checkbox value="cb" checked="{{checked}}" bindtap="checked" />
-			</label>
-			<text class="agreement-text">请认真阅读 <text style="color:blue" bindtap="joinagreement">《群记分用户协议》</text> </text>
+		<view class="agreement ">
+			<view style="display: flex;" >
+				<view class="centered" >
+					<checkbox value="cb" checked="{{checked}}" bindtap="checked" />
+				</view>
+				<view bindtap="joinagreement" class="centered"> <text class="agreement-text">请认真阅读<text style="color:blue">《群记分用户协议》</text> </text></view>
+			</view>
 		</view>
 	</view>
 

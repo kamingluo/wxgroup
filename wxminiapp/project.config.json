@@ -64,44 +64,10 @@
 					"scene": null
 				},
 				{
-					"id": 1,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": 1005
-				},
-				{
 					"id": -1,
-					"name": "pages/business/gdtad/gdtad",
-					"pathName": "pages/business/gdtad/gdtad",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": 1005
-				},
-				{
-					"id": 4,
-					"name": "聊天页面",
-					"pathName": "pages/group/chat/chat",
-					"query": "crowd_id=14&crowd_name=群名称",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "发布聊天公告",
-					"pathName": "pages/group/chat/pushnotice/pushnotice",
-					"query": "crowd_id=14",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/creategroup/creategroup",
-					"pathName": "pages/creategroup/creategroup",
+					"name": "兑换商品页面",
+					"pathName": "pages/group/goods/goodslist/goodslist",
+					"query": "crowd_id=14&crowd_name=kaming",
 					"scene": null
 				}
 			]

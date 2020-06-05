@@ -168,7 +168,8 @@ Page({
 
   //跳转服务隐私页面
   joinagreement:function(){
-    let url =baseConfig.host+'webviewa/agreement';
+    let url ='/pages/webview/webview?url='+baseConfig.host+'webviewa/agreement';
+    console.log("跳转用户隐私页面",url)
     wx.navigateTo({
       url:url
     })

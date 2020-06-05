@@ -9,7 +9,7 @@
   align-items:center;
   background-color: #ffffff;
   border: 2px solid #fff;  
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); */
 }
 .score_text{
   display: flex;
@@ -37,6 +37,21 @@
 }
 
 
+
+.careful-body{
+  width: 100%;
+  height: 60rpx;
+ 
+  margin-top: 5rpx;
+  margin-bottom: 10rpx;
+}
+.careful{
+  width: 96%;
+}
+.careful text{
+  color: red;
+  font-size: 25rpx;
+}
 
 
 
@@ -89,8 +104,10 @@
 }
 
 .goods-price{
+  width: 100%;
+  margin-left: 20rpx;
   
-  margin-right: 70%;
+  /* margin-right: 70%; */
 }
 .goods-price image{
   width: 45rpx;

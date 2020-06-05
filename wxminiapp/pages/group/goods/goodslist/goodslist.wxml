@@ -1,66 +1,72 @@
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}" wx:if="{{crowd_id}}">
-  <view slot="backText">返回</view>
-  <view slot="content">兑换商品</view>
+	<view slot="backText">返回</view>
+	<view slot="content">兑换商品</view>
 </cu-custom>
 
 
 
 <view class='score'>
-  <view class='score_text'>
-    当前积分为:
-    <text>{{userdata.score}} </text> 积分
-  </view>
-  <view class='score_button'>
-  <kaming-button >
-    <button bindtap='exchangelist' class=' bg-blue'>兑换记录</button>
-    </kaming-button>
-  </view>
+	<view class='score_text'>
+		当前积分为:
+		<text>{{userdata.score}} </text> 积分
+	</view>
+	<view class='score_button'>
+		<kaming-button>
+			<button bindtap='exchangelist' class=' bg-blue'>兑换记录</button>
+		</kaming-button>
+	</view>
+</view>
+
+<view class="careful-body centered" wx:if="{{goodslist.length > 0}}">
+	<view class="careful">
+		<text>注：积分兑换奖品为群主自行设置奖品，与群记分团队无任何责任关系。如有疑问可联系空间群主沟通解决。</text>
+	</view>
 </view>
 
 
 
-<view   wx:if="{{goodslist.length > 0}}" >
-  <view class='centered'>
-    <view class='box'>
-      <block wx:for="{{goodslist}}" wx:key="item">
+<view wx:if="{{goodslist.length > 0}}">
+	<view class='centered'>
+		<view class='box'>
+			<block wx:for="{{goodslist}}" wx:key="item">
 
-        <view class='goods radius shadow bg-white  '>
-          <view class='clearicon' catchtap='deletegoods' data-id='{{item.id}}'  wx:if="{{user_type==1}}" >
-            <image class="clear" src="/images/common/delete.png" mode="aspectFix"></image>
-          </view>
-          <view class='goods-image'>
-            <image src='{{item.images}}'></image>
-          </view>
-          <view class='goods-introduce'>
-            <text>{{item.goodsname}}</text>
-          </view>
-          <view class='goods-price  centered'>
-            <text> {{item.price}}</text>积分
-          </view>
-          <view class='line'></view>
-          <view class='exchange centered' bindtap='clickgoods' data-goodsdata="{{item}}">
-            <kaming-button>
-              <text> 立即兑换</text>
-            </kaming-button>
-          </view>
-        </view>
-      </block>
-    </view>
-  </view>
+				<view class='goods radius shadow bg-white  '>
+					<view class='clearicon' catchtap='deletegoods' data-id='{{item.id}}' wx:if="{{user_type==1}}">
+						<image class="clear" src="/images/common/delete.png" mode="aspectFix"></image>
+					</view>
+					<view class='goods-image'>
+						<image src='{{item.images}}'></image>
+					</view>
+					<view class='goods-introduce'>
+						<text>{{item.goodsname}}</text>
+					</view>
+					<view class='goods-price '>
+						<text> {{item.price}}</text>积分
+					</view>
+					<view class='line'></view>
+					<view class='exchange centered' bindtap='clickgoods' data-goodsdata="{{item}}">
+						<kaming-button>
+							<text> 立即兑换</text>
+						</kaming-button>
+					</view>
+				</view>
+			</block>
+		</view>
+	</view>
 </view>
 
 
-<view   wx:else>
-  <view class='default'>
-    <view>
-      <image src='http://littlebox.luojiaming.vip/default.png'></image>
-    </view>
-    <view>
-      <text>暂无可兑换商品！</text>
-    </view>
-    <view>
-    </view>
-  </view>
+<view wx:else>
+	<view class='default'>
+		<view>
+			<image src='http://littlebox.luojiaming.vip/default.png'></image>
+		</view>
+		<view>
+			<text>暂无可兑换商品！</text>
+		</view>
+		<view>
+		</view>
+	</view>
 </view>
 
 
@@ -69,26 +75,26 @@
 
 
 <view class='sumittask centered' wx:if="{{user_type==1}}">
-  <button bindtap="pushgoods" class="bg-blue">发布商品</button>
+	<button bindtap="pushgoods" class="bg-blue">发布商品</button>
 </view>
 
 
 <view class="cu-modal show" wx:if="{{deletegoodsmodel}}">
-  <view class="cu-dialog">
-    <view class="cu-bar bg-white justify-end">
-      <view class="content">删除商品</view>
-      <view class="action" bindtap="hideModal">
-        <text class="cuIcon-close text-red"></text>
-      </view>
-    </view>
-    <view class="padding-xl">
-      确定要这个商品吗？
-    </view>
-    <view class="cu-bar bg-white justify-end">
-      <view class="action">
-        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-        <button class="cu-btn bg-green margin-left" bindtap="confirmdeletegoods">确定</button>
-      </view>
-    </view>
-  </view>
+	<view class="cu-dialog">
+		<view class="cu-bar bg-white justify-end">
+			<view class="content">删除商品</view>
+			<view class="action" bindtap="hideModal">
+				<text class="cuIcon-close text-red"></text>
+			</view>
+		</view>
+		<view class="padding-xl">
+			确定要这个商品吗？
+		</view>
+		<view class="cu-bar bg-white justify-end">
+			<view class="action">
+				<button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+				<button class="cu-btn bg-green margin-left" bindtap="confirmdeletegoods">确定</button>
+			</view>
+		</view>
+	</view>
 </view>

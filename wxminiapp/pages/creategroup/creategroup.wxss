@@ -86,14 +86,12 @@
 .agreement{
   width: 90%;
   height: 80rpx;
+  margin-left: -30rpx;
 
 }
-/* .checkbox-body{
-  width: 20rpx;
-  height: 20rpx;
-  
-} */
+
 .agreement-text{
   margin-left: 10rpx;
   font-size: 30rpx;
 }
+

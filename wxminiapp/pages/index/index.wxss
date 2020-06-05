@@ -11,6 +11,16 @@
   position: relative;
   top: 50rpx;
 }
+
+.swiper-body{
+  margin-top: -10rpx;
+}
+.card-swiper {
+	height: 380rpx !important;
+}
+
+
+
 .u-img-slide {
   border-radius: 10rpx;
   width: 100%;
@@ -23,7 +33,7 @@
 }
 
 .main-main{
-  margin-top: 50rpx;
+  margin-top: 20rpx;
 }
 
 .information-name{
@@ -40,6 +50,7 @@ position: absolute;
 
 
 .shouquananniu{
+  
   position: absolute;
   z-index: 999;
 }

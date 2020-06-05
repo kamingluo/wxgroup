@@ -72,6 +72,7 @@ Page({
 
   //点击轮播图
   clickSwiper: function (e) {
+    console.log("点击轮播图",e)
     common.insidejump(e.currentTarget.dataset.data)
   },
 
