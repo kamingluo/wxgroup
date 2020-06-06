@@ -125,12 +125,19 @@ class Handletask
     {
       $crowd_id =$request->param("crowd_id");//群id
       $state =$request->param("state");//状态
+      $pages=$request->param("pages");
+      if($pages == 1 || $pages==null  ){
+          $number=0;
+        }
+      else{
+          $number=($pages - 1)*10 ;
+      }
       if($state == 0){
-        $sql="SELECT b.id,b.nickName,b.avatarUrl,count( a.user_id ) AS count FROM task_record a,user b  where crowd_id =".$crowd_id." and a.user_id=b.id GROUP BY a.user_id ORDER BY count DESC;";
+        $sql="SELECT b.id,b.nickName,b.avatarUrl,count( a.user_id ) AS count FROM task_record a,user b  where crowd_id =".$crowd_id." and a.user_id=b.id GROUP BY a.user_id ORDER BY count DESC LIMIT ".$number.",10;";
         $data = Db::query($sql); //拿到数据
       }
       else{
-        $sql="SELECT b.id,b.nickName,b.avatarUrl,count( a.user_id ) AS count FROM task_record a,user b  where crowd_id =".$crowd_id." and a.user_id=b.id and state=".$state." GROUP BY a.user_id ORDER BY count DESC;";
+        $sql="SELECT b.id,b.nickName,b.avatarUrl,count( a.user_id ) AS count FROM task_record a,user b  where crowd_id =".$crowd_id." and a.user_id=b.id and state=".$state." GROUP BY a.user_id ORDER BY count DESC LIMIT ".$number.",10;";
         $data = Db::query($sql); //拿到数据
       }
 
