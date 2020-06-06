@@ -133,20 +133,19 @@ class Handletask
           $number=($pages - 1)*10 ;
       }
       if($state == 0){
+        $countnumber=db('task_record')->where('crowd_id',$crowd_id)->count();//总任务数
         $sql="SELECT b.id,b.nickName,b.avatarUrl,count( a.user_id ) AS count FROM task_record a,user b  where crowd_id =".$crowd_id." and a.user_id=b.id GROUP BY a.user_id ORDER BY count DESC LIMIT ".$number.",10;";
         $data = Db::query($sql); //拿到数据
       }
       else{
+        $countnumber=db('task_record')->where('crowd_id',$crowd_id)->where('state',$state)->count();//通过或者不通过任务数
         $sql="SELECT b.id,b.nickName,b.avatarUrl,count( a.user_id ) AS count FROM task_record a,user b  where crowd_id =".$crowd_id." and a.user_id=b.id and state=".$state." GROUP BY a.user_id ORDER BY count DESC LIMIT ".$number.",10;";
         $data = Db::query($sql); //拿到数据
       }
 
-      $resdata=['state'   => '200','message'  => "群排行查询成功",'rankinglist'=>$data];
-      return $resdata;
-      //SELECT b.id,b.nickName,b.avatarUrl,count( a.user_id ) AS count FROM task_record a,user b  where crowd_id = 186 and a.user_id=b.id GROUP BY a.user_id ORDER BY count DESC;
-
-
-
+      $returnstate=['state'   => '200','message'  => "群排行查询成功" ];
+      $resdata=array_merge($returnstate,array('count'=>$countnumber),array('rankinglist'=>$data));
+      return $resdata ;
 
     }
 

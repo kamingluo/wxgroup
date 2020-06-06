@@ -1,0 +1,53 @@
+
+
+.ui_searchInput{
+    width: 80%;
+    height: 100%;
+    padding: 5rpx;
+    box-sizing: border-box;
+}
+
+.ui_searchIcon{
+    padding: 15rpx 30rpx 0 15rpx;
+    box-sizing: border-box;
+}
+
+
+.ui_searchInput{
+    width: 80%;
+    height: 100%;
+    padding: 5rpx;
+    margin-left: 40rpx;
+    box-sizing: border-box;
+}
+
+.tips{
+  font-size: 25rpx;
+  color: #ccc;
+}
+
+.name{
+  color: #000000;
+}
+.user-list{
+  margin-top: 10rpx;
+  width: 98%;
+}
+
+.cu-item{
+  border-radius: 10rpx;
+  margin-top: 5rpx;
+  margin-left: 2%;
+  
+}
+
+
+.default text{
+  color: #666666;
+  font-size: 35rpx;
+  font-weight: 600;
+}
+
+.nullname text{
+  color: blue;
+}

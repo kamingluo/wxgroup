@@ -1,0 +1,56 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">任务排行榜</view>
+</cu-custom>
+
+
+<scroll-view scroll-x class="bg-green nav text-center">
+  <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="0">
+    总任务
+  </view>
+  <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="1">
+    审核通过
+  </view>
+  <view class="cu-item {{2==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="2">
+    审核不通过
+  </view>
+</scroll-view>
+
+
+<!-- 今日签到数据 -->
+<view wx:if="{{TabCur==0}}">
+  <view wx:if="{{todaysigninlist.length <= 0}}">
+    <view class='default'>
+      <view>
+        <image src='http://littlebox.luojiaming.vip/default.png'></image>
+      </view>
+      <view>
+        <text>空空如也</text>
+      </view>
+      <view>
+      </view>
+    </view>
+  </view>
+  <view class='user-list'>
+    <view class="cu-list menu-avatar ">
+      <view class="cu-item" wx:for="{{todaysigninlist}}" wx:key="item" data-data="{{item}}" bindtap='clickuserlist'>
+        <view class="cu-avatar round lg" style="background-image:url({{item.avatarUrl?item.avatarUrl:'http://material.gzywudao.top/morencrowd.png'}});">
+        </view>
+        <view class="content">
+          <view class="text-grey">
+            <text class="text-cut name ">{{item.nickName?item.nickName:"用户未授权"  }}</text>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut name">获得积分：{{item.signin_score >= 0?item.signin_score:"无积分"}}</text>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut">签到时间：{{item.create_time}}</text>
+          </view>
+        </view>
+        <view class="action" wx:if="{{user_type == 1 ||user_type == 2}}">
+          <view class="cuIcon-right text-black"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

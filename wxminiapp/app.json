@@ -17,6 +17,7 @@
     "pages/group/qrcode/qrcode",
     "pages/group/user/user",
     "pages/group/signdata/signdata",
+    "pages/group/tasksranking/tasksranking",
     "pages/group/signseting/signseting",
     "pages/webview/webview",
     "pages/group/alltasklists/alltasklists",
