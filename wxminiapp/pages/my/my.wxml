@@ -1,4 +1,4 @@
-<cu-custom bgColor="bg-blue">
+<cu-custom bgColor="bg-cyan">
   <view slot="content">我的页面</view>
 </cu-custom>
 
@@ -7,7 +7,7 @@
 
 </view> -->
 
-<view class='top bg-blue'>
+<view class='top bg-cyan'>
   <view class='user'>
     <view class='userAvatar' bindtap="ceshikaming">
       <open-data class='userAvatarurl' type="userAvatarUrl"></open-data>
@@ -24,8 +24,9 @@
       </view>
 
       <view class='birthday'>
+      <text>生日:{{birthday?birthday:"未设置"}} </text>
         <picker mode="date" value="{{birthday?birthday:'2000-01-01'}}" start="1940-01-01" end="2012-01-01" bindchange="bindDateChange">
-          <text>生日:{{birthday?birthday:"未设置"}} </text>
+          
           <text class='cuIcon-post  xiugai '></text>
         </picker>
 

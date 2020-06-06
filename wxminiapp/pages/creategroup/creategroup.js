@@ -20,7 +20,7 @@ Page({
     loadModal: false,
     wxnumber: null,
     userlogin: null, //用户登录状态
-    checked: true //用户协议
+    checked: false //用户协议
   },
   // 删除图片
   clearImg: function (e) {

@@ -120,6 +120,30 @@ class Handletask
     }
 
 
+    //任务排行榜，0是全部，1是审核通过，2是审核不通过排行
+    public function rankinglist(Request $request)
+    {
+      $crowd_id =$request->param("crowd_id");//群id
+      $state =$request->param("state");//状态
+      if($state == 0){
+        $sql="SELECT b.id,b.nickName,b.avatarUrl,count( a.user_id ) AS count FROM task_record a,user b  where crowd_id =".$crowd_id." and a.user_id=b.id GROUP BY a.user_id ORDER BY count DESC;";
+        $data = Db::query($sql); //拿到数据
+      }
+      else{
+        $sql="SELECT b.id,b.nickName,b.avatarUrl,count( a.user_id ) AS count FROM task_record a,user b  where crowd_id =".$crowd_id." and a.user_id=b.id and state=".$state." GROUP BY a.user_id ORDER BY count DESC;";
+        $data = Db::query($sql); //拿到数据
+      }
+
+      $resdata=['state'   => '200','message'  => "群排行查询成功",'rankinglist'=>$data];
+      return $resdata;
+      //SELECT b.id,b.nickName,b.avatarUrl,count( a.user_id ) AS count FROM task_record a,user b  where crowd_id = 186 and a.user_id=b.id GROUP BY a.user_id ORDER BY count DESC;
+
+
+
+
+    }
+
+
 
 
 
