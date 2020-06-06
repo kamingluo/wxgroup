@@ -35,7 +35,7 @@ Page({
       crowd_id: options.crowd_id,
       user_type: options.user_type
     })
-    this.rankinglist()
+    this.rankinglist(1)
 
   },
 
@@ -55,17 +55,16 @@ Page({
       that.setData({
         pages: newpages
       })
-      that.havedata(newpages)
+      that.rankinglist(newpages)
     }
 
   },
 
 
-  rankinglist: function () {
+  rankinglist: function (pages) {
     var that =this;
     let crowd_id = this.data.crowd_id;
     let state=this.data.state;
-    let pages=this.data.pages;
     request({
       service: 'task/handletask/rankinglist',
       method: 'GET',

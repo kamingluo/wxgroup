@@ -19,7 +19,7 @@
 
 <!-- 今日签到数据 -->
 <view wx:if="{{TabCur==0}}">
-  <view wx:if="{{todaysigninlist.length <= 0}}">
+  <view wx:if="{{rankinglist.length <= 0}}">
     <view class='default'>
       <view>
         <image src='http://littlebox.luojiaming.vip/default.png'></image>
@@ -33,7 +33,7 @@
   </view>
   <view class='user-list'>
     <view class="cu-list menu-avatar ">
-      <view class="cu-item" wx:for="{{todaysigninlist}}" wx:key="item" data-data="{{item}}" bindtap='clickuserlist'>
+      <view class="cu-item" wx:for="{{rankinglist}}" wx:key="item" data-data="{{item}}" bindtap='clickuserlist'>
         <view class="cu-avatar round lg" style="background-image:url({{item.avatarUrl?item.avatarUrl:'http://material.gzywudao.top/morencrowd.png'}});">
         </view>
         <view class="content">
@@ -41,16 +41,19 @@
             <text class="text-cut name ">{{item.nickName?item.nickName:"用户未授权"  }}</text>
           </view>
           <view class="text-gray text-sm flex">
-            <text class="text-cut name">获得积分：{{item.signin_score >= 0?item.signin_score:"无积分"}}</text>
+            <text class="text-cut name">总任务数：{{item.count}}</text>
           </view>
-          <view class="text-gray text-sm flex">
+          <!-- <view class="text-gray text-sm flex">
             <text class="text-cut">签到时间：{{item.create_time}}</text>
-          </view>
+          </view> -->
         </view>
         <view class="action" wx:if="{{user_type == 1 ||user_type == 2}}">
           <view class="cuIcon-right text-black"></view>
         </view>
       </view>
     </view>
+  </view>
+   <view style='margin-top: 10rpx;color:#aaaaaa' class='centered'>
+    <text>-------已经到底啦-------</text>
   </view>
 </view>
