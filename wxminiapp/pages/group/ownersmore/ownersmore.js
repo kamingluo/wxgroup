@@ -28,7 +28,13 @@ Page({
       img: 'https://image.weilanwl.com/color2.0/plugin/qpczdh2307.jpg',
       introduce:"处理抽奖结果，发奖记录",
       url: '/pages/group/lottery/lotterylist/lotterylist?crowd_id='
-    }
+    },
+      {
+        title: '任务提交排行榜',
+        img: 'https://image.weilanwl.com/color2.0/plugin/cjkz2329.jpg',
+        introduce: "查看群员的任务提交情况",
+        url: '/pages/group/tasksranking/tasksranking?crowd_id='
+      }
     ]
   },
 

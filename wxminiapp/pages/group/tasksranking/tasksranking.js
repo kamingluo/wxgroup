@@ -23,8 +23,17 @@ Page({
   tabSelect(e) {
     this.setData({
       TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+      scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
+      pages: 1,//返回第一页
+      state: e.currentTarget.dataset.id,//改变状态
+      count: 0,
+      rankinglist: [],
     })
+
+    this.rankinglist(1);
+
+
+
   },
 
   /**
@@ -92,7 +101,7 @@ Page({
     if (this.data.user_type == 1 || this.data.user_type == 2) {
       let data = e.currentTarget.dataset.data
       wx.navigateTo({
-        url: '/pages/group/user/userdetailed/userdetailed' + '?crowd_id=' + this.data.crowd_id + '&user_id=' + data.user_id + '&role=' + this.data.user_type,
+        url: '/pages/group/user/userdetailed/userdetailed' + '?crowd_id=' + this.data.crowd_id + '&user_id=' + data.id + '&role=' + this.data.user_type,
       })
     }
 

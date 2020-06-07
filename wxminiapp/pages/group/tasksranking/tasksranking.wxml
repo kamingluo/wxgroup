@@ -18,7 +18,7 @@
 
 
 <!-- 今日签到数据 -->
-<view wx:if="{{TabCur==0}}">
+<view>
   <view wx:if="{{rankinglist.length <= 0}}">
     <view class='default'>
       <view>
@@ -41,7 +41,9 @@
             <text class="text-cut name ">{{item.nickName?item.nickName:"用户未授权"  }}</text>
           </view>
           <view class="text-gray text-sm flex">
-            <text class="text-cut name">总任务数：{{item.count}}</text>
+            <text wx:if="{{TabCur==0}}" class="text-cut name">总任务数：{{item.count}}</text>
+            <text  wx:elif="{{TabCur==1}}" class="text-cut name">审核通过任务数：{{item.count}}</text>
+            <text wx:else class="text-cut name">审核不通过任务数：{{item.count}}</text>
           </view>
           <!-- <view class="text-gray text-sm flex">
             <text class="text-cut">签到时间：{{item.create_time}}</text>
@@ -53,7 +55,7 @@
       </view>
     </view>
   </view>
-   <view style='margin-top: 10rpx;color:#aaaaaa' class='centered'>
+   <view style='margin-top: 10rpx;margin-bottom: 20rpx;color:#aaaaaa' class='centered' wx:if="{{pages * 10 >= count}}">
     <text>-------已经到底啦-------</text>
   </view>
 </view>

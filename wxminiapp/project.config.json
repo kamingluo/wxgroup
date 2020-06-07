@@ -74,7 +74,7 @@
 					"id": 2,
 					"name": "任务排行",
 					"pathName": "pages/group/tasksranking/tasksranking",
-					"query": "crowd_id=186&crowd_name=群名称&user_type=2",
+					"query": "crowd_id=14&crowd_name=群名称&user_type=2",
 					"scene": null
 				}
 			]

@@ -24,9 +24,9 @@
       </view>
 
       <view class='birthday'>
-      <text>生日:{{birthday?birthday:"未设置"}} </text>
+        <text>生日:{{birthday?birthday:"未设置"}} </text>
         <picker mode="date" value="{{birthday?birthday:'2000-01-01'}}" start="1940-01-01" end="2012-01-01" bindchange="bindDateChange">
-          
+
           <text class='cuIcon-post  xiugai '></text>
         </picker>
 
@@ -52,19 +52,19 @@
 
 
 <view class="cu-list grid col-3">
-  <view class="cu-item"  data-jumpid="1" bindtap="business">
+  <view class="cu-item" data-jumpid="1" bindtap="business">
     <view class="cuIcon-rechargefill text-yellow">
     </view>
     <text>去赚金币</text>
   </view>
 
-  <view class="cu-item" data-jumpid="2" bindtap="business" >
+  <view class="cu-item" data-jumpid="2" bindtap="business">
     <view class="cuIcon-presentfill text-red">
     </view>
     <text>兑换商城</text>
   </view>
 
- <view class="cu-item" data-jumpid="3" bindtap="business" >
+  <view class="cu-item" data-jumpid="3" bindtap="business">
     <view class="cuIcon-formfill text-cyan">
     </view>
     <text>兑换记录</text>
@@ -101,9 +101,9 @@
   </view>
 
   <view class="cu-item arrow">
-   <view class="shouquananniu" wx:if="{{!ifauthorized}}" >
-          <button  style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
-        </view>
+    <view class="shouquananniu" wx:if="{{!ifauthorized}}">
+      <button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+    </view>
     <button class="cu-btn content" open-type="contact" session-from='{"nickName":"{{userdata.nickName}}{{userdata.id}}","avatarUrl":"{{userdata.avatarUrl}}"}'>
       <text class="cuIcon-service text-cyan  iconsize"></text>
       <text class="text-grey">联系我们</text>
@@ -128,21 +128,41 @@
 </view>
 
 
-<!-- 广点通格子开始-->
-<view class='centered'>
-  <view class='gdtad'>
-    <ad unit-id="adunit-1d1320feca860080" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
-  </view>
-</view>
-<!--广点通格子广告结束-->
 
-<!-- 广点通banner广告开始-->
-<view class='centered'>
-  <view class='gdtad'>
-    <ad capture-bind:tap="gdtbanneradclick" class="gdtad" data-adid="adunit-a090166402a1c55e" unit-id="adunit-a090166402a1c55e"></ad>
+<!-- 广点广告开始-->
+
+<view wx:if="{{userdata.channel==0 ||userdata.channel==null || userdata.channel== '' }}">
+  <!-- 广点通格子开始-->
+  <view class='centered'>
+    <view class='gdtad'>
+      <ad unit-id="adunit-1d1320feca860080" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+    </view>
   </view>
+  <!--广点通格子广告结束-->
+
+  <!-- 广点通banner广告开始-->
+  <view class='centered'>
+    <view class='gdtad'>
+      <ad capture-bind:tap="gdtbanneradclick" class="gdtad" data-adid="adunit-a090166402a1c55e" unit-id="adunit-a090166402a1c55e"></ad>
+    </view>
+  </view>
+  <!-- 广点通banner广告结束-->
 </view>
-<!-- 广点通banner广告结束-->
+
+<view wx:else> 
+  <!-- 广点通视频广告开始-->
+  <view class='centered' wx:if="{{gdtaddisplay}}">
+    <view class='gdtad' style="opacity: 0">
+      <ad capture-bind:tap="gdtvideoadclick" unit-id="adunit-4289a31678c6d829" ad-type="video" ad-theme="white"></ad>
+    </view>
+  </view>
+  <!--广点通视频广告结束-->
+</view>
+
+<!-- 广点广告结束-->
+
+
+
 
 
 
@@ -162,7 +182,7 @@
 <view class='adbrush'>
 
   <!--小盟广告开始-->
-  <view>
+  <!-- <view>
     <view>
       <view class="xm_banner" style="width:100%">
         <xm-ad data-id="{{xmad.ad.banner1}}" adData="{{xmad.adData}}" bindadload="adImgLoad" bindclick="appoIntView" bindclose="xmadClose" class="xm_component"> </xm-ad>
@@ -179,7 +199,7 @@
       </view>
     </view>
 
-  </view>
+  </view> -->
   <!--小盟广告结束-->
 
 </view>

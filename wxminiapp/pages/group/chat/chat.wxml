@@ -26,7 +26,7 @@
           </view>
           <view class="main">
             <view class="content bg-green shadow" wx:if="{{item.say_type=='text'}}">
-              <text>{{item.content}}</text>
+              <text bindlongpress='longclick' data-data="{{item.content}}">{{item.content}}</text>
             </view>
             <image wx:else src="{{item.content}}" bindtap="imgYu" data-src="{{item.content}}" class="radius" mode="widthFix" style="width:160rpx"></image>
           </view>
@@ -42,7 +42,7 @@
           <view class="cu-avatar radius" style="background-image:url({{item.imgurl}});"></view>
           <view class="main ">
             <view class="content  shadow" wx:if="{{item.say_type=='text'}}">
-              <text>{{item.content}}</text>
+              <text bindlongpress='longclick' data-data="{{item.content}}">{{item.content}}</text>
             </view>
             <image wx:else src="{{item.content}}" bindtap="imgYu" data-src="{{item.content}}" class="radius" mode="widthFix" style="width:160rpx"></image>
           </view>

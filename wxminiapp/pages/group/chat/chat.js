@@ -126,7 +126,7 @@ Page({
         sendSocketMessage(data)
         times = 0
       } else {
-        console.log("时间没到不发心跳")
+        //console.log("时间没到不发心跳")
       }
     }, 2000) //两秒执行一次
   },
@@ -357,9 +357,26 @@ Page({
 
   },
 
+//长按聊天文案
+  longclick:function(e){
+    //console.log("longclick",e)
+    let data = e.currentTarget.dataset.data
+    wx.setClipboardData({
+      data: data,
+      success: function (res) {
+        wx.showToast({
+          title: '复制成功',
+          icon: 'success',
+          duration: 2000,
+        })
+      }
+    })
+
+  },
+
   //用户输入文字
   bindKeyInput: function (e) {
-    console.log("输入框输入文档", e.detail.value)
+    //console.log("输入框输入文档", e.detail.value)
     this.setData({
       inputValue: e.detail.value
     })

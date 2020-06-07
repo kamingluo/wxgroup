@@ -170,6 +170,7 @@ Page({
     var that = this
     wx.getSetting({
       success(res) {
+        console.log("onshow拿到用户授权过的配置",res)
         if (res.authSetting['scope.userInfo']) {
           that.setData({
             ifauthorized: true ,
