@@ -6,7 +6,7 @@
     <div class="crumbs">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item
-          ><i class="el-icon-lx-cascades"></i> 总群数：{{datapages}}</el-breadcrumb-item
+          ><i class="el-icon-lx-cascades"></i> 总消息数：{{datapages}}</el-breadcrumb-item
         >
       </el-breadcrumb>
     </div>
@@ -18,7 +18,7 @@
           placeholder="筛选方式"
           class="handle-select mr10"
         >
-          <el-option key="1" label="群名称" value="0" ></el-option>
+          <!-- <el-option key="1" label="群名称" value="0" ></el-option>-->
           <el-option key="2" label="群ID" value="1"></el-option>
         </el-select>
         <el-input
@@ -31,8 +31,6 @@
         >
         <el-button type="primary" icon="search" class="search" @click="newsearch"
           >重置</el-button
-        ><el-button type="primary" icon="search" class="search" @click="havewxnumber"
-          >查询有微信号的</el-button
         >
       </div>
 
@@ -50,31 +48,50 @@
       </div> -->
       <div class="handle-box"></div>
       <el-table :data="tableData" border class="table" ref="multipleTable">
-        <el-table-column prop="id" label="群id" width="80"> </el-table-column>
-        <el-table-column prop="logo" label="群图标" width="120">
+        <el-table-column prop="crowd_id" label="群id" width="80"> </el-table-column>
+
+         <el-table-column prop="name" label="用户昵称" width="120">
+        </el-table-column>
+
+         <el-table-column prop="user_id" label="用户id" width="120">
+        </el-table-column>
+
+        <el-table-column prop="imgurl" label="用户头像" width="120">
           <template slot-scope="scope" style="height:100px">
-            <img class="logo" :src="scope.row.logo"></img>
+            <img class="logo" :src="scope.row.imgurl" @click="clickimg"></img>
           </template>
         </el-table-column>
-        <el-table-column prop="crowd_name" label="群名称" width="200">
+
+
+
+
+        <el-table-column  label="消息详情" width="260">
+        <template slot-scope="scope">
+           <!--{{ scope.row.say_type === "text" ? scope.row.say_type : scope.row.content }} -->
+            <div v-if="scope.row.say_type=='text'">
+            {{scope.row.content}}
+            </div>
+
+            <div v-else>
+            <img class="logo" :src="scope.row.content" @click="clickimg"></img>
+            </div>
+
+        </template>
         </el-table-column>
-        <el-table-column prop="crowd_ownerid" label="群主id" width="100">
+
+
+
+
+
+
+
+       
+        <el-table-column prop="create_time" label="创建时间" width="160">
         </el-table-column>
-        <el-table-column prop="introduce" label="群介绍" width="300">
         </el-table-column>
-        <el-table-column prop="count" label="群人数" width="100">
-        </el-table-column>
-  <el-table-column prop="wxnumber" label="群主微信" width="200">
-         <template slot-scope="scope">
-         <el-text >{{scope.row.wxnumber?scope.row.wxnumber:"未填写"}}</el-text>
-         </template>
-        </el-table-column>
-        <el-table-column prop="create_time" label="创建时间" width="170">
-        </el-table-column>
-        <el-table-column label="操作" width="260" align="center">
+        <el-table-column label="操作" width="150" align="center">
           <template slot-scope="scope">
-          <el-button type="text"  class="blue" @click="getqrcode(scope.$index, scope.row)">群二维码</el-button>
-            <el-button type="text" icon="el-icon-edit" class="green" @click="seetodaydata(scope.$index, scope.row)">查看今日数据</el-button>
+            <!--<el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">审核</el-button>-->
             <el-button
               type="text"
               icon="el-icon-delete"
@@ -98,9 +115,15 @@
     </div>
 
 
+       <!-- 编辑弹出框 -->
+    <el-dialog title="预览图片" :visible.sync="imgVisible" width="25%">
+      <img class="yulan" :src="yulanimg"></img>
+    </el-dialog>
+
+
      <!-- 编辑弹出框 -->
     <el-dialog title="删除群" :visible.sync="delVisible" width="30%">
-      <el-form ref="form" label-width="120px">
+      <el-form ref="form" :model="form" label-width="120px">
         <el-text>确认删除？？</el-text>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -110,34 +133,25 @@
     </el-dialog>
 
 
-     <!-- 群二维码 -->
-    <el-dialog title="群二维码" :visible.sync="qrcodeVisible" width="30%">
-      <el-form ref="form" :model="qrcodedata" label-width="120px">
-       <div><el-text>群名称：{{qrcodedata.crowd_name}}   </el-text></div>
-      
-        <div>  <img class="qrcode"   :src="qrcodedata.imageurl"></img></div>
+    <!-- 编辑弹出框 -->
+    <el-dialog title="编辑" :visible.sync="editVisible" width="30%">
+      <el-form ref="form" :model="form" label-width="120px">
+        <el-form-item label="id">
+          <el-input v-model="form.id"></el-input>
+        </el-form-item>
+        <el-form-item label="支付宝姓名">
+          <el-input v-model="form.alipayName"></el-input>
+        </el-form-item>
+        <el-form-item label="支付宝账号">
+          <el-input v-model="form.alipayNumber"></el-input>
+        </el-form-item>
+        <el-form-item label="state(1过2失败)">
+          <el-input v-model="form.state"></el-input>
+        </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="qrcodeVisible = false">取 消</el-button>
-        <el-button type="primary" @click="qrcodeVisible = false">确 定</el-button>
-      </span>
-    </el-dialog>
-
-
-
-    <!-- 群今日数据弹出框 -->
-    <el-dialog title="群今日数据" :visible.sync="grouptodaydataVisible" width="30%">
-      <el-form ref="form" :model="grouptodaydata" label-width="120px">
-       <div><el-text>今日注册人数：{{grouptodaydata.groupregister}}   </el-text></div>
-      <div> <el-text >今日活跃人数：{{grouptodaydata.groupactive}}</el-text></div>
-      <div> <el-text >今日签到人数：{{grouptodaydata.groupsigins}}</el-text></div>
-     <div>  <el-text >今日上传任务数：{{grouptodaydata.grouptasks}}</el-text></div>
-       <div><el-text >今日抽奖人数：{{grouptodaydata.grouplotterys}}</el-text></div>
-      <div> <el-text >今日兑换人数：{{grouptodaydata.groupexchanges}}</el-text></div>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="grouptodaydataVisible = false">取 消</el-button>
-        <el-button type="primary" @click="grouptodaydataVisible = false">确 定</el-button>
+        <el-button @click="editVisible = false">取 消</el-button>
+        <el-button type="primary" @click="saveEdit">确 定</el-button>
       </span>
     </el-dialog>
 
@@ -162,16 +176,17 @@ export default {
       adminuserdata: null,
       admintaskdata: null,
       admincoinsdata: null,
-      wxnumberif:null,
+      form: {
+        name: "",
+        date: "",
+        address: ""
+      },
       idx: -1,
       delVisible: false,
+      imgVisible:false,
+      yulanimg:null,
       deleteid: "",
-      datapages: 0,
-      grouptodaydata:{},
-      grouptodaydataVisible:false,
-      qrcodeVisible:false,
-      group_name:null,
-      qrcodedata:{}
+      datapages: 0
     };
   },
   created() {
@@ -203,34 +218,9 @@ export default {
       }
     },
 
-    havewxnumber(){
-      this.cur_page = 1;
-      this.wxnumberif=true;
-      this.getData()
-
-    },
-
-    getqrcode(index, row){
-      console.log("获取群二维码")
-      console.log(row.id)
-      let data={};
-      data['crowd_id']=row.id;
-      data['crowd_name']=row.crowd_name;
-      data['imageurl']='https://group.gzywudao.top/php/public/qrcode/' + row.id + '.png';
-      let url="configure/desgroup/groupqrcode?crowd_id=" + row.id;
-       this.$axios(url).then(res => {
-        console.log("获取二维码成功", res);
-         this.$message.success(`获取成功！`);
-         console.log("二维码data值",data)
-         this.qrcodedata =data;
-         this.qrcodeVisible=true;
-      });
-    },
-
     getData() {
-      this.url = "configure/desgroup/groupslist";
-      let wxnumberif=this.wxnumberif;
-      this.$axios.post(this.url, { pages: this.cur_page,wxnumberif:wxnumberif}).then(res => {
+      this.url = "configure/chat/chatlist";
+      this.$axios.post(this.url, { pages: this.cur_page }).then(res => {
         console.log("群列表信息", res);
         this.tableData = res.data.data;
         this.datapages = res.data.countnumber;
@@ -241,8 +231,7 @@ export default {
         this.cur_page = 1;
         this.select_word="";
         this.select_cate="1";
-        this.wxnumberif=null;
-        let url = "configure/desgroup/groupslist";
+        let url = "configure/chat/chatlist";
         this.$axios.post(url, { pages:1 }).then(res => {
         console.log("群列表信息", res);
         this.tableData = res.data.data;
@@ -270,12 +259,11 @@ export default {
     gosearch(pages){
         let select_cate=this.select_cate;//筛选方式
         let select_word=this.select_word;//关键词
-        let ifwxnumber=this.ifwxnumber;//是否有微信号
         console.log("开始筛选",pages)
         if(select_cate == "1"){
             var resdata={
                 pages:pages,
-                id:select_word,
+                id:select_word
             };
         }
         else{
@@ -284,7 +272,7 @@ export default {
                 crowd_name:select_word
             };
         }
-        let url = "configure/desgroup/groupslist";
+        let url = "configure/chat/chatlist";
         this.$axios.post(url,resdata).then(res => {
         console.log("搜索群返回", res);
         this.$message.success(`操作成功`);
@@ -305,29 +293,43 @@ export default {
     //确认删除
     confirmdelete(){
      let id=this.deleteid;
-     let url = "configure/desgroup/deletegroup?id=" + id;
+     let url = "configure/chat/deletechat?id=" + id;
       this.$axios(url).then(res => {
-        console.log("删除群返回", res);
+        console.log("删除消息返回", res);
         this.$message.success(`操作成功`);
         this.delVisible=false;
         this.gosearch();
       });
     },
 
-    seetodaydata(index, row) {
-      console.log("点击查看今日数据");
-       let id=row.id;
-       let url = "configure/desgroup/groupdetails?id=" + id;
-      this.$axios(url).then(res => {
-        console.log("查询群今日数据返回", res.data.data);
-        this.grouptodaydata=res.data.data;
-        // this.$message.success(`操作成功`);
-        this.grouptodaydataVisible=true;
-      });
-
+    clickimg(e){
+        console.log("点击图片",e.target.src)
+        this.imgVisible=true;
+        this.yulanimg=e.target.src;
 
     },
-   
+
+    handleEdit(index, row) {
+      console.log("点击编辑");
+      this.idx = index;
+      const item = this.tableData[index];
+      this.form = item;
+      this.editVisible = true;
+    },
+    // 保存编辑
+    saveEdit() {
+      this.$set(this.tableData, this.idx, this.form);
+      console.log("提交修改信息", this.form);
+      this.editVisible = false;
+      this.$message.success(`操作成功`);
+
+      this.$axios
+        .post("/admin.php/configure/examine/sendrewards", this.form)
+        .then(res => {
+          console.log("修改信息返回数据", res);
+          this.getData();
+        });
+    },
 
     getuserData(openid) {
       this.url = "/admin.php/configure/dataquery/userdata";
@@ -348,13 +350,29 @@ export default {
 </script>
 
 <style scoped>
+
+.yulan{
+    width:350px;
+    height:500px;
+}
+
+/*.imgscrollable {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: scroll;
+
+}*/
+
+.taskimg{
+  width: 220px;
+  height: 280px;
+  margin-left:15px;
+  margin-bottom:10rpx;
+
+}
 .logo {
   width: 70px;
   height: 70px;
-}
-.qrcode{
-   width: 250px;
-  height: 250px;
 }
 
 .bodaydata {

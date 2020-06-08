@@ -64,6 +64,11 @@
                         title: '群消息'
                     },
                     {
+                        icon: 'el-icon-lx-message',
+                        index: 'chat',
+                        title: '聊天记录'
+                    },
+                    {
                         icon: 'el-icon-lx-goods',
                         index: 'exchanges',
                         title: '空间兑换信息'

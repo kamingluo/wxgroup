@@ -42,6 +42,11 @@ export default new Router({
           meta: { title: '群消息' }
         },
         {
+          path: '/chat',
+          component: resolve => require(['../components/page/Chat.vue'], resolve),
+          meta: { title: '聊天记录' }
+        },
+        {
           path: '/exchanges',
           component: resolve => require(['../components/page/Exchanges.vue'], resolve),
           meta: { title: '兑换信息' }
