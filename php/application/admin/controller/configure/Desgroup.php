@@ -4,6 +4,7 @@ use think\Db;
 use think\Request;
 use think\Config;
 use qiniu\Deletefile;
+use app\miniapp\controller\Currency;//跨模块调用
 class Desgroup
 {
 
@@ -152,6 +153,20 @@ class Desgroup
 
       $resdata=array_merge($state,array('data'=>$data));
       return $resdata ;
+   }
+
+
+
+   //后台生成群二维码
+    public function groupqrcode(Request $request)
+   {
+
+      $newCurrency = new Currency;
+      $data = $newCurrency ->getqrcode($request);
+      // echo $data;
+      return $data ;
+
+      # code...
    }
 
 
