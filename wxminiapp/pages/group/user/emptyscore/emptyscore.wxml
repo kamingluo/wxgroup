@@ -1,0 +1,42 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}" wx:if="{{crowd_id}}">
+	<view slot="backText">返回</view>
+	<view slot="content">清空用户积分</view>
+</cu-custom>
+
+<view class="tips centered">
+	<view class="tips-body">
+  <view >
+  <text>温馨提示：群员积分一键清空之后不能恢复,请谨慎操作。</text>
+  </view>
+	</view>
+</view>
+
+<view class="centered ">
+<view class="click-body">
+<button bindtap="clickempty">一键清空群员积分</button>
+</view>
+</view>
+
+
+
+
+
+<view class="cu-modal {{modal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">清空群用户积分</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+     清空之后不可恢复，请谨慎操作！
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="emptyscore">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

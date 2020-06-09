@@ -1,0 +1,56 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}" wx:if="{{crowd_id}}">
+	<view slot="backText">返回</view>
+	<view slot="content">商品排序</view>
+</cu-custom>
+
+
+
+
+<view wx:if="{{goodslist.length >0 }}" class="body">
+	<view class="cu-list menu-avatar" wx:for="{{goodslist}}"  wx:for-index="index" wx:for-item="item">
+		<view class="cu-item" bindtap="lotterydata" data-lotteryid="{{item.id}}">
+			<view class="cu-avatar radius lg" style="background-image:url({{item.images}});"></view>
+			<view class="content">
+				<view>
+					<text class="text-cut">{{item.goodsname}}啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦了</text>
+				</view>
+				<view class="text-gray text-sm flex">
+					<text class="text-cut"> 商品积分：{{item.price}}</text>
+				</view>
+			</view>
+			<view class="action">
+				<view bindtap="upRecord" data-index='{{index}}'>
+					<view class="text-sm" style="font-weight: 600;">上移</view>
+				</view>
+			</view>
+      <view class="action" bindtap="downRecord" data-index='{{index}}'>
+				<view>
+					<view class="text-sm" style="font-weight: 600;">下移</view>
+				</view>
+			</view>
+		</view>
+	</view>
+   <view style='margin-top: 10rpx;color:#aaaaaa' class='centered'>
+    <text>-------已经到底啦-------</text>
+  </view>
+</view>
+
+
+<view wx:else>
+	<view class='default'>
+		<view>
+			<image src='http://littlebox.luojiaming.vip/default.png'></image>
+		</view>
+		<view>
+			<text>空空如也!</text>
+		</view>
+		<view>
+		</view>
+	</view>
+</view>
+
+<view class='sumittask centered'>
+<view >
+  <button bindtap="save" class="bg-blue">保存修改</button>
+  </view>
+</view>

@@ -76,6 +76,27 @@
 					"pathName": "pages/group/tasksranking/tasksranking",
 					"query": "crowd_id=14&crowd_name=群名称&user_type=2",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "清空用户积分",
+					"pathName": "pages/group/user/emptyscore/emptyscore",
+					"query": "crowd_id=14",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品排序",
+					"pathName": "pages/group/goods/sortgoods/sortgoods",
+					"query": "crowd_id=14",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "商品列表",
+					"pathName": "pages/group/goods/goodslist/goodslist",
+					"query": "crowd_id=14&user_type=1",
+					"scene": null
 				}
 			]
 		}

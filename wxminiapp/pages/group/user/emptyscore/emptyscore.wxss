@@ -1,0 +1,23 @@
+/* pages/group/user/emptyscore/emptyscore.wxss */
+
+
+.tips{
+  margin-top: 50rpx;
+}
+.tips-body{
+  width: 94%;
+  height: 150rpx;
+}
+.tips-body text{
+  color: red;
+  font-size: 35rpx;
+  font-weight: 600;
+}
+
+.click-body{
+  width: 70%;
+}
+.click-body button{
+  background-color: #0081ff;
+  color: white;
+}

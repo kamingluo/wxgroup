@@ -75,7 +75,8 @@
 
 
 <view class='sumittask centered' wx:if="{{user_type==1}}">
-	<button bindtap="pushgoods" class="bg-blue">发布商品</button>
+	<button bindtap="pushgoods" class="bg-green">发布商品</button>
+	<button bindtap="sortgoods" class="bg-blue">调整排序</button>
 </view>
 
 

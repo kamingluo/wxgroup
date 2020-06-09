@@ -1,0 +1,43 @@
+/* pages/group/lottery/lotterylist/lotterylist.wxss */
+
+.cu-item{
+  margin-bottom: 5rpx;
+}
+.cu-tag.sm {
+	font-size: 20rpx;
+	padding: 0rpx 12rpx;
+	height: 32rpx;
+  right: 10rpx;
+}
+.green{
+  color: green;
+  font-weight: 600;
+}
+
+.cu-list+.cu-list {
+  margin-top: 1rpx;
+
+  
+}
+.body{
+  margin-bottom: 150rpx;
+}
+
+
+.cu-list.menu-avatar>.cu-item .action {
+	width: 80rpx;
+	text-align: center
+}
+
+.sumittask{
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+}
+.sumittask button{
+  height: 80rpx;
+  width: 300rpx;
+
+}

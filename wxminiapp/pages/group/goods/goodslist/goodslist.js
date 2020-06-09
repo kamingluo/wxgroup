@@ -148,26 +148,14 @@ Page({
         url: '/pages/group/goods/exchange/exchange?goods_id=' + good_id + '&crowd_id=' + this.data.crowd_id + '&crowd_name=' + this.data.crowd_name
       })
     }
-
   },
 
+  sortgoods:function(){
+    wx.navigateTo({
+      url: '/pages/group/goods/sortgoods/sortgoods?crowd_id='+ this.data.crowd_id
+    })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  },
 
 
   /**
