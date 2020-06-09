@@ -19,6 +19,20 @@ class Groupgoods
         
     }
 
+
+    //查询群商品列表
+    public function newgoodslist(Request $request)
+    {
+
+         
+         $crowd_id=$request->param("crowd_id");
+         $data=db('crowd_goods')->where('crowd_id',$crowd_id)->order('sort asc')->select();
+         $state=['state'   => '200','message'  => "群商品列表查询成功" ];
+         $resdata=array_merge($state,array('data'=>$data));
+         return $resdata ;
+        
+    }
+
       //查询商品详情
     public function goodsdetails(Request $request)
     {
@@ -41,7 +55,7 @@ class Groupgoods
          $images=$request->param("images");
          $price=$request->param("price");
          $time =date('Y-m-d H:i:s',time());//获取当前时间
-         $data = ['id'=>'','goodsname' =>$goodsname,'images' => $images,'price' => $price,'crowd_id' => $crowd_id,'create_time' =>$time];
+         $data = ['id'=>'','goodsname' =>$goodsname,'images' => $images,'price' => $price,'crowd_id' => $crowd_id,'sort' => null,'create_time' =>$time];
          $goods_id= db('crowd_goods')->insertGetId($data);//返回自增ID
          $state=['state'   => '200','message'  => "发布群商品成功" ];
          $resdata=array_merge($state,array('goods_id'=>$goods_id));

@@ -199,5 +199,25 @@ class Handlegroup
    }
 
 
+   
+   //清空群成员的积分
+   public function emptyscore(Request $request) 
+   {
+        $crowd_id=$request->param("crowd_id");//群ID
+        $user_id=$request->param("user_id");//用户ID
+        $groupdata=db('user_crowd')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->find();
+        $user_type=$groupdata["user_type"];//用户权限
+
+        if($user_type == 1){
+            $updateres= db('user_crowd')->where('crowd_id',$crowd_id)->update(['score' => 0]);
+            $state=['state'   => '200','message'  => "清空群成员的积分成功" ];
+        }
+        else{
+            $state=['state'   => '400','message'  => "账号权限错误" ];
+        }
+        return $state ;
+   }
+
+
 }
 
