@@ -45,7 +45,7 @@ Page({
     var that = this
     var crowd_id = this.data.crowd_id
     request({
-      service: 'group/handlegroup/groupuserlist',
+      service: 'group/handlegroup/newgroupuserlist',
       method: 'GET',
       data: {
         crowd_id: crowd_id,

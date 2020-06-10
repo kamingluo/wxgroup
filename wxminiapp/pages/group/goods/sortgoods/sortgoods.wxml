@@ -54,3 +54,8 @@
   <button bindtap="save" class="bg-blue">保存修改</button>
   </view>
 </view>
+
+<view class='cu-load load-modal'  wx:if="{{loadModal}}">
+  <view class='cuIcon-loading2 text-orange'></view>
+  <view class='gray-text'>调整中...</view>
+</view>

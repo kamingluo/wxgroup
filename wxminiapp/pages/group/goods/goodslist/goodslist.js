@@ -77,7 +77,7 @@ Page({
   goodsdata: function () {
     var crowd_id = this.data.crowd_id
     request({
-      service: 'group/groupgoods/goodslist',
+      service: 'group/groupgoods/newgoodslist',
       method: 'GET',
       data: {
         crowd_id: crowd_id

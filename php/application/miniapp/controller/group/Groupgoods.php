@@ -1,5 +1,6 @@
 <?php
 namespace app\miniapp\controller\group;
+use think\Log;
 use think\Db;
 use think\Request;
 use think\Config;
@@ -136,6 +137,23 @@ class Groupgoods
         }
 
 
+    }
+
+
+    //商品排序
+     public function sortgoods(Request $request)
+    {
+
+        $goodsdata=$request->post()["data"];//接受post提交的数组应该用$request->post();
+        $number =0;
+        foreach($goodsdata as $count  => $data){
+          $id=$data["id"];//id
+          $updateres= db('crowd_goods')->where('id',$id)->update(['sort' => $number]);
+          $number=$number+1;
+        }
+       
+        $state=['state'   => '200','message'  => "修改成功1"];
+        return $state;
     }
 
 

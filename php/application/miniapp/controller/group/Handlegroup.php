@@ -25,6 +25,33 @@ class Handlegroup
         return $resdata ;
 
     }
+
+
+     //查询群用户列表
+     public function newgroupuserlist(Request $request)
+     {
+         $crowd_id=$request->param("crowd_id");//群id
+         $pages=$request->param("pages");
+
+         $endnumber=$pages*10 ; //结束查询条数
+        //  $endnumber=$pages*1000 ; //结束查询条数，暂时设置为1000，因为没做分页
+         $startnumber=$endnumber -10;//开始查询条数
+
+        //  $startnumber = 0;//开始查询条数，因为没做分页
+         $sql = "select user.*,user_crowd.user_type,user_crowd.score,user_crowd.remarks,user_crowd.create_time as joincrowd_time from user,user_crowd where user.id=user_crowd.user_id and user_crowd.crowd_id = ".$crowd_id." order BY user_crowd.score desc LIMIT ".$startnumber.",".$endnumber.";";
+         $groupuserlist = Db::query($sql); //拿到数据
+         $count =db('user_crowd')->where('crowd_id',$crowd_id)->count();
+         $state=['state'   => '200','message'  => "查询群用户列表成功",'count'=>$count ];
+         $resdata=array_merge($state,array('groupuserlist'=>$groupuserlist));
+         return $resdata ;
+ 
+     }
+
+    
+
+
+
+
     
 
      //根据用户昵称模糊查询

@@ -7,7 +7,8 @@ Page({
 
   data: {
     crowd_id: null,
-    goodslist:[]
+    goodslist:[],
+    loadModal:false
   },
 
 
@@ -73,7 +74,35 @@ Page({
 
   //保存修改
   save:function(){
+    var that =this;
+    that.setData({
+      loadModal:true
+    })
     console.log("保存修改")
+    var data = that.data.goodslist
+    request({
+      service: 'group/groupgoods/sortgoods',
+      method: 'POST',
+      data: {
+        data: data
+      },
+      success: res => {
+        console.log('调整接口返回', res);
+        that.setData({
+          loadModal:false
+        })
+        wx.showToast({
+          title: '操作成功',
+          icon: 'success',
+          duration: 2500,
+        })
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 1500) 
+      }
+    })
 
   },
 

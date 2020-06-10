@@ -27,7 +27,8 @@
 }
 
 .name{
-  color: #000000;
+  /* color: #000000; */
+  font-weight: 500;
 }
 .user-list{
   margin-top: 40rpx;

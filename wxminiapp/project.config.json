@@ -97,6 +97,13 @@
 					"pathName": "pages/group/goods/goodslist/goodslist",
 					"query": "crowd_id=14&user_type=1",
 					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "用户列表",
+					"pathName": "pages/group/user/user",
+					"query": "crowd_id=14&user_type=1",
+					"scene": null
 				}
 			]
 		}
