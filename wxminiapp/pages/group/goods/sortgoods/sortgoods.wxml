@@ -51,7 +51,7 @@
 
 <view class='sumittask centered'>
 <view >
-  <button bindtap="save" class="bg-blue">保存修改</button>
+  <button bindtap="save" class="bg-blue centered">保存修改</button>
   </view>
 </view>
 
