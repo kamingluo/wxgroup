@@ -53,3 +53,10 @@
   width: 300rpx;
 
 }
+
+.video-body{
+  position: fixed;
+  top: 160rpx;
+  left: 20rpx;
+  z-index: -100;
+}

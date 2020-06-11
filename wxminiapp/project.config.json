@@ -104,6 +104,13 @@
 					"pathName": "pages/group/user/user",
 					"query": "crowd_id=14&user_type=1",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "上传任务",
+					"pathName": "pages/group/uptask/uptask",
+					"query": "crowd_id=14&user_type=1",
+					"scene": null
 				}
 			]
 		}

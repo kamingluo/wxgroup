@@ -1,64 +1,72 @@
+<view wx:if="{{crowd_id}}">
+
+	<cu-custom bgColor="bg-blue" isBack="{{true}}">
+		<view slot="backText">返回</view>
+		<view slot="content">提交任务</view>
+	</cu-custom>
 
 
-<view  wx:if="{{crowd_id}}" >
-
-<cu-custom bgColor="bg-blue" isBack="{{true}}">
-  <view slot="backText">返回</view>
-  <view slot="content">提交任务</view>
-</cu-custom>
+	<!-- 文件上传 -->
+	<view class='domes_title_1' bindtap='moredata'>任务描述</view>
 
 
-<!-- 文件上传 -->
-<view class='domes_title_1' bindtap='moredata'>任务描述</view>
+	<view class="centered">
+		<view class="task_text">
+			<textarea maxlength="250" bindinput="tasktext" value='{{tasktext}}' placeholder="请输入任务描述"></textarea>
+		</view>
+	</view>
+
+	<view class='ui_cell'>
+		<view class='ui_cell_bd'>任务图片上传</view>
+		<view class='ui_cell_ft'>{{uploaderNum}}/4</view>
+	</view>
+	<view class="centered">
+		<view class='ui_uploader_cell  '>
+			<view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="{{index}}">
+				<icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20" color="red" />
+				<image bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
+			</view>
+			<view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}"></view>
+		</view>
+	</view>
 
 
-  <view class="centered">
-    <view class="task_text">
-      <textarea maxlength="250"  bindinput="tasktext" value='{{tasktext}}' placeholder="请输入任务描述"></textarea>
-    </view>
-  </view>
-
-  <view class='ui_cell'>
-    <view class='ui_cell_bd'>任务图片上传</view>
-    <view class='ui_cell_ft'>{{uploaderNum}}/4</view>
-  </view>
-  <view class="centered">
-    <view class='ui_uploader_cell  '>
-      <view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="{{index}}">
-        <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20" color="red" />
-        <image bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
-      </view>
-      <view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}"></view>
-    </view>
-  </view>
-
-
-
-  <view class='sumittask centered'>
-    <kaming-button>
-    <button bindtap="sumittask" class="bg-blue">提交</button>
-    </kaming-button>
-  </view>
+	<!-- 广点通视频广告开始-->
+	<view class='centered  video-body'>
+		<view class='gdtad' style="opacity: 0">
+		<!-- <view class='gdtad'> -->
+			<ad capture-bind:tap="gdtvideoadclick" unit-id="adunit-a11ac63b83fa7e6e" ad-type="video" ad-theme="white"></ad>
+		</view>
+	</view>
+	<!--广点通视频广告结束-->
 
 
 
-<view class='cu-load load-modal'  wx:if="{{loadModal}}">
-  <view class='cuIcon-loading2 text-orange'></view>
-  <!-- <image src='/images/logo.png' class='png' mode='aspectFit'></image> -->
-  <view class='gray-text'>提交中...</view>
+	<view class='sumittask centered'>
+		<kaming-button>
+			<button bindtap="sumittask" class="bg-blue">提交</button>
+		</kaming-button>
+	</view>
+
+
+
+	<view class='cu-load load-modal' wx:if="{{loadModal}}">
+		<view class='cuIcon-loading2 text-orange'></view>
+		<!-- <image src='/images/logo.png' class='png' mode='aspectFit'></image> -->
+		<view class='gray-text'>提交中...</view>
+	</view>
+
+
+
 </view>
+<!-- 全部结束 -->
 
 
 
-  </view>
-  <!-- 全部结束 -->
-
-
-
-  <view wx:else>
-<cu-custom bgColor="bg-blue" isBack="{{true}}">
-  <view slot="backText">返回</view>
-  <view slot="content">群记分</view>
-</cu-custom>
+<view wx:else>
+	<cu-custom bgColor="bg-blue" isBack="{{true}}">
+		<view slot="backText">返回</view>
+		<view slot="content">群记分</view>
+	</cu-custom>
 
 </view>

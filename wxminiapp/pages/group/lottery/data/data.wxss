@@ -6,7 +6,7 @@
   font-size: 28rpx;
 }
 .time{
-  margin-top: 10rpx;
+  margin-top: 1rpx;
 }
 .padding-tb-sm {
 	padding-top: 20rpx;

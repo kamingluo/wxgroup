@@ -55,19 +55,21 @@
 .information{
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content:initial;
   flex-wrap:wrap;
-  width: 98%;
+  width: 96%;
+  margin-left: -2%;
 }
 
 .information-body {
   border-radius: 10rpx;
-
   margin-bottom: 10rpx;
+  width: 30%;
+  margin-left:3%;
 }
 
 .information-body image{
-   width: 230rpx;
+   width: 100%;
   height:340rpx;
  border-radius: 10rpx; 
  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);

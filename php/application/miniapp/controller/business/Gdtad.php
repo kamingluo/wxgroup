@@ -10,6 +10,22 @@ class Gdtad
     {
 
     	return  "广点通广告" ;
+	}
+	
+
+
+	//点击广点通广告统计
+	public function clickad(Request $request)
+    {
+		$user_id =$request->param("user_id");//用户id
+		$channel=$request->param("channel");//渠道
+		$adtype=$request->param("adtype");//广告类型，1：banner，2：激励视频，3：格子，4：视频广告
+		$position=$request->param("position");//位置
+		$time =date('Y-m-d H:i:s',time());//获取当前时间
+		$adres = ['id'=>'','user_id' =>$user_id,'channel' =>$channel,'adtype' =>$adtype,'position' =>$position,'create_time' =>$time];
+		$addata=db('click_gdt_ad')->insert($adres);
+		$resdata=['state'   => '200','message'  => "统计广告成功"];
+		return $resdata;
     }
 
 

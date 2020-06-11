@@ -251,6 +251,9 @@ function wxmsgSecCheck($content){
         //return $data;
         $respon = newpostCurl($url,$data,'json');
         $respon = json_decode($respon,true);
+        // Log::record("文案审核结果啊");
+        // Log::record($respon);
+
         //return $respon;
         if($respon['errcode'] == 87014){
         return 1;//效验失败，内容含有违法违规内容

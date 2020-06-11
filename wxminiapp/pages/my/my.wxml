@@ -46,7 +46,7 @@
     <image src='../../images/common/coin.svg'></image>
   </view>
   <view class='score_button'>
-    <button bindtap='coinrecord' class=' bg-blue'>金币记录</button>
+    <button bindtap='coinrecord' class=' bg-blue centered'>金币记录</button>
   </view>
 </view>
 

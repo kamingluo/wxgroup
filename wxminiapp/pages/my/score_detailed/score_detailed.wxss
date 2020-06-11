@@ -47,7 +47,6 @@
 }
 .exchangegood{
    font-size: 30rpx;
-   margin-bottom: 20rpx;
    color: #000000;
 }
 

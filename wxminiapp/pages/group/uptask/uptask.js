@@ -85,7 +85,17 @@ Page({
   },
 
 
+  gdtvideoadclick:function(){
+    console.log("点击广告")
+
+  },
+
   sumittask: function() {
+
+    console.log("点击了提交任务")
+    return;
+
+
     var that = this
     wx.requestSubscribeMessage({
       tmplIds: ['fIbB90FHxqlRURZGGo0PmcdAKWaUoxziV_loz90ftVs'],

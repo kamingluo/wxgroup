@@ -6,13 +6,14 @@
 
 
 <view class='score'>
-	<view class='score_text'>
-		当前积分为:
-		<text>{{userdata.score}} </text> 积分
+	<view class='score_text centered'>
+	
+		<text>当前积分为:</text>
+		<text decode="true" class="userscores">{{userdata.score}}</text><text class="jifentext">积分</text>
 	</view>
 	<view class='score_button'>
 		<kaming-button>
-			<button bindtap='exchangelist' class=' bg-blue'>兑换记录</button>
+			<button bindtap='exchangelist' class=' bg-blue centered'>兑换记录</button>
 		</kaming-button>
 	</view>
 </view>

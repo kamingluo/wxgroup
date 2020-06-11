@@ -151,6 +151,7 @@ Page({
   },
   
   gdtvideoadclick: function (e) {
+    console.log("点击了我的页面的视频广告")
     let userdata = wx.getStorageSync('userdata')
     let data = Object.assign(userdata, e.currentTarget.dataset); //将addata合并
     app.aldstat.sendEvent('我的页gdt视频ad', data);
