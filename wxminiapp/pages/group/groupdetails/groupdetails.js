@@ -247,7 +247,13 @@ Page({
 
 
 
-
+  gdtvideoadclick: function (e) {
+    let data={
+      'adtype':4,
+      'position':"群空间页面"
+    };
+    common.clickgdtadstatistics(data)
+  },
 
 
   clickicon:function(e){

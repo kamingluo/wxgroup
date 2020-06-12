@@ -175,6 +175,23 @@ function echecktext(content) {
 
 
 
+//广告统计
+function clickgdtadstatistics(e) {
+  let data=e;
+  let user_id = wx.getStorageSync('userdata').id || 0 ;
+  data.user_id=user_id;
+  request({
+    service: 'business/gdtad/clickad',
+    data:data,
+    success: res => {
+      console.log("点击广告统计返回",res)
+    }
+  })
+}
+
+
+
+
 
 
 
@@ -189,5 +206,6 @@ module.exports = {
   haveopenid: haveopenid,
   havewxcode:havewxcode,
   recordmsg: recordmsg,
-  echecktext: echecktext
+  echecktext: echecktext,
+  clickgdtadstatistics:clickgdtadstatistics
 }

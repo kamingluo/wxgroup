@@ -376,3 +376,13 @@
 }
 
 /* 抽奖列表结束 */
+
+
+
+
+.video-body{
+  position: fixed;
+  top: 150rpx;
+  left: 20rpx;
+  z-index: -100;
+}

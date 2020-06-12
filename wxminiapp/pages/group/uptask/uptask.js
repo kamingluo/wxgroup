@@ -87,15 +87,17 @@ Page({
 
   gdtvideoadclick:function(){
     console.log("点击广告")
+    let data={
+      'adtype':4,
+      'position':"提交任务页面"
+    };
+    common.clickgdtadstatistics(data)
 
   },
 
   sumittask: function() {
-
-    console.log("点击了提交任务")
-    return;
-
-
+    // console.log("点击了提交任务")
+    // return;
     var that = this
     wx.requestSubscribeMessage({
       tmplIds: ['fIbB90FHxqlRURZGGo0PmcdAKWaUoxziV_loz90ftVs'],

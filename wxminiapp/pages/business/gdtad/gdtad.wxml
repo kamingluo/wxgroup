@@ -142,7 +142,7 @@
 <!-- 广点通视频广告开始-->
 <view class='centered' wx:if="{{!gridadshow && !banneradshow}}">
 	<view class='gdtad'>
-		<ad unit-id="adunit-eb3e08b94b84f91e" ad-type="video" ad-theme="white"></ad>
+		<ad  capture-bind:tap="gdtvideoadclick" unit-id="adunit-eb3e08b94b84f91e" ad-type="video" ad-theme="white"></ad>
 	</view>
 </view>
 <!--广点通视频广告结束-->
@@ -150,7 +150,7 @@
 
 
 
-<!-- /*签到成功弹框开始*/ -->
+<!-- /*成功弹框开始*/ -->
 <view class='tankuang' wx:if="{{coinmodal}}">
 	<view class='beijing'>
 
@@ -165,4 +165,4 @@
 
 	</view>
 </view>
-<!-- /*签到成功弹框结束*/ -->
+<!-- /*成功弹框结束*/ -->

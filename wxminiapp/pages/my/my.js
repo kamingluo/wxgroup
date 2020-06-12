@@ -152,9 +152,15 @@ Page({
   
   gdtvideoadclick: function (e) {
     console.log("点击了我的页面的视频广告")
-    let userdata = wx.getStorageSync('userdata')
-    let data = Object.assign(userdata, e.currentTarget.dataset); //将addata合并
-    app.aldstat.sendEvent('我的页gdt视频ad', data);
+    let data={
+      'adtype':4,
+      'position':"我的页面"
+    };
+    common.clickgdtadstatistics(data)
+
+    // let userdata = wx.getStorageSync('userdata')
+    // let data = Object.assign(userdata, e.currentTarget.dataset); //将addata合并
+    // app.aldstat.sendEvent('我的页gdt视频ad', data);
   },
 
   bindDateChange: function (e) {

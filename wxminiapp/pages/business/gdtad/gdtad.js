@@ -3,6 +3,7 @@ const app = getApp()
 const {
   request
 } = require('./../../../utils/request.js');
+const common = require('./../../../utils/common.js');
 var preventShake = 0; //防止快速点击
 var videoAd = null;//全局，提前加载视频广告
 
@@ -50,6 +51,16 @@ Page({
         gdtaddisplay: true
       })
     }
+  },
+
+
+  gdtvideoadclick: function (e) {
+    console.log("点击了我的页面的视频广告")
+    let data={
+      'adtype':4,
+      'position':"广点通任务页面"
+    };
+    common.clickgdtadstatistics(data)
   },
 
 
