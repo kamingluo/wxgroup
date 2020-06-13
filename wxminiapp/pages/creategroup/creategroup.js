@@ -81,6 +81,14 @@ Page({
 
   },
 
+  gdtvideoadclick: function (e) {
+    let data = {
+      'adtype': 4,
+      'position': "创建群空间"
+    };
+    common.clickgdtadstatistics(data)
+  },
+
 
   haveopenid: function () {
     var that = this;

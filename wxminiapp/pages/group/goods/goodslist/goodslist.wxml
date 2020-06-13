@@ -18,6 +18,17 @@
 	</view>
 </view>
 
+  <!-- 广点通视频广告开始-->
+  <view class='centered  video-body'>
+    <view class='gdtad' style="opacity: 0">
+      <ad capture-bind:tap="gdtvideoadclick" unit-id="adunit-ccb8344e36d1ba8c" ad-type="video" ad-theme="white"></ad>
+    </view>
+  </view>
+  <!--广点通视频广告结束-->
+
+
+
+
 <view class="careful-body centered" wx:if="{{goodslist.length > 0}}">
 	<view class="careful">
 		<text>注：积分兑换奖品为群主自行设置奖品，与群记分团队无任何责任关系。如有疑问可联系空间群主沟通解决。</text>

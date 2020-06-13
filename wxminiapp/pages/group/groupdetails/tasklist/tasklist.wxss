@@ -1,6 +1,12 @@
 /* pages/my/exchange_detailed/exchange_detailed.wxss */
 
 
+.video-body{
+  position: fixed;
+ margin-top: -40rpx;
+  margin-left: 40rpx;
+  z-index: -100;
+}
 
 .default{
   display: flex;

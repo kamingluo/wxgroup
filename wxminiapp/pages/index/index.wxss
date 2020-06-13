@@ -19,6 +19,13 @@
 	height: 380rpx !important;
 }
 
+.video-body{
+  position: fixed;
+  top: 20rpx;
+  left: 0rpx;
+  z-index: -100;
+}
+
 
 
 .u-img-slide {

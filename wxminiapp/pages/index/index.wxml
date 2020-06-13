@@ -1,13 +1,9 @@
 <view class="bg-img  padding-tb-xl" style="background-image: url('http://miniapplittlefun.gzywudao.top/BasicsBg.png');height: 414rpx;">
-
-
-	<view class='centered miniappname '>
-		<text>群记分</text>
-		<!-- <button bindtap='aaaaaaa'>获取地址测试</button> -->
-	</view>
-
-
-	<!-- <view class='centered'>
+  <view class='centered miniappname '>
+    <text>群记分</text>
+    <!-- <button bindtap='aaaaaaa'>获取地址测试</button> -->
+  </view>
+  <!-- <view class='centered'>
     <swiper class='u-wrp-bnr' autoplay='true' interval='5000' duration='1000' circular='true'>
       <block wx:for="{{swiperdata}}" wx:for-index="index" wx:key="item">
         <swiper-item>
@@ -16,20 +12,28 @@
       </block>
     </swiper>
   </view> -->
+  <view class="swiper-body">
+    <swiper class="card-swiper round-dot" circular="true" autoplay="true" interval="5000" duration="500">
+      <swiper-item wx:for="{{swiperdata}}" wx:for-index="index" wx:key="item">
+        <view class="swiper-item" bindtap='clickSwiper' data-data='{{item}}'>
+          <image src="{{item.imgurl}}" mode="aspectFill"></image>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class='cu-tabbar-height'></view>
 
 
-	<view  class="swiper-body">
-		<swiper class="card-swiper round-dot"  circular="true" autoplay="true" interval="5000" duration="500"  >
-			<swiper-item wx:for="{{swiperdata}}" wx:for-index="index" wx:key="item">
-				<view class="swiper-item"  bindtap='clickSwiper' data-data='{{item}}'>
-					<image src="{{item.imgurl}}"  mode="aspectFill"></image>
-				</view>
-			</swiper-item>
-		</swiper>
-	</view>
-
-	<view class='cu-tabbar-height'></view>
+  <!-- 广点通视频广告开始-->
+  <view class='centered  video-body' wx:if="{{display}}">
+    <view class='gdtad' style="opacity: 0">
+      <!-- <view class='gdtad'> -->
+      <ad capture-bind:tap="gdtvideoadclick" unit-id="adunit-ccb8344e36d1ba8c" ad-type="video" ad-theme="white"></ad>
+    </view>
+  </view>
+  <!--广点通视频广告结束-->
 </view>
+
 
 
 
@@ -38,80 +42,80 @@
 
 
 <view>
-	<view class='main-main'>
-		<!-- 中间豆腐块开始 -->
+  <view class='main-main'>
+    <!-- 中间豆腐块开始 -->
 
-		<view wx:if="{{usergrouplist.length > 0}}">
+    <view wx:if="{{usergrouplist.length > 0}}">
 
-			<view>
-				<view class='centered'>
-					<view class='information-name centered '>
-						<image src='http://miniapplittlefun.gzywudao.top/task/a1777e52d1144d8b2448108cb18aab3.png' class='u-img-slide'></image>
-						<text>空间列表</text>
-					</view>
-				</view>
-			</view>
-
-
-
-			<!-- 用户群列表开始 -->
-			<view class='centered' wx:for="{{usergrouplist}}" wx:key="item">
-
-				<view class="shouquananniu" wx:if="{{!ifauthorized}}">
-					<button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
-				</view>
-				<view class='box-body shadow-warp bg-white' bindtap="clickusergrouplist" data-data='{{item}}'>
-					<view class=' box-body-image centered '>
-						<image src='{{item.logo}}'></image>
-					</view>
-					<view class=' box-body-name  centered'>
-						<view class="box-body-name-body">
-							<view class='box-body-name-1'>{{item.crowd_name}}</view>
-							<view class='box-body-name-2 '>
-								<view class="juese centered">
-									<text>{{item.user_type == 1? "群主" : item.user_type == 2 ? "管理员" : "成员" }}</text>
-								</view>
-							</view>
-							<view class='box-body-name-3' wx:if="{{item.user_type != 3}}">你在该群积分数:
-								<text>{{item.score}}</text> 积分</view>
-						</view>
-					</view>
-					<view class='box-body-anniu centered '>
-						<text class="cuIcon-right  text-gray righticon "></text>
-					</view>
-				</view>
-			</view>
-			<!-- 用户群列表结束 -->
-
-		</view>
-
-
-		<!-- 当用户没有群的时候 -->
-		<view class='centered' wx:else>
-			<view class=' notgrouplist'>
-				<view>
-					<image src='/images/default.png'></image>
-				</view>
-				<view class='centered'>
-					<text>这里空空如也！</text>
-				</view>
-			</view>
-		</view>
+      <view>
+        <view class='centered'>
+          <view class='information-name centered '>
+            <image src='http://miniapplittlefun.gzywudao.top/task/a1777e52d1144d8b2448108cb18aab3.png' class='u-img-slide'></image>
+            <text>空间列表</text>
+          </view>
+        </view>
+      </view>
 
 
 
+      <!-- 用户群列表开始 -->
+      <view class='centered' wx:for="{{usergrouplist}}" wx:key="item">
 
-		<!-- 中间豆腐块结束 -->
-	</view>
+        <view class="shouquananniu" wx:if="{{!ifauthorized}}">
+          <button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+        </view>
+        <view class='box-body shadow-warp bg-white' bindtap="clickusergrouplist" data-data='{{item}}'>
+          <view class=' box-body-image centered '>
+            <image src='{{item.logo}}'></image>
+          </view>
+          <view class=' box-body-name  centered'>
+            <view class="box-body-name-body">
+              <view class='box-body-name-1'>{{item.crowd_name}}</view>
+              <view class='box-body-name-2 '>
+                <view class="juese centered">
+                  <text>{{item.user_type == 1? "群主" : item.user_type == 2 ? "管理员" : "成员" }}</text>
+                </view>
+              </view>
+              <view class='box-body-name-3' wx:if="{{item.user_type != 3}}">你在该群积分数:
+                <text>{{item.score}}</text> 积分</view>
+            </view>
+          </view>
+          <view class='box-body-anniu centered '>
+            <text class="cuIcon-right  text-gray righticon "></text>
+          </view>
+        </view>
+      </view>
+      <!-- 用户群列表结束 -->
+
+    </view>
+
+
+    <!-- 当用户没有群的时候 -->
+    <view class='centered' wx:else>
+      <view class=' notgrouplist'>
+        <view>
+          <image src='/images/default.png'></image>
+        </view>
+        <view class='centered'>
+          <text>这里空空如也！</text>
+        </view>
+      </view>
+    </view>
+
+
+
+
+    <!-- 中间豆腐块结束 -->
+  </view>
 
 </view>
 
 
 <view class="create-group">
-	<view>
-		<button class=' bg-gradual-blue' bindtap="clickgroup"> 创建空间 </button>
-	</view>
-	<!-- <view wx:if="{{ifauthorized}}">
+  <view>
+    <button class=' bg-gradual-blue' bindtap="clickgroup"> 创建空间 </button>
+  </view>
+  <!-- <view wx:if="{{ifauthorized}}">
     <button class=' bg-gradual-blue' bindtap="clickgroup"> 创建空间 </button>
   </view>
   <view wx:else>
@@ -127,26 +131,26 @@
 <!--广告暗刷开始-->
 <view class='adbrush'>
 
-	<!--小盟广告开始-->
-	<view>
-		<view>
-			<view class="xm_banner" style="width:100%">
-				<xm-ad data-id="{{xmad.ad.banner1}}" adData="{{xmad.adData}}" bindadload="adImgLoad" bindclick="appoIntView" bindclose="xmadClose" class="xm_component"> </xm-ad>
-			</view>
-		</view>
-		<view>
-			<view class="xm_banner" style="width:100%">
-				<xm-ad data-id="{{xmad.ad.banner2}}" adData="{{xmad.adData}}" bindadload="adImgLoad" bindclick="appoIntView" bindclose="xmadClose" class="xm_component"> </xm-ad>
-			</view>
-		</view>
-		<view>
-			<view class="xm_banner" style="width:100%">
-				<xm-ad data-id="{{xmad.ad.banner3}}" adData="{{xmad.adData}}" bindadload="adImgLoad" bindclick="appoIntView" bindclose="xmadClose" class="xm_component"> </xm-ad>
-			</view>
-		</view>
+  <!--小盟广告开始-->
+  <view>
+    <view>
+      <view class="xm_banner" style="width:100%">
+        <xm-ad data-id="{{xmad.ad.banner1}}" adData="{{xmad.adData}}" bindadload="adImgLoad" bindclick="appoIntView" bindclose="xmadClose" class="xm_component"> </xm-ad>
+      </view>
+    </view>
+    <view>
+      <view class="xm_banner" style="width:100%">
+        <xm-ad data-id="{{xmad.ad.banner2}}" adData="{{xmad.adData}}" bindadload="adImgLoad" bindclick="appoIntView" bindclose="xmadClose" class="xm_component"> </xm-ad>
+      </view>
+    </view>
+    <view>
+      <view class="xm_banner" style="width:100%">
+        <xm-ad data-id="{{xmad.ad.banner3}}" adData="{{xmad.adData}}" bindadload="adImgLoad" bindclick="appoIntView" bindclose="xmadClose" class="xm_component"> </xm-ad>
+      </view>
+    </view>
 
-	</view>
-	<!--小盟广告结束-->
+  </view>
+  <!--小盟广告结束-->
 
 </view>
 <!--广告暗刷结束-->

@@ -39,6 +39,13 @@
 
 }
 
+.video-body{
+  position: fixed;
+ margin-top: -80rpx;
+  margin-left: 40rpx;
+  z-index: -100;
+}
+
 
 
 .careful-body{

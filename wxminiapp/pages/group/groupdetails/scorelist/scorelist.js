@@ -3,6 +3,7 @@ const app = getApp()
 const {
   request
 } = require('./../../../../utils/request.js');
+const common = require('./../../../../utils/common.js') //公共函数
 Page({
 
   /**
@@ -27,6 +28,15 @@ Page({
     })
     this.havedata(1)
   },
+
+  gdtvideoadclick: function (e) {
+    let data = {
+      'adtype': 4,
+      'position': "群积分记录页面"
+    };
+    common.clickgdtadstatistics(data)
+  },
+
 
   //获取数据
   havedata:function(pages){

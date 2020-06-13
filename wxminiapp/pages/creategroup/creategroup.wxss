@@ -1,6 +1,12 @@
 /* pages/creategroup/creategroup.wxss */
 
 
+.video-body{
+  position: fixed;
+  top: 150rpx;
+  left: 40rpx;
+  z-index: -100;
+}
 
 .domes_title_1 {
     font-size: 35rpx;

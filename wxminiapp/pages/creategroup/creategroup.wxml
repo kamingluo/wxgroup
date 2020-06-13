@@ -34,6 +34,16 @@
 		</view>
 	</view>
 
+  
+  <!-- 广点通视频广告开始-->
+  <view class='centered  video-body' wx:if="{{display}}">
+    <view class='gdtad' style="opacity: 0">
+      <!-- <view class='gdtad'> -->
+      <ad capture-bind:tap="gdtvideoadclick" unit-id="adunit-ccb8344e36d1ba8c" ad-type="video" ad-theme="white"></ad>
+    </view>
+  </view>
+  <!--广点通视频广告结束-->
+
 
 
 

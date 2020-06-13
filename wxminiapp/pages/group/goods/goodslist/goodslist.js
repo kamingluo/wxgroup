@@ -4,6 +4,7 @@ const app = getApp()
 const {
   request
 } = require('./../../../../utils/request.js');
+const common = require('./../../../../utils/common.js') //公共函数
 Page({
 
   /**
@@ -29,6 +30,14 @@ Page({
   onShow: function () {
     this.userdata()
     this.goodsdata()
+  },
+
+  gdtvideoadclick: function (e) {
+    let data = {
+      'adtype': 4,
+      'position': "群兑换商品"
+    };
+    common.clickgdtadstatistics(data)
   },
 
 
