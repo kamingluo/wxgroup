@@ -22,10 +22,18 @@ class Home
     }
 
     //首页顶部轮播图和豆腐块配置数据
-     public function swiperdata()
+     public function swiperdata(Request $request)
     {
-        $swiperdata=db('index_swiper')->where('open',0)->order('id asc')->select();//查询轮播图配置信息
-        $state=['state'   => '200','message'  => "首页顶部轮播图数据查询成功" ];
+        $channel=$request->param("channel");
+        if($channel==0 || $channel==null){
+          $swiperdata=db('index_swiper')->where('open',0)->where('display','<>',2)->order('id asc')->select();//自然渠道
+          $message="自然渠道数据";
+        }
+        else{
+          $swiperdata=db('index_swiper')->where('open',0)->where('display','<>',1)->order('id asc')->select();//非自然渠道
+          $message="非自然渠道数据";
+        }
+        $state=['state'   => '200','message'  => $message ];
         $resdata=array_merge($state,array('swiperdata'=>$swiperdata));
         return $resdata ;
     }
