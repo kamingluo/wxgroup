@@ -18,6 +18,7 @@ Page({
     swiperdata:[],//首页轮播图数据
     usergrouplist:[],//用户加入群列表
     ifauthorized:false,
+    banneradshow:true,
     xmad: { //小盟广告
       adData: {},
       ad: {
@@ -216,11 +217,33 @@ Page({
 
   
 
+  //广告加载成功或者失败展示交互
+  banneradsuccess: function () {
+    this.setData({
+      banneradshow: true
+    })
+  },
+  banneraderr: function () {
+    console.log("banner广告加载失败")
+    this.setData({
+      banneradshow: false
+    })
+  },
+
 
 
   gdtvideoadclick: function (e) {
     let data = {
       'adtype': 4,
+      'position': "首页"
+    };
+    common.clickgdtadstatistics(data)
+  },
+
+  gdtbanneradclick: function (e) {
+    console.log("点击banner广告'")
+    let data = {
+      'adtype': 1,
       'position': "首页"
     };
     common.clickgdtadstatistics(data)

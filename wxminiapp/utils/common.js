@@ -92,7 +92,7 @@ function insidejump(e) {
     wx.switchTab({
       url: e.url
     })
-  } else if (type == 1) {
+  } else if (type == 1 || type == 4) {
     wx.navigateTo({
       url: e.url
     })

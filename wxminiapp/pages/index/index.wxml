@@ -15,7 +15,11 @@
   <view class="swiper-body">
     <swiper class="card-swiper round-dot" circular="true" autoplay="true" interval="5000" duration="500">
       <swiper-item wx:for="{{swiperdata}}" wx:for-index="index" wx:key="item">
-        <view class="swiper-item" bindtap='clickSwiper' data-data='{{item}}'>
+        <view wx:if="{{item.type ==4}}" class="swiper-item" mode="aspectFill">
+          <ad wx:if="{{banneradshow}}" capture-bind:tap="gdtbanneradclick" ad-intervals="30" bindload="banneradsuccess" binderror="banneraderr"unit-id="{{item.appid}}"></ad>
+          <view class="swiper-item-image" wx:else  bindtap='clickSwiper' data-data='{{item}}'><image src="{{item.imgurl}}" mode="aspectFill" ></image></view>
+        </view>
+        <view wx:if="{{item.type !=4}}" class="swiper-item" bindtap='clickSwiper' data-data='{{item}}'>
           <image src="{{item.imgurl}}" mode="aspectFill"></image>
         </view>
       </swiper-item>
