@@ -21,7 +21,7 @@
   <!-- 广点通视频广告开始-->
   <view class='centered  video-body'>
     <view class='gdtad' style="opacity: 0">
-      <ad capture-bind:tap="gdtvideoadclick" unit-id="adunit-ccb8344e36d1ba8c" ad-type="video" ad-theme="white"></ad>
+      <ad capture-bind:tap="gdtvideoadclick"  ad-intervals="30" unit-id="adunit-deda238f6f300a99" ad-type="video" ad-theme="white"></ad>
     </view>
   </view>
   <!--广点通视频广告结束-->
