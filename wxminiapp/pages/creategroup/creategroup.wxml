@@ -1,10 +1,10 @@
-<view>
 
 	<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
 		<view slot="backText">返回</view>
 		<view slot="content">创建空间</view>
 	</cu-custom>
 
+<view class="pages-body">
 
 	<!-- <view class="centered">
     <view class="cu-form-group  shadow shadow-lg bg-white ">
@@ -75,16 +75,19 @@
 		</view>
 	</view>
 
-
-
-	<view class='sumittask centered'>
+		<view class='sumittask centered'>
 		<button bindtap="sumittask" class="bg-blue">创建空间</button>
 		<!-- <button  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="bg-blue">创建空间</button> -->
 		<!-- <button bindtap="textcheck" class="bg-blue">测试文案审核</button> -->
 		<!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 手机号</button> -->
 	</view>
 
+
+
+
 </view>
+
+
 
 
 

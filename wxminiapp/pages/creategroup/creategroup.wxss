@@ -1,6 +1,10 @@
 /* pages/creategroup/creategroup.wxss */
 
 
+.pages-body{
+  margin-bottom: 70rpx;
+}
+
 .video-body{
   position: fixed;
   top: 150rpx;
@@ -74,9 +78,9 @@
 
 .sumittask{
   width: 100%;
-  position: fixed;
   bottom: 0;
   margin-bottom: 30rpx;
+  margin-top: 20rpx;
 }
 .sumittask button{
   width: 300rpx;

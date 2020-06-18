@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -89,6 +89,13 @@
 					"name": "pages/creategroup/creategroup",
 					"pathName": "pages/creategroup/creategroup",
 					"query": "crowd_id=14&user_type=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/group/chat/chat",
+					"pathName": "pages/group/chat/chat",
+					"query": "crowd_id=14",
 					"scene": null
 				}
 			]
