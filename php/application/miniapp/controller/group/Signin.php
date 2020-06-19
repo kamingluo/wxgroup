@@ -52,9 +52,11 @@ class Signin
 //用户签到
 public function usersignin(Request $request)
     {
-        $wxcode =$request->param("code");
-        $openid=openid($wxcode);//做一个验证这样,暂时就不去拿多一下user_id了
+        // $wxcode =$request->param("code");
+        // $openid=openid($wxcode);//做一个验证这样,暂时就不去拿多一下user_id了
         $user_id=$request->param("user_id");//用户id;
+        $openid=db('user')->where('id',$user_id)->value("openid");
+
         $crowd_id=$request->param("crowd_id");//群id;
         $time =date('Y-m-d H:i:s',time());
         //下面再验证一下签到能否进行
