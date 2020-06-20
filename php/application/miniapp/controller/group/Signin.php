@@ -15,8 +15,9 @@ class Signin
          $user_id=$request->param("user_id");//群id
          $time =date('Y-m-d H:i:s',time());
          $signindata=db('signin_crowd_config')->where('crowd_id',$crowd_id)->find(); //拿到群签到配置信息
-         $signinopen=['state'   => '200','message'  => "查询签到该群签到配置成功",'ifsignin' => true,'signindata'=> $signindata ];
-         $signinClose=['state'   => '200','message'  => "查询签到该群签到配置成功",'ifsignin' => false,'viewdata' => false,'signindata'=> $signindata  ];
+         $adconfig=db('sigin_ad_config')->where('open',0)->order('id asc')->find();
+         $signinopen=['state'   => '200','message'  => "查询签到该群签到配置成功",'ifsignin' => true,'signindata'=> $signindata,'adconfig'=>$adconfig ];
+         $signinClose=['state'   => '200','message'  => "查询签到该群签到配置成功",'ifsignin' => false,'viewdata' => false,'signindata'=> $signindata ,'adconfig'=>$adconfig  ];
          if($signindata == null){
              //没有配置信息，不开启签到
              return $signinClose;
@@ -32,11 +33,11 @@ class Signin
                 //在规则之内。开启了活动，这时候应该开启群员查看数据的入口
                 $dbsigninnum =db('signin_user_data')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();
                 if($dbsigninnum>=1){
-                 $state=['state'=> '200','message'  => "用户今天已经签到",'ifsignin' => false,'viewdata' => true,'signindata'=> $signindata ];
+                 $state=['state'=> '200','message'  => "用户今天已经签到",'ifsignin' => false,'viewdata' => true,'signindata'=> $signindata,'adconfig'=>$adconfig  ];
                  return $state;
                 }
                 else{
-                 $state=['state'   => '200','message'  => "用户今天还没有签到" ,'ifsignin' => true,'viewdata' => true,'signindata'=> $signindata ];
+                 $state=['state'   => '200','message'  => "用户今天还没有签到" ,'ifsignin' => true,'viewdata' => true,'signindata'=> $signindata,'adconfig'=>$adconfig ];
                  return $state;
                 }
              }
@@ -136,8 +137,9 @@ public function usersignin(Request $request)
                 $ifcontinuity_signin=true;//用户完成了一次连续签到
             }
         }
+        $ranking =db('signin_user_data')->where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();//查询今日签到人数，也就这人的排名数了
         $state=['state'   => '200','message'  => "用户签到成功" ];
-        $resdata=array_merge($state,array('ifcontinuity_signin'=>$ifcontinuity_signin,'new_all_signin_number'=>$new_all_signin_number,'new_continuity_number'=>$new_continuity_number));
+        $resdata=array_merge($state,array('ifcontinuity_signin'=>$ifcontinuity_signin,'new_all_signin_number'=>$new_all_signin_number,'new_continuity_number'=>$new_continuity_number,'ranking'=>$ranking));
         return $resdata;
     }
 
@@ -195,7 +197,6 @@ public function usersignin(Request $request)
 
 
     //查看群的签到排行累计签到和连续签到和最后签到时间
-
     public function signinrankinglist(Request $request){
         $crowd_id=$request->param("crowd_id");
 
@@ -205,6 +206,28 @@ public function usersignin(Request $request)
         return $state;
 
     }
+
+      //查看群的签到排行累计签到和连续签到和最后签到时间
+      public function newsigninrankinglist(Request $request)
+      {
+          $crowd_id=$request->param("crowd_id");//群id
+          $pages=$request->param("pages");
+          $endnumber=$pages*10 ; //结束查询条数
+          $startnumber=$endnumber -10;//开始查询条数
+          $sql="select a.*,b.nickName,b.avatarUrl from sigin_user_crowd_data a,user b where a.user_id=b.id and a.crowd_id=".$crowd_id." ORDER BY a.all_signin_number DESC LIMIT ".$startnumber.",10;";
+          $data = Db::query($sql); //拿到数据
+          $count =db('sigin_user_crowd_data')->where('crowd_id',$crowd_id)->count();
+          $state=['state'   => '200','message'  => "群的签到排行累计签到和连续签到和最后签到时间",'count'=>$count ];
+          $resdata=array_merge($state,array('data'=>$data));
+          return $resdata ;
+  
+      }
+
+
+    
+
+
+
 
 
     //今日签到数据

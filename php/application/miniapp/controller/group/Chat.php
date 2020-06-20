@@ -34,7 +34,7 @@ class Chat
     public function chatdata(Request $request)
     {
         $crowd_id =$request->param("crowd_id");
-        $chatdata =db('chat_data')->where('crowd_id',$crowd_id)->order('id desc')->limit(100)->select(); //取出最近100条聊天记录
+        $chatdata =db('chat_data')->where('crowd_id',$crowd_id)->order('id desc')->limit(50)->select(); //取出最近50条聊天记录
         $newchatdata = array_reverse($chatdata);//将数组倒序一下
         $state=['state'   => '200','message'  => "查询群聊天历史积分" ];
         $resdata=array_merge($state,array('chatdata'=>$newchatdata));

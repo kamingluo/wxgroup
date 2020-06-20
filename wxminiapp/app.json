@@ -19,6 +19,7 @@
     "pages/group/signdata/signdata",
     "pages/group/tasksranking/tasksranking",
     "pages/group/signseting/signseting",
+    "pages/group/usersigin/usersigin",
     "pages/webview/webview",
     "pages/group/alltasklists/alltasklists",
     "pages/group/lottery/partake/partake",

@@ -97,6 +97,13 @@
 					"pathName": "pages/group/chat/chat",
 					"query": "crowd_id=14",
 					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "签到页面",
+					"pathName": "pages/group/usersigin/usersigin",
+					"query": "crowd_id=14&crowd_name=这是群名称啊",
+					"scene": null
 				}
 			]
 		}

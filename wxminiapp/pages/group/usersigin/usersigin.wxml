@@ -1,0 +1,220 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">签到</view>
+</cu-custom>
+
+<view class="header">
+  <!-- header start -->
+  <view class="flex p-xs margin-bottom-sm mb-sm">
+    <view class="flex-sub padding-sm text-center text-white check-left">
+      <view class="margin-top">
+        <view>
+          <text class="text-lg">8</text>
+          <text class="text-xs">次</text>
+        </view>
+        <text class="text-xs">连续签到</text>
+      </view>
+      <view class="margin-top">
+        <view>
+          <text>25</text>
+          <text class="text-xs">次</text>
+        </view>
+        <text class="text-xs">累计签到</text>
+      </view>
+    </view>
+    <view class="flex-sub padding-sm text-center text-white">
+      <view class="flex justify-center">
+        <!-- <view class="view-check">
+          <button class="cu-btn bg-white btn-check" bindtap="showModal" data-target="Image">
+            <text>我要签到</text>
+          </button>
+        </view> -->
+        <view class="view-check-end">
+          <button class="cu-btn bg-white btn-check" bindtap="showModal" data-target="Image">
+            <text>签到完成</text>
+          </button>
+        </view>
+        <!-- <text class="cuIcon-check lg text-orange"></text> -->
+      </view>
+    </view>
+  </view>
+  <!-- header end -->
+</view>
+
+
+<scroll-view scroll-x class="bg-white nav text-center">
+  <view class="cu-item {{tabSelect==0?'text-blue cur': ''}} " bindtap="selectsigindata">
+    签到记录
+  </view>
+  <view class="cu-item {{tabSelect==1?'text-blue cur': ''}} " bindtap="selectgoodslist">
+    积分商城
+  </view>
+  <view class="cu-item  {{tabSelect==2?'text-blue cur': ''}} " bindtap="selectrule">
+    规则说明
+  </view>
+
+</scroll-view>
+
+
+<!-- 签到记录&榜单开始 -->
+<view class="record" wx:if="{{tabSelect==0}}">
+
+  <view class="grid col-3 text-center padding-sm">
+    <view class="list l2">
+      <view>
+        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto1.jpg"></image>
+        <text class="name">耀就是耀，就是不一样的耀</text>
+        <text class="num">累计5天</text>
+      </view>
+    </view>
+    <view class="list l1">
+      <view>
+        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto2.jpg"></image>
+        <text class="name">庆哥帅，庆哥靓，庆哥呱呱叫</text>
+        <text class="num">累计7天</text>
+      </view>
+    </view>
+    <view class="list l3">
+      <view>
+        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto3.jpg"></image>
+        <text class="name">牛哥屌，牛哥猛，牛哥一夜七次郎</text>
+        <text class="num">累计6天</text>
+      </view>
+    </view>
+  </view>
+
+  <view>
+    <view class="tr_line flex align-center">
+      <text></text>
+      <view class="flex-sub">成员</view>
+      <text>累计天数</text>
+    </view>
+    <view class="tr_line flex align-center justify-center">
+      <text>1.</text>
+      <view class="flex-sub flex align-center justify-center">
+        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto1.jpg"></image>
+        <view class="name">404哈哈庆庆庆</view>
+      </view>
+      <text>1</text>
+    </view>
+    <view class="tr_line flex align-center justify-center">
+      <text>2.</text>
+      <view class="flex-sub flex align-center justify-center">
+        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto2.jpg"></image>
+        <view class="name">404哈哈庆庆庆</view>
+      </view>
+      <text>2</text>
+    </view>
+    <view class="tr_line flex align-center justify-center">
+      <text>3.</text>
+      <view class="flex-sub flex align-center justify-center">
+        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto3.jpg"></image>
+        <view class="name">404哈哈庆庆庆</view>
+      </view>
+      <text>1</text>
+    </view>
+    <view class="tr_line flex align-center justify-center">
+      <text>4.</text>
+      <view class="flex-sub flex align-center justify-center">
+        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto1.jpg"></image>
+        <view class="name">404哈哈庆庆庆</view>
+      </view>
+      <text>4</text>
+    </view>
+    <view class="tr_line flex align-center justify-center">
+      <text>5.</text>
+      <view class="flex-sub flex align-center justify-center">
+        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto2.jpg"></image>
+        <view class="name">404哈哈庆庆庆</view>
+      </view>
+      <text>8</text>
+    </view>
+  </view>
+
+</view>
+<!-- 签到记录&榜单结束 -->
+
+
+<!-- 规则说明开始 -->
+<view class="rule" wx:else>
+  <view class="rule-body centered">
+    <view class="rule-body-text">
+      <view>签到奖励积分：5分</view>
+      <view>连续签到达标要求：7天</view>
+      <view>连续签到奖励积分：7分</view>
+      <view>签到开始时间：2020-06-20 00:00:00</view>
+      <view>签到开始时间：2020-06-20 00:00:00</view>
+    </view>
+  </view>
+</view>
+<!-- 规则说明结束 -->
+
+
+
+
+
+
+
+
+
+<!-- 图片窗口 -->
+<view class="cu-modal {{model?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog">
+    <view class="bg-img padding-sm" style="background: url('https://yaoge.oss-accelerate.aliyuncs.com/myfiles/backiee-48541-portrait.jpg') center top no-repeat;height:480px;background-size: 100% auto">
+      <view class="model_date">
+        <text class="day">{{day}}</text>
+        <text class="ym">{{month}}  {{year}}</text>
+      </view>
+      <view class="motto margin-top">
+        <view>
+          <text class="introduce">伟大的理想只有经过忘我的斗争和牺牲才能胜利实现，而忘我和牺牲是偏执狂才具备的品质伟大的理想只有经过忘我的斗争和牺牲才能胜利实现，而忘我和牺牲是偏执狂才具备的品质</text>
+        </view>
+        <!-- <text>——耀哥随便抄的</text> -->
+      </view>
+      <view class="userinfo flex">
+        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto1.jpg"></image>
+        <view class="flex-sub">
+          <text>404群计分庆庆庆</text>
+          <text>在【小U测试群3】完成签到</text>
+        </view>
+      </view>
+      <view class="checkin_fo">
+        <text>今日签到：<text>第1名</text></text>
+        <text>累计签到：<text>1天</text></text>
+        <text>签到获得积分：<text>10分</text></text>
+        <text>完成连续签到获得积分：<text>20分</text></text>
+      </view>
+
+      <!-- <view class="qrcode flex align-center justify-center">
+        <image class="head" lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto2.jpg"></image>
+        <view class="flex-sub padding-sm">
+          <text>火把小助手</text>
+          <text>照亮社群的价值</text>
+        </view>
+        <image src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/q_20200620161234.jpg"></image>
+      </view> -->
+      <!-- <view class="ad-body">
+        <view class='centered'>
+          <view>
+            <ad capture-bind:tap="gdtbanneradclick" class="gdtad" data-adid="adunit-a090166402a1c55e" unit-id="adunit-a090166402a1c55e"></ad>
+          </view>
+        </view>
+      </view> -->
+
+      <view class="ad-body">
+        <view>
+          <image class="model-ad-image" src="http://miniapplittlefun.gzywudao.top/index/indexbanner1.png"></image>
+        </view>
+      </view>
+
+
+      <!-- <view class="keeptab margin-top">请截屏后保存二维码</view> -->
+      <view class="keeptab margin-top">群记分小程序提供技术支持</view>
+      <view class="btn_close">
+        <view class="action" bindtap="hideModal">
+          <text class="cuIcon-close padding-sm"></text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
