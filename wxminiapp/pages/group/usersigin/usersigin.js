@@ -1,20 +1,55 @@
+
+const {
+  request
+} = require('./../../../utils/request.js');
+const common = require('./../../../utils/common.js') //公共函数
+const app = getApp();
+
+
 Page({
   data: {
     tabSelect: 0,
-    model: true,
+    model: false,
 
   },
-
-
   onLoad: function(e) {
     let user_id = wx.getStorageSync('userdata').id;
+    let avatarUrl = wx.getStorageSync('userdata').avatarUrl;
+    let nickName = wx.getStorageSync('userdata').nickName;
     this.setData({
       crowd_id: e.crowd_id,
       crowd_name: e.crowd_name,
-      user_id: user_id
+      user_id: user_id,
+      avatarUrl: avatarUrl,
+      nickName: nickName
     })
     this.havetime()//当前时间获取
+    this.todaywhethersignin()//签到配置
 
+  },
+
+  //检查今天是否还能签到
+  todaywhethersignin: function () {
+    let crowd_id = this.data.crowd_id
+    let user_id = wx.getStorageSync('userdata').id
+    request({
+      service: 'group/signin/todaywhethersignin',
+      method: 'GET',
+      data: {
+        crowd_id: crowd_id,
+        user_id: user_id,
+      },
+      success: res => {
+        //console.log("今天是否能签到查询")
+        console.log(res)
+        this.setData({
+          signindata: res.signindata,//签到配置数据
+          todaywhethersignin: res.ifsignin,//是否能签到
+          viewdata: res.viewdata,//群员是否能看数据
+          adconfig: res.adconfig//签到弹框广告配置
+        })
+      }
+    })
   },
 
 
@@ -32,6 +67,16 @@ Page({
     })
     // console.log(year, day, month)
 
+  },
+
+//点击广告统计
+  gdtbanneradclick: function (e) {
+    console.log("点击banner广告'")
+    let data = {
+      'adtype': 1,
+      'position': "签到页面"
+    };
+    common.clickgdtadstatistics(data)
   },
 
 
@@ -69,6 +114,11 @@ Page({
       model: true
     })
   },
+
+  //点击弹框广告
+  clickmodelad:function(){
+    common.insidejump(this.data.adconfig)
+  }
 
 
 })

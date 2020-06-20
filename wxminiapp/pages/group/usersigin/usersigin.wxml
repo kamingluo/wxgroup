@@ -158,7 +158,7 @@
 
 
 <!-- 图片窗口 -->
-<view class="cu-modal {{model?'show':''}}" bindtap="hideModal">
+<view class="cu-modal {{model?'show':''}}" >
   <view class="cu-dialog">
     <view class="bg-img padding-sm" style="background: url('https://yaoge.oss-accelerate.aliyuncs.com/myfiles/backiee-48541-portrait.jpg') center top no-repeat;height:480px;background-size: 100% auto">
       <view class="model_date">
@@ -167,15 +167,15 @@
       </view>
       <view class="motto margin-top">
         <view>
-          <text class="introduce">伟大的理想只有经过忘我的斗争和牺牲才能胜利实现，而忘我和牺牲是偏执狂才具备的品质伟大的理想只有经过忘我的斗争和牺牲才能胜利实现，而忘我和牺牲是偏执狂才具备的品质</text>
+          <text class="introduce">{{signindata.tips?signindata.tips:"生活就像海洋，只有意志坚定的人才能到达彼岸！"}}</text>
         </view>
         <!-- <text>——耀哥随便抄的</text> -->
       </view>
       <view class="userinfo flex">
-        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto1.jpg"></image>
+        <image lazy-load="true" mode="widthFix" src="{{avatarUrl}}"></image>
         <view class="flex-sub">
-          <text>404群计分庆庆庆</text>
-          <text>在【小U测试群3】完成签到</text>
+          <text>{{nickName}}</text>
+          <text>在【{{crowd_name}}】完成签到</text>
         </view>
       </view>
       <view class="checkin_fo">
@@ -185,34 +185,43 @@
         <text>完成连续签到获得积分：<text>20分</text></text>
       </view>
 
-      <!-- <view class="qrcode flex align-center justify-center">
-        <image class="head" lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto2.jpg"></image>
-        <view class="flex-sub padding-sm">
-          <text>火把小助手</text>
-          <text>照亮社群的价值</text>
+
+      <!-- 推广位置 -->
+      <view>
+
+        <view class="qrcode flex align-center justify-center" wx:if="{{adconfig.type==5}}">
+          <image class="head" lazy-load="true" mode="widthFix" src="{{avatarUrl}}"></image>
+          <view class="flex-sub padding-sm">
+            <text>{{adconfig.appid}}</text>
+            <text>{{adconfig.url}}</text>
+          </view>
+          <image src="{{adconfig.imgurl}}"></image>
         </view>
-        <image src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/q_20200620161234.jpg"></image>
-      </view> -->
-      <!-- <view class="ad-body">
-        <view class='centered'>
-          <view>
-            <ad capture-bind:tap="gdtbanneradclick" class="gdtad" data-adid="adunit-a090166402a1c55e" unit-id="adunit-a090166402a1c55e"></ad>
+
+
+        <view class="ad-body" wx:elif="{{adconfig.type==4}}">
+          <view class='centered'>
+            <view>
+              <ad capture-bind:tap="gdtbanneradclick" class="gdtad"  unit-id="{{adconfig.appid}}"></ad>
+            </view>
           </view>
         </view>
-      </view> -->
 
-      <view class="ad-body">
-        <view>
-          <image class="model-ad-image" src="http://miniapplittlefun.gzywudao.top/index/indexbanner1.png"></image>
+        <view class="ad-body" wx:else>
+          <view bindtap="clickmodelad">
+            <image class="model-ad-image" src="{{adconfig.imgurl}}"></image>
+          </view>
         </view>
+
       </view>
+      <!-- 推广位置 -->
 
 
       <!-- <view class="keeptab margin-top">请截屏后保存二维码</view> -->
       <view class="keeptab margin-top">群记分小程序提供技术支持</view>
       <view class="btn_close">
         <view class="action" bindtap="hideModal">
-          <text class="cuIcon-close padding-sm"></text>
+          <text class="cuIcon-close padding-sm" style="font-size:40rpx;font-weight: 600;"></text>
         </view>
       </view>
     </view>

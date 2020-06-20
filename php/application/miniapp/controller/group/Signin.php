@@ -8,6 +8,17 @@ use think\Log;
 class Signin
 {
 
+  //用户在该群的签到数据
+
+   public function queryusersigindata(Request $request)
+    {
+      $crowd_id=$request->param("crowd_id");//群ids
+      $user_id=$request->param("user_id");//群id
+      $usersigindata=db('sigin_user_crowd_data')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->find();//用户签到配置
+      $state=['state'   => '200','message'  => "用户在该群的签到数据" ,'usersigindata' => $usersigindata];
+      return $state;
+    }
+
     //用户进群查询能否签到(今天是否已经签到，该群是否开启了签到)
     public function todaywhethersignin(Request $request)
     {
@@ -15,7 +26,7 @@ class Signin
          $user_id=$request->param("user_id");//群id
          $time =date('Y-m-d H:i:s',time());
          $signindata=db('signin_crowd_config')->where('crowd_id',$crowd_id)->find(); //拿到群签到配置信息
-         $adconfig=db('sigin_ad_config')->where('open',0)->order('id asc')->find();
+         $adconfig=db('sigin_ad_config')->where('open',0)->order('id asc')->find();//弹框广告配置
          $signinopen=['state'   => '200','message'  => "查询签到该群签到配置成功",'ifsignin' => true,'signindata'=> $signindata,'adconfig'=>$adconfig ];
          $signinClose=['state'   => '200','message'  => "查询签到该群签到配置成功",'ifsignin' => false,'viewdata' => false,'signindata'=> $signindata ,'adconfig'=>$adconfig  ];
          if($signindata == null){
