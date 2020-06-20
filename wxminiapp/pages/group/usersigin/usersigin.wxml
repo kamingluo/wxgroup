@@ -9,14 +9,14 @@
     <view class="flex-sub padding-sm text-center text-white check-left">
       <view class="margin-top">
         <view>
-          <text class="text-lg">8</text>
+          <text class="text-lg">{{ !todaywhethersignin && usersigindata.continuity_number ==0 ? 1:usersigindata.continuity_number?usersigindata.continuity_number:0}}</text>
           <text class="text-xs">次</text>
         </view>
         <text class="text-xs">连续签到</text>
       </view>
       <view class="margin-top">
         <view>
-          <text>25</text>
+          <text>{{usersigindata.all_signin_number?usersigindata.all_signin_number:0}}</text>
           <text class="text-xs">次</text>
         </view>
         <text class="text-xs">累计签到</text>
@@ -24,13 +24,13 @@
     </view>
     <view class="flex-sub padding-sm text-center text-white">
       <view class="flex justify-center">
-        <!-- <view class="view-check">
-          <button class="cu-btn bg-white btn-check" bindtap="showModal" data-target="Image">
+        <view class="view-check" wx:if="{{todaywhethersignin}}">
+          <button class="cu-btn bg-white btn-check" bindtap="usersignin" data-target="Image">
             <text>我要签到</text>
           </button>
-        </view> -->
-        <view class="view-check-end">
-          <button class="cu-btn bg-white btn-check" bindtap="showModal" data-target="Image">
+        </view>
+        <view class="view-check-end" wx:else>
+          <button class="cu-btn bg-white btn-check" bindtap="completesigin" data-target="Image">
             <text>签到完成</text>
           </button>
         </view>
@@ -40,6 +40,23 @@
   </view>
   <!-- header end -->
 </view>
+
+
+
+<!-- 广点通视频广告开始-->
+<view class="video-body">
+	<view class='centered'>
+		<view class='gdtad' style="opacity: 0">
+			<!-- <view class='gdtad'> -->
+			<ad capture-bind:tap="gdtvideoadclick" ad-intervals="30" unit-id="adunit-eb3e08b94b84f91e" ad-type="video" ad-theme="white"></ad>
+		</view>
+	</view>
+</view>
+<!--广点通视频广告结束-->
+
+
+
+
 
 
 <scroll-view scroll-x class="bg-white nav text-center">
@@ -57,79 +74,72 @@
 
 
 <!-- 签到记录&榜单开始 -->
-<view class="record" wx:if="{{tabSelect==0}}">
+<view wx:if="{{tabSelect==0}}">
 
-  <view class="grid col-3 text-center padding-sm">
-    <view class="list l2">
-      <view>
-        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto1.jpg"></image>
-        <text class="name">耀就是耀，就是不一样的耀</text>
-        <text class="num">累计5天</text>
+
+  <view wx:if="{{signinrankinglist.length > 0}}" class="record">
+    <view class="grid col-3 text-center padding-sm">
+      <view class="list l2" wx:if="{{signinrankinglist.length >= 3}}">
+        <view>
+          <image lazy-load="true" mode="widthFix" src="{{signinrankinglist[1].avatarUrl}}"></image>
+          <text class="name">{{signinrankinglist[1].nickName}}</text>
+          <text class="num">累计{{signinrankinglist[1].all_signin_number}}天</text>
+        </view>
+      </view>
+      <view class="list l1">
+        <view>
+          <image lazy-load="true" mode="widthFix" src="{{signinrankinglist[0].avatarUrl}}"></image>
+          <text class="name">{{signinrankinglist[0].nickName}}</text>
+          <text class="num">累计{{signinrankinglist[0].all_signin_number}}天</text>
+        </view>
+      </view>
+      <view class="list l3" wx:if="{{signinrankinglist.length >= 2}}">
+        <view>
+          <image lazy-load="true" mode="widthFix" src="{{signinrankinglist[2].avatarUrl}}"></image>
+          <text class="name">{{signinrankinglist[2].nickName}}</text>
+          <text class="num">累计{{signinrankinglist[2].all_signin_number}}天</text>
+        </view>
       </view>
     </view>
-    <view class="list l1">
-      <view>
-        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto2.jpg"></image>
-        <text class="name">庆哥帅，庆哥靓，庆哥呱呱叫</text>
-        <text class="num">累计7天</text>
+
+    <view>
+      <view class="tr_line flex align-center">
+        <text></text>
+        <view class="flex-sub">成员</view>
+        <text>累计天数</text>
+      </view>
+      <view wx:for="{{signinrankinglist}}" wx:for-index="index" wx:key="item">
+        <view class="tr_line flex align-center justify-center">
+          <text>{{index+1}}.</text>
+          <view class="flex-sub flex align-center justify-center">
+            <image lazy-load="true" mode="widthFix" src="{{item.avatarUrl}}"></image>
+            <view class="name">{{item.nickName}}</view>
+          </view>
+          <text>{{item.all_signin_number}}</text>
+        </view>
       </view>
     </view>
-    <view class="list l3">
+      <view style='margin-top: 0rpx;margin-bottom: 20rpx;color:#aaaaaa;background-color:#f5f5f5' class='centered' wx:if="{{pages * 10 >= count}}">
+        <text>-------已经到底啦-------</text>
+      </view>
+  </view>
+
+  <view wx:else>
+    <view class='default'>
       <view>
-        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto3.jpg"></image>
-        <text class="name">牛哥屌，牛哥猛，牛哥一夜七次郎</text>
-        <text class="num">累计6天</text>
+        <image src='http://littlebox.luojiaming.vip/default.png'></image>
+      </view>
+      <view>
+        <text>还没有人签到呢</text>
+      </view>
+      <view>
       </view>
     </view>
   </view>
 
-  <view>
-    <view class="tr_line flex align-center">
-      <text></text>
-      <view class="flex-sub">成员</view>
-      <text>累计天数</text>
-    </view>
-    <view class="tr_line flex align-center justify-center">
-      <text>1.</text>
-      <view class="flex-sub flex align-center justify-center">
-        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto1.jpg"></image>
-        <view class="name">404哈哈庆庆庆</view>
-      </view>
-      <text>1</text>
-    </view>
-    <view class="tr_line flex align-center justify-center">
-      <text>2.</text>
-      <view class="flex-sub flex align-center justify-center">
-        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto2.jpg"></image>
-        <view class="name">404哈哈庆庆庆</view>
-      </view>
-      <text>2</text>
-    </view>
-    <view class="tr_line flex align-center justify-center">
-      <text>3.</text>
-      <view class="flex-sub flex align-center justify-center">
-        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto3.jpg"></image>
-        <view class="name">404哈哈庆庆庆</view>
-      </view>
-      <text>1</text>
-    </view>
-    <view class="tr_line flex align-center justify-center">
-      <text>4.</text>
-      <view class="flex-sub flex align-center justify-center">
-        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto1.jpg"></image>
-        <view class="name">404哈哈庆庆庆</view>
-      </view>
-      <text>4</text>
-    </view>
-    <view class="tr_line flex align-center justify-center">
-      <text>5.</text>
-      <view class="flex-sub flex align-center justify-center">
-        <image lazy-load="true" mode="widthFix" src="https://yaoge.oss-accelerate.aliyuncs.com/myfiles/headphoto2.jpg"></image>
-        <view class="name">404哈哈庆庆庆</view>
-      </view>
-      <text>8</text>
-    </view>
-  </view>
+
+
+
 
 </view>
 <!-- 签到记录&榜单结束 -->
@@ -139,11 +149,13 @@
 <view class="rule" wx:else>
   <view class="rule-body centered">
     <view class="rule-body-text">
-      <view>签到奖励积分：5分</view>
-      <view>连续签到达标要求：7天</view>
-      <view>连续签到奖励积分：7分</view>
-      <view>签到开始时间：2020-06-20 00:00:00</view>
-      <view>签到开始时间：2020-06-20 00:00:00</view>
+      <view>签到奖励积分：{{signindata.score}}分</view>
+      <view wx:if="{{signindata.continuity_signin==0}}">
+        <view>连续签到达标要求：{{signindata.continuity_signin_day}}天</view>
+        <view>连续签到奖励积分：{{signindata.continuity_signin_score}}分</view>
+      </view>
+      <view>签到开始时间：{{signindata.start_time}}</view>
+      <view>签到开始时间：{{signindata.end_time}}</view>
     </view>
   </view>
 </view>
@@ -158,7 +170,7 @@
 
 
 <!-- 图片窗口 -->
-<view class="cu-modal {{model?'show':''}}" >
+<view class="cu-modal {{model?'show':''}}">
   <view class="cu-dialog">
     <view class="bg-img padding-sm" style="background: url('https://yaoge.oss-accelerate.aliyuncs.com/myfiles/backiee-48541-portrait.jpg') center top no-repeat;height:480px;background-size: 100% auto">
       <view class="model_date">
@@ -179,12 +191,11 @@
         </view>
       </view>
       <view class="checkin_fo">
-        <text>今日签到：<text>第1名</text></text>
-        <text>累计签到：<text>1天</text></text>
-        <text>签到获得积分：<text>10分</text></text>
-        <text>完成连续签到获得积分：<text>20分</text></text>
+        <text>今日签到：<text>第{{ranking}}名</text></text>
+        <text>累计签到：<text>{{new_all_signin_number}}天</text></text>
+        <text>签到获得积分：<text>{{signindata.score}}分</text></text>
+        <text wx:if="{{signindata.continuity_signin==0 && new_continuity_number==signindata.continuity_signin_day}}">完成连续签到获得积分：<text>{{signindata.continuity_signin_score}}分</text></text>
       </view>
-
 
       <!-- 推广位置 -->
       <view>
@@ -202,7 +213,7 @@
         <view class="ad-body" wx:elif="{{adconfig.type==4}}">
           <view class='centered'>
             <view>
-              <ad capture-bind:tap="gdtbanneradclick" class="gdtad"  unit-id="{{adconfig.appid}}"></ad>
+              <ad capture-bind:tap="gdtbanneradclick" class="gdtad" unit-id="{{adconfig.appid}}"></ad>
             </view>
           </view>
         </view>

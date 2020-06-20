@@ -111,8 +111,10 @@
 </view>
 
 <!-- 签到浮动icon -->
-<view class="signinbody" wx:if="{{todaywhethersignin}}">
-	<view class="signinicon" bindtap="usersignin">
+<!-- <view class="signinbody" wx:if="{{todaywhethersignin}}"> -->
+<view class="signinbody" wx:if="{{signindata.state==0}}">
+	<!-- <view class="signinicon" bindtap="usersignin"> -->
+  <view class="signinicon" bindtap="jumpsigin">
 		<image src="https://material.gzywudao.top/groupsignin.gif"></image>
 	</view>
 </view>

@@ -331,14 +331,25 @@ Page({
         user_id:user_id,
       },
       success: res => {
-        //console.log("今天是否能签到查询")
-        //console.log(res)
+        console.log("今天是否能签到查询")
+        console.log(res)
         this.setData({
           signindata: res.signindata,//签到配置数据
           todaywhethersignin: res.ifsignin,//是否能签到
           viewdata:res.viewdata,//群员是否能看数据
         })
       }
+    })
+  },
+
+  //跳转到签到页面
+  jumpsigin:function(){
+    let joumurl ="/pages/group/usersigin/usersigin";
+    let crowd_id = this.data.crowddata.groupdata.id;
+    let crowd_name = this.data.crowddata.groupdata.crowd_name;
+    let user_type = this.data.user_type;
+    wx.navigateTo({
+      url: joumurl + '?crowd_id=' + crowd_id + '&user_type=' + user_type + '&crowd_name=' + crowd_name,
     })
   },
 
