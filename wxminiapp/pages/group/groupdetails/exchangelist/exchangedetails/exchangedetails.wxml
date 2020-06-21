@@ -9,6 +9,19 @@
 <view class="centered  exchangename ">
   <view class="remarks bg-white  radius shadow">
     <view class="padding-sm radius shadow ">
+      <view class="remarks-text">
+        <text>订单编号：{{changedata.id}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+<view class="centered  ">
+  <view class="remarks bg-white  radius shadow">
+    <view class="padding-sm radius shadow ">
       <view class="name-text">
         <text>兑换人： {{changedata.nickName}}</text>
       </view>

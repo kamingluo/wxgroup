@@ -10,14 +10,14 @@
       <view class="margin-top">
         <view>
           <text class="text-lg">{{ !todaywhethersignin && usersigindata.continuity_number ==0 ? 1:usersigindata.continuity_number?usersigindata.continuity_number:0}}</text>
-          <text class="text-xs">次</text>
+          <text class="text-xs">天</text>
         </view>
         <text class="text-xs">连续签到</text>
       </view>
       <view class="margin-top">
         <view>
           <text>{{usersigindata.all_signin_number?usersigindata.all_signin_number:0}}</text>
-          <text class="text-xs">次</text>
+          <text class="text-xs">天</text>
         </view>
         <text class="text-xs">累计签到</text>
       </view>
@@ -81,9 +81,9 @@
     <view class="grid col-3 text-center padding-sm">
       <view class="list l2" wx:if="{{signinrankinglist.length >= 3}}">
         <view>
-          <image lazy-load="true" mode="widthFix" src="{{signinrankinglist[1].avatarUrl}}"></image>
-          <text class="name">{{signinrankinglist[1].nickName}}</text>
-          <text class="num">累计{{signinrankinglist[1].all_signin_number}}天</text>
+          <image lazy-load="true" mode="widthFix" src="{{signinrankinglist[2].avatarUrl}}"></image>
+          <text class="name">{{signinrankinglist[2].nickName}}</text>
+          <text class="num">累计{{signinrankinglist[2].all_signin_number}}天</text>
         </view>
       </view>
       <view class="list l1">
@@ -95,9 +95,9 @@
       </view>
       <view class="list l3" wx:if="{{signinrankinglist.length >= 2}}">
         <view>
-          <image lazy-load="true" mode="widthFix" src="{{signinrankinglist[2].avatarUrl}}"></image>
-          <text class="name">{{signinrankinglist[2].nickName}}</text>
-          <text class="num">累计{{signinrankinglist[2].all_signin_number}}天</text>
+          <image lazy-load="true" mode="widthFix" src="{{signinrankinglist[1].avatarUrl}}"></image>
+          <text class="name">{{signinrankinglist[1].nickName}}</text>
+          <text class="num">累计{{signinrankinglist[1].all_signin_number}}天</text>
         </view>
       </view>
     </view>

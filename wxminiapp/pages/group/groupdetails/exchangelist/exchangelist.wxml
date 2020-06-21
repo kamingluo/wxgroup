@@ -25,6 +25,9 @@
 			<view class="text-orange">
 				<text class="text-cut">{{item.goodsname}}</text>
 			</view>
+      <view class="text-gray text-sm flex">
+				<text class="text-cut text-color">订单编号：{{item.id}}</text>
+			</view>
 			<view class="text-gray text-sm flex">
 				<text class="text-cut text-color">兑换人：{{item.nickName}}</text>
 			</view>
