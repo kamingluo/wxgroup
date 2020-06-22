@@ -23,9 +23,16 @@ class Statistics
         $task_record=db('task_record')->whereTime('create_time', 'today')->count();//今天上传任务
         $sigin=db('signin_user_data')->whereTime('create_time', 'today')->count();//今日签到用户次数
         $lottery=db('lottery_partake_list')->whereTime('create_time', 'today')->count();//今日抽奖用户次数
+
+
+        $clickbanner=db('click_gdt_ad')->where('adtype',1)->whereTime('create_time', 'today')->count();//今日点击banner数
+        $seevideo=db('click_gdt_ad')->where('adtype',2)->whereTime('create_time', 'today')->count();//今日观看完成视频数
+        $clickgrid=db('click_gdt_ad')->where('adtype',3)->whereTime('create_time', 'today')->count();//今日点击格子广告数
+
+
         
         $data = ['registerusers' =>$registerusers,'activeusers'=>$activeusers,'builtcrowd'=>$builtcrowd,'joincrowd'=>$joincrowd,'crowd_news'=>$crowd_news,
-        'sigin'=>$sigin,'lottery'=>$lottery,'task_record'=>$task_record];
+        'sigin'=>$sigin,'lottery'=>$lottery,'task_record'=>$task_record,'clickbanner'=>$clickbanner,'seevideo'=>$seevideo,'clickgrid'=>$clickgrid];
         $state=['state'   => '200','message'  => "常规数据" ];
         $resdata=array_merge($state,array('data'=>$data));
         return $resdata;
