@@ -49,7 +49,7 @@
       <div class="handle-box"></div>
       <el-table :data="tableData" border class="table" ref="multipleTable">
         <el-table-column prop="crowd_id" label="群id" width="80"> </el-table-column>
-        <el-table-column prop="user_id" label="用户id" width="100"> </el-table-column>
+        <el-table-column prop="user_id" label="用户id" width="90"> </el-table-column>
 
         <el-table-column prop="images" label="商品图片" width="100">
         <template slot-scope="scope" >
@@ -58,8 +58,10 @@
         </el-table-column>
          <el-table-column prop="goodsname" label="商品名称" width="120">
         </el-table-column>
+         <el-table-column prop="price" label="兑换积分" width="80">
         </el-table-column>
-        <el-table-column prop="telNumber" label="手机号" width="150">
+        </el-table-column>
+        <el-table-column prop="telNumber" label="手机号" width="140">
         </el-table-column>
         <el-table-column prop="userName" label="姓名" width="80">
         </el-table-column>

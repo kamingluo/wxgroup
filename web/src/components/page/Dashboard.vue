@@ -146,6 +146,43 @@
                         </el-card>
                     </el-col>
 
+                    <el-col :span="8">
+                        <el-card shadow="hover" :body-style="{padding: '0px'}">
+                            <div class="grid-content grid-con-1">
+                                <i class="el-icon-lx-rechargefill grid-con-icon"></i>
+                                <div class="grid-cont-right">
+                                    <div class="grid-num">{{statistics.clickbanner}}</div>
+                                    <div>今日点击banner广告数</div>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
+
+
+                    <el-col :span="8">
+                        <el-card shadow="hover" :body-style="{padding: '0px'}">
+                            <div class="grid-content grid-con-1">
+                                <i class="el-icon-lx-rechargefill grid-con-icon"></i>
+                                <div class="grid-cont-right">
+                                    <div class="grid-num">{{statistics.clickgrid}}</div>
+                                    <div>今日点击格子广告数</div>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
+
+                    <el-col :span="8">
+                        <el-card shadow="hover" :body-style="{padding: '0px'}">
+                            <div class="grid-content grid-con-1">
+                                <i class="el-icon-lx-rechargefill grid-con-icon"></i>
+                                <div class="grid-cont-right">
+                                    <div class="grid-num">{{statistics.seevideo}}</div>
+                                    <div>今日看视频广告数</div>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
+
 
 
 
