@@ -118,6 +118,12 @@
 					"pathName": "pages/group/goods/exchange/exchange",
 					"query": "crowd_id= 14&crowd_name=这是群名称啊",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试页面",
+					"pathName": "pages/test/test",
+					"scene": null
 				}
 			]
 		}

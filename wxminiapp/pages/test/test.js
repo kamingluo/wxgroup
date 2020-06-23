@@ -48,6 +48,11 @@ Page({
     })
   },
 
+  testdianji:function(){
+    console.log("测试页面点击")
+
+  },
+
 
   ceshi: function () {
     wx.downloadFile({

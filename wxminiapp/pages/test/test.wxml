@@ -21,6 +21,12 @@
 	　<view bindtap='switchNotice' class="closeView"><text class="cuIcon-close text-grey"></text></view>
 </view>
 
+<!-- adunit-1d1320feca860080 格子-->
+<!-- adunit-53f29d2c52baa487 banner-->
+<!-- adunit-4289a31678c6d829 视频-->
+<gdtad adtype="1" adid="adunit-53f29d2c52baa487" position="测试页面" capture-bind:tap="testdianji">
+</gdtad>
+
 
 
 
