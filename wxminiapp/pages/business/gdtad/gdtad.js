@@ -66,6 +66,13 @@ Page({
 
 //点击banner广告
   gdtbannerclick:function(){
+
+    let data={
+      'adtype':1,
+      'position':"广点通任务页面"
+    };
+    common.clickgdtadstatistics(data)
+
     this.startSetInter()//启动计时器
     this.setData({
       taskid: 1,
@@ -75,6 +82,11 @@ Page({
 
 //点击格子广告
 gdtgridclick:function(){
+  let data={
+    'adtype':3,
+    'position':"广点通任务页面"
+  };
+  common.clickgdtadstatistics(data)
   this.startSetInter()//启动计时器
   this.setData({
     taskid: 3,
@@ -276,6 +288,11 @@ clickgridadsuccess:function(){
         if (res && res.isEnded || res === undefined) {
           that.lookvideoad('adunit-75b1d3f72dd6956b')
           console.log("正常播放结束，可以下发游戏奖励")
+          let data={
+            'adtype':2,
+            'position':"广点通任务页面"
+          };
+          common.clickgdtadstatistics(data)
         } else {
           that.wxshowToast("观看完成才能获得奖励哦！")
           //console.log("播放中途退出，不下发游戏奖励")
