@@ -27,8 +27,8 @@ class Signin
          $time =date('Y-m-d H:i:s',time());
          $signindata=db('signin_crowd_config')->where('crowd_id',$crowd_id)->find(); //拿到群签到配置信息
          $adconfig=db('sigin_ad_config')->where('open',0)->order('id asc')->find();//弹框广告配置
-         $signinopen=['state'   => '200','message'  => "查询签到该群签到配置成功",'ifsignin' => true,'signindata'=> $signindata,'adconfig'=>$adconfig ];
-         $signinClose=['state'   => '200','message'  => "查询签到该群签到配置成功",'ifsignin' => false,'viewdata' => false,'signindata'=> $signindata ,'adconfig'=>$adconfig  ];
+         $signinopen=['state'   => '200','message'  => "查询签到该群签到配置成功",'modeltips'  => "点个广告支持下我们吧！",'ifsignin' => true,'signindata'=> $signindata,'adconfig'=>$adconfig ];
+         $signinClose=['state'   => '200','message'  => "查询签到该群签到配置成功",'modeltips'  => "点个广告支持下我们吧！",'ifsignin' => false,'viewdata' => false,'signindata'=> $signindata ,'adconfig'=>$adconfig  ];
          if($signindata == null){
              //没有配置信息，不开启签到
              return $signinClose;
@@ -44,11 +44,11 @@ class Signin
                 //在规则之内。开启了活动，这时候应该开启群员查看数据的入口
                 $dbsigninnum =db('signin_user_data')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();
                 if($dbsigninnum>=1){
-                 $state=['state'=> '200','message'  => "用户今天已经签到",'ifsignin' => false,'viewdata' => true,'signindata'=> $signindata,'adconfig'=>$adconfig  ];
+                 $state=['state'=> '200','message'  => "用户今天已经签到",'modeltips'  => "点个广告支持下我们吧！",'ifsignin' => false,'viewdata' => true,'signindata'=> $signindata,'adconfig'=>$adconfig  ];
                  return $state;
                 }
                 else{
-                 $state=['state'   => '200','message'  => "用户今天还没有签到" ,'ifsignin' => true,'viewdata' => true,'signindata'=> $signindata,'adconfig'=>$adconfig ];
+                 $state=['state'   => '200','message'  => "用户今天还没有签到" ,'modeltips'  => "点个广告支持下我们吧！",'ifsignin' => true,'viewdata' => true,'signindata'=> $signindata,'adconfig'=>$adconfig ];
                  return $state;
                 }
              }

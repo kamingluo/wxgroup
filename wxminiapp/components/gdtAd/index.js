@@ -14,15 +14,15 @@ Component({
   properties: {
     adid: {
       type: String, //属性的类型
-      value: "adunit-a090166402a1c55e" // 属性的默认值，如果页面没有给这个name赋值，就使用这个value
+      value: "adunit-a090166402a1c55e" // 广告id
     },
     adtype:{
       type: String, //属性的类型
-      value: "1" // 属性的默认值，如果页面没有给这个name赋值，就使用这个value
+      value: "1" // 广告类型
     },
     position:{
       type: String, //属性的类型
-      value: "广告位置" // 属性的默认值，如果页面没有给这个name赋值，就使用这个value
+      value: "广告位置" // 广告位置
     }
   },
 
