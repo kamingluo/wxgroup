@@ -137,8 +137,8 @@ class Gdtad
         $coin = 40; //写死多少金币
     	$time =date('Y-m-d H:i:s',time());//获取当前时间
     	$dbnum =db('gdt_ad_record')->where('openid',$openid)->where('adtype',2)->whereTime('create_time', 'today')->count();//查询今日点广告数
-    	if($dbnum >= 5){
-    		$resdata=['state'   => '400','message'  => "你观看视频广告已经5次了","lookvideoad"=>'fail' ];
+    	if($dbnum >= 4){
+    		$resdata=['state'   => '400','message'  => "你观看视频广告已经4次了","lookvideoad"=>'fail' ];
             return $resdata;
     	}
     	else{

@@ -284,10 +284,17 @@ clickgridadsuccess:function(){
         console.log("onError")
       })
       videoAd.onClose((res) => {
+        var nowTime = Date.now();
         //console.log("点击关闭视频广告", res)
         if (res && res.isEnded || res === undefined) {
-          that.lookvideoad('adunit-75b1d3f72dd6956b')
+          if (nowTime - preventShake < 5000) {
+            //console.log("防止短时间内多次调用")
+            return
+          }
+          preventShake = nowTime;
+
           console.log("正常播放结束，可以下发游戏奖励")
+          that.lookvideoad('adunit-75b1d3f72dd6956b')
           let data={
             'adtype':2,
             'position':"广点通任务页面"
@@ -322,13 +329,13 @@ clickgridadsuccess:function(){
 //看视频完成加奖励
   lookvideoad: function (adid) {
     var that = this;
-    var nowTime = Date.now();
     var user_id = wx.getStorageSync('userdata').id;
-    if (nowTime - preventShake < 5000) {
-      //console.log("防止短时间内多次调用")
-      return
-    }
-    preventShake = nowTime;
+    // var nowTime = Date.now();
+    // if (nowTime - preventShake < 5000) {
+    //   //console.log("防止短时间内多次调用")
+    //   return
+    // }
+    // preventShake = nowTime;
     wx.login({
       success: res => {
         request({
