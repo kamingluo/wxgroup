@@ -28,6 +28,10 @@
 </gdtad>
 
 
+<defaultgraph tips="这里自定义提示数据"></defaultgraph>
+
+
+
 
 
 <!-- <view class="cu-list menu-avatar">

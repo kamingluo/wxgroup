@@ -12,6 +12,7 @@ Page({
     signinrankinglist:[],//签到排行榜
     pages: 1,//默认第一页
     count: 0,
+    modeltips:"群记分小程序提供技术支持",
 
   },
   onLoad: function(e) {
@@ -117,6 +118,7 @@ Page({
         this.setData({
           signindata: res.signindata, //签到配置数据
           todaywhethersignin: res.ifsignin, //是否能签到
+          modeltips:res.modeltips,
           viewdata: res.viewdata, //群员是否能看数据
           adconfig: res.adconfig //签到弹框广告配置
         })

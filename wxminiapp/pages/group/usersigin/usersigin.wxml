@@ -229,7 +229,7 @@
 
 
       <!-- <view class="keeptab margin-top">请截屏后保存二维码</view> -->
-      <view class="keeptab margin-top">群记分小程序提供技术支持</view>
+      <view class="keeptab margin-top">{{modeltips}}</view>
       <view class="btn_close">
         <view class="action" bindtap="hideModal">
           <text class="cuIcon-close padding-sm" style="font-size:40rpx;font-weight: 600;"></text>

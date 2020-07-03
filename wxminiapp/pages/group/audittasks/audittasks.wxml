@@ -64,14 +64,15 @@
 
 
 <view wx:else>
-  <view class='default'>
+  <!-- <view class='default'>
     <view>
       <image src='http://littlebox.luojiaming.vip/default.png'></image>
     </view>
     <view>
       <text>全部搞定了哦！</text>
     </view>
-  </view>
+  </view> -->
+  <defaultgraph tips="全部搞定了哦"></defaultgraph>
 </view>
 
 
