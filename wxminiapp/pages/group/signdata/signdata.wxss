@@ -51,3 +51,10 @@
 .nullname text{
   color: blue;
 }
+
+.cu-list.menu-avatar>.cu-item .content {
+	position: absolute;
+	left: 146rpx;
+	width: calc(100% - 96rpx - 60rpx - 120rpx - 20rpx);
+	line-height: 1.2em;
+}

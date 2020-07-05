@@ -21,7 +21,7 @@
       <view class='id'>
         <kaming-button>
           <text>群积分:{{userscore}}</text>
-          <text class='cuIcon-post xiugai' bindtap='showmodel' wx:if="{{role == 1 || role == 2 }}"></text> </kaming-button>
+          <text class='cuIcon-post xiugai' bindtap='showmodel' wx:if="{{role == 1 || role == 2 && adminnot}}"></text> </kaming-button>
       </view>
       <!-- <view class='birthday'>
         <text>生日:{{birthday?birthday:"未设置"}} </text>

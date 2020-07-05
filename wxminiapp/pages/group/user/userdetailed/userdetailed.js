@@ -23,7 +23,8 @@ Page({
     jianshao: false,
     state: 0,
     remarktext: "",
-    operationscore:1
+    operationscore:1,
+    adminnot:true//是管理员但是不给权限的群
 
 
   },
@@ -36,9 +37,22 @@ Page({
     })
 
 
-    this.userdata()
+    this.userdata(options.role, options.crowd_id)
+    this.adminnot(options.role, options.crowd_id)
 
   },
+
+  adminnot: function (role, crowd_id){
+    if (role == 2 && crowd_id == 786 || crowd_id == 127 || crowd_id == 1488 || crowd_id == 1489 ){
+      console.log("是管理员但是不给权限")
+      this.setData({
+        adminnot:false
+      })
+    }
+
+  },
+
+
 
 
 
