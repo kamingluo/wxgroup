@@ -21,3 +21,12 @@
   background-color: #0081ff;
   color: white;
 }
+
+.statistics-body{
+  margin-top: 50rpx;
+  height: 500rpx;
+  width: 100%;
+}
+.score{
+  height: 60rpx;
+}

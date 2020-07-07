@@ -10,6 +10,8 @@ Page({
   data: {
     crowd_id:null,
     modal:false,
+    statisticsdata:{},
+    
 
   },
 
@@ -20,6 +22,7 @@ Page({
     this.setData({
       crowd_id: options.crowd_id,
     })
+    this.statisticsscore(options.crowd_id)
 
   },
   clickempty:function(){
@@ -31,6 +34,25 @@ Page({
   hideModal:function(){
     this.setData({
       modal: false,
+    })
+
+  },
+
+  statisticsscore:function(pages){
+    var that = this
+    var crowd_id = this.data.crowd_id
+    request({
+      service: 'group/groupinformation/statisticsscore',
+      method: 'GET',
+      data: {
+        crowd_id: crowd_id,
+      },
+      success: res => {
+        console.log(res)
+        that.setData({
+          statisticsdata:res.data
+        })
+      },
     })
 
   },

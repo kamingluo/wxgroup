@@ -32,8 +32,8 @@
     <view class='exchangelist  shadow-warp bg-white' bindtap='clicktasklist'  data-id='{{item.id}}' >
       <view class='exchangedata '>
         <view class='exchangegood'>
-          任务群:
-          <text style='font-weight: 600; color:#1cbbb4 ; font-size:30rpx; '>{{item.crowd_name}}</text>
+          用户昵称:
+          <text style='font-weight: 600; color:#1cbbb4 ; font-size:30rpx; '>{{item.nickName}}</text>
         </view>
         <view class='exchangetime'>
           提交时间:{{item.create_time}}

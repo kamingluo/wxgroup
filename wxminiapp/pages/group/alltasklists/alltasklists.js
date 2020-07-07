@@ -27,7 +27,16 @@ Page({
       crowd_id: options.crowd_id,
     })
 
+    // this.havedata(1)
+
+  },
+  onShow:function(){
+    this.setData({
+      pages:1,
+      alltasklists:[]
+    })
     this.havedata(1)
+    
 
   },
 
@@ -58,7 +67,7 @@ Page({
 
   clicktasklist: function(e) {
     wx.navigateTo({
-      url: '/pages/my/score_detailed/task_detailed/task_detailed?id=' + e.currentTarget.dataset.id
+      url: '/pages/group/alltasklists/taskdetailed/taskdetailed?id=' + e.currentTarget.dataset.id
     })
 
   },

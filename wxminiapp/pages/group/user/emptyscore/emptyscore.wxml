@@ -5,16 +5,16 @@
 
 <view class="tips centered">
 	<view class="tips-body">
-  <view >
-  <text>温馨提示：群员积分一键清空之后不能恢复,请谨慎操作。</text>
-  </view>
+		<view>
+			<text>温馨提示：群员积分一键清空之后不能恢复,请谨慎操作。</text>
+		</view>
 	</view>
 </view>
 
 <view class="centered ">
-<view class="click-body">
-<button bindtap="clickempty">一键清空群员积分</button>
-</view>
+	<view class="click-body">
+		<button bindtap="clickempty">一键清空群员积分</button>
+	</view>
 </view>
 
 
@@ -22,21 +22,43 @@
 
 
 <view class="cu-modal {{modal?'show':''}}">
-  <view class="cu-dialog">
-    <view class="cu-bar bg-white justify-end">
-      <view class="content">清空群用户积分</view>
-      <view class="action" bindtap="hideModal">
-        <text class="cuIcon-close text-red"></text>
-      </view>
-    </view>
-    <view class="padding-xl">
-     清空之后不可恢复，请谨慎操作！
-    </view>
-    <view class="cu-bar bg-white justify-end">
-      <view class="action">
-        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-        <button class="cu-btn bg-green margin-left" bindtap="emptyscore">确定</button>
-      </view>
-    </view>
-  </view>
+	<view class="cu-dialog">
+		<view class="cu-bar bg-white justify-end">
+			<view class="content">清空群用户积分</view>
+			<view class="action" bindtap="hideModal">
+				<text class="cuIcon-close text-red"></text>
+			</view>
+		</view>
+		<view class="padding-xl">
+			清空之后不可恢复，请谨慎操作！
+		</view>
+		<view class="cu-bar bg-white justify-end">
+			<view class="action">
+				<button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+				<button class="cu-btn bg-green margin-left" bindtap="emptyscore">确定</button>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="statistics-body">
+	<view class="centered">
+  <view>
+		<view class="score">
+			<text style="font-size:40rpx;">用户账户总积分数：{{statisticsdata.allscore}}</text>
+		</view>
+    	<view class="score">
+			<text style="font-size:40rpx;">用户今日获得分数：{{statisticsdata.todayincrease}}</text>
+		</view>
+    	<view class="score">
+			<text style="font-size:40rpx;">用户今日消耗分数：{{statisticsdata.todayconsume}}</text>
+		</view>
+    	<view class="score">
+			<text style="font-size:40rpx;">用户昨日获得分数：{{statisticsdata.yesterdayincrease}}</text>
+		</view>
+    	<view class="score">
+			<text style="font-size:40rpx;">用户昨日消耗分数：{{statisticsdata.yesterdayconsume}}</text>
+		</view>
+	</view>
+</view>
 </view>

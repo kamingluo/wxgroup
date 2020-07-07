@@ -64,65 +64,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/group/groupdetails/tasklist/tasklist",
-					"pathName": "pages/group/groupdetails/tasklist/tasklist",
-					"query": "crowd_id=14&user_type=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/group/groupdetails/scorelist/scorelist",
-					"pathName": "pages/group/groupdetails/scorelist/scorelist",
-					"query": "crowd_id=14&user_type=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/group/goods/goodslist/goodslist",
-					"pathName": "pages/group/goods/goodslist/goodslist",
-					"query": "crowd_id=14&user_type=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/creategroup/creategroup",
-					"pathName": "pages/creategroup/creategroup",
-					"query": "crowd_id=14&user_type=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/group/chat/chat",
-					"pathName": "pages/group/chat/chat",
-					"query": "crowd_id=14",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "签到页面",
-					"pathName": "pages/group/usersigin/usersigin",
-					"query": "crowd_id= 14&crowd_name=这是群名称啊",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/group/groupdetails/exchangelist/exchangelist",
-					"pathName": "pages/group/groupdetails/exchangelist/exchangelist",
-					"query": "crowd_id= 14&crowd_name=这是群名称啊",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/group/goods/exchange/exchange",
-					"pathName": "pages/group/goods/exchange/exchange",
-					"query": "crowd_id= 14&crowd_name=这是群名称啊",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "测试页面",
-					"pathName": "pages/test/test",
+					"id": 1,
+					"name": "单个任务审核",
+					"pathName": "pages/group/alltasklists/taskdetailed/taskdetailed",
+					"query": "crowd_id=14&id= 17304&user_id=10048",
 					"scene": null
 				}
 			]
