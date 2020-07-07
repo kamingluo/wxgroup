@@ -22,6 +22,24 @@ class Groupinformation
          return $resdata ;
     }
 
+     //统计群积分消耗详情
+     public function statisticsscore(Request $request)
+     {
+         
+          $crowd_id=$request->param("crowd_id");
+          $allscore=db('user_crowd')->where('crowd_id',$crowd_id)->sum('score');//群当前用户总积分数
+          $todayincrease=db('score_record')->where('crowd_id',$crowd_id)->where('state',0)->whereTime('create_time', 'today')->sum('score');//今日用户获得积分数
+          $todayconsume=db('score_record')->where('crowd_id',$crowd_id)->where('state',1)->whereTime('create_time', 'today')->sum('score');//今日用户消耗积分数
+          $yesterdayincrease=db('score_record')->where('crowd_id',$crowd_id)->where('state',0)->whereTime('create_time', 'yesterday')->sum('score');//昨日用户获得积分数
+          $yesterdayconsume=db('score_record')->where('crowd_id',$crowd_id)->where('state',1)->whereTime('create_time', 'yesterday')->sum('score');//昨日用户消耗积分数
+          $data = ['allscore' =>$allscore,'todayincrease'=>$todayincrease,'todayconsume'=>$todayconsume,'yesterdayincrease'=>$yesterdayincrease,'yesterdayconsume'=>$yesterdayconsume];
+          $state=['state'   => '200','message'  => "群用户积分数据" ];
+          $resdata=array_merge($state,array('data'=>$data));
+          return $resdata;
+
+         
+     }
+
 
     //修改群信息
     public function updategroupinformation(Request $request)
