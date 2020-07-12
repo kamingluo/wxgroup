@@ -45,12 +45,12 @@
 
 <!-- 广点通视频广告开始-->
 <view class="video-body">
-	<view class='centered'>
-		<view class='gdtad' style="opacity: 0">
-			<!-- <view class='gdtad'> -->
-			<ad capture-bind:tap="gdtvideoadclick" ad-intervals="30" unit-id="adunit-eb3e08b94b84f91e" ad-type="video" ad-theme="white"></ad>
-		</view>
-	</view>
+  <view class='centered'>
+    <view class='gdtad' style="opacity: 0">
+      <!-- <view class='gdtad'> -->
+      <ad capture-bind:tap="gdtvideoadclick" ad-intervals="30" unit-id="adunit-eb3e08b94b84f91e" ad-type="video" ad-theme="white"></ad>
+    </view>
+  </view>
 </view>
 <!--广点通视频广告结束-->
 
@@ -119,9 +119,9 @@
         </view>
       </view>
     </view>
-      <view style='margin-top: 0rpx;margin-bottom: 20rpx;color:#aaaaaa;background-color:#f5f5f5' class='centered' wx:if="{{pages * 10 >= count}}">
-        <text>-------已经到底啦-------</text>
-      </view>
+    <view style='margin-top: 0rpx;margin-bottom: 20rpx;color:#aaaaaa;background-color:#f5f5f5' class='centered' wx:if="{{pages * 10 >= count}}">
+      <text>-------已经到底啦-------</text>
+    </view>
   </view>
 
   <view wx:else>
@@ -171,6 +171,7 @@
 
 <!-- 图片窗口 -->
 <view class="cu-modal {{model?'show':''}}">
+<!-- <view class="cu-modal show"> -->
   <view class="cu-dialog">
     <view class="bg-img padding-sm" style="background: url('https://yaoge.oss-accelerate.aliyuncs.com/myfiles/backiee-48541-portrait.jpg') center top no-repeat;height:480px;background-size: 100% auto">
       <view class="model_date">
@@ -210,10 +211,12 @@
         </view>
 
 
+
+
         <view class="ad-body" wx:elif="{{adconfig.type==4}}">
           <view class='centered'>
             <view>
-              <ad capture-bind:tap="gdtbanneradclick" class="gdtad" unit-id="{{adconfig.appid}}"></ad>
+              <ad capture-bind:tap="gdtbanneradclick" class="gdtad" unit-id="{{adconfig.appid}}" bindload="banneradsuccess" binderror="banneraderr"></ad>
             </view>
           </view>
         </view>
@@ -229,7 +232,7 @@
 
 
       <!-- <view class="keeptab margin-top">请截屏后保存二维码</view> -->
-      <view class="keeptab margin-top">{{modeltips}}</view>
+      <view class="keeptab margin-top" wx:if="{{banneradshow}}">{{modeltips}}</view>
       <view class="btn_close">
         <view class="action" bindtap="hideModal">
           <text class="cuIcon-close padding-sm" style="font-size:40rpx;font-weight: 600;"></text>

@@ -7,12 +7,14 @@ const app = getApp();
 
 Page({
   data: {
+    
     tabSelect: 0,
     model: false,
     signinrankinglist:[],//签到排行榜
     pages: 1,//默认第一页
     count: 0,
     modeltips:"群记分小程序提供技术支持",
+    banneradshow:true
 
   },
   onLoad: function(e) {
@@ -237,6 +239,20 @@ Page({
   //点击弹框广告
   clickmodelad: function() {
     common.insidejump(this.data.adconfig)
+  },
+
+  //广告加载成功或者失败展示交互
+  banneradsuccess: function () {
+    console.log("签到页面banner广告加载成功")
+    this.setData({
+      banneradshow: true
+    })
+  },
+  banneraderr: function () {
+    console.log("签到页面banner广告加载失败")
+    this.setData({
+      banneradshow: false
+    })
   },
 
  //点击视频广告统计
