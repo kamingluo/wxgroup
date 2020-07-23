@@ -201,7 +201,7 @@
       <!-- 推广位置 -->
       <view>
 
-        <view class="qrcode flex align-center justify-center" wx:if="{{adconfig.type==5}}">
+        <view class="qrcode flex align-center justify-center animation-{{kaming?'shake':''}}" wx:if="{{adconfig.type==5}}">
           <image class="head" lazy-load="true" mode="widthFix" src="{{avatarUrl}}"></image>
           <view class="flex-sub padding-sm">
             <text>{{adconfig.appid}}</text>
@@ -210,10 +210,7 @@
           <image src="{{adconfig.imgurl}}"></image>
         </view>
 
-
-
-
-        <view class="ad-body" wx:elif="{{adconfig.type==4}}">
+        <view class="ad-body animation-{{kaming?'shake':''}}" wx:elif="{{adconfig.type==4}}">
           <view class='centered'>
             <view>
               <ad capture-bind:tap="gdtbanneradclick" class="gdtad" unit-id="{{adconfig.appid}}" bindload="banneradsuccess" binderror="banneraderr"></ad>
@@ -221,7 +218,7 @@
           </view>
         </view>
 
-        <view class="ad-body" wx:else>
+        <view class="ad-body animation-{{kaming?'shake':''}}" wx:else>
           <view bindtap="clickmodelad">
             <image class="model-ad-image" src="{{adconfig.imgurl}}"></image>
           </view>
@@ -232,12 +229,16 @@
 
 
       <!-- <view class="keeptab margin-top">请截屏后保存二维码</view> -->
-      <view class="keeptab margin-top" wx:if="{{banneradshow}}">{{modeltips}}</view>
+      <view class="keeptab margin-top animation-{{kaming?'shake':''}}" wx:if="{{banneradshow}}"> {{modeltips}}</view>
+      <!-- <view class="keeptab margin-top" wx:if="{{banneradshow}}"> {{modeltips}}</view> -->
+
       <view class="btn_close">
         <view class="action" bindtap="hideModal">
           <text class="cuIcon-close padding-sm" style="font-size:40rpx;font-weight: 600;"></text>
         </view>
       </view>
+
     </view>
+
   </view>
 </view>

@@ -1,6 +1,6 @@
 <view class="bg-img  padding-tb-xl" style="background-image: url('http://miniapplittlefun.gzywudao.top/BasicsBg.png');height: 414rpx;">
   <view class='centered miniappname '>
-    <text>群记分</text>
+    <text class="animation-{{kaming?'scale-down':''}}">群记分</text>
     <!-- <button bindtap='aaaaaaa'>获取地址测试</button> -->
   </view>
   <!-- <view class='centered'>
@@ -70,7 +70,7 @@
         </view>
         <view class='box-body shadow-warp bg-white' bindtap="clickusergrouplist" data-data='{{item}}'>
           <view class=' box-body-image centered '>
-            <image src='{{item.logo}}'></image>
+            <image src='{{item.logo + "?imageView2/2/w/150"}}'></image>
           </view>
           <view class=' box-body-name  centered'>
             <view class="box-body-name-body">

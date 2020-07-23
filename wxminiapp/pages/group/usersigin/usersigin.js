@@ -155,6 +155,8 @@ Page({
           ranking: res.ranking, //排名
         })
 
+        that.kaming()//点击广告提示动画
+
         that.refreshsigninrankinglist()//刷新一下排行榜
         that.usersigindata() //刷新一下首页数据
       },
@@ -162,6 +164,24 @@ Page({
         console.log("签到失败", res)
       },
     })
+  },
+
+//跳动动画
+  kaming:function(){
+    var that=this
+    setTimeout(function() {
+      that.setData({
+        kaming: false
+      })
+      //console.log("关闭动画")
+    }, 1200)
+    setTimeout(function() {
+      that.setData({
+        kaming: true
+      })
+      that.kaming()
+     //console.log("开启动画")
+    }, 1200)
   },
 
   completesigin: function() {

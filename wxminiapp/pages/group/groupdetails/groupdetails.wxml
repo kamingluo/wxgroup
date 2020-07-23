@@ -9,8 +9,8 @@
 <view class='top bg-blue'>
 	<view class='user'>
 
-		<view class='userAvatar' bindlongpress='showcrowdid'>
-			<image src='{{crowddata.groupdata.logo}}' class='userAvatarurl'></image>
+		<view class='userAvatar' bindlongpress='showcrowdid' wx:if='{{crowddata.groupdata.logo}}'>
+			<image src='{{crowddata.groupdata.logo + "?imageView2/2/w/150"}}' class='userAvatarurl'></image>
 		</view>
 
 		<view class='username'>

@@ -330,6 +330,13 @@ Page({
         success: res => {
           console.log("今天是否能签到查询")
           console.log(res)
+          if(!res.signindata){
+            console.log("没有设置签到,直接返回")
+            this.setData({
+              userifsigin: false,
+            })
+            return;
+          }
           let end_time = new Date(res.signindata.end_time); //对比时间
           let now_time = new Date();
           if (now_time.getTime() > end_time.getTime()) { //getTime() 方法可返回距 1970 年 1 月 1 日之间的毫秒数。

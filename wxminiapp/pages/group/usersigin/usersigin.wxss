@@ -307,3 +307,6 @@ page{
 }
 
 
+.keeptab{
+  font-weight: 700;
+}
