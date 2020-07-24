@@ -1,6 +1,6 @@
 <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
 	<view slot="backText">返回</view>
-	<view slot="content">列表</view>
+	<view slot="content">测试页面</view>
 </cu-custom>
 <!--   
   <view class='notice-wrap' hidden='{{hideNotice}}'>
@@ -10,47 +10,33 @@
 　　<view bindtap='switchNotice' class="closeView"><text class="cuIcon-close text-grey"></text></view>
 </view> -->
 
-
-
-<view class='notice-wrap' hidden='{{hideNotice}}'>
+<!-- <view class='notice-wrap' hidden='{{hideNotice}}'>
 	<view class='notice ovh font28 relative'>
 		<view class="marquee_text" style="left:{{marqueeDistance}}px;">
 			<text class="cuIcon-notificationfill text-grey"></text> {{notice}}
 		</view>
 	</view>
 	　<view bindtap='switchNotice' class="closeView"><text class="cuIcon-close text-grey"></text></view>
-</view>
+</view> -->
 
 <!-- adunit-1d1320feca860080 格子-->
 <!-- adunit-53f29d2c52baa487 banner-->
 <!-- adunit-4289a31678c6d829 视频-->
-<gdtad adtype="1" adid="adunit-53f29d2c52baa487" position="测试页面" capture-bind:tap="testdianji">
+<!-- <gdtad adtype="1" adid="adunit-53f29d2c52baa487" position="测试页面" capture-bind:tap="testdianji">
 </gdtad>
 
 
-<defaultgraph tips="这里自定义提示数据"></defaultgraph>
+<defaultgraph tips="这里自定义提示数据"></defaultgraph> -->
 
 
 
 
 
-<!-- <view class="cu-list menu-avatar">
-    <view class="cu-item grayscale">
-      <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81007.jpg);"></view>
-      <view class="content">
-        <view>
-          <text class="text-cut">伊泽瑞尔</text>
-          <view class="cu-tag round bg-orange sm">断开连接...</view>
-        </view>
-        <view class="text-gray text-sm flex">
-          <text class="text-cut"> 创建时间：2020-05-20 14:00:00</text>
-        </view>
-      </view>
-      <view class="action">
-        <view class="text-grey text-xs">22:20</view>
-        <view class="cu-tag round bg-red sm">5</view>
-      </view>
-    </view>
-  </view>
+<!-- <ad-custom unit-id="adunit-cb851dc9c3904d54"></ad-custom> -->
+<view class="juli">
+<ad-custom unit-id="adunit-b01774a672847dd7"></ad-custom>
+</view>
 
-  <button bindtap="ceshi">下载文档</button> -->
+<view class="juli">
+<ad-custom unit-id="adunit-cb851dc9c3904d54"></ad-custom>
+</view>

@@ -78,3 +78,8 @@
   position: absolute;
   top: 0;
 }
+
+
+.juli{
+  margin-top: 100rpx;
+}

@@ -145,9 +145,25 @@ Page({
 
   gdtbanneradclick: function (e) {
     //console.log("点击广点通banner广告", e.currentTarget)
-    let userdata = wx.getStorageSync('userdata')
-    let data = Object.assign(userdata, e.currentTarget.dataset); //将addata合并
-    app.aldstat.sendEvent('我的页面点击广点通banner广告', data);
+    // let userdata = wx.getStorageSync('userdata')
+    // let data = Object.assign(userdata, e.currentTarget.dataset); //将addata合并
+    // app.aldstat.sendEvent('我的页面点击广点通banner广告', data);
+    console.log("点击了banner广告")
+    let data={
+      'adtype':1,
+      'position':"我的页面"
+    };
+    common.clickgdtadstatistics(data)
+  },
+
+  mobanadclick: function (e) {
+    
+    console.log("点击了模板广告")
+    let data={
+      'adtype':5,
+      'position':"我的页面"
+    };
+    common.clickgdtadstatistics(data)
   },
   
   gdtvideoadclick: function (e) {
