@@ -52,7 +52,7 @@
 
         <el-table-column prop="crowd_id" label="群id" width="80"> </el-table-column>
 
-        <el-table-column prop="goods_name" label="奖品名称" width="150">
+        <el-table-column prop="goods_name" label="奖品名称" width="250">
         </el-table-column>
 
          <el-table-column prop="goods_img" label="奖品图片" width="120">
@@ -61,7 +61,7 @@
           </template>
         </el-table-column>
 
-        <el-table-column prop="remarks" label="抽奖备注" width="100">
+        <el-table-column prop="remarks" label="抽奖备注" width="200">
          </el-table-column>
 
          <el-table-column prop="score" label="抽奖积分" width="120">
