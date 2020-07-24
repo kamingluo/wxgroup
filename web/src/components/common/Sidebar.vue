@@ -59,6 +59,11 @@
                         title: '任务记录'
                     },
                      {
+                        icon: 'el-icon-lx-present',
+                        index: 'lotterylist',
+                        title: '抽奖活动'
+                    },
+                     {
                         icon: 'el-icon-lx-news',
                         index: 'news',
                         title: '群消息'
@@ -82,6 +87,11 @@
                         icon: 'el-icon-lx-cascades',
                         index: 'examine',
                         title: '金币兑换列表'
+                    },
+                     {
+                        icon: 'el-icon-lx-cascades',
+                        index: 'clickaddata',
+                        title: '点击广告列表'
                     }
                 ]
             }

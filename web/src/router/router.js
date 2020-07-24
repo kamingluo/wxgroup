@@ -37,6 +37,11 @@ export default new Router({
           meta: { title: '任务记录' }
         },
         {
+          path: '/lotterylist',
+          component: resolve => require(['../components/page/Lotterylist.vue'], resolve),
+          meta: { title: '发布的抽奖' }
+        },
+        {
           path: '/news',
           component: resolve => require(['../components/page/News.vue'], resolve),
           meta: { title: '群消息' }
@@ -60,6 +65,11 @@ export default new Router({
           path: '/examine',
           component: resolve => require(['../components/page/Examine.vue'], resolve),
           meta: { title: '金币兑换列表' }
+        },
+        {
+          path: '/clickaddata',
+          component: resolve => require(['../components/page/Clickaddata.vue'], resolve),
+          meta: { title: '点击广告列表' }
         },
       ]
     },
