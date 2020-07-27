@@ -80,6 +80,18 @@ Page({
   },
 
 
+  gdtcustomclick:function(){
+    console.log("点击模板广告")
+    let data={
+      'adtype':5,
+      'position':"广点通任务页面"
+    };
+    common.clickgdtadstatistics(data)
+
+  },
+
+
+
 //点击格子广告
 gdtgridclick:function(){
   let data={

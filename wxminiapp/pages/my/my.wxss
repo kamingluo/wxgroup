@@ -137,7 +137,7 @@ flex-basis: 450rpx;
 .gdtad{
   width: 94%;
   border-radius: 15rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 5rpx;
 }
 
 

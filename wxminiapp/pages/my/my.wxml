@@ -149,7 +149,7 @@
 	<!-- 广点通banner广告结束-->
 
 		<!-- 广点通模板广告开始-->
-	<view class='centered'>
+	<view class='centered '>
 		<view class='gdtad'>
 			<ad-custom  capture-bind:tap="mobanadclick"  ad-intervals="30"  unit-id="adunit-b01774a672847dd7"></ad-custom>
 		</view>

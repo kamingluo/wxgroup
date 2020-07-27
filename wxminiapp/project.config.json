@@ -76,6 +76,20 @@
 					"pathName": "pages/group/usersigin/usersigin",
 					"query": "crowd_id=14",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/business/gdtad/gdtad",
+					"pathName": "pages/business/gdtad/gdtad",
+					"query": "crowd_id=14&id= 17304&user_id=10048",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/group/usersigin/usersigin",
+					"pathName": "pages/group/usersigin/usersigin",
+					"query": "crowd_id=14&user_id=10048",
+					"scene": null
 				}
 			]
 		}

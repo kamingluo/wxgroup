@@ -220,6 +220,18 @@ Page({
     common.clickgdtadstatistics(data)
   },
 
+  
+  //点击模板广告统计
+  gdtcustomadclick:function(){
+    console.log("点击模板广告'")
+    let data = {
+      'adtype': 5,
+      'position': "签到页面"
+    };
+    common.clickgdtadstatistics(data)
+
+  },
+
 
   //选择签到记录
   selectsigindata: function() {

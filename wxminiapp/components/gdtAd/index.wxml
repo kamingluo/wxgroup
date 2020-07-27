@@ -8,5 +8,9 @@
 </view>
 <!-- 视频广告 -->
 <view wx:elif="{{adtype==4}}">
-	<ad capture-bind:tap="adclick" ad-intervals="30"  data-adtype="{{adtype}}" data-position="{{position}}" unit-id="adunit-4289a31678c6d829" ad-type="video" ad-theme="white"></ad>
+	<ad capture-bind:tap="adclick" ad-intervals="30"  data-adtype="{{adtype}}" data-position="{{position}}" unit-id="{{adid}}" ad-type="video" ad-theme="white"></ad>
+</view>
+<!-- 模板广告 -->
+<view wx:elif="{{adtype==5}}">
+	<ad-custom capture-bind:tap="adclick" ad-intervals="30"  data-adtype="{{adtype}}" data-position="{{position}}" unit-id="{{adid}}"></ad-custom>
 </view>

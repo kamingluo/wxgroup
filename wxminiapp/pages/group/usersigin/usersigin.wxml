@@ -201,7 +201,7 @@
       <!-- 推广位置 -->
       <view>
 
-        <view class="qrcode flex align-center justify-center animation-{{kaming?'shake':''}}" wx:if="{{adconfig.type==5}}">
+        <view class="qrcode flex align-center justify-center animation-{{kaming?'shake':''}}" wx:if="{{adconfig.type==6}}">
           <image class="head" lazy-load="true" mode="widthFix" src="{{avatarUrl}}"></image>
           <view class="flex-sub padding-sm">
             <text>{{adconfig.appid}}</text>
@@ -214,6 +214,15 @@
           <view class='centered'>
             <view>
               <ad capture-bind:tap="gdtbanneradclick" class="gdtad" unit-id="{{adconfig.appid}}" bindload="banneradsuccess" binderror="banneraderr"></ad>
+            </view>
+          </view>
+        </view>
+
+        <view class="ad-body animation-{{kaming?'shake':''}}" wx:elif="{{adconfig.type==5}}">
+          <view class='centered'>
+            <view>
+              <ad-custom capture-bind:tap="gdtcustomadclick" class="gdtad" unit-id="{{adconfig.appid}}" bindload="banneradsuccess" binderror="banneraderr"></ad-custom>
+              <!-- <ad-custom  capture-bind:tap="gdtcustomadclick" unit-id="adunit-cb851dc9c3904d54"></ad-custom> -->
             </view>
           </view>
         </view>

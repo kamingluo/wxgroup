@@ -126,5 +126,9 @@ page {
 }
 
 .gridadbody{
-  margin-bottom: 50rpx;
+  margin-bottom: 20rpx;
+}
+
+.custom{
+  margin-bottom: 30rpx;
 }

@@ -49,7 +49,7 @@ Page({
   },
 
   testdianji:function(){
-    console.log("测试页面点击")
+    console.log("测试页面点击广告组件")
 
   },
 

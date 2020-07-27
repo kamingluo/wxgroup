@@ -140,13 +140,21 @@
 
 
 <!-- 广点通视频广告开始-->
-<view class='centered' wx:if="{{!gridadshow && !banneradshow}}">
+<!-- <view class='centered' wx:if="{{!gridadshow && !banneradshow}}">
 	<view class='gdtad'>
 		<ad  capture-bind:tap="gdtvideoadclick" unit-id="adunit-eb3e08b94b84f91e" ad-type="video" ad-theme="white"></ad>
 	</view>
-</view>
+</view> -->
 <!--广点通视频广告结束-->
 
+
+<!-- 广点通模板广告开始-->
+<view class='centered custom'>
+	<view class='gdtad'>
+	<ad-custom capture-bind:tap="gdtcustomclick" ad-intervals="30" unit-id="adunit-ab2844694bfb0af1"></ad-custom>
+	</view>
+</view>
+ <!--广点通模板广告结束-->
 
 
 
