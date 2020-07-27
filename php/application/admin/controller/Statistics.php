@@ -34,7 +34,7 @@ class Statistics
 
         
         $data = ['registerusers' =>$registerusers,'activeusers'=>$activeusers,'builtcrowd'=>$builtcrowd,'joincrowd'=>$joincrowd,'crowd_news'=>$crowd_news,
-        'sigin'=>$sigin,'lottery'=>$lottery,'task_record'=>$task_record,'clickbanner'=>$clickbanner,'seevideo'=>$seevideo,'clickgrid'=>$clickgrid];
+        'sigin'=>$sigin,'lottery'=>$lottery,'task_record'=>$task_record,'clickbanner'=>$clickbanner,'seevideo'=>$seevideo,'clickgrid'=>$clickgrid,'clickvideo'=>$clickvideo,'clickcustom'=>$clickcustom];
         $state=['state'   => '200','message'  => "常规数据" ];
         $resdata=array_merge($state,array('data'=>$data));
         return $resdata;
