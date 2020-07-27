@@ -177,22 +177,38 @@
                                 <i class="el-icon-lx-rechargefill grid-con-icon"></i>
                                 <div class="grid-cont-right">
                                     <div class="grid-num">{{statistics.seevideo}}</div>
-                                    <div>今日看视频广告数</div>
+                                    <div>今日看激励视频广告数</div>
                                 </div>
                             </div>
                         </el-card>
                     </el-col>
 
 
+                    
+                    <el-col :span="8">
+                        <el-card shadow="hover" :body-style="{padding: '0px'}">
+                            <div class="grid-content grid-con-1">
+                                <i class="el-icon-lx-rechargefill grid-con-icon"></i>
+                                <div class="grid-cont-right">
+                                    <div class="grid-num">{{statistics.clickcustom}}</div>
+                                    <div>今日点击模板广告数</div>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
 
-
-
-
-
-
-
-
-
+                    
+                    <el-col :span="8">
+                        <el-card shadow="hover" :body-style="{padding: '0px'}">
+                            <div class="grid-content grid-con-1">
+                                <i class="el-icon-lx-rechargefill grid-con-icon"></i>
+                                <div class="grid-cont-right">
+                                    <div class="grid-num">{{statistics.clickvideo}}</div>
+                                    <div>今日点击视频广告数</div>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
 
 
 
@@ -281,7 +297,7 @@
         },
         computed: {
             role() {
-                return this.name === 'admin' ? '超级管理员' : '普通用户';
+                return this.name === 'kaming' ? '超级管理员' : '普通用户';
             }
         },
        

@@ -74,6 +74,8 @@
      
         <el-table-column prop="channel" label="渠道" width="100">
         </el-table-column>
+        <el-table-column prop="coin" label="金币数" width="100">
+        </el-table-column>
         <el-table-column prop="create_time" label="创建时间" width="160">
         </el-table-column>
         <el-table-column prop="update_time" label="最后活跃" width="160">
