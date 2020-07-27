@@ -6,6 +6,7 @@ const {
 } = require('./../../../utils/request.js');
 const common = require('./../../../utils/common.js');
 const app = getApp();
+let preventShake = 0;
 
 Page({
   data: {
@@ -96,6 +97,11 @@ Page({
   },
 
   sumittask: function() {
+    const nowTime = Date.now();
+    if (nowTime - preventShake < 2000) {
+      return
+    }
+    preventShake = nowTime;
     // console.log("点击了提交任务")
     // return;
     var that = this

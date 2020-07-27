@@ -3,6 +3,7 @@ const {
   request
 } = require('./request.js')
 const baseConfig = require('./config.js')
+let preventShake = 0;
 
 function register(e) {
   var data = e
@@ -177,6 +178,12 @@ function echecktext(content) {
 
 //广告统计
 function clickgdtadstatistics(e) {
+  const nowTime = Date.now();
+  if (nowTime - preventShake < 2000) {
+    return
+  }
+  preventShake = nowTime;
+
   let data=e;
   let user_id = wx.getStorageSync('userdata').id || 0 ;
   data.user_id=user_id;

@@ -31,7 +31,3 @@
   </view>
 </view>
 
-
-<view class='adbrush' >
-<ad capture-bind:tap="gdtbannerclick" data-adid="adunit-9d16e8380e901760" unit-id="adunit-9d16e8380e901760"></ad>
-</view>

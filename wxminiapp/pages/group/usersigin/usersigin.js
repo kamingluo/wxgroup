@@ -3,6 +3,7 @@ const {
 } = require('./../../../utils/request.js');
 const common = require('./../../../utils/common.js') //公共函数
 const app = getApp();
+let preventShake = 0;
 
 
 Page({
@@ -131,6 +132,12 @@ Page({
 
   //用户签到
   usersignin: function() {
+    const nowTime = Date.now();
+    if (nowTime - preventShake < 2000) {
+      return
+    }
+    preventShake = nowTime;
+
     var that = this
     let crowd_id = this.data.crowd_id
     let user_id = wx.getStorageSync('userdata').id

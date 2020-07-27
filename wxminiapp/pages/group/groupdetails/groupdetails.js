@@ -540,6 +540,7 @@ onReachBottom: function() {
  * pages/index/index?channel=1000&ald_media_id=26447&ald_link_key=6f92ad04b6256d10
  */
 onShareAppMessage: function() {
+  let log=this.data.crowddata.groupdata.logo || 'https://material.gzywudao.top/image/group/groupicon.png';
   let userchannel = wx.getStorageSync('userdata').channel
   let nickName = wx.getStorageSync('userdata').nickName
   let crowd_id = this.data.crowd_id
@@ -547,7 +548,7 @@ onShareAppMessage: function() {
   return {
     title: nickName + "邀请你加入群" + "《" + crowd_name + "》",
     desc: nickName + "邀请你加入群" + "《" + crowd_name + "》",
-    imageUrl: 'https://material.gzywudao.top/image/group/groupicon.png',
+    imageUrl: log,
     path: '/pages/index/index?channel=1001&ald_media_id=33542&ald_link_key=c99244f0802f9f06' + '&crowd_id=' + crowd_id, // 路径，传递参数到指定页面。
   }
 

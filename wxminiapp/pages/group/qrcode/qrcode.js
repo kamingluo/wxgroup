@@ -5,7 +5,7 @@ const {
 const {
   share
 } = require('./../../../utils/share.js');
-
+const baseConfig = require('./../../../utils/config.js')//配置文件
 var Page = require('../../../utils/sdk/xmad/xmadx_sdk.min.js').xmad(Page).xmPage; //小盟广告
 
 
@@ -54,7 +54,7 @@ Page({
        // console.log('生成二维码成功', res);
         wx.hideLoading()
         this.setData({
-          imgurl: 'https://group.gzywudao.top/php/public/qrcode/' + crowd_id + '.png',
+          imgurl: baseConfig.imageurl+'qrcode/' + crowd_id + '.png',
         })
       },
     })
@@ -152,6 +152,18 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+  let log=baseConfig.imageurl+'miniapp/images/appicon.png' || 'https://material.gzywudao.top/image/group/groupicon.png';
+  let nickName = wx.getStorageSync('userdata').nickName
+  let crowd_id = this.data.crowd_id
+  let crowd_name = this.data.crowd_name
+  return {
+    title: nickName + "邀请你加入群" + "《" + crowd_name + "》",
+    desc: nickName + "邀请你加入群" + "《" + crowd_name + "》",
+    imageUrl: log,
+    path: '/pages/index/index?channel=1001&ald_media_id=33542&ald_link_key=c99244f0802f9f06' + '&crowd_id=' + crowd_id, // 路径，传递参数到指定页面。
   }
+  }
+
+
+
 })
