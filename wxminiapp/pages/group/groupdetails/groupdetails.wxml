@@ -65,9 +65,9 @@
 			<view class="centered">
 				<image src='{{item.imagesurl}}'></image>
 			</view>
-			<view class="centered">
+			<!-- <view class="centered">
 				<text class='icon-text centered'>{{item.text}}</text>
-			</view>
+			</view> -->
 		</view>
 	</view>
 </view>
@@ -79,9 +79,9 @@
 			<view class="centered">
 				<image src='{{item.imagesurl}}'></image>
 			</view>
-			<view class="centered">
+			<!-- <view class="centered">
 				<text class='icon-text centered'>{{item.text}}</text>
-			</view>
+			</view> -->
 		</view>
 	</view>
 </view>

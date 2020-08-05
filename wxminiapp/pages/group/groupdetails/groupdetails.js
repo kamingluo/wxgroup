@@ -3,6 +3,7 @@ const {
   request
 } = require('./../../../utils/request.js');
 const common = require('./../../../utils/common.js');
+const baseConfig = require('./../../../utils/config.js')//配置文件
 const app = getApp();
 Page({
 
@@ -99,84 +100,66 @@ Page({
   incondata: function() {
     let icondata = [{
         id: 1,
-        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/uptask.png",
+        imagesurl: baseConfig.imageurl+'miniapp/images/groupicon/pushtasks.png' || "http://qiniu.luojiaming.vip/image/group/icon/uptask.png",
         text: "提交任务",
         joumurl: '/pages/group/uptask/uptask'
       },
       {
         id: 2,
-        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/exchangegoods2.png",
+        imagesurl: baseConfig.imageurl+'miniapp/images/groupicon/goods.png' || "http://qiniu.luojiaming.vip/image/group/icon/exchangegoods2.png",
         text: "兑换商品",
         joumurl: '/pages/group/goods/goodslist/goodslist'
       },
       {
         id: 3,
-        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/tasklist.png",
+        imagesurl: baseConfig.imageurl+'miniapp/images/groupicon/taskslist.png' || "http://qiniu.luojiaming.vip/image/group/icon/tasklist.png",
         text: "任务记录",
         joumurl: '/pages/group/groupdetails/tasklist/tasklist'
       },
       {
         id: 4,
-        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/exchangelist.png",
+        imagesurl: baseConfig.imageurl+'miniapp/images/groupicon/socrelists.png' || "http://qiniu.luojiaming.vip/image/group/icon/exchangelist.png",
         text: "积分记录",
         joumurl: '/pages/group/groupdetails/scorelist/scorelist'
       },
       {
         id: 5,
-        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/newshuoming.png",
+        imagesurl: baseConfig.imageurl+'miniapp/images/groupicon/chat.png' || "http://qiniu.luojiaming.vip/image/group/icon/newshuoming.png",
         text: "群聊天室",
         joumurl: '/pages/group/chat/chat'
       }
-      // {
-      //   id: 5,
-      //   imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/newshuoming.png",
-      //   text: "空间说明",
-      //   joumurl: 666
-      // }
     ];
 
     let adminicon = [{
         id: 1,
-        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/scorelist.png",
+        imagesurl: baseConfig.imageurl+'miniapp/images/groupicon/handlexchange.png' || "http://qiniu.luojiaming.vip/image/group/icon/scorelist.png",
         text: "处理兑换",
         joumurl: '/pages/group/groupdetails/exchangelist/exchangelist'
       },
       {
         id: 2,
-        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/audittasks.png",
+        imagesurl: baseConfig.imageurl+'miniapp/images/groupicon/hanldtasks.png' || "http://qiniu.luojiaming.vip/image/group/icon/audittasks.png",
         text: "任务审核",
         joumurl: '/pages/group/audittasks/audittasks'
       },
-      // {
-      //   id: 3,
-      //   imagesurl: "https://groupqiniu.luojiaming.vip/%2Fimage%2Fgroup%2Ficon%2Falltasklists.png",
-      //   text: "全部任务",
-      //   joumurl: '/pages/group/alltasklists/alltasklists'
-      // },
       {
         id: 3,
-        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/alltasklists.png",
+        imagesurl: baseConfig.imageurl+'miniapp/images/groupicon/pushlottery.png' || "http://qiniu.luojiaming.vip/image/group/icon/alltasklists.png",
         text: "发布抽奖",
         joumurl: '/pages/group/lottery/pushlottery/pushlottery'
       },
       {
         id: 4,
-        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/pushnews.png",
+        imagesurl: baseConfig.imageurl+'miniapp/images/groupicon/pushnews.png' || "http://qiniu.luojiaming.vip/image/group/icon/pushnews.png",
         text: "发布消息",
         joumurl: '/pages/group/pushnews/pushnews'
       },
       {
         id: 5,
-        imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/more.png",
+        imagesurl: baseConfig.imageurl+'miniapp/images/groupicon/more.png' || "http://qiniu.luojiaming.vip/image/group/icon/more.png",
         text: "更多功能",
         joumurl: '/pages/group/ownersmore/ownersmore'
       },
-      // {
-      //   id: 5,
-      //   imagesurl: "http://qiniu.luojiaming.vip/image/group/icon/useroperation1.png",
-      //   text: "用户管理",
-      //   joumurl: '/pages/group/user/user'
-      // },
     ];
 
 

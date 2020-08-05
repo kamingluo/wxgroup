@@ -113,8 +113,8 @@
 }
 
 .icon-body image {
-  width: 60rpx;
-  height: 60rpx;
+  width: 140rpx;
+  height: 140rpx;
 }
 
 .tab {
