@@ -5,6 +5,7 @@ const {
   request
 } = require('./../../../utils/request.js');
 const common = require('./../../../utils/common.js');
+let baseConfig = require('./../../../utils/config.js')
 const app = getApp();
 let preventShake = 0;
 
@@ -176,7 +177,7 @@ Page({
           region: 'NCN',
           uploadURL: 'https://up-z1.qiniup.com',
           domain: 'https://groupqiniu.luojiaming.vip/',
-          uptokenURL: 'https://group.gzywudao.top/php/public/miniapp.php/currency/qiniu',
+          uptokenURL: baseConfig.host + 'currency/qiniu',
         })
       }
     }).then(function(imgList) {

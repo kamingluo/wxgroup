@@ -4,6 +4,7 @@ const {
   request
 } = require('./../../../utils/request.js');
 const common = require('./../../../utils/common.js');
+let baseConfig = require('./../../../utils/config.js')
 var socketOpen = false;
 var frameBuffer_Data, session, SocketTask;
 var url = 'wss://group.gzywudao.top/wss'; //长链接接口
@@ -414,7 +415,7 @@ Page({
         region: 'SCN', //华南代号
         uploadURL: 'https://up-z2.qiniup.com',
         domain: 'http://groupchat.luojiaming.vip/',
-        uptokenURL: 'https://group.gzywudao.top/php/public/miniapp.php/currency/qiniugroupchatdata',
+        uptokenURL: baseConfig.host+'currency/qiniugroupchatdata',
       })
     }).then(function (qiniuimgurl) {
       that.sendmsg(qiniuimgurl, "image") //拿到图片地址去发送消息

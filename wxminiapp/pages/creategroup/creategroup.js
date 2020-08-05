@@ -333,7 +333,7 @@ Page({
           region: 'ECN',
           uploadURL: 'https://up-z0.qiniup.com',
           domain: 'http://material.gzywudao.top/',
-          uptokenURL: 'https://group.gzywudao.top/php/public/miniapp.php/currency/qiniumaterial',
+          uptokenURL: baseConfig.host + 'currency/qiniumaterial',
         })
       }
     }).then(function (imgList) {

@@ -4,6 +4,7 @@ const qiniuUploader = require("../../../utils/sdk/qiniu/qiniuUploader");
 const {
   request
 } = require('./../../../utils/request.js');
+let baseConfig = require('./../../../utils/config.js')
 const app = getApp();
 
 Page({
@@ -213,7 +214,7 @@ getPhoneNumber: function(e) {
               region: 'NCN',
               uploadURL: 'https://up-z1.qiniup.com',
               domain: 'https://groupqiniu.luojiaming.vip/',
-              uptokenURL: 'https://group.gzywudao.top/php/public/miniapp.php/currency/qiniu',
+              uptokenURL: baseConfig.host + 'currency/qiniu',
             })
         }
       }).then(function (imgList) {
