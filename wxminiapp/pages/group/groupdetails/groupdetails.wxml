@@ -59,29 +59,29 @@
 
 
 
-<view class="flex padding justify-around  bg-icon ">
+<view class="flex padding-sm justify-around  bg-icon ">
 	<view wx:for="{{icondata}}" wx:key="item" class='icon-top'>
 		<view class='icon-body' bindtap='clickicon' data-data="{{item}}">
 			<view class="centered">
 				<image src='{{item.imagesurl}}'></image>
 			</view>
-			<!-- <view class="centered">
+			<view class="centered">
 				<text class='icon-text centered'>{{item.text}}</text>
-			</view> -->
+			</view>
 		</view>
 	</view>
 </view>
 
 
-<view class="flex padding justify-around  bg-icon " wx:if="{{user_type == 1 ||user_type == 2 ? true:false }}">
+<view class="flex padding-sm justify-around  bg-icon " wx:if="{{user_type == 1 ||user_type == 2 ? true:false }}">
 	<view wx:for="{{adminicon}}" wx:key="item" class='icon-top'>
 		<view class='icon-body' bindtap='clickicon' data-data="{{item}}">
 			<view class="centered">
 				<image src='{{item.imagesurl}}'></image>
 			</view>
-			<!-- <view class="centered">
+			<view class="centered">
 				<text class='icon-text centered'>{{item.text}}</text>
-			</view> -->
+			</view>
 		</view>
 	</view>
 </view>
