@@ -20,6 +20,23 @@
 
 }
 
+.ui_uploader_item_cover{
+    float: left;
+    position: relative;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+    width: 600rpx;
+    height: 200rpx;
+}
+
+.cover_image{
+   width: 600rpx;
+    height: 200rpx;
+}
+.cover_body{
+  margin-top: 20rpx;
+}
+
 .ui_uploader_item{
     float: left;
     position: relative;
@@ -39,6 +56,8 @@
     border: 2rpx solid #d9d9d9;
     box-sizing: border-box;
 }
+
+
 
 .ui_uploader_cell {
     width: 95%;

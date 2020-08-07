@@ -90,6 +90,13 @@
 					"pathName": "pages/group/usersigin/usersigin",
 					"query": "crowd_id=14&user_id=10048",
 					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/group/pushnews/pushnews",
+					"pathName": "pages/group/pushnews/pushnews",
+					"query": "crowd_id=14&crowd_name=\"kaming测试\"",
+					"scene": null
 				}
 			]
 		}
