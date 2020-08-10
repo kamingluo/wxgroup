@@ -8,35 +8,33 @@ class Search
 {
     public function goodssearch(Request $request)
     {
-      //echo time();//获取当前时间戳
-
+      $keyword=$request->param("keyword");//查询关键字
+      $page=$request->param("page");//查询页数
+      if($page==null){
+       $page=1;
+      }
+      $page_size=20;//每页查询多少条
+      $client_id=Config('pdd_client_id');
+      $client_secret=Config('pdd_client_secret');
+      $type="pdd.ddk.goods.search";//查询的接口
       $nowtime = time();
-      $url="https://gw-api.pinduoduo.com/api/router";
-      $keyword=$request->param("keyword");
-      $str = "dffb105376b725650548f326e70add2d5d01bd0aclient_id4b5d3ccbce894f4e92bf8998da0853bakeyword".$keyword."page1page_size10timestamp".$nowtime."typepdd.ddk.goods.searchdffb105376b725650548f326e70add2d5d01bd0a";
+      $url=Config('pdd_api_url');
+      $str = $client_secret."client_id".$client_id."keyword".$keyword."page".$page."page_size".$page_size."timestamp".$nowtime."type".$type.$client_secret;
       $jiami= md5($str);//md5加密处理
       $upper = strtoupper($jiami);//加密之后的转换成大写
-
       $resdata = array(//这里一定要按照微信给的格式
-        "client_id"=>"4b5d3ccbce894f4e92bf8998da0853ba",
+        "client_id"=>$client_id,
         "keyword"=>$keyword,
-        "page"=>1,
-        "page_size"=>10,
-        "type"=>"pdd.ddk.goods.search",
+        "page"=>$page,
+        "page_size"=>$page_size,
+        "type"=>$type,
         "timestamp"=>$nowtime,
         "sign"=>$upper
       );
-     $res = postCurl($url,$resdata,'json');//将data数组转换为json数据
-
-      //return $res;
-      return json_decode ($res);
-
-
-
-
-
-      $data = ['str'=>$str,'upper' =>$upper,'nowtime' =>$nowtime,'resdata' =>$res];
-    	return  $data ;
+      $res = postCurl($url,$resdata,'json');//请求接口获得数据
+      $goodslist=json_decode ($res);
+      $resdata = ['state' => '200','message' => "查询商品列表成功",'nowtime' =>$nowtime,'goodslist'=>$goodslist];
+    	return  $resdata ;
     }
     
    
