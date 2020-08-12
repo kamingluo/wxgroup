@@ -14,4 +14,5 @@ return [
     'pdd_client_id' => '4b5d3ccbce894f4e92bf8998da0853ba',//拼多多群记分应用id
     'pdd_client_secret' => 'dffb105376b725650548f326e70add2d5d01bd0a',//拼多多群记分应用密钥
     'pdd_api_url' => 'https://gw-api.pinduoduo.com/api/router',//拼多多请求接口
+    'pdd_p_id'=>'1979520_149719573',//拼多多群记分小程序推广位id
 ];
