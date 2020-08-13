@@ -35,6 +35,9 @@ public function recommend(Request $request){
       if(!$pages){
         $pages=0;
       }
+      if(!$channel_type){
+        $channel_type=1;
+      }
       $offset=$pages*20;
       $type="pdd.ddk.goods.recommend.get";//查询的接口
       $p_id=Config('pdd_p_id');

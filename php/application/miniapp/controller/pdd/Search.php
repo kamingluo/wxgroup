@@ -1,6 +1,5 @@
 <?php
 namespace app\miniapp\controller\pdd;
-use think\Db;
 use think\Request;
 use think\Config;
 
@@ -35,7 +34,7 @@ class Search
 
   //生成多多客链接
   public function goodspromotion(Request $request){
-      $goods_id=$request->param("goods_id");//商品id
+      $goods_id=$request->param("goods_id");//商品id，传入形式要['54546566']
       $search_id=$request->param("search_id");//商品id
       if(!$search_id){
         $search_id=$goods_id;
