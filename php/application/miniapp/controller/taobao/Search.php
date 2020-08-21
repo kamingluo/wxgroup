@@ -74,7 +74,7 @@ class Search
       );
       $coupondata=taobaorequest($getcoupon);
 
-      $resdata = ['state' => '200','message' => "淘宝客商品详情11",'goodsdetail'=>$goodsdetail,'coupondata'=>$coupondata,'activity_id'=>$activity_id];
+      $resdata = ['state' => '200','message' => "淘宝客商品详情",'goodsdetail'=>$goodsdetail,'coupondata'=>$coupondata,'activity_id'=>$activity_id];
       return  $resdata ;
   }
 
