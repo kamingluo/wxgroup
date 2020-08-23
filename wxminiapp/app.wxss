@@ -57,5 +57,20 @@ position: fixed;
 }
 
 
-
+.canui-xzwz{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:1;
+}
+.canui-foor-fixed{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.canui-tabbar-bottom{
+  padding-bottom:20rpx;
+  min-height:150rpx;
+}
 

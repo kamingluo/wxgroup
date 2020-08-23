@@ -71,31 +71,17 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/group/usersigin/usersigin",
-					"pathName": "pages/group/usersigin/usersigin",
-					"query": "crowd_id=14",
+					"id": 2,
+					"name": "拼多多商品详情",
+					"pathName": "pages/extension/pdd/goodsdetails/goodsdetails",
+					"query": "goods_id=150703324981",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "pages/business/gdtad/gdtad",
-					"pathName": "pages/business/gdtad/gdtad",
-					"query": "crowd_id=14&id= 17304&user_id=10048",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/group/usersigin/usersigin",
-					"pathName": "pages/group/usersigin/usersigin",
-					"query": "crowd_id=14&user_id=10048",
-					"scene": null
-				},
-				{
-					"id": 5,
-					"name": "pages/group/pushnews/pushnews",
-					"pathName": "pages/group/pushnews/pushnews",
-					"query": "crowd_id=14&crowd_name=\"kaming测试\"",
+					"name": "拼多多商品搜索",
+					"pathName": "pages/extension/pdd/search/search",
+					"query": "",
 					"scene": null
 				}
 			]

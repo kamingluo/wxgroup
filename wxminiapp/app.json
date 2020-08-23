@@ -48,7 +48,9 @@
     "pages/business/gdtad/gdtad",
     "pages/business/exchange_detailed/exchange_detailed",
     "pages/business/exchange/exchange",
-    "pages/business/coin_record/coin_record"
+    "pages/business/coin_record/coin_record",
+    "pages/extension/pdd/goodsdetails/goodsdetails",
+    "pages/extension/pdd/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -81,6 +83,12 @@
         "text": "首页",
         "iconPath": "images/config/index.png",
         "selectedIconPath": "images/config/sindex.png"
+      },
+      {
+        "pagePath": "pages/extension/pdd/search/search",
+        "text": "测试",
+        "iconPath": "images/config/task.png",
+        "selectedIconPath": "images/config/stask.png"
       },
       {
         "pagePath": "pages/my/my",

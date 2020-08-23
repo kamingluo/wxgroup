@@ -1,0 +1,5 @@
+.cu-btn.sm {
+	padding: 0 20rpx;
+	font-size: 27rpx;
+	height: 55rpx;
+}

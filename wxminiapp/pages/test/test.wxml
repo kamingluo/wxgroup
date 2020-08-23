@@ -2,47 +2,26 @@
 	<view slot="backText">返回</view>
 	<view slot="content">测试页面</view>
 </cu-custom>
-<!--   
-  <view class='notice-wrap' hidden='{{hideNotice}}'>
-　　<view class='tongzhitext'>
-　　　　<text class="tongzhi-text"><text class="cuIcon-notificationfill text-grey"></text>{{notice}}</text>
-　　</view>
-　　<view bindtap='switchNotice' class="closeView"><text class="cuIcon-close text-grey"></text></view>
-</view> -->
-
-<!-- <view class='notice-wrap' hidden='{{hideNotice}}'>
-	<view class='notice ovh font28 relative'>
-		<view class="marquee_text" style="left:{{marqueeDistance}}px;">
-			<text class="cuIcon-notificationfill text-grey"></text> {{notice}}
-		</view>
-	</view>
-	　<view bindtap='switchNotice' class="closeView"><text class="cuIcon-close text-grey"></text></view>
-</view> -->
-
-<!-- adunit-1d1320feca860080 格子-->
-<!-- adunit-53f29d2c52baa487 banner-->
-<!-- adunit-4289a31678c6d829 视频-->
-
 
 <!-- 广点通广告组件 -->
-<gdtad adtype="5" adid="adunit-cb851dc9c3904d54" position="测试页面" capture-bind:tap="testdianji">
-</gdtad>
-
+<!-- <gdtad adtype="5" adid="adunit-cb851dc9c3904d54" position="测试页面" capture-bind:tap="testdianji">
+</gdtad> -->
 
 <!-- 默认图片组件 -->
 <!-- <defaultgraph tips="这里自定义提示数据"></defaultgraph> -->
 
-
-
-
-
 <!-- 广点通模板广告大模板 -->
-<view class="juli">
+<!-- <view class="juli">
 <ad-custom unit-id="adunit-b01774a672847dd7"></ad-custom>
-</view>
-
+</view> -->
 
 <!-- 广点通模板广告小模板 -->
 <!-- <view class="juli">
 <ad-custom unit-id="adunit-cb851dc9c3904d54"></ad-custom>
 </view> -->
+
+
+<!-- 拼多多商品广告模板 -->
+<view>
+<pddgoodslist></pddgoodslist>
+</view>
