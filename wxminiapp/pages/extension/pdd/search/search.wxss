@@ -3,3 +3,6 @@
 	font-size: 27rpx;
 	height: 55rpx;
 }
+.goodslist{
+	margin-bottom: 20rpx;
+}

@@ -5,19 +5,30 @@ const {
 Page({
   data: {
     goodsdata: {},
-    miniappurldata:{}
+    miniappurldata: {},
+    ifcollection: false,
+    goods_id: null,
+    search_id: null
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
     console.log(options)
+    let search_id = options.search_id || 0;
     let goods_id = Number(options.goods_id);
-    let search_id = options.search_id;
+    this.setData({
+      goods_id: goods_id,
+      search_id: search_id
+    })
     let newgoodsid = [goods_id];
-    
+
     this.goodsdata(newgoodsid)
     this.miniappurl(newgoodsid, search_id)
+    this.whethercollection(goods_id)
   },
+
+
+
   //点击购买
-  purchase:function(){
+  purchase: function () {
     let jumpurl = this.data.miniappurldata.page_path
     let appid = this.data.miniappurldata.app_id
     wx.navigateToMiniProgram({
@@ -27,8 +38,9 @@ Page({
 
   },
 
+
+  //获取商品详情
   goodsdata: function (goodsid) {
-  
     request({
       service: 'pdd/Search/goodsdetail',
       method: 'GET',
@@ -45,7 +57,7 @@ Page({
   },
 
 
-
+  //获取跳转链接
   miniappurl: function (goodsid, search_id) {
     request({
       service: 'pdd/Search/goodspromotion',
@@ -61,6 +73,102 @@ Page({
         })
       },
     })
+  },
+
+
+
+  //查询用户有没有收藏该商品
+  whethercollection: function (goodsid) {
+    let user_id = wx.getStorageSync('userdata').id || 0;
+    request({
+      service: 'pdd/collection/whethercollection',
+      method: 'GET',
+      data: {
+        goods_id: goodsid,
+        user_id: user_id
+      },
+      success: res => {
+        console.log("收藏信息", res)
+        this.setData({
+          ifcollection: res.ifcollection,
+        })
+      },
+    })
+  },
+
+
+  //用户取消收藏
+  deletecollection: function (goodsid) {
+    
+    let user_id = wx.getStorageSync('userdata').id || 0;
+    let goods_id = this.data.goods_id;
+    request({
+      service: 'pdd/collection/deletecollection',
+      method: 'GET',
+      data: {
+        goods_id: goods_id,
+        user_id: user_id
+      },
+      success: res => {
+        console.log("取消收藏", res)
+        wx.showToast({
+          title: '取消成功',
+          icon: 'none',
+          duration: 2000,
+        })
+        this.setData({
+          ifcollection: false,
+        })
+      },
+    })
+  },
+
+
+  //用户收藏商品
+  goodscollection: function () {
+    let user_id = wx.getStorageSync('userdata').id || 0;
+    let goods_id = this.data.goods_id;
+    let search_id = this.data.search_id || 0;
+    let mall_type = 1;
+    let goods_image_url = this.data.goodsdata.goods_thumbnail_url;
+    let goods_name = this.data.goodsdata.goods_name;
+    let mall_name = this.data.goodsdata.mall_name;
+    let sales_tip = this.data.goodsdata.sales_tip;
+    let min_group_price = this.data.goodsdata.min_group_price;
+    let coupon_discount = this.data.goodsdata.coupon_discount;
+    if (!coupon_discount) {
+      coupon_discount = 0;
+    }
+    request({
+      service: 'pdd/collection/goodscollection',
+      method: 'GET',
+      data: {
+        user_id: user_id,
+        goods_id: goods_id,
+        search_id: search_id,
+        mall_type: mall_type,
+        goods_image_url: goods_image_url,
+        goods_name: goods_name,
+        mall_name: mall_name,
+        sales_tip: sales_tip,
+        min_group_price: min_group_price,
+        coupon_discount: coupon_discount,
+      },
+      success: res => {
+        console.log("收藏成功", res)
+        wx.showToast({
+          title: '收藏成功',
+          icon: 'success',
+          duration: 2000,
+        })
+        this.setData({
+          ifcollection: true,
+        })
+      },
+    })
   }
+
+
+
 
 });

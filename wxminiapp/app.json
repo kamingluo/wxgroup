@@ -59,18 +59,6 @@
     "navigationStyle": "custom",
     "navigationBarTextStyle": "white"
   },
-"navigateToMiniProgramAppIdList": [
-  "wxf1f0d92f69dd80db",
-  "wx86a0b67ccf04472a",
-  "wxd53f125c7e4c7d44",
-  "wxb7801d04db4a354c",
-  "wxdb8afdceb2e24d7a",
-  "wx3adb314c8e9a6ed1",
-  "wxc6fa3baccd00d0cb",
-  "wx18b75705b93bd908",
-  "wx1fc44821ba937d67",
-  "wxf1f0d92f69dd80db"
-],
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#d0d0d0",

@@ -8,7 +8,8 @@ Page({
   data: {
     page:1,
     searchtext:"",
-    goodslist:[]
+    goodslist:[],
+    nodata:false,
 
   },
   onLoad: function (options) {
@@ -30,6 +31,7 @@ Page({
     console.log("点击搜索")
     this.setData({
       page: 1,
+      goodslist:[]
     })
     this.searchgoods()
   },
@@ -60,7 +62,8 @@ Page({
         var newgoodslist = [...goodslist, ...res.goodslist.goods_search_response.goods_list];
         console.log(newgoodslist.length)
         that.setData({
-          goodslist: newgoodslist
+          goodslist: newgoodslist,
+          nodata:true
         })
       },
     })

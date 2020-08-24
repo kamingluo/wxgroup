@@ -102,7 +102,8 @@
     <view class="nav_name">首页</view>
   </view>
   <view class="nav_list">
-    <text class="cuIcon-favor fenxiangicon"></text>
+    <text class="cuIcon-favorfill  text-blue fenxiangicon" wx:if="{{ifcollection}}" bindtap="deletecollection"></text>
+    <text class="cuIcon-favor fenxiangicon" wx:else bindtap="goodscollection"></text>
     <view class="nav_name">收藏</view>
   </view>
 

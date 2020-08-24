@@ -66,5 +66,24 @@ class Collection
        return  $state;
     }
 
+    //查询用户的收藏商品
+    public function usercollection(Request $request){
+        $user_id=$request->param("user_id");//用户id
+        $pages=$request->param("pages");//页数
+        if($pages){
+            //有传pages
+            $newpages= ($pages-1) * 20;//一页20条
+            $goodslist =db('goods_collection')->where('user_id',$user_id)->order('id desc')->limit($newpages,20)->select();
+        }
+        else{
+            //兼容没有传页数，返回全部信息
+           $goodslist =db('goods_collection')->where('user_id',$user_id)->order('id desc')->select();
+        }
+        $count =db('goods_collection')->where('user_id',$user_id)->count();
+        $state=['state'   => '200','message'  => "查询用户的收藏商品",'count'=>$count ];
+        $resdata=array_merge($state,array('goodslist'=>$goodslist));
+        return $resdata ;
+    }
+
    
 }

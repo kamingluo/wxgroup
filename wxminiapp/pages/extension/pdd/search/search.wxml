@@ -15,6 +15,10 @@
 </view>
 
 
-<view>
+<view wx:if="{{nodata && goodslist.length < 1}}">
+ <defaultgraph tips="没搜到,换个词试试？"></defaultgraph>
+</view>
+
+<view wx:else class="goodslist">
   <pddgoodslist goodslist="{{goodslist}}" ></pddgoodslist>
 </view>
