@@ -29,14 +29,53 @@ Page({
 
   //点击购买
   purchase: function () {
+    var that=this;
     let jumpurl = this.data.miniappurldata.page_path
     let appid = this.data.miniappurldata.app_id
     wx.navigateToMiniProgram({
       appId: appid,
       path: jumpurl,
+      success(res) {
+        console.log("跳转小程序成功")
+        that.commercestatistics()
+      }
     })
 
   },
+
+    //用户跳转成功统计
+    commercestatistics: function () {
+      let user_id = wx.getStorageSync('userdata').id || 0;
+      let channel = wx.getStorageSync('channel').id || 0;
+      let mall_type = 1;
+      let goods_image_url = this.data.goodsdata.goods_thumbnail_url;
+      let goods_name = this.data.goodsdata.goods_name;
+      let sales_tip = this.data.goodsdata.sales_tip;
+      let min_group_price = this.data.goodsdata.min_group_price;
+      let coupon_discount = this.data.goodsdata.coupon_discount;
+      if (!coupon_discount) {
+        coupon_discount = 0;
+      }
+      request({
+        service: 'statistics/commercestatistics',
+        method: 'GET',
+        data: {
+          user_id: user_id,
+          channel:channel,
+          mall_type: mall_type,
+          goods_image_url: goods_image_url,
+          goods_name: goods_name,
+          sales_tip: sales_tip,
+          min_group_price: min_group_price,
+          coupon_discount: coupon_discount,
+        },
+        success: res => {
+          console.log("统计成功", res)
+        },
+      })
+    },
+
+
 
 
   //获取商品详情
