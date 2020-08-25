@@ -205,6 +205,24 @@ Page({
         })
       },
     })
+  },
+  
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function (options) {
+    let goods_id = this.data.goods_id;
+    let search_id = this.data.search_id || 0;
+    let goods_image_url = this.data.goodsdata.goods_thumbnail_url;
+    let goods_name = this.data.goodsdata.goods_name;
+    let mall_type = 1;
+    return {
+      title:goods_name,
+      desc:goods_name,
+      imageUrl: goods_image_url,
+      path: '/pages/index/index?channel=1006&mall_type=1&goods_id='+goods_id+'&search_id='+search_id, // 分享传递商品id和搜索id，加上商城类型。
+    }
+   
   }
 
 

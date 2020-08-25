@@ -181,6 +181,15 @@ public function getqrcode(Request $request)
       }
 
 
+      public  function shareconfig() {
+        $state=['state'   => '200','message'  => "分享配置" ];
+        $shareconfig=['title'   => "群记分小程序，一款好用的群管理工具!",'imageUrl'  => 'https://material.gzywudao.top/image/group/groupicon.png' ];
+        $resdata=array_merge($state,array('shareconfig'=>$shareconfig));
+        return $resdata ;
+       
+      }
+
+
 
 
  public  function havetoken() {

@@ -22,3 +22,7 @@
 <view wx:else class="goodslist">
   <pddgoodslist goodslist="{{goodslist}}" ></pddgoodslist>
 </view>
+
+<view class='goTop centered' hidden='{{!floorstatus}}'>
+<image src='../../../../images/up.png'   bindtap="goTop"></image>
+</view>
