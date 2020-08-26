@@ -95,6 +95,13 @@
 					"pathName": "pages/extension/pdd/search/search",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/group/usersigin/usersigin",
+					"pathName": "pages/group/usersigin/usersigin",
+					"query": "crowd_id=14&crowd_name=kaming",
+					"scene": null
 				}
 			]
 		}

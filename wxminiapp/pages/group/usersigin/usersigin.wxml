@@ -54,8 +54,11 @@
 </view>
 <!--广点通视频广告结束-->
 
-
-
+ <view class="flex  p-xs margin-bottom-xs  mb-sm">
+      <view class="flex-twice bg-white radius"><text class="cuIcon-notificationfill lg"></text>今天已有0人签到</view>
+      <view class="flex-twice bg-white  radius">今日排名:0</view>
+      <view class=" flex-sub bg-white radius">签到记录>></view>
+    </view>
 
 
 

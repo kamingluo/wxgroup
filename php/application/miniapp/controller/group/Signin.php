@@ -221,6 +221,23 @@ public function usersignin(Request $request)
 
     }
 
+
+       //用户当日排行
+    public function userranking(Request $request){
+        $crowd_id=$request->param("crowd_id");
+        $user_id=$request->param("user_id");
+
+        $siginnum =db('signin_user_data')->where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();//查询今日签到人数
+        $usersigindata =db('signin_user_data')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->find();
+        $userranking=0;
+        if($usersigindata){
+            $userranking=$usersigindata['ranking'];
+        }
+        $state=['state'   => '200','message'  => "群总签到人数和用户排行" ,'siginnum' => $siginnum,'userranking' => $userranking];
+        return $state;
+
+    }
+
       //查看群的签到排行累计签到和连续签到和最后签到时间
       public function newsigninrankinglist(Request $request)
       {
