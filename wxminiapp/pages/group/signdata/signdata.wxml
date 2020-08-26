@@ -43,6 +43,9 @@
           <view class="text-gray text-sm flex">
             <text class="text-cut name">获得积分：{{item.signin_score >= 0?item.signin_score:"无积分"}}</text>
           </view>
+           <view class="text-gray text-sm flex">
+            <text class="text-cut name">签到排名：{{item.ranking}}</text>
+          </view>
           <view class="text-gray text-sm flex">
             <text class="text-cut">签到时间：{{item.create_time}}</text>
           </view>

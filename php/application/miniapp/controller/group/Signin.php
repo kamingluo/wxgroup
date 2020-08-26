@@ -264,7 +264,7 @@ public function usersignin(Request $request)
     //今日签到数据
     public function todaysigninlist(Request $request){
         $crowd_id=$request->param("crowd_id");
-        $sql="select a.*,b.nickName,b.avatarUrl from signin_user_data a,user b where a.user_id=b.id and TO_DAYS(a.create_time) = TO_DAYS(NOW()) and a.crowd_id=".$crowd_id." ORDER BY a.id DESC;";
+        $sql="select a.*,b.nickName,b.avatarUrl from signin_user_data a,user b where a.user_id=b.id and TO_DAYS(a.create_time) = TO_DAYS(NOW()) and a.crowd_id=".$crowd_id." ORDER BY a.id ASC;";
         $data = Db::query($sql); //拿到数据
         $state=['state'   => '200','message'  => "今日签到数据" ,'data' => $data];
         return $state;

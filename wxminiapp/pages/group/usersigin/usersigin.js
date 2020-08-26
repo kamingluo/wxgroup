@@ -15,7 +15,10 @@ Page({
     pages: 1,//默认第一页
     count: 0,
     modeltips:"群记分小程序提供技术支持",
-    banneradshow:true
+    banneradshow:true,
+    siginnum:0,
+    userranking:0
+
 
   },
   onLoad: function(e) {
@@ -25,6 +28,7 @@ Page({
     this.setData({
       crowd_id: e.crowd_id,
       crowd_name: e.crowd_name,
+      user_type:e.user_type,
       user_id: user_id,
       avatarUrl: avatarUrl,
       nickName: nickName
@@ -34,6 +38,7 @@ Page({
     this.usersigindata() //用户的签到数据
     this.todaywhethersignin() //签到配置
     this.signinrankinglist(1)//签到排行榜
+    this.userranking()//用户当日排行和总签到数
 
   },
 
@@ -129,6 +134,28 @@ Page({
     })
   },
 
+  //检查今天是否还能签到
+  userranking: function() {
+    let crowd_id = this.data.crowd_id
+    let user_id = wx.getStorageSync('userdata').id
+    request({
+      service: 'group/signin/userranking',
+      method: 'GET',
+      data: {
+        crowd_id: crowd_id,
+        user_id: user_id,
+      },
+      success: res => {
+        //console.log("今天是否能签到查询")
+        console.log(res)
+        this.setData({
+          siginnum: res.siginnum,
+          userranking: res.userranking,
+        })
+      }
+    })
+  },
+
 
   //用户签到
   usersignin: function() {
@@ -166,6 +193,7 @@ Page({
 
         that.refreshsigninrankinglist()//刷新一下排行榜
         that.usersigindata() //刷新一下首页数据
+        this.userranking()//刷新用户当日排行和总签到数
       },
       fail: res => {
         console.log("签到失败", res)
@@ -198,6 +226,14 @@ Page({
       duration: 2500,
     })
 
+  },
+
+  jumpsignindata: function() {
+    let crowd_id = this.data.crowd_id
+    let user_type = this.data.user_type
+    wx.navigateTo({
+      url: '/pages/group/signdata/signdata?crowd_id=' + crowd_id + '&user_type=' + user_type,
+    })
   },
 
 
