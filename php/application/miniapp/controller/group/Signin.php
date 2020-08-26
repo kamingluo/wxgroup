@@ -100,7 +100,10 @@ public function usersignin(Request $request)
         }
 
         //加完积分，给用户签到表signin_user_data加一条今天的记录
-        $today_signin_record = ['id'=>'','crowd_id' =>$crowd_id,'user_id' =>$user_id,'user_openid' =>$openid,'signin_score' =>$score,'create_time' =>$time];
+        $currentranking =db('signin_user_data')->where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();//查询今日签到人数，也就这人的排名数了
+        $newranking=$currentranking+1;
+
+        $today_signin_record = ['id'=>'','crowd_id' =>$crowd_id,'user_id' =>$user_id,'user_openid' =>$openid,'signin_score' =>$score,'ranking' =>$newranking,'create_time' =>$time];
         $today_signin_record_id=db('signin_user_data')->insert($today_signin_record);
 
         //先看看用户在该群有没有签到过总记录数据

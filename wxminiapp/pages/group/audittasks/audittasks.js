@@ -261,11 +261,4 @@ Page({
       taskerrtext: e.currentTarget.dataset.data,
     })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

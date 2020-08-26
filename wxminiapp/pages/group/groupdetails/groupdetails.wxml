@@ -38,9 +38,9 @@
 				<button class=" cu-btn bg-cyan  round  shadow signinbtn">抽奖记录</button>
 			</view>
 
-			<view class='signindata' wx:if="{{user_type == 1 ||user_type == 2 || viewdata ? true:false }}" bindtap="signindata">
+			<!-- <view class='signindata' wx:if="{{user_type == 1 ||user_type == 2 || viewdata ? true:false }}" bindtap="signindata">
 				<button class="cu-btn bg-olive   round shadow signinbtn">签到记录</button>
-			</view>
+			</view> -->
 		</view>
 
 	</view>

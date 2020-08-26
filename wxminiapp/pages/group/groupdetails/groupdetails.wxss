@@ -69,7 +69,7 @@
 
 .crowdright {
   position:absolute;
-  margin-top: 40rpx;
+  margin-top: 120rpx;
   margin-left: 270rpx;
   
 }

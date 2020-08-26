@@ -325,13 +325,14 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title:"群记分小程序，一款好用的群管理工具。",
-      desc:"群记分小程序，一款好用的群管理工具。",
-      imageUrl: baseConfig.imageurl+'miniapp/images/appicon.png',
-      // imageUrl: 'https://material.gzywudao.top/image/group/groupicon.png',
-      path: '/pages/index/index?channel=1005&ald_media_id=33542&ald_link_key=c99244f0802f9f06', // 路径，传递参数到指定页面。
-    }
+    return share();
+    // return {
+    //   title:"群记分小程序，一款好用的群管理工具。",
+    //   desc:"群记分小程序，一款好用的群管理工具。",
+    //   imageUrl: baseConfig.imageurl+'miniapp/images/appicon.png',
+    //   // imageUrl: 'https://material.gzywudao.top/image/group/groupicon.png',
+    //   path: '/pages/index/index?channel=1005&ald_media_id=33542&ald_link_key=c99244f0802f9f06', // 路径，传递参数到指定页面。
+    // }
     
   },
 

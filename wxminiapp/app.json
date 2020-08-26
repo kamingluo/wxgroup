@@ -50,7 +50,8 @@
     "pages/business/exchange/exchange",
     "pages/business/coin_record/coin_record",
     "pages/extension/pdd/goodsdetails/goodsdetails",
-    "pages/extension/pdd/search/search"
+    "pages/extension/pdd/search/search",
+    "pages/extension/extension"
   ],
   "window": {
     "backgroundTextStyle": "light",
