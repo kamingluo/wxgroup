@@ -114,6 +114,14 @@ Page({
     })
   },
 
+  //回到首页
+  gohome:function(){
+    wx.switchTab({
+      url: '/pages/extension/extension'
+    })
+
+  },
+
 
 
   //查询用户有没有收藏该商品
@@ -220,7 +228,7 @@ Page({
       title:goods_name,
       desc:goods_name,
       imageUrl: goods_image_url,
-      path: '/pages/index/index?channel=1006&mall_type=1&goods_id='+goods_id+'&search_id='+search_id, // 分享传递商品id和搜索id，加上商城类型。
+      path: '/pages/extension/extension?channel=1006&mall_type=1&goods_id='+goods_id+'&search_id='+search_id, // 分享传递商品id和搜索id，加上商城类型。
     }
    
   }

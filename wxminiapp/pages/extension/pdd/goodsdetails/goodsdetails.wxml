@@ -26,10 +26,12 @@
       <text class="yuanjia">￥{{filters.toFix(goodsdata.min_group_price/100)}}</text>
     </view>
   </view>
+  	<kaming-button open-type='share'>
   <view class="share">
     <text class="cuIcon-forward fenxiangicon"></text>
     <view class="fenxiang">分享</view>
   </view>
+  </kaming-button>
 </view>
 
 
@@ -53,6 +55,7 @@
        ￥<text class="youhuiquan">{{filters.toFix(goodsdata.coupon_discount/100)}}</text>
       </view>
       <view class="flex-treble  padding-sm ">
+      <view class="menkan">
         <view>
           <text class="youhuiquanname">优惠券</text>
         </view>
@@ -60,6 +63,7 @@
           <!-- <text class="youhuiquantime" wx:if="{{}}">2010-01-02 - 2020-09-03</text> -->
           <text class="youhuiquantime" wx:if="{{goodsdata.coupon_min_order_amount > 0 }}">最低使用门槛:{{filters.toFix(goodsdata.coupon_min_order_amount/100)}}元</text>
           <text class="youhuiquantime" wx:else>无门槛使用</text>
+        </view>
         </view>
       </view>
       <view class="flex-twice  padding-sm  centered ">
@@ -97,7 +101,8 @@
 
 <!--底部导航-->
 <view class="footer_nav">
-  <view class="nav_list">
+  <view class="nav_list" bindtap="gohome">
+  
     <text class="cuIcon-shop fenxiangicon"></text>
     <view class="nav_name">首页</view>
   </view>
@@ -107,6 +112,6 @@
     <view class="nav_name">收藏</view>
   </view>
 
-  <view class="add_cart goods_buy">分享</view>
-  <view class="now_buy goods_buy" bindtap="purchase">领券购买</view>
+  <view class="add_cart goods_buy">	<kaming-button open-type='share'>分享</kaming-button></view>
+  <view class="now_buy goods_buy" bindtap="purchase">{{goodsdata.has_coupon?"领券购买":"立即购买"}}</view>
 </view>

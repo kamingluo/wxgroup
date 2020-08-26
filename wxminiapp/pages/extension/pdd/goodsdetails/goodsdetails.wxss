@@ -30,6 +30,9 @@
   font-size: 20rpx;
 
 }
+.menkan{
+  margin-top: -7rpx;
+}
 .youhuiquanname{
   font-size: 30rpx;
   font-weight: 600;

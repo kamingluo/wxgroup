@@ -17,6 +17,9 @@ page{
 .check-left{
   background: url(https://yaoge.oss-cn-shanghai.aliyuncs.com/myfiles/line.png) right 10px center no-repeat;
 }
+.usersigin{
+  font-size: 25rpx;
+}
 
 .view-check{
   position: relative;

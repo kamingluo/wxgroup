@@ -54,10 +54,10 @@
 </view>
 <!--广点通视频广告结束-->
 
- <view class="flex  p-xs margin-bottom-xs  mb-sm">
-      <view class="flex-twice bg-white radius"><text class="cuIcon-notificationfill lg"></text>今天已有{{siginnum}}人签到</view>
-      <view class="flex-twice bg-white  radius">今日排名:{{userranking}}</view>
-      <view class=" flex-sub bg-white radius" bindtap="jumpsignindata">签到记录>></view>
+ <view class="flex  p-xs margin-bottom-xs  mb-sm usersigin">
+      <view class="flex-twice bg-white radius"><text class="cuIcon-notificationfill lg"></text><text>今天已有{{siginnum}}人签到</text></view>
+      <view class="flex-twice bg-white  radius"><text>今日排名:{{userranking}}</text></view>
+      <view class=" flex-sub bg-white radius" bindtap="jumpsignindata"><text>签到记录>></text></view>
     </view>
 
 

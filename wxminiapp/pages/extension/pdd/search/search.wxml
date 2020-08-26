@@ -6,7 +6,7 @@
 <view class="cu-bar search bg-white">
   <view class="search-form round">
     <text class="cuIcon-search"></text>
-    <input type="text" placeholder="请输入商品名称" value="{{searchtext}}" bindinput="searchtext" confirm-type="search"></input>
+    <input type="text" placeholder="请输入商品名称" value="{{searchtext}}" bindinput="searchtext" confirm-type="search" focus="true"></input>
     <text class="cuIcon-roundclose" bindtap="qingkong"></text>
   </view>
   <view class="action">

@@ -102,6 +102,13 @@
 					"pathName": "pages/group/usersigin/usersigin",
 					"query": "crowd_id=14&crowd_name=kaming",
 					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/extension/extension",
+					"pathName": "pages/extension/extension",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
