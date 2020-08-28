@@ -11,20 +11,40 @@ Page({
     goodslist:[],
     nodata:false,
 
+    list: [],
+    resultList:[]
+
   },
   onLoad: function (options) {
+
+    var _this = this;
+    wx.getStorage({
+      key: 'historySearch',
+      success(res) {
+        _this.setData({
+          list: res.data
+        })
+      }
+    })
 
   },
 
   searchtext: function (e) {
     this.setData({
       searchtext: e.detail.value,
+      goodslist:[],
+      nodata:false,
+      page:1
     })
   },
   qingkong:function(){
     console.log("清空搜索词")
+
     this.setData({
       searchtext: "",
+      nodata:false,
+      goodslist:[],
+      page:1
     })
   },
   clicksearch:function(){
@@ -34,6 +54,7 @@ Page({
       goodslist:[]
     })
     this.searchgoods()
+    this.save();
   },
 
   searchgoods: function () {
@@ -96,6 +117,64 @@ Page({
         content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
       })
     }
+  },
+
+
+
+  /**
+   *搜索历史
+   */
+  save: function () {
+    var list = this.data.list;
+    if (list.indexOf(this.data.searchtext) == -1 & this.data.searchtext != '') {
+      if(list.length < 10){
+        console.log("直接添加元素")
+        // list.push(this.data.searchtext);
+        list.unshift(this.data.searchtext);
+      }
+      else{
+        console.log("去除最后一个元素")
+        list.pop();
+        list.unshift(this.data.searchtext);
+      }
+    }
+    this.setData({
+      list: list
+    })
+    wx.setStorage({
+      key: 'historySearch',
+      data: list
+    })
+    
+  },
+
+  searchName: function (e) {
+    this.setData({
+      searchtext: e.currentTarget.dataset.value
+    })
+    this.searchgoods();
+  },
+  remove: function () {
+    var _this = this;
+    wx.showModal({
+      title: '提示',
+      content: '确认清空所有记录?',
+      success(res) {
+        if (res.confirm) {
+          wx.removeStorage({
+            key: 'historySearch',
+            success() {
+              _this.setData({
+                list: []
+              })
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
   },
 
 

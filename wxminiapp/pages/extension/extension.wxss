@@ -1,1 +1,42 @@
 /* pages/extension/extension.wxss */
+page{
+  background-color: white;
+}
+
+.cu-custom {
+  margin-top: 50rpx;
+	display: block;
+	position: relative;
+}
+
+
+.search{
+  width: 75%;
+  background-color: white;
+}
+.search-body{
+  width: 100%;
+}
+.zhanwei{
+  height: 50rpx;
+}
+
+.cu-custom .cu-bar {
+	min-height: 0px;
+	padding-right: 0rpx;
+	box-shadow: 0rpx 0rpx 0rpx;
+	z-index: 9999;
+}
+
+.cu-custom .cu-bar .content {
+	width: calc(100% - 200rpx);
+}
+
+.cu-bar {
+  margin-top: 5rpx;
+	display: block;
+	position: relative;
+	align-items: center;
+	min-height: 100rpx;
+	justify-content: space-between;
+}
