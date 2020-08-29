@@ -33,7 +33,7 @@ class Recommend
 public function recommend(Request $request){
       $pages=$request->param("pages");//页数
       $channel_type=$request->param("channel_type");//类型1
-      $cat_id=$request->param("channel_type");//类型2
+      $cat_id=$request->param("cat_id");//类型2
       if(!$pages){
         $pages=0;
       }
