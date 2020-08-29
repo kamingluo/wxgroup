@@ -10,25 +10,34 @@
 </cu-custom>
 
 <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-  <swiper-item wx:for="{{swiperList}}" wx:key>
-    <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+  <swiper-item wx:for="{{themelist}}" wx:key bindtap="clickswiper" data-data="{{item}}">
+    <image src="{{item.image_url}}" mode="aspectFill"></image>
   </swiper-item>
 </swiper>
 
 
 <view class="cu-list grid col-5 no-border">
-  <view class="cu-item" wx:for="{{iconList}}" wx:key>
-    <view class="cuIcon-{{item.icon}} text-{{item.color}}">
-      <!-- <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
-        <block wx:if="{{item.badge!=1}}">{{item.badge>99?"99+":item.badge}}</block>
-      </view> -->
+  <view class="cu-item" wx:for="{{iconList}}" wx:key bindtap="clickicon" data-data="{{item}}">
+    <view class="icon-image">
+      <image src="{{item.iconurl}}"></image>
     </view>
     <text>{{item.name}}</text>
   </view>
 </view>
 
-<scroll-view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">
-  <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{10}}" wx:key bindtap="tabSelect" data-id="{{index}}">
-    Tab{{index}}
-  </view>
-</scroll-view>
+<view class="tab-body">
+  <scroll-view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">
+    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{tabdata}}" wx:key bindtap="tabSelect" data-data="{{item}}" data-id="{{index}}">
+      {{item.name}}
+    </view>
+  </scroll-view>
+</view>
+
+<view class="goodslist"> 
+  <pddgoodslist goodslist="{{goodslist}}"></pddgoodslist>
+</view>
+
+
+<view class='goTop centered' hidden='{{!floorstatus}}'>
+	<image src='../../images/up.png' bindtap="goTop"></image>
+</view>

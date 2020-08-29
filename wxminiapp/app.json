@@ -51,6 +51,7 @@
     "pages/business/coin_record/coin_record",
     "pages/extension/pdd/goodsdetails/goodsdetails",
     "pages/extension/pdd/search/search",
+    "pages/extension/pdd/themegoods/themegoods",
     "pages/extension/extension"
   ],
   "window": {
@@ -75,9 +76,9 @@
       },
       {
         "pagePath": "pages/extension/extension",
-        "text": "测试",
-        "iconPath": "images/config/task.png",
-        "selectedIconPath": "images/config/stask.png"
+        "text": "优惠",
+        "iconPath": "images/config/coupon.png",
+        "selectedIconPath": "images/config/scoupon.png"
       },
       {
         "pagePath": "pages/my/my",

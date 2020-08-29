@@ -93,8 +93,8 @@ Page({
 
   // 获取滚动条当前位置
   onPageScroll: function (e) {
-    console.log(e)
-    if (e.scrollTop > 100) {
+    //console.log(e)
+    if (e.scrollTop > 600) {
       this.setData({
         floorstatus: true
       });
