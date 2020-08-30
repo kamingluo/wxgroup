@@ -52,6 +52,7 @@
     "pages/extension/pdd/goodsdetails/goodsdetails",
     "pages/extension/pdd/search/search",
     "pages/extension/pdd/themegoods/themegoods",
+    "pages/extension/collection/collection",
     "pages/extension/extension"
   ],
   "window": {

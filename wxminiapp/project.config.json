@@ -116,6 +116,13 @@
 					"pathName": "pages/extension/pdd/themegoods/themegoods",
 					"query": "theme_id=7610&name=主题名称",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/extension/collection/collection",
+					"pathName": "pages/extension/collection/collection",
+					"query": "theme_id=7610&name=主题名称",
+					"scene": null
 				}
 			]
 		}

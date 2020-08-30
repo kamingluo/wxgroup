@@ -24,10 +24,11 @@ class Collection
         $sales_tip=$request->param("sales_tip");//销售量
         $min_group_price=$request->param("min_group_price");//原价
         $coupon_discount=$request->param("coupon_discount");//优惠券价格
+        $has_coupon=$request->param("has_coupon");//是否有券
         $time =date('Y-m-d H:i:s',time());
 
         $dbdata = ['id'=>'','user_id' =>$user_id,'mall_type' => $mall_type,'goods_id' => $goods_id,'search_id' => $search_id,'goods_image_url' => $goods_image_url,'goods_name' => $goods_name,
-        'mall_name' => $mall_name,'sales_tip' => $sales_tip,'min_group_price' => $min_group_price,'coupon_discount' => $coupon_discount,'create_time' =>$time];
+        'mall_name' => $mall_name,'sales_tip' => $sales_tip,'min_group_price' => $min_group_price,'coupon_discount' => $coupon_discount,'has_coupon' => $has_coupon,'create_time' =>$time];
         $collection_id= db('goods_collection')->insertGetId($dbdata);//返回自增ID
         $state=['state'   => '200','message'  => "商品收藏成功" ];
         $resdata=array_merge($state,array('collection_id'=>$collection_id));
