@@ -156,7 +156,7 @@ Page({
       name: '话费充值'
     }, {
       id: 5,
-      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/shoucang.png',
+      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/shoucang2.png',
       jumpurl: '',
       type: 2,
       name: '我的收藏'

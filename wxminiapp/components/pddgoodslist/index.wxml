@@ -26,9 +26,10 @@
           </view>
         </view>
       </view>
-      <view class="sold-body centered" wx:if="{{item.has_coupon}}">
+      <view class="sold-body centered">
         <view class="good-juli-body">
-          <text class="cu-tag bg-red radius youhui">{{item.coupon_discount/100}}元券</text>
+          <text class="cu-tag bg-red radius youhui" wx:if="{{item.has_coupon}}">{{item.coupon_discount/100}}元券</text>
+          <text class="cu-tag bg-red radius youhui" wx:else>暂无优惠券</text>
         </view>
       </view>
       <view class="sold-body centered">
