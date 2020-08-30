@@ -16,7 +16,7 @@
           <text class="discount" wx:if="{{item.has_coupon}}">￥{{ filters.toFix(item.min_group_price/100 - item.coupon_discount/100)}}</text>
           <text class="discount" wx:else>￥{{ filters.toFix(item.min_group_price/100)}}</text>
 
-          <text class="yuanjia">￥{{filters.toFix(item.min_group_price/100)}}</text>
+          <text class="yuanjia" wx:if="{{item.has_coupon}}">￥{{filters.toFix(item.min_group_price/100)}}</text>
         </view>
       </view>
       <view class="sold-body centered">

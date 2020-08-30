@@ -4,10 +4,15 @@
 </cu-custom>
 
 <view wx:if="{{goodslist.length < 1}}" class="defaultgraph">
-	<defaultgraph tips="你暂时还没收藏商品呢"></defaultgraph>
+  <defaultgraph tips="你暂时还没收藏商品呢"></defaultgraph>
 </view>
-<view wx:else >
-	<view class="goodslist" wx:if="{{goodslist.length > 0}}">
-		<pddgoodslist goodslist="{{goodslist}}"></pddgoodslist>
-	</view>
+<view wx:else>
+  <view class="goodslist" wx:if="{{goodslist.length > 0}}">
+    <pddgoodslist goodslist="{{goodslist}}"></pddgoodslist>
+  </view>
+</view>
+
+
+<view style='margin-top: 10rpx;margin-bottom: 30rpx;color:#aaaaaa' class='centered' wx:if="{{goodslist.length >= count}}">
+  <text>-------已经到底啦-------</text>
 </view>

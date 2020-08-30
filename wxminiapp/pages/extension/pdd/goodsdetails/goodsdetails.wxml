@@ -23,7 +23,7 @@
       <text class="goods_desc">{{goodsdata.goods_desc}}</text>
     </view>
     <view class="goods_price">￥{{filters.toFix( goodsdata.min_group_price/100 - goodsdata.coupon_discount/100)}}
-      <text class="yuanjia">￥{{filters.toFix(goodsdata.min_group_price/100)}}</text>
+      <text class="yuanjia" wx:if="{{goodsdata.has_coupon}}">￥{{filters.toFix(goodsdata.min_group_price/100)}}</text>
     </view>
   </view>
   	<kaming-button open-type='share'>

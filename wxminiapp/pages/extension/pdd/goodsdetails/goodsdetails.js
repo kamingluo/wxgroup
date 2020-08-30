@@ -186,6 +186,11 @@ Page({
     if (!coupon_discount) {
       coupon_discount = 0;
     }
+    let has_coupon=0;
+    let ifcoupon = this.data.goodsdata.has_coupon;
+    if (ifcoupon){
+      has_coupon=1;
+    }
     request({
       service: 'pdd/collection/goodscollection',
       method: 'GET',
@@ -200,6 +205,7 @@ Page({
         sales_tip: sales_tip,
         min_group_price: min_group_price,
         coupon_discount: coupon_discount,
+        has_coupon:has_coupon
       },
       success: res => {
         console.log("收藏成功", res)

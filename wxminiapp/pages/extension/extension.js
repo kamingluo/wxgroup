@@ -18,7 +18,7 @@ Page({
     pages: 1,//商品页数
     TabCur: 0,
     scrollLeft: 0,
-    goodslist:[]//商品信息流数据
+    goodslist: []//商品信息流数据
 
   },
   onLoad: function (options) {
@@ -91,7 +91,7 @@ Page({
       channel_type: e.currentTarget.dataset.data.channel_type,
       cat_id: e.currentTarget.dataset.data.cat_id,
       pages: 1,
-      goodslist:[],
+      goodslist: [],
       TabCur: e.currentTarget.dataset.id,
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60
     })
@@ -99,10 +99,10 @@ Page({
   },
 
   //获取商品流数据
-  getgoodslist:function(){
-    var that=this
+  getgoodslist: function () {
+    var that = this
     let channel_type = that.data.channel_type;
-    let cat_id=that.data.cat_id;
+    let cat_id = that.data.cat_id;
     let pages = that.data.pages;
     request({
       service: 'pdd/recommend/recommend',
@@ -115,7 +115,7 @@ Page({
       success: res => {
         console.log("商品流数据", res)
         // let goodslist = res.recommenddata.goods_basic_detail_response.list;
-        let goodslist =that.data.goodslist;
+        let goodslist = that.data.goodslist;
         let newgoodslist = [...goodslist, ...res.recommenddata.goods_basic_detail_response.list];
         that.setData({
           goodslist: newgoodslist,
@@ -156,11 +156,19 @@ Page({
       name: '话费充值'
     }, {
       id: 5,
-      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/taobao.png',
-      jumpurl: '/pages/web/web?specialUrl=1&src=https://mobile.yangkeduo.com/duo_transfer_channel.html?resourceType=4&pid=1979520_149719573&cpsSign=CE_200829_1979520_149719573_5221f3bb4bfd24893d894adcd31f5ef2&duoduo_type=2',
+      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/shoucang.png',
+      jumpurl: '',
       type: 2,
-      name: '淘优惠券'
-    }]
+      name: '我的收藏'
+    },
+      // {
+      //   id: 5,
+      //   iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/taobao.png',
+      //   jumpurl: '/pages/web/web?specialUrl=1&src=https://mobile.yangkeduo.com/duo_transfer_channel.html?resourceType=4&pid=1979520_149719573&cpsSign=CE_200829_1979520_149719573_5221f3bb4bfd24893d894adcd31f5ef2&duoduo_type=2',
+      //   type: 2,
+      //   name: '淘优惠券'
+      // }
+    ]
     this.setData({
       iconList: iconList,
     })
@@ -171,12 +179,15 @@ Page({
     let type = e.currentTarget.dataset.data.type;
     let jumpurl = e.currentTarget.dataset.data.jumpurl;
     if (type == 2) {
-      wx.showToast({
-        title: '敬请期待',
-        icon: 'none',
-        duration: 2000,
+      wx.navigateTo({
+        url: '/pages/extension/collection/collection'
       })
-      return
+      // wx.showToast({
+      //   title: '敬请期待',
+      //   icon: 'none',
+      //   duration: 2000,
+      // })
+      // return
     }
     else {
       wx.navigateToMiniProgram({
@@ -204,7 +215,7 @@ Page({
         cat_id: 20100,
       },
       {
-        id:3,
+        id: 3,
         name: '百货',
         channel_type: 4,
         cat_id: 20100,
