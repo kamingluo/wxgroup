@@ -20,14 +20,14 @@ Page({
     usergrouplist:[],//用户加入群列表
     ifauthorized:false,
     banneradshow:true,
-    xmad: { //小盟广告
-      adData: {},
-      ad: {
-        banner1: "xmf4d0492bbe9627bd723b64d44bacef",
-        banner2: "xmde2f6e240c459769d0f1d791087cbb",
-        banner3: "xma6e58bd54538ae4ae507dd2e2e1e7e",
-      },
-    },
+    // xmad: { //小盟广告
+    //   adData: {},
+    //   ad: {
+    //     banner1: "xmf4d0492bbe9627bd723b64d44bacef",
+    //     banner2: "xmde2f6e240c459769d0f1d791087cbb",
+    //     banner3: "xma6e58bd54538ae4ae507dd2e2e1e7e",
+    //   },
+    // },
   },
 
   /**

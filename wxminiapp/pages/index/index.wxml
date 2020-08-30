@@ -136,7 +136,7 @@
 <view class='adbrush'>
 
   <!--小盟广告开始-->
-  <view>
+  <!-- <view>
     <view>
       <view class="xm_banner" style="width:100%">
         <xm-ad data-id="{{xmad.ad.banner1}}" adData="{{xmad.adData}}" bindadload="adImgLoad" bindclick="appoIntView" bindclose="xmadClose" class="xm_component"> </xm-ad>
@@ -153,7 +153,7 @@
       </view>
     </view>
 
-  </view>
+  </view> -->
   <!--小盟广告结束-->
 
 </view>
