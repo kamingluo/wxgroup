@@ -26,7 +26,7 @@ Page({
     timepicker: [],
     time: 12,
     lotterytime: '12:00:00',
-    datetime: '2020-06-01',
+    datetime: '2020-08-30',
 
     //中奖方式
     lottery_mode:"0",
@@ -283,6 +283,7 @@ Page({
 
   //提交发布
   pushlottery:function(){
+    var that =this;
     let goodsname=this.data.goodsname;
     if (!goodsname){
       this.wxtoast("奖品名称不能为空")
@@ -306,9 +307,12 @@ Page({
     else{
       let time1= new Date();//获取当前时间
       let time2 = this.data.datetime;//设置的开奖时间
-     
-      let startTime = new Date(Date.parse(time1));
-      let endTime = new Date(Date.parse(time2));
+      let lotterytime = that.data.lotterytime;
+      let time3 = time2 + " " + lotterytime;//开奖时间
+      let startTime =Date.parse(time1);
+      let endTime = Date.parse(time3);
+      // console.log("开始时间",startTime)
+      // console.log("结束时间",endTime)
       if (startTime > endTime) {
         this.wxtoast("开奖时间不规范")
         return;
