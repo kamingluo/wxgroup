@@ -1,14 +1,3 @@
-/* pages/my/my.wxss */
-.addminiapptips{
-  position: fixed;
-  left: 55%;
-  z-index: 999;
-}
-.addminiapptips image{
-  width: 250rpx;
-  height: 150rpx;
-}
-
 
 .top{
   height: 180rpx;

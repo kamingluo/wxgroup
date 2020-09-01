@@ -1,5 +1,13 @@
 /* pages/business/gdtad/gdtad.wxss */
 
+.cu-bar {
+	display: flex;
+	position: relative;
+	align-items: center;
+	min-height: 80rpx;
+	justify-content: space-between;
+  margin-bottom: 15rpx;
+}
 page {
   background-color: white;
 }

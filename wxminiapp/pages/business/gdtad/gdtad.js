@@ -374,6 +374,11 @@ clickgridadsuccess:function(){
     })
 
   },
+  coinrecord: function () {
+    wx.navigateTo({
+      url: '/pages/business/coin_record/coin_record'
+    })
+  },
 //用户分享
  onShareAppMessage: function () {
   return share();

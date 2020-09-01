@@ -3,11 +3,17 @@
 	<view slot="content">赚金币</view>
 </cu-custom>
 
+<view class="cu-bar bg-white solid-bottom" bindtap="coinrecord">
+  <view class='action'>
+    <text class='cuIcon-titles text-orange'></text>赚金币
+  </view>
+  <view class='action'>
+   <text>查看金币记录>></text>
+  </view>
+</view>
 
 
 <view  wx:if="{{coins.invitation > 0 }}">
-
-
 	<view class="centered top">
 		<view class="explain">
 			<view class="title">

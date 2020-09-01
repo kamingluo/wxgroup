@@ -1,130 +1,107 @@
 <cu-custom bgColor="bg-cyan">
-	<view slot="content">我的页面</view>
+  <view slot="content">我的页面</view>
 </cu-custom>
 
-<!-- <view class='addminiapptips' >
- <image src='/images/addminiapptip.png' class='u-img-slide'></image>
-
-</view> -->
-
 <view class='top bg-cyan'>
-	<view class='user'>
-		<view class='userAvatar'>
-			<open-data class='userAvatarurl' type="userAvatarUrl"></open-data>
-		</view>
-
-		<view class='username'>
-
-			<view class='userNickName' bindlongpress="testpages">
-				<open-data type="userNickName"></open-data>
-			</view>
-
-			<view class='id'>
-				<text>ID:{{userdata.id}}</text>
-			</view>
-
-			<view class='birthday'>
-				<text>生日:{{birthday?birthday:"未设置"}} </text>
-				<picker mode="date" value="{{birthday?birthday:'2000-01-01'}}" start="1940-01-01" end="2012-01-01" bindchange="bindDateChange">
-
-					<text class='cuIcon-post  xiugai '></text>
-				</picker>
-
-			</view>
-
-
-		</view>
-		<!-- <view class='erweima'  bindtap='qrcode' >
+  <view class='user'>
+    <view class='userAvatar'>
+      <open-data class='userAvatarurl' type="userAvatarUrl"></open-data>
+    </view>
+    <view class='username'>
+      <view class='userNickName' bindlongpress="testpages">
+        <open-data type="userNickName"></open-data>
+      </view>
+      <view class='id'>
+        <text>ID:{{userdata.id}}</text>
+      </view>
+      <view class='birthday'>
+        <text>生日:{{birthday?birthday:"未设置"}} </text>
+        <picker mode="date" value="{{birthday?birthday:'2000-01-01'}}" start="1940-01-01" end="2012-01-01" bindchange="bindDateChange">
+          <text class='cuIcon-post  xiugai '></text>
+        </picker>
+      </view>
+    </view>
+    <!-- <view class='erweima'  bindtap='qrcode' >
       <image src='../../images/common/erweima.svg'></image>
     </view> -->
-	</view>
+  </view>
 </view>
 
 <view class='score'>
-	<view class='score_text'>
-		<text>我的金币：<text style="color:red">{{userdata.coin}}</text></text>
-		<image src='../../images/common/coin.svg'></image>
-	</view>
-	<view class='score_button'>
-		<button bindtap='coinrecord' class=' bg-blue centered'>金币记录</button>
-	</view>
+  <view class='score_text'>
+    <text>我的金币：<text style="color:red">{{userdata.coin}}</text></text>
+    <image src='../../images/common/coin.svg'></image>
+  </view>
+  <view class='score_button'>
+    <button data-jumpid="1" bindtap="business" class=' bg-blue centered'>去赚金币</button>
+  </view>
 </view>
 
 
 <view class="cu-list grid col-3">
-	<view class="cu-item" data-jumpid="1" bindtap="business">
-		<view class="cuIcon-rechargefill text-yellow">
-		</view>
-		<text>去赚金币</text>
-	</view>
+  <view class="cu-item" data-jumpid="1" bindtap="business">
+    <view class="cuIcon-rechargefill text-yellow">
+    </view>
+    <text>去赚金币</text>
+  </view>
 
-	<view class="cu-item" data-jumpid="2" bindtap="business">
-		<view class="cuIcon-presentfill text-red">
-		</view>
-		<text>兑换商城</text>
-	</view>
+  <view class="cu-item" data-jumpid="2" bindtap="business">
+    <view class="cuIcon-presentfill text-red">
+    </view>
+    <text>兑换商城</text>
+  </view>
 
-	<view class="cu-item" data-jumpid="3" bindtap="business">
-		<view class="cuIcon-formfill text-cyan">
-		</view>
-		<text>兑换记录</text>
-	</view>
+  <view class="cu-item" data-jumpid="3" bindtap="business">
+    <view class="cuIcon-formfill text-cyan">
+    </view>
+    <text>兑换记录</text>
+  </view>
 
 </view>
 
 
 
 <view class="cu-list menu card-menu margin-top margin-bottom shadow-lg radius">
+  <view class="cu-item arrow" bindtap='usertasklist'>
+    <kaming-button>
+      <view class="content ">
+        <text class="cuIcon-pay text-blue iconsize"></text>
+        <text class="text-grey">空间任务记录</text>
+      </view>
+    </kaming-button>
+  </view>
+  <view class="cu-item arrow" bindtap='exchangelist'>
+    <kaming-button>
+      <view class="content ">
+        <text class="cuIcon-present text-red iconsize"></text>
+        <text class="text-grey">空间兑换记录</text>
+      </view>
+    </kaming-button>
+  </view>
 
-	<view class="cu-item arrow" bindtap='usertasklist'>
-		<kaming-button>
-			<view class="content ">
-				<text class="cuIcon-pay text-blue iconsize"></text>
-				<text class="text-grey">空间任务记录</text>
-			</view>
-		</kaming-button>
-	</view>
-	<view class="cu-item arrow" bindtap='exchangelist'>
-		<kaming-button>
-			<view class="content ">
-				<text class="cuIcon-present text-red iconsize"></text>
-				<text class="text-grey">空间兑换记录</text>
-			</view>
-		</kaming-button>
-	</view>
-
-	<view class="cu-item arrow" bindtap='myaddress'>
-		<view class="content" hover-class="none">
-			<text class="cuIcon-locationfill text-yellow iconsize"></text>
-			<text class="text-grey">我的地址</text>
-		</view>
-	</view>
-
-	<view class="cu-item arrow">
-		<view class="shouquananniu" wx:if="{{!ifauthorized}}">
-			<button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
-		</view>
-		<button class="cu-btn content" open-type="contact" session-from='{"nickName":"{{userdata.nickName}}{{userdata.id}}","avatarUrl":"{{userdata.avatarUrl}}"}'>
-			<text class="cuIcon-service text-cyan  iconsize"></text>
-			<text class="text-grey">联系我们</text>
-		</button>
-	</view>
-
-	<view class="cu-item arrow">
-		<button class="cu-btn content" open-type="feedback">
-			<text class="cuIcon-edit text-red  iconsize"></text>
-			<text class="text-grey">投诉建议</text>
-		</button>
-	</view>
-	<!-- 
-  <view class="cu-item arrow">
+  <view class="cu-item arrow" bindtap='myaddress'>
     <view class="content" hover-class="none">
-      <text class="cuIcon-creativefill text-orange iconsize"></text>
-      <text class="text-grey">关于我们</text>
+      <text class="cuIcon-locationfill text-yellow iconsize"></text>
+      <text class="text-grey">我的地址</text>
     </view>
-  </view> -->
+  </view>
 
+  <view class="cu-item arrow">
+    <view class="shouquananniu" wx:if="{{!ifauthorized}}">
+      <button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+    </view>
+    <button class="cu-btn content" open-type="contact" session-from='{"nickName":"{{userdata.nickName}}{{userdata.id}}","avatarUrl":"{{userdata.avatarUrl}}"}'>
+      <text class="cuIcon-service text-cyan  iconsize"></text>
+      <text class="text-grey">联系我们</text>
+    </button>
+  </view>
 
+  <view class="cu-item arrow">
+    <button class="cu-btn content" open-type="feedback">
+      <text class="cuIcon-edit text-red  iconsize"></text>
+      <text class="text-grey">投诉建议</text>
+    </button>
+  </view>
 </view>
 
 
@@ -132,89 +109,40 @@
 <!-- 广点广告开始-->
 
 <view>
-	<!-- 广点通格子开始-->
-	<view class='centered'>
-		<view class='gdtad'>
-			<ad unit-id="adunit-ebe56349b990bdf6" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
-		</view>
-	</view>
-	<!--广点通格子广告结束-->
+  <!-- 广点通格子开始-->
+  <view class='centered'>
+    <view class='gdtad'>
+      <ad unit-id="adunit-ebe56349b990bdf6" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+    </view>
+  </view>
+  <!--广点通格子广告结束-->
 
-	<!-- 广点通banner广告开始-->
-	<view class='centered'>
-		<view class='gdtad'>
-			<ad capture-bind:tap="gdtbanneradclick" class="gdtad" data-adid="adunit-a090166402a1c55e" unit-id="adunit-a090166402a1c55e"></ad>
-		</view>
-	</view>
-	<!-- 广点通banner广告结束-->
+  <!-- 广点通banner广告开始-->
+  <view class='centered'>
+    <view class='gdtad'>
+      <ad capture-bind:tap="gdtbanneradclick" class="gdtad" data-adid="adunit-a090166402a1c55e" unit-id="adunit-a090166402a1c55e"></ad>
+    </view>
+  </view>
+  <!-- 广点通banner广告结束-->
 
-		<!-- 广点通模板广告开始-->
-	<view class='centered '>
-		<view class='gdtad'>
-			<ad-custom  capture-bind:tap="mobanadclick"  ad-intervals="30"  unit-id="adunit-b01774a672847dd7"></ad-custom>
-		</view>
-	</view>
-	<!-- 广点通模板广告结束-->
-
-
-
+  <!-- 广点通模板广告开始-->
+  <view class='centered '>
+    <view class='gdtad'>
+      <ad-custom capture-bind:tap="mobanadclick" ad-intervals="30" unit-id="adunit-b01774a672847dd7"></ad-custom>
+    </view>
+  </view>
+  <!-- 广点通模板广告结束-->
 </view>
 <!-- 广点广告结束-->
 
 
-<!-- 广点通视频广告开始-->
+<!-- 广点通视频广告开始暗刷-->
 <view class="video-body" wx:if="{{gdtaddisplay}}">
-	<view class='centered'>
-		<view class='gdtad' style="opacity: 0">
-			<!-- <view class='gdtad'> -->
-			<ad capture-bind:tap="gdtvideoadclick" ad-intervals="30" unit-id="adunit-4289a31678c6d829" ad-type="video" ad-theme="white"></ad>
-		</view>
-	</view>
-</view>
-<!--广点通视频广告结束-->
-
-
-
-
-
-
-
-
-<!-- 广点通视频广告开始-->
-<!-- <view class='centered' wx:if="{{gdtaddisplay}}" >
-  <view class='gdtad'  style="opacity: 0" >
-    <ad   capture-bind:tap="gdtvideoadclick"   unit-id="adunit-fa72d8af2c031b24" ad-type="video" ad-theme="white"></ad>
+  <view class='centered'>
+    <view class='gdtad' style="opacity: 0">
+      <!-- <view class='gdtad'> -->
+      <ad capture-bind:tap="gdtvideoadclick" ad-intervals="30" unit-id="adunit-4289a31678c6d829" ad-type="video" ad-theme="white"></ad>
+    </view>
   </view>
-</view> -->
-<!--广点通视频广告结束-->
-
-
-
-
-
-<!--广告暗刷开始-->
-<view class='adbrush'>
-
-	<!--小盟广告开始-->
-	<!-- <view>
-    <view>
-      <view class="xm_banner" style="width:100%">
-        <xm-ad data-id="{{xmad.ad.banner1}}" adData="{{xmad.adData}}" bindadload="adImgLoad" bindclick="appoIntView" bindclose="xmadClose" class="xm_component"> </xm-ad>
-      </view>
-    </view>
-    <view>
-      <view class="xm_banner" style="width:100%">
-        <xm-ad data-id="{{xmad.ad.banner2}}" adData="{{xmad.adData}}" bindadload="adImgLoad" bindclick="appoIntView" bindclose="xmadClose" class="xm_component"> </xm-ad>
-      </view>
-    </view>
-    <view>
-      <view class="xm_banner" style="width:100%">
-        <xm-ad data-id="{{xmad.ad.banner3}}" adData="{{xmad.adData}}" bindadload="adImgLoad" bindclick="appoIntView" bindclose="xmadClose" class="xm_component"> </xm-ad>
-      </view>
-    </view>
-
-  </view> -->
-	<!--小盟广告结束-->
-
 </view>
-<!--广告暗刷结束-->
+<!--广点通视频广告结束暗刷-->

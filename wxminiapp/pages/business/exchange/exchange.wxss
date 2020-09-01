@@ -1,5 +1,12 @@
 /* pages/exchange/exchange.wxss */
 
+.cu-bar {
+	display: flex;
+	position: relative;
+	align-items: center;
+	min-height: 80rpx;
+	justify-content: space-between;
+}
 .box {
   display: flex;
   /*row 横向  column 列表  */

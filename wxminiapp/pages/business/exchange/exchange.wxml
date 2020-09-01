@@ -4,6 +4,15 @@
 </cu-custom>
 
 
+<view class="cu-bar bg-white solid-bottom" bindtap="exchangelist">
+  <view class='action'>
+    <text class='cuIcon-titles text-orange'></text>你的兑换
+  </view>
+  <view class='action'>
+   <text>查看兑换记录>></text>
+  </view>
+</view>
+
 <view>
 
   <view class='centered'>
@@ -41,8 +50,6 @@
 </view>
 <!-- 广点通banner广告结束-->
 
-
-
       <block wx:for="{{goodslist2}}" wx:key="item">
         <view class='goods radius shadow bg-white'>
           <view class='goods-image'>
@@ -63,20 +70,11 @@
           </view>
         </view>
       </block>
-
-
-
-
-
-
     </view>
 
   </view>
 
 </view>
-
-
-
 
 
 
@@ -134,11 +132,4 @@
       <image bindtap='closefram' src='/images/common/close_white.svg'></image>
     </view>
   </view>
-</view>
-
-
-
-<!-- 广告暗刷 -->
-<view class='adbrush' >
-<ad capture-bind:tap="gdtbannerclick" data-adid="adunit-9d16e8380e901760" unit-id="adunit-9d16e8380e901760"></ad>
 </view>

@@ -130,6 +130,19 @@
 					"pathName": "pages/group/lottery/pushlottery/pushlottery",
 					"query": "crowd_id=14",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/business/exchange/exchange",
+					"pathName": "pages/business/exchange/exchange",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/business/gdtad/gdtad",
+					"pathName": "pages/business/gdtad/gdtad",
+					"scene": null
 				}
 			]
 		}

@@ -7,7 +7,6 @@ const {
   share
 } = require('./../../utils/share.js');
 const common = require('./../../utils/common.js') //公共函数
-var Page = require('../../utils/sdk/xmad/xmadx_sdk.min.js').xmad(Page).xmPage; //小盟广告
 
 Page({
   data: {
@@ -15,14 +14,6 @@ Page({
     birthday:null,
     gdtaddisplay: false,
     ifauthorized:false,
-    xmad: { //小盟广告
-      adData: {},
-      ad: {
-        banner1: "xmf4d0492bbe9627bd723b64d44bacef",
-        banner2: "xmde2f6e240c459769d0f1d791087cbb",
-        banner3: "xma6e58bd54538ae4ae507dd2e2e1e7e",
-      },
-    },
   },
 
   onLoad: function (e) {
@@ -78,18 +69,8 @@ Page({
     }
    
   },
-  // exchange:function(){
-  //   wx.navigateTo({
-  //     url: '/pages/exchange/exchange'
-  //   })
 
-  // },
 
-  coinrecord:function(){
-    wx.navigateTo({
-      url: '/pages/business/coin_record/coin_record'
-    })
-  },
 
   business:function(e){
     let jumpid = e.currentTarget.dataset.jumpid;
