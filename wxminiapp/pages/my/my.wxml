@@ -39,28 +39,52 @@
 
 
 <view class="cu-list grid col-3">
-  <view class="cu-item" data-jumpid="1" bindtap="business">
-    <view class="cuIcon-rechargefill text-yellow">
-    </view>
-    <text>去赚金币</text>
-  </view>
 
   <view class="cu-item" data-jumpid="2" bindtap="business">
     <view class="cuIcon-presentfill text-red">
     </view>
-    <text>兑换商城</text>
+    <text>金币兑换</text>
   </view>
 
   <view class="cu-item" data-jumpid="3" bindtap="business">
     <view class="cuIcon-formfill text-cyan">
     </view>
-    <text>兑换记录</text>
+    <text>空间任务</text>
   </view>
+
+    <view class="cu-item" data-jumpid="3" bindtap="business">
+    <view class="cuIcon-formfill text-cyan">
+    </view>
+    <text>空间兑换</text>
+  </view>
+  
+
+    <view class="cu-item" data-jumpid="3" bindtap="business">
+    <view class="cuIcon-formfill text-cyan">
+    </view>
+    <text>我的地址</text>
+  </view>
+
+
+
+    <view class="cu-item" data-jumpid="3" bindtap="business">
+    <view class="cuIcon-formfill text-cyan">
+    </view>
+    <text>联系我们</text>
+  </view>
+
+  
+    <view class="cu-item" data-jumpid="3" bindtap="business">
+    <view class="cuIcon-formfill text-cyan">
+    </view>
+    <text>投诉建议</text>
+  </view>
+
 
 </view>
 
 
-
+<!-- 
 <view class="cu-list menu card-menu margin-top margin-bottom shadow-lg radius">
   <view class="cu-item arrow" bindtap='usertasklist'>
     <kaming-button>
@@ -102,7 +126,7 @@
       <text class="text-grey">投诉建议</text>
     </button>
   </view>
-</view>
+</view> -->
 
 
 

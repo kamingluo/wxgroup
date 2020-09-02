@@ -21,13 +21,11 @@ Page({
       this.exchangelist()
     }
     this.addisplay()
-    
   },
 
   onShow: function () {
     this.userdata()
     this.getUserInfoif() //判断用户有没有授权
-
   },
 
 
@@ -41,15 +39,11 @@ Page({
             code: res.code,
           },
           success: res => {
-            //console.log('我的页面获取用户信息', res.userdata.birthday);
             this.birthday(res.userdata.birthday)
             this.setData({
               userdata: res.userdata,
             })
             wx.setStorageSync('userdata', res.userdata)
-          },
-          fail: res => {
-            //console.log('错误捕捉', res);
           },
         })
       }
@@ -58,6 +52,7 @@ Page({
   },
 
 
+  //用户生日
   birthday:function(e){
     if(e){
       var shijian  = e.replace(/\.|\-/g, '/')
@@ -67,7 +62,6 @@ Page({
         birthday: t,
       })
     }
-   
   },
 
 
@@ -89,6 +83,7 @@ Page({
 
   },
  
+  //用户地址
   myaddress:function(){
     wx.navigateTo({
       url: '/pages/my/my_address/my_address'
@@ -96,12 +91,8 @@ Page({
 
   },
 
-  userscorerecord:function(){
-    wx.navigateTo({
-      url: '/pages/my/score_detailed/score_detailed'
-    })
-  },
 
+  //用户空间任务记录
   usertasklist:function(){
     wx.navigateTo({
       url: '/pages/my/score_detailed/score_detailed'
@@ -109,6 +100,7 @@ Page({
 
   },
 
+  //跳转兑换记录页面
   exchangelist:function(){
     wx.navigateTo({
       url: '/pages/my/exchangelist/exchangelist'
@@ -116,20 +108,15 @@ Page({
 
   },
 
+  //跳转测试页面
   testpages: function () {
     console.log("long tap")
     wx.navigateTo({
       url: '/pages/test/test'
     })
-
   },
 
   gdtbanneradclick: function (e) {
-    //console.log("点击广点通banner广告", e.currentTarget)
-    // let userdata = wx.getStorageSync('userdata')
-    // let data = Object.assign(userdata, e.currentTarget.dataset); //将addata合并
-    // app.aldstat.sendEvent('我的页面点击广点通banner广告', data);
-    console.log("点击了banner广告")
     let data={
       'adtype':1,
       'position':"我的页面"
@@ -138,8 +125,6 @@ Page({
   },
 
   mobanadclick: function (e) {
-    
-    console.log("点击了模板广告")
     let data={
       'adtype':5,
       'position':"我的页面"
@@ -148,20 +133,15 @@ Page({
   },
   
   gdtvideoadclick: function (e) {
-    console.log("点击了我的页面的视频广告")
     let data={
       'adtype':4,
       'position':"我的页面"
     };
     common.clickgdtadstatistics(data)
-
-    // let userdata = wx.getStorageSync('userdata')
-    // let data = Object.assign(userdata, e.currentTarget.dataset); //将addata合并
-    // app.aldstat.sendEvent('我的页gdt视频ad', data);
   },
 
+//用户设置生日
   bindDateChange: function (e) {
-    //console.log('picker发送选择改变，携带值为', e.detail.value)
     wx.login({
       success: res => {
         request({
@@ -176,10 +156,7 @@ Page({
               icon: 'none',
               duration: 2000,
             })
-             this.birthday(e.detail.value)
-            // this.setData({
-            //   birthday: e.detail.value
-            // })
+             this.birthday(e.detail.value)//处理时间
           },
         })
       }
@@ -199,11 +176,10 @@ Page({
         }
       }
     })
-
   },
 
 
-
+  //用户注册
   getUserInfo: function (e) {
     let that = this;
     var data = {
@@ -222,11 +198,6 @@ Page({
               setTimeout(function() {
                 that.userdata()//等注册完成，隔2秒拿一下新的信息
               }, 2000)
-              // wx.showToast({
-              //   title: '授权成功',
-              //   icon: 'success',
-              //   duration: 2000,
-              // })
               that.setData({
                 ifauthorized: true,
               })
@@ -238,6 +209,7 @@ Page({
   },
 
 
+  //判断是否展示广告
   addisplay: function () {
     let userchannel = wx.getStorageSync('userdata').channel
     let scene = wx.getStorageSync('userdata').scene
@@ -252,19 +224,10 @@ Page({
     }
   },
 
-
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function (options) {
-
     return share();
-    // return {
-    //   title:"群记分小程序，一款好用的群管理工具。",
-    //   desc:"群记分小程序，一款好用的群管理工具。",
-    //   imageUrl: 'https://material.gzywudao.top/image/group/groupicon.png',
-    //   path: '/pages/index/index?channel=1005&ald_media_id=33542&ald_link_key=c99244f0802f9f06', // 路径，传递参数到指定页面。
-    // }
-   
   }
 })
