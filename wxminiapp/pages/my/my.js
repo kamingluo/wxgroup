@@ -51,6 +51,22 @@ Page({
 
   },
 
+  //获取小U广告配置
+
+  xiaouad:function(){
+    request({
+      service: 'appdata/my/xiaouad',
+      data: {},
+      success: res => {
+        console.log("小U广告数据",res.data)
+        this.setData({
+          xiaouaddata: res.data,
+        })
+      },
+    })
+  },
+
+
 
   //用户生日
   birthday:function(e){

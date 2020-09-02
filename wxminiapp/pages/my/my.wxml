@@ -46,20 +46,20 @@
     <text>金币兑换</text>
   </view>
 
-  <view class="cu-item" data-jumpid="3" bindtap="business">
+  <view class="cu-item"  bindtap="usertasklist">
     <view class="cuIcon-formfill text-cyan">
     </view>
     <text>空间任务</text>
   </view>
 
-    <view class="cu-item" data-jumpid="3" bindtap="business">
+    <view class="cu-item" bindtap="exchangelist">
     <view class="cuIcon-formfill text-cyan">
     </view>
     <text>空间兑换</text>
   </view>
   
 
-    <view class="cu-item" data-jumpid="3" bindtap="business">
+    <view class="cu-item" data-jumpid="3" bindtap="myaddress">
     <view class="cuIcon-formfill text-cyan">
     </view>
     <text>我的地址</text>
