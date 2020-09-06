@@ -29,7 +29,7 @@
 
 
 
-<view class="task-explain">
+<view class="task-explain" bindlongpress="copydata">
   <view class="task-explain-body">
     <view class="centered task-explain-body-view">
       <text>{{newsdetails.content}}</text>

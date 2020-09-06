@@ -155,6 +155,20 @@ Page({
     wx.openSetting()
   },
 
+  copydata: function (e) {
+    let data = this.data.newsdetails.content;
+    wx.setClipboardData({
+      data: data,
+      success: function (res) {
+        wx.showToast({
+          title: '复制成功',
+          icon: 'success',
+          duration: 2000,
+        })
+      }
+    })
+  },
+
 
 
   /**

@@ -81,7 +81,7 @@ flex-basis: 450rpx;
 
 .score{
   margin-bottom: 5rpx;
-  height: 70rpx;
+  height: 90rpx;
   display: flex;
   flex-direction:row;
   text-align: center;
@@ -97,13 +97,13 @@ flex-basis: 450rpx;
 }
 
 .score_text text{
-  font-size: 30rpx;
+  font-size: 32rpx;
   font-weight: 600;
 } 
 
 .score_text image{
-  height: 38rpx;
-  width: 38rpx;
+  height: 40rpx;
+  width: 40rpx;
   margin-left: 8rpx;
   margin-top: 1rpx;
 }
@@ -112,7 +112,7 @@ flex-basis: 450rpx;
   color: #ffffff;
   display: flex;
   align-items:center;
-  height: 50rpx;
+  height: 55rpx;
   width: 160rpx;
   font-size: 25rpx;
   margin-left: 280rpx;
@@ -135,6 +135,13 @@ flex-basis: 450rpx;
 	margin-right: 0rpx;
 	margin-left: 0rpx;
 	border-radius: 0rpx
+  
+}
+
+.cu-list.grid {
+	background-color: var(--white);
+	text-align: center;
+  border-radius: 25rpx
 }
 
 .cu-list+.cu-list {
@@ -144,7 +151,7 @@ flex-basis: 450rpx;
 .cu-list.grid>.cu-item {
 	position: relative;
 	display: flex;
-	padding: 0rpx 0 10rpx;
+	padding: 15rpx 5rpx 5rpx;
 	transition-duration: 0s;
 	flex-direction: column
 }
@@ -152,10 +159,11 @@ flex-basis: 450rpx;
 
 .cu-list.grid>.cu-item text {
 	display: block;
-	margin-top: 1rpx;
-	color: #888;
-	font-size: 22rpx;
-	line-height: 35rpx
+	margin-top: 10rpx;
+	color: #000000;
+	font-size: 26rpx;
+	line-height: 35rpx;
+  font-weight: 500;
 }
 
 .cu-list.menu>.cu-item {
@@ -175,6 +183,11 @@ flex-basis: 450rpx;
 	width: 100%;
 	font-size: 42rpx
 }
+
+.grid image{
+  width: 90rpx;
+  height: 90rpx;
+}
 .shouquananniu{
   position: absolute;
   z-index: 999;
@@ -190,4 +203,18 @@ flex-basis: 450rpx;
   top: 400rpx;
   left: 20rpx;
   z-index: -100;
+}
+
+.xiaouad{
+  margin-top: 15rpx;
+}
+.xiaou-body{
+  width: 94%;
+  height: 240rpx;
+}
+.xiaou-body image{
+  border-radius: 15rpx;
+  width: 100%;
+  height: 230rpx;
+  
 }

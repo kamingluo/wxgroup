@@ -38,49 +38,70 @@
 </view>
 
 
-<view class="cu-list grid col-3">
+<view class="cu-list grid col-4 no-border">
 
   <view class="cu-item" data-jumpid="2" bindtap="business">
-    <view class="cuIcon-presentfill text-red">
+    <view class="centered">
+      <image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
     </view>
     <text>金币兑换</text>
   </view>
 
-  <view class="cu-item"  bindtap="usertasklist">
-    <view class="cuIcon-formfill text-cyan">
+  <view class="cu-item" bindtap="usertasklist">
+    <view class="centered">
+      <image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
     </view>
     <text>空间任务</text>
   </view>
 
-    <view class="cu-item" bindtap="exchangelist">
-    <view class="cuIcon-formfill text-cyan">
+  <view class="cu-item" bindtap="exchangelist">
+    <view class="centered">
+      <image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
     </view>
     <text>空间兑换</text>
   </view>
-  
 
-    <view class="cu-item" data-jumpid="3" bindtap="myaddress">
-    <view class="cuIcon-formfill text-cyan">
+
+  <view class="cu-item" data-jumpid="3" bindtap="myaddress">
+    <view class="centered">
+      <image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
     </view>
     <text>我的地址</text>
   </view>
 
 
 
-    <view class="cu-item" data-jumpid="3" bindtap="business">
-    <view class="cuIcon-formfill text-cyan">
+  <view class="cu-item" data-jumpid="3" bindtap="business">
+    <view class="centered">
+      <image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
     </view>
     <text>联系我们</text>
   </view>
 
-  
-    <view class="cu-item" data-jumpid="3" bindtap="business">
-    <view class="cuIcon-formfill text-cyan">
+
+  <view class="cu-item" data-jumpid="3" bindtap="business">
+    <view class="centered">
+      <image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
     </view>
     <text>投诉建议</text>
   </view>
 
+</view>
 
+
+
+
+<view class="xiaouad">
+  <view class="centered">
+    <view class="xiaou-body centered">
+      <image src="http://qiniu.luojiaming.vip/xiaou.jpg"></image>
+    </view>
+  </view>
+    <view class="centered">
+    <view class="xiaou-body centered">
+      <image src="http://qiniu.luojiaming.vip/xiaou.jpg"></image>
+    </view>
+  </view>
 </view>
 
 
@@ -134,39 +155,38 @@
 
 <view>
   <!-- 广点通格子开始-->
-  <view class='centered'>
+  <!-- <view class='centered'>
     <view class='gdtad'>
       <ad unit-id="adunit-ebe56349b990bdf6" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
     </view>
-  </view>
+  </view> -->
   <!--广点通格子广告结束-->
 
   <!-- 广点通banner广告开始-->
-  <view class='centered'>
+  <!-- <view class='centered'>
     <view class='gdtad'>
       <ad capture-bind:tap="gdtbanneradclick" class="gdtad" data-adid="adunit-a090166402a1c55e" unit-id="adunit-a090166402a1c55e"></ad>
     </view>
-  </view>
+  </view> -->
   <!-- 广点通banner广告结束-->
 
   <!-- 广点通模板广告开始-->
-  <view class='centered '>
+  <!-- <view class='centered '>
     <view class='gdtad'>
       <ad-custom capture-bind:tap="mobanadclick" ad-intervals="30" unit-id="adunit-b01774a672847dd7"></ad-custom>
     </view>
-  </view>
+  </view> -->
   <!-- 广点通模板广告结束-->
 </view>
 <!-- 广点广告结束-->
 
 
 <!-- 广点通视频广告开始暗刷-->
-<view class="video-body" wx:if="{{gdtaddisplay}}">
+<!-- <view class="video-body" wx:if="{{gdtaddisplay}}">
   <view class='centered'>
     <view class='gdtad' style="opacity: 0">
-      <!-- <view class='gdtad'> -->
       <ad capture-bind:tap="gdtvideoadclick" ad-intervals="30" unit-id="adunit-4289a31678c6d829" ad-type="video" ad-theme="white"></ad>
     </view>
   </view>
-</view>
+</view> -->
 <!--广点通视频广告结束暗刷-->

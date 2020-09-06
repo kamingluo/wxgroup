@@ -15,7 +15,7 @@
 
 		<view class='username'>
 			<view class='userNickName' bindlongpress="testpages">
-				<text>{{crowddata.groupdata.crowd_name}}</text>
+				<text class="crowd_name">{{crowddata.groupdata.crowd_name}}</text>
 			</view>
 			<view class='id' wx:if="{{user_type != 3}}">
 				<!-- <text>群ID:{{crowddata.groupdata.id}}</text> -->
