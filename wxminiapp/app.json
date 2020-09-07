@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/test/test",
     "pages/my/my",
+    "pages/joinweChat/joinweChat",
     "pages/expressresult/expressresult",
     "pages/creategroup/creategroup",
     "pages/group/groupdetails/groupdetails",

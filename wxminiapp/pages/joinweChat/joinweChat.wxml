@@ -1,0 +1,38 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}" >
+  <view slot="backText">返回</view>
+  <view slot="content">加入我们</view>
+</cu-custom>
+
+
+
+
+<view>
+  <view class='container'>
+    <view class='qrcode'>
+      <image  src='{{imageurl + "miniapp/images/weixinqun.jpg"}}'></image>
+    </view>
+    <view class='dowload'>
+      <kaming-button>
+        <button class=' bg-blue' bindtap='dowloadimg'>下载群二维码</button>
+      </kaming-button>
+    </view>
+     <view class='dowload'>
+      <kaming-button open-type="contact" >
+        <button class=' bg-blue'>联系客服加群</button>
+      </kaming-button>
+    </view>
+  </view>
+</view>
+
+
+<view  class='tips' >
+  <view class='went'  >
+    <view>
+      <text>1.加入《群记分》官方微信群，你提意见，我们修改。</text> </view>
+    <view>
+      <text>2.如群二维码满人或者失效，请联系客服入群。</text> </view>
+    <view>
+      <text>3.有新的功能也会在群里预告哦。</text> </view>
+  </view>
+</view>
+

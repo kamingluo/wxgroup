@@ -1,0 +1,27 @@
+.qrcode{
+  margin-top: 5%;
+
+
+}
+.qrcode image{
+  border-radius: 20rpx;
+  width: 560rpx;
+  height: 650rpx;
+}
+
+.dowload {
+  margin-top: 20rpx;
+}
+.dowload button {
+  width: 460rpx;
+}
+
+.tips{
+  margin-top: 20rpx;
+  width: 94%;
+  margin-left: 3%;
+}
+.went text{
+ font-size: 30rpx;
+ font-weight: 600;
+}
