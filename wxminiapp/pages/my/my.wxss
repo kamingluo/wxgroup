@@ -68,10 +68,15 @@ margin-left: -20rpx;
 
 
 .fuli-body{
-	height: 400rpx;
-	background-color: white;
+	/* height: 400rpx; */
+	/* background-color: white; */
 	border-radius: 10rpx; 
+	margin-top: 10rpx;
+	margin-bottom: 10rpx;
 	
+}
+.fuli{
+		background-color: white;
 }
 
 .cu-bar {
@@ -80,4 +85,13 @@ margin-left: -20rpx;
 	align-items: center;
 	min-height: 70rpx;
 	justify-content: space-between;
+}
+
+.grid2{
+	display: flex;
+	flex-wrap: wrap;
+}
+.xiaouimage{
+	width: 345rpx;
+	height: 120rpx;
 }

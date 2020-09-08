@@ -4,7 +4,6 @@
 		<view slot="content"><text style="color:white;">我的页面</text></view>
 	</cu-custom>
 	<view class="user">
-
 		<view class="flex  p-sm margin-bottom-sm mb-sm">
 			<view class="flex-sub  margin-xs radius">
 				<view>
@@ -26,11 +25,10 @@
 					<text >升级VIP</text>
 				</button>
 			</view>
-
 		</view>
 	</view>
 	<view class="vip-body centered">
-		<image src="{{imageurl + 'miniapp/images/my/vip.png'}}"></image>
+		<image src="{{imageurl + 'miniapp/images/my/novip.png'}}"></image>
 	</view>
 	<view class="zhanwei"></view>
 </view>
@@ -38,108 +36,104 @@
 
 
 <view class="cu-list grid col-5 no-border">
-
-	<view class="cu-item" data-jumpid="2" bindtap="business">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
-		</view>
-		<text>去赚金币</text>
-	</view>
-
-
-	<view class="cu-item" data-jumpid="2" bindtap="business">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
-		</view>
-		<text>金币兑换</text>
-	</view>
-
 	<view class="cu-item" bindtap="usertasklist">
 		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
+			<image src='{{imageurl + "miniapp/images/groupicon/taskslist.png"}}'></image>
 		</view>
-		<text>空间任务</text>
+		<text>任务记录</text>
 	</view>
-
 	<view class="cu-item" bindtap="exchangelist">
 		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
+			<image src='{{imageurl + "miniapp/images/groupicon/goods.png"}}'></image>
 		</view>
-		<text>空间兑换</text>
+		<text>兑换记录</text>
 	</view>
-
-
+	<view class="cu-item" bindtap="exchangelist">
+		<view class="centered">
+			<image src='{{imageurl + "miniapp/images/groupicon/pushlottery.png"}}'></image>
+		</view>
+		<text>抽奖记录</text>
+	</view>
 	<view class="cu-item" data-jumpid="3" bindtap="myaddress">
 		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
+			<image src='{{imageurl + "miniapp/images/groupicon/socrelists.png"}}'></image>
 		</view>
 		<text>我的地址</text>
 	</view>
-
 	<view class="cu-item" data-jumpid="3" bindtap="business">
 		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
-		</view>
-		<text>加入我们</text>
-	</view>
-
-
-	<view class="cu-item" data-jumpid="3" bindtap="business">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
-		</view>
-		<text>联系我们</text>
-	</view>
-
-
-	<view class="cu-item" data-jumpid="3" bindtap="business">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
-		</view>
-		<text>投诉建议</text>
-	</view>
-
-	<view class="cu-item" data-jumpid="3" bindtap="business">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
-		</view>
-		<text>关于我们</text>
-	</view>
-	<view class="cu-item" data-jumpid="3" bindtap="business">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
+			<image src='{{imageurl + "miniapp/images/groupicon/more.png"}}'></image>
 		</view>
 		<text>敬请期待</text>
+	</view>
+</view>
+
+
+
+<view class="fuli-body">
+
+	<view class="cu-bar bg-white solid-bottom">
+		<view class="action">
+			我的福利
+		</view>
+	</view>
+	<view class="grid2 col-2 padding-xs fuli">
+		<view class="padding-xs">
+			<view class="  radius text-center shadow-blur">
+				<view class="flex  p-xs mb-sm">
+					<image src='http://qiniu.luojiaming.vip/myhuoba.png' class="xiaouimage"></image>
+				</view>
+			</view>
+		</view>
+		<view class="padding-xs">
+			<view class=" radius text-center shadow-blur">
+				<view class="flex  p-xs  mb-sm">
+					<image src='http://qiniu.luojiaming.vip/myxuetang.png' class="xiaouimage"></image>
+				</view>
+			</view>
+		</view>
 	</view>
 
 </view>
 
 
 
-<view class="fuli-body">
-	<view class="cu-bar bg-white solid-bottom margin-top">
+<view>
+	<view class="cu-bar bg-white solid-bottom">
 		<view class="action">
-			我的福利
+			更多工具
 		</view>
 	</view>
-	<view class="grid col-2 padding-xs">
-		<view class="padding-xs">
-
-			<view class="bg-gradual-red padding-xs  radius text-center shadow-blur">
-				<view class="flex  p-xs margin-bottom-sm mb-sm">
-					<view class="basis-xs bg-grey padding-sm margin-xs radius">1</view>
-					<view class="basis-xl bg-grey padding-sm margin-xs radius">2</view>
-				</view>
-				<!-- <view>
-					<image src='{{imageurl + "miniapp/images/groupicon/pushtasks.png"}}'></image>
-				</view>
-				<view>
-					<view class="text-lg">福利跳转1</view>
-					<view class="margin-top-xs text-Abc">这是文案阿阿阿阿 </view>
-				</view> -->
-			</view>
-
+<view class="cu-list grid col-5 no-border">
+	<view class="cu-item" bindtap="usertasklist">
+		<view class="centered">
+			<image src='{{imageurl + "miniapp/images/groupicon/taskslist.png"}}'></image>
 		</view>
-
+		<text>任务记录</text>
 	</view>
+	<view class="cu-item" bindtap="exchangelist">
+		<view class="centered">
+			<image src='{{imageurl + "miniapp/images/groupicon/goods.png"}}'></image>
+		</view>
+		<text>兑换记录</text>
+	</view>
+	<view class="cu-item" bindtap="exchangelist">
+		<view class="centered">
+			<image src='{{imageurl + "miniapp/images/groupicon/pushlottery.png"}}'></image>
+		</view>
+		<text>抽奖记录</text>
+	</view>
+	<view class="cu-item" data-jumpid="3" bindtap="myaddress">
+		<view class="centered">
+			<image src='{{imageurl + "miniapp/images/groupicon/socrelists.png"}}'></image>
+		</view>
+		<text>我的地址</text>
+	</view>
+	<view class="cu-item" data-jumpid="3" bindtap="business">
+		<view class="centered">
+			<image src='{{imageurl + "miniapp/images/groupicon/more.png"}}'></image>
+		</view>
+		<text>敬请期待</text>
+	</view>
+</view>
 </view>
