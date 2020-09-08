@@ -97,36 +97,37 @@
 			更多工具
 		</view>
 	</view>
-<view class="cu-list grid col-5 no-border">
+	<view class="cu-list grid col-5 no-border">
 
-	<view class="cu-item" bindtap="usertasklist" wx:for="{{moredata}}" wx:key="item" bindtap="clickjump" data-data="{{item}}">
+		<view class="cu-item" bindtap="usertasklist" wx:for="{{moredata}}" wx:key="item" bindtap="clickjump" data-data="{{item}}">
+			<view wx:if="{{item.type=='kefu'}}">
+				<kaming-button open-type="contact" >
+				<view>
+					<view class="centered">
+						<image src='{{imageurl + item.imageurl }}'></image>
+					</view>
+					<text>{{item.title}}</text>
+					</view>
+				</kaming-button>
+			</view>
+			<view wx:elif="{{item.type=='jianyi'}}">
+				<kaming-button open-type="feedback" >
+					<view>
+					<view class="centered">
+						<image src='{{imageurl + item.imageurl }}'></image>
+					</view>
+					<text>{{item.title}}</text>
+						</view>
+				</kaming-button>
+				
+			</view>
 
-	<kaming-button  open-type="contact" wx:if="{{item.type=='kefu'}}">
-	<view class="centered">
-			<image src='{{imageurl + item.imageurl }}'></image>
+			<view wx:else>
+				<view class="centered">
+					<image src='{{imageurl + item.imageurl }}'></image>
+				</view>
+				<text>{{item.title}}</text>
+			</view>
 		</view>
-		<text>{{item.title}}</text>
-	</kaming-button>
-
-	<kaming-button open-type="feedback" wx:elif="{{item.type=='jianyi'}}">
-	<view class="centered">
-			<image src='{{imageurl + item.imageurl }}'></image>
-		</view>
-		<text>{{item.title}}</text>
-	</kaming-button>
-
-
-	<view wx:else>
-		<view class="centered">
-			<image src='{{imageurl + item.imageurl }}'></image>
-		</view>
-		<text>{{item.title}}</text>
-	<view>
-
-
-
-
 	</view>
-
-</view>
 </view>
