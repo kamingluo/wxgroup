@@ -16,7 +16,7 @@
 				</view>
 				<view class='userNickName'>
 					<button class="cu-btn bg-mauve round shadow">
-						<image src='../../images/common/coin.svg'></image><text>金币1000</text>
+						<image src='../../images/common/coin.svg'></image><text>金币{{userdata.coin}}</text>
 					</button>
 				</view>
 			</view>
@@ -60,7 +60,7 @@
 		</view>
 		<text>我的地址</text>
 	</view>
-	<view class="cu-item" data-jumpid="3" bindtap="business">
+	<view class="cu-item" data-jumpid="3">
 		<view class="centered">
 			<image src='{{imageurl + "miniapp/images/groupicon/more.png"}}'></image>
 		</view>
@@ -78,22 +78,15 @@
 		</view>
 	</view>
 	<view class="grid2 col-2 padding-xs fuli">
-		<view class="padding-xs">
+
+		<view class="padding-xs" wx:for="{{xiaouad}}" wx:key="item" bindtap="clickjump" data-data="{{item}}">
 			<view class="  radius text-center shadow-blur">
 				<view class="flex  p-xs mb-sm">
-					<image src='http://qiniu.luojiaming.vip/myhuoba.png' class="xiaouimage"></image>
-				</view>
-			</view>
-		</view>
-		<view class="padding-xs">
-			<view class=" radius text-center shadow-blur">
-				<view class="flex  p-xs  mb-sm">
-					<image src='http://qiniu.luojiaming.vip/myxuetang.png' class="xiaouimage"></image>
+					<image src='{{item.imageurl}}' class="xiaouimage"></image>
 				</view>
 			</view>
 		</view>
 	</view>
-
 </view>
 
 
@@ -105,35 +98,35 @@
 		</view>
 	</view>
 <view class="cu-list grid col-5 no-border">
-	<view class="cu-item" bindtap="usertasklist">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/taskslist.png"}}'></image>
+
+	<view class="cu-item" bindtap="usertasklist" wx:for="{{moredata}}" wx:key="item" bindtap="clickjump" data-data="{{item}}">
+
+	<kaming-button  open-type="contact" wx:if="{{item.type=='kefu'}}">
+	<view class="centered">
+			<image src='{{imageurl + item.imageurl }}'></image>
 		</view>
-		<text>任务记录</text>
-	</view>
-	<view class="cu-item" bindtap="exchangelist">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/goods.png"}}'></image>
+		<text>{{item.title}}</text>
+	</kaming-button>
+
+	<kaming-button open-type="feedback" wx:elif="{{item.type=='jianyi'}}">
+	<view class="centered">
+			<image src='{{imageurl + item.imageurl }}'></image>
 		</view>
-		<text>兑换记录</text>
-	</view>
-	<view class="cu-item" bindtap="exchangelist">
+		<text>{{item.title}}</text>
+	</kaming-button>
+
+
+	<view wx:else>
 		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/pushlottery.png"}}'></image>
+			<image src='{{imageurl + item.imageurl }}'></image>
 		</view>
-		<text>抽奖记录</text>
+		<text>{{item.title}}</text>
+	<view>
+
+
+
+
 	</view>
-	<view class="cu-item" data-jumpid="3" bindtap="myaddress">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/socrelists.png"}}'></image>
-		</view>
-		<text>我的地址</text>
-	</view>
-	<view class="cu-item" data-jumpid="3" bindtap="business">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/more.png"}}'></image>
-		</view>
-		<text>敬请期待</text>
-	</view>
+
 </view>
 </view>
