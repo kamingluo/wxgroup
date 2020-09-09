@@ -1,4 +1,8 @@
 
+.bg-blue {
+	background-color: #377cfe;
+	color: var(--white);
+}
 .padding-tb-xl {
 	padding-top: 0rpx;
 	padding-bottom: 50rpx;
@@ -26,6 +30,25 @@ margin-left: 15rpx;
 	width: 130rpx;
 }
 
+.havevip{
+	width: 80%;
+	position: absolute;
+	
+}
+.havevip button{
+font-size: 23rpx;
+width:110rpx ;
+height: 38rpx;
+margin-left: -20rpx;
+}
+.viptime{
+	color: #fbbd08;
+	margin-left: 100rpx;
+	font-weight: 600;
+}
+.viptime-body{
+	margin-top: 1rpx;
+}
 .userNickName{
 	font-size: 35rpx;
 	color: white;
@@ -94,4 +117,11 @@ margin-left: -20rpx;
 .xiaouimage{
 	width: 345rpx;
 	height: 120rpx;
+}
+
+.gdtad{
+  width: 94%;
+  border-radius: 15rpx;
+	margin-bottom: 20rpx;
+	margin-top: 20rpx;
 }

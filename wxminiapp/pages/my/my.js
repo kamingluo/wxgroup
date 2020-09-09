@@ -130,6 +130,14 @@ Page({
 
   },
 
+  mobanadclick: function (e) {
+    let data={
+      'adtype':5,
+      'position':"我的页面"
+    };
+    common.clickgdtadstatistics(data)
+  },
+
 
 
 
