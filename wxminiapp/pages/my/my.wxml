@@ -48,7 +48,7 @@
 		</view>
 		<text>兑换记录</text>
 	</view>
-	<view class="cu-item" bindtap="exchangelist">
+	<view class="cu-item" bindtap="lotterylist">
 		<view class="centered">
 			<image src='{{imageurl + "miniapp/images/groupicon/pushlottery.png"}}'></image>
 		</view>

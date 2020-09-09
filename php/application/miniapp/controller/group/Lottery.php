@@ -228,7 +228,7 @@ class Lottery
          $data = Db::query($sql); //拿到数据
          
          $state=['state'   => '200','message'  => "查询用户的全部抽奖记录列表" ,'count'=>$count];
-         $resdata=array_merge($state,array('usertasklist'=>$data));
+         $resdata=array_merge($state,array('userlotterylist'=>$data));
          return $resdata ;
        
      }

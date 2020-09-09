@@ -54,6 +54,12 @@ Page({
     })
   },
 
+  lotterylist:function(){
+    wx.navigateTo({
+      url: '/pages/my/lotterylist/lotterylist'
+    })
+  },
+
     //点击小U广告和更多跳转
     clickjump: function (e) {
       let type=e.currentTarget.dataset.data.type;
