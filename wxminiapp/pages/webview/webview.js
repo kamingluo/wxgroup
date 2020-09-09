@@ -14,8 +14,10 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    let url=options.url;
+    let newurl=decodeURIComponent(url)
     this.setData({
-      url: options.url,
+      url: newurl,
     })
 
   },

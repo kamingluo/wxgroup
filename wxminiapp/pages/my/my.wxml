@@ -60,7 +60,7 @@
 		</view>
 		<text>我的地址</text>
 	</view>
-	<view class="cu-item" data-jumpid="3">
+	<view class="cu-item" data-jumpid="3" bindtap="shuoming">
 		<view class="centered">
 			<image src='{{imageurl + "miniapp/images/groupicon/more.png"}}'></image>
 		</view>

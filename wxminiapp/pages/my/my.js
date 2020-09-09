@@ -60,6 +60,16 @@ Page({
     })
   },
 
+  shuoming:function(){
+    let jumpurl=encodeURIComponent("https://qing.utaojs.com/app/index.php?i=3&c=entry&m=zk_jqmanual&do=Home&ClassID=1&wxref=mp.weixin.qq.com&from=groupmessage")
+    console.log("--------------------")
+    console.log(jumpurl)
+    
+    wx.navigateTo({
+      url: '/pages/webview/webview?url=' +jumpurl
+    })
+  },
+
     //点击小U广告和更多跳转
     clickjump: function (e) {
       let type=e.currentTarget.dataset.data.type;
