@@ -210,6 +210,30 @@ class Lottery
     }
 
 
+     //查询用户的抽奖记录列表
+     public function useralllotterylist(Request $request)
+     {
+         $user_id =$request->param("user_id");
+         $pages=$request->param("pages");//页数
+
+         $newpages=0;
+         if($pages){
+             //有传pages
+             $newpages= ($pages-1) * 20;//一页20条
+         }
+
+         $count =db('lottery_partake_list')->where('user_id',$user_id)->count();
+
+         $sql="select a.*,b.goods_name,b.goods_img from lottery_partake_list a,lottery_crowd_list b where a.lottery_id=b.id and a.user_id=".$user_id." ORDER BY a.id DESC LIMIT ".$newpages.",20;";
+         $data = Db::query($sql); //拿到数据
+         
+         $state=['state'   => '200','message'  => "查询用户的全部抽奖记录列表" ,'count'=>$count];
+         $resdata=array_merge($state,array('usertasklist'=>$data));
+         return $resdata ;
+       
+     }
+
+
 
 
 
