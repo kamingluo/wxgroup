@@ -64,7 +64,7 @@
 		<view class="centered">
 			<image src='{{imageurl + "miniapp/images/groupicon/more.png"}}'></image>
 		</view>
-		<text>敬请期待</text>
+		<text>使用说明</text>
 	</view>
 </view>
 
