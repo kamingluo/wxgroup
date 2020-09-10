@@ -15,7 +15,11 @@ Page({
     userdata:{},//用户信息
     imageurl:'https://group.gzywudao.top/php/public/',//默认图片链接
     xiaouad:[],//小U广告数据
+    xiaouadtitle:"社群工具推荐",
+    moredatatitle:"更多推荐",
     moredata:[],//更多工具数据
+    vipdisplay:false
+    
 
   },
   onLoad: function (e) {
@@ -90,6 +94,7 @@ Page({
       success: res => {
         this.setData({
           xiaouad: res.data,
+          xiaouadtitle: res.xiaouadtitle,
         })
       },
     })
@@ -103,6 +108,8 @@ Page({
       success: res => {
         this.setData({
           moredata: res.moredata,
+          moredatatitle:res.moredatatitle,
+          vipdisplay:res.vipdisplay
         })
       },
     })

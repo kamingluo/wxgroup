@@ -11,7 +11,7 @@ class My
         $data=array(
             ['id'=>'1','title'=>'火把小程序','type'=>1,'imageurl'=>'http://qiniu.luojiaming.vip/myhuoba.png','url'=>'/pages/webview/webview?url=https://mp.weixin.qq.com/s/pGMr4pEV-d-tm0ZcT0gO-Q'],
             ['id'=>'2','title'=>'一起学堂','type'=>1,'imageurl'=>'http://qiniu.luojiaming.vip/myxuetang.png','url'=>'/pages/webview/webview?url=https://mp.weixin.qq.com/s/vyyu_5qibCYs4ym8ZV9uWw']);
-        $state=['state'   => '200','message'  => '我的页面小U广告' ];
+        $state=['state'   => '200','message'  => '我的页面小U广告','xiaouadtitle'  => '社群工具推荐' ];
         $resdata=array_merge($state,array('data'=>$data));
     	return  $resdata ;
     }
@@ -27,7 +27,7 @@ class My
             ['id'=>'4','title'=>'在线客服','type'=>'kefu','imageurl'=>'miniapp/images/my/moreicon/kefu.png','url'=>'/pages/business/gdtad/gdtad'],
             ['id'=>'5','title'=>'意见建议','type'=>'jianyi','imageurl'=>'miniapp/images/my/moreicon/fankui.png','url'=>'/pages/business/gdtad/gdtad'],
         );
-        $state=['state'   => '200','message'  => '我的页面更多配置' ];
+        $state=['state'   => '200','message'  => '我的页面更多配置','moredatatitle'  => '更多工具' ,'vipdisplay' => true ];
         $resdata=array_merge($state,array('moredata'=>$data));
     	return  $resdata ;
     }

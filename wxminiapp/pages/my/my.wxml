@@ -21,27 +21,31 @@
 				</view>
 			</view>
 			<view class="flex-twice  margin-xs radius centered">
+
+           <view wx:if="{{vipdisplay}}">
 				<button class=" bg-yellow round shadow vip-button">
 					<text >升级VIP</text>
 				</button>
+           </view>
+
 			</view>
 		</view>
 	</view>
 
-	<!-- <view class="vip-body centered">
-		<image src="{{imageurl + 'miniapp/images/my/novip.png'}}"></image>
-	</view> -->
+  <view wx:if="{{vipdisplay}}">
+		<!-- <view class="vip-body centered">
+			<image src="{{imageurl + 'miniapp/images/my/novip.png'}}"></image>
+		</view> -->
 
-	<view class="vip-body centered">
+	 <view class="vip-body centered">
 		<image src="{{imageurl + 'miniapp/images/my/havevip.png'}}"></image>
 
 		<view class="flex  p-xs margin-bottom-sm mb-sm havevip">
 			<view class="flex-treble  padding-xs margin-xs radius viptime-body" ><text class="viptime">2020-09-30 会员到期</text> </view>
 			<view class="flex-sub padding-xs margin-xs radius viptime-body"><button class="cu-btn bg-yellow round  shadow">续费</button></view>
 		</view>
-
-
-	</view>
+	 </view>
+   </view>
 
 	<view class="zhanwei"></view>
 </view>
@@ -83,7 +87,7 @@
 
 
 
-<view class="fuli-body">
+<view class="fuli-body" wx:if="{{xiaouad.length > 0}}">
 
 	<view class="cu-bar bg-white solid-bottom">
 		<view class="action">
@@ -104,7 +108,7 @@
 
 
 
-<view>
+<view wx:if="{{moredata.length > 0}}">
 	<view class="cu-bar bg-white solid-bottom">
 		<view class="action">
 			更多工具
