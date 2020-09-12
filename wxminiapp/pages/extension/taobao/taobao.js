@@ -13,7 +13,7 @@ Page({
     themelist: [],//轮播图主题数据
     tabdata: [],//类目选项
     channel_type: 1, //channel_type: 0 - 1.9包邮, 1-今日爆款, 2-品牌好货, 3-相似商品推荐, 4-猜你喜欢, 5-实时热销, 6-实时收益, 7-今日畅销, 8-高佣榜单，默认1
-    cat_id: 20100,//猜你喜欢场景的商品类目，20100-百货，20300-食品，20400-女装，20500-电器，20600-鞋包，20800-美妆，20900-男装，21000-水果，21100-家纺，21200-文具,21300-运动,21700-家具;
+    cat_id: 3756,
     pages: 1,//商品页数
     TabCur: 0,
     scrollLeft: 0,
@@ -22,7 +22,7 @@ Page({
   },
   onLoad: function (options) {
     this.tabdata()
-    this.themelistget()
+    this.getthemelistdata()
     this.getgoodslist()
   },
 
@@ -33,24 +33,7 @@ Page({
     })
   },
 
-  //轮播图数据
-  themelistget: function () {
-    var that = this;
-    request({
-      service: 'pdd/themegoods/themelistget',
-      method: 'GET',
-      data: {},
-      success: res => {
-        //console.log("轮播图主题数据", res.themelists.theme_list_get_response.theme_list)
-        let themelist = res.themelists.theme_list_get_response.theme_list;
-        let newthemelist = that.getRandomArrayElements(themelist, 5);
-        // console.log("随机元素", that.getRandomArrayElements(themelist, 5));
-        that.setData({
-          themelist: newthemelist,
-        })
-      },
-    })
-  },
+
   //随机选取元素
   getRandomArrayElements: function (arr, count) {
     var shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
@@ -66,9 +49,9 @@ Page({
   clickswiper: function (e) {
     console.log("点击轮播图", e)
     let name = e.currentTarget.dataset.data.name;
-    let id = e.currentTarget.dataset.data.id;
+    let material_id = e.currentTarget.dataset.data.material_id;
     wx.navigateTo({
-      url: '/pages/extension/pdd/themegoods/themegoods?theme_id=' + id + '&name=' + name
+      url: '/pages/extension/taobao/themegoods/themegoods?material_id=' + material_id + '&name=' + name
     })
   },
 
@@ -89,22 +72,20 @@ Page({
   //获取商品流数据
   getgoodslist: function () {
     var that = this
-    let channel_type = that.data.channel_type;
     let cat_id = that.data.cat_id;
     let pages = that.data.pages;
     request({
-      service: 'pdd/recommend/recommend',
+      service: 'taobao/search/optimusmaterial',
       method: 'GET',
       data: {
-        channel_type: channel_type,
-        cat_id: cat_id,
+        material_id: cat_id,
         pages: pages
       },
       success: res => {
-        console.log("商品流数据", res)
-        // let goodslist = res.recommenddata.goods_basic_detail_response.list;
+        console.log("淘宝商品流数据", res.goodsdata)
+        // let goodslist = res.goodsdata.tbk_dg_optimus_material_response.result_list.map_data;
         let goodslist = that.data.goodslist;
-        let newgoodslist = [...goodslist, ...res.recommenddata.goods_basic_detail_response.list];
+        let newgoodslist = [...goodslist, ...res.goodsdata.tbk_dg_optimus_material_response.result_list.map_data];
         that.setData({
           goodslist: newgoodslist,
         })
@@ -117,82 +98,64 @@ Page({
     let data = [
       {
         id: 1,
-        name: '今日爆款',
+        name: '综合',
         channel_type: 1,
-        cat_id: 20100,
+        cat_id: 3756,
       },
       {
         id: 2,
-        name: '品牌好货',
+        name: '食品',
         channel_type: 2,
-        cat_id: 20100,
+        cat_id: 3761,
       },
       {
         id: 3,
-        name: '百货',
+        name: '数码家电',
         channel_type: 4,
-        cat_id: 20100,
+        cat_id: 3759,
       },
       {
         id: 4,
-        name: '食品',
+        name: '女装',
         channel_type: 4,
-        cat_id: 20300,
+        cat_id: 3767,
       },
       {
         id: 5,
-        name: '电器',
+        name: '男装',
         channel_type: 4,
-        cat_id: 20500,
+        cat_id: 3764,
       },
       {
         id: 6,
-        name: '水果',
+        name: '运动户外',
         channel_type: 4,
-        cat_id: 21000,
+        cat_id: 3766,
       },
       {
         id: 7,
-        name: '家具',
+        name: '美妆',
         channel_type: 4,
-        cat_id: 21700,
+        cat_id: 3763,
       },
       {
         id: 8,
-        name: '运动',
+        name: '家居',
         channel_type: 4,
-        cat_id: 21300,
+        cat_id: 3758,
       },
       {
         id: 9,
         name: '鞋包',
         channel_type: 4,
-        cat_id: 20600,
+        cat_id: 3762,
       },
       {
         id: 10,
-        name: '女装',
+        name: '淘抢购',
         channel_type: 4,
-        cat_id: 20400,
-      },
-      {
-        id: 11,
-        name: '男装',
-        channel_type: 4,
-        cat_id: 20900,
-      },
-      {
-        id: 12,
-        name: '美妆',
-        channel_type: 4,
-        cat_id: 20800,
-      },
-      {
-        id: 13,
-        name: '家纺',
-        channel_type: 4,
-        cat_id: 21100,
-      },
+        cat_id: 34616,
+      }
     ]
 
     this.setData({
@@ -228,6 +191,37 @@ Page({
       })
     }
   },
+
+  getthemelistdata() {
+    let data = [
+      {
+        id: 1,
+        image_url: 'https://gw.alicdn.com/tfs/TB1AhARHRr0gK0jSZFnXXbRRXXa-750-292.jpg_q75.jpg_.webp',
+        name: '实时热销爆款',
+        material_id: '28026',
+      },
+      {
+        id: 2,
+        image_url: 'https://gw.alicdn.com/tfs/TB1qj.JHFY7gK0jSZKzXXaikpXa-750-292.jpg_q75.jpg_.webp',
+        name: '大额优惠券',
+        material_id: '27446',
+      },
+      {
+        id: 3,
+        image_url: 'https://gw.alicdn.com/tfs/TB1fLOXoVzqK1RjSZFoXXbfcXXa-750-275.png_q75.jpg',
+        name: '品牌优惠券',
+        material_id: '3786',
+      }
+    ]
+    this.setData({
+      themelist: data
+    });
+  },
+
+
+
+
+
 
   /**
   * 页面上拉触底事件的处理函数

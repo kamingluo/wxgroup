@@ -22,6 +22,10 @@
   margin-top: 10rpx;
 }
 
+.screen-swiper {
+	min-height: 0rpx;
+}
+
 .goodslist{
   margin-bottom: 20rpx;
 }

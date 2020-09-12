@@ -33,7 +33,7 @@
 </view>
 
 <view class="goodslist"> 
-  <pddgoodslist goodslist="{{goodslist}}"></pddgoodslist>
+  <taobaogoodslist goodslist="{{goodslist}}"></taobaogoodslist>
 </view>
 
 

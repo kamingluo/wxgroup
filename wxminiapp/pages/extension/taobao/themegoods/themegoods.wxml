@@ -3,8 +3,12 @@
   <view slot="content">{{name}}</view>
 </cu-custom>
 
-<pddgoodslist goodslist="{{goodslist}}"></pddgoodslist>
+<taobaogoodslist goodslist="{{goodslist}}"></taobaogoodslist>
 
 <view class="centered tips">
-  <text>-------已经到底啦-------</text>
+  <text>加载中.......</text>
+</view>
+
+<view class='goTop centered' hidden='{{!floorstatus}}'>
+	<image src='../../../../images/up.png' bindtap="goTop"></image>
 </view>
