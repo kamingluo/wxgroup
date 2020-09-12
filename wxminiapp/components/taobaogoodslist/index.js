@@ -16,16 +16,15 @@ Component({
   methods: {
     clickgoods: function (e) {
      console.log("点击商品",e)
-      let goods_id = e.currentTarget.dataset.data.goods_id;
-      let search_id = e.currentTarget.dataset.data.search_id;
-      if (!search_id){
-        console.log("没有搜索id,商品id作为搜索id")
-        search_id = goods_id;
-      }
-      console.log("跳转到商品详情页")
+      // let goodsdata = e.currentTarget.dataset.data;
+      // wx.setStorageSync('taobaogoodsdata', goodsdata)//将点击的淘宝商品存入缓存
+      let num_iids = e.currentTarget.dataset.data.item_id;//商品id
+      let url = encodeURIComponent(e.currentTarget.dataset.data.url);
       wx.navigateTo({
-        url: '/pages/extension/pdd/goodsdetails/goodsdetails?goods_id=' + goods_id + '&search_id=' + search_id
+        url: '/pages/extension/taobao/goodsdetails/goodsdetails?num_iids=' + num_iids + '&url=' + url 
       })
+
+
     }
   }
 })

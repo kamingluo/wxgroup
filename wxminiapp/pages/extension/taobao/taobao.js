@@ -11,7 +11,6 @@ Page({
    */
   data: {
     themelist: [],//轮播图主题数据
-    iconList: [],//icon列表
     tabdata: [],//类目选项
     channel_type: 1, //channel_type: 0 - 1.9包邮, 1-今日爆款, 2-品牌好货, 3-相似商品推荐, 4-猜你喜欢, 5-实时热销, 6-实时收益, 7-今日畅销, 8-高佣榜单，默认1
     cat_id: 20100,//猜你喜欢场景的商品类目，20100-百货，20300-食品，20400-女装，20500-电器，20600-鞋包，20800-美妆，20900-男装，21000-水果，21100-家纺，21200-文具,21300-运动,21700-家具;
@@ -22,17 +21,6 @@ Page({
 
   },
   onLoad: function (options) {
-    console.log(options)
-    let mall_type = options.mall_type;
-    let goods_id = options.goods_id;
-    let search_id = options.search_id;
-    //分享进来，直接跳转到商品详情页面
-    if (mall_type == 1) {
-      wx.navigateTo({
-        url: '/pages/extension/pdd/goodsdetails/goodsdetails?goods_id=' + goods_id + '&search_id=' + search_id
-      })
-    }
-    this.icondata()
     this.tabdata()
     this.themelistget()
     this.getgoodslist()
@@ -122,70 +110,8 @@ Page({
         })
       },
     })
-
-
-
-
-
   },
-  //icon位置数据
-  icondata: function () {
-    let iconList = [{
-      id: 1,
-      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/dapai.jpg',
-      jumpurl: '/pages/web/web?specialUrl=1&src=https%3A%2F%2Fmobile.yangkeduo.com%2Fduo_transfer_channel.html%3FresourceType%3D4%26pid%3D1979520_149719573%26cpsSign%3DCE_200829_1979520_149719573_5468d953abef97d934bc113ce3aa08f9%26duoduo_type%3D2',
-      type: 1,
-      name: '限时秒杀'
-    }, {
-      id: 2,
-      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/neigou.jpg',
-      jumpurl: '/pages/web/web?specialUrl=1&src=https%3A%2F%2Fmobile.yangkeduo.com%2Fduo_transfer_channel.html%3FresourceType%3D39996%26pid%3D1979520_149719573%26_pdd_fs%3D1%26_pdd_tc%3Dffffff%26_pdd_sbs%3D1%26cpsSign%3DCE_200829_1979520_149719573_37e03227fdb9f493824fb7e240a93fb5%26duoduo_type%3D2',
-      type: 1,
-      name: '百亿补贴'
-    }, {
-      id: 3,
-      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/rebang.jpg',
-      jumpurl: '/pages/web/web?specialUrl=1&src=https%3A%2F%2Fmobile.yangkeduo.com%2Fduo_transfer_channel.html%3FresourceType%3D40000%26pid%3D1979520_149719573%26cpsSign%3DCE_200829_1979520_149719573_25e05c92f27b2897a1f8116c629fd137%26duoduo_type%3D2',
-      type: 1,
-      name: '领券中心'
-    }, {
-      id: 4,
-      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/chongzhi.jpg',
-      jumpurl: '/pages/web/web?specialUrl=1&src=https%3A%2F%2Fmobile.yangkeduo.com%2Fduo_transfer_channel.html%3FresourceType%3D39997%26pid%3D1979520_149719573%26cpsSign%3DCE_200829_1979520_149719573_3c67a6e3b54b987e0c46edd4b1d10008%26duoduo_type%3D2',
-      type: 1,
-      name: '话费充值'
-    }, {
-      id: 5,
-      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/shoucang2.png',
-      jumpurl: '',
-      type: 2,
-      name: '我的收藏'
-    }
-    ]
-    this.setData({
-      iconList: iconList,
-    })
 
-  },
-  //点击icon
-  clickicon: function (e) {
-    let type = e.currentTarget.dataset.data.type;
-    let jumpurl = e.currentTarget.dataset.data.jumpurl;
-    if (type == 2) {
-      wx.navigateTo({
-        url: '/pages/extension/collection/collection'
-      })
-    }
-    else {
-      wx.navigateToMiniProgram({
-        appId: 'wx32540bd863b27570',
-        path: jumpurl,
-      })
-
-    }
-
-
-  },
   //tab数据
   tabdata: function () {
     let data = [

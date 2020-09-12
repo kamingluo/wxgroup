@@ -2,6 +2,6 @@
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom",
     "defaultgraph": "/components/defaultGraph/index",
-    "pddgoodslist": "/components/pddgoodslist/index"
+    "taobaogoodslist": "/components/taobaogoodslist/index"
   }
 }

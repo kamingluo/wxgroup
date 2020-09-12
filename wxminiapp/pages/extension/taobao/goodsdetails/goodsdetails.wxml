@@ -7,8 +7,8 @@
 
 <!--商品轮播图-->
 <swiper class="screen-swiper square-dot bg-white" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-  <swiper-item wx:for="{{goodsdata.goods_gallery_urls}}" wx:key="index">
-    <image src="{{item}}" mode='aspectFill'></image>
+  <swiper-item wx:for="{{[goodsdata.pict_url]}}" wx:key="index">
+    <image src="{{item}}" mode='scaleToFill'></image>
   </swiper-item>
 </swiper>
 
@@ -17,13 +17,13 @@
 <view class="goods_content">
   <view class="content">
     <view class="goods_title">
-      <text>{{goodsdata.goods_name}}</text>
+      <text>{{goodsdata.title}}</text>
     </view>
     <view class="goods_brief">
       <text class="goods_desc">{{goodsdata.goods_desc}}</text>
     </view>
-    <view class="goods_price">￥{{filters.toFix( goodsdata.min_group_price/100 - goodsdata.coupon_discount/100)}}
-      <text class="yuanjia" wx:if="{{goodsdata.has_coupon}}">￥{{filters.toFix(goodsdata.min_group_price/100)}}</text>
+    <view class="goods_price">￥{{goodsdata.zk_final_price - coupondata.coupon_amount}}
+      <text class="yuanjia" wx:if="{{coupondata.coupon_amount > 0}}">￥{{goodsdata.zk_final_price}}</text>
     </view>
   </view>
   	<kaming-button open-type='share'>
@@ -38,9 +38,9 @@
 <!--商品属性-->
 <view class="bg-white grid  canui-goods-box text-gray text-sm">
   <!-- <view class='padding-sm'>剩余：{{goodsdata.coupon_remain_quantity}}</view> -->
-  <view class='padding-sm text-center'>销量:{{goodsdata.sales_tip}}笔</view>
+  <view class='padding-sm text-center'>销量:{{goodsdata.volume}}笔</view>
 
-  <view class='padding-sm text-right'>店名:{{goodsdata.mall_name}}</view>
+  <view class='padding-sm text-right'>店名:{{goodsdata.nick}}</view>
   <!-- <view wx:for="{{goodsdata.unified_tags}}" wx:key="index">
   <view class='padding-sm text-right'>{{item}}</view>
   </view> -->
@@ -48,11 +48,11 @@
 </view>
 
 
-<view class=" bg-white centered" wx:if="{{goodsdata.has_coupon}}">
+<view class=" bg-white centered" wx:if="{{coupondata.coupon_amount >0}}">
   <view class="youhuiquan-body bg-red " bindtap="purchase">
     <view class="flex  p-xs margin-bottom-sm mb-sm">
       <view class="flex-sub padding-sm ">
-       ￥<text class="youhuiquan">{{filters.toFix(goodsdata.coupon_discount/100)}}</text>
+       ￥<text class="youhuiquan">{{coupondata.coupon_amount}}</text>
       </view>
       <view class="flex-treble  padding-sm ">
       <view class="menkan">
@@ -61,13 +61,13 @@
         </view>
         <view>
           <!-- <text class="youhuiquantime" wx:if="{{}}">2010-01-02 - 2020-09-03</text> -->
-          <text class="youhuiquantime" wx:if="{{goodsdata.coupon_min_order_amount > 0 }}">最低使用门槛:{{filters.toFix(goodsdata.coupon_min_order_amount/100)}}元</text>
+          <text class="youhuiquantime" wx:if="{{coupondata.coupon_start_fee > 0 }}">最低使用门槛:{{coupondata.coupon_start_fee}}元</text>
           <text class="youhuiquantime" wx:else>无门槛使用</text>
         </view>
         </view>
       </view>
       <view class="flex-twice  padding-sm  centered ">
-        <button class="cu-btn bg-purple round sm shadow">领券购买</button>
+        <button class="cu-btn bg-purple round sm shadow">复制淘口令</button>
       </view>
     </view>
   </view>
@@ -84,7 +84,7 @@
 
 
 
-<view class="centered goodsimages" wx:for="{{goodsdata.goods_gallery_urls}}" wx:key="index">
+<view class="centered goodsimages" wx:for="{{goodsdata.small_images.string}}" wx:key="index">
   <view class="images-body">
     <view class="bg-img  padding-tb-xl" style="background-image: url('{{item}}'); height: 720rpx;">
     </view>
@@ -113,5 +113,5 @@
   </view>
 
   <view class="add_cart goods_buy">	<kaming-button open-type='share'>分享</kaming-button></view>
-  <view class="now_buy goods_buy" bindtap="purchase">{{goodsdata.has_coupon?"领券购买":"立即购买"}}</view>
+  <view class="now_buy goods_buy" bindtap="purchase">复制淘口令</view>
 </view>

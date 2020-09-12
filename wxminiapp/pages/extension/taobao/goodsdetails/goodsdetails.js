@@ -5,38 +5,40 @@ const {
 Page({
   data: {
     goodsdata: {},
-    miniappurldata: {},
+    taokouling: null,//淘口令
     ifcollection: false,
-    goods_id: null,
-    search_id: null
+    num_iids: null,
+    url: null,
+    coupondata:{}
   },
+
   onLoad: function (options) {
     console.log(options)
-    let search_id = options.search_id || 0;
-    let goods_id = Number(options.goods_id);
+    let num_iids = options.num_iids;
+    let url = decodeURIComponent(options.url) ;
     this.setData({
-      goods_id: goods_id,
-      search_id: search_id
+      num_iids: num_iids,
+      url: url
     })
-    let newgoodsid = [goods_id];
-
-    this.goodsdata(newgoodsid)
-    this.miniappurl(newgoodsid, search_id)
-    this.whethercollection(goods_id)
+    this.goodsdata(num_iids) //查询商品详情和优惠券
+    this.miniappurl(url) //获取淘口令
+    this.whethercollection(num_iids) //查询用户是否有收藏
   },
 
 
 
-  //点击购买
+  //复制淘口令
   purchase: function () {
     var that=this;
-    let jumpurl = this.data.miniappurldata.page_path
-    let appid = this.data.miniappurldata.app_id
-    wx.navigateToMiniProgram({
-      appId: appid,
-      path: jumpurl,
-      success(res) {
-        console.log("跳转小程序成功")
+    let taokouling = this.data.taokouling
+    wx.setClipboardData({
+      data: taokouling,
+      success: function (res) {
+        wx.showToast({
+          title: '复制成功',
+          icon: 'success',
+          duration: 2000,
+        })
         that.commercestatistics()
       }
     })
@@ -47,12 +49,12 @@ Page({
     commercestatistics: function () {
       let user_id = wx.getStorageSync('userdata').id || 0;
       let channel = wx.getStorageSync('channel').id || 0;
-      let mall_type = 1;
-      let goods_image_url = this.data.goodsdata.goods_thumbnail_url;
-      let goods_name = this.data.goodsdata.goods_name;
-      let sales_tip = this.data.goodsdata.sales_tip;
-      let min_group_price = this.data.goodsdata.min_group_price;
-      let coupon_discount = this.data.goodsdata.coupon_discount;
+      let mall_type = 2;
+      let goods_image_url = this.data.goodsdata.pict_url;
+      let goods_name = this.data.goodsdata.title;
+      let sales_tip = this.data.goodsdata.volume;
+      let min_group_price = this.data.goodsdata.zk_final_price;
+      let coupon_discount = this.data.coupondata.coupon_amount;
       if (!coupon_discount) {
         coupon_discount = 0;
       }
@@ -79,17 +81,20 @@ Page({
 
 
   //获取商品详情
-  goodsdata: function (goodsid) {
+  goodsdata: function (num_iids) {
     request({
-      service: 'pdd/Search/goodsdetail',
+      service: 'taobao/Search/goodsdetail',
       method: 'GET',
       data: {
-        goods_id: goodsid,
+        num_iids: num_iids,
       },
       success: res => {
-        console.log("商品详情", res.goodsdetails.goods_detail_response.goods_details[0])
+        //  console.log("商品详情", res)
+        console.log("商品详情", res.goodsdetail.tbk_item_info_get_response.results.n_tbk_item[0])
+        console.log("优惠券详情", res.coupondata)
         this.setData({
-          goodsdata: res.goodsdetails.goods_detail_response.goods_details[0],
+          goodsdata: res.goodsdetail.tbk_item_info_get_response.results.n_tbk_item[0],
+          coupondata: res.coupondata.tbk_coupon_get_response.data
         })
       },
     })
@@ -97,18 +102,17 @@ Page({
 
 
   //获取跳转链接
-  miniappurl: function (goodsid, search_id) {
+  miniappurl: function (url) {
     request({
-      service: 'pdd/Search/goodspromotion',
+      service: 'taobao/Search/tpwdcreate',
       method: 'GET',
       data: {
-        goods_id: goodsid,
-        search_id: search_id
+        url: url,
       },
       success: res => {
-        //console.log("跳转信息", res.goodsurldata.goods_promotion_url_generate_response.goods_promotion_url_list[0].we_app_info)
+        console.log("生成淘口令", res.tpwddata.tbk_tpwd_create_response.data.password_simple)
         this.setData({
-          miniappurldata: res.goodsurldata.goods_promotion_url_generate_response.goods_promotion_url_list[0].we_app_info,
+          taokouling: res.tpwddata.tbk_tpwd_create_response.data.password_simple
         })
       },
     })
@@ -121,7 +125,6 @@ Page({
     })
 
   },
-
 
 
   //查询用户有没有收藏该商品
@@ -148,7 +151,7 @@ Page({
   deletecollection: function (goodsid) {
     
     let user_id = wx.getStorageSync('userdata').id || 0;
-    let goods_id = this.data.goods_id;
+    let goods_id = this.data.num_iids;
     request({
       service: 'pdd/collection/deletecollection',
       method: 'GET',
@@ -174,20 +177,21 @@ Page({
   //用户收藏商品
   goodscollection: function () {
     let user_id = wx.getStorageSync('userdata').id || 0;
-    let goods_id = this.data.goods_id;
-    let search_id = this.data.search_id || 0;
-    let mall_type = 1;
-    let goods_image_url = this.data.goodsdata.goods_thumbnail_url;
-    let goods_name = this.data.goodsdata.goods_name;
-    let mall_name = this.data.goodsdata.mall_name;
-    let sales_tip = this.data.goodsdata.sales_tip;
-    let min_group_price = this.data.goodsdata.min_group_price;
-    let coupon_discount = this.data.goodsdata.coupon_discount;
-    if (!coupon_discount) {
+    let goods_id = this.data.num_iids;
+    let search_id = this.data.url;
+    let mall_type = 2;
+    let goods_image_url = this.data.goodsdata.pict_url;
+    let goods_name = this.data.goodsdata.title;
+    let mall_name = this.data.goodsdata.nick;
+    let sales_tip = this.data.goodsdata.volume;
+
+    let min_group_price = this.data.goodsdata.zk_final_price * 100;
+    let coupon_discount = this.data.coupondata.coupon_amount * 100;
+    if (!coupon_discount || coupon_discount==null ) {
       coupon_discount = 0;
     }
     let has_coupon=0;
-    let ifcoupon = this.data.goodsdata.has_coupon;
+    let ifcoupon = this.data.coupondata.coupon_amount;
     if (ifcoupon){
       has_coupon=1;
     }
@@ -225,16 +229,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (options) {
-    let goods_id = this.data.goods_id;
-    let search_id = this.data.search_id || 0;
-    let goods_image_url = this.data.goodsdata.goods_thumbnail_url;
-    let goods_name = this.data.goodsdata.goods_name;
+    let num_iids = this.data.num_iids;
+    let url = this.data.url;
+    let goods_image_url = this.data.goodsdata.pict_url;
+    let goods_name = this.data.goodsdata.title;
     let mall_type = 1;
     return {
       title:goods_name,
       desc:goods_name,
       imageUrl: goods_image_url,
-      path: '/pages/extension/extension?channel=1006&mall_type=1&goods_id='+goods_id+'&search_id='+search_id, // 分享传递商品id和搜索id，加上商城类型。
+      path: '/pages/extension/extension?channel=1006&mall_type=2&num_iids=' + num_iids + '&url=' + url, // 分享传递商品id和生成淘口令链接，加上商城类型。
     }
    
   }

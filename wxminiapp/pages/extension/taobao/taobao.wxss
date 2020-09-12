@@ -1,20 +1,10 @@
 /* 顶部搜索 */
-.search{
-  width: 75%;
-  background-color: white;
-}
-.cu-custom .cu-bar {
-	padding-right: 0rpx;
-}
-.cu-custom .cu-bar .content {
-	width: calc(100% - 200rpx);
-}
+
 .cu-bar {
-  /* margin-top: 5rpx; */
-	display: block;
+	display: flex;
 	position: relative;
 	align-items: center;
-	min-height: 100rpx;
+	min-height: 80rpx;
 	justify-content: space-between;
 }
 .cu-list.grid.no-border {

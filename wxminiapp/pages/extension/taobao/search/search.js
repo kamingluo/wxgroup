@@ -71,16 +71,16 @@ Page({
 
     }
     request({
-      service: 'pdd/Search/goodssearch',
+      service: 'taobao/Search/goodssearch',
       method: 'GET',
       data: {
         page: page,
         keyword: keyword
       },
       success: res => {
-        console.log("查询商品结果", res.goodslist.goods_search_response.goods_list)
+        // console.log("查询商品结果", res.goodslist.tbk_dg_material_optional_response.result_list.map_data)
         let goodslist = this.data.goodslist;
-        var newgoodslist = [...goodslist, ...res.goodslist.goods_search_response.goods_list];
+        var newgoodslist = [...goodslist, ...res.goodslist.tbk_dg_material_optional_response.result_list.map_data];
         console.log(newgoodslist.length)
         that.setData({
           goodslist: newgoodslist,

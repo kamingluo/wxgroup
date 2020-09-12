@@ -22,6 +22,12 @@
 
 
 <!-- 拼多多商品广告模板 -->
-<view>
+<!-- <view>
 <pddgoodslist></pddgoodslist>
+</view> -->
+
+
+<!-- 淘宝商品广告模板 -->
+<view>
+<taobaogoodslist goodslist="{{goodslist}}"></taobaogoodslist>
 </view>

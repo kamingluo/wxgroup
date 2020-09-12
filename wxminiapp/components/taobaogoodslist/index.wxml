@@ -13,29 +13,29 @@
       <view class="good-price centered">
         <view class="good-juli-body">
           
-          <text class="discount" wx:if="{{item.has_coupon}}">￥{{ filters.toFix(item.min_group_price/100 - item.coupon_discount/100)}}</text>
-          <text class="discount" wx:else>￥{{ filters.toFix(item.min_group_price/100)}}</text>
+          <text class="discount" wx:if="{{item.coupon_amount <= 0}}">￥{{item.zk_final_price}}</text>
+          <text class="discount" wx:else>￥{{ filters.toFix(item.zk_final_price - item.coupon_amount)}}</text>
 
-          <text class="yuanjia" wx:if="{{item.has_coupon}}">￥{{filters.toFix(item.min_group_price/100)}}</text>
+          <text class="yuanjia" wx:if="{{item.coupon_amount > 0}}">￥{{item.zk_final_price}}</text>
         </view>
       </view>
       <view class="sold-body centered">
         <view class="good-juli-body">
           <view>
-            <text class="sold" decode="{{true}}">已售&nbsp;{{item.sales_tip}}</text>
+            <text class="sold" decode="{{true}}">已售&nbsp;{{item.tk_total_sales}}</text>
           </view>
         </view>
       </view>
       <view class="sold-body centered">
         <view class="good-juli-body">
-          <text class="cu-tag bg-red radius youhui" wx:if="{{item.has_coupon}}">{{item.coupon_discount/100}}元券</text>
+          <text class="cu-tag bg-red radius youhui" wx:if="{{item.coupon_amount > 0}}">{{item.coupon_amount}}元券</text>
           <text class="cu-tag bg-red radius youhui" wx:else>暂无优惠券</text>
         </view>
       </view>
       <view class="sold-body centered">
         <view class="good-juli-body">
           <view>
-            <text class="sold mall" decode="{{true}}">{{item.mall_name}}</text>
+            <text class="sold mall" decode="{{true}}">{{item.shop_title}}</text>
           </view>
         </view>
       </view>

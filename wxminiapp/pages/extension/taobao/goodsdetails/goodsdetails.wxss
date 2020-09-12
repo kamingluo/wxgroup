@@ -38,8 +38,8 @@
   font-weight: 600;
 }
 .cu-btn.sm {
-	padding: 0 20rpx;
-	font-size: 26rpx;
+	padding: 0 10rpx;
+	font-size: 20rpx;
 	height: 48rpx;
 }
 

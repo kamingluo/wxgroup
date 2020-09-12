@@ -24,14 +24,22 @@ Page({
   onLoad: function (options) {
     console.log(options)
     let mall_type = options.mall_type;
-    let goods_id = options.goods_id;
-    let search_id = options.search_id;
     //分享进来，直接跳转到商品详情页面
     if (mall_type == 1) {
+      let goods_id = options.goods_id;
+      let search_id = options.search_id;
       wx.navigateTo({
         url: '/pages/extension/pdd/goodsdetails/goodsdetails?goods_id=' + goods_id + '&search_id=' + search_id
       })
     }
+    else if (mall_type ==2){
+      let num_iids = options.num_iids;
+      let url = options.url;
+      wx.navigateTo({
+        url: '/pages/extension/taobao/goodsdetails/goodsdetails?num_iids=' + num_iids + '&url=' + url
+      })
+    }
+
     this.icondata()
     this.tabdata()
     this.themelistget()
@@ -132,10 +140,10 @@ Page({
   icondata: function () {
     let iconList = [{
       id: 1,
-      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/dapai.jpg',
-      jumpurl: '/pages/web/web?specialUrl=1&src=https%3A%2F%2Fmobile.yangkeduo.com%2Fduo_transfer_channel.html%3FresourceType%3D4%26pid%3D1979520_149719573%26cpsSign%3DCE_200829_1979520_149719573_5468d953abef97d934bc113ce3aa08f9%26duoduo_type%3D2',
-      type: 1,
-      name: '限时秒杀'
+      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/taobao.png',
+      jumpurl: '',
+      type: 3,
+      name: '领淘宝券'
     }, {
       id: 2,
       iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/neigou.jpg',
@@ -144,16 +152,16 @@ Page({
       name: '百亿补贴'
     }, {
       id: 3,
-      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/rebang.jpg',
-      jumpurl: '/pages/web/web?specialUrl=1&src=https%3A%2F%2Fmobile.yangkeduo.com%2Fduo_transfer_channel.html%3FresourceType%3D40000%26pid%3D1979520_149719573%26cpsSign%3DCE_200829_1979520_149719573_25e05c92f27b2897a1f8116c629fd137%26duoduo_type%3D2',
+      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/dapai.jpg',
+      jumpurl: '/pages/web/web?specialUrl=1&src=https%3A%2F%2Fmobile.yangkeduo.com%2Fduo_transfer_channel.html%3FresourceType%3D4%26pid%3D1979520_149719573%26cpsSign%3DCE_200829_1979520_149719573_5468d953abef97d934bc113ce3aa08f9%26duoduo_type%3D2',
       type: 1,
-      name: '领券中心'
+      name: '限时秒杀'
     }, {
       id: 4,
       iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/chongzhi.jpg',
       jumpurl: '/pages/web/web?specialUrl=1&src=https%3A%2F%2Fmobile.yangkeduo.com%2Fduo_transfer_channel.html%3FresourceType%3D39997%26pid%3D1979520_149719573%26cpsSign%3DCE_200829_1979520_149719573_3c67a6e3b54b987e0c46edd4b1d10008%26duoduo_type%3D2',
       type: 1,
-      name: '话费充值'
+      name: '领话费券'
     }, {
       id: 5,
       iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/shoucang2.png',
@@ -182,12 +190,11 @@ Page({
       wx.navigateTo({
         url: '/pages/extension/collection/collection'
       })
-      // wx.showToast({
-      //   title: '敬请期待',
-      //   icon: 'none',
-      //   duration: 2000,
-      // })
-      // return
+    }
+    else if (type == 3){
+      wx.navigateTo({
+        url: '/pages/extension/taobao/taobao'
+      })
     }
     else {
       wx.navigateToMiniProgram({

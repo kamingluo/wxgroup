@@ -2,6 +2,7 @@
   "usingComponents": {
     "gdtad": "/components/gdtAd/index",
     "pddgoodslist": "/components/pddgoodslist/index",
+    "taobaogoodslist": "/components/taobaogoodslist/index",
     "defaultgraph": "/components/defaultGraph/index",
     "cu-custom": "/colorui/components/cu-custom"
   }

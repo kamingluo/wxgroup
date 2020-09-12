@@ -22,7 +22,7 @@
 
 <view wx:else >
 	<view class="goodslist" wx:if="{{goodslist.length > 0}}">
-		<pddgoodslist goodslist="{{goodslist}}"></pddgoodslist>
+		<taobaogoodslist goodslist="{{goodslist}}"></taobaogoodslist>
 	</view>
 </view>
 

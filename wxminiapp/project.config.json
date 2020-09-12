@@ -81,6 +81,12 @@
 					"pathName": "pages/my/my",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "领淘宝优惠券",
+					"pathName": "pages/extension/taobao/taobao",
+					"scene": null
 				}
 			]
 		}
