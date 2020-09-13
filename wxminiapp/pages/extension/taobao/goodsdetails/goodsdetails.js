@@ -20,7 +20,7 @@ Page({
       num_iids: num_iids,
       url: url
     })
-    this.goodsdata(num_iids) //查询商品详情和优惠券
+    this.goodsdata(num_iids) //查询商品详情和优惠券放
     this.miniappurl(url) //获取淘口令
     this.whethercollection(num_iids) //查询用户是否有收藏
   },
@@ -92,10 +92,24 @@ Page({
         //  console.log("商品详情", res)
         console.log("商品详情", res.goodsdetail.tbk_item_info_get_response.results.n_tbk_item[0])
         console.log("优惠券详情", res.coupondata)
-        this.setData({
-          goodsdata: res.goodsdetail.tbk_item_info_get_response.results.n_tbk_item[0],
-          coupondata: res.coupondata.tbk_coupon_get_response.data
-        })
+        let coupondata = res.coupondata.tbk_coupon_get_response;
+        if (coupondata){
+          console.log("有优惠券")
+          this.setData({
+            goodsdata: res.goodsdetail.tbk_item_info_get_response.results.n_tbk_item[0],
+            coupondata: res.coupondata.tbk_coupon_get_response.data
+          })
+
+        }
+        else{
+          console.log("无优惠券")
+          this.setData({
+            goodsdata: res.goodsdetail.tbk_item_info_get_response.results.n_tbk_item[0],
+            coupondata: {}
+          })
+
+        }
+        
       },
     })
   },

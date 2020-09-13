@@ -22,7 +22,9 @@
     <view class="goods_brief">
       <text class="goods_desc">{{goodsdata.goods_desc}}</text>
     </view>
-    <view class="goods_price">￥{{goodsdata.zk_final_price - coupondata.coupon_amount}}
+    <view class="goods_price">
+     <text class="discount" wx:if="{{coupondata.coupon_amount > 0}}">￥{{ filters.toFix(goodsdata.zk_final_price - coupondata.coupon_amount)}}</text>
+          <text class="discount" wx:else>￥{{goodsdata.zk_final_price?goodsdata.zk_final_price:goodsdata.reserve_price}}</text>
       <text class="yuanjia" wx:if="{{coupondata.coupon_amount > 0}}">￥{{goodsdata.zk_final_price}}</text>
     </view>
   </view>

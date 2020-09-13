@@ -13,8 +13,8 @@
       <view class="good-price centered">
         <view class="good-juli-body">
           
-          <text class="discount" wx:if="{{item.coupon_amount <= 0}}">￥{{item.zk_final_price}}</text>
-          <text class="discount" wx:else>￥{{ filters.toFix(item.zk_final_price - item.coupon_amount)}}</text>
+          <text class="discount" wx:if="{{item.coupon_amount > 0}}">￥{{ filters.toFix(item.zk_final_price - item.coupon_amount)}}</text>
+          <text class="discount" wx:else>￥{{item.zk_final_price?item.zk_final_price:item.reserve_price}}</text>
 
           <text class="yuanjia" wx:if="{{item.coupon_amount > 0}}">￥{{item.zk_final_price}}</text>
         </view>

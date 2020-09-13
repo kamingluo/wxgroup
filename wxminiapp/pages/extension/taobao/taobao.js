@@ -14,7 +14,7 @@ Page({
     tabdata: [],//类目选项
     channel_type: 1, //channel_type: 0 - 1.9包邮, 1-今日爆款, 2-品牌好货, 3-相似商品推荐, 4-猜你喜欢, 5-实时热销, 6-实时收益, 7-今日畅销, 8-高佣榜单，默认1
     cat_id: 3756,
-    pages: 1,//商品页数
+    page: 1,//商品页数
     TabCur: 0,
     scrollLeft: 0,
     goodslist: []//商品信息流数据
@@ -61,7 +61,7 @@ Page({
     this.setData({
       channel_type: e.currentTarget.dataset.data.channel_type,
       cat_id: e.currentTarget.dataset.data.cat_id,
-      pages: 1,
+      page: 1,
       goodslist: [],
       TabCur: e.currentTarget.dataset.id,
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60
@@ -73,13 +73,13 @@ Page({
   getgoodslist: function () {
     var that = this
     let cat_id = that.data.cat_id;
-    let pages = that.data.pages;
+    let page = that.data.page;
     request({
       service: 'taobao/search/optimusmaterial',
       method: 'GET',
       data: {
         material_id: cat_id,
-        pages: pages
+        page: page
       },
       success: res => {
         console.log("淘宝商品流数据", res.goodsdata)
@@ -228,10 +228,10 @@ Page({
   */
   onReachBottom: function () {
     var that = this
-    let pages = that.data.pages;
-    let newpages = pages + 1;
+    let page = that.data.page;
+    let newpage = page + 1;
     that.setData({
-      pages: newpages
+      page: newpage
     })
     that.getgoodslist()
   }
