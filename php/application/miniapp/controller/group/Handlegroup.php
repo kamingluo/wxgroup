@@ -32,6 +32,9 @@ class Handlegroup
      {
          $crowd_id=$request->param("crowd_id");//群id
          $pages=$request->param("pages");
+         if(!$pages){
+             $pages=1;
+         }
          $endnumber=$pages*10 ; //结束查询条数
          $startnumber=$endnumber -10;//开始查询条数
          $sql = "select user.*,user_crowd.user_type,user_crowd.score,user_crowd.remarks,user_crowd.create_time as joincrowd_time from user,user_crowd where user.id=user_crowd.user_id and user_crowd.crowd_id = ".$crowd_id." order BY user_crowd.user_type=1 desc,user_crowd.user_type desc,user_crowd.score desc LIMIT ".$startnumber.",10;";
