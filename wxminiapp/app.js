@@ -21,6 +21,16 @@ App({
         let custom = wx.getMenuButtonBoundingClientRect();
         this.globalData.Custom = custom;
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+        if (res.platform == "ios") {
+          console.log("IOS设备")
+        } else if (res.platform == "android") {
+          console.log("安卓设备")
+        } else if (res.platform == "devtools") {
+          console.log("开发者工具")
+        }
+        else{
+          console.log("其他使用设备")
+        }
       }
     })
   },
