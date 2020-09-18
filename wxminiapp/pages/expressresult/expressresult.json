@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom",
-    "xm-ad": "/components/xmAD/xmAD"
+    "cu-custom": "/colorui/components/cu-custom"
   }
 }

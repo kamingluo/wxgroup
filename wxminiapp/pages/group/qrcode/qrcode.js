@@ -6,7 +6,6 @@ const {
   share
 } = require('./../../../utils/share.js');
 const baseConfig = require('./../../../utils/config.js')//配置文件
-var Page = require('../../../utils/sdk/xmad/xmadx_sdk.min.js').xmad(Page).xmPage; //小盟广告
 
 
 Page({

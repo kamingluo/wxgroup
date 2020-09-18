@@ -7,7 +7,6 @@ const {
 } = require('./../../utils/share.js');
 const common = require('./../../utils/common.js') //公共函数
 const baseConfig = require('./../../utils/config.js')//配置文件
-var Page = require('../../utils/sdk/xmad/xmadx_sdk.min.js').xmad(Page).xmPage; //小盟广告
 
 Page({
 

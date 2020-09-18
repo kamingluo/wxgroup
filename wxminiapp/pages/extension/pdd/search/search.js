@@ -149,6 +149,7 @@ Page({
   },
 
   searchName: function (e) {
+    console.log("点击搜索词", e.currentTarget.dataset.value)
     this.setData({
       searchtext: e.currentTarget.dataset.value
     })

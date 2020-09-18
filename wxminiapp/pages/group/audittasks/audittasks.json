@@ -2,7 +2,6 @@
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom",
     "defaultgraph": "/components/defaultGraph/index",
-    "kaming-button": "/components/kaming-button/index",
-    "xm-ad": "/components/xmAD/xmAD"
+    "kaming-button": "/components/kaming-button/index"
   }
 }

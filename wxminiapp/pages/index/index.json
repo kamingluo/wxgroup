@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "kaming-button": "/components/kaming-button/index",
-    "xm-ad": "/components/xmAD/xmAD"
+    "kaming-button": "/components/kaming-button/index"
   }
 }
