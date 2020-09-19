@@ -2,7 +2,8 @@
 const common = require('./utils/common.js') //公共函数
 const { request } = require('./utils/request.js')//公共请求方法
 const ald = require('./utils/sdk/ald/ald-stat.js') //阿拉丁统计
-var App = require('./utils/sdk/xmad/xmadx_sdk.min.js').xmad(App, 'App').xmApp; //小盟广告
+require('./utils/sdk/xmad/xmadx_sdk') //小盟广告
+
 App({
   globalData: {
     //一定要，删除报错

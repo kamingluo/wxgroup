@@ -155,10 +155,20 @@
 
 
 
+
+<!-- 小盟广告-->
+<view class="centered">
+  <view class="xmad-body">
+    <xm-ad data-id="xm686991b5279c34bac77e4720e9776b" adData="{{adData}}" class="xm686991b5279c34bac77e4720e9776b" size="small" bindadLoad="adLoad" bindadClick="adClick" bindadClose="adClose"></xm-ad>
+  </view>
+</view>
+
+<!-- 小盟广告-->
+
 <!-- 广点通模板广告开始-->
-<view class='centered '>
+<!-- <view class='centered '>
   <view class='gdtad'>
     <ad-custom capture-bind:tap="mobanadclick" ad-intervals="30" unit-id="adunit-b01774a672847dd7"></ad-custom>
   </view>
-</view>
+</view> -->
 <!-- 广点通模板广告结束-->

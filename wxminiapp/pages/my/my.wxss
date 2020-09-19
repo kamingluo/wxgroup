@@ -127,3 +127,10 @@ margin-left: -20rpx;
 	margin-bottom: 20rpx;
 	margin-top: 20rpx;
 }
+
+.xmad-body{
+  width: 98%;
+  margin-top: 20rpx;
+  margin-bottom: 50rpx;
+  border-radius: 10rpx; 
+}
