@@ -497,7 +497,7 @@
         M_appid: B,
         M_icon: H
       };
-      console.log("点击广告成功之后返回会调用的方法")
+      //console.log("点击广告成功之后返回会调用的方法")
       wx.request({
         header: e,
         method: "post",
@@ -543,7 +543,7 @@
   }
 
   function x(a, b, d) {
-    console.log("点击成功之后取消跳转触发的方法",a,b,d)
+    //console.log("点击成功之后取消跳转触发的方法",a,b,d)
     var c = Z(),
       e = "";
     b === "exposure" ? (e = "imp", c.iurl = a) : b === "click" ? (e = "clk", c.curl = a) : b === "cancel" && (e = "cancelclk", c.curl = a), c.ak = A, c.pp = T, c.uuid = y, c.v = w, c.wrs = K, c.reqid = C(d), c.asid = d;

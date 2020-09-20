@@ -8,7 +8,7 @@
   <view class="user">
     <view class="flex  p-sm margin-bottom-sm mb-sm">
       <view class="flex-sub  margin-xs radius">
-        <view>
+        <view bindlongpress="haveuserid">
           <open-data class='userAvatarurl' type="userAvatarUrl"></open-data>
         </view>
       </view>
@@ -25,7 +25,7 @@
       </view>
       <view class="flex-twice  margin-xs radius centered" wx:if="{{vipdisplay}}">
         <view>
-          <button class=" bg-yellow round shadow vip-button">
+          <button class=" bg-orange round shadow vip-button" bindtap="openvip">
             <text>升级VIP</text>
           </button>
         </view>
@@ -33,12 +33,12 @@
     </view>
   </view>
 
-  <view wx:if="{{vipdisplay}}">
-    <!-- <view class="vip-body centered">
-			<image src="{{imageurl + 'miniapp/images/my/novip.png'}}"></image>
-		</view> -->
-
+  <view wx:if="{{vipdisplay}}" bindtap="openvip">
     <view class="vip-body centered">
+			<image src="{{imageurl + 'miniapp/images/my/novip.png'}}"></image>
+		</view>
+
+    <!-- <view class="vip-body centered">
       <image src="{{imageurl + 'miniapp/images/my/havevip.png'}}"></image>
 
       <view class="flex  p-xs margin-bottom-sm mb-sm havevip">
@@ -48,7 +48,7 @@
           <button class="cu-btn bg-yellow round  shadow">续费</button>
         </view>
       </view>
-    </view>
+    </view> -->
   </view>
 
   <view class="zhanwei" wx:if="{{vipdisplay}}"></view>
@@ -159,16 +159,16 @@
 <!-- 小盟广告-->
 <view class="centered">
   <view class="xmad-body">
-    <xm-ad data-id="xm686991b5279c34bac77e4720e9776b" adData="{{adData}}" class="xm686991b5279c34bac77e4720e9776b" size="small" bindadLoad="adLoad" bindadClick="adClick" bindadClose="adClose"></xm-ad>
+    <xm-ad data-id="xm686991b5279c34bac77e4720e9776b" data-position="我的页面" bindtap="clickxmad" adData="{{adData}}" class="xm686991b5279c34bac77e4720e9776b" size="small" bindadLoad="adLoad" bindadClick="adClick" bindadClose="adClose"></xm-ad>
   </view>
 </view>
 
 <!-- 小盟广告-->
 
 <!-- 广点通模板广告开始-->
-<!-- <view class='centered '>
+<view class='centered '>
   <view class='gdtad'>
     <ad-custom capture-bind:tap="mobanadclick" ad-intervals="30" unit-id="adunit-b01774a672847dd7"></ad-custom>
   </view>
-</view> -->
+</view>
 <!-- 广点通模板广告结束-->

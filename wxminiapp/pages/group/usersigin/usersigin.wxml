@@ -54,11 +54,18 @@
 </view>
 <!--广点通视频广告结束-->
 
- <view class="flex  p-xs margin-bottom-xs  mb-sm usersigin">
-      <view class="flex-twice bg-white radius"><text class="cuIcon-notificationfill lg"></text><text>今天已有{{siginnum}}人签到</text></view>
-      <view class="flex-twice bg-white  radius"><text>今日排名:{{userranking}}</text></view>
-      <view class=" flex-sub bg-white radius" bindtap="jumpsignindata"><text>签到记录>></text></view>
-    </view>
+<view class="flex  p-xs margin-bottom-xs  mb-sm usersigin">
+  <view class="flex-twice bg-white radius">
+    <text class="cuIcon-notificationfill lg"></text>
+    <text>今天已有{{siginnum}}人签到</text>
+  </view>
+  <view class="flex-twice bg-white  radius">
+    <text>今日排名:{{userranking}}</text>
+  </view>
+  <view class=" flex-sub bg-white radius" bindtap="jumpsignindata">
+    <text>签到记录>></text>
+  </view>
+</view>
 
 
 
@@ -204,7 +211,16 @@
       <!-- 推广位置 -->
       <view>
 
-        <view class="qrcode flex align-center justify-center animation-{{kaming?'shake':''}}" wx:if="{{adconfig.type==6}}">
+        <view class="ad-body animation-{{kaming?'shake':''}}" wx:if="{{adconfig.type==7}}">
+          <view class='centered'>
+            <view>
+              <!-- <ad-custom capture-bind:tap="gdtcustomadclick" class="gdtad" unit-id="{{adconfig.appid}}" bindload="banneradsuccess" binderror="banneraderr"></ad-custom> -->
+              <xm-ad data-id="{{adconfig.appid}}" data-position="签到页面" bindtap="clickxmad" adData="{{adData}}" class="{{adconfig.imgurl}}" size="small" bindadLoad="adLoad" bindadClick="adClick" bindadClose="adClose"></xm-ad>
+            </view>
+          </view>
+        </view>
+
+        <view class="qrcode flex align-center justify-center animation-{{kaming?'shake':''}}" wx:elif="{{adconfig.type==6}}">
           <image class="head" lazy-load="true" mode="widthFix" src="{{avatarUrl}}"></image>
           <view class="flex-sub padding-sm">
             <text>{{adconfig.appid}}</text>
@@ -213,19 +229,19 @@
           <image src="{{adconfig.imgurl}}"></image>
         </view>
 
-        <view class="ad-body animation-{{kaming?'shake':''}}" wx:elif="{{adconfig.type==4}}">
-          <view class='centered'>
-            <view>
-              <ad capture-bind:tap="gdtbanneradclick" class="gdtad" unit-id="{{adconfig.appid}}" bindload="banneradsuccess" binderror="banneraderr"></ad>
-            </view>
-          </view>
-        </view>
-
         <view class="ad-body animation-{{kaming?'shake':''}}" wx:elif="{{adconfig.type==5}}">
           <view class='centered'>
             <view>
               <ad-custom capture-bind:tap="gdtcustomadclick" class="gdtad" unit-id="{{adconfig.appid}}" bindload="banneradsuccess" binderror="banneraderr"></ad-custom>
               <!-- <ad-custom  capture-bind:tap="gdtcustomadclick" unit-id="adunit-cb851dc9c3904d54"></ad-custom> -->
+            </view>
+          </view>
+        </view>
+
+        <view class="ad-body animation-{{kaming?'shake':''}}" wx:elif="{{adconfig.type==4}}">
+          <view class='centered'>
+            <view>
+              <ad capture-bind:tap="gdtbanneradclick" class="gdtad" unit-id="{{adconfig.appid}}" bindload="banneradsuccess" binderror="banneraderr"></ad>
             </view>
           </view>
         </view>

@@ -134,9 +134,15 @@ page {
 }
 
 .gridadbody{
-  margin-bottom: 20rpx;
+  margin-bottom: 10rpx;
 }
 
 .custom{
   margin-bottom: 30rpx;
+}
+
+.xmad-body{
+  width: 94%;
+  margin-top: 10rpx;
+  margin-bottom: 15rpx;
 }

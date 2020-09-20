@@ -1,4 +1,5 @@
-<view class="bg-img  padding-tb-xl" style="background-image: url('http://miniapplittlefun.gzywudao.top/BasicsBg.png');height: 414rpx;">
+<!-- <view class="bg-img  padding-tb-xl" style="background-image: url('http://miniapplittlefun.gzywudao.top/BasicsBg.png');height: 414rpx;"> -->
+<view class="bg-img  padding-tb-xl" style="background-image: url('{{imageurl + 'miniapp/images/index/BasicsBg.png'}}');height: 414rpx;">
   <view class='centered miniappname '>
     <text class="animation-{{kaming?'scale-down':''}}">群记分</text>
     <!-- <button bindtap='aaaaaaa'>获取地址测试</button> -->
@@ -54,7 +55,8 @@
       <view>
         <view class='centered'>
           <view class='information-name centered '>
-            <image src='http://miniapplittlefun.gzywudao.top/task/a1777e52d1144d8b2448108cb18aab3.png' class='u-img-slide'></image>
+            <!-- <image src='http://miniapplittlefun.gzywudao.top/task/a1777e52d1144d8b2448108cb18aab3.png' class='u-img-slide'></image> -->
+            <image src="{{imageurl + 'miniapp/images/index/grouptitle.png'}}" class='u-img-slide'></image>
             <text>空间列表</text>
           </view>
         </view>

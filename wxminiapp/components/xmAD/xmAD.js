@@ -1,1 +1,3 @@
-Component({xmad:!0});
+
+Component({
+  xmad: !0});

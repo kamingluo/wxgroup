@@ -44,6 +44,15 @@ Page({
     })
   },
 
+  haveuserid:function(){
+    let user_id = wx.getStorageSync('userdata').id;
+      wx.showToast({
+        title: '用户id:' + user_id,
+        icon: 'none',
+        duration: 2000,
+      })
+  },
+
 
   //用户空间任务记录
   usertasklist:function(){
@@ -73,6 +82,13 @@ Page({
     wx.navigateTo({
       url: '/pages/webview/webview?url=' +jumpurl
     })
+  },
+
+  openvip:function(){
+    wx.navigateTo({
+      url: '/pages/members/openvip/openvip'
+    })
+
   },
 
     //点击小U广告和更多跳转
@@ -144,6 +160,13 @@ Page({
       'position':"我的页面"
     };
     common.clickgdtadstatistics(data)
+  },
+
+//点击小盟广告
+  clickxmad:function(e){
+    // console.log("点击小盟广告携带页面参数", e)
+    let position=e.currentTarget.dataset.position;
+    wx.setStorageSync("xmclickposition", position)
   },
 
 

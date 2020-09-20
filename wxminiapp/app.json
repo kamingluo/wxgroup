@@ -59,7 +59,8 @@
     "pages/extension/taobao/search/search",
     "pages/extension/taobao/themegoods/themegoods",
     "pages/extension/collection/collection",
-    "pages/extension/extension"
+    "pages/extension/extension",
+    "pages/members/openvip/openvip"
   ],
   "window": {
     "backgroundTextStyle": "light",

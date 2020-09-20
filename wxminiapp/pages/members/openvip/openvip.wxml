@@ -1,0 +1,97 @@
+<view class="bg-img  padding-tb-xl" style="background-image: url('{{imageurl + 'miniapp/images/my/pagesbac.png'}}'); {{vipdisplay? 'height: 380rpx':'height:280rpx'}} ">
+  <cu-custom isBack="{{true}}">
+    <view slot="content">
+      <text style="color:white;">开通会员</text>
+    </view>
+  </cu-custom>
+  <view class="user">
+    <view class="flex  p-sm margin-bottom-sm mb-sm">
+      <view class="flex-sub  margin-xs radius">
+        <view bindlongpress="haveuserid">
+          <open-data class='userAvatarurl' type="userAvatarUrl"></open-data>
+        </view>
+      </view>
+      <view class="flex-treble  padding-xs name-body radius">
+        <view class='userNickName'>
+          <open-data type="userNickName"></open-data>
+        </view>
+        <view>
+          <text style="font-size:20rpx;color:white">你还不是会员~</text>
+        </view>
+      </view>
+      <view class="flex-twice  margin-xs radius centered">
+        <view>
+          <button class=" bg-orange round shadow vip-button" bindtap="qidai">
+            <text> <text class="cuIcon-ticket"></text>兑换码</text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="tower-swiper" bindtouchmove="towerMove" bindtouchstart="towerStart" bindtouchend="towerEnd">
+  <view class="tower-item {{item.zIndex==1?'none':''}}" wx:for="{{swiperList}}" wx:key style="--index:{{item.zIndex}};--left:{{item.mLeft}}">
+    <view class="swiper-item shadow bg-orangeLight">
+      <view class="jiage-body ">
+        <view>
+          <view class="centered jiage-title">
+            <text>{{item.title}}</text> </view>
+          <view class="centered">
+            <text><text style="color:red">￥<text style="font-size:55rpx;">{{item.jiage}}</text> </text>/{{item.time}}</text>
+          </view>
+          <view class="centered yuanjia">
+            <text style=" text-decoration: line-through;">原价￥{{item.yuanjia}}</text> </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="openbutton-body">
+  <view class="centered openbutton" bindtap="qidai">
+    <button class="cu-btn bg-orange round shadow">支付￥{{choosedata.jiage}}元/立即开通{{choosedata.title}}</button>
+  </view>
+  <view class="tips">
+    <text>开通即视为同意<text style="color:#FFA042">《会员服务协议》</text>
+    <text style="color:#FFA042">《用户隐私保护协议》</text></text>
+  </view>
+</view>
+
+<view class="cu-bar bg-white margin-top-xs solid-bottom">
+  <view class="action">
+    <text class="cuIcon-title text-blue"></text>
+    <text style="color:#000000">会员权限</text>
+  </view>
+</view>
+
+<view class="vip-content">
+  <view class="kefu">
+    <view style="padding:10px 0rpx 20rpx ;">
+      <text>1.会员专属客服</text>
+    </view>
+    <view>
+      <image src="http://doyd.oss-cn-shenzhen.aliyuncs.com/vip_mini_apply/v1.4.1/img_tq.png"></image>
+    </view>
+  </view>
+
+  <view class="kefu">
+    <view style="padding:10px 0rpx 20rpx ;">
+      <text>2.功能定制服务</text>
+    </view>
+    <view class="content">
+      <text> 可以根据你的需要,定制特定的功能,满足你的使用需求</text>
+    </view>
+  </view>
+
+    <view class="kefu">
+    <view style="padding:10px 0rpx 20rpx ;">
+      <text>3.数据永久存储</text>
+    </view>
+    <view class="content">
+      <text> 会员创建的群空间任务数据永久保存</text>
+    </view>
+  </view>
+
+</view>

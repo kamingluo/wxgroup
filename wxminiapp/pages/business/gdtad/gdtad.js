@@ -108,6 +108,13 @@ gdtgridclick:function(){
   })
 },
 
+//点击小盟广告
+  clickxmad: function (e) {
+    // console.log("点击小盟广告携带页面参数", e)
+    let position = e.currentTarget.dataset.position;
+    wx.setStorageSync("xmclickposition", position)
+  },
+
 //计时器
   startSetInter: function() {
     var that = this;

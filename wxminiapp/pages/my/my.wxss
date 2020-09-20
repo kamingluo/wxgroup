@@ -122,15 +122,14 @@ margin-left: -20rpx;
 }
 
 .gdtad{
-  width: 94%;
+  width: 98%;
   border-radius: 15rpx;
-	margin-bottom: 20rpx;
-	margin-top: 20rpx;
+	margin-bottom: 40rpx;
+	margin-top: 15rpx;
 }
 
 .xmad-body{
   width: 98%;
   margin-top: 20rpx;
-  margin-bottom: 50rpx;
-  border-radius: 10rpx; 
+  margin-bottom: 10rpx;
 }

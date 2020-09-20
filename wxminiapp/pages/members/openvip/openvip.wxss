@@ -1,0 +1,120 @@
+.cu-bar {
+  color: white;
+}
+
+
+.padding-tb-xl {
+  padding-top: 0rpx;
+  padding-bottom: 50rpx;
+}
+.userAvatarurl {
+  overflow: hidden;
+  display: block;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  margin-left: 15rpx;
+}
+.name-body {
+  margin: 8rpx 10rpx;
+}
+.vip-button {
+  height: 50rpx;
+  font-size: 20rpx;
+  width: 160rpx;
+  font-weight: 600;
+}
+.userNickName {
+  font-size: 35rpx;
+  color: white;
+  margin-bottom: 1rpx;
+}
+
+.userNickName text {
+  margin-left: 10rpx;
+}
+
+
+.tower-swiper {
+	height: 300rpx;
+	position: relative;
+	max-width: 750rpx;
+	overflow: hidden;
+  background-color: white;
+  border-radius: 30rpx;
+  z-index: 99;
+  margin-top: -20rpx;
+}
+.tower-swiper .tower-item {
+  transform: scale(calc(0.5 + var(--index) / 10));
+  margin-left: calc(var(--left) * 100rpx - 150rpx);
+  z-index: var(--index);
+  width: 300rpx;
+  height: 250rpx;
+}
+
+.jiage-body {
+background-color: #fde6d2;
+  width: 300rpx;
+  height: 250rpx;
+}
+.jiage-title{
+  font-weight: 600;
+  padding: 20rpx;
+  font-size: 38rpx;
+}
+.yuanjia{
+  padding: 20rpx;
+}
+
+.openbutton-body{
+  width: 100%;
+  height: 200rpx;
+  background-color: white;
+  margin-top: -20rpx;
+}
+.openbutton{
+  width: 100%;
+  padding: 50rpx;
+}
+.openbutton button{
+   width: 100%;
+   height: 80rpx;
+   font-weight: 600;
+   font-size: 30rpx;
+}
+.tips{
+  margin-top: -20rpx;
+  margin-left: 50rpx;
+}
+.tips text{
+  font-size: 22rpx;
+}
+
+.vip-content{
+  /* background-color: white; */
+  margin-bottom: 100rpx;
+}
+.kefu{
+  padding: 0 30rpx; 
+  margin-bottom: 1rpx;
+  width: 100%;
+background-color: white;
+}
+.kefu text{
+  font-size: 27rpx;
+  font-weight: 600;
+}
+.kefu image{
+  width: 85%;
+  height: 120rpx;
+  padding: 0 0 10rpx 0rpx;
+ }
+ .content{
+   height: 70rpx;
+ }
+  .content text{
+   font-weight: 500;
+ }

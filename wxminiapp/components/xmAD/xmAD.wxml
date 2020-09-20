@@ -1,6 +1,6 @@
 <!-- banner -->
 <view wx:if="{{adData[adID].adType===1}}" >
-  <view wx:if="{{adData[adID].hasshow}}" style="{{adData[adID].style.wrap}}">
+  <view wx:if="{{adData[adID].hasshow}}" style="{{adData[adID].style.wrap}}" >
     <image src="{{adData[adID].adImage}}" mode="widthFix" bindtap="AdClickEvent" bindload="AdLoadEvent" class="xmad-image" style="{{adData[adID].style.img}}"></image>
     <text wx:if="{{adData[adID].isShowIcon}}" style="{{adData[adID].style.icon}}">小盟广告</text>
   </view>
@@ -19,7 +19,7 @@
 </view>
 <!-- 悬浮 -->
 <view wx:if="{{adData[adID].adType===3}}" >
-  <view wx:if="{{adData[adID].hasshow}}" class="xmad-wrap" style="{{adData[adID].style.wrap}}">
+  <view wx:if="{{adData[adID].hasshow}}" class="xmad-wrap" style="{{adData[adID].style.wrap}}" >
     <image src="{{adData[adID].adImage}}" mode="widthFix" bindload="AdLoadEvent" bindtap="AdClickEvent"
            style="{{adData[adID].style.img}}"></image>
   </view>
