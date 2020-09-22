@@ -210,6 +210,18 @@
                         </el-card>
                     </el-col>
 
+                     <el-col :span="8">
+                        <el-card shadow="hover" :body-style="{padding: '0px'}">
+                            <div class="grid-content grid-con-1">
+                                <i class="el-icon-lx-rechargefill grid-con-icon"></i>
+                                <div class="grid-cont-right">
+                                    <div class="grid-num">{{statistics.clickxmad}}</div>
+                                    <div>今日点击小盟广告数</div>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
+
 
 
                 </el-row>

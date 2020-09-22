@@ -28,7 +28,7 @@
 
         <el-table-column prop="adtype" label="广告类型" width="150">
         <template slot-scope="scope">
-        <el-text>{{scope.row.adtype=="1"?"banner":scope.row.adtype==2?"激励视频":scope.row.adtype==3?"格子广告":scope.row.adtype==4?"视频广告":scope.row.adtype==5?"模板广告":"未知位置"}}</el-text>
+        <el-text>{{scope.row.adtype=="1"?"banner":scope.row.adtype==2?"激励视频":scope.row.adtype==3?"格子广告":scope.row.adtype==4?"视频广告":scope.row.adtype==5?"模板广告":scope.row.adtype==6?"小盟广告":"未知位置"}}</el-text>
          </template>
         </el-table-column>
 

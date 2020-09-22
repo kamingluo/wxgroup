@@ -32,6 +32,7 @@ class Test
         // $lottery = new Lotterymsg();
         // $lottery_id=1;
         // $goods_name="这是商品名称啊";
+        //https://group.gzywudao.top/php/public/miniapp.php/test/xiulian?title=title&appToken=appToken&mobile=mobile&userName=userName&userId=userId&coordinates=coordinates&longitude=longitude&latitude=latitude
         // $text = $lottery -> lotterymssage($lottery_id,$goods_name);
         // return $text;
 
