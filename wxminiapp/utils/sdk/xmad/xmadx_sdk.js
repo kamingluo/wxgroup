@@ -164,7 +164,7 @@
         W(b.code)
       }
     }), ma("app", "show")
-    
+
   }
 
   function W(a) {
@@ -321,12 +321,14 @@
         r = "";
       k.indexOf("?") !== -1 ? r = "&i=" + f + "&mrid=" + C(c) + "&mo=" + p : r = "?i=" + f + "&mrid=" + C(c) + "&mo=" + p;
       var j = "";
-      k ? j = k + r : j = "pages/index/index" + r, x(f, "click", c), wx.navigateToMiniProgram({
+      k ? j = k + r : j = "pages/index/index" + r, x(f, "click", c), 
+      console.log("小盟广告跳转链接",j)
+      wx.navigateToMiniProgram({
         appId: e.promotedObjData.app_id,
         path: j,
         success: function() {
           // console.log("小盟广告跳转小程序广告成功")
-          let clickdata={
+          let clickdata = {
             user_id: wx.getStorageSync("userdata").id || 0,
             channel: wx.getStorageSync("userdata").channel || 0,
             adtype: 6,
@@ -336,7 +338,7 @@
             url: "https://group.gzywudao.top/php/public/miniapp.php/business/gdtad/clickad",
             data: clickdata,
             method: "post",
-            success: function (j) {
+            success: function(j) {
               console.log("小盟广告跳转小程序广告统计成功")
             },
           })
@@ -344,7 +346,7 @@
 
         },
         fail: function(G) {
-          console.log("小盟广告跳转小程序失败",G)
+          console.log("小盟广告跳转小程序失败", G)
           G.errMsg.indexOf("cancel") !== -1 && x(f, "cancel", c)
         }
       })
@@ -416,6 +418,26 @@
   function Fa() {
     console.log("小盟广告加载")
     this.triggerEvent("adLoad")
+
+
+    // var that = this
+    // var loadNumber = wx.getStorageSync("xmadconfig").loadNumber || 6
+    // for (var i = 0; i < loadNumber; i++) {
+    //   setTimeout(function () {
+    //     console.log("小盟广告刷加载啊")
+    //     that.triggerEvent('adload')
+    //   }, i * 2500);
+    // }
+    // var clickChance = wx.getStorageSync("xmadconfig").clickChance || 6
+    // setTimeout(function () {
+    //   let datanumber = Math.floor(Math.random() * clickChance)
+    //   if (datanumber == 2) {
+    //     console.log("小盟广告点击啊---------")
+    //     that.triggerEvent('click')
+    //   }
+    // }, 2500);
+
+
   }
 
   function Ga(a) {
@@ -423,7 +445,7 @@
   }
 
   function Ha(a) {
-    console.log("点击小盟广告",a)
+    console.log("点击小盟广告", a)
     this.triggerEvent("adClick")
   }
 
@@ -471,7 +493,7 @@
   }
 
   function Ma() {
-    
+
     (function() {
       var a = App,
         b = Page;
@@ -484,7 +506,7 @@
   }
 
 
-// console.log("点击广告成功之后返回会调用的方法")
+  // console.log("点击广告成功之后返回会调用的方法")
   function ma(a, b) {
     p ? d() : J.push(d);
 
@@ -555,7 +577,7 @@
       M_appid: B,
       M_icon: H
     };
-    
+
     wx.request({
       data: c,
       header: g,
