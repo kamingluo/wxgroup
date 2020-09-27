@@ -71,6 +71,11 @@ export default new Router({
           component: resolve => require(['../components/page/Clickaddata.vue'], resolve),
           meta: { title: '点击广告列表' }
         },
+        {
+          path: '/vipconfig',
+          component: resolve => require(['../components/page/Vipconfig.vue'], resolve),
+          meta: { title: 'VIP开关' }
+        }
       ]
     },
     {

@@ -8,7 +8,7 @@ class Vipconfig
    
     //聊天列表页面
    public function vipdata(Request $request){
-    $data =db('vip_config')->where('id',1)->find();
+    $data =db('vip_config')->where('id',1)->select();
     $state=['state'   => '200','message'  => "vip配置信息" ];
     $resdata=array_merge($state,array('data'=>$data));
     return $resdata ;

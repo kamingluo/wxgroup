@@ -92,6 +92,11 @@
                         icon: 'el-icon-lx-cascades',
                         index: 'clickaddata',
                         title: '点击广告列表'
+                    },
+                     {
+                        icon: 'el-icon-lx-cascades',
+                        index: 'vipconfig',
+                        title: 'VIP开关'
                     }
                 ]
             }

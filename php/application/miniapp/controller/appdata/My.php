@@ -22,7 +22,7 @@ class My
     {
         $vipopen =db('vip_config')->where('id',1)->value('ifopen');
         $vipdisplay=false;
-        if($vipdisplay == 0){
+        if($vipopen == 0){
             $vipdisplay=true;
         }
         $data=array(
