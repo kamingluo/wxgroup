@@ -27,7 +27,7 @@ class My
             ['id'=>'4','title'=>'在线客服','type'=>'kefu','imageurl'=>'miniapp/images/my/moreicon/kefu.png','url'=>'/pages/business/gdtad/gdtad'],
             ['id'=>'5','title'=>'意见建议','type'=>'jianyi','imageurl'=>'miniapp/images/my/moreicon/fankui.png','url'=>'/pages/business/gdtad/gdtad'],
         );
-        $state=['state'   => '200','message'  => '我的页面更多配置','moredatatitle'  => '更多工具' ,'vipdisplay' => false ];
+        $state=['state'   => '200','message'  => '我的页面更多配置','moredatatitle'  => '更多工具' ,'vipdisplay' => true ];
         $resdata=array_merge($state,array('moredata'=>$data));
     	return  $resdata ;
     }
