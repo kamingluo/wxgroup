@@ -16,7 +16,7 @@
                 </el-table-column>
                 <el-table-column prop="ifopen" label="开关" width='180'>
                 </el-table-column>
-                <el-table-column prop="ifopen" label="是否正式环境" width="120">
+                <el-table-column prop="ifopen" label="操作开关" width="120">
              <template slot-scope="scope">
             <el-switch
               v-model="scope.row.ifopen === 0 ? true : false"@change="handleservice(scope.$index, scope.row)"
