@@ -20,6 +20,11 @@ class My
 
     public function moredata(Request $request)
     {
+        $vipopen =db('vip_config')->where('id',1)->value('ifopen');
+        $vipdisplay=false;
+        if($vipdisplay == 0){
+            $vipdisplay=true;
+        }
         $data=array(
             ['id'=>'1','title'=>'去赚金币','type'=>1,'imageurl'=>'miniapp/images/my/moreicon/zhuanjinbi.png','url'=>'/pages/business/gdtad/gdtad'],
             ['id'=>'2','title'=>'金币兑换','type'=>1,'imageurl'=>'miniapp/images/my/moreicon/duihuan.png','url'=>'/pages/business/exchange/exchange'],
@@ -27,7 +32,7 @@ class My
             ['id'=>'4','title'=>'在线客服','type'=>'kefu','imageurl'=>'miniapp/images/my/moreicon/kefu.png','url'=>'/pages/business/gdtad/gdtad'],
             ['id'=>'5','title'=>'意见建议','type'=>'jianyi','imageurl'=>'miniapp/images/my/moreicon/fankui.png','url'=>'/pages/business/gdtad/gdtad'],
         );
-        $state=['state'   => '200','message'  => '我的页面更多配置','moredatatitle'  => '更多工具' ,'vipdisplay' => true ];
+        $state=['state'   => '200','message'  => '我的页面更多配置','moredatatitle'  => '更多工具' ,'vipdisplay' => $vipdisplay ];
         $resdata=array_merge($state,array('moredata'=>$data));
     	return  $resdata ;
     }
