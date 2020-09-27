@@ -2,7 +2,7 @@
     <div class="table">
         <div class="crumbs">
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item><i class="el-icon-lx-cascades"></i> 金币兑换列表</el-breadcrumb-item>
+                <el-breadcrumb-item><i class="el-icon-lx-cascades"></i> vip配置页面</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
         <div class="container">
@@ -14,7 +14,7 @@
                 </el-table-column>
                 <el-table-column prop="beizhu" label="备注"  width='180'>
                 </el-table-column>
-                <el-table-column prop="ifopen" label="开关" width='180'>
+                <el-table-column prop="ifopen" label="开关(0开1关)" width='180'>
                 </el-table-column>
                 <el-table-column prop="ifopen" label="操作开关" width="120">
              <template slot-scope="scope">
