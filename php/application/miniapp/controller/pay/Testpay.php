@@ -64,6 +64,7 @@ public function pay(Request $request){
         Log::record($result);
 
       if($result['return_code'] == 'SUCCESS' || $result['RETURN_CODE'] == 'SUCCESS' ){
+        Log::record("判断成功了");
           $time = time();
           $tmp='';//临时数组用于签名
           $tmp['appId'] = $result['appid'];
@@ -78,6 +79,10 @@ public function pay(Request $request){
           $data['signType'] = 'MD5';//签名算法，暂支持 MD5
           $data['package'] = 'prepay_id='.$result['prepay_id'];//统一下单接口返回的 prepay_id 参数值，提交格式如：prepay_id=*
           $data['paySign'] = $this->sign($tmp);//签名,具体签名方案参见微信公众号支付帮助文档;
+          Log::record('生成签名');
+          Log::record($data['paySign']);
+
+
           $data['out_trade_no'] = $out_trade_no;
    
       }else{
