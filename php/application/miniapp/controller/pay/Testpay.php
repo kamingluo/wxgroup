@@ -10,13 +10,14 @@ class Testpay{
 //微信支付
 public function pay(){
     //$fee = I("post.total_fee");
+    $openid=$request->param("openid");//商品id
     $fee = 0.1;//举例支付0.01
     $appid ='wx0e060ad90f7f41c4';//appid.如果是公众号 就是公众号的appid
     $body ='测试标题';
     $mch_id ='1603066168';  //商户号
     $nonce_str =$this->nonce_str();//随机字符串
     $notify_url ='https://group.gzywudao.top/php/public/miniapp.php/pay/wxpay/paycallback'; //回调的url【自己填写】
-    $openid ='o1mXc4u68Fff1XGk7gTYyDD2tomU';
+    //$openid ='o1mXc4u68Fff1XGk7gTYyDD2tomU';
     $out_trade_no = $this->order_number();//商户订单号
     $spbill_create_ip ='47.106.253.110';//服务器的ip【自己填写】;
     $total_fee =$fee*100;// 微信支付单位是分，所以这里需要*100

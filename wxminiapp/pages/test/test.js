@@ -17,10 +17,12 @@ Page({
 */
   pay:function () {
     console.log("点击下单")
+    let openid = wx.getStorageSync('userdata').openid;
     wx.request({
       url: baseConfig.host+'pay/testpay/pay',
       method: "POST",
       data: {
+        openid:openid
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
