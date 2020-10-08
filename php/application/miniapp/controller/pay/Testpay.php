@@ -66,7 +66,7 @@ public function pay(Request $request){
       if($result['return_code'] == 'SUCCESS' || $result['RETURN_CODE'] == 'SUCCESS' ){
           $time = time();
           $tmp='';//临时数组用于签名
-          $tmp['appId'] = 'wx0e060ad90f7f41c4';
+          $tmp['appId'] = $result['appid'];
           $tmp['nonceStr'] = $nonce_str;
           $tmp['package'] = 'prepay_id='.$result['prepay_id'];
           $tmp['signType'] = 'MD5';
