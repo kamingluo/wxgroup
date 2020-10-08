@@ -63,10 +63,10 @@ public function pay(Request $request){
         Log::record($time);
         Log::record($result);
 
-        if($result['return_code'] == 'SUCCESS' || $result['RETURN_CODE'] == 'SUCCESS' ){
+      if($result['return_code'] == 'SUCCESS' || $result['RETURN_CODE'] == 'SUCCESS' ){
           $time = time();
           $tmp='';//临时数组用于签名
-          $tmp['appId'] = $appid;
+          $tmp['appId'] = 'wx0e060ad90f7f41c4';
           $tmp['nonceStr'] = $nonce_str;
           $tmp['package'] = 'prepay_id='.$result['prepay_id'];
           $tmp['signType'] = 'MD5';
