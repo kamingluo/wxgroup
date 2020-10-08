@@ -1,23 +1,22 @@
 <?php
 namespace app\miniapp\controller\pay;
-// use Think\Controller;
 use think\Db;
 use think\Request;
 use think\Config;
 use think\Log;
-use think\Loader;
-class Testpay{
+class Vippay{
 //微信支付
 public function pay(Request $request){
-    $openid=$request->param("openid");//商品id
-    $appid ='wx0e060ad90f7f41c4';//appid.如果是公众号 就是公众号的appid
-    $body ='测试标题';
-    $mch_id ='1603066168';  //商户号
+    $openid=$request->param("openid");//openid
+    $user_id=$request->param("user_id");//用户id
+    $body =$request->param("body")||'默认标题';
+
+    $appid =Config('appid');//appid.如果是公众号 就是公众号的appid
+    $mch_id =Config('mch_id'); //商户号
     $nonce_str =$this->nonce_str();//随机字符串
     $notify_url ='https://group.gzywudao.top/php/public/miniapp.php/pay/wxpay/paycallback'; //回调的url【自己填写】
-    //$openid ='o1mXc4u68Fff1XGk7gTYyDD2tomU';
     $out_trade_no = $this->order_number($openid);//商户订单号
-    $spbill_create_ip ='47.106.253.111';//服务器的ip
+    $spbill_create_ip =Config('spbill_create_ip');//服务器的ip【自己填写】;
     $total_fee =2;// 微信支付单位是分
     $trade_type = 'JSAPI';//交易类型 默认
     //这里是按照顺序的 因为下面的签名是按照顺序 排序错误 肯定出错
@@ -46,8 +45,6 @@ public function pay(Request $request){
            <sign>'.$sign.'</sign>
         </xml> ';
  
-    //print_r($post_xml);die;
-    //统一接口prepay_id
     $url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
     $xml = $this->http_request($url,$post_xml);
 

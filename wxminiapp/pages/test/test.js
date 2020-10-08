@@ -18,6 +18,7 @@ Page({
   pay:function () {
     console.log("点击下单")
     let openid = wx.getStorageSync('userdata').openid;
+    let user_id = wx.getStorageSync('userdata').id;
     wx.request({
       url: baseConfig.host+'pay/testpay/pay',
       data: {

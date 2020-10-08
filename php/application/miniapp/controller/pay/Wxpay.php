@@ -58,14 +58,5 @@ class Wxpay
       // //执行业务逻辑
       //               }
       //   }
-
-
-
-      $data=$request->param();//商品id
-      Log::record('微信支付回调方法');
-      $time =date('Y-m-d H:i:s',time());
-      Log::record($time);
-      Log::record($data);
-      return "微信支付回调方法";
     }
 }
