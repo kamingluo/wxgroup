@@ -4,17 +4,35 @@ use think\Db;
 use think\Request;
 use think\Config;
 use think\Log;
+use think\Loader;
 
+Loader::import('Wxpay.lib.WxPay', EXTEND_PATH, '.Api.php');//将附件放入根目录下
 class Wxpay
 {
-    public function xiaouad(Request $request)
+    public function wxpay(Request $request)
     {
-        $data=array(
-            ['id'=>'1','title'=>'火把小程序','type'=>1,'imageurl'=>'http://qiniu.luojiaming.vip/myhuoba.png','url'=>'/pages/webview/webview?url=https://mp.weixin.qq.com/s/pGMr4pEV-d-tm0ZcT0gO-Q'],
-            ['id'=>'2','title'=>'一起学堂','type'=>1,'imageurl'=>'http://qiniu.luojiaming.vip/myxuetang.png','url'=>'/pages/webview/webview?url=https://mp.weixin.qq.com/s/vyyu_5qibCYs4ym8ZV9uWw']);
-        $state=['state'   => '200','message'  => '我的页面小U广告','xiaouadtitle'  => '社群工具推荐' ];
-        $resdata=array_merge($state,array('data'=>$data));
-    	return  $resdata ;
+       //订单号
+       $order='100189576113';
+       $money=0.01*100;
+       $opnenid='o1mXc4u68Fff1XGk7gTYyDD2tomU';
+      //     初始化值对象
+      $input = new \WxPayUnifiedOrder();
+      //     文档提及的参数规范：商家名称-销售商品类目
+      $input->SetBody("kaming测试");
+      //     订单号应该是由小程序端传给服务端的，在用户下单时即生成，demo中取值是一个生成的时间戳
+      $input->SetOut_trade_no("$order");
+      //     费用应该是由小程序端传给服务端的，在用户下单时告知服务端应付金额，demo中取值是1，即1分钱
+      $input->SetTotal_fee("$money");
+      $input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");
+      $input->SetTrade_type("JSAPI");
+      //     由小程序端传给服务端
+      $input->SetOpenid("$opnenid");
+      return $input;
+      //     向微信统一下单，并返回order，它是一个array数组
+      $order = \WxPayApi::unifiedOrder($input);
+      //     json化返回给小程序端
+      header("Content-Type: application/json");
+      echo json_encode($order);
     }
     
 
