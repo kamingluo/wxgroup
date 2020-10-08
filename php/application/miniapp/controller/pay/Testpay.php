@@ -78,8 +78,10 @@ public function pay(Request $request){
           $data['nonceStr'] = $nonce_str;//随机字符串
           $data['signType'] = 'MD5';//签名算法，暂支持 MD5
           $data['package'] = 'prepay_id='.$result['prepay_id'];//统一下单接口返回的 prepay_id 参数值，提交格式如：prepay_id=*
+          Log::record('开始生成签名');
+          Log::record($tmp);
           $data['paySign'] = $this->sign($tmp);//签名,具体签名方案参见微信公众号支付帮助文档;
-          Log::record('生成签名');
+          Log::record('生成签名之后');
           Log::record($data['paySign']);
 
 
