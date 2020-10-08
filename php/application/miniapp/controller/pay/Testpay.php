@@ -55,19 +55,24 @@ public function pay(Request $request){
 
         $testxml  = $xml;
         
-        $jsonxml = json_encode(simplexml_load_string($testxml, 'SimpleXMLElement', LIBXML_NOCDATA));
+        // $jsonxml = json_encode(simplexml_load_string($testxml, 'SimpleXMLElement', LIBXML_NOCDATA));
  
-        $result = json_decode($jsonxml, true);//转成数组，
-        Log::record('统一下单回调');
-        $time =date('Y-m-d H:i:s',time());
-        Log::record($time);
-        Log::record($result);
+        // $result = json_decode($jsonxml, true);//转成数组，
+        // Log::record('统一下单回调');
+        // $time =date('Y-m-d H:i:s',time());
+        // Log::record($time);
+        // Log::record($result);
     
  
     $array = $this->xml($xml);//全要大写
+
+     Log::record('统一下单回调处理完成');
+        $time =date('Y-m-d H:i:s',time());
+        Log::record($time);
+        Log::record($array);
  
     //print_r($array);
-    if($array['return_code'] == 'SUCCESS'){
+    if($array['RETURN_CODE'] == 'SUCCESS'){
         $time = time();
         $tmp='';//临时数组用于签名
         $tmp['appId'] = $appid;
