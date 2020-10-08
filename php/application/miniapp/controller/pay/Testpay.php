@@ -67,7 +67,7 @@ public function pay(Request $request){
         Log::record("判断成功了");
           $time = time();
           $tmp='';//临时数组用于签名
-          $tmp['appId'] = $result['appid'];
+          $tmp['appId'] = $appid;
           $tmp['nonceStr'] = $nonce_str;
           $tmp['package'] = 'prepay_id='.$result['prepay_id'];
           $tmp['signType'] = 'MD5';
