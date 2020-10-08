@@ -67,7 +67,7 @@ public function pay(Request $request){
     $array = $this->xml($xml);//全要大写
  
     //print_r($array);
-    if($array['RETURN_CODE'] == 'SUCCESS' && $array['RESULT_CODE'] == 'SUCCESS'){
+    if($array['return_code'] == 'SUCCESS'){
         $time = time();
         $tmp='';//临时数组用于签名
         $tmp['appId'] = $appid;
