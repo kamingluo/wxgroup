@@ -1,3 +1,4 @@
+const baseConfig = require('./../../utils/config.js')//配置文件
 Page({
 
   data: {
@@ -7,6 +8,47 @@ Page({
 
   onLoad: function() {
     this.getdata()
+
+  },
+
+  /*
+调起微信支付 
+@param 支付价格，不填写默认为1分钱
+*/
+  pay:function () {
+    console.log("点击下单")
+    wx.request({
+      url: baseConfig.host+'pay/testpay/pay',
+      method: "POST",
+      data: {
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: function (res) {  //后端返回的数据
+        console.log("统一下单返回数据",res)
+        var data = res.data;
+        console.log(data);
+        console.log(data["timeStamp"]);
+        wx.requestPayment({
+          timeStamp: data['timeStamp'],
+          nonceStr: data['nonceStr'],
+          package: data['package'],
+          signType: data['signType'],
+          paySign: data['paySign'],
+          success: function (res) {
+            console.log("支付成功返回数据",res)
+            wx.showModal({
+              title: '支付成功',
+              content: '',
+            })
+          },
+          fail: function (res) {
+            console.log(res);
+          }
+        })
+      }
+    });
 
   },
 

@@ -4,6 +4,7 @@ use think\Db;
 use think\Request;
 use think\Config;
 use temmsg\Lotterymsg;
+use think\Log;
 
 class Test
 {
@@ -23,7 +24,9 @@ class Test
     public function xiulian(Request $request)
     {
 
-        $data=$request->param();//用户id
+        $data=$request->param();
+        Log::record('修炼测试存储');
+        Log::record($data);
 
 
 

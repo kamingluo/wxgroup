@@ -40,8 +40,31 @@ class Wxpay
     //微信支付回调
     public function paycallback(Request $request)
     {
+
+         $testxml  = file_get_contents("php://input");
+        
+        $jsonxml = json_encode(simplexml_load_string($testxml, 'SimpleXMLElement', LIBXML_NOCDATA));
+ 
+        $result = json_decode($jsonxml, true);//转成数组，
+        Log::record('微信支付回调方法');
+        $time =date('Y-m-d H:i:s',time());
+        Log::record($time);
+        Log::record($result);
+        return $result;
+      //   if($result){
+      //       //如果成功返回了
+      //       $out_trade_no = $result['out_trade_no'];
+      //               if($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS'){
+      // //执行业务逻辑
+      //               }
+      //   }
+
+
+
       $data=$request->param();//商品id
       Log::record('微信支付回调方法');
+      $time =date('Y-m-d H:i:s',time());
+      Log::record($time);
       Log::record($data);
       return "微信支付回调方法";
     }

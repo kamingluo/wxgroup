@@ -28,6 +28,8 @@
 
 
 <!-- 淘宝商品广告模板 -->
-<view>
+<!-- <view>
 <taobaogoodslist goodslist="{{goodslist}}"></taobaogoodslist>
-</view>
+</view> -->
+
+<button  bindtap="pay">测试支付按钮</button>

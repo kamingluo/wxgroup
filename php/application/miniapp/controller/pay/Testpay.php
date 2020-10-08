@@ -10,20 +10,21 @@ class Testpay{
 //微信支付
 public function pay(){
     //$fee = I("post.total_fee");
-    $fee = 0.01;//举例支付0.01
+    $fee = 0.1;//举例支付0.01
     $appid ='wx0e060ad90f7f41c4';//appid.如果是公众号 就是公众号的appid
     $body ='测试标题';
     $mch_id ='1603066168';  //商户号
     $nonce_str =$this->nonce_str();//随机字符串
     $notify_url ='https://group.gzywudao.top/php/public/miniapp.php/pay/wxpay/paycallback'; //回调的url【自己填写】
-    $openid ='o1mXc4u68Fff1XGk7gTYyDD2tomUs';
-    // $out_trade_no = $this->order_number();//商户订单号
-    $out_trade_no ='7751564564156456456';//商户订单号
+    $openid ='o1mXc4u68Fff1XGk7gTYyDD2tomU';
+    $out_trade_no = $this->order_number();//商户订单号
     $spbill_create_ip ='47.106.253.110';//服务器的ip【自己填写】;
     $total_fee =$fee*100;// 微信支付单位是分，所以这里需要*100
     $trade_type = 'JSAPI';//交易类型 默认
+    $attach="附加测试数据";
     //这里是按照顺序的 因为下面的签名是按照顺序 排序错误 肯定出错
     $post['appid'] = $appid;
+    $post['attach'] = $attach说;
     $post['body'] = $body;
     $post['mch_id'] = $mch_id;
     $post['nonce_str'] = $nonce_str;//随机字符串
@@ -36,6 +37,7 @@ public function pay(){
     $sign = $this->sign($post);//签名
     $post_xml = '<xml>
            <appid>'.$appid.'</appid>
+           <attach>'.$attach.'</attach>
            <body>'.$body.'</body>
            <mch_id>'.$mch_id.'</mch_id>
            <nonce_str>'.$nonce_str.'</nonce_str>
@@ -52,6 +54,7 @@ public function pay(){
     //统一接口prepay_id
     $url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
     $xml = $this->http_request($url,$post_xml);
+    
  
     $array = $this->xml($xml);//全要大写
  
@@ -94,7 +97,8 @@ private function nonce_str(){
 }
  
 //生成订单号
-private function order_number($openid){
+private function order_number(){
+    $openid='o1mXc4u68Fff1XGk7gTYyDD2tomUs';
     //date('Ymd',time()).time().rand(10,99);//18位
     return md5($openid.time().rand(10,99));//32位
 }
