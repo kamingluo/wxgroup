@@ -66,7 +66,7 @@ public function pay(Request $request){
       if($result['return_code'] == 'SUCCESS' || $result['RETURN_CODE'] == 'SUCCESS' ){
         Log::record("判断成功了");
           $time = time();
-          $tmp='';//临时数组用于签名
+          $tmp=array();//临时数组用于签名
           $tmp['appId'] = $appid;
           $tmp['nonceStr'] = $nonce_str;
           $tmp['package'] = 'prepay_id='.$result['prepay_id'];
