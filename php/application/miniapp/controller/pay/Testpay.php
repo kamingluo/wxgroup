@@ -24,7 +24,7 @@ public function pay(){
     $attach="附加测试数据";
     //这里是按照顺序的 因为下面的签名是按照顺序 排序错误 肯定出错
     $post['appid'] = $appid;
-    $post['attach'] = $attach说;
+    $post['attach'] = $attach;
     $post['body'] = $body;
     $post['mch_id'] = $mch_id;
     $post['nonce_str'] = $nonce_str;//随机字符串

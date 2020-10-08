@@ -44,6 +44,12 @@ Page({
     })
   },
 
+  ceshipage:function(){
+    wx.navigateTo({
+      url: '/pages/test/test'
+    })
+  },
+
   haveuserid:function(){
     let user_id = wx.getStorageSync('userdata').id;
       wx.showToast({
