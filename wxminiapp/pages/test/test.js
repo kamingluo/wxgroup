@@ -24,9 +24,6 @@ Page({
       data: {
         openid:openid
       },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
       success: function (res) {  //后端返回的数据
         console.log("统一下单返回数据",res)
         var data = res.data;

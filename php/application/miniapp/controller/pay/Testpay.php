@@ -19,7 +19,7 @@ public function pay(Request $request){
     $notify_url ='https://group.gzywudao.top/php/public/miniapp.php/pay/wxpay/paycallback'; //回调的url【自己填写】
     //$openid ='o1mXc4u68Fff1XGk7gTYyDD2tomU';
     $out_trade_no = $this->order_number();//商户订单号
-    $spbill_create_ip ='47.106.253.110';//服务器的ip【自己填写】;
+    $spbill_create_ip ='47.106.253.111';//服务器的ip【自己填写】;
     $total_fee =$fee*100;// 微信支付单位是分，所以这里需要*100
     $trade_type = 'JSAPI';//交易类型 默认
     //这里是按照顺序的 因为下面的签名是按照顺序 排序错误 肯定出错
