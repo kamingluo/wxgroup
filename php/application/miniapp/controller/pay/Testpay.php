@@ -8,7 +8,7 @@ use think\Log;
 use think\Loader;
 class Testpay{
 //微信支付
-public function pay(){
+public function pay(Request $request){
     //$fee = I("post.total_fee");
     $openid=$request->param("openid");//商品id
     $fee = 0.1;//举例支付0.01
