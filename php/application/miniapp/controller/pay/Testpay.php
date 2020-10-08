@@ -52,6 +52,16 @@ public function pay(Request $request){
     //统一接口prepay_id
     $url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
     $xml = $this->http_request($url,$post_xml);
+
+        $testxml  = $xml;
+        
+        $jsonxml = json_encode(simplexml_load_string($testxml, 'SimpleXMLElement', LIBXML_NOCDATA));
+ 
+        $result = json_decode($jsonxml, true);//转成数组，
+        Log::record('统一下单回调');
+        $time =date('Y-m-d H:i:s',time());
+        Log::record($time);
+        Log::record($result);
     
  
     $array = $this->xml($xml);//全要大写

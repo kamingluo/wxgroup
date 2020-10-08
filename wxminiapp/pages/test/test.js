@@ -20,7 +20,6 @@ Page({
     let openid = wx.getStorageSync('userdata').openid;
     wx.request({
       url: baseConfig.host+'pay/testpay/pay',
-      method: "POST",
       data: {
         openid:openid
       },
