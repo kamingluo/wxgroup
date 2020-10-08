@@ -22,10 +22,10 @@ public function pay(Request $request){
     $spbill_create_ip ='47.106.253.110';//服务器的ip【自己填写】;
     $total_fee =$fee*100;// 微信支付单位是分，所以这里需要*100
     $trade_type = 'JSAPI';//交易类型 默认
-    $attach="附加测试数据";
+    // $attach="附加测试数据";
     //这里是按照顺序的 因为下面的签名是按照顺序 排序错误 肯定出错
     $post['appid'] = $appid;
-    $post['attach'] = $attach;
+    // $post['attach'] = $attach;
     $post['body'] = $body;
     $post['mch_id'] = $mch_id;
     $post['nonce_str'] = $nonce_str;//随机字符串
@@ -38,7 +38,6 @@ public function pay(Request $request){
     $sign = $this->sign($post);//签名
     $post_xml = '<xml>
            <appid>'.$appid.'</appid>
-           <attach>'.$attach.'</attach>
            <body>'.$body.'</body>
            <mch_id>'.$mch_id.'</mch_id>
            <nonce_str>'.$nonce_str.'</nonce_str>
