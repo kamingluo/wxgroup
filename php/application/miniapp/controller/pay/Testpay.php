@@ -62,42 +62,74 @@ public function pay(Request $request){
         $time =date('Y-m-d H:i:s',time());
         Log::record($time);
         Log::record($result);
+
+        if($result['return_code'] == 'SUCCESS' || $result['RETURN_CODE'] == 'SUCCESS' ){
+          $time = time();
+          $tmp='';//临时数组用于签名
+          $tmp['appId'] = $appid;
+          $tmp['nonceStr'] = $nonce_str;
+          $tmp['package'] = 'prepay_id='.$result['prepay_id'];
+          $tmp['signType'] = 'MD5';
+          $tmp['timeStamp'] = "$time";
+   
+          $data['state'] = 200;
+          $data['timeStamp'] = "$time";//时间戳
+          $data['nonceStr'] = $nonce_str;//随机字符串
+          $data['signType'] = 'MD5';//签名算法，暂支持 MD5
+          $data['package'] = 'prepay_id='.$result['prepay_id'];//统一下单接口返回的 prepay_id 参数值，提交格式如：prepay_id=*
+          $data['paySign'] = $this->sign($tmp);//签名,具体签名方案参见微信公众号支付帮助文档;
+          $data['out_trade_no'] = $out_trade_no;
+   
+      }else{
+          $data['state'] = 0;
+          $data['text'] = "错误";
+          $data['kaming'] = $result;
+          // $data['RETURN_CODE'] = $array['RETURN_CODE'];
+          // $data['RETURN_MSG'] = $array['RETURN_MSG'];
+      }
+   
+      echo json_encode($data);
+
+
+
+
     
  
-    $array = $this->xml($xml);//全要大写
+    // $array = $this->xml($xml);//全要大写
 
-        Log::record('统一下单回调处理完成');
-        $time =date('Y-m-d H:i:s',time());
-        Log::record($time);
-        Log::record($array);
+    //     Log::record('统一下单回调处理完成');
+    //     $time =date('Y-m-d H:i:s',time());
+    //     Log::record($time);
+    //     Log::record($array);
+
  
     //print_r($array);
-    if($array['RETURN_CODE'] == 'SUCCESS'){
-        $time = time();
-        $tmp='';//临时数组用于签名
-        $tmp['appId'] = $appid;
-        $tmp['nonceStr'] = $nonce_str;
-        $tmp['package'] = 'prepay_id='.$array['PREPAY_ID'];
-        $tmp['signType'] = 'MD5';
-        $tmp['timeStamp'] = "$time";
+    // if($array['RETURN_CODE'] == 'SUCCESS'){
+    //     $time = time();
+    //     $tmp='';//临时数组用于签名
+    //     $tmp['appId'] = $appid;
+    //     $tmp['nonceStr'] = $nonce_str;
+    //     $tmp['package'] = 'prepay_id='.$array['PREPAY_ID'];
+    //     $tmp['signType'] = 'MD5';
+    //     $tmp['timeStamp'] = "$time";
  
-        $data['state'] = 200;
-        $data['timeStamp'] = "$time";//时间戳
-        $data['nonceStr'] = $nonce_str;//随机字符串
-        $data['signType'] = 'MD5';//签名算法，暂支持 MD5
-        $data['package'] = 'prepay_id='.$array['PREPAY_ID'];//统一下单接口返回的 prepay_id 参数值，提交格式如：prepay_id=*
-        $data['paySign'] = $this->sign($tmp);//签名,具体签名方案参见微信公众号支付帮助文档;
-        $data['out_trade_no'] = $out_trade_no;
+    //     $data['state'] = 200;
+    //     $data['timeStamp'] = "$time";//时间戳
+    //     $data['nonceStr'] = $nonce_str;//随机字符串
+    //     $data['signType'] = 'MD5';//签名算法，暂支持 MD5
+    //     $data['package'] = 'prepay_id='.$array['PREPAY_ID'];//统一下单接口返回的 prepay_id 参数值，提交格式如：prepay_id=*
+    //     $data['paySign'] = $this->sign($tmp);//签名,具体签名方案参见微信公众号支付帮助文档;
+    //     $data['out_trade_no'] = $out_trade_no;
  
-    }else{
-        $data['state'] = 0;
-        $data['text'] = "错误";
-        $data['kaming'] = $result;
-        // $data['RETURN_CODE'] = $array['RETURN_CODE'];
-        // $data['RETURN_MSG'] = $array['RETURN_MSG'];
-    }
+    // }else{
+    //     $data['state'] = 0;
+    //     $data['text'] = "错误";
+    //     $data['kaming'] = $result;
+    //     // $data['RETURN_CODE'] = $array['RETURN_CODE'];
+    //     // $data['RETURN_MSG'] = $array['RETURN_MSG'];
+    // }
  
-    echo json_encode($data);
+    // echo json_encode($data);
 }
  
 //随机32位字符串
