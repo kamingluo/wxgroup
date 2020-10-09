@@ -9,17 +9,15 @@ Page({
       id: 1,
       body: "体验卡",
       detail:"会员体验卡",
-      total_fee: '0.01',
-      originalprice: '0.1',
+      total_fee: '1',
+      originalprice: '10',
       vip_time: "1天",
       image:"https://material.gzywudao.top/image/group/groupicon.png",
     },
     swiperList: [],
   },
   onLoad() {
-    this.towerSwiper('swiperList');
     this.membergoods()//获取VIP商品数据
-    // 初始化towerSwiper 传已有的数组名即可
   },
 
 
@@ -32,10 +30,75 @@ Page({
         this.setData({
           swiperList: res.data
         })
+        // 初始化towerSwiper 传已有的数组名即可
+        this.towerSwiper('swiperList');
       },
     })
 
   },
+
+  pay:function(){
+    let goods_id=this.data.choosedata.id;
+    wx.login({
+      success: res => {
+        request({
+          service: 'pay/order/createorder',
+          data: {
+            code: res.code,
+            goods_id: goods_id,
+            type:1
+          },
+          success: res => {
+            let out_trade_no = res.out_trade_no;
+            request({
+              service:'pay/vippay/pay',
+              data: {
+                out_trade_no: out_trade_no
+              },
+              success: function (res) {  //后端返回的数据
+                console.log("统一下单返回数据", res)
+                var data = res;
+                console.log(data);
+                console.log(data["timeStamp"]);
+                wx.requestPayment({
+                  timeStamp: data['timeStamp'],
+                  nonceStr: data['nonceStr'],
+                  package: data['package'],
+                  signType: data['signType'],
+                  paySign: data['paySign'],
+                  success: function (res) {
+                    console.log("支付成功返回数据", res)
+                    wx.showModal({
+                      title: '支付成功',
+                      content: '',
+                    })
+                  },
+                  fail: function (res) {
+                    wx.showModal({
+                      title: '支付失败',
+                      content: '',
+                    })
+                  }
+                })
+              }
+            });
+          },
+        })
+      }
+    })
+
+
+    
+
+  },
+
+
+
+
+
+
+
+
 
   qidai:function(){
     wx.showToast({

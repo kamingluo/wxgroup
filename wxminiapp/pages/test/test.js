@@ -26,7 +26,7 @@ Page({
       },
       success: function (res) {  //后端返回的数据
         console.log("统一下单返回数据",res)
-        var data = res.data;
+        var data = res;
         console.log(data);
         console.log(data["timeStamp"]);
         wx.requestPayment({

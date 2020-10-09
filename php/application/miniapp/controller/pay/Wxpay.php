@@ -70,7 +70,7 @@ class Wxpay
                         Log::record('拿到订单状态'.$state);
                         if($state==1){
                           Log::record('订单状态为待付款，处理订单');
-                          $dbreturn= db('order')->where('openid',$openid)->update(['update_time' => $time,'transaction_id' => $transaction_id,'state'=>2]);
+                          $dbreturn= db('order')->where('openid',$openid)->where('out_trade_no',$out_trade_no)->update(['update_time' => $time,'transaction_id' => $transaction_id,'state'=>2]);
                           if($dbreturn==1){
                             Log::record('更新订单状态完成，为用户加上VIP');
                             $goods_id=$orderdata["goods_id"];//拿到商品id

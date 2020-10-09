@@ -50,7 +50,7 @@
 </view>
 
 <view class="openbutton-body">
-  <view class="centered openbutton" bindtap="qidai">
+  <view class="centered openbutton" bindtap="pay">
     <button class="cu-btn bg-orange round shadow">支付￥{{choosedata.total_fee/100}}元/立即开通{{choosedata.body}}</button>
   </view>
   <view class="tips">
