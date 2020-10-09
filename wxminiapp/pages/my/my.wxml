@@ -23,7 +23,8 @@
           </button>
         </view>
       </view>
-      <view class="flex-twice  margin-xs radius centered" wx:if="{{vipdisplay}}">
+      <!-- <view class="flex-twice  margin-xs radius centered" wx:if="{{vipdisplay}}"> -->
+      <view class="flex-twice  margin-xs radius centered">
         <view>
           <button class=" bg-orange round shadow vip-button" bindtap="openvip">
             <text>升级VIP</text>

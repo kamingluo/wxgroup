@@ -6,57 +6,35 @@ Page({
   data: {
     imageurl: 'https://group.gzywudao.top/php/public/', //默认图片链接
     choosedata:{
-      id: 0,
-      title: "体验卡",
-      jiage: '0.01',
-      yuanjia: '0.1',
-      time: "1天"
+      id: 1,
+      body: "体验卡",
+      detail:"会员体验卡",
+      total_fee: '0.01',
+      originalprice: '0.1',
+      vip_time: "1天",
+      image:"https://material.gzywudao.top/image/group/groupicon.png",
     },
-    swiperList: [{
-        id: 2,
-        title: "会员月卡",
-        jiage: '0.30',
-        yuanjia: '3.00',
-        time: "30天"
-      },
-      {
-        id: 3,
-        title: "会员季卡",
-        jiage: '0.90',
-        yuanjia: '9.00',
-        time: "90天"
-      }, 
-      {
-        id: 1,
-        title: "会员周卡",
-        jiage: '0.07',
-        yuanjia: '0.7',
-        time: "7天"
-      },
-      {
-        id: 0,
-        title: "体验卡",
-        jiage: '0.01',
-        yuanjia: '0.1',
-        time: "1天"
-      }, {
-        id: 4,
-        title: "会员半年卡",
-        jiage: '1.80',
-        yuanjia: '18.00',
-        time: "180天"
-      }, {
-        id: 5,
-        title: "会员年卡",
-        jiage: '3.50',
-        yuanjia: '35.00',
-        time: "1年"
-      }
-    ],
+    swiperList: [],
   },
   onLoad() {
     this.towerSwiper('swiperList');
+    this.membergoods()//获取VIP商品数据
     // 初始化towerSwiper 传已有的数组名即可
+  },
+
+
+  membergoods:function(){
+    request({
+      service: 'vip/membergoods',
+      data: {},
+      success: res => {
+        console.log("vip商品数据",res.data)
+        this.setData({
+          swiperList: res.data
+        })
+      },
+    })
+
   },
 
   qidai:function(){

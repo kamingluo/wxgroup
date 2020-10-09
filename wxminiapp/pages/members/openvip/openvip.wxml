@@ -37,12 +37,12 @@
       <view class="jiage-body ">
         <view>
           <view class="centered jiage-title">
-            <text>{{item.title}}</text> </view>
+            <text>{{item.body}}</text> </view>
           <view class="centered">
-            <text><text style="color:red">￥<text style="font-size:55rpx;">{{item.jiage}}</text> </text>/{{item.time}}</text>
+            <text><text style="color:red">￥<text style="font-size:55rpx;">{{item.total_fee/100}}</text> </text>/{{item.vip_time}}</text>
           </view>
           <view class="centered yuanjia">
-            <text style=" text-decoration: line-through;">原价￥{{item.yuanjia}}</text> </view>
+            <text style=" text-decoration: line-through;">原价￥{{item.originalprice/100}}</text> </view>
         </view>
       </view>
     </view>
@@ -51,7 +51,7 @@
 
 <view class="openbutton-body">
   <view class="centered openbutton" bindtap="qidai">
-    <button class="cu-btn bg-orange round shadow">支付￥{{choosedata.jiage}}元/立即开通{{choosedata.title}}</button>
+    <button class="cu-btn bg-orange round shadow">支付￥{{choosedata.total_fee/100}}元/立即开通{{choosedata.body}}</button>
   </view>
   <view class="tips">
     <text>开通即视为同意<text style="color:#FFA042">《会员服务协议》</text>

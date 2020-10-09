@@ -7,21 +7,29 @@ use think\Log;
 class Vippay{
 //微信支付
 public function pay(Request $request){
-    $openid=$request->param("openid");//openid
-    $user_id=$request->param("user_id");//用户id
-    $body =$request->param("body")||'默认标题';
+
+    $out_trade_no=$request->param("out_trade_no");//商户订单号
+
+    $orderdata =db('order')->where('out_trade_no',$out_trade_no)->where('state',1)->find();//查询订单信息
+
+    $openid=$orderdata["openid"];//openid
+    $user_id=$orderdata["user_id"];//用户id
+    $body =$orderdata["body"];//商品描述
+    $total_fee =$orderdata["total_fee"];// 微信支付单位是分
+    $detail=$orderdata["detail"];//商品详情
+    $attach=$orderdata["type"];//附加数据，也就是把订单类型带过去
 
     $appid =Config('appid');//appid.如果是公众号 就是公众号的appid
     $mch_id =Config('mch_id'); //商户号
     $nonce_str =$this->nonce_str();//随机字符串
     $notify_url ='https://group.gzywudao.top/php/public/miniapp.php/pay/wxpay/paycallback'; //回调的url【自己填写】
-    $out_trade_no = $this->order_number($openid);//商户订单号
     $spbill_create_ip =Config('spbill_create_ip');//服务器的ip【自己填写】;
-    $total_fee =2;// 微信支付单位是分
     $trade_type = 'JSAPI';//交易类型 默认
     //这里是按照顺序的 因为下面的签名是按照顺序 排序错误 肯定出错
     $post['appid'] = $appid;
+    $post['attach'] = $attach;
     $post['body'] = $body;
+    $post['detail'] = $detail;
     $post['mch_id'] = $mch_id;
     $post['nonce_str'] = $nonce_str;//随机字符串
     $post['notify_url'] = $notify_url;
@@ -33,7 +41,9 @@ public function pay(Request $request){
     $sign = $this->sign($post);//签名
     $post_xml = '<xml>
            <appid>'.$appid.'</appid>
+           <attach>'.$attach.'</attach>
            <body>'.$body.'</body>
+           <detail>'.$detail.'</detail>
            <mch_id>'.$mch_id.'</mch_id>
            <nonce_str>'.$nonce_str.'</nonce_str>
            <notify_url>'.$notify_url.'</notify_url>
