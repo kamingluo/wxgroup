@@ -57,7 +57,7 @@ class Wxpay
           $transaction_id=$result['transaction_id'];//拿到微信交易单号
           $attach=$result['attach'] || "没有附加数据";//拿到附加数据，也就是订单类型了
           $total_fee=$result['total_fee'];//订单金额，单位分
-          $openid=$result['cash_fee'];//订单openid
+          $openid=$result['openid'];//订单openid
           Log::record('订单号：'.$out_trade_no);
           Log::record('拿到微信交易单号：'.$transaction_id);
           Log::record('拿到附加数据：'.$attach);
