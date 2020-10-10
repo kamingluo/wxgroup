@@ -14,10 +14,33 @@ Page({
       vip_time: "1天",
       image:"https://material.gzywudao.top/image/group/groupicon.png",
     },
-    swiperList: [],
+    swiperList: [],//会员购买商品列表
+    condition:1,//会员开通情况，0是已经开通且有效，1是未开通过，2是已经过期
+    end_time:"",//会员结束时间
   },
   onLoad() {
     this.membergoods()//获取VIP商品数据
+  },
+
+  onShow(){
+    this.queryuservipdata()
+  },
+
+  queryuservipdata:function(){
+    let user_id = wx.getStorageSync('userdata').id;
+    request({
+      service: '/vip/uservipdata',
+      data: {
+        user_id:user_id
+      },
+      success: res => {
+        console.log("查询用户会员情况",res.data)
+        this.setData({
+          condition: res.condition,
+          end_time:res.end_time
+        })
+      },
+    })
   },
 
 
@@ -38,6 +61,7 @@ Page({
   },
 
   pay:function(){
+    var that=this
     let goods_id=this.data.choosedata.id;
     wx.login({
       success: res => {
@@ -68,6 +92,7 @@ Page({
                   paySign: data['paySign'],
                   success: function (res) {
                     console.log("支付成功返回数据", res)
+                    that.queryuservipdata()//重新刷新
                     wx.showModal({
                       title: '支付成功',
                       content: '',

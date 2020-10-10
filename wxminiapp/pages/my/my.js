@@ -19,7 +19,9 @@ Page({
     xiaouadtitle:"社群工具推荐",
     moredatatitle:"更多推荐",
     moredata:[],//更多工具数据
-    vipdisplay:false
+    vipdisplay:false,
+    condition:1,//会员开通情况，0是已经开通且有效，1是未开通过，2是已经过期
+    end_time:"",//会员结束时间
     
 
   },
@@ -34,6 +36,26 @@ Page({
   },
   onShow: function () {
     this.userdata()
+    this.queryuservipdata()
+  },
+
+
+//查询用户的vip信息
+  queryuservipdata:function(){
+    let user_id = wx.getStorageSync('userdata').id;
+    request({
+      service: '/vip/uservipdata',
+      data: {
+        user_id:user_id
+      },
+      success: res => {
+        console.log("查询用户会员情况",res.data)
+        this.setData({
+          condition: res.condition,
+          end_time:res.end_time
+        })
+      },
+    })
   },
 
 

@@ -371,3 +371,62 @@ function taobaorequest($parameters){
 
 
 
+//查询用户的VIP信息，传入用户id即可
+function queryuservipdata($user_id){
+
+    $data =db('user_vip_data')->where('user_id',$user_id)->find();//查询用户vip信息
+        $condition=1;
+        $message="";
+        $end_time='';
+        if($data){
+            $end_time=$data["end_time"];//会员结束时间
+            $nowtime=date('Y-m-d H:i:s',time());//当前时间
+            if($end_time>$nowtime){
+                $message="有会员，且没结束";
+                $condition=0;
+                $end_time=date('Y-m-d',strtotime($end_time));//去除时分秒，保留年月日
+            }
+            else{
+                $message="有会员，已经结束了";
+                $condition=2;
+            }
+        }
+        else{
+            $message="用户没有开通记录";
+        }
+        $returndata=['state'   => '200','message'  => $message,'condition'=> $condition,'end_time'  => $end_time ];
+        return $returndata ;
+}
+
+
+//给用户增加vip日期。传入openid和time,time是增加的天数。
+function addvipday($openid,$time)
+{
+
+    $nowtime=date('Y-m-d H:i:s',time());//当前时间
+        $data =db('user_vip_data')->where('openid',$openid)->find();//查询用户vip信息
+        if($data){
+            //已经有vip数据了，在原来的基础上增加
+            $end_time=$data["end_time"];
+            if($end_time>$nowtime){
+                $new_end_time=date('Y-m-d H:i:s',strtotime("{$end_time} + $time day"));
+                $dbreturn= db('user_vip_data')->where('openid',$openid)->update(['update_time' => $nowtime,'end_time' => $new_end_time]);
+            }
+            else{
+                $end_time=date("Y-m-d G:H:s",strtotime("+".$time." days"));//当前时间加上多少天
+                $dbreturn= db('user_vip_data')->where('openid',$openid)->update(['update_time' => $nowtime,'end_time' => $end_time]);
+            }
+        }
+        else{
+            //还没有vip数据，给用加上
+            $userdata =db('user')->where('openid',$openid)->find();//查询用户信息
+            $user_id=$userdata["id"];
+            $channel=$userdata["channel"];
+            $end_time=date("Y-m-d G:H:s",strtotime("+".$time." days"));//当前时间加上多少天
+            $dbdata = ['id'=>'','openid' =>$openid,'channel' => $channel,'user_id' => $user_id,'create_time' =>$nowtime ,'update_time' =>$nowtime,'end_time' =>$end_time];
+            $Id= db('user_vip_data')->insertGetId($dbdata);//返回自增ID
+        }
+        $returndata=['state'   => '200','message'  => "给用户增加vip天数成功",'time'  => $time];
+        return $returndata ;
+}
+

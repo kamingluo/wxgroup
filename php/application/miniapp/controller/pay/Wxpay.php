@@ -38,20 +38,19 @@ class Wxpay
 
 
     //微信支付回调
-    public function paycallback(Request $request)
+    public function vippaycallback(Request $request)
     {
 
         $testxml  = file_get_contents("php://input");
         $jsonxml = json_encode(simplexml_load_string($testxml, 'SimpleXMLElement', LIBXML_NOCDATA));
         $result = json_decode($jsonxml, true);//转成数组，
-
         // Log::record('微信支付回调方法');
         $time =date('Y-m-d H:i:s',time());
         Log::record($time);
         // Log::record($result);
         // return $result;
         if($result){
-          Log::record('微信支付回调方法，且result有值');
+          Log::record('开通会员微信支付回调方法，且result有值');
             //如果成功返回了
           $out_trade_no = $result['out_trade_no'];//拿到订单号
           $transaction_id=$result['transaction_id'];//拿到微信交易单号
@@ -59,10 +58,10 @@ class Wxpay
           $total_fee=$result['total_fee'];//订单金额，单位分
           $openid=$result['openid'];//订单openid
           Log::record('订单号：'.$out_trade_no);
-          Log::record('拿到微信交易单号：'.$transaction_id);
-          Log::record('拿到附加数据：'.$attach);
-          Log::record('订单金额：'.$total_fee);
-          Log::record('订单openid：'.$openid);
+          // Log::record('拿到微信交易单号：'.$transaction_id);
+          // Log::record('拿到附加数据：'.$attach);
+          // Log::record('订单金额：'.$total_fee);
+          // Log::record('订单openid：'.$openid);
                     if($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS'){
                         //微信支付成功执行业务逻辑
                         $orderdata =db('order')->where('out_trade_no',$out_trade_no)->find();//查询订单信息
@@ -75,13 +74,14 @@ class Wxpay
                             Log::record('更新订单状态完成，为用户加上VIP');
                             $goods_id=$orderdata["goods_id"];//拿到商品id
                             $goodsdata =db('member_goods')->where('id',$goods_id)->find();//查询商品信息
-                            Log::record('给用户加上vip的商品信息');
-                            Log::record($goodsdata);
+                            $time=$goodsdata["time"];
+                            $openvipdata=addvipday($openid,$time);
+                            Log::record('给用户加上vip成功');
+                            Log::record($openvipdata);
                           }
-
                         }
                         else{
-                          Log::record('订单状态为未付款，不理会');
+                          Log::record('订单状态不是待付款，不理会');
                         }
                     }
                     else{

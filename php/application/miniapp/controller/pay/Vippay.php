@@ -22,7 +22,7 @@ public function pay(Request $request){
     $appid =Config('appid');//appid.如果是公众号 就是公众号的appid
     $mch_id =Config('mch_id'); //商户号
     $nonce_str =$this->nonce_str();//随机字符串
-    $notify_url ='https://group.gzywudao.top/php/public/miniapp.php/pay/wxpay/paycallback'; //回调的url【自己填写】
+    $notify_url ='https://group.gzywudao.top/php/public/miniapp.php/pay/wxpay/vippaycallback'; //回调的url【自己填写】
     $spbill_create_ip =Config('spbill_create_ip');//服务器的ip【自己填写】;
     $trade_type = 'JSAPI';//交易类型 默认
     //这里是按照顺序的 因为下面的签名是按照顺序 排序错误 肯定出错

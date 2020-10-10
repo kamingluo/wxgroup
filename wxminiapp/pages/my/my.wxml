@@ -27,29 +27,36 @@
       <view class="flex-twice  margin-xs radius centered">
         <view>
           <button class=" bg-orange round shadow vip-button" bindtap="openvip">
-            <text>升级VIP</text>
+
+            <text wx:if="{{condition!=0}}">升级VIP</text>
+            <text wx:else>续费VIP</text>
+
           </button>
         </view>
       </view>
     </view>
   </view>
 
-  <view wx:if="{{vipdisplay}}" bindtap="openvip">
-    <view class="vip-body centered">
+  <!-- <view wx:if="{{vipdisplay}}" bindtap="openvip"> -->
+    <view bindtap="openvip">
+
+
+    <!-- <view class="vip-body centered"> 写死的没判断
 			<image src="{{imageurl + 'miniapp/images/my/novip.png'}}"></image>
-		</view>
+		</view> -->
 
-    <!-- <view class="vip-body centered">
-      <image src="{{imageurl + 'miniapp/images/my/havevip.png'}}"></image>
+    <view class="vip-body centered">
+      <image src="{{imageurl + 'miniapp/images/my/havevip.png'}}"  wx:if="{{condition!=0}}" ></image>
 
-      <view class="flex  p-xs margin-bottom-sm mb-sm havevip">
+      <view class="flex  p-xs margin-bottom-sm mb-sm havevip" wx:else>
         <view class="flex-treble  padding-xs margin-xs radius viptime-body">
-          <text class="viptime">2020-09-30 会员到期</text> </view>
+          <text class="viptime">{{end_time}} 会员到期</text> </view>
         <view class="flex-sub padding-xs margin-xs radius viptime-body">
           <button class="cu-btn bg-yellow round  shadow">续费</button>
         </view>
       </view>
-    </view> -->
+
+    </view>
   </view>
 
   <view class="zhanwei" wx:if="{{vipdisplay}}"></view>
