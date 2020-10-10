@@ -90,6 +90,9 @@ margin-left: -20rpx;
   width: 80rpx;
   height: 80rpx;
 }
+.openvipbody{
+	display: contents;
+}
 
 
 .fuli-body{

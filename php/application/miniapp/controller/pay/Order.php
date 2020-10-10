@@ -10,7 +10,6 @@ class Order
     //创建订单
     public function createorder(Request $request)
     {
-
         $goods_id=$wxcode =$request->param("goods_id");//商品id
         $wxcode =$request->param("code");
         $openid=openid($wxcode);
@@ -49,9 +48,7 @@ class Order
             $state=['state'   => '400','message'  => "订单生成失败"];
             return $state;
         }
-
     }
-
 
 
 
@@ -63,8 +60,22 @@ class Order
         $state=['state'   => '200','message'  => "用户订单列表" ];
         $resdata=array_merge($state,array('data'=>$data));
         return $resdata ;
-
     }
+
+    //处理过期订单
+
+    public function ordertimeout()
+    {
+        // return "处理过期订单";
+        $time =date('Y-m-d H:i:s',time());
+
+        $dbreturn= db('order')->where('state',1)->whereTime('end_time', '<',  $time)->update(['update_time' => $time,'open'=>1]);
+        $resdata=['state'   => '200','message'  => "处理过期订单成功" ];
+        return $resdata ;
+        # code...
+    }
+
+
 
 
 
