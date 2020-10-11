@@ -17,7 +17,7 @@
         </view>
         <view>
           <text style="font-size:20rpx;color:white" wx:if="{{condition!=0}}">你还不是会员~</text>
-          <text style="font-size:20rpx;color:orange" wx:else>会员有效期至:{{end_time}}</text>
+          <text style="font-size:25rpx;color:orange" wx:else>会员有效期至:{{end_time}}</text>
         </view>
       </view>
       <view class="flex-twice  margin-xs radius centered">

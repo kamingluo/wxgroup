@@ -60,7 +60,8 @@
     "pages/extension/taobao/themegoods/themegoods",
     "pages/extension/collection/collection",
     "pages/extension/extension",
-    "pages/members/openvip/openvip"
+    "pages/members/openvip/openvip",
+    "pages/communal/paysuccess/paysuccess"
   ],
   "window": {
     "backgroundTextStyle": "light",

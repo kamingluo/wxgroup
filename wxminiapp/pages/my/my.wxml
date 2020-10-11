@@ -1,157 +1,157 @@
-<view class="bg-img  padding-tb-xl" style="background-image: url('{{imageurl + 'miniapp/images/my/pagesbac.png'}}'); {{vipdisplay? 'height: 380rpx':'height:280rpx'}} ">
-	<!-- <view class="bg-img  padding-tb-xl" style="background-image: url('https://www.weixinkefu.vip/BJ.jpg');height: 380rpx;"> -->
-	<cu-custom bgColor="bg-blue">
-		<view slot="content">
-			<text style="color:white;">我的页面</text>
-		</view>
-	</cu-custom>
-	<view class="user">
-		<view class="flex  p-sm margin-bottom-sm mb-sm">
-			<view class="flex-sub  margin-xs radius">
-				<view bindlongpress="haveuserid">
-					<open-data class='userAvatarurl' type="userAvatarUrl"></open-data>
-				</view>
-			</view>
-			<view class="flex-treble  padding-xs name-body radius">
-				<view class='userNickName' bindlongpress="ceshipage">
-					<open-data type="userNickName"></open-data>
-				</view>
-				<view class='userNickName'>
-					<button class="cu-btn bg-mauve round shadow">
-						<image src='../../images/common/coin.svg'></image>
-						<text>金币{{userdata.coin}}</text>
-					</button>
-				</view>
-			</view>
-			<!-- <view class="flex-twice  margin-xs radius centered" wx:if="{{vipdisplay}}"> -->
-			<view class="flex-twice  margin-xs radius centered">
-				<view>
-					<button class=" bg-orange round shadow vip-button" bindtap="openvip">
-						<text wx:if="{{condition!=0}}">升级VIP</text>
-						<text wx:else>续费VIP</text>
-					</button>
-				</view>
-			</view>
-		</view>
-	</view>
+<view class="bg-img  padding-tb-xl" style="background-image: url('{{imageurl + 'miniapp/images/my/pagesbac.png'}}'); {{vipdisplay? 'height: 380rpx':'height:350rpx'}} ">
+  <!-- <view class="bg-img  padding-tb-xl" style="background-image: url('https://www.weixinkefu.vip/BJ.jpg');height: 380rpx;"> -->
+  <cu-custom bgColor="bg-blue">
+    <view slot="content">
+      <text style="color:white;">我的页面</text>
+    </view>
+  </cu-custom>
+  <view class="user">
+    <view class="flex  p-sm margin-bottom-sm mb-sm">
+      <view class="flex-sub  margin-xs radius">
+        <view bindlongpress="haveuserid">
+          <open-data class='userAvatarurl' type="userAvatarUrl"></open-data>
+        </view>
+      </view>
+      <view class="flex-treble  padding-xs name-body radius">
+        <view class='userNickName' bindlongpress="ceshipage">
+          <open-data type="userNickName"></open-data>
+        </view>
+        <view class='userNickName'>
+          <button class="cu-btn bg-mauve round shadow">
+            <image src='../../images/common/coin.svg'></image>
+            <text>金币{{userdata.coin}}</text>
+          </button>
+        </view>
+      </view>
+      <!-- <view class="flex-twice  margin-xs radius centered" wx:if="{{vipdisplay}}"> -->
+      <view class="flex-twice  margin-xs radius centered">
+        <view>
+          <button class=" bg-orange round shadow vip-button" bindtap="openvip">
+            <text wx:if="{{condition!=0}}">升级VIP</text>
+            <text wx:else>续费VIP</text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
 
-	<!-- <view wx:if="{{vipdisplay}}" bindtap="openvip"> -->
-	<view bindtap="openvip" class="openvipbody">
-		<view class="vip-body centered" wx:if="{{condition!=0}}">
-			<image src="{{imageurl + 'miniapp/images/my/novip.png'}}"></image>
-		</view>
-		<view class="vip-body centered" wx:else>
-			<image src="{{imageurl + 'miniapp/images/my/havevip.png'}}"></image>
-			<view class="flex  p-xs margin-bottom-sm mb-sm havevip">
-				<view class="flex-treble  padding-xs margin-xs radius viptime-body">
-					<text class="viptime">{{end_time}} 会员到期</text> </view>
-				<view class="flex-sub padding-xs margin-xs radius viptime-body">
-					<button class="cu-btn bg-yellow round  shadow">续费</button>
-				</view>
-			</view>
-		</view>
-	</view>
+  <!-- <view wx:if="{{vipdisplay}}" bindtap="openvip"> -->
+  <view bindtap="openvip" >
+    <view class="vip-body centered" wx:if="{{condition!=0}}">
+      <image src="{{imageurl + 'miniapp/images/my/novip.png'}}"></image>
+    </view>
+    <view class="vip-body centered" wx:else>
+      <image src="{{imageurl + 'miniapp/images/my/havevip.png'}}"></image>
+      <view class="flex  p-xs margin-bottom-sm mb-sm havevip">
+        <view class="flex-treble  padding-xs margin-xs radius viptime-body">
+          <text class="viptime">{{end_time}} 会员到期</text> </view>
+        <view class="flex-sub padding-xs margin-xs radius viptime-body">
+          <button class="cu-btn bg-yellow round  shadow">续费</button>
+        </view>
+      </view>
+    </view>
+  </view>
 
-	<view class="zhanwei" wx:if="{{vipdisplay}}"></view>
+  <view class="zhanwei" wx:if="{{vipdisplay}}"></view>
 </view>
 
 
 
 <view class="cu-list grid col-5 no-border">
-	<view class="cu-item" bindtap="usertasklist">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/taskslist.png"}}'></image>
-		</view>
-		<text>任务记录</text>
-	</view>
-	<view class="cu-item" bindtap="exchangelist">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/goods.png"}}'></image>
-		</view>
-		<text>兑换记录</text>
-	</view>
-	<view class="cu-item" bindtap="lotterylist">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/pushlottery.png"}}'></image>
-		</view>
-		<text>抽奖记录</text>
-	</view>
-	<view class="cu-item" data-jumpid="3" bindtap="myaddress">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/socrelists.png"}}'></image>
-		</view>
-		<text>我的地址</text>
-	</view>
-	<view class="cu-item" data-jumpid="3" bindtap="shuoming">
-		<view class="centered">
-			<image src='{{imageurl + "miniapp/images/groupicon/more.png"}}'></image>
-		</view>
-		<text>使用说明</text>
-	</view>
+  <view class="cu-item" bindtap="usertasklist">
+    <view class="centered">
+      <image src='{{imageurl + "miniapp/images/groupicon/taskslist.png"}}'></image>
+    </view>
+    <text>任务记录</text>
+  </view>
+  <view class="cu-item" bindtap="exchangelist">
+    <view class="centered">
+      <image src='{{imageurl + "miniapp/images/groupicon/goods.png"}}'></image>
+    </view>
+    <text>兑换记录</text>
+  </view>
+  <view class="cu-item" bindtap="lotterylist">
+    <view class="centered">
+      <image src='{{imageurl + "miniapp/images/groupicon/pushlottery.png"}}'></image>
+    </view>
+    <text>抽奖记录</text>
+  </view>
+  <view class="cu-item" data-jumpid="3" bindtap="myaddress">
+    <view class="centered">
+      <image src='{{imageurl + "miniapp/images/groupicon/socrelists.png"}}'></image>
+    </view>
+    <text>我的地址</text>
+  </view>
+  <view class="cu-item" data-jumpid="3" bindtap="shuoming">
+    <view class="centered">
+      <image src='{{imageurl + "miniapp/images/groupicon/more.png"}}'></image>
+    </view>
+    <text>使用说明</text>
+  </view>
 </view>
 
 
 
 <view class="fuli-body" wx:if="{{xiaouad.length > 0}}">
 
-	<view class="cu-bar bg-white solid-bottom">
-		<view class="action">
-			我的福利
-		</view>
-	</view>
-	<view class="grid2 col-2 padding-xs fuli">
+  <view class="cu-bar bg-white solid-bottom">
+    <view class="action">
+      我的福利
+    </view>
+  </view>
+  <view class="grid2 col-2 padding-xs fuli">
 
-		<view class="padding-xs" wx:for="{{xiaouad}}" wx:key="item" bindtap="clickjump" data-data="{{item}}">
-			<view class="  radius text-center shadow-blur">
-				<view class="flex  p-xs mb-sm">
-					<image src='{{item.imageurl}}' class="xiaouimage"></image>
-				</view>
-			</view>
-		</view>
-	</view>
+    <view class="padding-xs" wx:for="{{xiaouad}}" wx:key="item" bindtap="clickjump" data-data="{{item}}">
+      <view class="  radius text-center shadow-blur">
+        <view class="flex  p-xs mb-sm">
+          <image src='{{item.imageurl}}' class="xiaouimage"></image>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
 
 
 
 <view wx:if="{{moredata.length > 0}}">
-	<view class="cu-bar bg-white solid-bottom">
-		<view class="action">
-			更多工具
-		</view>
-	</view>
-	<view class="cu-list grid col-5 no-border">
+  <view class="cu-bar bg-white solid-bottom">
+    <view class="action">
+      更多工具
+    </view>
+  </view>
+  <view class="cu-list grid col-5 no-border">
 
-		<view class="cu-item" bindtap="usertasklist" wx:for="{{moredata}}" wx:key="item" bindtap="clickjump" data-data="{{item}}">
-			<view wx:if="{{item.type=='kefu'}}">
-				<kaming-button open-type="contact">
-					<view>
-						<view class="centered">
-							<image src='{{imageurl + item.imageurl }}'></image>
-						</view>
-						<text>{{item.title}}</text>
-					</view>
-				</kaming-button>
-			</view>
-			<view wx:elif="{{item.type=='jianyi'}}">
-				<kaming-button open-type="feedback">
-					<view>
-						<view class="centered">
-							<image src='{{imageurl + item.imageurl }}'></image>
-						</view>
-						<text>{{item.title}}</text>
-					</view>
-				</kaming-button>
+    <view class="cu-item" bindtap="usertasklist" wx:for="{{moredata}}" wx:key="item" bindtap="clickjump" data-data="{{item}}">
+      <view wx:if="{{item.type=='kefu'}}">
+        <kaming-button open-type="contact">
+          <view>
+            <view class="centered">
+              <image src='{{imageurl + item.imageurl }}'></image>
+            </view>
+            <text>{{item.title}}</text>
+          </view>
+        </kaming-button>
+      </view>
+      <view wx:elif="{{item.type=='jianyi'}}">
+        <kaming-button open-type="feedback">
+          <view>
+            <view class="centered">
+              <image src='{{imageurl + item.imageurl }}'></image>
+            </view>
+            <text>{{item.title}}</text>
+          </view>
+        </kaming-button>
 
-			</view>
+      </view>
 
-			<view wx:else>
-				<view class="centered">
-					<image src='{{imageurl + item.imageurl }}'></image>
-				</view>
-				<text>{{item.title}}</text>
-			</view>
-		</view>
-	</view>
+      <view wx:else>
+        <view class="centered">
+          <image src='{{imageurl + item.imageurl }}'></image>
+        </view>
+        <text>{{item.title}}</text>
+      </view>
+    </view>
+  </view>
 </view>
 
 
@@ -159,17 +159,17 @@
 
 <!-- 小盟广告-->
 <view class="centered">
-	<view class="xmad-body">
-		<xm-ad data-id="xm686991b5279c34bac77e4720e9776b" data-position="我的页面" bindtap="clickxmad" adData="{{adData}}" class="xm686991b5279c34bac77e4720e9776b" size="small" bindadLoad="adLoad" bindadClick="adClick" bindadClose="adClose"></xm-ad>
-	</view>
+  <view class="xmad-body">
+    <xm-ad data-id="xm686991b5279c34bac77e4720e9776b" data-position="我的页面" bindtap="clickxmad" adData="{{adData}}" class="xm686991b5279c34bac77e4720e9776b" size="small" bindadLoad="adLoad" bindadClick="adClick" bindadClose="adClose"></xm-ad>
+  </view>
 </view>
 
 <!-- 小盟广告-->
 
 <!-- 广点通模板广告开始-->
 <view class='centered '>
-	<view class='gdtad'>
-		<ad-custom capture-bind:tap="mobanadclick" ad-intervals="30" unit-id="adunit-b01774a672847dd7"></ad-custom>
-	</view>
+  <view class='gdtad'>
+    <ad-custom capture-bind:tap="mobanadclick" ad-intervals="30" unit-id="adunit-b01774a672847dd7"></ad-custom>
+  </view>
 </view>
 <!-- 广点通模板广告结束-->

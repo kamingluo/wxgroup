@@ -1,137 +1,146 @@
-
 .bg-blue {
-	background-color: #377cfe;
-	color: var(--white);
+  background-color: #377cfe;
+  color: var(--white);
 }
+
 .padding-tb-xl {
-	padding-top: 0rpx;
-	padding-bottom: 50rpx;
+  padding-top: 0rpx;
+  padding-bottom: 50rpx;
 }
-.user{
-	width: 100%;
-	height: 170rpx;
+
+.user {
+  width: 100%;
+  height: 170rpx;
 }
-.userAvatarurl{
-overflow:hidden;  
-display: block;   
-width: 90rpx;  
-height: 90rpx; 
-border-radius: 50%; 
-border: 2px solid #fff;  
-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-margin-left: 15rpx;
+
+.userAvatarurl {
+  overflow: hidden;
+  display: block;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  margin-left: 15rpx;
 }
-.name-body{
-	margin:8rpx 10rpx ;
+
+.name-body {
+  margin: 8rpx 10rpx;
 }
-.vip-button{
-	height: 50rpx;
-	font-size: 20rpx;
-	width: 130rpx;
+
+.vip-button {
+  height: 50rpx;
+  font-size: 20rpx;
+  width: 130rpx;
   font-weight: 600;
 }
 
-.havevip{
-	width: 80%;
-	position: absolute;
-	
-}
-.havevip button{
-font-size: 23rpx;
-width:110rpx ;
-height: 38rpx;
-margin-left: -20rpx;
-font-weight: 600;
-}
-.viptime{
-	color: #fbbd08;
-	margin-left: 100rpx;
-	font-weight: 600;
-}
-.viptime-body{
-	margin-top: 1rpx;
-}
-.userNickName{
-	font-size: 35rpx;
-	color: white;
-	margin-bottom: 10rpx;
-}
-.userNickName image{
-	width: 28rpx;
-	height: 28rpx;
-margin-left: -20rpx;
-}
-.userNickName text{
-	margin-left: 10rpx;
-}
-.cu-btn {
-	font-size: 22rpx;
-	height: 35rpx;
-}
-.zhanwei{
-	width: 100%;
-	height: 80rpx;
-	background-color: white;
+.havevip {
+  width: 80%;
+  position: absolute;
 }
 
-.vip-body{
-	/* display: flex;
+.havevip button {
+  font-size: 23rpx;
+  width: 110rpx;
+  height: 38rpx;
+  margin-left: -20rpx;
+  font-weight: 600;
+}
+
+.viptime {
+  color: #fbbd08;
+  margin-left: 100rpx;
+  font-weight: 600;
+}
+
+.viptime-body {
+  margin-top: 1rpx;
+}
+
+.userNickName {
+  font-size: 35rpx;
+  color: white;
+  margin-bottom: 10rpx;
+}
+
+.userNickName image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-left: -20rpx;
+}
+
+.userNickName text {
+  margin-left: 10rpx;
+}
+
+.cu-btn {
+  font-size: 22rpx;
+  height: 35rpx;
+}
+
+.zhanwei {
+  width: 100%;
+  height: 80rpx;
+  background-color: white;
+}
+
+.vip-body {
+  /* display: flex;
   position: relative;
 	top:-10rpx; */
-	width: 100%;
-	height: 70rpx;
-}
-.vip-body image{
-	width: 100%;
-	height: 70rpx;
+  width: 100%;
+  height: 70rpx;
 }
 
-.grid image{
+.vip-body image {
+  width: 100%;
+  height: 70rpx;
+}
+
+.grid image {
   width: 80rpx;
   height: 80rpx;
 }
-.openvipbody{
-	display: contents;
-}
 
 
-.fuli-body{
-	/* height: 400rpx; */
-	/* background-color: white; */
-	border-radius: 10rpx; 
-	margin-top: 10rpx;
-	margin-bottom: 10rpx;
-	
+.fuli-body {
+  /* height: 400rpx; *//* background-color: white; */
+  border-radius: 10rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
 }
-.fuli{
-		background-color: white;
+
+.fuli {
+  background-color: white;
 }
 
 .cu-bar {
-	display: flex;
-	position: relative;
-	align-items: center;
-	min-height: 70rpx;
-	justify-content: space-between;
+  display: flex;
+  position: relative;
+  align-items: center;
+  min-height: 70rpx;
+  justify-content: space-between;
 }
 
-.grid2{
-	display: flex;
-	flex-wrap: wrap;
-}
-.xiaouimage{
-	width: 345rpx;
-	height: 120rpx;
+.grid2 {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.gdtad{
+.xiaouimage {
+  width: 345rpx;
+  height: 120rpx;
+}
+
+.gdtad {
   width: 98%;
   border-radius: 15rpx;
-	margin-bottom: 40rpx;
-	margin-top: 15rpx;
+  margin-bottom: 40rpx;
+  margin-top: 15rpx;
 }
 
-.xmad-body{
+.xmad-body {
   width: 98%;
   margin-top: 20rpx;
   margin-bottom: 10rpx;
