@@ -1,0 +1,52 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">我的订单</view>
+</cu-custom>
+
+<view wx:if="{{userorderlist.length >0 }}">
+  <view class="centered" wx:for="{{userorderlist}}" wx:key="item" data-data="{{item}}" bindtap="pay">
+    <view class=" orderbody">
+      <view class="centered title">
+        <view class="order-type">
+          <text style="font-size:30rpx;  font-weight: 600">{{item.type==1?"群记分会员":"其他类型"}}</text> </view>
+        <view class="order-state">
+          <text wx:if="{{item.state==1}}" style="color:red">待付款</text>
+          <text wx:elif="{{item.state==2}}" style="color:green">付款成功</text>
+          <text wx:else>订单失效</text>
+        </view>
+      </view>
+      <view class="xiangqing centered">
+        <view class=" imagebody">
+          <image src="{{item.image}}"></image>
+        </view>
+        <view class="detailsbody">
+          <view class="ordertitle">
+            <text style="font-size:26rpx;  font-weight: 600">{{item.body}}</text> </view>
+          <view class="orderintroduce">
+            <text style="font-size:20rpx;">{{item.detail}}</text> </view>
+        </view>
+      </view>
+      <view class="price-body">
+        <view class="price">
+          <text style="font-size:26rpx;  font-weight: 600">金额:￥{{item.total_fee/100}}</text> </view>
+      </view>
+      <view class="pay-body" wx:if="{{item.state==1}}">
+        <view class="pay">
+          <button class="cu-btn bg-blue round shadow">去付款</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="centered totheend" >
+    <text>------已经到底了------</text>
+  </view>
+
+
+
+
+</view>
+
+<view wx:else>
+  <defaultgraph tips="你还没有订单哦~"></defaultgraph>
+</view>

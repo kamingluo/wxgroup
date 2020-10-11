@@ -1,0 +1,74 @@
+.orderbody{
+  background-color: white;
+  width: 95%;
+  border-radius: 10rpx;
+  margin-top: 15rpx;
+}
+
+.title{
+  padding: 20rpx 30rpx 10rpx;
+}
+.order-type{
+  float: left;
+  width: 50%;
+
+}
+.order-state{
+  width: 50%;
+}
+.order-state text{
+  float: right;
+}
+
+.xiangqing{
+  width: 100%;
+   padding: 10rpx 0rpx 10rpx 0rpx;
+}
+.xiangqing image{
+
+  width: 120rpx;
+  height: 120rpx;
+}
+.detailsbody{
+  width: 70%;
+  height: 120rpx;
+  margin-left: -30rpx;
+}
+
+.imagebody{
+  float: left;
+  width: 26%;
+}
+.ordertitle{
+  float: top;
+}
+.orderintroduce{
+  width: 80%;
+}
+
+.price-body{
+  padding: 30rpx 28rpx 50rpx 40rpx;
+}
+.price{
+  float: right;
+}
+
+.pay-body{
+  padding: 0rpx 20rpx 65rpx 20rpx;
+}
+.pay{
+  float: right;
+}
+.pay button{
+  height: 48rpx;
+  font-size: 25rpx;
+
+}
+
+.totheend{
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+}
+.totheend text{
+  color: #aaaaaa;
+}

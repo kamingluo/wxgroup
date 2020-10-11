@@ -3,6 +3,21 @@
 	<view slot="content">用户管理</view>
 </cu-custom>
 
+<view style="margin-top: 0rpx;margin-bottom: 5rpx;" wx:if="{{groupuserlist.length > 0}}">
+	<view class="cu-bar bg-white solid-bottom">
+		<view class="action">
+			<text class="cuIcon-title text-blue"></text> <text style="font-weight: 600;font-size:26rpx;">下载用户记分记录excel表格</text>
+		</view>
+		<view class="action" hover-class="none">
+			<button class="cu-btn block bg-blue margin-tb-sm  sm round" bindtap="downloaddata">
+				点击去下载</button>
+		</view>
+	</view>
+</view>
+
+
+
+
 
 <view class='ui_searchBox'>
 	<view class='ui_search'>

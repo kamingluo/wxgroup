@@ -112,6 +112,13 @@ Page({
     })
   },
 
+  orderlist: function () {
+    wx.navigateTo({
+      url: '/pages/my/orderlists/orderlists'
+    })
+
+  },
+
   openvip:function(){
     wx.navigateTo({
       url: '/pages/members/openvip/openvip'

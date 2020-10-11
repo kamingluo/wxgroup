@@ -29,6 +29,14 @@ Page({
     })
   },
 
+  downloaddata: function () {
+    let crowd_id = this.data.crowd_id;
+    wx.navigateTo({
+      url: '/pages/group/user/downloaddata/downloaddata?crowd_id=' + crowd_id,
+    })
+
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

@@ -1,5 +1,12 @@
 /* pages/group/goods/exchangelist/exchangelist.wxss */
 
+
+.cu-bar .action:last-child {
+	margin-right: 20rpx;
+}
+
+
+
 .cu-item{
   margin-bottom: 5rpx;
 

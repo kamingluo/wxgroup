@@ -92,5 +92,71 @@ class Downloadfile
     }
 
 
+
+
+    //下载记分表格
+    public function socerlist(Request $request)
+    {
+     $crowd_id=$request->param("crowd_id");//群id
+     $sendmode=$request->param("sendmode");//发送方式，0是直接下载列表。1是发送到邮箱
+
+     $oldlist=$sql = "select user.*,user_crowd.score,user_crowd.user_type,user_crowd.remarks,user_crowd.create_time as joincrowd_time from user,user_crowd where user.id=user_crowd.user_id and user_crowd.crowd_id = ".$crowd_id." order BY user_crowd.user_type=1 desc,user_crowd.user_type desc,user_crowd.score desc";
+     $list = Db::query($sql); //拿到数据
+
+	   $file_name = date('Y-m-d_His').'.xls';
+     $path = dirname(__FILE__); //找到当前脚本所在路径
+     Loader::import('PHPExcel.php'); //加载所需的类文件，必须引入 use think\Loader;命名空间，否则loader无法加载
+     Loader::import('PHPExcel.Reader.Excel2007'); 
+
+     $PHPExcel = new \PHPExcel();
+        $PHPSheet = $PHPExcel->getActiveSheet();
+        $PHPSheet->setTitle("用户兑换记录");
+        $PHPSheet->setCellValue("A1","用户id");
+        $PHPSheet->setCellValue("B1","微信昵称");
+        $PHPSheet->setCellValue("C1","备注");
+        $PHPSheet->setCellValue("D1","用户角色");
+        $PHPSheet->setCellValue("E1","用户记分");
+        $PHPSheet->setCellValue("F1","加入群时间");
+        $i = 2;
+		foreach($list as $key => $value){
+            if($value['user_type']==0){
+                $type="普通用户";
+            }
+            elseif ($value['user_type']==1){
+                $type="群主";
+            }
+            else{
+                $type="群管理员";
+            }
+        	$PHPSheet->setCellValue('A'.$i,''.$value['id']);
+        	$PHPSheet->setCellValue('B'.$i,''.$value['nickName']);
+        	$PHPSheet->setCellValue('C'.$i,''.$value['remarks']);
+        	$PHPSheet->setCellValue('D'.$i,''.$type);
+        	$PHPSheet->setCellValue('E'.$i,''.$value['score']);
+        	$PHPSheet->setCellValue('F'.$i,''.$value['joincrowd_time']);
+        	$i++;
+    	}
+        $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel,"Excel2007");
+        header('Content-Disposition: attachment;filename='.$file_name);
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+        if($sendmode == 0){
+            $PHPWriter->save("php://output");  
+            return "直接输出报告";
+
+        }
+        else{
+            $user_email=$request->param("user_email");//接受邮箱
+            $excelpath='./excel/'.$file_name;
+            $PHPWriter->save($excelpath);//保存到服务器指定路径
+            $emaildata=sendEmail([['user_email'=>$user_email,'content'=>'群记分群员记分统计表格','excel'=>$excelpath]]);
+            $state=['state'   => '200','message'  => "邮件发送成功，请注意查收",'emaildata'  => $emaildata];
+             return  $state;    
+        }
+        
+        
+    }
+
+
 }
 

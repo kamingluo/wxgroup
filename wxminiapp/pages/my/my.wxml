@@ -1,4 +1,4 @@
-<view class="bg-img  padding-tb-xl" style="background-image: url('{{imageurl + 'miniapp/images/my/pagesbac.png'}}'); {{vipdisplay? 'height: 380rpx':'height:350rpx'}} ">
+<view class="bg-img  padding-tb-xl" style="background-image: url('{{imageurl + 'miniapp/images/my/pagesbac.png'}}'); {{vipdisplay? 'height: 380rpx':'height:380rpx'}} ">
   <!-- <view class="bg-img  padding-tb-xl" style="background-image: url('https://www.weixinkefu.vip/BJ.jpg');height: 380rpx;"> -->
   <cu-custom bgColor="bg-blue">
     <view slot="content">
@@ -52,7 +52,8 @@
     </view>
   </view>
 
-  <view class="zhanwei" wx:if="{{vipdisplay}}"></view>
+  <!-- <view class="zhanwei" wx:if="{{vipdisplay}}"></view> -->
+  <view class="zhanwei" ></view>
 </view>
 
 
@@ -82,12 +83,19 @@
     </view>
     <text>我的地址</text>
   </view>
-  <view class="cu-item" data-jumpid="3" bindtap="shuoming">
+
+  <view class="cu-item" data-jumpid="3" bindtap="orderlist">
+    <view class="centered">
+      <image src='{{imageurl + "miniapp/images/groupicon/pushnews.png"}}'></image>
+    </view>
+    <text>我的订单</text>
+  </view>
+  <!-- <view class="cu-item" data-jumpid="3" bindtap="shuoming">
     <view class="centered">
       <image src='{{imageurl + "miniapp/images/groupicon/more.png"}}'></image>
     </view>
     <text>使用说明</text>
-  </view>
+  </view> -->
 </view>
 
 

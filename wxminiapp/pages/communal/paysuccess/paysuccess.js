@@ -1,66 +1,36 @@
-// pages/communal/paysuccess/paysuccess.js
+const baseConfig = require('./../../../utils/config.js') //配置文件
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    imageurl: 'https://group.gzywudao.top/php/public/', //默认图片链接
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    let imageurl = baseConfig.imageurl;
+    this.setData({
+      imageurl: imageurl,
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  gohome: function() {
+    wx.reLaunch({
+      url: '/pages/index/index'
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  seeorder: function() {
+    wx.navigateTo({
+      url: '/pages/my/orderlists/orderlists'
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
 
-  },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
 
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

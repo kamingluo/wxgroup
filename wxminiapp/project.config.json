@@ -84,29 +84,9 @@
 				},
 				{
 					"id": -1,
-					"name": "领淘宝优惠券",
-					"pathName": "pages/extension/taobao/taobao",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/group/usersigin/usersigin",
-					"pathName": "pages/group/usersigin/usersigin",
-					"query": "crowd_id=14& crowd_name=kaming$user_type=2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "开通会员",
-					"pathName": "pages/members/openvip/openvip",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "支付成功页面",
-					"pathName": "pages/communal/paysuccess/paysuccess",
+					"name": "pages/group/user/user",
+					"pathName": "pages/group/user/user",
+					"query": "crowd_id=14&user_type=0",
 					"scene": null
 				}
 			]

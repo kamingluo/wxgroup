@@ -2,3 +2,21 @@
   <view slot="backText">返回</view>
   <view slot="content">支付结果</view>
 </cu-custom>
+
+<view class="imagebody centered">
+  <image src="{{imageurl + 'miniapp/images/success.png'}}"></image>
+</view>
+
+<view class="textbody centered">
+  <text>支付成功</text>
+</view>
+
+
+<view class="buttonbody ">
+  <view class="centered gohome">
+    <button class="cu-btn bg-blue round shadow" bindtap="seeorder">查看订单</button>
+  </view>
+  <view class="centered gohome">
+    <button class="cu-btn bg-grey round shadow" bindtap="gohome">返回首页</button>
+  </view>
+</view>

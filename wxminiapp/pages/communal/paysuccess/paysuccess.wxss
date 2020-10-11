@@ -1,1 +1,26 @@
-/* pages/communal/paysuccess/paysuccess.wxss */
+.imagebody{
+  margin-top: 100rpx;
+}
+.imagebody image{
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.textbody{
+  margin-top: 30rpx;
+}
+.textbody text{
+  font-size: 35rpx;
+  font-weight: 600;
+}
+
+.buttonbody{
+  margin-top: 50rpx;
+}
+
+.gohome{
+  margin-bottom: 20rpx;
+}
+.gohome button{
+  width: 300rpx;
+}

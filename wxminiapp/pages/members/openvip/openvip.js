@@ -92,11 +92,14 @@ Page({
                   paySign: data['paySign'],
                   success: function (res) {
                     console.log("支付成功返回数据", res)
-                    that.queryuservipdata()//重新刷新
-                    wx.showModal({
-                      title: '支付成功',
-                      content: '',
+                    // that.queryuservipdata()//重新刷新
+                    wx.navigateTo({
+                      url: '/pages/communal/paysuccess/paysuccess'
                     })
+                    // wx.showModal({
+                    //   title: '支付成功',
+                    //   content: '',
+                    // })
                   },
                   fail: function (res) {
                     wx.showModal({
