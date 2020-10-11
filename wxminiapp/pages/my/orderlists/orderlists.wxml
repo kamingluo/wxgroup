@@ -4,7 +4,7 @@
 </cu-custom>
 
 <view wx:if="{{userorderlist.length >0 }}">
-  <view class="centered" wx:for="{{userorderlist}}" wx:key="item" data-data="{{item}}" bindtap="pay">
+  <view class="centered" wx:for="{{userorderlist}}" wx:key="item" >
     <view class=" orderbody">
       <view class="centered title">
         <view class="order-type">
@@ -31,7 +31,7 @@
           <text style="font-size:26rpx;  font-weight: 600">金额:￥{{item.total_fee/100}}</text> </view>
       </view>
       <view class="pay-body" wx:if="{{item.state==1}}">
-        <view class="pay">
+        <view class="pay" data-data="{{item}}" bindtap="pay">
           <button class="cu-btn bg-blue round shadow">去付款</button>
         </view>
       </view>

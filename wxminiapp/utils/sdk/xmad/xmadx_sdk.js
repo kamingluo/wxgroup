@@ -445,6 +445,12 @@
   }
 
   function Ha(a) {
+    let user_id = wx.getStorageSync('userdata').id;
+    let channel = wx.getStorageSync('userdata').channel;
+    wx.reportAnalytics('clickxmad', {
+      user_id: user_id,
+      channel: channel,
+    });
     console.log("点击小盟广告", a)
     this.triggerEvent("adClick")
   }

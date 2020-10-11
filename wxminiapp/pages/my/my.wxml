@@ -1,4 +1,4 @@
-<view class="bg-img  padding-tb-xl" style="background-image: url('{{imageurl + 'miniapp/images/my/pagesbac.png'}}'); {{vipdisplay? 'height: 380rpx':'height:380rpx'}} ">
+<view class="bg-img  padding-tb-xl" style="background-image: url('{{imageurl + 'miniapp/images/my/pagesbac.png'}}'); {{vipdisplay? 'height: 380rpx':'height:280rpx'}} ">
   <!-- <view class="bg-img  padding-tb-xl" style="background-image: url('https://www.weixinkefu.vip/BJ.jpg');height: 380rpx;"> -->
   <cu-custom bgColor="bg-blue">
     <view slot="content">
@@ -23,8 +23,8 @@
           </button>
         </view>
       </view>
-      <!-- <view class="flex-twice  margin-xs radius centered" wx:if="{{vipdisplay}}"> -->
-      <view class="flex-twice  margin-xs radius centered">
+      <view class="flex-twice  margin-xs radius centered" wx:if="{{vipdisplay}}">
+      <!-- <view class="flex-twice  margin-xs radius centered"> -->
         <view>
           <button class=" bg-orange round shadow vip-button" bindtap="openvip">
             <text wx:if="{{condition!=0}}">升级VIP</text>
@@ -35,8 +35,8 @@
     </view>
   </view>
 
-  <!-- <view wx:if="{{vipdisplay}}" bindtap="openvip"> -->
-  <view bindtap="openvip" >
+  <view wx:if="{{vipdisplay}}" bindtap="openvip">
+  <!-- <view bindtap="openvip" > -->
     <view class="vip-body centered" wx:if="{{condition!=0}}">
       <image src="{{imageurl + 'miniapp/images/my/novip.png'}}"></image>
     </view>
@@ -52,8 +52,8 @@
     </view>
   </view>
 
-  <!-- <view class="zhanwei" wx:if="{{vipdisplay}}"></view> -->
-  <view class="zhanwei" ></view>
+  <view class="zhanwei" wx:if="{{vipdisplay}}"></view>
+  <!-- <view class="zhanwei" ></view> -->
 </view>
 
 
