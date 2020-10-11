@@ -48,7 +48,7 @@
 <view class="tips-body centered shadow ">
 	<view class="tips centered ">
   <view class="tips-textbody">
-  <view class="tips-text"> <text>1.下载查看的所有群员的兑换记录的excel表格。</text></view>
+  <view class="tips-text"> <text>1.下载查看的所有群员的积分记录的excel表格。</text></view>
   <view class="tips-text"> <text>2.在线查看表格，小程序能直接打开表格，但是苹果手机不支持编辑表格。</text></view>
    <view class="tips-text"> <text>3.建议手机安装《QQ浏览器》方便查看和编辑表格。</text></view>
    <view class="tips-text"> <text>4.如有其它问题，请联系我们。</text></view>

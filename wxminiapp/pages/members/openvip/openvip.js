@@ -1,6 +1,7 @@
 const {
   request
 } = require('./../../../utils/request.js');
+const baseConfig = require('./../../../utils/config.js')//配置文件
 const app = getApp();
 Page({
   data: {
@@ -20,6 +21,11 @@ Page({
   },
   onLoad() {
     this.membergoods()//获取VIP商品数据
+
+    let imageurl = baseConfig.imageurl;
+    this.setData({
+      imageurl: imageurl,
+    })
   },
 
   onShow(){

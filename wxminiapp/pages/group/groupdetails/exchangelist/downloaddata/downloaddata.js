@@ -3,6 +3,7 @@ const app = getApp()
 const {
   request
 } = require('./../../../../../utils/request.js');
+const baseConfig = require('./../../../../../utils/config.js')//配置文件
 Page({
 
   /**
@@ -116,7 +117,7 @@ Page({
     let crowd_id =this.data.crowd_id;
     let data_mode=this.data.data_mode;
     let sendmode=0;
-    let url='https://group.gzywudao.top/php/public/miniapp.php/group/downloadfile/exchangelist?crowd_id='+ crowd_id + '&state='+ data_mode + '&sendmode='+ sendmode;
+    let url = baseConfig.host+'group/downloadfile/exchangelist?crowd_id='+ crowd_id + '&state='+ data_mode + '&sendmode='+ sendmode;
     wx.downloadFile({
       url: url,
       success: function (res) {
