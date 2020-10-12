@@ -9,16 +9,19 @@ Page({
     ifcollection: false,
     num_iids: null,
     url: null,
-    coupondata:{}
+    coupondata:{},
+    display:true
   },
 
   onLoad: function (options) {
     console.log(options)
     let num_iids = options.num_iids;
     let url = decodeURIComponent(options.url) ;
+    let display=app.globalData.display || false;
     this.setData({
       num_iids: num_iids,
-      url: url
+      url: url,
+      display:display
     })
     this.goodsdata(num_iids) //查询商品详情和优惠券放
     this.miniappurl(url) //获取淘口令

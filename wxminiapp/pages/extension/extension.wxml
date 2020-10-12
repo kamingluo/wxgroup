@@ -1,4 +1,6 @@
-<cu-custom bindtap="gosearch" bgColor="bg-white">
+
+
+<cu-custom bindtap="gosearch" bgColor="bg-white" wx:if="{{iosdisplay}}">
   <view slot="right">
     <view class="cu-bar search">
       <view class="search-form round">
@@ -8,6 +10,17 @@
     </view>
   </view>
 </cu-custom>
+
+
+
+  <cu-custom bgColor="bg-red" wx:else>
+    <view slot="content">
+      <text style="color:white;">找优惠</text>
+    </view>
+  </cu-custom>
+
+
+
 
 <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
   <swiper-item wx:for="{{themelist}}" wx:key bindtap="clickswiper" data-data="{{item}}">

@@ -1,7 +1,7 @@
 <wxs module="filters" src="goodsdetails.wxs"></wxs>
 <cu-custom bgColor="bg-red" isBack="{{true}}">
   <view slot="backText">返回</view>
-  <view slot="content">商品详情</view>
+  <view slot="content">商品详情.</view>
 </cu-custom>
 
 

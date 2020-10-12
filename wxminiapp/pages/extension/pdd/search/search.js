@@ -39,7 +39,6 @@ Page({
   },
   qingkong:function(){
     console.log("清空搜索词")
-
     this.setData({
       searchtext: "",
       nodata:false,
@@ -58,6 +57,17 @@ Page({
   },
 
   searchgoods: function () {
+
+    // let display=app.globalData.display || false;
+    // let platform=app.globalData.platform;
+    // if(!display && platform=='ios' || platform=='devtools' ){
+    //   wx.showToast({
+    //     title: '苹果设备暂不支持搜索',
+    //     icon: 'none',
+    //     duration: 1500,
+    //   })
+    //   return;
+    // }
     var that=this
     let page = this.data.page;
     let keyword = this.data.searchtext;

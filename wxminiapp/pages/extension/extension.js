@@ -18,7 +18,9 @@ Page({
     pages: 1,//商品页数
     TabCur: 0,
     scrollLeft: 0,
-    goodslist: []//商品信息流数据
+    goodslist: [],//商品信息流数据
+    iosdisplay:true
+
 
   },
   onLoad: function (options) {
@@ -39,11 +41,24 @@ Page({
         url: '/pages/extension/taobao/goodsdetails/goodsdetails?num_iids=' + num_iids + '&url=' + url
       })
     }
-
+    this.iosdisplay()
     this.icondata()
     this.tabdata()
     this.themelistget()
     this.getgoodslist()
+  },
+
+
+
+  iosdisplay:function(){
+    let display=app.globalData.display || false;
+    let platform=app.globalData.platform;
+    if(!display && platform=='ios' || platform=='devtools' ){
+      this.setData({
+        iosdisplay: false,
+      })
+    }
+
   },
 
   //点击跳转到搜索页面
@@ -177,6 +192,20 @@ Page({
       //   name: '淘优惠券'
       // }
     ]
+
+    let display=app.globalData.display || false;
+    console.log("是否隐藏",display)
+    if(!display){
+      let data={
+          id: 1,
+          iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/rebang.jpg',
+          jumpurl: '/pages/web/web?specialUrl=1&src=https://mobile.yangkeduo.com/duo_transfer_channel.html?resourceType=4&pid=1979520_149719573&cpsSign=CE_200829_1979520_149719573_5221f3bb4bfd24893d894adcd31f5ef2&duoduo_type=2',
+          type: 1,
+          name: '热销排行'
+        };
+      iconList[0]=data;
+    }
+
     this.setData({
       iconList: iconList,
     })
