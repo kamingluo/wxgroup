@@ -136,10 +136,30 @@ Page({
         pages: pages
       },
       success: res => {
-        console.log("商品流数据", res)
-        // let goodslist = res.recommenddata.goods_basic_detail_response.list;
+      let resgoodslist=res.recommenddata.goods_basic_detail_response.list;
+
+
+        let display=app.globalData.display || false;
+        let platform=app.globalData.platform;
+        if(!display && platform=='ios' || platform=='devtools'){
+          for (var i = resgoodslist.length - 1; i >= 0; i--) {
+            let text =resgoodslist[i].goods_name;
+            let aiqiyi=text.indexOf("爱奇艺") != -1;
+            let youku=text.indexOf("优酷") != -1;
+            let tenxun=text.indexOf("腾讯") != -1;
+            let baidu=text.indexOf("百度") != -1;
+            let meituan=text.indexOf("美团") != -1;
+            let elm=text.indexOf("饿了么") != -1;
+            let jiudian=text.indexOf("酒店") != -1;
+            let huiyuan=text.indexOf("会员") != -1;
+            if(aiqiyi||youku||tenxun||meituan||elm||jiudian||huiyuan||baidu) {
+              console.log("操作删除元素",resgoodslist[i]);
+              resgoodslist.splice(i, 1);
+            }
+          }
+        }
         let goodslist = that.data.goodslist;
-        let newgoodslist = [...goodslist, ...res.recommenddata.goods_basic_detail_response.list];
+        let newgoodslist = [...goodslist, ...resgoodslist];
         that.setData({
           goodslist: newgoodslist,
         })
