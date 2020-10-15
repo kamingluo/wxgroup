@@ -28,7 +28,8 @@ class My
         $data=array(
             ['id'=>'1','title'=>'去赚金币','type'=>1,'imageurl'=>'miniapp/images/my/moreicon/zhuanjinbi.png','url'=>'/pages/business/gdtad/gdtad'],
             ['id'=>'2','title'=>'金币兑换','type'=>1,'imageurl'=>'miniapp/images/my/moreicon/duihuan.png','url'=>'/pages/business/exchange/exchange'],
-            ['id'=>'3','title'=>'加入我们','type'=>1,'imageurl'=>'miniapp/images/my/moreicon/jiaruwomen.png','url'=>'/pages/webview/webview?url=https%3A%2F%2Fqing.utaojs.com%2Fapp%2Findex.php%3Fi%3D3%26c%3Dentry%26id%3D1%26do%3Dindex%26m%3Djulan_qrg%26wxref%3Dmp.weixin.qq.com%23wechat_redirect'],
+            ['id'=>'3','title'=>'加入我们','type'=>1,'imageurl'=>'miniapp/images/my/moreicon/jiaruwomen.png','url'=>'/pages/joinweChat/joinweChat'],
+            // ['id'=>'3','title'=>'加入我们','type'=>1,'imageurl'=>'miniapp/images/my/moreicon/jiaruwomen.png','url'=>'/pages/webview/webview?url=https%3A%2F%2Fqing.utaojs.com%2Fapp%2Findex.php%3Fi%3D3%26c%3Dentry%26id%3D1%26do%3Dindex%26m%3Djulan_qrg%26wxref%3Dmp.weixin.qq.com%23wechat_redirect'],
             ['id'=>'4','title'=>'在线客服','type'=>'kefu','imageurl'=>'miniapp/images/my/moreicon/kefu.png','url'=>'/pages/business/gdtad/gdtad'],
             ['id'=>'5','title'=>'意见建议','type'=>'jianyi','imageurl'=>'miniapp/images/my/moreicon/fankui.png','url'=>'/pages/business/gdtad/gdtad'],
         );

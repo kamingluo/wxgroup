@@ -70,7 +70,8 @@ Page({
   noticerun: function () {
     var that = this;
     that.data.countTime = setInterval(function () {
-      if (-that.data.marqueeDistance < that.data.notice.length *12) {
+      let noticelong=that.data.notice.length || 0;
+      if (-that.data.marqueeDistance < noticelong *12) {
         that.setData({
           marqueeDistance: that.data.marqueeDistance - 1,//1是滚动速度
         });
