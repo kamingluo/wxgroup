@@ -21,7 +21,9 @@ class Search
       $page_size=20;//每页查询多少条
       $type="pdd.ddk.goods.search";//查询的接口
       $p_id=Config('pdd_p_id');
+      $custom_parameters="{'new':1}";
       $data=array(
+        "custom_parameters"=>$custom_parameters,
         "keyword"=>$keyword,
         "page"=>$page,
         "page_size"=>$page_size,
