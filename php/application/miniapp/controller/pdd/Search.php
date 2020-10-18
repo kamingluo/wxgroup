@@ -20,10 +20,12 @@ class Search
       }
       $page_size=20;//每页查询多少条
       $type="pdd.ddk.goods.search";//查询的接口
+      $p_id=Config('pdd_p_id');
       $data=array(
         "keyword"=>$keyword,
         "page"=>$page,
         "page_size"=>$page_size,
+        "p_id"=>$p_id,
         "type"=>$type
       );
       $goodslist=computeSignature($data);

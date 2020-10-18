@@ -51,13 +51,13 @@ Page({
 
 
   iosdisplay:function(){
-    let display=app.globalData.display || false;
-    let platform=app.globalData.platform;
-    if(!display && platform=='ios' || platform=='devtools' ){
-      this.setData({
-        iosdisplay: false,
-      })
-    }
+    // let display=app.globalData.display || false;
+    // let platform=app.globalData.platform;
+    // if(!display && platform=='ios' || platform=='devtools' ){
+    //   this.setData({
+    //     iosdisplay: false,
+    //   })
+    // }
 
   },
 
