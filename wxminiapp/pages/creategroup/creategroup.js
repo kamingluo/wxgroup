@@ -254,6 +254,14 @@ Page({
 
 
   confirmcreategroup: function (logo) {
+
+    var open=0;
+    let display = app.globalData.display || false;
+    if (!display){
+      var open = 1;
+    }
+
+
     var that = this
     var crowd_name = this.data.groupname
     var groupcode = this.data.groupcode
@@ -270,7 +278,8 @@ Page({
             groupcode: groupcode,
             introduce: introduce,
             logo: logo,
-            wxnumber: wxnumber
+            wxnumber: wxnumber,
+            open: open
           },
           success: res => {
             this.setData({

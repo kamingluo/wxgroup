@@ -1,9 +1,10 @@
-.miniappname{
+.miniappname {
   font-size: 38rpx;
   font-weight: 600;
-  color: #ffffff;
+  color: #fff;
   margin-top: 15rpx;
 }
+
 .u-wrp-bnr {
   width: 88%;
   height: 250rpx;
@@ -12,167 +13,167 @@
   top: 50rpx;
 }
 
-.swiper-body{
+.swiper-body {
   margin-top: -10rpx;
 }
-.swiper-item-image{
+
+.swiper-item-image {
   width: 100%;
   height: 100%;
 }
 
 ad {
-display: inline!important;
+  display: inline !important;
 }
-
 
 .card-swiper {
-	height: 380rpx !important;
+  height: 380rpx !important;
 }
 
-
-
-.video-body{
+.video-body {
   position: fixed;
   top: 20rpx;
   left: 0rpx;
   z-index: -100;
 }
 
-
-
 .u-img-slide {
   border-radius: 10rpx;
   width: 100%;
   height: inherit;
 }
-.gdtad{
+
+.gdtad {
   width: 94%;
   border-radius: 15rpx;
   margin-top: 5rpx;
 }
 
-.main-main{
+.main-main {
   margin-top: 20rpx;
 }
 
-.information-name{
+.information-name {
   height: 50rpx;
   width: 300rpx;
   margin-bottom: 20rpx;
 }
-.information-name text{
-position: absolute;
+
+.information-name text {
+  position: absolute;
   color: white;
   font-size: 28rpx;
   font-weight: 600;
 }
 
-
-.shouquananniu{
-  
+.shouquananniu {
   position: absolute;
   z-index: 999;
 }
-.shouquananniu button{
-  width:1280rpx;
-  height: 200rpx;
+
+.shouquananniu button {
+  width: 720rpx;
+  height: 205rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 100rpx;
 }
 
-
-.box{
+.box {
   margin-top: 15rpx;
 }
-.box-body{
+
+.box-body {
   width: 96%;
   height: 200rpx;
-   display: flex;
+  display: flex;
   flex-direction: row;
   margin-bottom: 10rpx;
   border-radius: 20rpx;
 }
-.box-body-image{
-width: 23%;
-height: 200rpx;
+
+.box-body-image {
+  width: 23%;
+  height: 200rpx;
 }
-.box-body-image image{
-  border-radius:10rpx;
+
+.box-body-image image {
+  border-radius: 10rpx;
   width: 140rpx;
   height: 140rpx;
 }
 
-.box-body-name{
-   justify-content: flex-start;
+.box-body-name {
+  justify-content: flex-start;
   width: 67%;
   height: 200rpx;
   margin-left: 10rpx;
-  color: #000000;
+  color: #000;
 }
-.box-body-name-body{
+
+.box-body-name-body {
   float: right;
 }
-.box-body-name-1{
+
+.box-body-name-1 {
   font-size: 35rpx;
   font-weight: 600;
   margin-bottom: 10rpx;
 }
-.box-body-name-2{
+
+.box-body-name-2 {
   margin-bottom: 10rpx;
-  color: #666666;
+  color: #666;
 }
 
-.juese{
+.juese {
   width: 120rpx;
   height: 50rpx;
   border-radius: 8rpx;
   background-color: #0081ff;
 }
 
-.juese text{
+.juese text {
   font-size: 30rpx;
   font-weight: 600;
   color: white;
-
 }
-.box-body-name-3 text{
+
+.box-body-name-3 text {
   color: red;
   font-size: 35rpx;
   font-weight: 600;
-
 }
 
-
-.box-body-anniu{
+.box-body-anniu {
   width: 10%;
   height: 200rpx;
   margin-left: -50rpx;
 }
-.righticon{
- font-size: 60rpx;
+
+.righticon {
+  font-size: 60rpx;
 }
 
-
-
-
-.notgrouplist image{
+.notgrouplist image {
   width: 400rpx;
   height: 300rpx;
 }
-.notgrouplist text{
-    color: #8799a3;
-    margin-top: 15rpx;
-    font-size: 30rpx;
-    /* font-weight: 600; */
-    /* text-decoration-line: underline; */
+
+.notgrouplist text {
+  color: #8799a3;
+  margin-top: 15rpx;
+  font-size: 30rpx;
+  /* font-weight: 600; *//* text-decoration-line: underline; */
 }
 
-
-
-
-.create-group{
+.create-group {
   margin-top: 30rpx;
   margin-bottom: 20rpx;
-  
 }
-.create-group button{
+
+.create-group button {
   width: 500rpx;
 }

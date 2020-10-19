@@ -90,6 +90,7 @@ App({
     let channel = e.query.channel || 0;
     let user_channel = wx.getStorageSync('userdata').channel || 0;
     if (  user_channel== 0 &&  channel == 0 && scene == 1001 || scene == 1129 ) {
+      console.log("开关false")
       this.globalData.display = false;
     }
     else {

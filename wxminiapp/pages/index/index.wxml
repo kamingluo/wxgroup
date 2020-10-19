@@ -17,8 +17,10 @@
     <swiper class="card-swiper round-dot" circular="true" autoplay="true" interval="5000" duration="500">
       <swiper-item wx:for="{{swiperdata}}" wx:for-index="index" wx:key="item">
         <view wx:if="{{item.type ==4}}" class="swiper-item" mode="aspectFill">
-          <ad wx:if="{{banneradshow}}" capture-bind:tap="gdtbanneradclick" ad-intervals="30" bindload="banneradsuccess" binderror="banneraderr"unit-id="{{item.appid}}"></ad>
-          <view class="swiper-item-image" wx:else  bindtap='clickSwiper' data-data='{{item}}'><image src="{{item.imgurl}}" mode="aspectFill" ></image></view>
+          <ad wx:if="{{banneradshow}}" capture-bind:tap="gdtbanneradclick" ad-intervals="30" bindload="banneradsuccess" binderror="banneraderr" unit-id="{{item.appid}}"></ad>
+          <view class="swiper-item-image" wx:else bindtap='clickSwiper' data-data='{{item}}'>
+            <image src="{{item.imgurl}}" mode="aspectFill"></image>
+          </view>
         </view>
         <view wx:if="{{item.type !=4}}" class="swiper-item" bindtap='clickSwiper' data-data='{{item}}'>
           <image src="{{item.imgurl}}" mode="aspectFill"></image>
@@ -67,12 +69,23 @@
       <!-- 用户群列表开始 -->
       <view class='centered' wx:for="{{usergrouplist}}" wx:key="item">
 
-        <view class="shouquananniu" wx:if="{{!ifauthorized}}">
-          <button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+        <view class="shouquananniu" wx:if="{{item.open==1}}">
+          <!-- <button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button> -->
+          <button style="opacity:0.9" open-type="contact">
+            <text>群空间审核中...</text>
+            <text>点击联系客服马上审核!</text>
+          </button>
         </view>
+
+       <view class="shouquananniu" wx:elif="{{!ifauthorized}}">
+          <button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+          <!-- <button style="opacity:0.8" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button> -->
+        </view>
+
         <view class='box-body shadow-warp bg-white' bindtap="clickusergrouplist" data-data='{{item}}'>
           <view class=' box-body-image centered '>
-            <image src='{{item.logo + "?imageView2/2/w/150"}}'></image>
+            <image wx:if="{{item.open==1}}" src="{{imageurl + 'miniapp/images/appicon.png'}}"></image>
+            <image wx:else src='{{item.logo + "?imageView2/2/w/150"}}'></image>
           </view>
           <view class=' box-body-name  centered'>
             <view class="box-body-name-body">
