@@ -74,7 +74,8 @@ class Usergroup
         $wxcode =$request->param("code");
         $crowd_name =$request->param("crowd_name");
         $introduce =$request->param("introduce");
-        $logo=$request->param("logo");
+        // $logo=$request->param("logo");
+        $logo="https://material.gzywudao.top/image/group/groupicon.png";
         $wxnumber=$request->param("wxnumber");
         //后面加的微信号参数
         if(!$wxnumber){

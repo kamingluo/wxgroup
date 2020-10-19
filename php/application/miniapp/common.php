@@ -251,8 +251,10 @@ function wxmsgSecCheck($content){
         //return $data;
         $respon = newpostCurl($url,$data,'json');
         $respon = json_decode($respon,true);
-        // Log::record("文案审核结果啊");
-        // Log::record($respon);
+        Log::record("文案审核内容");
+        Log::record($content);
+        Log::record("文案审核结果啊");
+        Log::record($respon);
 
         //return $respon;
         if($respon['errcode'] == 87014){
