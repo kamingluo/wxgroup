@@ -74,6 +74,7 @@ class Usergroup
         $wxcode =$request->param("code");
         $crowd_name =$request->param("crowd_name");
         $introduce =$request->param("introduce");
+        $open =$request->param("open") || 0;
         // $logo=$request->param("logo");
         $logo="https://material.gzywudao.top/image/group/groupicon.png";
         $wxnumber=$request->param("wxnumber");
@@ -85,7 +86,7 @@ class Usergroup
          $groupowner=db('user')->where('openid',$openid)->find(); //群主信息
          $time =date('Y-m-d H:i:s',time());//获取当前时间
              //创建群成功
-         $dbdata = ['id'=>'','crowd_name' =>$crowd_name,'crowd_ownerid' => $groupowner["id"],'introduce' => $introduce,'rule' => null,'logo' => $logo,'wxnumber' => $wxnumber,'create_time' =>$time];
+         $dbdata = ['id'=>'','crowd_name' =>$crowd_name,'crowd_ownerid' => $groupowner["id"],'introduce' => $introduce,'rule' => null,'logo' => $logo,'wxnumber' => $wxnumber,'create_time' =>$time,'open' =>0];
          $groupid= db('crowd')->insertGetId($dbdata);//返回自增ID
       
           $joingroup = ['id'=>'','user_id' => $groupowner["id"],'user_openid' =>  $groupowner["openid"],'crowd_id' => $groupid,'user_type' => 1,'score' =>0,'create_time' =>$time];
