@@ -68,7 +68,7 @@
 
   <view class="cu-bar foot input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px">
 
-    <view class="action">
+    <view class="action" wx:if="{{crowd_id}}">
       <text class="cuIcon-roundadd text-grey" bindtap="upload"></text>
     </view>
     <input wx:if="{{offchat==0 || owner_id==user_id }}" class="solid-bottom" bindfocus="InputFocus" maxlength="250" value="{{inputValue}}" bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" placeholder="输入文字" maxlength="300" cursor-spacing="10" bindinput="bindKeyInput"></input>
@@ -76,7 +76,7 @@
     <!-- <view class="action">
 			<text class="cuIcon-emojifill text-grey"></text>
 		</view> -->
-    <button class="cu-btn bg-green shadow" bindtap="submitTo">发送</button>
+    <button class="cu-btn bg-green shadow" bindtap="submitTo" wx:if="{{crowd_id}}">发送</button>
   </view>
 
 
