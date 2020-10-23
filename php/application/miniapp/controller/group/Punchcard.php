@@ -147,6 +147,17 @@ public function userpunchcard(Request $request)
     }
 
 
+       //查询群的打卡配置查询
+
+     public function querypunchdata(Request $request){
+        $crowd_id=$request->param("crowd_id");
+        $punchdata=db('chat_punchcard_crowd_config')->where('crowd_id',$crowd_id)->find(); //拿到群签到配置信息
+        $state=['state'   => '200','message'  => "群的签到配置查询",'punchdata'=> $punchdata ];
+        return $state;
+
+      }
+
+
 
 
 
