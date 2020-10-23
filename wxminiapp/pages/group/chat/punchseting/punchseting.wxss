@@ -1,0 +1,42 @@
+/* pages/group/signseting/signseting.wxss */
+
+input{
+  text-align: right;
+}
+
+.task_text{
+  margin-top: 5rpx;
+  width: 100%;
+  background-color: white;
+}
+
+.task_text textarea{
+  border: 2rpx solid #d9d9d9;
+  height: 150rpx;
+  width: 94%;
+  margin-left: 3%;
+
+}
+.btn-area{
+  margin-top: 15rpx;
+}
+.btn-area button{
+  width: 400rpx;
+  height: 90rpx;
+  background-color: #0081ff;
+  color: white;
+}
+.continuity-magin{
+  margin-top: 5rpx;
+}
+
+.databtn{
+  margin-top: 15rpx;
+
+}
+.databtn button{
+   width: 400rpx;
+  height: 90rpx;
+  background-color: #0081ff;
+  color: white;
+}

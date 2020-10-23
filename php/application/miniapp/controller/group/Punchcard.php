@@ -118,9 +118,9 @@ public function userpunchcard(Request $request)
         $state=$request->param("state");
         $start_time=$request->param("start_time");
         $end_time=$request->param("end_time");
-        $continuity_signin=$request->param("continuity_punch");
-        $continuity_signin_day=$request->param("continuity_punch_day");
-        $continuity_signin_score=$request->param("continuity_punch_score");
+        $continuity_punch=$request->param("continuity_punch");
+        $continuity_punch_day=$request->param("continuity_punch_day");
+        $continuity_punch_score=$request->param("continuity_punch_score");
         $time =date('Y-m-d H:i:s',time());
 
         $dbdata =db('chat_punchcard_crowd_config')->where('crowd_id',$crowd_id)->find();//查询群签到配置信息

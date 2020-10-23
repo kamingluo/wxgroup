@@ -38,8 +38,16 @@ class Chatkeyword
     //查询该群设置的关键字
     public function crowdkeyword(Request $request)
     {
+        $type =$request->param("type");
         $crowd_id =$request->param("crowd_id");
-        $data=db('chat_keyword')->where('crowd_id',$crowd_id)->where('open',0)->order('id desc')->select();
+        if( $type=0){
+          //查询全部
+          $data=db('chat_keyword')->where('crowd_id',$crowd_id)->order('id desc')->select();
+        }
+        else{
+          //查询打开的
+          $data=db('chat_keyword')->where('crowd_id',$crowd_id)->where('open',0)->order('id desc')->select();
+        }
         $state=['state'   => '200','message'  => "群关键词列表查询成功" ];
         $resdata=array_merge($state,array('data'=>$data));
         return $resdata ;

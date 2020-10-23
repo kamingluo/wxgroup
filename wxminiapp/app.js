@@ -11,10 +11,10 @@ App({
   onLaunch: function (e) {
     console.log("onLaunch打印信息", e)
     this.getUserInfo(e)
+    common.shareconfig()//分享配置
     this.scene(e)//传入入口值判断
     //this.autoUpdate()//检查更新
     //common.xmaddata() //小盟ad配置
-    common.shareconfig()//分享配置
     // 获取系统状态栏信息
     wx.getSystemInfo({
       success: e => {
