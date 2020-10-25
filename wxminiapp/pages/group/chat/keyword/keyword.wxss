@@ -8,12 +8,12 @@
 .cu-btn.sm {
 	padding: 0 22rpx;
 	font-size: 20rpx;
-	height: 40rpx;
+	height: 35rpx;
 }
 
 .body{
   margin-top: 10rpx;
-  width: 88%;
+  width: 92%;
 }
 
 .keyword-body{
