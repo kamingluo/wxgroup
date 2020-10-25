@@ -102,6 +102,13 @@
 					"pathName": "pages/group/chat/punchseting/punchseting",
 					"query": "crowd_id=14",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "关键词设置",
+					"pathName": "pages/group/chat/keyword/keyword",
+					"query": "crowd_id=14",
+					"scene": null
 				}
 			]
 		}

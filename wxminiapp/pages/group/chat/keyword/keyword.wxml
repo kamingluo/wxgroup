@@ -1,2 +1,27 @@
-<!--pages/group/chat/keyword/keyword.wxml-->
-<text>pages/group/chat/keyword/keyword.wxml</text>
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">关键字回复设置</view>
+</cu-custom>
+
+
+
+<view class="centered">
+  <view  class="body shadow bg-white">
+    <view class="centered shadow">
+      <view class="flex keyword-body">
+        <view class="flex-treble  padding-sm margin-xs radius">
+          <text>关键字:啦啦啦啦啦关</text>
+        </view>
+        <view class="flex-sub  padding-sm margin-xs radius centered"><switch class="switch"></switch></view>
+      </view>
+    </view>
+    <view class="centered shadow">
+      <view class="flex keyword-body">
+        <view class="flex-treble  padding-sm margin-xs radius">
+          <button class="cu-btn line-blue round sm shadow" bindtap="pushnotice"> 发布公告</button> <text class="number">触发次数:15次</text> 
+        </view>
+        <view class="flex-sub  padding-sm margin-xs radius centered"><text style="color:blue;font-size:30rpx;">编辑<text class="cuIcon-edit lg"></text></text></view>
+      </view>
+    </view>
+  </view>
+</view>

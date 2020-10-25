@@ -1,1 +1,26 @@
-/* pages/group/chat/keyword/keyword.wxss */
+.margin-xs {
+	margin: 1rpx;
+}
+.padding-sm {
+	padding: 15rpx;
+}
+
+.cu-btn.sm {
+	padding: 0 22rpx;
+	font-size: 20rpx;
+	height: 40rpx;
+}
+
+.body{
+  margin-top: 10rpx;
+  width: 88%;
+}
+
+.keyword-body{
+  width: 98%;
+}
+
+.number{
+  margin-left: 20rpx;
+  font-size: 25rpx;
+}

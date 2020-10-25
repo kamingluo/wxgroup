@@ -60,6 +60,8 @@
       <view class="more-button">
         <button wx:if="{{owner_id==user_id}}" class="cu-btn line-red round sm shadow" bindtap="clickoffchat"> {{offchat==0? "全员禁言":"关闭禁言"}}</button>
         <button wx:if="{{owner_id==user_id}}" class="cu-btn line-blue round sm shadow" bindtap="pushnotice"> 发布公告</button>
+        <button wx:if="{{owner_id==user_id}}" class="cu-btn line-orange round sm shadow" bindtap="punchcard"> 打卡设置</button>
+        <button wx:if="{{owner_id==user_id}}" class="cu-btn line-cyan round sm shadow" bindtap="keyword">关键字回复</button>
         <button class="cu-btn line-green round sm shadow" bindtap="showModal" data-target="viewModal"> 在线成员</button>
       </view>
 

@@ -49,15 +49,41 @@ Page({
     })
   },
 
+  //跳转到打卡设置页面
+  punchcard: function () {
+    let crowd_id = this.data.crowd_id;
+    wx.navigateTo({
+      url: '/pages/group/chat/punchseting/punchseting?crowd_id=' + crowd_id
+    })
+  },
+
+  //跳转关键字设置页面
+  keyword: function () {
+    let crowd_id = this.data.crowd_id;
+    wx.navigateTo({
+      url: '/pages/group/chat/keyword/keyword?crowd_id=' + crowd_id
+    })
+  },
+
   //公告开始
   noticestart:function(){
+    console.log("公告开始动起来")
     let data = {};
     var that = this;
-    var length = that.data.notice.length * 12; //文字长度，写死12
+    var oldlength = that.data.notice; 
+    if (!oldlength){
+      console.log("公告不存在")
+      return;
+
+    }
+    var length = oldlength * 12;
+    console.log("公告长度")
+    console.log(length)
+    return;
     var windowWidth = wx.getSystemInfoSync().windowWidth; // 屏幕宽度
     that.setData({
-      length,
-      windowWidth
+      length: length,
+      windowWidth: windowWidth
     });
     //marqueeDistance: 10, //初始滚动距离
     that.setData({
@@ -104,7 +130,7 @@ Page({
     })
 
     // this.textdata()
-    this.noticestart()//公告动起来
+    // this.noticestart()//公告动起来
     this.chatconfig()
   },
   onShow: function (e) {
@@ -150,6 +176,7 @@ Page({
           offchat: res.configdata.offchat,
           notice: res.configdata.notice,
         })
+        this.noticestart()//公告动起来
         setTimeout(function () {
           wx.pageScrollTo({
             scrollTop: 10000000,

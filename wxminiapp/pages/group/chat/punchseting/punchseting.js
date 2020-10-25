@@ -19,9 +19,9 @@ Page({
     tips: null,
     start_time: '2020-04-03',
     end_time: '2021-05-05',
-    continuity_signin: 0,
-    continuity_signin_day: 7,
-    continuity_signin_score: 20
+    continuity_punch: 0,
+    continuity_punch_day: 7,
+    continuity_punch_score: 20
   },
 
   /**
@@ -31,32 +31,32 @@ Page({
     this.setData({
       crowd_id: options.crowd_id,
     })
-    this.signindata()
+    this.punchdata()
   },
 
 
-  signindata: function() {
+  punchdata: function() {
     let crowd_id = this.data.crowd_id
     request({
-      service: 'group/signin/signindata',
+      service: 'group/punchcard/querypunchdata',
       method: 'GET',
       data: {
         crowd_id: crowd_id,
       },
       success: res => {
-        let signindata = res.signindata;
-        if (signindata) {
-          let newstart_time = signindata.start_time.substr(0, 10);
-          let newend_time = signindata.end_time.substr(0, 10);
+        let punchdata = res.punchdata;
+        if (punchdata) {
+          let newstart_time = punchdata.start_time.substr(0, 10);
+          let newend_time = punchdata.end_time.substr(0, 10);
           this.setData({
-            state: signindata.state,
-            score: signindata.score,
-            tips: signindata.tips,
+            state: punchdata.state,
+            score: punchdata.score,
+            tips: punchdata.tips,
             start_time: newstart_time,
             end_time: newend_time,
-            continuity_signin: signindata.continuity_signin,
-            continuity_signin_day: signindata.continuity_signin_day,
-            continuity_signin_score: signindata.continuity_signin_score,
+            continuity_punch: punchdata.continuity_punch,
+            continuity_punch_day: punchdata.continuity_punch_day,
+            continuity_punch_score: punchdata.continuity_punch_score,
           })
         }
 
@@ -65,7 +65,7 @@ Page({
 
 
   },
-  updatesigninconfig:function(){
+  updatepunchconfig:function(){
     
     let configdata = this.data
     if (configdata.score < 0 || configdata.score == null || configdata.score == "" ){
@@ -80,12 +80,12 @@ Page({
       return;
     }
 
-    if (configdata.continuity_signin_day < 0 || configdata.continuity_signin_day == null || configdata.continuity_signin_day == "") {
+    if (configdata.continuity_punch_day < 0 || configdata.continuity_punch_day == null || configdata.continuity_punch_day == "") {
       this.toasttitle("连续天数不能小于0")
       return;
     }
 
-    if (configdata.continuity_signin_score < 0 || configdata.continuity_signin_score == null || configdata.continuity_signin_score == "") {
+    if (configdata.continuity_punch_score < 0 || configdata.continuity_punch_score == null || configdata.continuity_punch_score == "") {
       this.toasttitle("连续奖励不能小于0")
       return;
     }
@@ -100,7 +100,7 @@ Page({
 upconfig: function() {
   let updata = this.data
   request({
-    service: 'group/signin/signinconfig',
+    service: 'group/punchcard/punchcardconfig',
     method: 'POST',
     data: updata,
     success: res => {
@@ -150,13 +150,13 @@ upconfig: function() {
   },
   continuityday: function(e) {
     this.setData({
-      continuity_signin_day: e.detail.value
+      continuity_punch_day: e.detail.value
     })
 
   },
   continuityscore: function(e) {
     this.setData({
-      continuity_signin_score: e.detail.value
+      continuity_punch_score: e.detail.value
     })
 
   },
@@ -164,7 +164,7 @@ upconfig: function() {
   continuitychange: function(e) {
     let value = e.detail.value ? 0 : 1;
     this.setData({
-      continuity_signin: value
+      continuity_punch: value
     })
 
   },

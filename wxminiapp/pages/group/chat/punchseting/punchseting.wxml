@@ -42,19 +42,19 @@
 
     <view class="cu-form-group  ">
       <view class="title">是否开启连续打卡奖励</view>
-      <switch name="continuity_signin" checked="{{continuity_signin==0?true:false}}" bindchange="continuitychange"></switch>
+      <switch name="continuity_punch" checked="{{continuity_punch==0?true:false}}" bindchange="continuitychange"></switch>
     </view>
 
 
     <!--连续签到设置-->
-    <view wx:if="{{continuity_signin==0?true:false}}">
+    <view wx:if="{{continuity_punch==0?true:false}}">
       <view class="cu-form-group  continuity-magin">
         <view class="title">连续打卡要求天数</view>
-        <input  maxlength="3"  type='number' name="continuity_signin_day" placeholder="天数要大于1" bindinput="continuityday" value='{{continuity_signin_day}}'></input>
+        <input  maxlength="3"  type='number' name="continuity_punch_day" placeholder="天数要大于1" bindinput="continuityday" value='{{continuity_punch_day}}'></input>
       </view>
       <view class="cu-form-group ">
         <view class="title">达到连续打卡奖励积分</view>
-        <input maxlength="5"  type='number' name="continuity_signin_score" placeholder="设置0积分表示不奖励" bindinput="continuityscore" value='{{continuity_signin_score}}'></input>
+        <input maxlength="5"  type='number' name="continuity_punch_score" placeholder="设置0积分表示不奖励" bindinput="continuityscore" value='{{continuity_punch_score}}'></input>
       </view>
     </view>
 
@@ -68,7 +68,7 @@
     </view>
 
     <view class="btn-area centered">
-      <button bindtap="updatesigninconfig">提交</button>
+      <button bindtap="updatepunchconfig">提交</button>
     </view>
   </form>
 
