@@ -137,6 +137,88 @@ class Events
                     'create_time'=>$time,
                 );
                 return Gateway::sendToGroup($send_roomid ,json_encode($new_message,JSON_UNESCAPED_UNICODE));
+
+             // 用户打卡成功
+             case 'punchcard':
+                // 非法请求
+                if(!isset($_SESSION['room_id']))
+                {
+                    throw new \Exception("\$_SESSION['room_id'] not set. client_ip:{$_SERVER['REMOTE_ADDR']}");
+                }
+                $room_id = $_SESSION['room_id'];
+                $name = "群记分机器人";
+                $user_id = '666';
+                $imgurl = "https://material.gzywudao.top/image/group/groupicon.png";
+                $send_roomid=$message_data['room_id'];//发送到哪个群
+                $say_type=$message_data['say_type'];//发送消息的方式，图片还是文案
+                $content=$message_data['content'];//发送消息内容
+                $time=date('Y-m-d H:i:s');
+
+                // 插入数据到数据表
+                $insert_id = self::$db->insert('chat_data')->cols(array(
+                    'crowd_id'=>$room_id,
+                    'user_id'=>$user_id,
+                    'name'=>$name,
+                    'imgurl'=>$imgurl,
+                    'say_type'=> $say_type,
+                    'content'=>$content,
+                    'create_time'=>$time))->query();
+                $new_message = array(
+                    'type'=>'say', 
+                    "message"=>"打卡成功发送消息",
+                    'user_id'=>$user_id,
+                    'imgurl'=>$imgurl,
+                    'from_client_id'=>$client_id,
+                    'name' =>$name,
+                    'to_client_id'=>'all',
+                    'say_type'=>$say_type,
+                    'content'=>$content,
+                    'create_time'=>$time,
+                );
+                return Gateway::sendToGroup($send_roomid ,json_encode($new_message,JSON_UNESCAPED_UNICODE));
+
+             // 触发关键字
+             case 'keyword':
+                // 非法请求
+                if(!isset($_SESSION['room_id']))
+                {
+                    throw new \Exception("\$_SESSION['room_id'] not set. client_ip:{$_SERVER['REMOTE_ADDR']}");
+                }
+                $room_id = $_SESSION['room_id'];
+                $name = "群记分机器人";
+                $user_id = '666';
+                $imgurl = "https://material.gzywudao.top/image/group/groupicon.png";
+                $keywork_id=$message_data['keywork_id'];//关键字id
+                $send_roomid=$message_data['room_id'];//发送到哪个群
+                $say_type=$message_data['say_type'];//发送消息的方式，图片还是文案
+                $content=$message_data['content'];//发送消息内容
+                $time=date('Y-m-d H:i:s');
+
+               
+                $row_count = self::$db->query("UPDATE `chat_keyword` SET `triggernum` = triggernum + 1 WHERE id=".$keywork_id);//点击数加1
+
+                // 插入数据到数据表
+                $insert_id = self::$db->insert('chat_data')->cols(array(
+                    'crowd_id'=>$room_id,
+                    'user_id'=>$user_id,
+                    'name'=>$name,
+                    'imgurl'=>$imgurl,
+                    'say_type'=> $say_type,
+                    'content'=>$content,
+                    'create_time'=>$time))->query();
+                $new_message = array(
+                    'type'=>'say', 
+                    "message"=>"用户触发关键字成功",
+                    'user_id'=>$user_id,
+                    'imgurl'=>$imgurl,
+                    'from_client_id'=>$client_id,
+                    'name' =>$name,
+                    'to_client_id'=>'all',
+                    'say_type'=>$say_type,
+                    'content'=>$content,
+                    'create_time'=>$time,
+                );
+                return Gateway::sendToGroup($send_roomid ,json_encode($new_message,JSON_UNESCAPED_UNICODE));
             
 
             //群主关闭群聊天

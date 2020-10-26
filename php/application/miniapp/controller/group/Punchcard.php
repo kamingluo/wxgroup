@@ -14,15 +14,23 @@ class Punchcard
 public function userpunchcard(Request $request)
     {
         $user_id=$request->param("user_id");//用户id;
-        $user_name=$request->param("user_name");//用户名称;
-        $openid=db('user')->where('id',$user_id)->value("openid");
         $crowd_id=$request->param("crowd_id");//群id;
+        $user_data=db('user')->where('id',$user_id)->find();
+
+        // $openid=db('user')->where('id',$user_id)->value("openid");
+        // $nickName=db('user')->where('id',$user_id)->value("nickName");
+        // $user_score=db('user')->where('id',$user_id)->value("score");//拿到用户当前积分
+
+        $openid=$user_data['openid'];//拿到用户openid
+        $nickName=$user_data['nickName'];//拿到用户昵称
+        $user_score=db('user_crowd')->where('id',$user_id)->where('crowd_id',$crowd_id)->value("score");//拿到用户当前积分
+
         $time =date('Y-m-d H:i:s',time());
         //下面再验证一下签到能否进行
         //判断用户在这群今天有没有签到过
         $dbsigninnum =db('chat_user_punchcard_data')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();
         if($dbsigninnum>=1){
-         $resdata=['state'   => '200','message'  => $user_name."你今天已经打卡了!明天再来吧。" ];
+         $resdata=['state'   => '200','message'  => "@".$nickName.","."你今天已经打卡了!明天再来吧。" ];
          return $resdata;
         }
         //拿到群签到配置信息，判断今天这群能否签到
@@ -32,12 +40,13 @@ public function userpunchcard(Request $request)
         $now=strtotime($time);
         $punchstate=$crowdchatdata['state'];
         if($punchstate != 0 || $now < $start || $now >$end){
-            $resdata=['state'   => '200','message'  => $user_name."该群暂没有设置打卡，请联系管理员设置。" ];
+            $resdata=['state'   => '200','message'  => "@".$nickName.","."该群暂没有设置打卡，请联系管理员设置。" ];
             return $resdata;
         }
         //都没问题了，开始打卡
         //先给用户加上积分
-        $score=$crowdchatdata['punch_card_score'];
+        $score=$crowdchatdata['score'];
+        $havesocre=$crowdchatdata['score'];
         if($score > 0){
             //配置的积分大于0才加，小于0不加
             $addscore= db('user_crowd')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->setInc('score',$score);//找到该用户的群账户加积分
@@ -51,7 +60,7 @@ public function userpunchcard(Request $request)
         $newranking=$currentranking+1;
 
         $today_signin_record = ['id'=>'','crowd_id' =>$crowd_id,'user_id' =>$user_id,'user_openid' =>$openid,'punch_score' =>$score,'ranking' =>$newranking,'create_time' =>$time];
-        $today_signin_record_id=db('signin_user_data')->insert($today_signin_record);
+        $today_signin_record_id=db('chat_user_punchcard_data')->insert($today_signin_record);
 
 
         //先看看用户在该群有没有签到过总记录数据
@@ -67,7 +76,7 @@ public function userpunchcard(Request $request)
         else{
             //有记录，开始更新记录
             $new_all_punch_number=$usercrowdsigindata['all_punch_number'] + 1;
-            $user_yesterday_signin=db('signin_user_data')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->whereTime('create_time', 'yesterday')->find(); //用户昨天在该群有没有签到过
+            $user_yesterday_signin=db('chat_user_punchcard_data')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->whereTime('create_time', 'yesterday')->find(); //用户昨天在该群有没有签到过
             if($user_yesterday_signin ==null){
                 //昨天没签到，那就连续签到为1
                 $new_continuity_number=1;
@@ -97,10 +106,12 @@ public function userpunchcard(Request $request)
                 //然后再把连续签到置为0，方便下一次计算
                 $dbreturn= db('sigin_user_crowd_data')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->update(['continuity_number' =>0]);
                 $ifcontinuity_punch=true;//用户完成了一次连续签到
+                $havesocre=$havesocre+$continuity_punch_score;//如果满足连续签到获得积分
             }
         }
+        $user_score=$user_score+$havesocre;//用户获得积分之后总积分
         $ranking =db('signin_user_data')->where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();//查询今日签到人数，也就这人的排名数了
-        $state=['state'   => '200','message'  => "用户签到成功" ];
+        $state=['state'   => '200','message'  => "用户打卡成功" ];
         $resdata=array_merge($state,array('ifcontinuity_punch'=>$ifcontinuity_punch,'new_all_punch_number'=>$new_all_punch_number,'new_continuity_number'=>$new_continuity_number,'ranking'=>$ranking));
         return $resdata;
     }
