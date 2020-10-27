@@ -77,9 +77,9 @@ Page({
 
     }
     var length = oldlength * 12;
-    console.log("公告长度")
-    console.log(length)
-    return;
+    // console.log("公告长度")
+    // console.log(length)
+    // return;
     var windowWidth = wx.getSystemInfoSync().windowWidth; // 屏幕宽度
     that.setData({
       length: length,
@@ -132,6 +132,7 @@ Page({
     // this.textdata()
     // this.noticestart()//公告动起来
     this.chatconfig()
+    this.havekeyword()
   },
   onShow: function (e) {
     if (!socketOpen) {
@@ -163,7 +164,7 @@ Page({
   chatconfig: function () {
     let crowd_id = this.data.crowd_id;
     request({
-      service: 'group//chat/chatconfig',
+      service: 'group/chat/chatconfig',
       method: 'GET',
       data: {
         crowd_id: crowd_id,
@@ -187,11 +188,34 @@ Page({
     })
   },
 
+
+    //获取关键字配置
+    havekeyword: function () {
+      let crowd_id = this.data.crowd_id;
+      request({
+        service: 'group/chatkeyword/crowdkeyword',
+        method: 'GET',
+        data: {
+          crowd_id: crowd_id,
+          type:1//查询开启的关键字
+        },
+        success: res => {
+          console.log("获取群设置的开启的关键字", res)
+          // this.setData({
+          //   chatdata: res.chatdata,
+          // })
+        }
+      })
+    },
+
+
+
+
   //数据库修改禁言状态
   updateoffchat: function (offchat) {
     let crowd_id = this.data.crowd_id;
     request({
-      service: 'group//chat/offchat',
+      service: 'group/chat/offchat',
       method: 'GET',
       data: {
         crowd_id: crowd_id,
@@ -383,7 +407,29 @@ Page({
       return;
     }
     this.sendmsg(content, "text")
+    this.punchcard(content)//检查打卡
 
+  },
+
+  //用户打卡
+  punchcard:function(content){
+    if(content=="打卡"){
+      console.log("触发打卡")
+      let crowd_id = this.data.crowd_id;
+      let user_id = wx.getStorageSync('userdata').id;
+      request({
+        service: 'group/punchcard/userpunchcard',
+        method: 'GET',
+        data: {
+          crowd_id: crowd_id,
+          user_id: user_id
+        },
+        success: res => {
+          console.log("用户打卡成功返回", res)
+        }
+      })
+    }
+    return;
   },
 
 //长按聊天文案
