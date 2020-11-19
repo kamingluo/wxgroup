@@ -74,6 +74,20 @@ class Chatkeyword
         return $resdata ;
     }
 
+    //删除关键词
+    public function deletekeyword(Request $request)
+    {
+        $id =$request->param("id");
+        $cleardata=db('chat_keyword')-> where('id',$id)->delete();
+        if($cleardata ==1){
+            $state=['state'   => '200','message'  => "删除关键词成功" ];
+       }
+       else{
+            $state=['state'   => '400','message'  => "删除关键词失败" ];
+       }
+       return  $state;
+    }
+
 
 
 

@@ -33,3 +33,9 @@
 </view> -->
 
 <button  bindtap="pay">测试支付按钮</button>
+
+
+<view>
+
+	<text>这是测试\n文案啊啦啦\n啦啦啦啦啦啦</text>
+</view>

@@ -11,11 +11,27 @@ Page({
     saytypepicker: ['文案', '图片'],
     matching: 0,
     say_type: 'image',
-    open: 0
+    open: 0,
+    id:null,
+    crowd_id:null
 
   },
 
   onLoad: function (options) {
+    let crowd_id= options.crowd_id;
+    let  id=options.id;
+    if(id){
+      this.setData({
+        id: id,
+        crowd_id:crowd_id
+      })
+    }
+    else{
+      this.setData({
+        crowd_id:crowd_id
+      })
+    }
+
   },
 
   PickerChange(e) {

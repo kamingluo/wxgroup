@@ -10,7 +10,9 @@
 	font-size: 20rpx;
 	height: 35rpx;
 }
-
+.keywordbody{
+  margin-bottom: 130rpx;
+}
 .body{
   margin-top: 10rpx;
   width: 92%;

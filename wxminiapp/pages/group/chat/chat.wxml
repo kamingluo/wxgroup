@@ -1,4 +1,4 @@
-
+<wxs module="filters" src="chat.wxs"></wxs>
 <cu-custom bgColor="bg-blue" isBack="{{true}}">
   <view slot="backText">返回</view>
   <view slot="content">{{crowd_name}}({{groupnum}})</view>
@@ -26,6 +26,7 @@
           </view>
           <view class="main">
             <view class="content bg-green shadow" wx:if="{{item.say_type=='text'}}">
+              <!-- <text bindlongpress='longclick' data-data="{{item.content}}">{{filters.huanhang(item.content)}}</text> -->
               <text bindlongpress='longclick' data-data="{{item.content}}">{{item.content}}</text>
             </view>
             <image wx:else src="{{item.content}}" bindtap="imgYu" data-src="{{item.content}}" class="radius" mode="widthFix" style="width:160rpx"></image>

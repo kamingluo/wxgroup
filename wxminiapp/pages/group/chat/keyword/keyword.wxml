@@ -4,55 +4,67 @@
 </cu-custom>
 
 
-
-<view class="centered" wx:for="{{crowdkeywordlist}}" wx:key="item">
-  <view  class="body shadow bg-white">
-    <view class="centered shadow">
-      <view class="flex keyword-body">
-        <view class="flex-treble  padding-sm margin-xs radius">
-          <text>关键字:{{item.keyword}}</text>
+<view wx:if="{{crowdkeywordlist.length>0}}" class="keywordbody">
+  <view class="centered" wx:for="{{crowdkeywordlist}}" wx:key="item">
+    <view class="body shadow bg-white">
+      <view class="centered shadow">
+        <view class="flex keyword-body">
+          <view class="flex-treble  padding-sm margin-xs radius">
+            <text>关键字:{{item.keyword}}</text>
+          </view>
+          <view class="flex-sub  padding-sm margin-xs radius centered">
+            <switch name="open" data-id="{{item.id}}" checked="{{item.open==0?true:false}}" bindchange="statechange"
+              class="switch"></switch>
+          </view>
         </view>
-        <view class="flex-sub  padding-sm margin-xs radius centered"><switch name="open" checked="{{item.open==0?true:false}}" bindchange="statechange" class="switch"></switch></view>
       </view>
-    </view>
-    <view class="centered shadow">
-      <view class="flex keyword-body">
-        <view class="flex-treble  padding-sm margin-xs radius">
-          <button class="cu-btn line-blue round sm shadow" bindtap="pushnotice"> 发布公告</button> <text class="number">触发次数:{{item.triggernum}}次</text> 
-        </view>
-        <view class="flex-twice  padding-sm margin-xs radius centered">
-          <text style="color:blue;font-size:30rpx;" bindtap="edit">编辑<text class="cuIcon-edit lg"></text> </text>
-          <text style="color:red;font-size:30rpx;" bindtap="detele" decode="{{true}}">&nbsp;&nbsp;删除<text class="cuIcon-delete lg"></text></text>
+      <view class="centered shadow">
+        <view class="flex keyword-body">
+          <view class="flex-treble  padding-sm margin-xs radius">
+            <button class="cu-btn line-blue round sm shadow" bindtap="pushnotice"> 发布公告</button> <text
+              class="number">触发次数:{{item.triggernum}}次</text>
+          </view>
+          <view class="flex-twice  padding-sm margin-xs radius centered">
+            <text style="color:blue;font-size:30rpx;" data-id="{{item.id}}" bindtap="edit">编辑<text
+                class="cuIcon-edit lg"></text> </text>
+            <text style="color:red;font-size:30rpx;" data-id="{{item.id}}" bindtap="detele"
+              decode="{{true}}">&nbsp;&nbsp;删除<text class="cuIcon-delete lg"></text></text>
+          </view>
         </view>
       </view>
     </view>
   </view>
+  <view style='margin-top: 10rpx;color:#aaaaaa' class='centered'>
+    <text>-------已经到底啦-------</text>
+  </view>
 </view>
 
-
+<view wx:else>
+<defaultgraph tips="你还没设置关键词呢!"></defaultgraph>
+</view>
 
 <view class='sumittask centered'>
-	<button bindtap="pushgoods" class="bg-blue centered">添加关键字</button>
+  <button bindtap="addkeyword" class="bg-blue centered">添加关键字</button>
 </view>
 
 
 
-<view class="cu-modal show" wx:if="{{deletegoodsmodel}}">
-	<view class="cu-dialog">
-		<view class="cu-bar bg-white justify-end">
-			<view class="content">删除商品</view>
-			<view class="action" bindtap="hideModal">
-				<text class="cuIcon-close text-red"></text>
-			</view>
-		</view>
-		<view class="padding-xl">
-			确定要这个商品吗？
-		</view>
-		<view class="cu-bar bg-white justify-end">
-			<view class="action">
-				<button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-				<button class="cu-btn bg-green margin-left" bindtap="confirmdeletegoods">确定</button>
-			</view>
-		</view>
-	</view>
+<view class="cu-modal show" wx:if="{{deletemodel}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">删除关键字</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      确定要删除这个关键字吗？
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="confirmdelete">确定</button>
+      </view>
+    </view>
+  </view>
 </view>
