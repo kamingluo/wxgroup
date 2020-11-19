@@ -40,7 +40,7 @@ class Chatkeyword
     {
         $type =$request->param("type");
         $crowd_id =$request->param("crowd_id");
-        if( $type=0){
+        if( $type==0){
           //查询全部
           $data=db('chat_keyword')->where('crowd_id',$crowd_id)->order('id desc')->select();
         }

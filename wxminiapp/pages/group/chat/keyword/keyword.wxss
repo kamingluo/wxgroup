@@ -24,3 +24,19 @@
   margin-left: 20rpx;
   font-size: 25rpx;
 }
+
+
+.sumittask{
+  z-index: 888;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+   margin-top: 80rpx;
+   background-color: white;
+    box-shadow: 1px 1px 2px 3px #aaaaaa;
+}
+.sumittask button{
+  width: 250rpx;
+  height: 80rpx;
+}

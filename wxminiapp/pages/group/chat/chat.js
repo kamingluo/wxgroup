@@ -50,7 +50,7 @@ Page({
   },
 
   //跳转到打卡设置页面
-  punchcard: function () {
+  punchseting: function () {
     let crowd_id = this.data.crowd_id;
     wx.navigateTo({
       url: '/pages/group/chat/punchseting/punchseting?crowd_id=' + crowd_id
@@ -426,6 +426,7 @@ Page({
         },
         success: res => {
           console.log("用户打卡成功返回", res)
+          // {"state":"200","message":"用户打卡成功","ifcontinuity_punch":false,"new_all_punch_number":10,"new_continuity_number":1,"ranking":1}
         }
       })
     }

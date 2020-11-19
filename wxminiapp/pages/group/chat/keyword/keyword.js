@@ -1,66 +1,46 @@
-// pages/group/chat/keyword/keyword.js
+var app = getApp();
+const {
+  request
+} = require('./../../../../utils/request.js');
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    crowd_id:null,
+    crowdkeywordlist:[]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setData({
+      crowd_id: options.crowd_id,
+    })
+   this.crowdkeyword()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  crowdkeyword:function(){
+    let crowd_id = this.data.crowd_id
+    request({
+      service: 'group/chatkeyword/crowdkeyword',
+      method: 'GET',
+      data: {
+        crowd_id: crowd_id,
+        type:0
+      },
+      success: res => {
+        console.log("查询群关键字",res.data)
+          this.setData({
+            crowdkeywordlist:res.data
+          })
+      },
+    })
+
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  edit:function(e){
+    console.log("点击编辑")
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  detele:function(e){
+    console.log("点击删除")
   }
+
+  
 })

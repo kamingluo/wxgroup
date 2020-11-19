@@ -1,0 +1,78 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">设置关键字</view>
+</cu-custom>
+
+<view class="pages-body">
+  <view class="centered">
+    <view class="cu-form-group  shadow shadow-lg bg-white ">
+      <view class="title">关键字</view>
+      <input placeholder="请输入触发关键字" maxlength="15" bindinput="groupname"></input>
+    </view>
+  </view>
+  <view class="cu-form-group ">
+    <view class="title">是否开启关键字</view>
+    <switch name="state" checked="{{open==0?true:false}}" bindchange="statechange"></switch>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">匹配方式</view>
+    <picker bindchange="PickerChange" value="{{matching}}" range="{{matchingpicker}}">
+      <view class="picker">
+        {{matching==0?'模糊匹配':'精准匹配'}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">回复内容</view>
+    <picker bindchange="saytypePickerChange" value="{{say_type}}" range="{{saytypepicker}}">
+      <view class="picker">
+        {{say_type=='image'?'图片':'文案'}}
+      </view>
+    </picker>
+  </view>
+
+
+
+
+
+  <!-- 文件上传 -->
+  <!-- <view class='domes_title_1' bindtap='moredata'>关键词回复</view> -->
+
+
+  <view class="centered" wx:if="{{say_type=='text'}}">
+    <view class="task_text">
+      <textarea maxlength="250" bindinput="grouptext" placeholder="请输入关键字触发回复文案"></textarea>
+    </view>
+  </view>
+
+  <!-- 图片上传 -->
+  <view class="centered" wx:else>
+    <view class='centered  '>
+      <view class='ui_uploader_item centered' wx:for="{{uploaderList}}" wx:key="{{index}}">
+        <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20"
+          color="red" />
+        <image bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
+      </view>
+      <view class='ui_uploader centered' bindtap='upload' wx:if="{{showUpload}}"></view>
+    </view>
+  </view>
+
+
+  <view class='sumittask centered'>
+    <button bindtap="sumittask" class="bg-blue centered">保存关键字</button>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <view class='cuIcon-loading2 text-orange'></view>
+  <view class='gray-text'>创建中...</view>
+</view>

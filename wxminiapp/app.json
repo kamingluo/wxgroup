@@ -33,6 +33,7 @@
     "pages/group/ownersmore/ownersmore",
     "pages/group/chat/chat",
     "pages/group/chat/keyword/keyword",
+    "pages/group/chat/keyword/addkeyword/addkeyword",
     "pages/group/chat/punchseting/punchseting",
     "pages/group/chat/pushnotice/pushnotice",
     "pages/group/goods/goodslist/goodslist",
