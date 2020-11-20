@@ -64,8 +64,8 @@ public function userpunchcard(Request $request)
 
 
         //先看看用户在该群有没有签到过总记录数据
-        $usercrowdsigindata=db('chat_user_crowd_punchcard_data')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->find(); //拿到用户在该群有没有签到过数据
-        if($usercrowdsigindata == null ){
+        $usercrowdpunchdata=db('chat_user_crowd_punchcard_data')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->find(); //拿到用户在该群有没有签到过数据
+        if($usercrowdpunchdata == null ){
             //没有在该群签到过，新建一条记录
             $dbinsert = ['id'=>'','crowd_id' =>$crowd_id,'user_id' => $user_id,'user_openid' => $openid,'all_punch_number' =>1,'continuity_number' =>1,'update_time' =>$time,'create_time' =>$time];
             $signinconfigId= db('chat_user_crowd_punchcard_data')->insertGetId($dbinsert);//返回自增ID
@@ -75,7 +75,7 @@ public function userpunchcard(Request $request)
         }
         else{
             //有记录，开始更新记录
-            $new_all_punch_number=$usercrowdsigindata['all_punch_number'] + 1;
+            $new_all_punch_number=$usercrowdpunchdata['all_punch_number'] + 1;
             $user_yesterday_signin=db('chat_user_punchcard_data')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->whereTime('create_time', 'yesterday')->find(); //用户昨天在该群有没有签到过
             if($user_yesterday_signin ==null){
                 //昨天没签到，那就连续签到为1
@@ -83,7 +83,7 @@ public function userpunchcard(Request $request)
             }
             else{
                 //昨天有签到，那就+1
-                $new_continuity_number=$usercrowdsigindata['continuity_number']+1;
+                $new_continuity_number=$usercrowdpunchdata['continuity_number']+1;
             }
             //更新群签到记录
             $dbreturn= db('chat_user_crowd_punchcard_data')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->update(['update_time' => $time,'all_punch_number' => $new_all_punch_number,'continuity_number' =>$new_continuity_number]);
@@ -104,14 +104,33 @@ public function userpunchcard(Request $request)
                 $score_record_data = ['id'=>'','openid' =>$openid,'user_id' =>$user_id,'crowd_id' =>$crowd_id,'score' =>$continuity_punch_score,'explain' => "群连续签到奖励",'state' =>0,'create_time' =>$time];
                 $score_record_id=db('score_record')->insert($score_record_data);
                 //然后再把连续签到置为0，方便下一次计算
-                $dbreturn= db('sigin_user_crowd_data')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->update(['continuity_number' =>0]);
+                $dbreturn= db('chat_user_crowd_punchcard_data')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->update(['continuity_number' =>0]);
                 $ifcontinuity_punch=true;//用户完成了一次连续签到
                 $havesocre=$havesocre+$continuity_punch_score;//如果满足连续签到获得积分
             }
         }
         $user_score=$user_score+$havesocre;//用户获得积分之后总积分
-        $ranking =db('signin_user_data')->where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();//查询今日签到人数，也就这人的排名数了
-        $state=['state'   => '200','message'  => "用户打卡成功" ];
+        $ranking =db('chat_user_punchcard_data')->where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();//查询今日签到人数，也就这人的排名数了
+
+
+        $dataone="@".$nickName.",";
+        $datatwo="恭喜你打卡成功;";
+        $datathree="获得打卡积分:".$score."分;";
+        $datafour="今日打卡排名:".$ranking."名;";
+        $newdataone=$dataone.$datatwo.$datathree.$datafour;
+
+        if($ifcontinuity_punch){
+            $continuity_punch_score=$crowdchatdata['continuity_punch_score'];//给奖励的积分数
+            $datafive="连续打卡奖励:".$continuity_punch_score."分;";
+            $newdataone=$newdataone.$datafive;
+        }
+        if($crowdchatdata['tips']){
+            $datasix=$crowdchatdata['tips'];
+            $newdataone=$newdataone.$datasix;
+
+        }
+
+        $state=['state'   => '200','message'  => $newdataone ];
         $resdata=array_merge($state,array('ifcontinuity_punch'=>$ifcontinuity_punch,'new_all_punch_number'=>$new_all_punch_number,'new_continuity_number'=>$new_continuity_number,'ranking'=>$ranking));
         return $resdata;
     }

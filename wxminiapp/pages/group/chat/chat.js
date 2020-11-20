@@ -23,9 +23,10 @@ Page({
     modalName: null,
     scrollTop: 10000000,
     CustomBar: app.globalData.CustomBar,
-    onlinelist:[],//在线人数列表
+    onlinelist: [],//在线人数列表
     hideNotice: false,//关闭公告
-    notice:'',//公告内容
+    notice: '',//公告内容
+    keyworddata: [],//查询群关键字
 
   },
 
@@ -41,8 +42,8 @@ Page({
     })
   },
 
-//跳转发送公告页面
-  pushnotice:function(){
+  //跳转发送公告页面
+  pushnotice: function () {
     let crowd_id = this.data.crowd_id;
     wx.navigateTo({
       url: '/pages/group/chat/pushnotice/pushnotice?crowd_id=' + crowd_id
@@ -66,12 +67,12 @@ Page({
   },
 
   //公告开始
-  noticestart:function(){
+  noticestart: function () {
     console.log("公告开始动起来")
     let data = {};
     var that = this;
-    var oldlength = that.data.notice; 
-    if (!oldlength){
+    var oldlength = that.data.notice;
+    if (!oldlength) {
       console.log("公告不存在")
       return;
 
@@ -96,8 +97,8 @@ Page({
   noticerun: function () {
     var that = this;
     that.data.countTime = setInterval(function () {
-      let noticelong=that.data.notice.length || 0;
-      if (-that.data.marqueeDistance < noticelong *12) {
+      let noticelong = that.data.notice.length || 0;
+      if (-that.data.marqueeDistance < noticelong * 12) {
         that.setData({
           marqueeDistance: that.data.marqueeDistance - 1,//1是滚动速度
         });
@@ -112,7 +113,7 @@ Page({
   },
 
   //关闭公告
-  closeNotice:function(){
+  closeNotice: function () {
     this.setData({
       hideNotice: true
     })
@@ -189,24 +190,25 @@ Page({
   },
 
 
-    //获取关键字配置
-    havekeyword: function () {
-      let crowd_id = this.data.crowd_id;
-      request({
-        service: 'group/chatkeyword/crowdkeyword',
-        method: 'GET',
-        data: {
-          crowd_id: crowd_id,
-          type:1//查询开启的关键字
-        },
-        success: res => {
-          console.log("获取群设置的开启的关键字", res)
-          // this.setData({
-          //   chatdata: res.chatdata,
-          // })
-        }
-      })
-    },
+  //获取关键字配置
+  havekeyword: function () {
+    var that = this
+    let crowd_id = this.data.crowd_id;
+    request({
+      service: 'group/chatkeyword/crowdkeyword',
+      method: 'GET',
+      data: {
+        crowd_id: crowd_id,
+        type: 1//查询开启的关键字
+      },
+      success: res => {
+        console.log("获取群设置的开启的关键字", res)
+        that.setData({
+          keyworddata: res.data,
+        })
+      }
+    })
+  },
 
 
 
@@ -231,7 +233,7 @@ Page({
   //点击修改禁言状态
   clickoffchat: function () {
     let offchat = this.data.offchat;
-    (offchat == 0) ? offchat = 1: offchat = 0;
+    (offchat == 0) ? offchat = 1 : offchat = 0;
     this.setData({
       offchat: offchat,
     })
@@ -253,7 +255,7 @@ Page({
 
 
 
-  
+
 
 
   //页面加载链接长链接
@@ -279,17 +281,17 @@ Page({
       if (onMessage_data.type == "connect") {
         console.log("长链接创建成功")
         that.userlogin()
-      } else if (onMessage_data.type == "login" || onMessage_data.type == "bye" ) {
+      } else if (onMessage_data.type == "login" || onMessage_data.type == "bye") {
         console.log("用户登录成功，信息绑定成功")
         let groupnum = onMessage_data.groupnum; //在线人数
         let onlinelistdata = onMessage_data.onlinelist; //在线列表
-        var onlinelist=[];
+        var onlinelist = [];
         for (let key in onlinelistdata) {
           onlinelist.push(onlinelistdata[key])
         }
         that.setData({
           groupnum: groupnum,
-          onlinelist:onlinelist
+          onlinelist: onlinelist
         })
       } else if (onMessage_data.type == "say") {
         console.log("有消息进来，判断一下是不是自己的,不是自己发的才set到数据上去")
@@ -408,12 +410,61 @@ Page({
     }
     this.sendmsg(content, "text")
     this.punchcard(content)//检查打卡
+    this.checkkeyword(content)
+  },
+
+  //检查关键字
+  checkkeyword: function (content) {
+    var that= this;
+    let newcontent=content;
+    let keyworddata = this.data.keyworddata;
+    if (keyworddata.length > 0) {
+      for (var i = 0; i < keyworddata.length; i++) {
+        let newkeyword=keyworddata[i].keyword;
+        console.log("打印关键字",keyworddata[i])
+        if(keyworddata[i].matching==0){
+          if(newcontent==newkeyword){
+            console.log("触发精准匹配",newkeyword)
+            that.setkeyword(keyworddata[i])
+          }
+        }else{
+          let successcheck=newkeyword.indexOf(newcontent) != -1;
+          if(successcheck){
+            console.log("触发模糊匹配",newkeyword)
+            that.setkeyword(keyworddata[i])
+          }
+        }
+      }
+
+    }
 
   },
 
+    //触发关键字
+    setkeyword: function (keyworddata) {
+      let keywork_id = keyworddata.id;
+      let say_type =keyworddata.say_type;
+      let content = keyworddata.content;
+      let crowd_id = this.data.crowd_id;
+  
+      var data = {
+        type: "keyword",
+        message: "发送给服务器的数据",
+        keywork_id: keywork_id,
+        to_client_id: "all",
+        say_type: say_type,
+        content: content,
+        room_id: crowd_id
+      }
+      if (socketOpen) {
+        sendSocketMessage(data)
+      }
+    },
+
   //用户打卡
-  punchcard:function(content){
-    if(content=="打卡"){
+  punchcard: function (content) {
+    var that =this
+    if (content == "打卡") {
       console.log("触发打卡")
       let crowd_id = this.data.crowd_id;
       let user_id = wx.getStorageSync('userdata').id;
@@ -426,6 +477,7 @@ Page({
         },
         success: res => {
           console.log("用户打卡成功返回", res)
+          that.successpunchcard(res.message)
           // {"state":"200","message":"用户打卡成功","ifcontinuity_punch":false,"new_all_punch_number":10,"new_continuity_number":1,"ranking":1}
         }
       })
@@ -433,8 +485,27 @@ Page({
     return;
   },
 
-//长按聊天文案
-  longclick:function(e){
+  //触发打卡
+  successpunchcard: function (newcontent) {
+    let say_type ='text';
+    let content = newcontent;
+    let crowd_id = this.data.crowd_id;
+
+    var data = {
+      type: "punchcard",
+      message: "发送给服务器的数据",
+      to_client_id: "all",
+      say_type: say_type,
+      content: content,
+      room_id: crowd_id
+    }
+    if (socketOpen) {
+      sendSocketMessage(data)
+    }
+  },
+
+  //长按聊天文案
+  longclick: function (e) {
     //console.log("longclick",e)
     let data = e.currentTarget.dataset.data
     wx.setClipboardData({
@@ -490,7 +561,7 @@ Page({
         region: 'SCN', //华南代号
         uploadURL: 'https://up-z2.qiniup.com',
         domain: 'http://groupchat.luojiaming.vip/',
-        uptokenURL: baseConfig.host+'currency/qiniugroupchatdata',
+        uptokenURL: baseConfig.host + 'currency/qiniugroupchatdata',
       })
     }).then(function (qiniuimgurl) {
       that.sendmsg(qiniuimgurl, "image") //拿到图片地址去发送消息
@@ -520,11 +591,11 @@ Page({
   },
 
   showModal(e) {
-    console.log("在线人员",this.data.onlinelist)
+    console.log("在线人员", this.data.onlinelist)
     this.setData({
       modalName: e.currentTarget.dataset.target
     })
-   
+
   },
   hideModal(e) {
     this.setData({

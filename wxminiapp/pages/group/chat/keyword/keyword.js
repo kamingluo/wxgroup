@@ -15,7 +15,13 @@ Page({
     this.setData({
       crowd_id: options.crowd_id,
     })
-   this.crowdkeyword()
+  //  this.crowdkeyword()
+  },
+  onShow:function(){
+    var that=this;
+    setTimeout(function() {
+      that.crowdkeyword()
+    }, 200)
   },
 
   crowdkeyword:function(){

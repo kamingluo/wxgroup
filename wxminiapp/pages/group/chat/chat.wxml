@@ -31,7 +31,7 @@
             </view>
             <image wx:else src="{{item.content}}" bindtap="imgYu" data-src="{{item.content}}" class="radius" mode="widthFix" style="width:160rpx"></image>
           </view>
-          <view class="cu-avatar radius" style="background-image:url({{item.imgurl}});"></view>
+          <view class="cu-avatar radius" style="background-image:url({{item.imgurl}});" bindtap="checkkeyword"></view>
           <view class="date1">{{item.create_time}}</view>
         </view>
       </view>
