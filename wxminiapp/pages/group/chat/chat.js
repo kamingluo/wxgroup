@@ -27,6 +27,7 @@ Page({
     hideNotice: false,//关闭公告
     notice: '',//公告内容
     keyworddata: [],//查询群关键字
+    password:null,//打卡口令
 
   },
 
@@ -134,6 +135,7 @@ Page({
     // this.noticestart()//公告动起来
     this.chatconfig()
     this.havekeyword()
+    this.punchdata()
   },
   onShow: function (e) {
     if (!socketOpen) {
@@ -186,6 +188,26 @@ Page({
         }, 1000);
 
       }
+    })
+  },
+
+  
+  punchdata: function() {
+    let crowd_id = this.data.crowd_id
+    request({
+      service: 'group/punchcard/querypunchdata',
+      method: 'GET',
+      data: {
+        crowd_id: crowd_id,
+      },
+      success: res => {
+        let punchdata = res.punchdata;
+        if (punchdata) {
+          this.setData({
+            password: punchdata.password,
+          })
+        }
+      },
     })
   },
 
@@ -464,7 +486,8 @@ Page({
   //用户打卡
   punchcard: function (content) {
     var that =this
-    if (content == "打卡") {
+    let password=this.data.password;
+    if (content == password) {
       console.log("触发打卡")
       let crowd_id = this.data.crowd_id;
       let user_id = wx.getStorageSync('userdata').id;

@@ -146,6 +146,7 @@ public function userpunchcard(Request $request)
         $score=$request->param("score");
         $tips=$request->param("tips");
         $state=$request->param("state");
+        $password=$request->param("password");
         $start_time=$request->param("start_time");
         $end_time=$request->param("end_time");
         $continuity_punch=$request->param("continuity_punch");
@@ -156,14 +157,14 @@ public function userpunchcard(Request $request)
         $dbdata =db('chat_punchcard_crowd_config')->where('crowd_id',$crowd_id)->find();//查询群签到配置信息
         if($dbdata==null){
             //没有配置信息，新增一条
-            $dbinsert = ['id'=>'','crowd_id' =>$crowd_id,'score' => $score,'tips' => $tips,'state' => $state,'start_time' =>$start_time,'end_time' =>$end_time,'continuity_punch' => $continuity_punch,'continuity_punch_day' => $continuity_punch_day,'continuity_punch_score' => $continuity_punch_score,'create_time' =>$time ,'update_time' =>$time];
+            $dbinsert = ['id'=>'','crowd_id' =>$crowd_id,'score' => $score,'tips' => $tips,'state' => $state,'password' => $password,'start_time' =>$start_time,'end_time' =>$end_time,'continuity_punch' => $continuity_punch,'continuity_punch_day' => $continuity_punch_day,'continuity_punch_score' => $continuity_punch_score,'create_time' =>$time ,'update_time' =>$time];
             $punchconfigId= db('chat_punchcard_crowd_config')->insertGetId($dbinsert);//返回自增ID
             $state=['state'   => '200','message'  => "新增群签到配置成功" ];
             return $state;
         }
         else{
              //更新信息
-             $dbreturn= db('chat_punchcard_crowd_config')->where('crowd_id',$crowd_id)->update(['update_time' => $time,'score' => $score,'tips' => $tips,'state' => $state,'start_time' =>$start_time,'end_time' =>$end_time,'continuity_punch' => $continuity_punch,'continuity_punch_day' => $continuity_punch_day,'continuity_punch_score' => $continuity_punch_score]);
+             $dbreturn= db('chat_punchcard_crowd_config')->where('crowd_id',$crowd_id)->update(['update_time' => $time,'score' => $score,'tips' => $tips,'state' => $state,'password' => $password,'start_time' =>$start_time,'end_time' =>$end_time,'continuity_punch' => $continuity_punch,'continuity_punch_day' => $continuity_punch_day,'continuity_punch_score' => $continuity_punch_score]);
              if($dbreturn==1){
                   $state=['state'   => '200','message'  => "群打卡配置更新成功" ];
                   return $state;

@@ -21,7 +21,8 @@ Page({
     end_time: '2021-05-05',
     continuity_punch: 0,
     continuity_punch_day: 7,
-    continuity_punch_score: 20
+    continuity_punch_score: 20,
+    password:"打卡"
   },
 
   /**
@@ -57,13 +58,12 @@ Page({
             continuity_punch: punchdata.continuity_punch,
             continuity_punch_day: punchdata.continuity_punch_day,
             continuity_punch_score: punchdata.continuity_punch_score,
+            password: punchdata.password,
           })
         }
 
       },
     })
-
-
   },
   updatepunchconfig:function(){
     
@@ -99,6 +99,17 @@ Page({
 
 upconfig: function() {
   let updata = this.data
+
+  if(updata.password==null||updata.password==""){
+    wx.showToast({
+      title: '打卡口令不能为空',
+      icon: 'none',
+      duration: 2000,
+    })
+    return;
+  }
+
+
   request({
     service: 'group/punchcard/punchcardconfig',
     method: 'POST',
@@ -140,7 +151,11 @@ upconfig: function() {
     this.setData({
       score: e.detail.value
     })
-
+  },
+  password: function(e) {
+    this.setData({
+      password: e.detail.value
+    })
   },
   tips: function(e) {
     this.setData({

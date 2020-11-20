@@ -12,6 +12,10 @@
       <view class="title">是否开启活动</view>
       <switch name="state" checked="{{state==0?true:false}}" bindchange="statechange"></switch>
     </view>
+    <view class="cu-form-group ">
+      <view class="title">打卡口令</view>
+      <input name="password" maxlength="20"   placeholder="请设置打卡口令" bindinput="password" value='{{password}}'></input>
+    </view>
 
 
     <view class="cu-form-group ">
