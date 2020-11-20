@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": false,
+    "urlCheck": true,
     "es6": true,
     "enhance": false,
     "postcss": true,
@@ -37,7 +37,7 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.10.4",
+  "libVersion": "2.12.2",
   "appid": "wx0e060ad90f7f41c4",
   "projectname": "group",
   "debugOptions": {
@@ -103,6 +103,7 @@
         {
           "name": "设置关键字",
           "pathName": "pages/group/chat/keyword/addkeyword/addkeyword",
+          "query": "crowd_id=14&id=3",
           "scene": null
         }
       ]

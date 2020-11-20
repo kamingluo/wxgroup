@@ -20,7 +20,7 @@ class Chatkeyword
         $open=$request->param("open");//开关0开1关
         $matching=$request->param("matching");//匹配方式，0模糊1精准
         $time =date('Y-m-d H:i:s',time());//获取当前时间
-        if($id > 0){
+        if($id && $id > 0 ){
             //id存在,视为修改
             $dbid= db('chat_keyword')->where('crowd_id',$crowd_id)->where('id',$id)->update(['say_type' =>$say_type,'keyword' =>$keyword,'content' =>$content,'open' =>$open,'matching' =>$matching]);
             $state=['state'   => '200','message'  => "修改关键字成功" ];

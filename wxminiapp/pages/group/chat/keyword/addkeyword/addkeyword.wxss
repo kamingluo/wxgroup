@@ -5,27 +5,8 @@
   margin-bottom: 70rpx;
 }
 
-.ui_uploader_item{
-    float: left;
-    position: relative;
-    margin-right: 30rpx;
-    margin-top: 15rpx;
-    margin-bottom: 20rpx;
-    width: 200rpx;
-    height: 200rpx;
-}
 
-.ui_uploader {
-    float: left;
-    position: relative;
-    margin-top: 15rpx;
-    /* margin-right: 25rpx; */
-    margin-bottom: 25rpx;
-    width: 280rpx;
-    height:280rpx;
-    border: 2rpx solid #d9d9d9;
-    box-sizing: border-box;
-}
+
 .cu-form-group{
   margin-top: 0rpx;
   margin-bottom: 3rpx;
@@ -51,4 +32,49 @@
 
 }
 
+
+.ui_uploader_item_cover{
+  float: left;
+  position: relative;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  width: 300rpx;
+  height: 300rpx;
+}
+
+.cover_image{
+ width: 300rpx;
+  height: 300rpx;
+}
+.cover_body{
+margin-top: 50rpx;
+}
+
+.ui_uploader_item{
+  float: left;
+  position: relative;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.ui_uploader {
+  float: left;
+  position: relative;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  width: 200rpx;
+  height:200rpx;
+  border: 2rpx solid #d9d9d9;
+  box-sizing: border-box;
+}
+
+
+
+.ui_uploader_cell {
+  width: 95%;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
 
