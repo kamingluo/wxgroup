@@ -162,7 +162,8 @@ Page({
         keyword:keyword,
         matching:matching,
         say_type:say_type,
-        open:open
+        open:open,
+        cover:cover
       },
       success: res => {
         console.log("修改关键字",res)

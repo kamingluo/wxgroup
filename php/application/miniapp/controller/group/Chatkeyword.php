@@ -27,6 +27,12 @@ class Chatkeyword
             $state=['state'   => '200','message'  => "修改关键字成功" ];
         }
         else{
+
+            $newdata=db('chat_keyword')->where('crowd_id',$crowd_id)->where('keyword',$keyword)->find();
+            if($newdata){
+                $state=['state'   => '400','message'  => "已存在相同关键字" ];
+                return $state;
+            }
             $data = ['id'=>'','crowd_id' =>$crowd_id,'say_type' => $say_type,'keyword' => $keyword,'content' => $content,'cover' => $cover,'open' => $open,'triggernum' => 0,'matching' => $matching,'create_time' =>$time];
             $dbid= db('chat_keyword')->insertGetId($data);//返回自增ID
             $state=['state'   => '200','message'  => "增加关键字成功" ];

@@ -27,7 +27,7 @@ Page({
     hideNotice: false,//关闭公告
     notice: '',//公告内容
     keyworddata: [],//查询群关键字
-    password:null,//打卡口令
+    password: null,//打卡口令
 
   },
 
@@ -191,8 +191,8 @@ Page({
     })
   },
 
-  
-  punchdata: function() {
+
+  punchdata: function () {
     let crowd_id = this.data.crowd_id
     request({
       service: 'group/punchcard/querypunchdata',
@@ -437,23 +437,34 @@ Page({
 
   //检查关键字
   checkkeyword: function (content) {
-    var that= this;
-    let newcontent=content;
+    var that = this;
+    let newcontent = content;
     let keyworddata = this.data.keyworddata;
     if (keyworddata.length > 0) {
       for (var i = 0; i < keyworddata.length; i++) {
-        let newkeyword=keyworddata[i].keyword;
-        console.log("打印关键字",keyworddata[i])
-        if(keyworddata[i].matching==0){
-          if(newcontent==newkeyword){
-            console.log("触发精准匹配",newkeyword)
-            that.setkeyword(keyworddata[i])
+        let newkeyword = keyworddata[i].keyword;
+        console.log("打印关键字", keyworddata[i])
+        let keywordid = keyworddata[i].id;
+        if (keyworddata[i].matching == 0) {
+          if (newcontent == newkeyword) {
+            console.log("触发精准匹配", newkeyword)
+            if (keyworddata[i].content != null || keyworddata[i].content != "") {
+              that.setkeyword(keywordid, 'text', keyworddata[i].content)
+            }
+            if (keyworddata[i].cover != null || keyworddata[i].cover != "") {
+              that.setkeyword(keywordid, 'image', keyworddata[i].cover)
+            }
           }
-        }else{
-          let successcheck=newkeyword.indexOf(newcontent) != -1;
-          if(successcheck){
-            console.log("触发模糊匹配",newkeyword)
-            that.setkeyword(keyworddata[i])
+        } else {
+          let successcheck = newkeyword.indexOf(newcontent) != -1;
+          if (successcheck) {
+            console.log("触发模糊匹配", newkeyword)
+            if (keyworddata[i].content != null || keyworddata[i].content != "") {
+              that.setkeyword(keywordid, 'text', keyworddata[i].content)
+            }
+            if (keyworddata[i].cover != null || keyworddata[i].cover != "") {
+              that.setkeyword(keywordid, 'image', keyworddata[i].cover)
+            }
           }
         }
       }
@@ -462,31 +473,31 @@ Page({
 
   },
 
-    //触发关键字
-    setkeyword: function (keyworddata) {
-      let keywork_id = keyworddata.id;
-      let say_type =keyworddata.say_type;
-      let content = keyworddata.content;
-      let crowd_id = this.data.crowd_id;
-  
-      var data = {
-        type: "keyword",
-        message: "发送给服务器的数据",
-        keywork_id: keywork_id,
-        to_client_id: "all",
-        say_type: say_type,
-        content: content,
-        room_id: crowd_id
-      }
-      if (socketOpen) {
-        sendSocketMessage(data)
-      }
-    },
+  //触发关键字
+  setkeyword: function (id, newsay_type, newcontent) {
+    let keywork_id = id;
+    let say_type =newsay_type;
+    let content = newcontent;
+    let crowd_id = this.data.crowd_id;
+
+    var data = {
+      type: "keyword",
+      message: "发送给服务器的数据",
+      keywork_id: keywork_id,
+      to_client_id: "all",
+      say_type: say_type,
+      content: content,
+      room_id: crowd_id
+    }
+    if (socketOpen) {
+      sendSocketMessage(data)
+    }
+  },
 
   //用户打卡
   punchcard: function (content) {
-    var that =this
-    let password=this.data.password;
+    var that = this
+    let password = this.data.password;
     if (content == password) {
       console.log("触发打卡")
       let crowd_id = this.data.crowd_id;
@@ -510,7 +521,7 @@ Page({
 
   //触发打卡
   successpunchcard: function (newcontent) {
-    let say_type ='text';
+    let say_type = 'text';
     let content = newcontent;
     let crowd_id = this.data.crowd_id;
 
