@@ -26,7 +26,7 @@ class Chatkeyword
             $state=['state'   => '200','message'  => "修改关键字成功" ];
         }
         else{
-            $data = ['id'=>'','crowd_id' =>$crowd_id,'say_type' => $say_type,'keyword' => $keyword,'content' => $content,'open' => $open,'triggernum' => $triggernum,'matching' => $matching,'create_time' =>$time];
+            $data = ['id'=>'','crowd_id' =>$crowd_id,'say_type' => $say_type,'keyword' => $keyword,'content' => $content,'open' => $open,'triggernum' => 0,'matching' => $matching,'create_time' =>$time];
             $dbid= db('chat_keyword')->insertGetId($data);//返回自增ID
             $state=['state'   => '200','message'  => "增加关键字成功" ];
         }
