@@ -443,26 +443,34 @@ Page({
     if (keyworddata.length > 0) {
       for (var i = 0; i < keyworddata.length; i++) {
         let newkeyword = keyworddata[i].keyword;
-        console.log("打印关键字", keyworddata[i])
+        // console.log("打印关键字", keyworddata[i])
         let keywordid = keyworddata[i].id;
-        if (keyworddata[i].matching == 0) {
+        if (keyworddata[i].matching == 1) {
           if (newcontent == newkeyword) {
-            console.log("触发精准匹配", newkeyword)
-            if (keyworddata[i].content != null || keyworddata[i].content != "") {
+            // console.log("触发精准匹配", newkeyword)
+            if (keyworddata[i].content) {
+              console.log("发送精准匹配消息", newkeyword)
               that.setkeyword(keywordid, 'text', keyworddata[i].content)
             }
-            if (keyworddata[i].cover != null || keyworddata[i].cover != "") {
+            if (keyworddata[i].cover) {
+              console.log("发送精准匹配消息", newkeyword)
               that.setkeyword(keywordid, 'image', keyworddata[i].cover)
             }
           }
         } else {
+          console.log("模糊匹配文案", newkeyword)
           let successcheck = newkeyword.indexOf(newcontent) != -1;
-          if (successcheck) {
+          let newsuccesscheck = newcontent.indexOf(newkeyword) != -1;
+          console.log("successcheck", successcheck)
+          console.log("newsuccesscheck", newsuccesscheck)
+          if (successcheck || newsuccesscheck) {
             console.log("触发模糊匹配", newkeyword)
-            if (keyworddata[i].content != null || keyworddata[i].content != "") {
+            if (keyworddata[i].content) {
+              console.log("发送模糊匹配消息", newkeyword)
               that.setkeyword(keywordid, 'text', keyworddata[i].content)
             }
-            if (keyworddata[i].cover != null || keyworddata[i].cover != "") {
+            if (keyworddata[i].cover) {
+              console.log("发送模糊匹配消息", newkeyword)
               that.setkeyword(keywordid, 'image', keyworddata[i].cover)
             }
           }
@@ -476,7 +484,7 @@ Page({
   //触发关键字
   setkeyword: function (id, newsay_type, newcontent) {
     let keywork_id = id;
-    let say_type =newsay_type;
+    let say_type = newsay_type;
     let content = newcontent;
     let crowd_id = this.data.crowd_id;
 

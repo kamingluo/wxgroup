@@ -21,7 +21,7 @@
       <view class="centered shadow">
         <view class="flex keyword-body">
           <view class="flex-treble  padding-sm margin-xs radius">
-            <button class="cu-btn line-blue round sm shadow" bindtap="pushnotice"> 发布公告</button> <text
+            <button class="cu-btn line-blue round sm shadow" > {{item.matching==0?"模糊匹配":"精准匹配"}}</button> <text
               class="number">触发次数:{{item.triggernum}}次</text>
           </view>
           <view class="flex-twice  padding-sm margin-xs radius centered">

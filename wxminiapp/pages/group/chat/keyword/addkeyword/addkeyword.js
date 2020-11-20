@@ -28,7 +28,7 @@ Page({
     keyword:null,
     content:null,
     loadModal:false,
-    cover: ''//封面
+    cover:null//封面
 
   },
 
@@ -140,7 +140,9 @@ Page({
       })
       return;
     }
-    if(content==null||content==''&& cover==null||cover==""){
+    console.log("文案",content)
+    console.log("图片",cover)
+    if(!content&& !cover){
       wx.showToast({
         title: '回复内容不能为空',
         icon: 'none',
@@ -172,15 +174,20 @@ Page({
           icon: 'success',
           duration: 2000,
         })
-        that.setData({
-          loadModal:false
-        })
+       
         setTimeout(function() {
           wx.navigateBack({
             delta: 1
           })
         }, 1500)
       },
+
+      complete: res => {
+        that.setData({
+          loadModal:false
+        })
+      }
+    
     })
   },
     // 删除封面
