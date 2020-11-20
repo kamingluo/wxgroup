@@ -17,16 +17,17 @@ class Chatkeyword
         $say_type=$request->param("say_type");//方式，图片或者文案，image和text
         $keyword=$request->param("keyword");//关键字
         $content=$request->param("content");//回复内容
+        $cover=$request->param("cover");//回复内容
         $open=$request->param("open");//开关0开1关
         $matching=$request->param("matching");//匹配方式，0模糊1精准
         $time =date('Y-m-d H:i:s',time());//获取当前时间
         if($id && $id > 0 ){
             //id存在,视为修改
-            $dbid= db('chat_keyword')->where('crowd_id',$crowd_id)->where('id',$id)->update(['say_type' =>$say_type,'keyword' =>$keyword,'content' =>$content,'open' =>$open,'matching' =>$matching]);
+            $dbid= db('chat_keyword')->where('crowd_id',$crowd_id)->where('id',$id)->update(['say_type' =>$say_type,'keyword' =>$keyword,'content' =>$content,'cover' => $cover,'open' =>$open,'matching' =>$matching]);
             $state=['state'   => '200','message'  => "修改关键字成功" ];
         }
         else{
-            $data = ['id'=>'','crowd_id' =>$crowd_id,'say_type' => $say_type,'keyword' => $keyword,'content' => $content,'open' => $open,'triggernum' => 0,'matching' => $matching,'create_time' =>$time];
+            $data = ['id'=>'','crowd_id' =>$crowd_id,'say_type' => $say_type,'keyword' => $keyword,'content' => $content,'cover' => $cover,'open' => $open,'triggernum' => 0,'matching' => $matching,'create_time' =>$time];
             $dbid= db('chat_keyword')->insertGetId($data);//返回自增ID
             $state=['state'   => '200','message'  => "增加关键字成功" ];
         }

@@ -63,18 +63,9 @@ Page({
             matching:res.data.matching,
             open:res.data.open,
             say_type:res.data.say_type,
+            content:res.data.content,
+            cover:res.data.cover,
           })
-          if(res.data.say_type=="image"){
-            this.setData({
-              cover:res.data.content,
-            })
-          }
-          else{
-            this.setData({
-              content:res.data.content,
-            })
-
-          }
       },
     })
 
@@ -140,10 +131,7 @@ Page({
     let matching=this.data.matching;
     let say_type=this.data.say_type;
     let open=this.data.open;
-    if(say_type=="image"){
-      content=this.data.cover;
-    }
-
+    let cover=this.data.cover;
     if(keyword==null||keyword==''){
       wx.showToast({
         title: '关键字不能为空',
@@ -152,7 +140,7 @@ Page({
       })
       return;
     }
-    if(content==null||content==''){
+    if(content==null||content==''&& cover==null||cover==""){
       wx.showToast({
         title: '回复内容不能为空',
         icon: 'none',

@@ -24,24 +24,32 @@
     </picker>
   </view>
 
-  <view class="cu-form-group">
+  <!-- <view class="cu-form-group">
     <view class="title">回复内容</view>
     <picker bindchange="saytypePickerChange" value="{{say_type}}" range="{{saytypepicker}}">
       <view class="picker">
         {{say_type=='image'?'图片':'文案'}}
       </view>
     </picker>
-  </view>
+  </view> -->
 
 
 
 
 
   <!-- 文件上传 -->
-  <!-- <view class='domes_title_1' bindtap='moredata'>关键词回复</view> -->
+  <view class='domes_title_1' bindtap='moredata'>关键词回复图片</view>
+  <view class="centered cover_body">
+    <view class='centered  '>
+      <view class='ui_uploader' bindtap='uploadcover' wx:if="{{cover == '' }}"></view>
+      <view class='ui_uploader_item_cover centered' wx:else>
+        <icon class='ui_uploader_item_icon' bindtap='clearcover' type="clear" size="20" color="red" />
+        <image bindtap='showImg' class="cover_image" src='{{cover}}'></image>
+      </view>
+    </view>
+  </view>
 
-
-  <view class="centered" wx:if="{{say_type=='text'}}">
+  <view class="centered">
     <view class="task_text">
       <textarea maxlength="250" value="{{content}}" bindinput="content" placeholder="请输入关键字触发回复文案"></textarea>
     </view>
@@ -58,16 +66,7 @@
       <view class='ui_uploader centered' bindtap='upload' wx:if="{{showUpload}}"></view>
     </view>
   </view> -->
-  <view class="centered cover_body" wx:else>
-    <view class='centered  '>
-      <view class='ui_uploader' bindtap='uploadcover' wx:if="{{cover == '' }}"></view>
-      <view class='ui_uploader_item_cover centered' wx:else>
-        <icon class='ui_uploader_item_icon' bindtap='clearcover' type="clear" size="20" color="red" />
-        <image bindtap='showImg' class="cover_image" src='{{cover}}'></image>
-      </view>
 
-    </view>
-  </view>
 
 
   <view class='sumittask centered'>
