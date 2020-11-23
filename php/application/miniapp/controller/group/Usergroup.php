@@ -74,8 +74,8 @@ class Usergroup
         $wxcode =$request->param("code");
         $crowd_name =$request->param("crowd_name");
         $introduce =$request->param("introduce");
-        $open =1;
-        // $open =0;
+        // $open =1;
+        $open =0;
         // $open =$request->param("open") || 0;
         $logo=$request->param("logo");
         // $logo="https://material.gzywudao.top/image/group/groupicon.png";
