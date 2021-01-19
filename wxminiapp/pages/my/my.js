@@ -9,6 +9,7 @@ const {
 } = require('./../../utils/share.js');
 const common = require('./../../utils/common.js') //公共函数
 const baseConfig = require('./../../utils/config.js')//配置文件
+let interstitialAd = null; //插屏广告
 
 
 Page({
@@ -31,6 +32,7 @@ Page({
       imageurl: imageurl,
     })
 
+    this.gdtinsertad()//加载插屏广告
     this.havexiaouad()
     this.havemoredata()
   },
@@ -49,7 +51,7 @@ Page({
         user_id:user_id
       },
       success: res => {
-        console.log("查询用户会员情况",res.data)
+        console.log("查询用户会员情况",res)
         this.setData({
           condition: res.condition,
           end_time:res.end_time
@@ -202,6 +204,58 @@ Page({
     // console.log("点击小盟广告携带页面参数", e)
     let position=e.currentTarget.dataset.position;
     wx.setStorageSync("xmclickposition", position)
+  },
+
+  
+  //加载插屏广告
+  gdtinsertad: function () {
+    var that=this;
+    console.log("加载插屏广告")
+    var insertad ='adunit-b8955104700af731';
+    console.log("插屏广告代码", insertad)
+    if (wx.createInterstitialAd) {
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: insertad
+      })
+      interstitialAd.onLoad((e) => {
+        console.log('插屏广告加载onLoad event emit', e)
+      })
+      interstitialAd.onError((err) => {
+        console.log('插屏广告错误onError event emit', err)
+      })
+      interstitialAd.onClose((res) => {
+        console.log('插屏广告被关闭onClose event emit', res)
+      })
+    }
+
+    setTimeout(function () {
+      that.onshowgdtinsertad()
+    }, 2000);
+
+
+  },
+
+  //显示插屏广告
+  onshowgdtinsertad: function () {
+    var state = 0;
+    interstitialAd.show((res) => {
+      console.log("插屏广告展示成功", res)
+    }).catch((err) => {
+      console.error("插屏广告错误啦", err)
+      state = 1;
+    })
+    setTimeout(function () {
+      if (state == 0) {
+        console.log("插屏广告显示成功")
+        let gdtdata = {
+          'adtype': 7,
+          'position': "我的页面"
+        };
+        common.clickgdtadstatistics(gdtdata)
+      } else {
+        console.log("插屏广告显示失败")
+      }
+    }, 500);
   },
 
 

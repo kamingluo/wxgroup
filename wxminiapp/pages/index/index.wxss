@@ -49,6 +49,13 @@ ad {
   margin-top: 5rpx;
 }
 
+.gdtad-body{
+  width: 96%;
+  margin-top: 1rpx;
+  margin-bottom: 1rpx;
+
+}
+
 .main-main {
   margin-top: 20rpx;
 }
