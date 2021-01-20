@@ -16,8 +16,12 @@ class Usergroup
         sleep(0.5);
     	$sql = "select crowd.*,user_crowd.user_type,user_crowd.score from crowd ,user_crowd where user_crowd.crowd_id=crowd.id and user_crowd.user_openid='". $openid."';" ;
         $data = Db::query($sql); //拿到数据
+
+        $listad['adtype']=5;//首页广告id
+        $listad['adid']='adunit-e026bd4735f3464e';
+
         $state=['state'   => '200','message'  => "拿到用户加入群的列表" ];
-        $resdata=array_merge($state,array('usergrouplist'=>$data));
+        $resdata=array_merge($state,array('usergrouplist'=>$data),,array('listad'=>$listad));
         return $resdata ;
     }
 

@@ -62,6 +62,13 @@ Page({
 
   //加载插屏广告
   gdtinsertad: function() {
+
+  let nowTime = Date.now();
+  let insertadshowtime=wx.getStorageSync('insertadshowtime') || 0 ;
+  if(nowTime - insertadshowtime < 7200000){
+    console.log("时间未到不展示广告")
+    return;
+  }
     var that = this;
     console.log("加载插屏广告")
     var insertad = 'adunit-547d5780f1b444d9';
@@ -105,6 +112,9 @@ Page({
           'position': "群任务记录页面"
         };
         common.clickgdtadstatistics(gdtdata)
+        //显示成功修改一下广告展示时间
+      let nowTime = Date.now();
+      wx.setStorageSync('insertadshowtime',nowTime)
       } else {
         console.log("插屏广告显示失败")
       }

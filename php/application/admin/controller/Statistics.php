@@ -25,12 +25,13 @@ class Statistics
         $lottery=db('lottery_partake_list')->whereTime('create_time', 'today')->count();//今日抽奖用户次数
 
 
-        $clickbanner=db('click_gdt_ad')->where('adtype',1)->whereTime('create_time', 'today')->count();//今日点击banner数
-        $seevideo=db('click_gdt_ad')->where('adtype',2)->whereTime('create_time', 'today')->count();//今日观看完成视频数
+        $clickbanner=db('click_gdt_ad')->where('adtype',1)->whereTime('create_time', 'today')->group("user_id")->count();//今日点击banner去重数
+        $seevideo=db('click_gdt_ad')->where('adtype',2)->whereTime('create_time', 'today')->count();//今日观看完成激励视频数
         $clickgrid=db('click_gdt_ad')->where('adtype',3)->whereTime('create_time', 'today')->count();//今日点击格子广告数
         $clickvideo=db('click_gdt_ad')->where('adtype',4)->whereTime('create_time', 'today')->count();//今日点击视频广告数
-        $clickcustom=db('click_gdt_ad')->where('adtype',5)->whereTime('create_time', 'today')->count();//今日点击模板广告数
+        $clickcustom=db('click_gdt_ad')->where('adtype',5)->whereTime('create_time', 'today')->group("user_id")->count();//今日点击模板广告去重数
         $clickxmad=db('click_gdt_ad')->where('adtype',6)->whereTime('create_time', 'today')->count();//今日点击小盟广告数
+        $showinterstitialad=db('click_gdt_ad')->where('adtype',7)->whereTime('create_time', 'today')->count();//今日展示插屏广告数
 
 
         

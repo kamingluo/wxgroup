@@ -5,6 +5,7 @@ const {
 const common = require('./../../../utils/common.js');
 const baseConfig = require('./../../../utils/config.js')//配置文件
 const app = getApp();
+let interstitialAd = null; //插屏广告
 Page({
 
   /**
@@ -53,6 +54,7 @@ Page({
         crowd_id: options.id
       })
     }
+    this.gdtinsertad()//加载插屏幕广告
     this.incondata()
     this.groupdata(options.id)
     this.todaywhethersignin()
@@ -495,6 +497,70 @@ subscribe: function() {
     }
   })
 
+},
+
+
+
+//加载插屏广告
+gdtinsertad: function () {
+
+  let nowTime = Date.now();
+  let insertadshowtime=wx.getStorageSync('insertadshowtime') || 0 ;
+  if(nowTime - insertadshowtime < 7200000){
+    console.log("时间未到不展示广告")
+    return;
+  }
+
+  var that=this;
+  console.log("加载插屏广告")
+  var insertad ='adunit-0e4442bf0e39f640';
+  if (wx.createInterstitialAd) {
+    interstitialAd = wx.createInterstitialAd({
+      adUnitId: insertad
+    })
+    interstitialAd.onLoad((e) => {
+      console.log('插屏广告加载onLoad event emit', e)
+    })
+    interstitialAd.onError((err) => {
+      console.log('插屏广告错误onError event emit', err)
+    })
+    interstitialAd.onClose((res) => {
+      console.log('插屏广告被关闭onClose event emit', res)
+    })
+  }
+
+  setTimeout(function () {
+    that.onshowgdtinsertad()
+  }, 2000);
+
+
+},
+
+//显示插屏广告
+onshowgdtinsertad: function () {
+  var state = 0;
+  interstitialAd.show((res) => {
+    console.log("插屏广告展示成功", res)
+  }).catch((err) => {
+    console.error("插屏广告错误啦", err)
+    state = 1;
+  })
+  setTimeout(function () {
+    if (state == 0) {
+      console.log("插屏广告显示成功")
+      let gdtdata = {
+        'adtype': 7,
+        'position': "群空间页面"
+      };
+      common.clickgdtadstatistics(gdtdata)
+      //显示成功修改一下广告展示时间
+      let nowTime = Date.now();
+      wx.setStorageSync('insertadshowtime',nowTime)
+
+    } else {
+      console.log("插屏广告显示失败")
+    }
+  }, 500);
 },
 
 /**
