@@ -21,7 +21,7 @@ class Usergroup
         $listad['adid']='adunit-e026bd4735f3464e';
 
         $state=['state'   => '200','message'  => "拿到用户加入群的列表" ];
-        $resdata=array_merge($state,array('usergrouplist'=>$data),,array('listad'=>$listad));
+        $resdata=array_merge($state,array('usergrouplist'=>$data),array('listad'=>$listad));
         return $resdata ;
     }
 
