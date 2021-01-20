@@ -107,9 +107,9 @@
       <!-- 用户群列表结束 -->
 
 
-      <view class='centered' wx:if="{{usergrouplist.length > 0}}">
+      <view class='centered' wx:if="{{usergrouplist.length > 0 && listad}}">
         <view class="gdtad-body"> 
-          <gdtad adtype="5" adid="adunit-e026bd4735f3464e" position="首页"></gdtad>
+          <gdtad adtype="{{listad.adtype}}" adid="{{listad.adid}}" position="首页"></gdtad>
         </view>
       </view>
 

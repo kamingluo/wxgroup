@@ -152,7 +152,7 @@
                                 <i class="el-icon-lx-rechargefill grid-con-icon"></i>
                                 <div class="grid-cont-right">
                                     <div class="grid-num">{{statistics.clickbanner}}</div>
-                                    <div>今日点击banner广告数</div>
+                                    <div>今日点击banner广告去重数</div>
                                 </div>
                             </div>
                         </el-card>
@@ -191,7 +191,7 @@
                                 <i class="el-icon-lx-rechargefill grid-con-icon"></i>
                                 <div class="grid-cont-right">
                                     <div class="grid-num">{{statistics.clickcustom}}</div>
-                                    <div>今日点击模板广告数</div>
+                                    <div>今日点击模板广告去重数</div>
                                 </div>
                             </div>
                         </el-card>
@@ -210,7 +210,19 @@
                         </el-card>
                     </el-col>
 
-                     <el-col :span="8">
+                    <el-col :span="8">
+                        <el-card shadow="hover" :body-style="{padding: '0px'}">
+                            <div class="grid-content grid-con-1">
+                                <i class="el-icon-lx-rechargefill grid-con-icon"></i>
+                                <div class="grid-cont-right">
+                                    <div class="grid-num">{{statistics.showinterstitialad}}</div>
+                                    <div>插屏广告展示次数</div>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
+
+                     <!-- <el-col :span="8">
                         <el-card shadow="hover" :body-style="{padding: '0px'}">
                             <div class="grid-content grid-con-1">
                                 <i class="el-icon-lx-rechargefill grid-con-icon"></i>
@@ -220,7 +232,7 @@
                                 </div>
                             </div>
                         </el-card>
-                    </el-col>
+                    </el-col> -->
 
 
 

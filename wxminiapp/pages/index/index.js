@@ -20,6 +20,7 @@ Page({
     usergrouplist:[],//用户加入群列表
     ifauthorized:false,
     banneradshow:true,
+    listad:{},//群列表广点通广告
   },
 
   /**
@@ -101,6 +102,7 @@ Page({
           },
           success: res => {
             that.setData({
+              listad: res.listad,
               usergrouplist: res.usergrouplist,
             })
             if (res.usergrouplist.length < 3){
@@ -127,7 +129,7 @@ Page({
           },
           success: res => {
             that.setData({
-              usergrouplist: res.usergrouplist,
+              listad:res.listad
             })
             if (res.usergrouplist.length < 2) {
               setTimeout(function () {
