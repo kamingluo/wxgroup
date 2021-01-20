@@ -80,7 +80,28 @@ Page({
       success: res => {
         // console.log("查询商品结果", res.goodslist.tbk_dg_material_optional_response.result_list.map_data)
         let goodslist = this.data.goodslist;
-        var newgoodslist = [...goodslist, ...res.goodslist.tbk_dg_material_optional_response.result_list.map_data];
+
+        let resgoodslist = res.goodslist.tbk_dg_material_optional_response.result_list.map_data;
+
+        for (var i = resgoodslist.length - 1; i >= 0; i--) {
+          let text = resgoodslist[i].title;
+          let aiqiyi = text.indexOf("爱奇艺") != -1;
+          let youku = text.indexOf("优酷") != -1;
+          let tenxun = text.indexOf("腾讯") != -1;
+          let baidu = text.indexOf("百度") != -1;
+          let meituan = text.indexOf("美团") != -1;
+          let elm = text.indexOf("饿了么") != -1;
+          let jiudian = text.indexOf("酒店") != -1;
+          let huiyuan = text.indexOf("会员") != -1;
+          let vip = text.indexOf("vip") != -1;
+          let bigvip = text.indexOf("VIP") != -1;
+          let zhuiju = text.indexOf("追剧") != -1;
+          if (aiqiyi || youku || tenxun || meituan || elm || jiudian || huiyuan || baidu || vip || bigvip || zhuiju) {
+            console.log("操作删除元素", resgoodslist[i]);
+            resgoodslist.splice(i, 1);
+          }
+        }
+        var newgoodslist = [...goodslist, ...resgoodslist];
         console.log(newgoodslist.length)
         that.setData({
           goodslist: newgoodslist,

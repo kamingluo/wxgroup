@@ -19,7 +19,7 @@ Page({
     TabCur: 0,
     scrollLeft: 0,
     goodslist: [],//商品信息流数据
-    iosdisplay:true
+    iosdisplay: true
 
 
   },
@@ -34,7 +34,7 @@ Page({
         url: '/pages/extension/pdd/goodsdetails/goodsdetails?goods_id=' + goods_id + '&search_id=' + search_id
       })
     }
-    else if (mall_type ==2){
+    else if (mall_type == 2) {
       let num_iids = options.num_iids;
       let url = options.url;
       wx.navigateTo({
@@ -50,15 +50,15 @@ Page({
 
 
 
-  iosdisplay:function(){
-    // let display=app.globalData.display || false;
-    // let platform=app.globalData.platform;
-    // if(!display && platform=='ios' || platform=='devtools' ){
-    //   this.setData({
-    //     iosdisplay: false,
-    //   })
-    // }
-
+  iosdisplay: function () {
+    let display = app.globalData.display || false;
+    let platform = app.globalData.platform;
+    // if (!display && platform == 'ios' || platform == 'devtools') {
+    if (!display) {//先只做渠道屏蔽
+      this.setData({
+        iosdisplay: false,
+      })
+    }
   },
 
   //点击跳转到搜索页面
@@ -136,24 +136,28 @@ Page({
         pages: pages
       },
       success: res => {
-      let resgoodslist=res.recommenddata.goods_basic_detail_response.list;
+        let resgoodslist = res.recommenddata.goods_basic_detail_response.list;
 
 
-        let display=app.globalData.display || false;
-        let platform=app.globalData.platform;
-        if(!display && platform=='ios' || platform=='devtools'){
+        let display = app.globalData.display || false;
+        let platform = app.globalData.platform;
+        // if(!display && platform=='ios' || platform=='devtools'){
+        if (1 == 1) {
           for (var i = resgoodslist.length - 1; i >= 0; i--) {
-            let text =resgoodslist[i].goods_name;
-            let aiqiyi=text.indexOf("爱奇艺") != -1;
-            let youku=text.indexOf("优酷") != -1;
-            let tenxun=text.indexOf("腾讯") != -1;
-            let baidu=text.indexOf("百度") != -1;
-            let meituan=text.indexOf("美团") != -1;
-            let elm=text.indexOf("饿了么") != -1;
-            let jiudian=text.indexOf("酒店") != -1;
-            let huiyuan=text.indexOf("会员") != -1;
-            if(aiqiyi||youku||tenxun||meituan||elm||jiudian||huiyuan||baidu) {
-              console.log("操作删除元素",resgoodslist[i]);
+            let text = resgoodslist[i].goods_name;
+            let aiqiyi = text.indexOf("爱奇艺") != -1;
+            let youku = text.indexOf("优酷") != -1;
+            let tenxun = text.indexOf("腾讯") != -1;
+            let baidu = text.indexOf("百度") != -1;
+            let meituan = text.indexOf("美团") != -1;
+            let elm = text.indexOf("饿了么") != -1;
+            let jiudian = text.indexOf("酒店") != -1;
+            let huiyuan = text.indexOf("会员") != -1;
+            let vip = text.indexOf("vip") != -1;
+            let bigvip = text.indexOf("VIP") != -1;
+            let zhuiju = text.indexOf("追剧") != -1;
+            if (aiqiyi || youku || tenxun || meituan || elm || jiudian || huiyuan || baidu || vip || bigvip || zhuiju) {
+              console.log("操作删除元素", resgoodslist[i]);
               resgoodslist.splice(i, 1);
             }
           }
@@ -213,17 +217,17 @@ Page({
       // }
     ]
 
-    let display=app.globalData.display || false;
-    console.log("是否隐藏",display)
-    if(!display){
-      let data={
-          id: 1,
-          iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/rebang.jpg',
-          jumpurl: '/pages/web/web?specialUrl=1&src=https://mobile.yangkeduo.com/duo_transfer_channel.html?resourceType=4&pid=1979520_149719573&cpsSign=CE_200829_1979520_149719573_5221f3bb4bfd24893d894adcd31f5ef2&duoduo_type=2',
-          type: 1,
-          name: '热销排行'
-        };
-      iconList[0]=data;
+    let display = app.globalData.display || false;
+    console.log("是否隐藏", display)
+    if (!display) {
+      let data = {
+        id: 1,
+        iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/rebang.jpg',
+        jumpurl: '/pages/web/web?specialUrl=1&src=https://mobile.yangkeduo.com/duo_transfer_channel.html?resourceType=4&pid=1979520_149719573&cpsSign=CE_200829_1979520_149719573_5221f3bb4bfd24893d894adcd31f5ef2&duoduo_type=2',
+        type: 1,
+        name: '热销排行'
+      };
+      iconList[0] = data;
     }
 
     this.setData({
@@ -240,7 +244,7 @@ Page({
         url: '/pages/extension/collection/collection'
       })
     }
-    else if (type == 3){
+    else if (type == 3) {
       wx.navigateTo({
         url: '/pages/extension/taobao/taobao'
       })
