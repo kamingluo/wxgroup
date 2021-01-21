@@ -181,7 +181,7 @@
 
 <!-- 图片窗口 -->
 <view class="cu-modal {{model?'show':''}}">
-<!-- <view class="cu-modal show"> -->
+  <!-- <view class="cu-modal show"> -->
   <view class="cu-dialog">
     <view class="bg-img padding-sm" style="background: url('https://yaoge.oss-accelerate.aliyuncs.com/myfiles/backiee-48541-portrait.jpg') center top no-repeat;height:480px;background-size: 100% auto">
       <view class="model_date">
@@ -232,8 +232,18 @@
         <view class="ad-body animation-{{kaming?'shake':''}}" wx:elif="{{adconfig.type==5}}">
           <view class='centered'>
             <view>
-              <ad-custom capture-bind:tap="gdtcustomadclick" class="gdtad" unit-id="{{adconfig.appid}}" bindload="banneradsuccess" binderror="banneraderr"></ad-custom>
+              <!-- <ad-custom capture-bind:tap="gdtcustomadclick" class="gdtad" unit-id="{{adconfig.appid}}" bindload="banneradsuccess" binderror="banneraderr"></ad-custom> -->
               <!-- <ad-custom  capture-bind:tap="gdtcustomadclick" unit-id="adunit-cb851dc9c3904d54"></ad-custom> -->
+              <!-- 广点通广告新组件 -->
+              <newgdtad adtype="{{adtype}}" position="签到页面"></newgdtad>
+            </view>
+          </view>
+        </view>
+
+        <view class="ad-body animation-{{kaming?'shake':''}}" wx:elif="{{adconfig.type==8}}">
+          <view class='centered'>
+            <view>
+              <ad-custom capture-bind:tap="gdtcustomadclick" class="gdtad" unit-id="{{adconfig.appid}}" bindload="banneradsuccess" binderror="banneraderr"></ad-custom>
             </view>
           </view>
         </view>

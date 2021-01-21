@@ -21,6 +21,7 @@ Page({
     ifauthorized:false,
     banneradshow:true,
     listad:{},//群列表广点通广告
+    adtype: null//展示广告类型
   },
 
   /**
@@ -65,8 +66,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (e) {
+    let adtype = wx.getStorageSync('todayclickad').adtype || 5;
+    this.setData({
+      adtype: adtype,
+    })
+
     this.usergroup()
     this.getUserInfoif() //判断用户有没有授权
+
     
   },
 

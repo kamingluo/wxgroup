@@ -17,7 +17,8 @@ Page({
     modeltips:"群记分小程序提供技术支持",
     banneradshow:true,
     siginnum:0,
-    userranking:0
+    userranking:0,
+    adtype: null
 
 
   },
@@ -40,6 +41,15 @@ Page({
     this.signinrankinglist(1)//签到排行榜
     this.userranking()//用户当日排行和总签到数
 
+  },
+
+
+  onShow: function () {
+    let adtype = wx.getStorageSync('todayclickad').adtype || 5;
+    console.log("拿到的广告类型", adtype)
+    this.setData({
+      adtype: adtype,
+    })
   },
 
 

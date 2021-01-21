@@ -7,6 +7,10 @@
 <!-- <gdtad adtype="5" adid="adunit-cb851dc9c3904d54" position="测试页面" capture-bind:tap="testdianji">
 </gdtad> -->
 
+<!-- 广点通广告新组件 -->
+<newgdtad adtype="{{adtype}}"  position="测试页面">
+</newgdtad>
+
 <!-- 默认图片组件 -->
 <!-- <defaultgraph tips="这里自定义提示数据"></defaultgraph> -->
 

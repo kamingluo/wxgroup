@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "gdtad": "/components/gdtAd/index",
+    "newgdtad": "/components/newgdtAd/index",
     "pddgoodslist": "/components/pddgoodslist/index",
     "taobaogoodslist": "/components/taobaogoodslist/index",
     "defaultgraph": "/components/defaultGraph/index",

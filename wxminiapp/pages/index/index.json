@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "gdtad": "/components/gdtAd/index",
+    "newgdtad": "/components/newgdtAd/index",
     "kaming-button": "/components/kaming-button/index"
   }
 }

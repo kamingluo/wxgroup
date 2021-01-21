@@ -109,7 +109,8 @@
 
       <view class='centered' wx:if="{{usergrouplist.length > 0 && listad}}">
         <view class="gdtad-body"> 
-          <gdtad adtype="{{listad.adtype}}" adid="{{listad.adid}}" position="首页"></gdtad>
+          <!-- <gdtad adtype="{{listad.adtype}}" adid="{{listad.adid}}" position="首页"></gdtad> -->
+          <newgdtad adtype="{{adtype}}"  position="首页"></newgdtad>
         </view>
       </view>
 

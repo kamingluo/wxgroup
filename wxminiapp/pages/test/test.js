@@ -2,13 +2,22 @@ const baseConfig = require('./../../utils/config.js')//配置文件
 Page({
 
   data: {
-    goodslist:[]
+    goodslist:[],
+    adtype:null
 
   },
 
   onLoad: function() {
     this.getdata()
 
+  },
+
+  onShow:function(){
+    let adtype = wx.getStorageSync('todayclickad').adtype || 5;
+    console.log("拿到的广告类型", adtype)
+    this.setData({
+      adtype: adtype,
+    })
   },
 
   /*

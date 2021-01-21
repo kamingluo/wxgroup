@@ -1,6 +1,8 @@
 //app.js
 const common = require('./utils/common.js') //公共函数
-const { request } = require('./utils/request.js')//公共请求方法
+const {
+  request
+} = require('./utils/request.js') //公共请求方法
 const ald = require('./utils/sdk/ald/ald-stat.js') //阿拉丁统计
 require('./utils/sdk/xmad/xmadx_sdk') //小盟广告
 
@@ -8,11 +10,12 @@ App({
   globalData: {
     //一定要，删除报错
   },
-  onLaunch: function (e) {
+  onLaunch: function(e) {
     console.log("onLaunch打印信息", e)
     this.getUserInfo(e)
-    common.shareconfig()//分享配置
-    this.scene(e)//传入入口值判断
+    common.shareconfig() //分享配置
+    this.scene(e) //传入入口值判断
+    this.todayclickadtype()
     //this.autoUpdate()//检查更新
     //common.xmaddata() //小盟ad配置
     // 获取系统状态栏信息
@@ -23,26 +26,16 @@ App({
         this.globalData.Custom = custom;
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
         this.globalData.platform = e.platform;
-        // if (e.platform == "ios") {
-        //   console.log("IOS设备")
-        // } else if (e.platform == "android") {
-        //   console.log("安卓设备")
-        // } else if (e.platform == "devtools") {
-        //   console.log("开发者工具")
-        // }
-        // else{
-        //   console.log("其他使用设备")
-        // }
       }
     })
   },
 
-  getUserInfo: function (e) {
+  getUserInfo: function(e) {
     let that = this;
     var data = {
       channel: e.query.channel || 0,
       crowd_id: e.query.crowd_id || 0,
-      scene :e.scene,
+      scene: e.scene,
     }
     wx.getSetting({
       success(res) {
@@ -64,7 +57,7 @@ App({
     })
   },
 
- 
+
   // onShow(options) {
   //   wx.login({
   //     success: function (res) {
@@ -85,41 +78,56 @@ App({
   // },
 
 
-  scene: function (e) {
+  scene: function(e) {
     let scene = e.scene;
     let channel = e.query.channel || 0;
     let user_channel = wx.getStorageSync('userdata').channel || 0;
     // if (  user_channel== 0 &&  channel == 0 && scene == 1001 || scene == 1129 || scene == 1047 ) {
-    if (  channel== 1000 ||  channel == 0 && scene == 1001 || scene == 1129 || scene == 1047 || scene == 1106 ) {
+    if (channel == 1000 || channel == 0 && scene == 1001 || scene == 1129 || scene == 1047 || scene == 1106) {
       console.log("开关false")
       this.globalData.display = false;
-    }
-    else {
+    } else {
       this.globalData.display = true;
     }
-    if (channel == 0 && scene == 1089 || scene == 1001 ) {
+    if (channel == 0 && scene == 1089 || scene == 1001) {
       this.globalData.addapptips = false;
-    }
-    else {
+    } else {
       this.globalData.addapptips = true;
     }
   },
 
+  todayclickadtype: function() {
+    let nowDate = new Date();
+    var year = nowDate.getFullYear();
+    var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) :nowDate.getMonth() + 1;
+    var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+    var dateStr = year + "-" + month + "-" + day;
+    let oldday = wx.getStorageSync('todayclickad').time;
+    if (oldday != dateStr){
+      console.log("不是今天，更新点击广告的type")
+      let data = {
+        time: dateStr,
+        adtype: 5
+      }
+      wx.setStorageSync('todayclickad', data)
+    }
+  },
 
-  autoUpdate: function () {
+
+  autoUpdate: function() {
     var self = this
     // 获取小程序更新机制兼容
     if (wx.canIUse('getUpdateManager')) {
       const updateManager = wx.getUpdateManager()
       //1. 检查小程序是否有新版本发布
-      updateManager.onCheckForUpdate(function (res) {
+      updateManager.onCheckForUpdate(function(res) {
         // 请求完新版本信息的回调
         if (res.hasUpdate) {
           //检测到新版本，需要更新，给出提示
           wx.showModal({
             title: '更新提示',
             content: '检测到新版本，是否启用新版本？',
-            success: function (res) {
+            success: function(res) {
               if (res.confirm) {
                 //2. 用户确定下载更新小程序，小程序下载及更新静默进行
                 self.downLoadAndUpdate(updateManager)
@@ -128,9 +136,9 @@ App({
                 wx.showModal({
                   title: '温馨提示~',
                   content: '本次版本更新涉及到新的功能添加，旧版本访问可能存在问题哦~',
-                  showCancel: false,//隐藏取消按钮
-                  confirmText: "确定更新",//只保留确定更新按钮
-                  success: function (res) {
+                  showCancel: false, //隐藏取消按钮
+                  confirmText: "确定更新", //只保留确定更新按钮
+                  success: function(res) {
                     if (res.confirm) {
                       //下载新版本，并重新应用
                       self.downLoadAndUpdate(updateManager)
@@ -153,16 +161,16 @@ App({
   /**
    * 下载小程序新版本并重启应用
    */
-  downLoadAndUpdate: function (updateManager) {
+  downLoadAndUpdate: function(updateManager) {
     var self = this
     wx.showLoading();
     //静默下载更新小程序新版本
-    updateManager.onUpdateReady(function () {
+    updateManager.onUpdateReady(function() {
       wx.hideLoading()
       //新的版本已经下载好，调用 applyUpdate 应用新版本并重启
       updateManager.applyUpdate()
     })
-    updateManager.onUpdateFailed(function () {
+    updateManager.onUpdateFailed(function() {
       // 新的版本下载失败
       wx.showModal({
         title: '已经有新版本了哟~',
