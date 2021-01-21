@@ -80,6 +80,13 @@ App({
 
   scene: function(e) {
     let scene = e.scene;
+    if (scene==1173){
+      let supportedMaterials={
+        'adtype': 666,
+        'position':"从聊天素材打开"
+      }
+      common.clickgdtadstatistics(supportedMaterials)
+    }
     let channel = e.query.channel || 0;
     let user_channel = wx.getStorageSync('userdata').channel || 0;
     // if (  user_channel== 0 &&  channel == 0 && scene == 1001 || scene == 1129 || scene == 1047 ) {
