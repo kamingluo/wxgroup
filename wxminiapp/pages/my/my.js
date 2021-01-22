@@ -23,6 +23,7 @@ Page({
     vipdisplay:false,
     condition:1,//会员开通情况，0是已经开通且有效，1是未开通过，2是已经过期
     end_time:"",//会员结束时间
+    adtype: null//展示广告类型
     
 
   },
@@ -37,6 +38,10 @@ Page({
     this.havemoredata()
   },
   onShow: function () {
+    let adtype = wx.getStorageSync('todayclickad').adtype || 5;
+    this.setData({
+      adtype: adtype,
+    })
     this.userdata()
     this.queryuservipdata()
   },

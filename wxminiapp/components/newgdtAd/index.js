@@ -14,7 +14,7 @@ Component({
   properties: {
     adid: {
       type: String, //属性的类型
-      value: "adunit-a090166402a1c55e" // 广告id
+      value: "" // 广告id
     },
     adtype:{
       type: String, //属性的类型

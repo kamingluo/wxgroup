@@ -101,25 +101,5 @@
         "selectedIconPath": "images/config/smy.png"
       }
     ]
-  },
-  "supportedMaterials": [
-    {
-      "materialType": "text/html",
-      "name": "用${nickname}打开",
-      "desc": "打开使用群记分小程序",
-      "path": "pages/index/index"
-    },
-    {
-      "materialType": "video/*",
-      "name": "用${nickname}播放",
-      "desc": "打开使用群记分小程序",
-      "path": "pages/index/index"
-    },
-    {
-      "materialType": "video/mp4",
-      "name": "用${nickname}播放",
-      "desc": "打开使用群记分小程序",
-      "path": "pages/index/index"
-    }
-  ]
+  }
 }

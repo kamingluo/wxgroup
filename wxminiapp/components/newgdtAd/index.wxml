@@ -12,5 +12,5 @@
 </view>
 <!-- 模板广告 -->
 <view wx:elif="{{adtype==5}}">
-	<ad-custom capture-bind:tap="adclick" ad-intervals="30"  data-adtype="{{adtype}}" data-position="{{position}}" unit-id="adunit-cb851dc9c3904d54"></ad-custom>
+	<ad-custom capture-bind:tap="adclick" ad-intervals="30"  data-adtype="{{adtype}}" data-position="{{position}}"  unit-id="{{adid?adid:'adunit-cb851dc9c3904d54'}}"></ad-custom>
 </view>
