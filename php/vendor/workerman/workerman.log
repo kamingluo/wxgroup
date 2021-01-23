@@ -52,12 +52,12 @@ Stack trace:
 2020-06-02 08:05:25 pid:1 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://doc2.workerman.net/send-buffer-to-worker-fail.html
 2020-06-02 08:05:25 pid:1 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://doc2.workerman.net/send-buffer-to-worker-fail.html
 2020-06-02 08:05:26 pid:1 Register auth timeout (127.0.0.1). See http://doc2.workerman.net/register-auth-timeout.html
-2020-06-02 08:05:37 pid:1 exception 'PDOException' with message 'SQLSTATE[HY000] [2002] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓÐÕýÈ·´ð¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓÐ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
+2020-06-02 08:05:37 pid:1 exception 'PDOException' with message 'SQLSTATE[HY000] [2002] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½È·ï¿½ð¸´»ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð·ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½Ê§ï¿½Ü¡ï¿½
 ' in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Connection.php:1716
 Stack trace:
 #0 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Connection.php(1716): PDO->__construct('mysql:dbname=cr...', 'crowd', 'crowd', Array)
 #1 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Connection.php(1702): Workerman\MySQL\Connection->connect()
-#2 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php(19): Workerman\MySQL\Connection->__construct('47.106.253.110', '3306', 'crowd', 'crowd', 'crowd')
+#2 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php(19): Workerman\MySQL\Connection->__construct('81.71.87.121, '3306', 'crowd', 'crowd', 'crowd')
 #3 [internal function]: Events::onWorkerStart(Object(GatewayWorker\BusinessWorker))
 #4 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\gateway-worker\src\BusinessWorker.php(223): call_user_func('Events::onWorke...', Object(GatewayWorker\BusinessWorker))
 #5 [internal function]: GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
@@ -75,12 +75,12 @@ Stack trace:
 2020-06-02 08:06:12 pid:1 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://doc2.workerman.net/send-buffer-to-worker-fail.html
 2020-06-02 08:06:12 pid:1 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://doc2.workerman.net/send-buffer-to-worker-fail.html
 2020-06-02 08:06:19 pid:1 Register auth timeout (127.0.0.1). See http://doc2.workerman.net/register-auth-timeout.html
-2020-06-02 08:06:30 pid:1 exception 'PDOException' with message 'SQLSTATE[HY000] [2002] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓÐÕýÈ·´ð¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓÐ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
+2020-06-02 08:06:30 pid:1 exception 'PDOException' with message 'SQLSTATE[HY000] [2002] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½È·ï¿½ð¸´»ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð·ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½Ê§ï¿½Ü¡ï¿½
 ' in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Connection.php:1716
 Stack trace:
 #0 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Connection.php(1716): PDO->__construct('mysql:dbname=cr...', 'crowd', 'crowd', Array)
 #1 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Connection.php(1702): Workerman\MySQL\Connection->connect()
-#2 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php(19): Workerman\MySQL\Connection->__construct('47.106.253.110', '3306', 'crowd', 'crowd', 'crowd')
+#2 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php(19): Workerman\MySQL\Connection->__construct('81.71.87.121', '3306', 'crowd', 'crowd', 'crowd')
 #3 [internal function]: Events::onWorkerStart(Object(GatewayWorker\BusinessWorker))
 #4 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\gateway-worker\src\BusinessWorker.php(223): call_user_func('Events::onWorke...', Object(GatewayWorker\BusinessWorker))
 #5 [internal function]: GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
@@ -93,12 +93,12 @@ Stack trace:
 #12 {main}
 2020-06-02 08:06:31 pid:1 Worker process terminated
 2020-06-02 08:06:42 pid:1 Register auth timeout (127.0.0.1). See http://doc2.workerman.net/register-auth-timeout.html
-2020-06-02 08:06:53 pid:1 exception 'PDOException' with message 'SQLSTATE[HY000] [2002] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓÐÕýÈ·´ð¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓÐ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
+2020-06-02 08:06:53 pid:1 exception 'PDOException' with message 'SQLSTATE[HY000] [2002] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½È·ï¿½ð¸´»ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð·ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½Ê§ï¿½Ü¡ï¿½
 ' in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Connection.php:1716
 Stack trace:
 #0 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Connection.php(1716): PDO->__construct('mysql:dbname=cr...', 'crowd', 'crowd', Array)
 #1 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Connection.php(1702): Workerman\MySQL\Connection->connect()
-#2 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php(19): Workerman\MySQL\Connection->__construct('47.106.253.110', '3306', 'crowd', 'crowd', 'crowd')
+#2 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php(19): Workerman\MySQL\Connection->__construct('81.71.87.121', '3306', 'crowd', 'crowd', 'crowd')
 #3 [internal function]: Events::onWorkerStart(Object(GatewayWorker\BusinessWorker))
 #4 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\gateway-worker\src\BusinessWorker.php(223): call_user_func('Events::onWorke...', Object(GatewayWorker\BusinessWorker))
 #5 [internal function]: GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
@@ -113,12 +113,12 @@ Stack trace:
 2020-06-02 08:07:38 pid:1 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://doc2.workerman.net/send-buffer-to-worker-fail.html
 2020-06-02 08:07:38 pid:1 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://doc2.workerman.net/send-buffer-to-worker-fail.html
 2020-06-02 08:07:44 pid:1 Register auth timeout (127.0.0.1). See http://doc2.workerman.net/register-auth-timeout.html
-2020-06-02 08:07:55 pid:1 exception 'PDOException' with message 'SQLSTATE[HY000] [2002] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓÐÕýÈ·´ð¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓÐ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
+2020-06-02 08:07:55 pid:1 exception 'PDOException' with message 'SQLSTATE[HY000] [2002] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½È·ï¿½ð¸´»ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð·ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½Ê§ï¿½Ü¡ï¿½
 ' in E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Connection.php:1716
 Stack trace:
 #0 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Connection.php(1716): PDO->__construct('mysql:dbname=cr...', 'crowd', 'crowd', Array)
 #1 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Connection.php(1702): Workerman\MySQL\Connection->connect()
-#2 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php(19): Workerman\MySQL\Connection->__construct('47.106.253.110', '3306', 'crowd', 'crowd', 'crowd')
+#2 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\application\push\Events.php(19): Workerman\MySQL\Connection->__construct('81.71.87.121', '3306', 'crowd', 'crowd', 'crowd')
 #3 [internal function]: Events::onWorkerStart(Object(GatewayWorker\BusinessWorker))
 #4 E:\install\phpshudy\PHPTutorial\WWW\myproject\wxgroup\php\vendor\workerman\gateway-worker\src\BusinessWorker.php(223): call_user_func('Events::onWorke...', Object(GatewayWorker\BusinessWorker))
 #5 [internal function]: GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))

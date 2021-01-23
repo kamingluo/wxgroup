@@ -16,7 +16,7 @@ class Events
     public static function onWorkerStart($worker)
     {
      
-        self::$db = new \Workerman\MySQL\Connection('47.106.253.110', '3306', 'crowd', 'crowd', 'crowd');
+        self::$db = new \Workerman\MySQL\Connection('81.71.87.121', '3306', 'crowd', 'crowd', 'crowd');
     }
 
     /**
