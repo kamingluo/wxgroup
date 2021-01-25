@@ -32,11 +32,12 @@ class Statistics
         $clickcustom=db('click_gdt_ad')->where('adtype',5)->whereTime('create_time', 'today')->group("user_id")->count();//今日点击模板广告去重数
         $clickxmad=db('click_gdt_ad')->where('adtype',6)->whereTime('create_time', 'today')->count();//今日点击小盟广告数
         $showinterstitialad=db('click_gdt_ad')->where('adtype',7)->whereTime('create_time', 'today')->count();//今日展示插屏广告数
+        $quchongshowinterstitialad=db('click_gdt_ad')->where('adtype',7)->whereTime('create_time', 'today')->group("user_id")->count();//今日展示插屏广告数去重
 
 
         
         $data = ['registerusers' =>$registerusers,'activeusers'=>$activeusers,'builtcrowd'=>$builtcrowd,'joincrowd'=>$joincrowd,'crowd_news'=>$crowd_news,
-        'sigin'=>$sigin,'lottery'=>$lottery,'task_record'=>$task_record,'clickbanner'=>$clickbanner,'seevideo'=>$seevideo,'clickgrid'=>$clickgrid,'clickvideo'=>$clickvideo,'clickcustom'=>$clickcustom,'clickxmad'=>$clickxmad,'showinterstitialad'=>$showinterstitialad];
+        'sigin'=>$sigin,'lottery'=>$lottery,'task_record'=>$task_record,'clickbanner'=>$clickbanner,'seevideo'=>$seevideo,'clickgrid'=>$clickgrid,'clickvideo'=>$clickvideo,'clickcustom'=>$clickcustom,'clickxmad'=>$clickxmad,'showinterstitialad'=>$showinterstitialad,'quchongshowinterstitialad'=>$quchongshowinterstitialad];
         $state=['state'   => '200','message'  => "常规数据" ];
         $resdata=array_merge($state,array('data'=>$data));
         return $resdata;
