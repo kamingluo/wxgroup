@@ -33,8 +33,11 @@ class Home
           $swiperdata=db('index_swiper')->where('open',0)->where('display','<>',1)->order('id asc')->select();//非自然渠道
           $message="非自然渠道数据";
         }
+        $modeldata=array(
+          // ['id'=>'1','title'=>'弹框广告','type'=>1,'imageurl'=>'https://ossweb-img.qq.com/images/lol/web201310/skin/big91012.jpg','url'=>'/pages/webview/webview?url=https://mp.weixin.qq.com/s/pGMr4pEV-d-tm0ZcT0gO-Q']
+        );
         $state=['state'   => '200','message'  => $message ];
-        $resdata=array_merge($state,array('swiperdata'=>$swiperdata));
+        $resdata=array_merge($state,array('swiperdata'=>$swiperdata),array('modeldata'=>$modeldata));
         return $resdata ;
     }
 

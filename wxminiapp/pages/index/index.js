@@ -17,6 +17,7 @@ Page({
     imageurl: 'https://group.gzywudao.top/php/public/',//默认图片链接
     display:false,
     swiperdata:[],//首页轮播图数据
+    modeldata: [],//首页弹框数据
     usergrouplist:[],//用户加入群列表
     ifauthorized:false,
     banneradshow:true,
@@ -85,6 +86,7 @@ Page({
       success: res => {
         this.setData({
           swiperdata: res.swiperdata,
+          modeldata: res.modeldata
         })
       }
     })
@@ -301,27 +303,21 @@ Page({
   },
   
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
+  //点击弹框广告跳转
+  clickjump: function (e) {
+    console.log("点击弹框", e)
+    common.insidejump(e.currentTarget.dataset.data)
+    this.setData({
+      modeldata: [],
+    })
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    
-  },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    
+  hideModal:function(){
+    this.setData({
+      modeldata:[],
+    })
   },
-
   /**
    * 用户点击右上角分享
    */
