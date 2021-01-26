@@ -34,7 +34,7 @@ class Home
           $message="非自然渠道数据";
         }
         $modeldata=array(
-          ['id'=>'1','title'=>'弹框广告','type'=>1,'imageurl'=>'https://ossweb-img.qq.com/images/lol/web201310/skin/big91012.jpg','url'=>'/pages/webview/webview?url=https://weixinkefu.vip']
+          //['id'=>'1','title'=>'弹框广告','type'=>1,'imageurl'=>'https://ossweb-img.qq.com/images/lol/web201310/skin/big91012.jpg','url'=>'/pages/webview/webview?url=https://weixinkefu.vip']
         );
         $state=['state'   => '200','message'  => $message ];
         $resdata=array_merge($state,array('swiperdata'=>$swiperdata),array('modeldata'=>$modeldata));
