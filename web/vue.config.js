@@ -48,17 +48,22 @@ module.exports = {
   //  pwa: {},
   // webpack-dev-server 相关配置
   devServer: {
-    host: '0.0.0.0',
+    host: '127.0.0.1',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+    hotOnly: false,
     disableHostCheck: true
   },
   // devServer: {
-  //   // open: process.platform === 'darwin',
-  //   // host: '0.0.0.0',
-  //   // port: 8080,
-  //   //https: false,
-  //   // hotOnly: false,
-  //   // proxy: null, // 设置代理
-  //   // before: app => {}
+  //   disableHostCheck: true,
+  //   open: process.platform === 'darwin',
+  //   host: '0.0.0.0',
+  //   port: 8080,
+  //   https: false,
+  //   hotOnly: false,
+  //   proxy: null, // 设置代理
+  //   before: app => {},
   //   proxy: 'http://qa.mis.quark.wmdev2.lsh123.com'
   // },
   //    // 第三方插件配置

@@ -1,7 +1,4 @@
 <template>
-
-
-
   <div class="table">
     <div class="crumbs">
       <el-breadcrumb separator="/">
@@ -53,7 +50,7 @@
 
          <el-table-column prop="nickName" label="用户昵称" width="160">
          <template slot-scope="scope" style="height:100px">
-            <el-text>{{scope.row.nickName?scope.row.nickName:"未授权"}}</el-text>
+            <p>{{scope.row.nickName?scope.row.nickName:"未授权"}}</p>
           </template>
         </el-table-column>
 
@@ -65,7 +62,7 @@
 
           <el-table-column prop="gender" label="性别" width="120">
          <template slot-scope="scope" style="height:100px">
-            <el-text>{{scope.row.gender == 2?"女":scope.row.gender == 1 ?"男":"未知"}}</el-text>
+            <p>{{scope.row.gender == 2?"女":scope.row.gender == 1 ?"男":"未知"}}</p>
           </template>
         </el-table-column>
 
@@ -112,9 +109,9 @@
 
 
      <!-- 编辑弹出框 -->
-    <el-dialog title="删除群" :visible.sync="delVisible" width="30%">
+    <el-dialog title="删除用户" :visible.sync="delVisible" width="30%">
       <el-form ref="form" :model="form" label-width="120px">
-        <el-text>确认删除？？</el-text>
+        <p>确认删除？？</p>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="delVisible = false">取 消</el-button>
@@ -150,7 +147,7 @@
 
 <script>
 export default {
-  name: "basetable",
+  name: "Users",
   data() {
     return {
       url: "./static/vuetable.json",

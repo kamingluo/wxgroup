@@ -263,7 +263,7 @@
             return {
                 name: localStorage.getItem('ms_username'),
                 usersdata:'',
-                statistics:null,
+                statistics:{},
                 channeldata:[],
                 allusersnumber:0,
                 channelif:false,
