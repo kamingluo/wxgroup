@@ -18,6 +18,19 @@
 </view>
 
 
+<view style="margin-top: 1rpx;margin-bottom: 5rpx;" wx:if="{{exchangelist.length > 0}}">
+	<view class="cu-bar bg-white solid-bottom">
+		<view class="action">
+			<text style="font-weight: 600;">今日兑换:{{changestatistics.today}}</text> <text style="font-weight: 600;margin-left: 15rpx;">本月兑换:{{changestatistics.month}}</text> <text style="font-weight: 600;margin-left: 15rpx;">总兑换:{{changestatistics.all}}</text>
+		</view>
+
+    <view class="action">
+			
+		</view>
+	</view>
+</view>
+
+
 <view class="cu-list menu-avatar" wx:if="{{exchangelist.length > 0}}">
 	<view class="cu-item " wx:for="{{exchangelist}}" wx:key="item" data-data="{{item}}" bindtap="clicklist">
 		<view class="cu-avatar radius lg" style="background-image:url({{item.images}});"></view>

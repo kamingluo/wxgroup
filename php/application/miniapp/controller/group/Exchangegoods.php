@@ -67,6 +67,20 @@ class Exchangegoods
         return $resdata ;
     }
 
+    //群兑换统计
+    public function changestatistics(Request $request)
+    {
+        $crowd_id=$request->param("crowd_id");//群id
+       
+        $data["all"]=db('exchange_record')->where('crowd_id',$crowd_id)->count();//总兑换数
+        $data["today"]=db('exchange_record')->where('crowd_id',$crowd_id)->whereTime('create_time', 'today')->count();//今天兑换用户
+        $data["month"]=db('exchange_record')->where('crowd_id',$crowd_id)->whereTime('create_time', 'month')->count();//本月兑换用户
+    	  $state=['state'   => '200','message'  => "群兑换统计" ,'data'=>$data];
+        $resdata=array_merge($state,array('data'=>$data));
+        return $resdata ;
+    }
+
+
 
 
     //群主发货

@@ -14,6 +14,7 @@ Page({
    */
   data: {
     exchangelist: [],
+    changestatistics:{},
     crowd_id: null,
     crowd_name: null,
     user_type: 0,
@@ -28,7 +29,28 @@ Page({
       user_type: options.user_type
     })
     this.userexchangelist(1)
+    this.changestatistics()
    
+  },
+
+
+  //查询该群兑换统计
+  changestatistics: function (pages) {
+    var that = this
+    var crowd_id = that.data.crowd_id
+    request({
+      service: 'group/exchangegoods/changestatistics',
+      method: 'GET',
+      data: {
+        crowd_id: crowd_id,
+      },
+      success: res => {
+        console.log("群兑换统计",res.data)
+        that.setData({
+          changestatistics: res.data,
+        })
+      },
+    })
   },
 
 
@@ -37,7 +59,7 @@ Page({
     var that =this
     var crowd_id = that.data.crowd_id
     request({
-      service: 'group/Exchangegoods/groupexchangelist',
+      service: 'group/exchangegoods/groupexchangelist',
       method: 'GET',
       data: {
         pages:pages,
