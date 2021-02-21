@@ -1,5 +1,4 @@
-
-<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"  >
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
   <view slot="backText">返回</view>
   <view slot="content">兑换记录</view>
 </cu-custom>
@@ -10,7 +9,7 @@
 
 
 <view wx:if="{{exchangelist.length > 0}}">
-  <view  wx:for="{{exchangelist}}" wx:key="item" >
+  <view wx:for="{{exchangelist}}" wx:key="item">
     <view class="exchange-list  centered  radius shadow bg-white">
       <view class="exchange-list-body ">
         <view class="exchange-list-time-body">
@@ -24,8 +23,8 @@
               </view>
             </view>
             <view>
-              <text  wx:if="{{item.state==1}}" style="color:green" > 已发货</text>
-              <text  wx:elif="{{item.state==2}}" style="color:red"  > 审核失败</text>
+              <text wx:if="{{item.state==1}}" style="color:green"> 已发货</text>
+              <text wx:elif="{{item.state==2}}" style="color:red"> 审核失败</text>
               <text wx:else> 未发货</text>
             </view>
           </view>
@@ -36,11 +35,11 @@
               <image src="{{item.images}}"></image>
             </view>
             <view class="exchange-list-goods-body-name  centered">
-            <view>
-              <view class="good-name">
-                <text>{{item.goodsname}}</text>
-              </view>
-              <view class="goods-score">{{item.price}}积分</view>
+              <view>
+                <view class="good-name">
+                  <text>{{item.goodsname}}</text>
+                </view>
+                <view class="goods-score">{{item.price}}积分</view>
               </view>
             </view>
           </view>
@@ -50,7 +49,7 @@
             <view class=" exchange-list-adress-icon">
               <text class='cuIcon-locationfill  iconsize text-orange'></text> </view>
             <view>
-            
+
               <view>
                 <text decode="{{true}}">收货人：{{item.userName}} &nbsp;&nbsp;&nbsp;&nbsp;    {{item.telNumber}}</text>
               </view>
@@ -60,14 +59,21 @@
             </view>
           </view>
         </view>
-        <view class="exchange-list-express-body" >
-          <view class="exchange-list-express" wx:if="{{item.state != 0}}">
-            <view class=" exchange-list-express-number" >
+               <view class="exchange-list-express-body" wx:if="{{item.state != 0}}">
+          <view class="exchange-list-express" wx:if="{{item.state == 1}}">
+            <view class=" exchange-list-express-number">
               <text>{{item.exchange_type==1?"奖励信息：":"快递单号："}}{{item.expressnumber? item.expressnumber: "无任何信息"}}</text>
             </view>
-            <view class="exchange-list-express-query" wx:if="{{item.expressnumber}}" >
-               <button class="cu-btn lines-blue round"  wx:if="{{item.exchange_type == 1}}" data-expressnumber="{{item.expressnumber}}" bindtap="copydata" >复制</button>
-               <button class="cu-btn lines-blue round"  wx:else  data-expressnumber="{{item.expressnumber}}" bindtap="queryexpress" >查询</button>
+            <view class="exchange-list-express-query" wx:if="{{item.expressnumber}}">
+              <button class="cu-btn lines-blue round" wx:if="{{item.exchange_type == 1}}" data-expressnumber="{{item.expressnumber}}" bindtap="copydata">复制</button>
+              <button class="cu-btn lines-blue round" wx:else data-expressnumber="{{item.expressnumber}}" bindtap="queryexpress">查询</button>
+            </view>
+          </view>
+          <view class="exchange-list-express" wx:else>
+            <view>
+              <view class=" exchange-list-express-number">
+                <text style="color:red">兑换审核不通过原因:{{item.expressnumber? item.expressnumber: "无任何信息"}}</text>
+              </view>
             </view>
           </view>
         </view>

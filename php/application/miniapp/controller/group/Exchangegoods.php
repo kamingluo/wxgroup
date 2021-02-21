@@ -88,13 +88,14 @@ class Exchangegoods
     {
 
     	$id=$request->param("exchange_id");//兑换记录id
-    	$expressnumber=$request->param("expressnumber");//快递单号
-        $state=$request->param("state");//状态
-        $exchange_type=$request->param("exchange_type");//状态
-        if(!$exchange_type){
+    	$expressnumber=$request->param("expressnumber");//快递单号或者其他备注
+      $state=$request->param("state");//状态
+      $exchange_type=$request->param("exchange_type");//兑换类型，0是快递，1是其他
+      $time =date('Y-m-d H:i:s',time());
+      if(!$exchange_type){
             //不填写的默认是0，快递发货
             $exchange_type=0;
-        }
+      }
     	if($state == 1){
     		//审核通过发货
     		$dbdata= db('exchange_record')->where('id',$id)->update(['expressnumber' => $expressnumber,'exchange_type' => $exchange_type,'state' => 1]);
@@ -105,7 +106,21 @@ class Exchangegoods
             return $resdata ;
     	}
     	else{
-    		$dbdata= db('exchange_record')->where('id',$id)->update(['state' => 2]);
+        //修改审核不通过状态
+        $dbdata= db('exchange_record')->where('id',$id)->update(['state' => 2,'expressnumber' => $expressnumber]);
+        //返还积分给用户
+        $exdata=db('exchange_record')->where('id',$id)->find();
+        $crowd_id=$exdata["crowd_id"];
+        $user_id=$exdata["user_id"];
+        $openid=$exdata["openid"];
+        $price=$exdata["price"];
+        if($price > 0){
+          $addscore= db('user_crowd')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->setInc('score',$price);//找到该用户的群账户加积分
+          //加积分记录
+          $score_record_data = ['id'=>'','openid' =>$openid,'user_id' =>$user_id,'crowd_id' =>$crowd_id,'score' =>$price,'explain' => "商品兑换审核不通过退回",'state' =>0,'create_time' =>$time];
+          $score_record_id=db('score_record')->insert($score_record_data);
+        }
+
     		$state=['state'   => '200','message'  => "发货审核失败" ];
             $resdata=array_merge($state,array('dbdata'=>$dbdata));
             return $resdata ;

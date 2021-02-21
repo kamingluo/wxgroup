@@ -14,7 +14,9 @@ Page({
     loadModal: true,
     crowd_id:null,
     pages:1,
-    count:0
+    count:0,
+    keyword:null,
+    inputword:null
 
   },
 
@@ -44,12 +46,14 @@ Page({
   havedata:function(pages){
     var that=this;
     let crowd_id = that.data.crowd_id;
+    let keyword = that.data.keyword;
 
     request({
       service: 'task/handletask/alltasklists',
       data: {
         pages:pages,
         crowd_id: crowd_id,
+        keyword: keyword
       },
       success: res => {
         let alltasklists=this.data.alltasklists;
@@ -62,6 +66,25 @@ Page({
       },
     })
 
+  },
+
+
+//点击搜索词
+  clicksearch:function(){
+    let keyword = this.data.inputword;
+    this.setData({
+      pages: 1,
+      keyword: keyword,
+      alltasklists: []
+    })
+    this.havedata(1)
+  },
+
+//输入关键词
+  inputword:function(e){
+    this.setData({
+      inputword: e.detail.value
+    })
   },
 
 

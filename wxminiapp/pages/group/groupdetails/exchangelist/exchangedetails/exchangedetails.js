@@ -30,6 +30,7 @@ Page({
     console.log("进来的", options.changeid)
     this.setData({
       change_id: options.changeid,
+      expressnumber: null,
     })
 
     this.changedata()
@@ -167,12 +168,13 @@ Page({
       notpassmodel: false,
     })
     var exchange_id = this.data.change_id
+    var expressnumber = this.data.expressnumber || "无任何信息，请咨询群主"
     var that = this
     request({
       service: 'group/Exchangegoods/sendoutgoods',
       data: {
         exchange_id: exchange_id,
-        expressnumber:null,
+        expressnumber: expressnumber,
         state: 2,
       },
       success: res => {

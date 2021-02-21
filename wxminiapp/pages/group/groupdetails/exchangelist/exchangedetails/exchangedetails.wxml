@@ -174,7 +174,7 @@
       </view>
     </view>
     <view class="padding-xl">
-      审核不通过，不发货！
+      <input bindinput="expressnumber" value="{{expressnumber}}" maxlength='50' placeholder="请输入不通过信息"></input>
     </view>
     <view class="cu-bar bg-white justify-end">
       <view class="action">

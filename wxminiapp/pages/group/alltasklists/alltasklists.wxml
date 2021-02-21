@@ -4,10 +4,20 @@
 </cu-custom>
 
 
-<view class='cu-load load-modal'  wx:if="{{loadModal}}" >
+<view class="cu-bar search bg-white">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="输入昵称模糊搜索" bindinput='inputword' confirm-type="clicksearch"></input>
+  </view>
+  <view class="action">
+    <button class="cu-btn bg-green shadow-blur round" bindtap="clicksearch">搜索</button>
+  </view>
+</view>
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
   <!-- <view class='cuIcon-emojifill text-orange'></view> -->
   <image src='../../../images/common/loading.svg' class='png' mode='aspectFit'></image>
-  <view  style='margin-top: 10rpx;'  class='gray-text'>加载中</view>
+  <view style='margin-top: 10rpx;' class='gray-text'>加载中</view>
 </view>
 
 
@@ -27,10 +37,10 @@
   </view>
 </view>
 
-<view  wx:else >
+<view wx:else>
   <view class='centered' wx:for="{{alltasklists}}" wx:key="item">
-    <view class='exchangelist  shadow-warp bg-white' bindtap='clicktasklist'  data-id='{{item.id}}' >
-      <view class='exchangedata '>
+    <view class='exchangelist  shadow-warp bg-white' bindtap='clicktasklist' data-id='{{item.id}}'>
+      <view class='exchangedata connent'>
         <view class='exchangegood'>
           用户昵称:
           <text style='font-weight: 600; color:#1cbbb4 ; font-size:30rpx; '>{{item.nickName}}</text>
@@ -41,7 +51,7 @@
         <view style='color:red' class='exchangetime' wx:if="{{item.state == 2}}">
           失败原因:{{item.result}}
         </view>
-         <view style='color:green' class='exchangetime' wx:if="{{item.state == 1}}">
+        <view style='color:green' class='exchangetime' wx:if="{{item.state == 1}}">
           获得积分:{{item.score}}分
         </view>
       </view>
