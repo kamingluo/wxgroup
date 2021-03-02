@@ -19,7 +19,8 @@ Page({
     banneradshow:true,
     siginnum:0,
     userranking:0,
-    adtype: null
+    adtype: null,
+    crowd_vip:false
 
 
   },
@@ -27,14 +28,17 @@ Page({
     let user_id = wx.getStorageSync('userdata').id;
     let avatarUrl = wx.getStorageSync('userdata').avatarUrl;
     let nickName = wx.getStorageSync('userdata').nickName;
+    let crowd_vip = wx.getStorageSync('crowd_vip') || false;
     this.setData({
       crowd_id: e.crowd_id,
       crowd_name: e.crowd_name,
       user_type:e.user_type,
       user_id: user_id,
       avatarUrl: avatarUrl,
-      nickName: nickName
+      nickName: nickName,
+      crowd_vip: crowd_vip
     })
+
 
     this.gdtinsertad()//加载插屏广告
     this.havetime() //当前时间获取
@@ -361,6 +365,11 @@ Page({
 
   //加载插屏广告
   gdtinsertad: function () {
+    let crowd_vip = wx.getStorageSync('crowd_vip') || false;
+    if (crowd_vip) {
+      console.log("vip群成员，不显示插屏广告")
+      return;
+    }
     let nowTime = Date.now();
     let insertadshowtime = wx.getStorageSync('insertadshowtime') || 0;
     if (nowTime - insertadshowtime < 7200000) {

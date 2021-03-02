@@ -209,7 +209,7 @@
       </view>
 
       <!-- 推广位置 -->
-      <view>
+      <view wx:if="{{!crowd_vip}}">
 
         <view class="ad-body animation-{{kaming?'shake':''}}" wx:if="{{adconfig.type==7}}">
           <view class='centered'>
@@ -267,7 +267,7 @@
 
 
       <!-- <view class="keeptab margin-top">请截屏后保存二维码</view> -->
-      <view class="keeptab margin-top animation-{{kaming?'shake':''}}" wx:if="{{banneradshow}}"> {{modeltips}}</view>
+      <view class="keeptab margin-top animation-{{kaming?'shake':''}}" wx:if="{{banneradshow && !crowd_vip}}"> {{modeltips}}</view>
       <!-- <view class="keeptab margin-top" wx:if="{{banneradshow}}"> {{modeltips}}</view> -->
 
       <view class="btn_close">

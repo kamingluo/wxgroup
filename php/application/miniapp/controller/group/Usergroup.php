@@ -14,13 +14,24 @@ class Usergroup
     	$wxcode =$request->param("code");
     	$openid=openid($wxcode);
         sleep(0.5);
-    	$sql = "select crowd.*,user_crowd.user_type,user_crowd.score from crowd ,user_crowd where user_crowd.crowd_id=crowd.id and user_crowd.user_openid='". $openid."';" ;
+    	  $sql = "select crowd.*,user_crowd.user_type,user_crowd.score from crowd ,user_crowd where user_crowd.crowd_id=crowd.id and user_crowd.user_openid='". $openid."';" ;
         $data = Db::query($sql); //拿到数据
+
+        //处理是否是群VIP
+        $vipdata="select count(*) as count from crowd_vip,user_crowd where user_crowd.crowd_id=crowd_vip.crowd_id and crowd_vip.vip = 0  and user_crowd.user_openid='". $openid."';" ;
+        $crowd_vip=false;
+        $vip = Db::query($vipdata); //拿到数据
+        $vipnum=$vip[0]['count'];
+        if($vipnum > 0)
+        {
+          $crowd_vip=true;
+        }
+
 
         $listad['adtype']=5;//首页广告id
         $listad['adid']='adunit-e026bd4735f3464e';
 
-        $state=['state'   => '200','message'  => "拿到用户加入群的列表" ];
+        $state=['state'   => '200','message'  => "拿到用户加入群的列表",'crowd_vip'=>$crowd_vip ];
         $resdata=array_merge($state,array('usergrouplist'=>$data),array('listad'=>$listad));
         return $resdata ;
     }

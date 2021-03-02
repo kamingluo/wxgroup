@@ -22,7 +22,8 @@ Page({
     ifauthorized:false,
     banneradshow:true,
     listad:{},//群列表广点通广告
-    adtype: null//展示广告类型
+    adtype: null,//展示广告类型
+    crowd_vip:false//是否群vip
   },
 
   /**
@@ -113,8 +114,11 @@ Page({
             that.setData({
               listad: res.listad,
               usergrouplist: res.usergrouplist,
+              crowd_vip: res.crowd_vip
             })
-            if (res.usergrouplist.length < 3){
+            wx.setStorageSync('crowd_vip', res.crowd_vip)
+            
+            if (res.usergrouplist.length < 2){
               setTimeout(function () {
                 that.usergroup2()
               }, 2000)   
@@ -138,9 +142,11 @@ Page({
           },
           success: res => {
             that.setData({
-              listad:res.listad
+              listad:res.listad,
+              crowd_vip: res.crowd_vip
             })
-            if (res.usergrouplist.length < 2) {
+            wx.setStorageSync('crowd_vip', res.crowd_vip)
+            if (res.usergrouplist.length < 1) {
               setTimeout(function () {
                 that.usergroup3()
               }, 2000)
@@ -164,7 +170,9 @@ Page({
           success: res => {
             that.setData({
               usergrouplist: res.usergrouplist,
+              crowd_vip: res.crowd_vip
             })
+            wx.setStorageSync('crowd_vip', res.crowd_vip)
           },
         })
       }

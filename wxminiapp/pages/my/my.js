@@ -23,14 +23,17 @@ Page({
     vipdisplay:false,
     condition:1,//会员开通情况，0是已经开通且有效，1是未开通过，2是已经过期
     end_time:"",//会员结束时间
-    adtype: null//展示广告类型
+    adtype: null,//展示广告类型
+    crowd_vip: false//是否群vip
     
 
   },
   onLoad: function (e) {
     let imageurl = baseConfig.imageurl;
+    let crowd_vip = wx.getStorageSync('crowd_vip') || false;
     this.setData({
       imageurl: imageurl,
+      crowd_vip: crowd_vip
     })
 
     this.gdtinsertad()//加载插屏广告
@@ -216,7 +219,13 @@ Page({
   gdtinsertad: function () {
     let nowTime = Date.now();
     let insertadshowtime=wx.getStorageSync('insertadshowtime') || 0 ;
-    if(nowTime - insertadshowtime < 7200000){
+    let crowd_vip = wx.getStorageSync('crowd_vip') || false;
+    console.log("拿到vip情况", !crowd_vip)
+    if (crowd_vip){
+      console.log("vip群成员，不显示插屏广告")
+      return;
+    }
+    if(nowTime - insertadshowtime < 7200000 ){
       console.log("时间未到不展示广告")
       return;
     }

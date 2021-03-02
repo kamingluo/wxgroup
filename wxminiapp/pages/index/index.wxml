@@ -30,7 +30,6 @@
   </view>
   <view class='cu-tabbar-height'></view>
 
-
   <!-- 广点通视频广告开始-->
   <view class='centered  video-body' wx:if="{{display}}">
     <view class='gdtad' style="opacity: 0">
@@ -107,7 +106,7 @@
       <!-- 用户群列表结束 -->
 
 
-      <view class='centered' wx:if="{{usergrouplist.length > 0 && listad}}">
+      <view class='centered' wx:if="{{usergrouplist.length > 0 && listad && !crowd_vip}}">
         <view class="gdtad-body"> 
           <!-- <gdtad adtype="{{listad.adtype}}" adid="{{listad.adid}}" position="首页"></gdtad> -->
           <newgdtad adtype="{{adtype}}"  position="首页"></newgdtad>
