@@ -116,6 +116,24 @@ class Usergroup
      }
 
 
+
+     //修改群信息
+     public function updategroups(Request $request)
+     {
+         $crowd_name =$request->param("crowd_name");
+         $crowd_id =$request->param("crowd_id");
+         $logo=$request->param("logo");
+         $introduce=$request->param("introduce");
+         $wxnumber=$request->param("wxnumber");
+         $crowd_ownerid=$request->param("crowd_ownerid");
+         $updategroup= db('crowd')->where('id',$crowd_id)->where('crowd_ownerid',$crowd_ownerid)->update(['crowd_name' => $crowd_name,'logo' => $logo,'wxnumber' => $wxnumber,'introduce' =>$introduce]);
+         $state=['state'   => '200','message'  => "修改群信息成功" ];
+         $resdata=array_merge($state,array('updategroup'=>$updategroup));
+         return $resdata ;
+     }
+
+
+
     //删除群
     public function deletegroup(Request $request)
     {
@@ -127,15 +145,24 @@ class Usergroup
             return $state;
          }
          else{
-            $crowd=db('crowd')-> where('id',$crowd_id)->delete();
             $crowd_goods=db('crowd_goods')-> where('crowd_id',$crowd_id)->delete();
             $crowd_news=db('crowd_news')-> where('crowd_id',$crowd_id)->delete();
             $exchange_record=db('exchange_record')-> where('crowd_id',$crowd_id)->delete();
             $score_record=db('score_record')-> where('crowd_id',$crowd_id)->delete();
             $task_record=db('task_record')-> where('crowd_id',$crowd_id)->delete();
             $user_crowd=db('user_crowd')-> where('crowd_id',$crowd_id)->delete();
+            $crowd_vip=db('crowd_vip')-> where('crowd_id',$crowd_id)->delete();
+            $chat_config=db('chat_config')-> where('crowd_id',$crowd_id)->delete();
+            $chat_keyword=db('chat_keyword')-> where('crowd_id',$crowd_id)->delete();
+            $chat_punchcard_crowd_config=db('chat_punchcard_crowd_config')-> where('crowd_id',$crowd_id)->delete();
+            $chat_user_crowd_punchcard_data=db('chat_user_crowd_punchcard_data')-> where('crowd_id',$crowd_id)->delete();
+            $chat_user_punchcard_data=db('chat_user_punchcard_data')-> where('crowd_id',$crowd_id)->delete();
+            $sigin_user_crowd_data=db('sigin_user_crowd_data')-> where('crowd_id',$crowd_id)->delete();
+            $signin_crowd_config=db('signin_crowd_config')-> where('crowd_id',$crowd_id)->delete();
+            $signin_user_data=db('signin_user_data')-> where('crowd_id',$crowd_id)->delete();
+            $crowd=db('crowd')-> where('id',$crowd_id)->delete();//最后才删除群
 
-            $state=['state'   => '200','message'  => "删除群成功" ];
+            $state=['state'   => '200','message'  => "删除群和群信息成功" ];
             return $state;
              
          }
