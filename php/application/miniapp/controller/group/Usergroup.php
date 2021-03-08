@@ -116,11 +116,12 @@ class Usergroup
      }
 
 
-        //删除群
+    //删除群
     public function deletegroup(Request $request)
     {
-         $crowd_id =$request->param("crowd_id");
-         $crowd_data =db('crowd')->where('id',$crowd_id)->find();
+         $crowd_id =$request->param("crowd_id");//群id
+         $crowd_ownerid =$request->param("crowd_ownerid");//群主用户id
+         $crowd_data =db('crowd')->where('id',$crowd_id)->where('crowd_ownerid',$crowd_ownerid)->find();
          if($crowd_data == null ){
             $state=['state'   => '200','message'  => "不存在的群" ];
             return $state;
