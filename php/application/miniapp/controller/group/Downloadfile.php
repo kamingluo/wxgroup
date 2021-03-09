@@ -91,6 +91,31 @@ class Downloadfile
         
     }
 
+    //Db::table('think_user')->whereTime('birthday', 'between', ['1970-10-1', '2000-10-1'])->select();时间区间查询
+    public function tasklist(Request $request)
+    {
+        $crowd_id=$request->param("crowd_id");//群id
+        $state=$request->param("state");//兑换记录的状态，状态值：0，未审核，1，已经审核，2，审核不通过 3.是全部
+        $sendmode=$request->param("sendmode");//发送方式，0是直接下载列表。1是发送到邮箱
+        $starttime=$request->param("starttime");//开始时间
+        $endtime=$request->param("endtime");//结束时间
+
+        if($state){
+            $list= db('task_record')->where('crowd_id',$crowd_id)->whereTime('create_time', 'between', [$starttime, $endtime])->select();//时间区间查询
+
+        }
+        else{
+            $list= db('task_record')->where('crowd_id',$crowd_id)->where('state',$state)->whereTime('create_time', 'between', [$starttime, $endtime])->select();//时间区间查询
+        }
+
+
+
+        return "群用户任务列表";
+
+
+    }
+
+
 
 
 
