@@ -62,3 +62,6 @@
 
 }
 
+.deletebtn{
+  margin-top: 20rpx;
+}

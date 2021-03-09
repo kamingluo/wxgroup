@@ -12,9 +12,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    usertasklist: null,
+    usertasklist: [],
     loadModal: true,
     crowd_id: null,
+    deteleid: null,
+    deteleModal: false,
+    pages: 1,
+    count: 0
 
   },
 
@@ -25,29 +29,81 @@ Page({
     this.setData({
       crowd_id: options.crowd_id,
     })
+    
+    this.gdtinsertad() //加载插屏广告
+    this.havetasklist(1)
+  },
+
+
+
+  havetasklist: function (pages){
+    var that=this
     var user_id = wx.getStorageSync('userdata').id
+    var crowd_id = this.data.crowd_id
     request({
       service: 'group/userdata/usergrouptasklist',
       data: {
+        pages: pages,
         user_id: user_id,
-        crowd_id: options.crowd_id
+        crowd_id: crowd_id
       },
       success: res => {
-        //console.log('用户兑换列表页面', res);
-        this.setData({
-          usertasklist: res.usertasklist,
+        let usertasklist = this.data.usertasklist;
+        var newusertasklist = [...usertasklist, ...res.usertasklist];
+        that.setData({
+          usertasklist: newusertasklist,
+          count: res.count,
           loadModal: false,
         })
       },
     })
 
-    this.gdtinsertad()//加载插屏广告
+
   },
 
   clicktasklist: function(e) {
     console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
       url: '/pages/my/score_detailed/task_detailed/task_detailed?id=' + e.currentTarget.dataset.id
+    })
+
+  },
+
+  deletemode: function(e) {
+    console.log("删除id", e.currentTarget.dataset.id)
+    this.setData({
+      deteleid: e.currentTarget.dataset.id,
+      deteleModal: true,
+    })
+
+  },
+
+  hideModal: function() {
+    this.setData({
+      deteleModal: false,
+    })
+  },
+
+  //确认删除
+  confirmdel: function() {
+    var that=this
+    let task_id = this.data.deteleid;
+    let crowd_id = this.data.crowd_id;
+    let user_id = wx.getStorageSync('userdata').id
+    request({
+      service: 'task/usertask/deletetask',
+      data: {
+        user_id: user_id,
+        crowd_id: crowd_id,
+        task_id: task_id
+      },
+      success: res => {
+        that.setData({
+          deteleModal: false,
+          pages:1
+        })
+        that.havetasklist(1)
+      },
     })
 
   },
@@ -68,12 +124,12 @@ Page({
       return;
     }
 
-  let nowTime = Date.now();
-  let insertadshowtime=wx.getStorageSync('insertadshowtime') || 0 ;
-  if(nowTime - insertadshowtime < 7200000){
-    console.log("时间未到不展示广告")
-    return;
-  }
+    let nowTime = Date.now();
+    let insertadshowtime = wx.getStorageSync('insertadshowtime') || 0;
+    if (nowTime - insertadshowtime < 7200000) {
+      console.log("时间未到不展示广告")
+      return;
+    }
     var that = this;
     console.log("加载插屏广告")
     var insertad = 'adunit-547d5780f1b444d9';
@@ -118,13 +174,35 @@ Page({
         };
         common.clickgdtadstatistics(gdtdata)
         //显示成功修改一下广告展示时间
-      let nowTime = Date.now();
-      wx.setStorageSync('insertadshowtime',nowTime)
+        let nowTime = Date.now();
+        wx.setStorageSync('insertadshowtime', nowTime)
       } else {
         console.log("插屏广告显示失败")
       }
     }, 500);
   },
+
+
+  /**
+  * 页面上拉触底事件的处理函数
+  */
+  onReachBottom: function () {
+    var that = this
+
+    var count = that.data.count;//拿到总数
+    var pages = that.data.pages;
+    if (pages * 20 >= count) {
+      return;
+      console.log("达到数量，不加载")
+    }
+    else {
+      let newpages = pages + 1;
+      that.setData({
+        pages: newpages
+      })
+      that.havetasklist(newpages)
+    }
+  }
 
 
 })

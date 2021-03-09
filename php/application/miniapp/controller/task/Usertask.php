@@ -32,6 +32,20 @@ class Usertask
     }
 
 
+
+    //删除群任务
+    public function deletetask(Request $request)
+    {
+      $crowd_id =$request->param("crowd_id");
+      $user_id =$request->param("user_id");
+      $task_id=$request->param("task_id");
+      $cleardata=db('task_record')-> where('id',$task_id)-> where('user_id',$user_id)-> where('crowd_id',$crowd_id)->delete();
+      $state=['state'   => '200','message'  => "删除任务成功",'cleardata' => $cleardata];
+      return  $state;
+    
+    }
+
+
     
 
      //用户提交任务

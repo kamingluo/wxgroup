@@ -58,9 +58,12 @@
         </view>
       </view>
       <view class='exchangedata exchangstate'>
+      <view class="centered">
         <text style='color:#000000' wx:if="{{item.state == 0}}">待审核</text>
         <text style='color:green' wx:elif="{{item.state == 1}}">审核成功</text>
         <text style='color:red' wx:else>审核失败</text>
+      </view>
+      <view class="deletebtn" wx:if="{{item.state == 0}}" > <button class="cu-btn bg-blue round sm" catchtap='deletemode'>删除任务</button> </view>
       </view>
     </view>
   </view>
@@ -70,3 +73,26 @@
   </view>
 </view>
 
+
+
+
+<view class="cu-modal {{deteleModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">删除任务</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      确认是否该删除任务，一旦删除不能回复！
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="confirmdel">确定</button>
+
+      </view>
+    </view>
+  </view>
+</view>
