@@ -13,7 +13,7 @@ class Workerold extends Server
     protected $socket = 'websocket://127.0.0.1:1234';
     
 	/**
-	Workerman
+	 *Workerman
 	* 收到信息
 	* @param $connection
 	* @param $data
