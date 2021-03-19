@@ -43,7 +43,7 @@ Page({
       display: app.globalData.display || false
     })
 
-    let userchannel = wx.getStorageSync('userdata').channel
+    let userchannel = wx.getStorageSync('userdata').channel || null
     let scene = wx.getStorageSync('userdata').scene
     if (userchannel == null || userchannel == 0 && scene == 1047) {
       this.setData({

@@ -46,7 +46,7 @@ Page({
     //用户跳转成功统计
     commercestatistics: function () {
       let user_id = wx.getStorageSync('userdata').id || 0;
-      let channel = wx.getStorageSync('channel').id || 0;
+      let channel = wx.getStorageSync('userdata').channel || 0;
       let mall_type = 1;
       let goods_image_url = this.data.goodsdata.goods_thumbnail_url;
       let goods_name = this.data.goodsdata.goods_name;

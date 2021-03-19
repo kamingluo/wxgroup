@@ -205,8 +205,9 @@ Page({
   //用户注册
   getUserInfo: function (e) {
     let that = this;
+    channel=wx.getStorageSync('userdata').channel || 0
     var data = {
-      channel: wx.getStorageSync('userdata').channel,
+      channel: channel,
       crowd_id: 0,
       scene: wx.getStorageSync('userdata').scene,
     }
@@ -234,7 +235,7 @@ Page({
 
   //判断是否展示广告
   addisplay: function () {
-    let userchannel = wx.getStorageSync('userdata').channel
+    let userchannel = wx.getStorageSync('userdata').channel || 0
     let scene = wx.getStorageSync('userdata').scene
     if (userchannel == null || userchannel == 0 && scene == 1047) {
       this.setData({

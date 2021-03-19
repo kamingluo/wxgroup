@@ -216,8 +216,9 @@ Page({
 
   getUserInfo: function (e) {
     let that = this;
+    channel=wx.getStorageSync('userdata').channel || 0
     var data = {
-      channel: wx.getStorageSync('userdata').channel,
+      channel: channel,
       crowd_id: 0,
       scene: wx.getStorageSync('userdata').scene,
     }

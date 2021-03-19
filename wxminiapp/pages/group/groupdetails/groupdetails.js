@@ -596,7 +596,7 @@ onReachBottom: function() {
  */
 onShareAppMessage: function() {
   let log=this.data.crowddata.groupdata.logo || 'https://material.gzywudao.top/image/group/groupicon.png';
-  let userchannel = wx.getStorageSync('userdata').channel
+  let userchannel = wx.getStorageSync('userdata').channel || 0
   let nickName = wx.getStorageSync('userdata').nickName
   let crowd_id = this.data.crowd_id
   let crowd_name = this.data.crowddata.groupdata.crowd_name

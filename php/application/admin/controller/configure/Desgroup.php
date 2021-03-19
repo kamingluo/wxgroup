@@ -114,6 +114,17 @@ class Desgroup
        $score_record=db('score_record')-> where('crowd_id',$crowd_id)->delete();
        $task_record=db('task_record')-> where('crowd_id',$crowd_id)->delete();
        $user_crowd=db('user_crowd')-> where('crowd_id',$crowd_id)->delete();
+       $crowd_vip=db('crowd_vip')-> where('crowd_id',$crowd_id)->delete();
+       $chat_config=db('chat_config')-> where('crowd_id',$crowd_id)->delete();
+       $chat_keyword=db('chat_keyword')-> where('crowd_id',$crowd_id)->delete();
+       $chat_punchcard_crowd_config=db('chat_punchcard_crowd_config')-> where('crowd_id',$crowd_id)->delete();
+       $chat_user_crowd_punchcard_data=db('chat_user_crowd_punchcard_data')-> where('crowd_id',$crowd_id)->delete();
+       $chat_user_punchcard_data=db('chat_user_punchcard_data')-> where('crowd_id',$crowd_id)->delete();
+       $sigin_user_crowd_data=db('sigin_user_crowd_data')-> where('crowd_id',$crowd_id)->delete();
+       $signin_crowd_config=db('signin_crowd_config')-> where('crowd_id',$crowd_id)->delete();
+       $signin_user_data=db('signin_user_data')-> where('crowd_id',$crowd_id)->delete();
+       $crowd=db('crowd')-> where('id',$crowd_id)->delete();//最后才删除群
+
        $state=['state'   => '200','message'  => "删除群成功" ];
        return $state;
         
