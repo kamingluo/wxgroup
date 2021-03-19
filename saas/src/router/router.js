@@ -21,6 +21,11 @@ export default new Router({
           component: resolve => require(['../components/page/Dashboard.vue'], resolve),
           meta: { title: '系统首页' }
         },
+        {
+          path: '/tasks',
+          component: resolve => require(['../components/page/Tasks.vue'], resolve),
+          meta: { title: '任务审核' }
+        },
       ]
     },
     {

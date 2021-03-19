@@ -53,26 +53,31 @@ export default {
   },
   methods: {
     submitForm(formName) {
+      console.log("打印登录名称")
       console.log(this.ruleForm.username);
 
-      if (
-        this.ruleForm.username == "admin" &&
-        this.ruleForm.password == "admin"
-      ) {
-        this.$refs[formName].validate((valid) => {
+      this.url = 'user/login';
+      this.$axios.post(this.url,{name:this.ruleForm.username,password:this.ruleForm.password}).then((res) => {
+          console.log("登录返回消息",res)
+          // this.tableData = res.data.data;
+          // this.datapages=res.data.countnumber;
+          if(res.data.state == 200){
+            this.$refs[formName].validate((valid) => {
           if (valid) {
-            localStorage.setItem("ms_username", this.ruleForm.username);
-            localStorage.setItem("token", "12312313");
+            localStorage.setItem("ms_username", res.data.data.crowd_name);
+            localStorage.setItem("token", res.data.data.token);
+            localStorage.setItem("logo", res.data.data.logo);
             this.$router.push("/");
           } else {
             console.log("error submit!!");
             return false;
           }
         });
-      } else {
-        console.log("账号或者密码错误");
-        this.$message.error(`账号或者密码错误`);
-      }
+          }
+          else{
+            this.$message.error(`账号或者密码错误`);
+          }
+      })
     },
   },
 };

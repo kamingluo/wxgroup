@@ -18,7 +18,7 @@ class Tasks
     else{
       $number=($pages - 1)*10 ;
     }
-    $data=db('task_record')->where('crowd_id',$id)->where('state',0)->order('id desc')->limit($number,10)->select();
+    $data=db('task_record')->where('crowd_id',$id)->where('state',0)->order('id ASC')->limit($number,10)->select();
     $countnumber=db('task_record')->where('crowd_id',$id)->where('state',0)->count();
     $state=['state'   => '200','message'  => "任务查询成功" ];
     $resdata=array_merge($state,array('countnumber'=>$countnumber),array('data'=>$data));

@@ -19,7 +19,7 @@ class User
         }
         else{
 
-            $sql = "select a.token,b.crowd_name  from crowd_admin_user a,crowd b where  a.crowd_id=b.id  and a.name='".$name."' and a.password=". $password .";";
+            $sql = "select a.token,b.crowd_name,b.logo from crowd_admin_user a,crowd b where  a.crowd_id=b.id  and a.name='".$name."' and a.password='". $password ."';";
             $data = Db::query($sql); //拿到数据
             $newdata=$data[0];
             $state=['state'   => '200','message'  => "saas平台用户登录" ];

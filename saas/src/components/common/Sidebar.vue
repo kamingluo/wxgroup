@@ -60,6 +60,11 @@ export default {
           index: "dashboard",
           title: "系统首页",
         },
+        {
+          icon: "el-icon-lx-present",
+          index: "tasks",
+          title: "任务审核",
+        },
       ],
     };
   },

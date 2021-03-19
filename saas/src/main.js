@@ -9,13 +9,12 @@ import '@/style/icon.css';
 // import '@/style/base.styl'
 // import '@/style/utility.less'
 
-// import './plugins/element.js'
 
 //使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {
   const role = localStorage.getItem('ms_username');
   const token = localStorage.getItem('token');
-  if (token && !role && to.path !== '/login') {
+  if (!token && to.path !== '/login') {
     next('/login');
   } else if (to.meta.permission) {
     // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
@@ -30,6 +29,7 @@ router.beforeEach((to, from, next) => {
       next();
     }
   }
+
 })
 
 

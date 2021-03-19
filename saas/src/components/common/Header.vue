@@ -18,7 +18,7 @@
           </el-tooltip>
         </div>
         <!-- 用户头像 -->
-        <div class="user-avator"><img src="../../assets/images/img.jpg" /></div>
+        <div class="user-avator"><img :src="logo" /></div>
         <!-- 用户名下拉菜单 -->
         <el-dropdown class="user-name" trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
@@ -41,21 +41,27 @@ export default {
     return {
       collapse: false,
       fullscreen: false,
-      name: "linxin",
+      name: "群记分",
+      logo:""
     };
   },
   computed: {
     username() {
+      console.log("名称")
       let username = localStorage.getItem("ms_username");
+      let logo = localStorage.getItem("logo");
+      this.logo=logo;
       return username ? username : this.name;
     },
   },
   methods: {
+
     // 用户名下拉菜单选择事件
     handleCommand(command) {
       if (command == "loginout") {
         localStorage.removeItem("ms_username");
         localStorage.removeItem("token");
+        localStorage.removeItem("logo");
         this.$router.push("/login");
       }
     },
