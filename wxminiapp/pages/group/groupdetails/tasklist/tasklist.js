@@ -100,7 +100,8 @@ Page({
       success: res => {
         that.setData({
           deteleModal: false,
-          pages:1
+          pages:1,
+          usertasklist: []
         })
         that.havetasklist(1)
       },
