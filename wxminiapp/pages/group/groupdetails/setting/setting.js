@@ -37,16 +37,24 @@ Page({
     let crowd_ownerid = this.data.crowddata.crowd_ownerid;
     request({
       service: 'group/usergroup/deletegroup',
-      data: data,
+      data: {
+        crowd_id: crowd_id,
+        crowd_ownerid: crowd_ownerid
+
+      },
       success: res => {
         wx.showToast({
           title: '删除成功',
           icon: 'none',
           duration: 2000,
         })
-        wx.reLaunch({
-          url: '/pages/index/index'
-        })
+
+        setTimeout(function () {
+          wx.reLaunch({
+            url: '/pages/index/index'
+          })
+        }, 1500)
+
       },
     })
 
@@ -151,7 +159,7 @@ Page({
     let data=this.data.crowddata
 
     console.log("保存修改",data)
-    if (data.crowd_name == null || crowd_name.logo == null) {
+    if (data.crowd_name == null || data.logo == null) {
       wx.showToast({
         title: '群名称或者群头像不能为空',
         icon: 'none',
@@ -180,58 +188,6 @@ Page({
 
 
 
-  confirmcreategroup: function (logo) {
-    var open = 0;
-    let display = app.globalData.display || false;
-    if (!display) {
-      var open = 1;
-    }
-    var that = this
-    var crowd_name = this.data.groupname
-    var groupcode = this.data.groupcode
-    var introduce = this.data.grouptext
-    let wxnumber = this.data.wxnumber
-    var logo = logo
-    wx.login({
-      success: res => {
-        request({
-          service: 'group/usergroup/setupgroup',
-          data: {
-            code: res.code,
-            crowd_name: crowd_name,
-            groupcode: groupcode,
-            introduce: introduce,
-            logo: logo,
-            wxnumber: wxnumber,
-            open: open
-          },
-          success: res => {
-            this.setData({
-              loadModal: false,
-            })
-            wx.showToast({
-              title: '创建群成功',
-              icon: 'none',
-              duration: 2500,
-            })
-            setTimeout(function () {
-              wx.switchTab({
-                url: '/pages/index/index'
-              })
-            }, 1500)
-          },
-          complete: res => {
-            this.setData({
-              loadModal: false,
-            })
-          },
-
-
-        })
-      }
-    })
-
-  },
 
 
   moredata: function () {
