@@ -9,6 +9,8 @@
     "pages/group/groupdetails/groupdetails",
     "pages/group/groupdetails/tasklist/tasklist",
     "pages/group/groupdetails/scorelist/scorelist",
+    "pages/group/groupdetails/setting/setting",
+    "pages/group/groupdetails/scoreranking/scoreranking",
     "pages/group/groupdetails/exchangelist/exchangelist",
     "pages/group/groupdetails/exchangelist/downloaddata/downloaddata",
     "pages/group/groupdetails/exchangelist/exchangedetails/exchangedetails",

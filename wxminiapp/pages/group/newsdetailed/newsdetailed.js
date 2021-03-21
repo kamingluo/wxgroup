@@ -44,12 +44,28 @@ Page({
 
 
 
-  clickimage: function(e) {
-    this.setData({
-      tankuang: true,
-      taskimageurl: e.currentTarget.dataset.data
+  // clickimage: function(e) {
+  //   this.setData({
+  //     tankuang: true,
+  //     taskimageurl: e.currentTarget.dataset.data
+  //   })
+  // },
+
+  //图片点击事件
+  clickimage: function (event) {
+    var src = event.currentTarget.dataset.data; //获取data-src
+    var imgList = this.data.newsdetails.images; //获取data-list
+    //图片预览
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: imgList // 需要预览的图片http链接列表
     })
   },
+
+
+
+
+
   closetankuang: function() {
     this.setData({
       tankuang: false

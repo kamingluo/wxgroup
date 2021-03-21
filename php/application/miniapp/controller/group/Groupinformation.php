@@ -44,7 +44,7 @@ class Groupinformation
     //修改群信息
     public function updategroupinformation(Request $request)
     {
-        $crowd_id=$request->param("crowd_id");
+        $crowd_id=$request->param("id");
         $crowd_name=$request->param("crowd_name");
         $introduce=$request->param("introduce");
         $logo=$request->param("logo");

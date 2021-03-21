@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "newgdtad": "/components/newgdtAd/index",
+    "kaming-button": "/components/kaming-button/index",
+    "xm-ad": "/components/xmAD/xmAD"
+  }
+}

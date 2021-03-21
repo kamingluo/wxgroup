@@ -43,7 +43,6 @@ class Handlegroup
          $state=['state'   => '200','message'  => "查询群用户列表成功",'count'=>$count ];
          $resdata=array_merge($state,array('groupuserlist'=>$groupuserlist));
          return $resdata ;
- 
      }
 
     

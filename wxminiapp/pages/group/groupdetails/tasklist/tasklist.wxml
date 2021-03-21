@@ -85,7 +85,7 @@
       </view>
     </view>
     <view class="padding-xl">
-      确认是否该删除任务，一旦删除不能回复！
+      确认是否该删除任务，一旦删除不能恢复！
     </view>
     <view class="cu-bar bg-white justify-end">
       <view class="action">

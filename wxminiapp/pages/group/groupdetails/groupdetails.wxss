@@ -1,12 +1,12 @@
 /* pages/groupdetails/groupdetails.wxss */
 
 .top {
-  height: 240rpx;
+  height: 260rpx;
   width: 100%;
 }
 
 .user {
-  height: 240rpx;
+  height: 260rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -69,6 +69,12 @@
   color: #e7ebed;
 }
 
+
+.setting image{
+  width: 20rpx;
+  height: 20rpx;
+}
+
 .qunchengyuan {
   display: flex;
   position: relative;
@@ -77,19 +83,26 @@
   color: #e7ebed;
   top: -20rpx;
 }
-
+.setting{
+  margin-top: 15rpx;
+ margin-left: 105rpx;
+ margin-bottom: 35rpx;
+}
+.otherjump{
+  margin-top: 100rpx;
+}
 .crowdright {
   position:absolute;
-  margin-top: 120rpx;
+  margin-top: 1rpx;
   margin-left: 270rpx;
   
 }
 .crowdright image{
-  width: 80rpx;
-  height: 80rpx;
+  width: 65rpx;
+  height: 65rpx;
 }
 .signinbtn{
-  left: 40rpx;
+  left: 45rpx;
 }
 
 .signinseting{

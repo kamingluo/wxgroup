@@ -1,0 +1,70 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">积分排名</view>
+</cu-custom>
+
+
+<!-- 签到记录&榜单开始 -->
+
+
+
+  <view wx:if="{{signinrankinglist.length > 0}}" class="record">
+    <view class="grid col-3 text-center padding-sm">
+      <view class="list l2" wx:if="{{signinrankinglist.length >= 3}}">
+        <view>
+          <image lazy-load="true" mode="widthFix" src="{{signinrankinglist[2].avatarUrl}}"></image>
+          <text class="name">{{signinrankinglist[2].nickName}}</text>
+          <text class="num">{{signinrankinglist[2].score}}积分</text>
+        </view>
+      </view>
+      <view class="list l1">
+        <view>
+          <image lazy-load="true" mode="widthFix" src="{{signinrankinglist[0].avatarUrl}}"></image>
+          <text class="name">{{signinrankinglist[0].nickName}}</text>
+          <text class="num">{{signinrankinglist[0].score}}积分</text>
+        </view>
+      </view>
+      <view class="list l3" wx:if="{{signinrankinglist.length >= 2}}">
+        <view>
+          <image lazy-load="true" mode="widthFix" src="{{signinrankinglist[1].avatarUrl}}"></image>
+          <text class="name">{{signinrankinglist[1].nickName}}</text>
+          <text class="num">{{signinrankinglist[1].score}}积分</text>
+        </view>
+      </view>
+    </view>
+
+    <view>
+      <view class="tr_line flex align-center">
+        <text></text>
+        <view class="flex-sub">排名</view>
+        <text>总积分数</text>
+      </view>
+      <view wx:for="{{signinrankinglist}}" wx:for-index="index" wx:key="item">
+        <view class="tr_line flex align-center justify-center">
+          <text>{{index+1}}.</text>
+          <view class="flex-sub flex align-center justify-center">
+            <image lazy-load="true" mode="widthFix" src="{{item.avatarUrl}}"></image>
+            <view class="name">{{item.nickName}}</view>
+          </view>
+          <text>{{item.score}}</text>
+        </view>
+      </view>
+    </view>
+    <view style='margin-top: 0rpx;margin-bottom: 20rpx;color:#aaaaaa;background-color:#f5f5f5' class='centered' wx:if="{{pages * 10 >= count}}">
+      <text>-------已经到底啦-------</text>
+    </view>
+  </view>
+
+  <view wx:else>
+    <view class='default'>
+      <view>
+        <image src='http://littlebox.luojiaming.vip/default.png'></image>
+      </view>
+      <view>
+        <text>暂无数据！</text>
+      </view>
+      <view>
+      </view>
+    </view>
+  </view>
+

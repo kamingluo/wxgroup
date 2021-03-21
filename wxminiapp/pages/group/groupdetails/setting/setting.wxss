@@ -1,0 +1,90 @@
+/* pages/creategroup/creategroup.wxss */
+
+
+.pages-body{
+  margin-bottom: 70rpx;
+}
+
+.video-body{
+  position: fixed;
+  top: 150rpx;
+  left: 40rpx;
+  z-index: -100;
+}
+
+.domes_title_1 {
+    font-size: 35rpx;
+    color: #000000;
+    margin-top: 10rpx;
+    text-align: center;
+    margin-bottom: -20rpx;
+}
+.domes_title_2{
+    font-size: 35rpx;
+    color: #666666;
+    margin-top: 5rpx;
+    text-align: center;
+    margin-bottom: 5rpx;
+
+}
+
+.ui_uploader_item{
+    float: left;
+    position: relative;
+    margin-right: 30rpx;
+    margin-top: 15rpx;
+    margin-bottom: 20rpx;
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.ui_uploader {
+    float: left;
+    position: relative;
+    margin-top: 15rpx;
+    margin-right: 25rpx;
+    margin-bottom: 25rpx;
+    width: 200rpx;
+    height:200rpx;
+    border: 2rpx solid #d9d9d9;
+    box-sizing: border-box;
+}
+
+
+.groupcode{
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  width: 96%;
+}
+
+.cu-form-group{
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+  width: 96%;
+}
+
+
+.task_text{
+  width: 90%;
+}
+
+.task_text textarea{
+  border: 2rpx solid #d9d9d9;
+  height: 200rpx;
+
+}
+
+
+
+.sumittask{
+  width: 100%;
+  bottom: 0;
+  margin-bottom: 30rpx;
+  margin-top: 20rpx;
+}
+.sumittask button{
+  width: 300rpx;
+
+}
+
+

@@ -51,18 +51,25 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
 
-  },
+  // clicktaskimage: function (e) {
+  //   console.log(e.currentTarget.dataset.data)
+  //   this.setData({
+  //     tankuang: true,
+  //     taskimageurl: e.currentTarget.dataset.data
+  //   })
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
+  // },
 
+  //图片点击事件
+  clicktaskimage: function (event) {
+    var src = event.currentTarget.dataset.data; //获取data-src
+    var imgList = this.data.taskdata.taskdetails.images; //获取data-list
+    //图片预览
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: imgList // 需要预览的图片http链接列表
+    })
   },
 
   /**
@@ -222,14 +229,7 @@ Page({
   },
 
 
-  clicktaskimage: function(e) {
-    console.log(e.currentTarget.dataset.data)
-    this.setData({
-      tankuang: true,
-      taskimageurl: e.currentTarget.dataset.data
-    })
 
-  },
 
   /*点击减号*/
   bindMinus: function() {

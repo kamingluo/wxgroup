@@ -67,8 +67,14 @@ Page({
     wx.navigateTo({
       url: '/pages/group/signseting/signseting?crowd_id=' + crowd_id + '&user_type=' + user_type,
     })
+  },
 
-
+  gosetting:function(){
+    let crowd_id = this.data.crowd_id
+    let user_type = this.data.user_type
+    wx.navigateTo({
+      url: '/pages/group/groupdetails/setting/setting?crowd_id=' + crowd_id + '&user_type=' + user_type,
+    })
   },
   signindata: function() {
     let crowd_id = this.data.crowd_id
@@ -83,6 +89,14 @@ Page({
     let user_type = this.data.user_type
     wx.navigateTo({
       url: '/pages/group/lottery/data/data?crowd_id=' + crowd_id + '&user_type=' + user_type,
+    })
+  },
+
+  scoreranking: function () {
+    let crowd_id = this.data.crowd_id
+    let user_type = this.data.user_type
+    wx.navigateTo({
+      url: '/pages/group/groupdetails/scoreranking/scoreranking?crowd_id=' + crowd_id + '&user_type=' + user_type,
     })
   },
 
