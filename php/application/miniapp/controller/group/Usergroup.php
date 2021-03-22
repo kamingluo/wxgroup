@@ -3,6 +3,7 @@ namespace app\miniapp\controller\group;
 use think\Db;
 use think\Request;
 use think\Config;
+use think\Log;
 
 class Usergroup
 {
@@ -10,9 +11,8 @@ class Usergroup
     //查询用户拥有的群列表
     public function Usergroup(Request $request)
     {
-
-    	$wxcode =$request->param("code");
-    	$openid=openid($wxcode);
+    	  $wxcode =$request->param("code");
+    	  $openid=openid($wxcode);
         sleep(0.5);
     	  $sql = "select crowd.*,user_crowd.user_type,user_crowd.score from crowd ,user_crowd where user_crowd.crowd_id=crowd.id and user_crowd.user_openid='". $openid."';" ;
         $data = Db::query($sql); //拿到数据
@@ -27,6 +27,11 @@ class Usergroup
           $crowd_vip=true;
         }
 
+        // $num=rand(1,10);
+        // if($num == 5){
+        //   Log::record('命中广告概率');
+        //   $crowd_vip=false;
+        // }
 
         $listad['adtype']=5;//首页广告id
         $listad['adid']='adunit-e026bd4735f3464e';
