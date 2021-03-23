@@ -12,6 +12,7 @@ class Usergroup
     public function Usergroup(Request $request)
     {
     	  $wxcode =$request->param("code");
+        $user_id =$request->param("user_id")  ;
     	  $openid=openid($wxcode);
         sleep(0.5);
     	  $sql = "select crowd.*,user_crowd.user_type,user_crowd.score from crowd ,user_crowd where user_crowd.crowd_id=crowd.id and user_crowd.user_openid='". $openid."';" ;
@@ -27,16 +28,18 @@ class Usergroup
           $crowd_vip=true;
         }
 
-        // $num=rand(1,10);
-        // if($num == 5){
-        //   Log::record('命中广告概率');
-        //   $crowd_vip=false;
-        // }
+        $ifadspecialshow=false;
+
+        $num=rand(1,10);
+        if($num == 5 && $user_id !="33127" && $user_id !="33128" && $user_id !="33129" && $user_id !="33083" && $user_id !="33356" && $user_id !="34013"){
+          Log::record('命中广告概率');
+          $ifadspecialshow=true;
+        }
 
         $listad['adtype']=5;//首页广告id
         $listad['adid']='adunit-e026bd4735f3464e';
 
-        $state=['state'   => '200','message'  => "拿到用户加入群的列表",'crowd_vip'=>$crowd_vip ];
+        $state=['state'   => '200','message'  => "拿到用户加入群的列表",'crowd_vip'=>$crowd_vip,'ifadspecialshow'=>$ifadspecialshow,'user_id'=>$user_id ];
         $resdata=array_merge($state,array('usergrouplist'=>$data),array('listad'=>$listad));
         return $resdata ;
     }

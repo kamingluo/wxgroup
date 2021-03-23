@@ -33,6 +33,7 @@ Page({
     TabCur: 0, //下面tab切换
     scrollLeft: 0,
     userdata: null,
+    ififgroupvip:false
   },
 
   /**
@@ -54,7 +55,7 @@ Page({
         crowd_id: options.id
       })
     }
-    this.gdtinsertad()//加载插屏幕广告
+    // this.gdtinsertad()//加载插屏幕广告
     this.incondata()
     this.groupdata(options.id)
     this.todaywhethersignin()
@@ -187,6 +188,7 @@ Page({
   },
 
   groupdata: function(crowd_id) {
+    var that=this
     request({
       service: 'group/groupinformation/groupdetails',
       method: 'GET',
@@ -194,9 +196,17 @@ Page({
         crowd_id: crowd_id,
       },
       success: res => {
-        this.setData({
+        that.setData({
           crowddata: res,
+          ifgroupvip: res.ifgroupvip
         })
+
+        wx.setStorageSync('ifgroupvip', res.ifgroupvip)
+        
+        if (!res.ifgroupvip){
+          that.gdtinsertad()//加载插屏幕广告
+          console.log("不是vip群，加载插屏广告")
+        }
       }
     })
   },
@@ -261,6 +271,20 @@ Page({
       this.setData({
         introducemodel: true,
       })
+      return;
+    }
+    let groupdata = this.data.crowddata.groupdata;
+    if (groupdata == null || groupdata==""){
+      wx.showToast({
+        title: '程序错误返回首页',
+        icon: 'none',
+        duration: 2000,
+      })
+      setTimeout(function () {
+        wx.reLaunch({
+          url: '/pages/index/index'
+        })
+      }, 1500)
       return;
     }
     let crowd_id = this.data.crowddata.groupdata.id
@@ -355,6 +379,20 @@ Page({
 
 //跳转到签到页面
 jumpsigin: function() {
+  let groupdata = this.data.crowddata.groupdata;
+  if (groupdata == null || groupdata == "") {
+    wx.showToast({
+      title: '程序错误返回首页',
+      icon: 'none',
+      duration: 2000,
+    })
+    setTimeout(function () {
+      wx.reLaunch({
+        url: '/pages/index/index'
+      })
+    }, 1500)
+    return;
+  }
   let joumurl = "/pages/group/usersigin/usersigin";
   let crowd_id = this.data.crowddata.groupdata.id;
   let crowd_name = this.data.crowddata.groupdata.crowd_name;
@@ -517,13 +555,6 @@ subscribe: function() {
 
 //加载插屏广告
 gdtinsertad: function () {
-
-  let crowd_vip = wx.getStorageSync('crowd_vip') || false;
-  if (crowd_vip) {
-    console.log("vip群成员，不显示插屏广告")
-    return;
-  }
-
   let nowTime = Date.now();
   let insertadshowtime=wx.getStorageSync('insertadshowtime') || 0 ;
   if(nowTime - insertadshowtime < 7200000){

@@ -209,7 +209,7 @@
       </view>
 
       <!-- 推广位置 -->
-      <view wx:if="{{!crowd_vip}}">
+      <view wx:if="{{!ifgroupvip || ifadspecialshow}}">
 
         <view class="ad-body animation-{{kaming?'shake':''}}" wx:if="{{adconfig.type==7}}">
           <view class='centered'>
@@ -232,9 +232,6 @@
         <view class="ad-body animation-{{kaming?'shake':''}}" wx:elif="{{adconfig.type==5}}">
           <view class='centered'>
             <view>
-              <!-- <ad-custom capture-bind:tap="gdtcustomadclick" class="gdtad" unit-id="{{adconfig.appid}}" bindload="banneradsuccess" binderror="banneraderr"></ad-custom> -->
-              <!-- <ad-custom  capture-bind:tap="gdtcustomadclick" unit-id="adunit-cb851dc9c3904d54"></ad-custom> -->
-              <!-- 广点通广告新组件 -->
               <newgdtad adtype="{{adtype}}" position="签到页面"></newgdtad>
             </view>
           </view>
@@ -267,9 +264,7 @@
 
 
       <!-- <view class="keeptab margin-top">请截屏后保存二维码</view> -->
-      <view class="keeptab margin-top animation-{{kaming?'shake':''}}" wx:if="{{banneradshow && !crowd_vip}}"> {{modeltips}}</view>
-      <!-- <view class="keeptab margin-top" wx:if="{{banneradshow}}"> {{modeltips}}</view> -->
-
+      <view class="keeptab margin-top animation-{{kaming?'shake':''}}" wx:if="{{banneradshow && !ifgroupvip}}"> {{modeltips}}</view>
       <view class="btn_close">
         <view class="action" bindtap="hideModal">
           <text class="cuIcon-close padding-sm" style="font-size:40rpx;font-weight: 600;"></text>

@@ -106,9 +106,8 @@
       <!-- 用户群列表结束 -->
 
 
-      <view class='centered' wx:if="{{usergrouplist.length > 0 && listad && !crowd_vip}}">
-        <view class="gdtad-body"> 
-          <!-- <gdtad adtype="{{listad.adtype}}" adid="{{listad.adid}}" position="首页"></gdtad> -->
+      <view class='centered' wx:if="{{usergrouplist.length > 0 }}">
+        <view class="gdtad-body" wx:if="{{!crowd_vip || ifadspecialshow}}"> 
           <newgdtad adtype="{{adtype}}"  position="首页"></newgdtad>
         </view>
       </view>

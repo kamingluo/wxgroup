@@ -21,9 +21,9 @@ Page({
     usergrouplist:[],//用户加入群列表
     ifauthorized:false,
     banneradshow:true,
-    listad:{},//群列表广点通广告
     adtype: null,//展示广告类型
-    crowd_vip:false//是否群vip
+    crowd_vip:false,//是否群vip
+    ifadspecialshow:false//是否强展示广告
   },
 
   /**
@@ -105,18 +105,23 @@ Page({
     var that =this
     wx.login({
       success: res => {
+        let user_id = wx.getStorageSync('userdata').id || 0;
         request({
           service: 'group/usergroup/usergroup',
           data: {
             code: res.code,
+            user_id: user_id
           },
           success: res => {
+            let crowd_vip = res.crowd_vip || false;
+            let ifadspecialshow = res.ifadspecialshow || false;//为true的话就展示广告
             that.setData({
-              listad: res.listad,
               usergrouplist: res.usergrouplist,
-              crowd_vip: res.crowd_vip
+              crowd_vip: crowd_vip,
+              ifadspecialshow: ifadspecialshow
             })
-            wx.setStorageSync('crowd_vip', res.crowd_vip)
+            wx.setStorageSync('crowd_vip', crowd_vip)
+            wx.setStorageSync('ifadspecialshow', ifadspecialshow)
             
             if (res.usergrouplist.length < 2){
               setTimeout(function () {
@@ -135,17 +140,17 @@ Page({
     var that = this
     wx.login({
       success: res => {
+        let user_id = wx.getStorageSync('userdata').id || 0;
         request({
           service: 'group/usergroup/usergroup',
           data: {
             code: res.code,
+            user_id: user_id
           },
           success: res => {
             that.setData({
-              listad:res.listad,
-              crowd_vip: res.crowd_vip
+              usergrouplist: res.usergrouplist,
             })
-            wx.setStorageSync('crowd_vip', res.crowd_vip)
             if (res.usergrouplist.length < 1) {
               setTimeout(function () {
                 that.usergroup3()
@@ -162,17 +167,17 @@ Page({
     var that = this
     wx.login({
       success: res => {
+        let user_id = wx.getStorageSync('userdata').id || 0;
         request({
           service: 'group/usergroup/usergroup',
           data: {
             code: res.code,
+            user_id: user_id
           },
           success: res => {
             that.setData({
               usergrouplist: res.usergrouplist,
-              crowd_vip: res.crowd_vip
             })
-            wx.setStorageSync('crowd_vip', res.crowd_vip)
           },
         })
       }
@@ -216,7 +221,7 @@ Page({
 
   getUserInfo: function (e) {
     let that = this;
-    channel=wx.getStorageSync('userdata').channel || 0
+    let channel = wx.getStorageSync('userdata').channel || 0
     var data = {
       channel: channel,
       crowd_id: 0,

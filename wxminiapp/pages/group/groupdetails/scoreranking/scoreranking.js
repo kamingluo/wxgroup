@@ -13,13 +13,10 @@ Page({
     signinrankinglist: [],//签到排行榜
     pages: 1,//默认第一页
     count: 0,
-    crowd_vip: false
   },
   onLoad: function (e) {
-    let crowd_vip = wx.getStorageSync('crowd_vip') || false;
     this.setData({
       crowd_id: e.crowd_id,
-      crowd_vip: crowd_vip
     })
     this.signinrankinglist(1)//签到排行榜
 

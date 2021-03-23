@@ -20,7 +20,8 @@ Page({
     siginnum:0,
     userranking:0,
     adtype: null,
-    crowd_vip:false
+    ifgroupvip:false,
+    ifadspecialshow:false
 
 
   },
@@ -28,7 +29,8 @@ Page({
     let user_id = wx.getStorageSync('userdata').id;
     let avatarUrl = wx.getStorageSync('userdata').avatarUrl;
     let nickName = wx.getStorageSync('userdata').nickName;
-    let crowd_vip = wx.getStorageSync('crowd_vip') || false;
+    let ifgroupvip = wx.getStorageSync('ifgroupvip') || false;
+    let ifadspecialshow = wx.getStorageSync('ifadspecialshow') || false;//强制显示广告
     this.setData({
       crowd_id: e.crowd_id,
       crowd_name: e.crowd_name,
@@ -36,7 +38,8 @@ Page({
       user_id: user_id,
       avatarUrl: avatarUrl,
       nickName: nickName,
-      crowd_vip: crowd_vip
+      ifgroupvip: ifgroupvip,
+      ifadspecialshow: ifadspecialshow
     })
 
 
@@ -365,8 +368,8 @@ Page({
 
   //加载插屏广告
   gdtinsertad: function () {
-    let crowd_vip = wx.getStorageSync('crowd_vip') || false;
-    if (crowd_vip) {
+    let ifgroupvip = wx.getStorageSync('ifgroupvip') || false;
+    if (ifgroupvip) {
       console.log("vip群成员，不显示插屏广告")
       return;
     }

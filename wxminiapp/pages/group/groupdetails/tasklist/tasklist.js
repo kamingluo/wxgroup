@@ -119,8 +119,8 @@ Page({
 
   //加载插屏广告
   gdtinsertad: function() {
-    let crowd_vip = wx.getStorageSync('crowd_vip') || false;
-    if (crowd_vip) {
+    let ifgroupvip = wx.getStorageSync('ifgroupvip') || false;
+    if (ifgroupvip) {
       console.log("vip群成员，不显示插屏广告")
       return;
     }

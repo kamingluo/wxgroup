@@ -3,6 +3,7 @@ const {
   request
 } = require('./../../../../utils/request.js');
 const app = getApp();
+let preventShake = 0;
 
 Page({
 
@@ -203,6 +204,13 @@ Page({
 
 
   sure: function () {
+    //防止快速多次触发
+    const nowTime = Date.now();
+    if (nowTime - preventShake < 2000) {
+      return
+    }
+    preventShake = nowTime;
+
     //获取群主的通知授权
     var that = this
     wx.requestSubscribeMessage({

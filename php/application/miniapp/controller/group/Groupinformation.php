@@ -14,10 +14,17 @@ class Groupinformation
          $groupdata=db('crowd')->where('id',$crowd_id)->find(); //群信息
          $groupnumber=db('user_crowd')->where('crowd_id',$crowd_id)->count();//群人数
          $groupowner=db('user')->where('id',$groupdata["crowd_ownerid"])->find(); //群主信息
+
+         $groupvip=db('crowd_vip')->where('crowd_id',$crowd_id)->find(); //会员信息
+         $ifgroupvip=true;
+         if($groupvip==null || $groupvip["vip"] != 0){
+           //没有会员
+           $ifgroupvip=false;
+         }
          $rule=json_decode($groupdata["rule"]);//先取出值，反转义一下
          unset($groupdata['rule']);//去除原来数据里面的值
          $newgroupdata=array_merge($groupdata,array('rule'=>$rule));//再把转义后的值增加进去
-         $state=['state'   => '200','message'  => "查询群详情成功" ];
+         $state=['state'   => '200','message'  => "查询群详情成功",'ifgroupvip'  => $ifgroupvip ];
          $resdata=array_merge($state,array('groupdata'=>$newgroupdata),array('groupowner'=>$groupowner),array('groupnumber'=>$groupnumber));
          return $resdata ;
     }

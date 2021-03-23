@@ -4,8 +4,9 @@ const request = (config) => {
     return false;
   }
   const data = config.data || {}
+  let channel = wx.getStorageSync('userdata').channel || 0
   const adddata={
-    channel: wx.getStorageSync('userdata').channel || 0,
+    channel:channel,
     // master_id: wx.getStorageSync('userdata').master_id || 0
   }
 
