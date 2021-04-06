@@ -9,7 +9,7 @@
 
 <view class="padding flex flex-direction">
   <button class="cu-btn bg-green lg" bindtap="copycode">复制优惠券码</button>
-  <button class="cu-btn bg-blue margin-tb-sm lg" bindtap="jumpyouzan">立即使用优惠券码</button>
+  <button class="cu-btn bg-blue margin-tb-xs lg" bindtap="jumpyouzan">立即使用优惠券码</button>
 </view>
 
 
@@ -30,4 +30,14 @@
       </view>
     </view>
   </view>
+</view>
+
+<view> 
+
+<view class="image-body centered" wx:for="{{imagedata}}" wx:key="item">
+ <view class="imagelist">
+    <image src="{{item}}"> </image>
+  </view>
+</view>
+
 </view>

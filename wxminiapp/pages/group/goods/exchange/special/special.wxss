@@ -4,12 +4,11 @@
 
 
 .tips-body{
-  width: 96%;
+  width: 92%;
   height: 300rpx;
   background-color: #fadbd9;
-  margin-bottom: 60rpx;
-  margin-top: 40rpx;
-  margin-left: 2%;
+  margin-bottom: 20rpx;
+  margin-left: 4%;
 }
 .tips{
   width: 95%;
@@ -33,3 +32,17 @@
 .tips-text text{
   font-size: 28rpx;
 }
+
+.image-body{
+  /* width: 96%;
+  margin-left: 2%; */
+
+}
+
+.imagelist{
+  margin-bottom: 10rpx;
+
+}
+/* .imagelist image{
+  width: 98%;
+} */
