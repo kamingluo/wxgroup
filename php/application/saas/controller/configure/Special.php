@@ -19,7 +19,7 @@ class Special
       $number=($pages - 1)*10 ;
     }
 
-    $data = db()->table(array('crowd_coupon_code_exchange'=>'t1','user'=>'t2','crowd_coupon_code'=>'t3'))->field('t1.id,t1.user_id,t2.nickName,t2.avatarUrl,t3.code,t1.create_time')->where('t2.id=t1.user_id')->where('t3.id=t1.coupon_id')->where('t1.crowd_id',$id)->order('id ASC')->limit($number,10)->select();
+    $data = db()->table(array('crowd_coupon_code_exchange'=>'t1','user'=>'t2','crowd_coupon_code'=>'t3'))->field('t1.id,t1.user_id,t2.nickName,t2.avatarUrl,t3.code,t1.create_time')->where('t2.id=t1.user_id')->where('t3.id=t1.coupon_id')->where('t1.crowd_id',$id)->order('id DESC')->limit($number,10)->select();
     $countnumber=db('crowd_coupon_code_exchange')->where('crowd_id',$id)->count();
     $state=['state'   => '200','message'  => "特殊兑换查询成功" ];
     $resdata=array_merge($state,array('countnumber'=>$countnumber),array('data'=>$data));
