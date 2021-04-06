@@ -122,17 +122,17 @@ Page({
             crowd_name: crowd_name
           },
           success: res => {
-            //console.log("兑换结果",res)
+            console.log("兑换结果",res)
             wx.showToast({
               title: '兑换成功',
               icon: 'none',
               duration: 2000,
             })
-            let coupon_code=res.data.coupon_code
-            let jumpurl=res.data.jumpurl
+            let coupon_code=res.coupon_code
+            let jumpurl=res.jumpurl
 
             //将特殊兑换说明图片放这里
-            let specialexchangeimagedata=res.data.imagedata
+            let specialexchangeimagedata=res.imagedata
             wx.setStorageSync('specialexchangeimagedata',specialexchangeimagedata)
 
             setTimeout(function () {
