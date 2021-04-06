@@ -129,15 +129,17 @@ Page({
               duration: 2000,
             })
             let coupon_code=res.coupon_code
-            let jumpurl=res.jumpurl
 
             //将特殊兑换说明图片放这里
             let specialexchangeimagedata=res.imagedata
             wx.setStorageSync('specialexchangeimagedata',specialexchangeimagedata)
 
+            let specialexchangejumpurl = res.jumpurl
+            wx.setStorageSync('specialexchangejumpurl', specialexchangejumpurl)
+
             setTimeout(function () {
               wx.navigateTo({
-                url: '/pages/group/goods/exchange/special/special?code=' + coupon_code + '&jumpurl=' + jumpurl
+                url: '/pages/group/goods/exchange/special/special?code=' + coupon_code
               })
             }, 1500)
           },

@@ -19,11 +19,14 @@ Page({
     let jumpurl=options.jumpurl;
     let code =options.code;
     let imagedata=wx.getStorageSync('specialexchangeimagedata') || [] ;
+    let specialexchangejumpurl = wx.getStorageSync('specialexchangejumpurl') || 'pages/index/index';
     this.setData({
-      jumpurl: jumpurl,
+      jumpurl: specialexchangejumpurl,
       code: code,
       imagedata:imagedata
     })
+
+    this.copycode()
   },
 
   copycode:function(){
