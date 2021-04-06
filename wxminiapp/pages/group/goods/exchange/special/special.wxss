@@ -1,0 +1,35 @@
+.coupon-size{
+  font-size: 40rpx;
+}
+
+
+.tips-body{
+  width: 96%;
+  height: 300rpx;
+  background-color: #fadbd9;
+  margin-bottom: 60rpx;
+  margin-top: 40rpx;
+  margin-left: 2%;
+}
+.tips{
+  width: 95%;
+  height: 250rpx;
+  background-color: white;
+  
+}
+.tips-text{
+  margin-top: 5rpx;
+  width: 100%;
+  word-break:break-all; 
+  margin-bottom: 8rpx;
+ 
+  
+}
+.tips-textbody{
+  width: 96%;
+  
+
+}
+.tips-text text{
+  font-size: 28rpx;
+}

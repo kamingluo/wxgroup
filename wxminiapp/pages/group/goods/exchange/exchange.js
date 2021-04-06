@@ -104,6 +104,43 @@ Page({
     })
   },
 
+  specialclickexchange: function() {
+    console.log("小嘴助手特殊商品兑换")
+    var goods_id = this.data.goods_id
+    var remarks = this.data.remarks
+    var crowd_id = this.data.crowd_id
+    var crowd_name = this.data.crowd_name
+    wx.login({
+      success: res => {
+        request({
+          service: 'group/groupgoods/specialexchangegoods',
+          data: {
+            code: res.code,
+            goods_id: goods_id,
+            remarks: remarks,
+            crowd_id: crowd_id,
+            crowd_name: crowd_name
+          },
+          success: res => {
+            //console.log("兑换结果",res)
+            wx.showToast({
+              title: '兑换成功',
+              icon: 'none',
+              duration: 2000,
+            })
+            let coupon_code=res.data.coupon_code
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '/pages/group/goods/exchange/special/special?code=' + coupon_code
+              })
+            }, 1500)
+          },
+        })
+      }
+    })
+
+  },
+
 
   remarks: function(e) {
     //console.log(e.detail.value)
@@ -115,29 +152,29 @@ Page({
 
   clickexchange: function() {
     console.log("点击兑换")
-    var that =this
-    if (!that.data.useraddress){
-        wx.showToast({
-              title: '请先添加地址',
-              icon: 'none',
-              duration: 2000,
-         })
-        return;
+    var that = this
+    if (!that.data.useraddress) {
+      wx.showToast({
+        title: '请先添加地址',
+        icon: 'none',
+        duration: 2000,
+      })
+      return;
     }
     wx.requestSubscribeMessage({
       tmplIds: ['SknRZZeUTqjuuOKPqxANRoZMl2jhUBJbwvd5P8JgjN8'],
-      success(res) { 
-        console.log("兑换成功授权",res)
+      success(res) {
+        console.log("兑换成功授权", res)
       },
-      complete(res){
-        console.log("兑换成功不成功都可以",res)
+      complete(res) {
+        console.log("兑换成功不成功都可以", res)
         that.confirmexchange()
 
       }
     })
   },
 
-  confirmexchange:function(){
+  confirmexchange: function() {
     var goods_id = this.data.goods_id
     var remarks = this.data.remarks
     var crowd_id = this.data.crowd_id
@@ -160,7 +197,7 @@ Page({
               icon: 'none',
               duration: 2000,
             })
-            setTimeout(function () {
+            setTimeout(function() {
               wx.navigateBack({
                 delta: 1
               })

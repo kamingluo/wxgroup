@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"enhance": false,
 		"postcss": true,
@@ -87,6 +87,13 @@
 					"name": "群设置",
 					"pathName": "pages/group/groupdetails/setting/setting",
 					"query": "crowd_id=14&user_type=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "兑换特殊页面",
+					"pathName": "pages/group/goods/exchange/special/special",
+					"query": "code=111",
 					"scene": null
 				}
 			]

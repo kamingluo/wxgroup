@@ -146,6 +146,79 @@ class Groupgoods
     }
 
 
+
+    //用户兑换商品
+    public function specialexchangegoods(Request $request)
+    {
+        $wxcode =$request->param("code");
+        $openid=openid($wxcode);
+        $goods_id=$request->param("goods_id");//商品id
+        $remarks=$request->param("remarks");//兑换备注
+        $crowd_id=$request->param("crowd_id");//群id
+        $crowd_name=$request->param("crowd_name");//群名称
+        $time =date('Y-m-d H:i:s',time());//获取当前时间
+
+
+        $goods_data=db('crowd_goods')->where('id',$goods_id)->find(); //拿到商品信息
+        $address_data=db('user_address')->where('openid',$openid)->find(); //拿到地址信息
+
+        if(!$address_data){
+          $state=['state'   => '400','message'  => "兑换失败，地址不能为空" ];
+          return $state;
+        }
+
+        $user_crowd_data=db('user_crowd')->where('user_openid',$openid)->where('crowd_id',$crowd_id)->find(); //用户的群信息
+        $user_data=db('user')->where('openid',$openid)->find(); //拿到用户信息
+
+        if($user_crowd_data["score"] >= $goods_data["price"] ){
+        //拿到优惠券信息
+        $coupondata=db('crowd_coupon_code')->where('state',0)->where('crowd_id',$crowd_id)->find(); //用户的群信息
+        if($coupondata == null){
+          $state=['state'   => '400','message'  => "兑换失败，奖品数量不足！" ];
+          return $state;
+        }
+
+
+        //修改优惠券已经使用
+        $updategroup= db('crowd_coupon_code')->where('id',$coupondata["id"])->update(['state' => 1 ,'update_time' =>$time]);
+
+        //增加优惠券使用记录
+        $couponexchangedata = ['id'=>'','user_id' =>$user_data["id"],'coupon_id' =>$coupondata["id"],'create_time' =>$time];
+        $coupon_exchange_id= db('crowd_coupon_code_exchange')->insertGetId($couponexchangedata);
+
+        //增加兑换记录
+        $exchangedata = ['id'=>'','user_id' =>$user_data["id"],'openid' => $openid,'nickName' => $user_data["nickName"],'crowd_id' => $crowd_id,'crowd_name' => $crowd_name,'userName' =>  $address_data["userName"],'postalCode' => $address_data["postalCode"],'provinceName'=>$address_data["provinceName"],'cityName' =>$address_data["cityName"],'countyName' =>$address_data["countyName"],'detailInfo' => $address_data["detailInfo"],'nationalCode' =>$address_data["nationalCode"],'telNumber' => $address_data["telNumber"],'goodsname' => $goods_data["goodsname"],'images'=> $goods_data["images"],'price' => $goods_data["price"],'expressnumber' =>$coupondata["code"],'remarks' => $remarks,'state' => 1,'exchange_type' =>1,'create_time' =>$time];
+        $exchange_id= db('exchange_record')->insertGetId($exchangedata);//返回自增ID
+
+
+        //减少用户积分
+        $reduce_score= db('user_crowd')->where('user_openid',$openid)->where('crowd_id',$crowd_id)->setDec('score', $goods_data["price"]);
+
+        //增加用户积分消耗记录
+        $score_record_data = ['id'=>'','openid' =>$openid,'user_id' =>$user_data["id"],'crowd_id' =>$crowd_id,'score' =>$goods_data["price"],'explain' => "兑换商品",'state' =>1,'create_time' =>$time];
+        $score_record_id=db('score_record')->insert($score_record_data);
+
+        $jumpurl="/pages/index/index"
+        $state=['state'   => '200','message'  => "兑换成功",'coupon_code' => $coupondata["code"],'jumpurl' => $jumpurl  ];
+        return $state;
+        }
+        else{
+          $state=['state'   => '400','message'  => "兑换失败，积分不足！" ];
+          return $state;
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
     //商品排序
      public function sortgoods(Request $request)
     {
