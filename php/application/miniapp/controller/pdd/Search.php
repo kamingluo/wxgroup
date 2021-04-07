@@ -41,9 +41,6 @@ class Search
       $goods_id=$request->param("goods_id");//商品id，传入形式要['54546566']
 
       $kaming="['".$goods_id."']";
-      // return $kaming;
-
-      
       // $kaming=gettype($goods_id);
       //  return $kaming;
 
