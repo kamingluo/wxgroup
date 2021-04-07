@@ -199,9 +199,11 @@ class Groupgoods
         $score_record_id=db('score_record')->insert($score_record_data);
 
         $jumpurl="packages/goods/detail/index?alias=2x5hxoumxpq65&shopAutoEnter=1 ";
+        // $imagedata = [
+        //   "https://material.gzywudao.top/couponexchange1.jpg",
+        //   "https://material.gzywudao.top/couponexchange2.jpg"
+        // ];
         $imagedata = [
-          "https://material.gzywudao.top/couponexchange1.jpg",
-          "https://material.gzywudao.top/couponexchange2.jpg"
         ];
         $miniappname="小程序名称";
         $state=['state'   => '200','message'  => "兑换成功",'coupon_code' => $coupondata["code"],'jumpurl' => $jumpurl,'imagedata' => $imagedata,'miniappname' => $miniappname  ];

@@ -17,16 +17,13 @@
   <view class="tips centered ">
     <view class="tips-textbody">
       <view class="tips-text">
-        <text>1.优惠券码由《大嘴博士官方》提供。</text>
+        <text>1.优惠券码由《大嘴博士官方》提供</text>
       </view>
       <view class="tips-text">
-        <text>2.使用请复制二维码跳转到《{{miniappname}}》小程序使用。</text>
+        <text>2.复制优惠码跳转《{{miniappname}}》商城即可使用</text>
       </view>
-      <!-- <view class="tips-text">
-        <text>3.请妥善保管二维码，优惠券码只能使用一次。</text>
-      </view> -->
       <view class="tips-text">
-        <text>3.如有使用问题，请联系《小嘴助教》，微信：xzzj233。</text>
+        <text>3.如有使用问题请联系微信：xzzj233。</text>
       </view>
         <view class="tips-text">
         <text>4.此次活动最终解释权归大嘴博士官方所有，群记分团队仅提供技术支持。</text>
@@ -39,7 +36,7 @@
 
 <view class="image-body centered" wx:for="{{imagedata}}" wx:key="item">
  <view class="imagelist">
-    <image src="{{item}}"> </image>
+    <image src="{{item}}" mode="widthFix"> </image>
   </view>
 </view>
 

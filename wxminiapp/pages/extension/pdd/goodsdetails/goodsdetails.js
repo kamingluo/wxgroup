@@ -13,12 +13,14 @@ Page({
   onLoad: function (options) {
     console.log(options)
     let search_id = options.search_id || 0;
-    let goods_id = Number(options.goods_id);
+    // let goods_id = Number(options.goods_id);
+    let goods_id =options.goods_id;
     this.setData({
       goods_id: goods_id,
       search_id: search_id
     })
-    let newgoodsid = [goods_id];
+    // let newgoodsid = [goods_id];
+    let newgoodsid = goods_id;
 
     this.goodsdata(newgoodsid)
     this.miniappurl(newgoodsid, search_id)

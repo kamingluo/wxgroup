@@ -82,7 +82,7 @@
 
 <view  class="exchange-button" >
 
-<button   bindtap="specialclickexchange"  wx:if="{{goods_id=='1314' || goods_id=='1316'|| goods_id=='1317' || goods_id=='1318' }}" > <kaming-button >立即兑换.</kaming-button ></button>
+<button   bindtap="specialclickexchange"  wx:if="{{goods_id=='1314' || goods_id=='1316'|| goods_id=='1317' || goods_id=='1318' }}" > <kaming-button >立即兑换</kaming-button ></button>
 <button   bindtap="clickexchange"  wx:else  > <kaming-button >立即兑换</kaming-button ></button>
 
 </view>

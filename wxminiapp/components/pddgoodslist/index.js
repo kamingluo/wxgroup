@@ -27,13 +27,18 @@ Component({
       }
       let goods_id = e.currentTarget.dataset.data.goods_id;
       let search_id = e.currentTarget.dataset.data.search_id;
+      let goods_sign = e.currentTarget.dataset.data.goods_sign;
+      if (!goods_sign){
+        goods_sign = e.currentTarget.dataset.data.goods_id;
+      }
+
       if (!search_id){
         console.log("没有搜索id,商品id作为搜索id")
         search_id = goods_id;
       }
       console.log("跳转到商品详情页")
       wx.navigateTo({
-        url: '/pages/extension/pdd/goodsdetails/goodsdetails?goods_id=' + goods_id + '&search_id=' + search_id
+        url: '/pages/extension/pdd/goodsdetails/goodsdetails?goods_id=' + goods_sign + '&search_id=' + search_id
       })
 
 
