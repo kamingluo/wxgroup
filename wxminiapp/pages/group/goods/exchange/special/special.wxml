@@ -3,13 +3,13 @@
   <view slot="content">兑换详情</view>
 </cu-custom>
 <view class="bg-grey padding-xl margin text-center">
-  <text class="coupon-size"> 优惠券码：12312312341234</text>
+  <text class="coupon-size"> 优惠券码：{{code}}</text>
 
 </view>
 
 <view class="padding flex flex-direction">
-  <button class="cu-btn bg-green lg">复制优惠券码</button>
-  <button class="cu-btn bg-blue margin-tb-sm lg">立即使用优惠券码</button>
+  <button class="cu-btn bg-green lg" bindtap="copycode">复制优惠券码</button>
+  <button class="cu-btn bg-blue margin-tb-sm lg" bindtap="jumpyouzan">立即使用优惠券码</button>
 </view>
 
 

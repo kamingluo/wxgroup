@@ -166,14 +166,14 @@ export default {
       form: {
         name: "",
         date: "",
-        address: ""
+        address: "",
       },
       idx: -1,
       delVisible: false,
-      imgVisible:false,
-      yulanimg:null,
+      imgVisible: false,
+      yulanimg: null,
       deleteid: "",
-      datapages: 0
+      datapages: 0,
     };
   },
   created() {
@@ -181,7 +181,7 @@ export default {
   },
   computed: {
     data() {
-      return this.tableData.filter(d => {
+      return this.tableData.filter((d) => {
         let is_del = false;
         for (let i = 0; i < this.del_list.length; i++) {
           if (d.name === this.del_list[i].name) {
@@ -190,110 +190,103 @@ export default {
           }
         }
       });
-    }
+    },
   },
   methods: {
     // 分页导航
     handleCurrentChange(val) {
       this.cur_page = val;
-      let select_word=this.select_word;
-      if(select_word ==  null || select_word == ""){
-          this.getData();
-      }
-      else{
-          this.gosearch(val);
+      let select_word = this.select_word;
+      if (select_word == null || select_word == "") {
+        this.getData();
+      } else {
+        this.gosearch(val);
       }
     },
 
     getData() {
       this.url = "configure/userdata/userlist";
-      this.$axios.post(this.url, { pages: this.cur_page }).then(res => {
+      this.$axios.post(this.url, { pages: this.cur_page }).then((res) => {
         console.log("用户列表信息", res);
         this.tableData = res.data.data;
         this.datapages = res.data.countnumber;
       });
     },
 
-    newsearch(){
-        this.cur_page = 1;
-        this.select_word="";
-        this.select_cate="1";
-        let url = "configure/userdata/userlist";
-        this.$axios.post(url, { pages:1 }).then(res => {
+    newsearch() {
+      this.cur_page = 1;
+      this.select_word = "";
+      this.select_cate = "1";
+      let url = "configure/userdata/userlist";
+      this.$axios.post(url, { pages: 1 }).then((res) => {
         console.log("群列表信息", res);
         this.tableData = res.data.data;
         this.datapages = res.data.countnumber;
       });
-
     },
 
     //筛选
-    search(){
-        console.log("点击筛选")
-        let select_word=this.select_word;//关键词
-        console.log("打印关键词",select_word)
-        if(select_word == null || select_word == ""){
-            console.log("11111111")
-            this.$message.error(`关键词不能为空！！！`);
-            return ;
-        }
+    search() {
+      console.log("点击筛选");
+      let select_word = this.select_word; //关键词
+      console.log("打印关键词", select_word);
+      if (select_word == null || select_word == "") {
+        console.log("11111111");
+        this.$message.error(`关键词不能为空！！！`);
+        return;
+      }
 
-        console.log("去筛选")
-        this.gosearch(1)
-
+      console.log("去筛选");
+      this.gosearch(1);
     },
 
-    gosearch(pages){
-        let select_cate=this.select_cate;//筛选方式
-        let select_word=this.select_word;//关键词
-        console.log("开始筛选",pages)
-        if(select_cate == "1"){
-            var resdata={
-                pages:pages,
-                id:select_word
-            };
-        }
-        else{
-            var resdata={
-                pages:pages,
-                crowd_name:select_word
-            };
-        }
-        let url = "configure/userdata/userlist";
-        this.$axios.post(url,resdata).then(res => {
+    gosearch(pages) {
+      let select_cate = this.select_cate; //筛选方式
+      let select_word = this.select_word; //关键词
+      console.log("开始筛选", pages);
+      if (select_cate == "1") {
+        var resdata = {
+          pages: pages,
+          id: select_word,
+        };
+      } else {
+        var resdata = {
+          pages: pages,
+          crowd_name: select_word,
+        };
+      }
+      let url = "configure/userdata/userlist";
+      this.$axios.post(url, resdata).then((res) => {
         console.log("搜索群返回", res);
         this.$message.success(`操作成功`);
         this.tableData = res.data.data;
         this.datapages = res.data.countnumber;
-        });
+      });
     },
 
-
     //调起删除
-    handleDelete(index, row){
-        console.log("点击删除的id",row.id)
-        this.deleteid=row.id;
-        this.delVisible=true;
-
+    handleDelete(index, row) {
+      console.log("点击删除的id", row.id);
+      this.deleteid = row.id;
+      this.delVisible = true;
     },
 
     //确认删除
-    confirmdelete(){
-     let id=this.deleteid;
-     let url = "configure/userdata/deleteuser?id=" + id;
-      this.$axios(url).then(res => {
+    confirmdelete() {
+      let id = this.deleteid;
+      let url = "configure/userdata/deleteuser?id=" + id;
+      this.$axios(url).then((res) => {
         console.log("删除用户返回", res);
         this.$message.success(`操作成功`);
-        this.delVisible=false;
+        this.delVisible = false;
         this.gosearch();
       });
     },
 
-    clickimg(e){
-        console.log("点击图片",e.target.src)
-        this.imgVisible=true;
-        this.yulanimg=e.target.src;
-
+    clickimg(e) {
+      console.log("点击图片", e.target.src);
+      this.imgVisible = true;
+      this.yulanimg = e.target.src;
     },
 
     handleEdit(index, row) {
@@ -312,7 +305,7 @@ export default {
 
       this.$axios
         .post("/admin.php/configure/examine/sendrewards", this.form)
-        .then(res => {
+        .then((res) => {
           console.log("修改信息返回数据", res);
           this.getData();
         });
@@ -320,7 +313,7 @@ export default {
 
     getuserData(openid) {
       this.url = "/admin.php/configure/dataquery/userdata";
-      this.$axios.post(this.url, { openid: openid }).then(res => {
+      this.$axios.post(this.url, { openid: openid }).then((res) => {
         console.log("用户操作信息", res.data);
         this.adminuserdata = res.data.userdata;
         this.admintaskdata = res.data.task;
@@ -331,16 +324,15 @@ export default {
 
     userdata() {
       this.userdataVisible = true;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-
-.yulan{
-    width:350px;
-    height:500px;
+.yulan {
+  width: 350px;
+  height: 500px;
 }
 
 /*.imgscrollable {
@@ -350,12 +342,11 @@ export default {
 
 }*/
 
-.taskimg{
+.taskimg {
   width: 220px;
   height: 280px;
-  margin-left:15px;
-  margin-bottom:10rpx;
-
+  margin-left: 15px;
+  margin-bottom: 10rpx;
 }
 .logo {
   width: 70px;

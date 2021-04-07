@@ -147,7 +147,7 @@ class Groupgoods
 
 
 
-    //用户兑换商品
+    //用户特殊兑换商品
     public function specialexchangegoods(Request $request)
     {
         $wxcode =$request->param("code");
@@ -183,7 +183,7 @@ class Groupgoods
         $updategroup= db('crowd_coupon_code')->where('id',$coupondata["id"])->update(['state' => 1 ,'update_time' =>$time]);
 
         //增加优惠券使用记录
-        $couponexchangedata = ['id'=>'','user_id' =>$user_data["id"],'coupon_id' =>$coupondata["id"],'create_time' =>$time];
+        $couponexchangedata = ['id'=>'','crowd_id' =>$crowd_id,'user_id' =>$user_data["id"],'coupon_id' =>$coupondata["id"],'create_time' =>$time];
         $coupon_exchange_id= db('crowd_coupon_code_exchange')->insertGetId($couponexchangedata);
 
         //增加兑换记录
@@ -199,7 +199,12 @@ class Groupgoods
         $score_record_id=db('score_record')->insert($score_record_data);
 
         $jumpurl="/pages/index/index"
-        $state=['state'   => '200','message'  => "兑换成功",'coupon_code' => $coupondata["code"],'jumpurl' => $jumpurl  ];
+        $imagedata=[
+          "http://material.gzywudao.top/tmp_abd260adef4bc3e863ac7ba5fabd98bd755b727deb64cb0c.jpg",
+          "http://material.gzywudao.top/tmp_a3e596ff6f234636ba4d6145f66e2c77879ef1990e8107d0.jpg",
+          "http://material.gzywudao.top/tmp_2269908e280c70647d201f61a80196907e9c5ccd4902eb93.jpg"
+        ]
+        $state=['state'   => '200','message'  => "兑换成功",'coupon_code' => $coupondata["code"],'jumpurl' => $jumpurl,'imagedata' => $imagedata  ];
         return $state;
         }
         else{
