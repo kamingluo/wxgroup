@@ -39,7 +39,15 @@ class Search
   //生成多多客链接
   public function goodspromotion(Request $request){
       $goods_id=$request->param("goods_id");//商品id，传入形式要['54546566']
-      $newgoods_id=[$goods_id];
+
+      $kaming="['".$goods_id."']";
+      // return $kaming;
+
+      
+      // $kaming=gettype($goods_id);
+      //  return $kaming;
+
+
       $search_id=$request->param("search_id");//商品id
       if(!$search_id){
         $search_id=$goods_id;
@@ -48,8 +56,8 @@ class Search
       $p_id=Config('pdd_p_id');
       $client_id=Config('pdd_client_id');
       $data=array(
-          // "goods_id_list"=>$goods_id,
-          "goods_sign_list"=>$newgoods_id,
+          // "goods_id_list"=>$kaming,
+          "goods_sign_list"=>$kaming,
           "search_id"=>$search_id,
           "p_id"=>$p_id,
           "generate_we_app"=>"true",

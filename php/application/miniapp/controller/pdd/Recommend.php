@@ -34,6 +34,13 @@ public function recommend(Request $request){
       $pages=$request->param("pages");//页数
       $channel_type=$request->param("channel_type");//类型1
       $cat_id=$request->param("cat_id");//类型2
+      $newcat_id=(int)$cat_id;
+
+      // $kaming=gettype($newcat_id);
+      //  return $kaming;
+      // return $newcat_id;
+
+
       if(!$pages){
         $pages=0;
       }
@@ -45,7 +52,7 @@ public function recommend(Request $request){
       $p_id=Config('pdd_p_id');
       $data=array(
           "limit"=>20,
-          "cat_id"=>$cat_id,
+          "cat_id"=>$newcat_id,
           "channel_type"=>$channel_type,
           "p_id"=>$p_id,
           "offset"=>$offset,

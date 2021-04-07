@@ -21,6 +21,7 @@ Page({
     })
     // let newgoodsid = [goods_id];
     let newgoodsid = goods_id;
+    let promotion = [goods_id];//查询优惠券
 
     this.goodsdata(newgoodsid)
     this.miniappurl(newgoodsid, search_id)
