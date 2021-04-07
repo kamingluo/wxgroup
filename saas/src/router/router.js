@@ -26,6 +26,11 @@ export default new Router({
           component: resolve => require(['../components/page/Tasks.vue'], resolve),
           meta: { title: '任务审核' }
         },
+        {
+          path: '/coupon',
+          component: resolve => require(['../components/page/Coupon.vue'], resolve),
+          meta: { title: '优惠券' }
+        },
       ]
     },
     {

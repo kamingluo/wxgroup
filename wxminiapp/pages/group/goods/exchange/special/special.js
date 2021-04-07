@@ -46,7 +46,8 @@ Page({
   jumpyouzan:function(){
     console.log("跳转到有赞")
     let jumpurl=this.data.jumpurl;
-    let appid="123123";
+    // let appid="wx14ca14fe25be6173";
+    let appid='wx06f06a73009388ff';
      //跳转有赞小程序
     wx.navigateToMiniProgram({
       appId: appid,

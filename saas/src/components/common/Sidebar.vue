@@ -65,6 +65,11 @@ export default {
           index: "tasks",
           title: "任务审核",
         },
+         {
+          icon: "el-icon-lx-present",
+          index: "coupon",
+          title: "优惠券",
+        },
       ],
     };
   },
