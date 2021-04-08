@@ -137,9 +137,11 @@ Page({
             let specialexchangejumpurl = res.jumpurl
             wx.setStorageSync('specialexchangejumpurl', specialexchangejumpurl)
 
+            let miniappname= res.miniappname
+
             setTimeout(function () {
               wx.navigateTo({
-                url: '/pages/group/goods/exchange/special/special?code=' + coupon_code
+                url: '/pages/group/goods/exchange/special/special?code=' + coupon_code +'&miniappname=' + miniappname
               })
             }, 1500)
           },

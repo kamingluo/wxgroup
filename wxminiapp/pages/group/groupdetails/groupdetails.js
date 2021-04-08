@@ -582,7 +582,7 @@ gdtinsertad: function () {
 
   setTimeout(function () {
     that.onshowgdtinsertad()
-  }, 2000);
+  }, 1000);
 
 
 },

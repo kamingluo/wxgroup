@@ -198,13 +198,14 @@ class Groupgoods
         $score_record_data = ['id'=>'','openid' =>$openid,'user_id' =>$user_data["id"],'crowd_id' =>$crowd_id,'score' =>$goods_data["price"],'explain' => "兑换商品",'state' =>1,'create_time' =>$time];
         $score_record_id=db('score_record')->insert($score_record_data);
 
-        $jumpurl="pages/common/blank-page/index.html?weappSharePath=/packages/goods/detail/index?bannerId=f.85661960~seckill.6~2~KNodhFby&alias=2x5hxoumxpq65&oid=0&version=2&notQueryVoucher=1&notQueryYouzanGuarantee=true&withSeckillError=true&kdt_id=43780509&umpType=seckill&umpAlias=80qb80r7&shopAutoEnter=1&is_share=1&share_cmpt=native_wechat&from_uuid=K5rpKDzQAYhkP2C1617791383102";
+        $jumpurl="pages/index/index";
         $imagedata = [
           "http://material.gzywudao.top/tmp_abd260adef4bc3e863ac7ba5fabd98bd755b727deb64cb0c.jpg",
           "http://material.gzywudao.top/tmp_a3e596ff6f234636ba4d6145f66e2c77879ef1990e8107d0.jpg",
           "http://material.gzywudao.top/tmp_2269908e280c70647d201f61a80196907e9c5ccd4902eb93.jpg"
         ];
-        $state=['state'   => '200','message'  => "兑换成功",'coupon_code' => $coupondata["code"],'jumpurl' => $jumpurl,'imagedata' => $imagedata  ];
+        $miniappname="小程序名称";
+        $state=['state'   => '200','message'  => "兑换成功",'coupon_code' => $coupondata["code"],'jumpurl' => $jumpurl,'imagedata' => $imagedata,'miniappname' => $miniappname  ];
         return $state;
         }
         else{

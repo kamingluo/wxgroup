@@ -7,7 +7,8 @@ Page({
   data: {
     jumpurl:null,
     code:null,
-    imagedata:[]
+    imagedata:[],
+    miniappname:null
 
   },
 
@@ -16,14 +17,15 @@ Page({
    */
   onLoad: function (options) {
     console.log("特殊页面进来的参数")
-    let jumpurl=options.jumpurl;
+    let miniappname=options.miniappname;
     let code =options.code;
     let imagedata=wx.getStorageSync('specialexchangeimagedata') || [] ;
     let specialexchangejumpurl = wx.getStorageSync('specialexchangejumpurl') || 'pages/index/index';
     this.setData({
       jumpurl: specialexchangejumpurl,
       code: code,
-      imagedata:imagedata
+      imagedata:imagedata,
+      miniappname:miniappname
     })
 
     this.copycode()
@@ -49,8 +51,8 @@ Page({
   jumpyouzan:function(){
     console.log("跳转到有赞")
     let jumpurl=this.data.jumpurl;
-    // let appid="wx14ca14fe25be6173";
-    let appid='wx06f06a73009388ff';
+    let appid="wx14ca14fe25be6173";
+    //let appid='wx06f06a73009388ff';
      //跳转有赞小程序
     wx.navigateToMiniProgram({
       appId: appid,
