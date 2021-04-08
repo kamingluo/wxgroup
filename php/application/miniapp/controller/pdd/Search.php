@@ -64,7 +64,7 @@ class Search
       $goods_id=$request->param("goods_id");//商品id
       $type="pdd.ddk.goods.detail";//查询的接口
       $data=array(
-          "goods_id_list"=>$goods_id,
+          "goods_sign"=>$goods_id,
           "type"=>$type
       );
       $goodsdetails=computeSignature($data);
