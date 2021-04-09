@@ -205,7 +205,7 @@ class Groupgoods
         // ];
         $imagedata = [
         ];
-        $miniappname="小程序名称";
+        $miniappname="大嘴博士购物车";
         $state=['state'   => '200','message'  => "兑换成功",'coupon_code' => $coupondata["code"],'jumpurl' => $jumpurl,'imagedata' => $imagedata,'miniappname' => $miniappname  ];
         return $state;
         }
