@@ -1,0 +1,81 @@
+华南
+长期存储，有回收机制
+grouplongtime
+5.发布群消息---消息图片
+4.发布抽奖活动--抽奖商品图片
+
+素材存放-平时一些设置类。推广类素材
+groupmaterial
+
+华东
+60天存储-任务图片，聊天图片等短时效图片
+groupsixty
+2.群员提交任务--任务图片
+6.群聊天发送图片---图片消息
+
+华北
+永久存储小改动数据
+永久存放数据-群logo，商品设置类
+grouppermanent
+1.创建群空间--群logo
+8.修改群logo--群logo
+7.群聊天自动回复设置 ---图片设置
+3.发布兑换商品--商品图片
+
+
+小程序中上传图片的功能
+已经有的
+1.创建群空间--群logo
+2.群员提交任务--任务图片
+3.发布兑换商品--商品图片
+4.发布抽奖活动--抽奖商品图片
+5.发布群消息---消息图片
+6.群聊天发送图片---图片消息
+7.群聊天自动回复设置 ---图片设置
+8.修改群logo--群logo
+
+待定开发
+1.限时任务--任务图片
+2.群友圈--发布图片
+3.广场--发布图片
+
+
+
+存储区域	地域简称	上传域名
+华东	z0	服务器端上传：http(s)://up.qiniup.com
+客户端上传： http(s)://upload.qiniup.com
+华北	z1	服务器端上传：http(s)://up-z1.qiniup.com
+客户端上传：http(s)://upload-z1.qiniup.com
+华南	z2	服务器端上传：http(s)://up-z2.qiniup.com
+客户端上传：http(s)://upload-z2.qiniup.com
+北美	na0	服务器端上传：http(s)://up-na0.qiniup.com
+客户端上传：http(s)://upload-na0.qiniup.com
+东南亚	as0	服务器端上传：http(s)://up-as0.qiniup.com
+客户端上传：http(s)://upload-as0.qiniup.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

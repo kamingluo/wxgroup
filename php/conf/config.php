@@ -11,10 +11,17 @@
 
 return [
     // +----------------------------------------------------------------------
-    // | 七牛云设置
+    // | 旧的七牛云设置
     // +----------------------------------------------------------------------
     'qiniuaccessKey'=>'cOtKv4WjF_QrS7Cb98oOo0zQrmzbJNmJGeoCsQB3',//七牛云的accessKey
     'qiniusecretKey'=>'tk2gLlSppyxjOWP6LGOsK4SNboyjIh44BAicYBXB',//七牛云的secretKey
+
+
+    // +----------------------------------------------------------------------
+    // | 新的七牛云设置
+    // +----------------------------------------------------------------------
+    'newqiniuaccessKey'=>'LU55vuK2bDt4AxaN53RccvVPxcvCMtkjXz9J-XHD',//七牛云的accessKey
+    'newqiniusecretKey'=>'xAf3T4o8Bs9Tdqcn1WQGAJlotLhsuGc94Y0TiDrP',//七牛云的secretKey
 
     // +----------------------------------------------------------------------
     // | 微信小程序设置
