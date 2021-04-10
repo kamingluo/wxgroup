@@ -198,7 +198,7 @@ class Groupgoods
         $score_record_data = ['id'=>'','openid' =>$openid,'user_id' =>$user_data["id"],'crowd_id' =>$crowd_id,'score' =>$goods_data["price"],'explain' => "兑换商品",'state' =>1,'create_time' =>$time];
         $score_record_id=db('score_record')->insert($score_record_data);
 
-        $jumpurl="packages/goods/detail/index?alias=2x5hxoumxpq65&shopAutoEnter=1 ";
+        $jumpurl="packages/goods/detail/index?alias=2fmzr0wcw3da7&shopAutoEnter=1";
         // $imagedata = [
         //   "https://material.gzywudao.top/couponexchange1.jpg",
         //   "https://material.gzywudao.top/couponexchange2.jpg"
