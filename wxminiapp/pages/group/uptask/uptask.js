@@ -174,10 +174,10 @@ Page({
           reject('error');
           console.log('error: ' + error);
         }, {
-          region: 'NCN',
-          uploadURL: 'https://up-z1.qiniup.com',
-          domain: 'https://groupqiniu.luojiaming.vip/',
-          uptokenURL: baseConfig.host + 'currency/qiniu',
+            region: 'ECN',
+            uploadURL: 'https://up.qiniup.com',
+            domain: 'http://groupsixty.gzywudao.top/',
+            uptokenURL: baseConfig.host + 'qiniu/groupsixty',
         })
       }
     }).then(function(imgList) {

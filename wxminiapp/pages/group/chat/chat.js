@@ -600,10 +600,10 @@ Page({
         reject('error');
         console.log('error: ' + error);
       }, {
-        region: 'SCN', //华南代号
-        uploadURL: 'https://up-z2.qiniup.com',
-        domain: 'http://groupchat.luojiaming.vip/',
-        uptokenURL: baseConfig.host + 'currency/qiniugroupchatdata',
+        region: 'ECN',
+        uploadURL: 'https://up.qiniup.com',
+          domain: 'http://groupsixty.gzywudao.top/',
+          uptokenURL: baseConfig.host + 'qiniu/groupsixty',
       })
     }).then(function (qiniuimgurl) {
       that.sendmsg(qiniuimgurl, "image") //拿到图片地址去发送消息

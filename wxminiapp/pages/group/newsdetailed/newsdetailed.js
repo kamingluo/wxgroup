@@ -134,36 +134,6 @@ Page({
 
 
 
-  // moredata: function () {
-  //   var that = this;
-  //   var imgList = []; //多张图片地址，保存到一个数组当中
-  //   var state = 0; //state记录当前已经上传到第几张图片
-  //   new Promise(function (resolve, reject) {
-  //     for (var i = 0; i < that.data.uploaderList.length; i++) {
-  //       qiniuUploader.upload(that.data.uploaderList[i], (res) => { //that.data.uploaderList逐个取出来去上传
-  //         state++;
-  //         imgList.push(res.imageURL);
-  //        // console.log(state) //输出上传到第几个了
-  //         if (state == that.data.uploaderList.length) {
-  //           resolve(imgList);
-  //         }
-  //       }, (error) => {
-  //         reject('error');
-  //         console.log('error: ' + error);
-  //       }, {
-  //           region: 'NCN',
-  //           uploadURL: 'https://up-z1.qiniup.com',
-  //           domain: 'https://groupqiniu.luojiaming.vip/',
-  //           uptokenURL: 'https://littlefun.gzywudao.top/php/public/index.php/index/qiniu/qiniu',
-  //         })
-  //     }
-  //   }).then(function (imgList) {
-  //    // console.log("多张图片返回结果上传数据库的", imgList)
-  //     that.uploadtask(imgList)
-
-  //   })
-  // },
-
 
 
   openSetting: function() {

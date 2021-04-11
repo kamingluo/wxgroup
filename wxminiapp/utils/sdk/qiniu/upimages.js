@@ -20,10 +20,10 @@ function oneimage(url, callback){
           reject('error');
           console.log('图片上传失败: ' + error);
         }, {
-            region: 'NCN',
-            uploadURL: 'https://up-z1.qiniup.com',
-            domain: 'https://groupqiniu.luojiaming.vip/',
-            uptokenURL: baseConfig.host + 'currency/qiniu',
+          region: 'SCN',
+          uploadURL: 'https://up-z2.qiniup.com',
+          domain: 'http://grouplongtime.gzywudao.top/',
+          uptokenURL: baseConfig.host + 'qiniu/grouplongtime',
           })
     }).then(function (imageURL) {
       // that.uploadtask(imgList)

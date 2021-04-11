@@ -176,10 +176,10 @@ Page({
           reject('error');
           console.log('error: ' + error);
         }, {
-            region: 'ECN',
-            uploadURL: 'https://up-z0.qiniup.com',
-            domain: 'http://material.gzywudao.top/',
-            uptokenURL: baseConfig.host+'currency/qiniumaterial',
+            region: 'NCN',
+            uploadURL: 'https://up-z1.qiniup.com',
+            domain: 'http://grouppermanent.gzywudao.top/',
+            uptokenURL: baseConfig.host + 'qiniu/grouppermanent',
           })
       }
     }).then(function (imgList) {
