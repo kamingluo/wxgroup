@@ -62,7 +62,8 @@
 <view class='centered  video-body'>
   <view class='gdtad' style="opacity: 0">
     <!-- <view class='gdtad'> -->
-    <ad capture-bind:tap="gdtvideoadclick" ad-intervals="30" unit-id="adunit-ccb8344e36d1ba8c" ad-type="video" ad-theme="white"></ad>
+    <ad capture-bind:tap="gdtvideoadclick" ad-intervals="30" unit-id="adunit-ccb8344e36d1ba8c" ad-type="video"
+      ad-theme="white"></ad>
   </view>
 </view>
 <!--广点通视频广告结束-->
@@ -104,7 +105,8 @@
       <text style="font-weight: 600;">联系客服回复“团购”入团购群</text>
     </view>
     <view class="action" hover-class="none">
-      <button class="cu-btn block bg-blue margin-tb-sm round " open-type="contact" session-from='{"nickName":"{{userdata.nickName}}{{userdata.id}}","avatarUrl":"{{userdata.avatarUrl}}"}'>
+      <button class="cu-btn block bg-blue margin-tb-sm round " open-type="contact"
+        session-from='{"nickName":"{{userdata.nickName}}{{userdata.id}}","avatarUrl":"{{userdata.avatarUrl}}"}'>
         <text class="cuIcon-hotfill"></text> 马上进群</button>
     </view>
   </view>
@@ -125,7 +127,7 @@
 
 <!-- 签到浮动icon -->
 <!-- <view class="signinbody" wx:if="{{todaywhethersignin}}"> -->
-<view class="signinbody" wx:if="{{signindata.state==0 &&userifsigin }}">
+<view class="signinbody" wx:if="{{signindata.state==0 &&userifsigin && TabCur == 0}}">
   <!-- <view class="signinicon" bindtap="usersignin"> -->
   <view class="signinicon" bindtap="jumpsigin">
     <image src="https://material.gzywudao.top/groupsignin.gif"></image>
@@ -138,8 +140,9 @@
 
   <scroll-view scroll-x class="bg-white nav">
     <view class="flex text-center">
-      <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{2}}" wx:key bindtap="tabSelect" data-id="{{index}}">
-        {{index==0?"群消息":"群抽奖"}}
+      <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{3}}" wx:key bindtap="tabSelect"
+        data-id="{{index}}">
+        {{index==0?"群消息":index==1?"群抽奖":"限时任务"}}
       </view>
     </view>
   </scroll-view>
@@ -211,12 +214,7 @@
   </view>
 
 
-
-
-
-
-
-  <view wx:else>
+  <view wx:elif="{{TabCur == 1}}">
     <!-- 群抽奖开始 -->
     <view wx:if="{{lotteryopenlist.length > 0}}">
       <view class="cu-card case " wx:for="{{lotteryopenlist}}" wx:key="item" wx:if="{{lotteryopenlist.length > 0}}">
@@ -235,7 +233,8 @@
                 <text wx:else>开奖说明：{{item.time_lottery}}开奖</text>
               </view>
               <view class="cu-list-text ">
-                <text>现在参与人数：{{item.count}}人 <text style="color:red" wx:if="{{item.score > 0}}">(参与需要积分:{{item.score}})</text></text>
+                <text>现在参与人数：{{item.count}}人 <text style="color:red"
+                    wx:if="{{item.score > 0}}">(参与需要积分:{{item.score}})</text></text>
               </view>
             </view>
           </view>
@@ -263,6 +262,46 @@
     <!-- 群抽奖结束 -->
   </view>
 
+  <view wx:else>
+
+    <view class="cu-card article {{isCard?'no-card':''}}">
+      <view class="cu-item shadow">
+        <view class="title">
+          <view class="text-cut">这是任务标题啊啊啊啊，每日可提交一次任务。。。。。</view>
+        </view>
+        <view class="content">
+          <image src="http://groupmaterial.gzywudao.top/onedayone.png" mode="aspectFill"></image>
+          <view class="desc">
+            <view class="text-content">这是任务详细说明，</view>
+            <view>
+              <view class="cu-tag bg-green light sm round">限量200</view>
+              <view class="cu-tag bg-red light sm round">2021-04-13 00:00:00结束任务</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="cu-card article {{isCard?'no-card':''}}">
+      <view class="cu-item shadow">
+        <view class="title">
+          <view class="text-cut">这是任务标题啊啊啊啊，每人限一次提交任务。。。。。</view>
+        </view>
+        <view class="content">
+          <image src="http://groupmaterial.gzywudao.top/userone.png" mode="aspectFill"></image>
+          <view class="desc">
+            <view class="text-content">这是任务详细说明，</view>
+            <view>
+              <view class="cu-tag bg-green light sm round">限量200</view>
+              <view class="cu-tag bg-red light sm round">2021-04-13 00:00:00结束任务</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
 
 </view>
 
@@ -276,7 +315,7 @@
 
 <!-- 
 邀请好友 -->
-<view class='share centered' wx:if="{{usertype}}">
+<view class='share centered' wx:if="{{usertype && TabCur == 0}}">
   <view class='sharebody centered'>
     <view>
       <kaming-button open-type='share'>
@@ -291,6 +330,19 @@
     </view>
   </view>
 </view>
+
+<!-- 
+发布限时任务 -->
+<view class='share centered' wx:if="{{usertype && TabCur == 2}}">
+  <view class='sharebody centered'>
+    <view>
+      <kaming-button bindtap="pushlimittask">
+        发布限时任务
+      </kaming-button>
+    </view>
+  </view>
+</view>
+
 
 
 
@@ -341,7 +393,8 @@
 
 <!-- /*签到成功弹框开始*/ -->
 <view class='tankuang' wx:if="{{signintankuang}}">
-  <view class='beijing' style="background-image: url('https://material.gzywudao.top/group_sign_bac.png');background-size: cover ">
+  <view class='beijing'
+    style="background-image: url('https://material.gzywudao.top/group_sign_bac.png');background-size: cover ">
     <view class='result'>
       <view class='blessing'>
         <text>签到成功！</text>

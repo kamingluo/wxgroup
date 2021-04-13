@@ -95,6 +95,7 @@
   position:absolute;
   margin-top: 1rpx;
   margin-left: 270rpx;
+  /* margin-left: 530rpx; */
   
 }
 .crowdright image{
@@ -282,6 +283,14 @@
   width: 130rpx;
   height: 150rpx;
   /* right: 5rpx; */
+}
+
+  /*限时任务*/
+.cu-card.article>.cu-item .content>image {
+	width: 190rpx;
+	height: 6.4em;
+	margin-right: 20rpx;
+	border-radius: 6rpx;
 }
 
 

@@ -445,6 +445,16 @@ closesignintankuang: function() {
   })
 },
 
+//发布限时任务
+pushlimittask:function(){
+
+   wx.showToast({
+            title: '开发中',
+            icon: 'success',
+            duration: 2000,
+          })
+},
+
 
 
 
