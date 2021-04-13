@@ -14,9 +14,6 @@ class Usergroup
     	  $wxcode =$request->param("code");
         $user_id =$request->param("user_id")  ;
     	  $openid=openid($wxcode);
-        sleep(0.5);
-    	  $sql = "select crowd.*,user_crowd.user_type,user_crowd.score from crowd ,user_crowd where user_crowd.crowd_id=crowd.id and user_crowd.user_openid='". $openid."';" ;
-        $data = Db::query($sql); //拿到数据
 
         //处理是否是群VIP
         $vipdata="select count(*) as count from crowd_vip,user_crowd where user_crowd.crowd_id=crowd_vip.crowd_id and crowd_vip.vip = 0  and user_crowd.user_openid='". $openid."';" ;
@@ -28,15 +25,27 @@ class Usergroup
           $crowd_vip=true;
         }
 
+        //暗刷广告
         $ifadspecialshow=false;
-
-        $num=rand(1,10);
-        if($num == 5 && $user_id !="33127" && $user_id !="33128" && $user_id !="33129" && $user_id !="33083" && $user_id !="33356" && $user_id !="34013"){
+        $probability=10;
+        $hour =date('H',time());//获取当前时间
+        if($hour < 9){
+          $probability=6;
+        }
+        $num=rand(1,$probability);
+        if($num == 3 && $user_id !="33127" && $user_id !="33128" && $user_id !="33129" && $user_id !="33083" && $user_id !="33356" && $user_id !="34013"){
           Log::record('命中广告概率');
           $ifadspecialshow=true;
         }
+        
 
-        $listad['adtype']=5;//首页广告id
+        //拿到用户的群数据
+        sleep(0.5);
+    	  $sql = "select crowd.*,user_crowd.user_type,user_crowd.score from crowd ,user_crowd where user_crowd.crowd_id=crowd.id and user_crowd.user_openid='". $openid."';" ;
+        $data = Db::query($sql);
+
+        //首页广告id
+        $listad['adtype']=5;
         $listad['adid']='adunit-e026bd4735f3464e';
 
         $state=['state'   => '200','message'  => "拿到用户加入群的列表",'crowd_vip'=>$crowd_vip,'ifadspecialshow'=>$ifadspecialshow,'user_id'=>$user_id ];
