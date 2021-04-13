@@ -74,8 +74,9 @@ class Groupnews
         $id=$request->param("id");
         $data=db('crowd_news')->where('id',$id)->find();
 
-        $deletefile = new Deletefile();
-        $deleteresult=$deletefile -> more($data['images']);
+        // $deletefile = new Deletefile();
+        // $deleteresult=$deletefile -> more($data['images']);
+        $deleteresult=false;
 
 
         $cleardata=db('crowd_news')-> where('id',$id)->delete();
