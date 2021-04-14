@@ -31,8 +31,6 @@ class Limittask
 
     }
 
-
-
     //查询群的限时任务列表
     public function list(Request $request)
     {
@@ -75,8 +73,6 @@ class Limittask
         return $state ;  
     }
 
-
-    
     //删除限时任务公告
     public function delete(Request $request)
     {
@@ -93,6 +89,23 @@ class Limittask
        }
        return  $state;
     }
+
+
+    //用户提交限时任务
+    public function userpushlimittask(Request $request){
+        $user_id =$request->param("user_id");
+        $limit_id=$request->param("limit_id");
+
+
+    }
+
+
+
+
+
+
+
+
 
     //用户查询自己是否能参与
     public function ifpartake(Request $request){
