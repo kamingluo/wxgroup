@@ -95,8 +95,19 @@ class Limittask
     public function userpushlimittask(Request $request){
         $user_id =$request->param("user_id");
         $limit_id=$request->param("limit_id");
+        $explain=$request->param("explain");
+        $images=$request->param("images/a");
+        $state=0;
+        $data=db('crowd_limit_tasks')->where('limit_id',$limit_id)->find();
+        $crowd_id=$data["crowd_id"];
+        $score=$data["score"];
+        $time =date('Y-m-d H:i:s',time());//当前时间
 
-
+        $dbdata = ['id'=>'','limit_id' =>$limit_id,'user_id' => $user_id,'crowd_id' => $crowd_id,'score' => $score,'explain' => $explain,'images' => $images,'state' => 0,'create_time' =>$time];
+        $limit_tasks_record_id= db('corwd_limit_task_record')->insertGetId($dbdata);//返回自增ID
+        $state=['state'   => '200','message'  => "用户提交限时任务成功" ];
+        $resdata=array_merge($state,array('limit_tasks_record_id'=>$limit_tasks_record_id));
+        return $resdata ;
     }
 
 
