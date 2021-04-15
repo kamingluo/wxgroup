@@ -1,0 +1,58 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "测试页面",
+          "pathName": "pages/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "打开设置",
+          "pathName": "pages/group/chat/punchseting/punchseting",
+          "query": "crowd_id=14",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "群设置",
+          "pathName": "pages/group/groupdetails/setting/setting",
+          "query": "crowd_id=14&user_type=1",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "兑换特殊页面",
+          "pathName": "pages/group/goods/exchange/special/special",
+          "query": "code=111",
+          "scene": null
+        },
+        {
+          "name": "发布限时任务",
+          "pathName": "pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks",
+          "query": "crowd_id=14",
+          "scene": null
+        },
+        {
+          "name": "限时任务详情",
+          "pathName": "pages/group/groupdetails/limittasks/limittasksdetails/limittasksdetails",
+          "query": "crowd_id=14",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

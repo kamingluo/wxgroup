@@ -14,6 +14,8 @@
     "pages/group/groupdetails/exchangelist/exchangelist",
     "pages/group/groupdetails/exchangelist/downloaddata/downloaddata",
     "pages/group/groupdetails/exchangelist/exchangedetails/exchangedetails",
+    "pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks",
+    "pages/group/groupdetails/limittasks/limittasksdetails/limittasksdetails",
     "pages/group/uptask/uptask",
     "pages/group/audittasks/audittasks",
     "pages/group/pushnews/pushnews",

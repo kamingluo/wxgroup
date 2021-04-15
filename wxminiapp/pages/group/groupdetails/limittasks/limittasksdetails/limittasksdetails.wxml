@@ -1,0 +1,104 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">任务详情</view>
+</cu-custom>
+
+
+<view class="beijing bg-blue">
+
+
+
+</view>
+
+
+<view class="shuoming">
+  <view class="cu-card article {{isCard?'no-card':''}}">
+    <view class="cu-item shadow">
+      <view class="title">
+        <view class="text-cut">这是任务标题啊。标题过长怎么办</view>
+      </view>
+      <view class="content">
+        <image src="http://groupmaterial.gzywudao.top/onedayone.png" mode="aspectFill"></image>
+        <view class="desc">
+          <view class="text-content">这是任务详细说明，</view>
+          <view>
+            <view class="cu-tag bg-green light sm round">限量200</view>
+            <view class="cu-tag bg-red light sm round">完成任务奖励:6积分</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="centered tips">
+        <text>*打钱或涉及支付的任务千万别做，做任务请注意*</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+<view class="shuju">
+  <view class="cu-list grid col-3 no-border">
+    <view class="cu-item">
+      <view class="text-yellow">
+        <text>60</text>
+      </view>
+      <text>剩余天数</text>
+    </view>
+    <view class="cu-item">
+      <view class="text-yellow">
+        <text>1005</text>
+      </view>
+      <text>已完成数</text>
+    </view>
+    <view class="cu-item">
+      <view class="text-yellow">
+        <text>50</text>
+      </view>
+      <text>奖励积分</text>
+    </view>
+  </view>
+</view>
+
+
+
+
+<view class="buzhou">
+  <view class="cu-timeline">
+    <view class="cu-time">第1步</view>
+    <view class="cu-item">
+      <view class="content">
+        <text>这是第一次，我家的铲屎官走了这么久。久到足足有三天！！ 在听到他的脚步声响在楼梯间的那一刻，我简直想要破门而出，对着他狠狠地吼上10分钟，然后再看心情要不要他进门。</text>
+      </view>
+      <view class="content">
+        <image src="http://groupsixty.gzywudao.top/tmp_529380caac2e9b11b0331de4cdb80704e8658d920fece7e9.jpg"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-timeline">
+    <view class="cu-time">第2步</view>
+    <view class="cu-item">
+      <view class="content">
+        <text>这是第一次，我家的铲屎官走了这么久。久到足足有三天！！ 在听到他的脚步声响在楼梯间的那一刻，我简直想要破门而出，对着他狠狠地吼上10分钟，然后再看心情要不要他进门。</text>
+      </view>
+      <view class="content" >
+        <image src="http://groupsixty.gzywudao.top/tmp_529380caac2e9b11b0331de4cdb80704e8658d920fece7e9.jpg"></image>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+
+
+<view class='share centered'>
+  <view class='sharebody centered'>
+    <view>
+      <kaming-button bindtap="userpushlimittask">
+        提交任务
+      </kaming-button>
+    </view>
+  </view>
+</view>
