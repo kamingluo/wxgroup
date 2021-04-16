@@ -65,6 +65,11 @@ export default {
           index: "tasks",
           title: "任务审核",
         },
+        {
+          icon: "el-icon-lx-present",
+          index: "limittasks",
+          title: "限时任务",
+        },
          {
           icon: "el-icon-lx-present",
           index: "coupon",

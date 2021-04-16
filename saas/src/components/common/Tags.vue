@@ -58,6 +58,10 @@
             },
             // 设置标签
             setTags(route){
+                // console.log("设置的标签",route.path)
+                if(route.path=="/auditlimittask"){
+                    return
+                }
                 const isExist = this.tagsList.some(item => {
                     return item.path === route.fullPath;
                 })

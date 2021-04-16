@@ -27,6 +27,16 @@ export default new Router({
           meta: { title: '任务审核' }
         },
         {
+          path: '/limittasks',
+          component: resolve => require(['../components/page/Limittasks.vue'], resolve),
+          meta: { title: '限时任务' }
+        },
+        {
+          path: '/auditlimittask',
+          component: resolve => require(['../components/page/Auditlimittask.vue'], resolve),
+          meta: { title: '处理限时任务',noActive:true  }
+        },
+        {
           path: '/coupon',
           component: resolve => require(['../components/page/Coupon.vue'], resolve),
           meta: { title: '优惠券' }

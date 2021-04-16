@@ -68,7 +68,7 @@ class Limittask
     {
         $id =$request->param("id");
         $state =$request->param("state");
-        $dbreturn= db('crowd_limit_tasks')->where('id',$id)->update(['state' => $state]);//修改禁言状态
+        $dbreturn= db('crowd_limit_tasks')->where('id',$id)->update(['open' => $state]);//修改禁言状态
         $state=['state'   => '200','message'  => "修改限时任务的状态成功" ];
         return $state ;  
     }
