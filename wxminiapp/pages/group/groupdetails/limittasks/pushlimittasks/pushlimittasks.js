@@ -1,7 +1,7 @@
 const app = getApp()
-const {
-  request
-} = require('./../../../../../utils/request.js');
+// const {
+//   request
+// } = require('./../../../../../utils/request.js');
 Page({
 
 

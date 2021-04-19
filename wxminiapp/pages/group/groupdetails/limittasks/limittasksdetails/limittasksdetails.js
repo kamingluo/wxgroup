@@ -1,5 +1,4 @@
 const app = getApp()
-const { resolveSoa } = require('node:dns');
 const {
   request
 } = require('./../../../../../utils/request.js');

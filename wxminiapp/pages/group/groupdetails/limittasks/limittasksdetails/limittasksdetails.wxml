@@ -39,22 +39,22 @@
 
 
 <view class="shuju">
-  <view class="cu-list grid col-3 no-border">
+  <view class="cu-list grid col-3 no-border  ">
     <view class="cu-item">
-      <view class="text-yellow">
-        <text>60</text>
+      <view >
+        <text style="font-size:35rpx;font-weight: 700;color:#1cbbb4" >60</text>
       </view>
       <text>剩余天数</text>
     </view>
     <view class="cu-item">
-      <view class="text-yellow">
-        <text>1005</text>
+      <view >
+        <text style="font-size:35rpx;font-weight: 700; color:#f37b1d">10005</text>
       </view>
       <text>已完成数</text>
     </view>
     <view class="cu-item">
-      <view class="text-yellow">
-        <text>50</text>
+      <view >
+        <text style="font-size:35rpx;font-weight: 700; color:#0081ff" >50</text>
       </view>
       <text>奖励积分</text>
     </view>

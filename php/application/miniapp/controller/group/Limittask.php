@@ -106,7 +106,7 @@ class Limittask
         $explain=$request->param("explain");
         $images=$request->param("images/a");
         $state=0;
-        $data=db('crowd_limit_tasks')->where('limit_id',$limit_id)->find();
+        $data=db('crowd_limit_tasks')->where('id',$limit_id)->find();
         $crowd_id=$data["crowd_id"];
         $score=$data["score"];
         $time =date('Y-m-d H:i:s',time());//当前时间

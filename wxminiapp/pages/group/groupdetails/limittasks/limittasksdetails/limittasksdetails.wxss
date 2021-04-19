@@ -60,9 +60,6 @@
     
   }
   
-  
-  
-  
   .sharebody{
      display: flex;
     /*row 横向  column 列表  */
@@ -73,4 +70,13 @@
     font-size: 35rpx;
     font-weight: 600;
     color: white;
+  }
+
+
+  .cu-list.grid>.cu-item text {
+    display: block;
+    margin-top: 10rpx;
+    color: #888;
+    font-size: 28rpx;
+    line-height: 40rpx
   }
