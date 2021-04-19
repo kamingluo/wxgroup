@@ -32,16 +32,16 @@ class Limittask
     }
 
     //查询群的限时任务列表
-    public function list(Request $request)
+    public function tasklist(Request $request)
     {
         $crowd_id =$request->param("crowd_id");
         $open =$request->param("open");
         if($open != 1 || $open != 0){
             //查询全部
-            $data =db('crowd_limit_tasks')->field('id,title,describe,score,number,limit,end_time,create_time,open')->where('crowd_id',$crowd_id)->order('id desc')->select(); //取出最近100条聊天记录
+            $data =db('crowd_limit_tasks')->field('id,title,describe,score,number,limit,end_time,create_time,open')->where('crowd_id',$crowd_id)->order('id desc')->select(); 
         } 
         else{
-            $data =db('crowd_limit_tasks')->field('id,title,describe,score,number,limit,end_time,create_time,open')->where('crowd_id',$crowd_id)->where('open',0)->order('id desc')->select(); //取出最近100条聊天记录
+            $data =db('crowd_limit_tasks')->field('id,title,describe,score,number,limit,end_time,create_time,open')->where('crowd_id',$crowd_id)->where('open',0)->order('id desc')->select();
         }
 
         $state=['state'   => '200','message'  => "查询群的限时任务列表" ];
@@ -54,12 +54,19 @@ class Limittask
     public function details(Request $request)
     {
         $id =$request->param("id");
+        $time =date('Y-m-d H:i:s',time());//当前时间
         $data =db('crowd_limit_tasks')->where('id',$id)->find();
+        $end_time=$data['end_time'];
+        $number=floor((strtotime($end_time) - strtotime($time))/86400) + 1; //拿到剩余天数
+        $recordnum=db('corwd_limit_task_record')->where('limit_id',$id)->where('state',"<>",2)->count();//拿到已经完成或者提交任务人数
+        $taskdata=array();//临时数组用于签名
+        $taskdata["surplusday"]=$number;
+        $taskdata["recordnum"]=$recordnum;
         $step=json_decode($data["step"]);//先取出值，反转义一下
         unset($data['step']);//去除原来数据里面的值
         $newsdetails=array_merge($data,array('step'=>$step));//再把转义后的值增加进去
         $state=['state'   => '200','message'  => "查询限时任务详情成功" ];
-        $resdata=array_merge($state,array('newsdetails'=>$newsdetails));
+        $resdata=array_merge($state,array('newsdetails'=>$newsdetails),array('taskdata'=>$taskdata));
         return $resdata ;
     }
 
@@ -92,7 +99,8 @@ class Limittask
 
 
     //用户提交限时任务
-    public function userpushlimittask(Request $request){
+    public function userpushlimittask(Request $request)
+    {
         $user_id =$request->param("user_id");
         $limit_id=$request->param("limit_id");
         $explain=$request->param("explain");
@@ -110,19 +118,12 @@ class Limittask
         return $resdata ;
     }
 
-
-
-
-
-
-
-
-
     //用户查询自己是否能参与
-    public function ifpartake(Request $request){
+    public function ifpartake(Request $request)
+    {
         $user_id =$request->param("user_id");
         $limit_id=$request->param("limit_id");
-        $data=db('crowd_limit_tasks')->where('limit_id',$limit_id)->find();
+        $data=db('crowd_limit_tasks')->where('id',$limit_id)->find();
         $time =date('Y-m-d H:i:s',time());//当前时间
         $partake=false;
 
@@ -165,11 +166,65 @@ class Limittask
                 return $state;
             }
         }
-
         $state=['state'   => '200','message'  => "用户可以完成任务",'partake'=> true];
         return $state;
 
     }
+
+
+
+    //用户查询自己已经提交的限时任务列表
+    public function usertasklist(Request $request)
+    {
+        $user_id =$request->param("user_id");
+        $crowd_id =$request->param("crowd_id");
+        $pages=$request->param("pages");//页数
+        if($pages){
+            //有传pages
+            $newpages= ($pages-1) * 20;//一页20条
+            $data = db()->table(array('corwd_limit_task_record'=>'t1','crowd_limit_tasks'=>'t2'))->field('t1.id,t1.limit_id,t1.score,t1.state,t1.result,t2.title')->where('t2.id=t1.limit_id')->where('t1.crowd_id',$crowd_id)->order('id desc')->limit($newpages,20)->select();
+        }
+        else{
+            //兼容没有传页数，返回全部信息
+            $data = db()->table(array('corwd_limit_task_record'=>'t1','crowd_limit_tasks'=>'t2'))->field('t1.id,t1.limit_id,t1.score,t1.state,t1.result,t2.title')->where('t2.id=t1.limit_id')->where('t1.crowd_id',$crowd_id)->order('id desc')->select();
+        }
+
+        $count =db('corwd_limit_task_record')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->count();
+
+        $state=['state'   => '200','message'  => "用户查询自己已经提交的限时任务列表成功" ,'count'=>$count];
+        $resdata=array_merge($state,array('usertasklist'=>$usertasklist));
+        return $resdata ;
+        
+    }
+
+
+    //用户查询自己的限时任务的详情
+    public function userlimittaskdetails(Request $request){
+        $id =$request->param("id");
+        $data=db('corwd_limit_task_record')->where('id',$id)->find();
+        $step=json_decode($data["image"]);//先取出值，反转义一下
+        unset($data['image']);//去除原来数据里面的值
+        $newsdetails=array_merge($data,array('image'=>$image));//再把转义后的值增加进去
+        $state=['state'   => '200','message'  => "用户查询自己的限时任务的详情成功" ];
+        $resdata=array_merge($state,array('data'=>$newsdetails));
+        return $resdata ;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
