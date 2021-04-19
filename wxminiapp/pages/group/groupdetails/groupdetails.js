@@ -330,7 +330,6 @@ Page({
     let crowd_id = this.data.crowd_id
     this.groupnewslist(crowd_id)
     this.crowdlotteryopenlist(crowd_id)
-    // this.todaywhethersignin()
     let userdata = wx.getStorageSync('userdata');
     this.setData({
       userdata: userdata,

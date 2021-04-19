@@ -308,11 +308,6 @@
 
 
 
-
-
-
-
-
 <!-- 
 邀请好友 -->
 <view class='share centered' wx:if="{{usertype && TabCur == 0}}">

@@ -63,7 +63,18 @@ Page({
         })
       },
     })
-  }
+  },
+
+  //跳转提交限时任务
+  userpushlimittask:function(){
+    let limit_id=this.data.limit_id;
+    let crowd_id=this.data.crowd_id;
+
+    wx.navigateTo({
+      url: '/pages/group/groupdetails/limittasks/submittasks/submittasks?limit_id=' + limit_id + '&crowd_id=' + crowd_id
+    })
+
+  },
 
 
 })

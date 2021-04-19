@@ -57,6 +57,12 @@
           "pathName": "pages/group/groupdetails/limittasks/submittasks/submittasks",
           "query": "limit_id=1&crowd_id=14",
           "scene": null
+        },
+        {
+          "name": "任务记录",
+          "pathName": "pages/group/groupdetails/tasklist/tasklist",
+          "query": "crowd_id=14",
+          "scene": null
         }
       ]
     }

@@ -90,7 +90,7 @@ Page({
 
 
   sumittask: function() {
-    if (this.data.uploaderList.length == 0 && this.data.tasktext=="" ) {
+    if (this.data.uploaderList.length == 0 && this.data.tasktext=="" ||  this.data.tasktext==null) {
       wx.showToast({
         title: '图片和描述不能同时为空',
         icon: 'none',
@@ -181,6 +181,7 @@ Page({
     var imgList = imgList
     var crowd_id = this.data.crowd_id
     let limit_id=this.data.limit_id
+    var user_id = wx.getStorageSync('userdata').id
     if (this.data.tasktext == null) {
       var explain = "用户未填写任务描述"
     } else {
@@ -195,6 +196,7 @@ Page({
         images: imgList,
         explain: explain,
         crowd_id: crowd_id,
+        user_id:user_id
       },
       success: res => {
         this.setData({

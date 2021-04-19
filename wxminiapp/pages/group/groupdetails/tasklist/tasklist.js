@@ -18,7 +18,8 @@ Page({
     deteleid: null,
     deteleModal: false,
     pages: 1,
-    count: 0
+    count: 0,
+    TabCur: 0,
 
   },
 
@@ -35,13 +36,31 @@ Page({
   },
 
 
+  tabSelect(e) {
+    let id=e.currentTarget.dataset.id;
+    this.setData({
+      TabCur: id,
+      usertasklist:[],
+      count:0,
+      loadModal:true
+
+    })
+    this.havetasklist(1)
+
+    console.log("切换tab",id)
+  },
+
 
   havetasklist: function (pages){
     var that=this
     var user_id = wx.getStorageSync('userdata').id
     var crowd_id = this.data.crowd_id
+    let service='group/limittask/usertasklist'
+    if(this.data.TabCur==0){
+       service='group/userdata/usergrouptasklist'
+    }
     request({
-      service: 'group/userdata/usergrouptasklist',
+      service: service,
       data: {
         pages: pages,
         user_id: user_id,
