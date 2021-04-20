@@ -39,30 +39,7 @@ Page({
     
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    //this.kaming()  //提示动画
 
-  },
-
-  kaming:function(){
-    var that=this
-    setTimeout(function() {
-      that.setData({
-        kaming: false
-      })
-      console.log("11111111")
-    }, 1000)
-    setTimeout(function() {
-      that.setData({
-        kaming: true
-      })
-      that.kaming()
-      console.log("动画啦啦啦啦啦")
-    }, 1000)
-  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -72,11 +49,8 @@ Page({
     this.setData({
       adtype: adtype,
     })
-
     this.usergroup()
     this.getUserInfoif() //判断用户有没有授权
-
-    
   },
 
   //查询轮播图首页数据
@@ -185,9 +159,6 @@ Page({
   },
 
 
-
-
-
   clickusergrouplist:function(e){
     wx.navigateTo({
       url: '/pages/group/groupdetails/groupdetails?id=' + e.currentTarget.dataset.data.id + '&user_type=' + e.currentTarget.dataset.data.user_type + '&score=' + e.currentTarget.dataset.data.score,
@@ -236,11 +207,6 @@ Page({
               console.log("授权成功更新信息啦")
               let userdata = Object.assign(data, res.userInfo);
               common.authorized(userdata) //用户注册已经授权
-              // wx.showToast({
-              //   title: '授权成功',
-              //   icon: 'success',
-              //   duration: 2000,
-              // })
               that.setData({
                 ifauthorized: true,
               })

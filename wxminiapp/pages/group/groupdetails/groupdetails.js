@@ -17,8 +17,9 @@ Page({
     usertype: false,
     btns: ["群消息", "群成员"],
     isCard: false,
-    groupnewslist: null,
-    lotteryopenlist: null,
+    groupnewslist: [],
+    lotteryopenlist: [],
+    limittaskslist:[],
     user_type: null,
     crowddata: null,
     crowd_id: null,
@@ -219,6 +220,29 @@ Page({
   },
 
 
+
+  //获取群限时任务列表
+  limittaskslist: function(crowd_id) {
+    request({
+      service: 'group/limittask/tasklist',
+      method: 'GET',
+      data: {
+        crowd_id: crowd_id,
+        open:0,
+        pages: 1
+      },
+      success: res => {
+        this.setData({
+          limittaskslist: res.data,
+        })
+      }
+    })
+  },
+
+
+
+
+  //获取群新闻列表
   groupnewslist: function(crowd_id) {
     request({
       service: 'group/groupnews/groupnewslist',
@@ -236,6 +260,7 @@ Page({
   },
 
 
+  //获取群抽奖列表
   crowdlotteryopenlist: function(crowd_id) {
     request({
       service: 'group/lottery/crowdlotteryopenlist',
@@ -296,6 +321,16 @@ Page({
   },
 
 
+  //跳转限时任务详情
+  clicklimittasklist:function(e){
+    let crowd_id = this.data.crowd_id;
+    console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '/pages/group/groupdetails/limittasks/limittasksdetails/limittasksdetails?id=' + e.currentTarget.dataset.id + '&crowd_id=' +  crowd_id,
+    })
+
+  },
+
   //跳转新闻详情
   clicknewslist: function(e) {
     console.log(e.currentTarget.dataset.id)
@@ -316,24 +351,26 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
     let crowd_id = this.data.crowd_id
-    this.groupnewslist(crowd_id)
-    this.crowdlotteryopenlist(crowd_id)
     let userdata = wx.getStorageSync('userdata');
     this.setData({
       userdata: userdata,
     })
+     let TabCur=this.data.TabCur;
+     if(TabCur==0){
+      this.groupnewslist(crowd_id) //新闻列表
+     }
+     else if(TabCur==1){
+      this.crowdlotteryopenlist(crowd_id)//抽奖列表
+     }
+     else{
+      this.limittaskslist(crowd_id)//限时任务
+     }
   },
 
 
@@ -446,29 +483,19 @@ closesignintankuang: function() {
 
 //发布限时任务
 pushlimittask:function(){
-
-   wx.showToast({
-            title: '开发中',
-            icon: 'success',
-            duration: 2000,
-          })
+  wx.navigateTo({
+    url: '/pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks' + '?crowd_id=' + this.data.crowd_id + '&crowd_name=' + this.data.crowddata.groupdata.crowd_name,
+  })
 },
 
 
 
 
-
+//跳转生成群二维码
 qrcode: function() {
   wx.navigateTo({
     url: '/pages/group/qrcode/qrcode' + '?crowd_id=' + this.data.crowd_id + '&crowd_name=' + this.data.crowddata.groupdata.crowd_name,
   })
-},
-
-/**
- * 生命周期函数--监听页面隐藏
- */
-onHide: function() {
-
 },
 
 deletenews: function(e) {
@@ -493,6 +520,7 @@ showintroducemodel: function() {
   })
 },
 
+//确认删除群新闻
 confirmdeletenews: function() {
   var that = this
   var deletenewsid = that.data.deletenewsid
@@ -518,12 +546,23 @@ confirmdeletenews: function() {
   })
 },
 
-
+//tab选择
 tabSelect(e) {
+  var crowd_id = this.data.crowd_id
+  let TabCur=e.currentTarget.dataset.id;
   this.setData({
-    TabCur: e.currentTarget.dataset.id,
+    TabCur: TabCur,
     scrollLeft: (e.currentTarget.dataset.id - 1) * 60
   })
+  if(TabCur==0){
+    this.groupnewslist(crowd_id) //新闻列表
+   }
+   else if(TabCur==1){
+    this.crowdlotteryopenlist(crowd_id)//抽奖列表
+   }
+   else{
+    this.limittaskslist(crowd_id)//限时任务
+   }
 },
 
 
@@ -621,20 +660,6 @@ onshowgdtinsertad: function () {
       console.log("插屏广告显示失败")
     }
   }, 500);
-},
-
-/**
- * 生命周期函数--监听页面卸载
- */
-onUnload: function() {
-
-},
-
-/**
- * 页面相关事件处理函数--监听用户下拉动作
- */
-onPullDownRefresh: function() {
-
 },
 
 /**

@@ -20,6 +20,8 @@ Page({
       crowd_id: options.crowd_id,
       limit_id:options.id,
     })
+    this.querydetails()
+    this.userifpartake()
   },
 
   //查询任务详情
@@ -32,6 +34,7 @@ Page({
         id:limit_id,
       },
       success: res => {
+        console.log("任务详情",res)
         let taskdetails=res.newsdetails;
         let taskdata=res.taskdata;
         that.setData({
@@ -55,6 +58,7 @@ Page({
         user_id:user_id
       },
       success: res => {
+        console.log("是否可以参与任务",res)
         let partake=res.partake;
         let message=res.message;
         that.setData({

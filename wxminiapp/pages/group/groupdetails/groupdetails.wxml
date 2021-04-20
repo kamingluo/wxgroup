@@ -264,41 +264,47 @@
 
   <view wx:else>
 
-    <view class="cu-card article {{isCard?'no-card':''}}">
+  <view wx:if="{{limittaskslist.length > 0}}">
+    <view class="cu-card article {{isCard?'no-card':''}}" wx:for="{{limittaskslist}}" wx:key="item"  bindtap='clicklimittasklist' data-id='{{item.id}}' >
       <view class="cu-item shadow">
         <view class="title">
-          <view class="text-cut">这是任务标题啊啊啊啊，每日可提交一次任务。。。。。</view>
+          <view class="text-cut">{{item.title}}</view>
         </view>
         <view class="content">
-          <image src="http://groupmaterial.gzywudao.top/onedayone.png" mode="aspectFill"></image>
+        <image src="http://groupmaterial.gzywudao.top/onedayone.png" mode="aspectFill" wx:if="{{item.limit==1}}"></image>
+        <image src="http://groupmaterial.gzywudao.top/userone.png" mode="aspectFill" wx:else></image>
           <view class="desc">
-            <view class="text-content">这是任务详细说明，</view>
-            <view>
-              <view class="cu-tag bg-green light sm round">限量200</view>
-              <view class="cu-tag bg-red light sm round">2021-04-13 00:00:00结束任务</view>
-            </view>
+            <view class="text-content">{{item.describe}}</view>
+          <view>
+            <view class="cu-tag bg-green light sm round">{{item.number==0?"不限量":"限量:" +item.number}}</view>
+            <view class="cu-tag bg-red light sm round">结束时间:{{item.end_time}}</view>
+          </view>
           </view>
         </view>
       </view>
     </view>
+    
+    <view class='centered   bottomtips'>
+        <text>----已经到底了---</text>
+    </view>
+  </view>
 
-    <view class="cu-card article {{isCard?'no-card':''}}">
-      <view class="cu-item shadow">
-        <view class="title">
-          <view class="text-cut">这是任务标题啊啊啊啊，每人限一次提交任务。。。。。</view>
-        </view>
-        <view class="content">
-          <image src="http://groupmaterial.gzywudao.top/userone.png" mode="aspectFill"></image>
-          <view class="desc">
-            <view class="text-content">这是任务详细说明，</view>
-            <view>
-              <view class="cu-tag bg-green light sm round">限量200</view>
-              <view class="cu-tag bg-red light sm round">2021-04-13 00:00:00结束任务</view>
-            </view>
+   <view wx:else>
+    <view>
+        <view class='default'>
+          <view>
+            <image src='http://littlebox.luojiaming.vip/default.png'></image>
+          </view>
+          <view>
+            <text>暂未发布限时任务！</text>
+          </view>
+          <view>
           </view>
         </view>
       </view>
-    </view>
+
+  </view>
+
 
   </view>
 

@@ -15,15 +15,16 @@
   <view class="cu-card article {{isCard?'no-card':''}}">
     <view class="cu-item shadow">
       <view class="title">
-        <view class="text-cut">这是任务标题啊。标题过长怎么办</view>
+        <view class="text-cut">{{taskdetails.title}}</view>
       </view>
       <view class="content">
-        <image src="http://groupmaterial.gzywudao.top/onedayone.png" mode="aspectFill"></image>
+        <image src="http://groupmaterial.gzywudao.top/onedayone.png" mode="aspectFill" wx:if="{{taskdetails.limit==1}}"></image>
+        <image src="http://groupmaterial.gzywudao.top/userone.png" mode="aspectFill" wx:else></image>
         <view class="desc">
-          <view class="text-content">这是任务详细说明，</view>
+          <view class="text-content">{{taskdetails.describe}}</view>
           <view>
-            <view class="cu-tag bg-green light sm round">限量200</view>
-            <view class="cu-tag bg-red light sm round">完成任务奖励:6积分</view>
+            <view class="cu-tag bg-green light sm round">{{taskdetails.number==0?"不限量":"限量:" +taskdetails.number}}</view>
+            <view class="cu-tag bg-red light sm round">结束时间:{{taskdetails.end_time}}</view>
           </view>
         </view>
       </view>
@@ -42,19 +43,19 @@
   <view class="cu-list grid col-3 no-border  ">
     <view class="cu-item">
       <view >
-        <text style="font-size:35rpx;font-weight: 700;color:#1cbbb4" >60</text>
+        <text style="font-size:35rpx;font-weight: 700;color:#1cbbb4" >{{taskdata.surplusday}}</text>
       </view>
       <text>剩余天数</text>
     </view>
     <view class="cu-item">
       <view >
-        <text style="font-size:35rpx;font-weight: 700; color:#f37b1d">10005</text>
+        <text style="font-size:35rpx;font-weight: 700; color:#f37b1d">{{taskdata.recordnum}}</text>
       </view>
       <text>已完成数</text>
     </view>
     <view class="cu-item">
       <view >
-        <text style="font-size:35rpx;font-weight: 700; color:#0081ff" >50</text>
+        <text style="font-size:35rpx;font-weight: 700; color:#0081ff" >{{taskdetails.score}}</text>
       </view>
       <text>奖励积分</text>
     </view>
@@ -65,39 +66,42 @@
 
 
 <view class="buzhou">
+
+
+<view wx:for="{{taskdetails.step}}" wx:key="item">
   <view class="cu-timeline">
-    <view class="cu-time">第1步</view>
+    <view class="cu-time">第{{index + 1}}步</view>
     <view class="cu-item">
       <view class="content">
-        <text>这是第一次，我家的铲屎官走了这么久。久到足足有三天！！ 在听到他的脚步声响在楼梯间的那一刻，我简直想要破门而出，对着他狠狠地吼上10分钟，然后再看心情要不要他进门。</text>
+        <text>{{item.explain}}</text>
       </view>
       <view class="content">
-        <image src="http://groupsixty.gzywudao.top/tmp_529380caac2e9b11b0331de4cdb80704e8658d920fece7e9.jpg"></image>
+        <image src="{{item.image}}"></image>
       </view>
     </view>
   </view>
-
-  <view class="cu-timeline">
-    <view class="cu-time">第2步</view>
-    <view class="cu-item">
-      <view class="content">
-        <text>这是第一次，我家的铲屎官走了这么久。久到足足有三天！！ 在听到他的脚步声响在楼梯间的那一刻，我简直想要破门而出，对着他狠狠地吼上10分钟，然后再看心情要不要他进门。</text>
-      </view>
-      <view class="content" >
-        <image src="http://groupsixty.gzywudao.top/tmp_529380caac2e9b11b0331de4cdb80704e8658d920fece7e9.jpg"></image>
-      </view>
-    </view>
   </view>
-
 </view>
 
 
 
-<view class='share centered'>
+<view class='share centered' wx:if="{{partake}}">
   <view class='sharebody centered'>
     <view>
+
       <kaming-button bindtap="userpushlimittask">
         提交任务
+      </kaming-button>
+    </view>
+  </view>
+</view>
+
+
+<view class='share centered' wx:else style="background-color:#6C6C6C">
+  <view class='sharebody centered'>
+    <view>
+      <kaming-button  >
+        {{message}}
       </kaming-button>
     </view>
   </view>
