@@ -53,7 +53,7 @@
 	<view wx:else>
 		<view class="cu-form-group">
 			<view class="title">日期选择</view>
-			<picker mode="date" value="{{datetime?datetime:'2020-06-01'}}" start="2020-04-01" end="2021-09-01" bindchange="DateChange">
+			<picker mode="date" value="{{datetime?datetime:'2021-04-21'}}" start="2021-04-21" end="2023-09-01" bindchange="DateChange">
 				<view class="picker">
 					{{datetime?datetime:'2020-06-01'}}
 				</view>

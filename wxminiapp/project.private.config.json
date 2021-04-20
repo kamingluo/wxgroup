@@ -49,7 +49,7 @@
         {
           "name": "限时任务详情",
           "pathName": "pages/group/groupdetails/limittasks/limittasksdetails/limittasksdetails",
-          "query": "limit_id=1&crowd_id=14",
+          "query": "id=1&crowd_id=14",
           "scene": null
         },
         {
@@ -61,6 +61,12 @@
         {
           "name": "任务记录",
           "pathName": "pages/group/groupdetails/tasklist/tasklist",
+          "query": "crowd_id=14",
+          "scene": null
+        },
+        {
+          "name": "pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks",
+          "pathName": "pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks",
           "query": "crowd_id=14",
           "scene": null
         }

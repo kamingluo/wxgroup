@@ -2,3 +2,81 @@
   <view slot="backText">返回</view>
   <view slot="content">发布限时任务</view>
 </cu-custom>
+
+
+<view class="cu-form-group">
+  <view class="title">任务标题</view>
+  <input placeholder="请输入任务标题" bindinput="title"></input>
+</view>
+
+
+
+<view class="cu-form-group">
+  <view class="title">奖励积分</view>
+  <input maxlength="5" type='number' placeholder="请输入奖励积分" bindinput="score" value="{{score}}"></input>
+</view>
+
+<view class="cu-form-group">
+  <view class="title">是否限量</view>
+  <picker bindchange="lotteryPickerChange" value="{{ifnumber}}" range="{{numberpicker}}">
+    <view class="picker">
+      {{ifnumber?numberpicker[ifnumber]:'请选择限量方式'}}
+    </view>
+  </picker>
+</view>
+
+<view class="cu-form-group" wx:if="{{ifnumber ==0}}">
+  <view class="title">限制数量</view>
+  <input placeholder="请输入限制数量" value="{{number}}" maxlength="9" type='number' bindinput="lotteryprobability"></input>
+</view>
+
+
+<view class="cu-form-group">
+  <view class="title">限制次数</view>
+  <picker bindchange="lotteryPickerChange" value="{{limit}}" range="{{limitpicker}}">
+    <view class="picker">
+      {{limit?limitpicker[limit]:'请选择限制次数'}}
+    </view>
+  </picker>
+</view>
+
+
+
+<view class="cu-form-group">
+  <view class="title">截止日期</view>
+  <picker mode="date" value="{{end_time?end_time:''}}" start="{{end_time}}" end="2025-09-01" bindchange="DateChange">
+    <view class="picker">
+      {{end_time?end_time:''}}
+    </view>
+  </picker>
+</view>
+
+
+<view class="cu-bar bg-white cu-form-group " style="margin-top: 10rpx;">
+  <view class="action">
+    <text class="cuIcon-title text-blue"></text>任务说明
+  </view>
+</view>
+
+<view>
+  <view class="centered">
+    <view class="task_text2">
+      <textarea maxlength="50" bindinput="describe" value='{{describe}}' placeholder="请输入任务说明"></textarea>
+    </view>
+  </view>
+</view>
+
+
+
+<view class="cu-bar bg-white cu-form-group " style="margin-top: 10rpx;">
+  <view class="action">
+    <text class="cuIcon-title text-blue"></text>任务步骤
+  </view>
+</view>
+
+
+
+<view>
+
+  <button bindtap="sumbit">提交</button>
+</view>
