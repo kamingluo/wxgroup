@@ -10,7 +10,7 @@ import axios from "axios";
 
 let config = {
   //生产环境
-   baseURL: 'https://group.gzywudao.top/php/public/saas.php/',
+  baseURL: 'https://group.gzywudao.top/php/public/saas.php/',
   //测试环境
   //baseURL: 'http://127.0.0.1/myproject/wxgroup/php/public/saas.php/',
 
@@ -24,7 +24,7 @@ let config = {
 const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
-  function(config) {
+  function (config) {
     // Do something before request is sent
     if (config.method == 'get') {
       config.params = {
@@ -32,10 +32,10 @@ _axios.interceptors.request.use(
         ...config.params
       }
     }
-    console.log("这是处理过后的请求",config)
+    console.log("这是处理过后的请求", config)
     return config;
   },
-  function(error) {
+  function (error) {
     // Do something with request error
     return Promise.reject(error);
   }
@@ -43,20 +43,20 @@ _axios.interceptors.request.use(
 
 // Add a response interceptor
 _axios.interceptors.response.use(
-  function(response) {
+  function (response) {
     // Do something with response data
-    if(response.data.ret === 0){
+    if (response.data.ret === 0) {
       response = response.data.content;
     }
     return response;
   },
-  function(error) {
+  function (error) {
     // Do something with response error
     return Promise.reject(error);
   }
 );
 
-Plugin.install = function(Vue, options) {
+Plugin.install = function (Vue, options) {
   Vue.axios = _axios;
   window.axios = _axios;
   Object.defineProperties(Vue.prototype, {

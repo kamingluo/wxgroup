@@ -57,6 +57,8 @@ class Limittasks
       $pages=$request->param("pages");
       $state=$request->param("state");
       $limit_id=$request->param("limit_id");
+      $nickName=$request->param("nickName");
+      $newkeyword="%".$nickName."%";
       $id=havecrowdid($token);
       if($pages == 1 || $pages==null  ){
         $number=0;
@@ -64,13 +66,9 @@ class Limittasks
       else{
         $number=($pages - 1)*10 ;
       }
-      //$data = db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t2.id=t1.user_id')->where('t1.limit_id',$limit_id)->where('t1.crowd_id',$id)->where('t1.state',$state)->order('id ASC')->limit($number,10)->select();
-      //$countnumber=db('corwd_limit_task_record')->where('crowd_id',$id)->where('state',$state)->where('limit_id',$limit_id)->count();
 
-      $data = db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t2.id=t1.user_id')->where('t1.limit_id',$limit_id)->where('t1.crowd_id',$id)->order('id ASC')->limit($number,10)->select();
-      $countnumber=db('corwd_limit_task_record')->where('crowd_id',$id)->where('limit_id',$limit_id)->count();
-
-
+      $data = db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t2.nickName','like',$newkeyword)->where('t2.id=t1.user_id')->where('t1.limit_id',$limit_id)->where('t1.crowd_id',$id)->order('id ASC')->limit($number,10)->select();
+      $countnumber = db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t2.nickName','like',$newkeyword)->where('t2.id=t1.user_id')->where('t1.limit_id',$limit_id)->where('t1.crowd_id',$id)->count();
       $state=['state'   => '200','message'  => "限时任务群员提交任务列表" ];
       $resdata=array_merge($state,array('countnumber'=>$countnumber),array('data'=>$data));
       return $resdata ;

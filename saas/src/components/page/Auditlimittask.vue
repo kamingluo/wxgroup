@@ -13,9 +13,24 @@
     <div class="container">
 
     <div class="handle-box">
-        <el-button type="primary" icon="search" class="search" @click="getData"
-          >刷新一批</el-button
+
+       <el-input
+          v-model="nickName"
+          placeholder="用户昵称(支持模糊查询)"
+          class="handle-input"
+        ></el-input>
+        <el-button type="primary" icon="search" class="search jianju" @click="search"
+          >搜索</el-button
         >
+        <el-button type="primary" icon="search" class="search" @click="newsearch"
+          >重置</el-button
+        >
+
+
+
+        <!-- <el-button type="primary" icon="search" class="search" @click="getData"
+          >刷新</el-button
+        > -->
       </div>
 
       <!-- <div class="handle-box">
@@ -61,7 +76,7 @@
         </el-table-column>
       </el-table>
        <!-- 换页 -->
-      <!-- <div class="pagination">
+      <div class="pagination">
         <el-pagination
           background
           @current-change="handleCurrentChange"
@@ -69,7 +84,7 @@
           :total="datapages"
         >
         </el-pagination>
-      </div> -->
+      </div>
     </div>
 
 
@@ -141,6 +156,7 @@ export default {
       datapages: 0,
       score: 1,
       nopasstext: "其他",
+      nickName: "", //查询昵称
     };
   },
   created() {
@@ -188,6 +204,7 @@ export default {
       let params = {
         limit_id: this.limit_id,
         pages: this.cur_page,
+        nickName: this.nickName,
         state: 0,
         token: token,
       };
@@ -208,9 +225,20 @@ export default {
       }
     },
 
+    search() {
+      this.getData();
+    },
+
+    newsearch() {
+      this.nickName = "";
+      this.cur_page = 1;
+      this.datapages = 0;
+
+      this.getData();
+    },
 
     //直接审核通过
-    directpass(index, row){
+    directpass(index, row) {
       console.log("点击编辑", row);
       this.idx = index;
       const item = this.tableData[index];
@@ -227,12 +255,13 @@ export default {
       postdata.state = 1;
       postdata.token = localStorage.getItem("token");
       console.log("提交修改信息", postdata);
-      this.$axios.post("configure/limittasks/audittask", postdata).then((res) => {
-        console.log("直接审核通过返回数据", res);
-        this.$message.success(`操作成功`);
-        //this.getData();
-      });
-
+      this.$axios
+        .post("configure/limittasks/audittask", postdata)
+        .then((res) => {
+          console.log("直接审核通过返回数据", res);
+          this.$message.success(`操作成功`);
+          //this.getData();
+        });
     },
 
     //调起审核不通过
@@ -318,6 +347,10 @@ export default {
 width: 100px;
 height: 130px;
 } */
+
+.jianju {
+  margin-left: 10px;
+}
 
 .changdu {
   width: 300px;

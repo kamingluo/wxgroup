@@ -14,6 +14,19 @@
   </view>
 </view>
 
+
+<scroll-view scroll-x class="bg-white nav">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{2}}" wx:key bindtap="tabSelect"
+      data-id="{{index}}">
+      {{index==0?"普通任务":"限时任务"}}
+    </view>
+  </view>
+</scroll-view>
+
+
+
+
 <view class='cu-load load-modal' wx:if="{{loadModal}}">
   <!-- <view class='cuIcon-emojifill text-orange'></view> -->
   <image src='../../../images/common/loading.svg' class='png' mode='aspectFit'></image>

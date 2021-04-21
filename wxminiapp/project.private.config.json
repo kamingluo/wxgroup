@@ -69,6 +69,12 @@
           "pathName": "pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks",
           "query": "crowd_id=14",
           "scene": null
+        },
+        {
+          "name": "全部任务",
+          "pathName": "pages/group/alltasklists/alltasklists",
+          "query": "crowd_id=14",
+          "scene": null
         }
       ]
     }

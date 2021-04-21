@@ -55,6 +55,8 @@ App({
             success(res) {
               let userdata = Object.assign(data, res.userInfo);
               common.authorized(userdata) //用户注册已经授权
+              var timestamp = Date.parse(new Date());
+              wx.setStorageSync('updateAuthorization', timestamp)
             },
             fail(res) {
               common.register(data) //用户注册已经授权但是未获取到信息
