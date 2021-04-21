@@ -215,7 +215,8 @@ class Limittask
 
 
         $id =$request->param("id");//任务id
-        $dbtaskdetails =db('corwd_limit_task_record')->where('id',$id)->find();
+        $dbtaskdetails = db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.avatarUrl,t2.NickName')->where('t2.id=t1.user_id')->where('t1.id',$id)->find();
+        //$dbtaskdetails =db('corwd_limit_task_record')->where('id',$id)->find();
         $state=['state'   => '200','message'  => "任务详情查询成功" ];
          $ifdata=isset($dbtaskdetails);//判断检测变量是否已设置并且非 NULL
         if( $ifdata){ //不为空
