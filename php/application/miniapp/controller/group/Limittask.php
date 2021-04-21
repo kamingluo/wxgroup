@@ -201,16 +201,34 @@ class Limittask
 
     //用户查询自己的限时任务的详情
     public function userlimittaskdetails(Request $request){
-        $id =$request->param("id");
-        $data=db('corwd_limit_task_record')->where('id',$id)->find();
-        // $images=json_decode($data["images"]);//先取出值，反转义一下s
-        $images=$data["images"];//先取出值，反转义一下s
-        // return $images;
-        unset($data['images']);//去除原来数据里面的值
-        $newsdetails=array_merge($data,array('images'=>$images));//再把转义后的值增加进去
-        $state=['state'   => '200','message'  => "用户查询自己的限时任务的详情成功" ];
-        $resdata=array_merge($state,array('data'=>$newsdetails));
-        return $resdata ;
+        // $id =$request->param("id");
+        // $data=db('corwd_limit_task_record')->where('id',$id)->find();
+        // // $images=json_decode($data["images"]);//先取出值，反转义一下s
+        // $images=$data["images"];//先取出值，反转义一下s
+        // // return $images;
+        // unset($data['images']);//去除原来数据里面的值
+        // $newsdetails=array_merge($data,array('images'=>$images));//再把转义后的值增加进去
+        // $state=['state'   => '200','message'  => "用户查询自己的限时任务的详情成功" ];
+        // $resdata=array_merge($state,array('data'=>$newsdetails));
+        // return $resdata ;
+
+
+
+        $id =$request->param("id");//任务id
+        $dbtaskdetails =db('corwd_limit_task_record')->where('id',$id)->find();
+        $state=['state'   => '200','message'  => "任务详情查询成功" ];
+         $ifdata=isset($dbtaskdetails);//判断检测变量是否已设置并且非 NULL
+        if( $ifdata){ //不为空
+             $images=json_decode($dbtaskdetails["images"]);//先取出值，反转义一下
+             unset($dbtaskdetails['images']);//去除原来数据里面的值
+             $taskdetails=array_merge($dbtaskdetails,array('images'=>$images));//再把转义后的值增加进去
+             $resdata=array_merge($state,array('taskdetails'=>$taskdetails));
+             return $resdata ;
+        }
+        else{ //数值为空
+             $resdata=array_merge($state,array('taskdetails'=>$dbtaskdetails));
+             return $resdata;
+        }
     }
 
 
