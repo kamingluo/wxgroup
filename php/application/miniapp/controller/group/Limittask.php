@@ -183,11 +183,11 @@ class Limittask
         if($pages){
             //有传pages
             $newpages= ($pages-1) * 20;//一页20条
-            $usertasklist = db()->table(array('corwd_limit_task_record'=>'t1','crowd_limit_tasks'=>'t2'))->field('t1.id,t1.limit_id,t1.score,t1.state,t1.result,t1.create_time,t2.title')->where('t2.id=t1.limit_id')->where('t1.crowd_id',$crowd_id)->order('id desc')->limit($newpages,20)->select();
+            $usertasklist = db()->table(array('corwd_limit_task_record'=>'t1','crowd_limit_tasks'=>'t2'))->field('t1.id,t1.limit_id,t1.score,t1.state,t1.result,t1.create_time,t2.title')->where('t2.id=t1.limit_id')->where('t1.crowd_id',$crowd_id)->where('t1.user_id',$user_id)->order('id desc')->limit($newpages,20)->select();
         }
         else{
             //兼容没有传页数，返回全部信息
-            $usertasklist = db()->table(array('corwd_limit_task_record'=>'t1','crowd_limit_tasks'=>'t2'))->field('t1.id,t1.limit_id,t1.score,t1.state,t1.result,t1.create_time,t2.title')->where('t2.id=t1.limit_id')->where('t1.crowd_id',$crowd_id)->order('id desc')->select();
+            $usertasklist = db()->table(array('corwd_limit_task_record'=>'t1','crowd_limit_tasks'=>'t2'))->field('t1.id,t1.limit_id,t1.score,t1.state,t1.result,t1.create_time,t2.title')->where('t2.id=t1.limit_id')->where('t1.crowd_id',$crowd_id)->where('t1.user_id',$user_id)->order('id desc')->select();
         }
 
         $count =db('corwd_limit_task_record')->where('crowd_id',$crowd_id)->where('user_id',$user_id)->count();
