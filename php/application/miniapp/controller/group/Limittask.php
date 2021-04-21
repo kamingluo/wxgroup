@@ -202,10 +202,10 @@ class Limittask
     //用户查询自己的限时任务的详情
     public function userlimittaskdetails(Request $request){
         $id =$request->param("id");
-        $data=db('corwd_limit_task_record')->where('id',$id)->find();
-        $step=json_decode($data["image"]);//先取出值，反转义一下
-        unset($data['image']);//去除原来数据里面的值
-        $newsdetails=array_merge($data,array('image'=>$image));//再把转义后的值增加进去
+        $data=db('corwd_limit_task_record')->where('id',$id)->find();s
+        $step=json_decode($data["images"]);//先取出值，反转义一下s
+        unset($data['images']);//去除原来数据里面的值
+        $newsdetails=array_merge($data,array('images'=>$images));//再把转义后的值增加进去
         $state=['state'   => '200','message'  => "用户查询自己的限时任务的详情成功" ];
         $resdata=array_merge($state,array('data'=>$newsdetails));
         return $resdata ;

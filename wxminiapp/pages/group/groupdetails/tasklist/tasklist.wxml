@@ -85,7 +85,7 @@
 
   <view wx:else>
     <view class='centered' wx:for="{{usertasklist}}" wx:key="item">
-      <view class='exchangelist  shadow-warp bg-white' bindtap='clicktasklist' data-id='{{item.id}}'>
+      <view class='exchangelist  shadow-warp bg-white' bindtap='clicklimittasklist' data-id='{{item.id}}'>
         <view class='exchangedata '>
           <view class='exchangegood'>
             标题:
@@ -107,8 +107,8 @@
             <text style='color:green' wx:elif="{{item.state == 1}}">审核成功</text>
             <text style='color:red' wx:else>审核失败</text>
           </view>
-          <view class="deletebtn" wx:if="{{item.state == 0}}"> <button class="cu-btn bg-blue round sm"
-              catchtap='deletemode' data-id='{{item.id}}'>删除任务</button> </view>
+          <!-- <view class="deletebtn" wx:if="{{item.state == 0}}"> <button class="cu-btn bg-blue round sm"
+              catchtap='deletemode' data-id='{{item.id}}'>删除任务</button> </view> -->
         </view>
       </view>
     </view>

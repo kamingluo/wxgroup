@@ -85,7 +85,14 @@ Page({
     wx.navigateTo({
       url: '/pages/my/score_detailed/task_detailed/task_detailed?id=' + e.currentTarget.dataset.id
     })
+  },
 
+  clicklimittasklist: function(e) {
+    console.log("限时任务")
+    console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '/pages/my/score_detailed/limit_task_detailed/limit_task_detailed?id=' + e.currentTarget.dataset.id
+    })
   },
 
   deletemode: function(e) {

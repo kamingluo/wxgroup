@@ -1,0 +1,57 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">任务详情</view>
+</cu-custom>
+
+
+<view>
+  <view class="centered">
+    <view class='top'>
+      <view class='user'>
+        <view class='userAvatar'>
+          <image src='{{taskdata.taskdetails.avatarUrl}}' class='userAvatarurl'></image>
+        </view>
+        <view class='username'>
+          <view class='userNickName' bindlongpress="testpages">
+            <text>{{taskdata.taskdetails.nickName}}</text>
+          </view>
+          <view class='id'>
+            <text>提交时间：{{taskdata.taskdetails.create_time}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="task-explain">
+    <view class="task-explain-body">
+      <view class="centered task-explain-body-view">
+        <text>{{taskdata.taskdetails.explain}}</text>
+      </view>
+    </view>
+  </view>
+  <!--审核图片开始 -->
+  <view class="task-images">
+    <view class='centered  '>
+      <view class='information '>
+        <block wx:for="{{taskdata.taskdetails.images}}" wx:key="item">
+          <view class='information-body '>
+            <image src='{{item}}' bindtap='clicktaskimage' data-data='{{item}}'></image>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 审核图片结束 -->
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
