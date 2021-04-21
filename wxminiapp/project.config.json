@@ -93,6 +93,12 @@
           "pathName": "pages/group/groupdetails/limittasks/limittasksdetails/limittasksdetails",
           "query": "id=1&crowd_id=14limit_id=1&crowd_id=14",
           "scene": null
+        },
+        {
+          "name": "pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks",
+          "pathName": "pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks",
+          "query": "crowd_id=14",
+          "scene": null
         }
       ]
     }

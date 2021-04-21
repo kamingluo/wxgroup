@@ -53,7 +53,6 @@ Page({
     this.setData({
       goodsname: e.detail.value,
     })
-
   },
   score:function(e){
     this.setData({

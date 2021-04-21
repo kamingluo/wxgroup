@@ -20,6 +20,10 @@ Page({
       crowd_id: options.crowd_id,
       limit_id:options.id,
     })
+    
+  },
+
+  onShow:function(){
     this.querydetails()
     this.userifpartake()
   },

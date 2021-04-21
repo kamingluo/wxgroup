@@ -2,62 +2,42 @@
   <view slot="backText">返回</view>
   <view slot="content">发布限时任务</view>
 </cu-custom>
-
-
 <view class="cu-form-group">
   <view class="title">任务标题</view>
   <input placeholder="请输入任务标题" bindinput="title"></input>
 </view>
-
-
-
 <view class="cu-form-group">
   <view class="title">奖励积分</view>
   <input maxlength="5" type='number' placeholder="请输入奖励积分" bindinput="score" value="{{score}}"></input>
 </view>
-
 <view class="cu-form-group">
   <view class="title">是否限量</view>
-  <picker bindchange="lotteryPickerChange" value="{{ifnumber}}" range="{{numberpicker}}">
-    <view class="picker">
-      {{ifnumber?numberpicker[ifnumber]:'请选择限量方式'}}
-    </view>
+  <picker bindchange="numberPickerChange" value="{{ifnumber}}" range="{{numberpicker}}">
+    <view class="picker">{{ifnumber?numberpicker[ifnumber]:'请选择限量方式'}}</view>
   </picker>
 </view>
-
-<view class="cu-form-group" wx:if="{{ifnumber ==0}}">
+<view class="cu-form-group" wx:if="{{ifnumber ==1}}">
   <view class="title">限制数量</view>
-  <input placeholder="请输入限制数量" value="{{number}}" maxlength="9" type='number' bindinput="lotteryprobability"></input>
+  <input placeholder="请输入限制数量" value="{{number}}" maxlength="9" type='number' bindinput="number"></input>
 </view>
-
-
 <view class="cu-form-group">
   <view class="title">限制次数</view>
-  <picker bindchange="lotteryPickerChange" value="{{limit}}" range="{{limitpicker}}">
-    <view class="picker">
-      {{limit?limitpicker[limit]:'请选择限制次数'}}
-    </view>
+  <picker bindchange="limitPickerChange" value="{{limit}}" range="{{limitpicker}}">
+    <view class="picker">{{limit?limitpicker[limit]:'请选择限制次数'}}</view>
   </picker>
 </view>
-
-
-
 <view class="cu-form-group">
   <view class="title">截止日期</view>
   <picker mode="date" value="{{end_time?end_time:''}}" start="{{end_time}}" end="2025-09-01" bindchange="DateChange">
-    <view class="picker">
-      {{end_time?end_time:''}}
-    </view>
+    <view class="picker">{{end_time?end_time:''}}</view>
   </picker>
 </view>
-
-
-<view class="cu-bar bg-white cu-form-group " style="margin-top: 10rpx;">
+<view class="cu-bar bg-white  " style="margin-top: 10rpx;">
   <view class="action">
-    <text class="cuIcon-title text-blue"></text>任务说明
+    <text class="cuIcon-title text-blue"></text>
+    任务说明
   </view>
 </view>
-
 <view>
   <view class="centered">
     <view class="task_text2">
@@ -65,18 +45,58 @@
     </view>
   </view>
 </view>
-
-
-
-<view class="cu-bar bg-white cu-form-group " style="margin-top: 10rpx;">
-  <view class="action">
-    <text class="cuIcon-title text-blue"></text>任务步骤
+<view class="step-body">
+  <view class="cu-bar bg-white  " style="margin-top: 10rpx;">
+    <view class="action">
+      <text class="cuIcon-title text-blue"></text>
+      任务步骤
+    </view>
+    <view class="action">
+      <button class="cu-btn line-green round sm" bindtap="addstep" >增加图文步骤</button>
+      <button class="cu-btn line-red round sm" style="margin-left: 20rpx;" bindtap="reducestep"  >减少图文步骤</button>
+      <!-- <text style="color:green">	增加图文步骤</text> <text style="color:red">	减少图文步骤</text> -->
+    </view>
   </view>
+  <view wx:for="{{step}}" wx:key="item">
+    <view class="cu-bar bg-white " style="margin-top: 5rpx;">
+      <view class="action">步骤{{index + 1}}</view>
+    </view>
+    <view class="flex  text-body">
+      <view class="flex-sub  radius">
+        <view class="solids" bindtap="ChooseImage" wx:if="{{item.image=='' ||  item.image==null}}" data-index="{{index}}" style="margin-top: 10rpx;">
+          <text class="ui_uploader"></text>
+        </view>
+        <view  bindtap="ViewImage" style="margin-top: 10rpx;" wx:else data-url="{{item.image}}">
+
+          <view class='clearicon' catchtap='DelImg' data-index='{{index}}'>
+						<image class="clear" src="/images/common/reddelete.png" mode="aspectFix"></image>
+					</view>
+          <image src='{{item.image}}' mode='aspectFill' class="bg-img"></image>
+        </view>
+      </view>
+      <view class="flex-treble   margin-xs radius">
+        <view class="centered">
+          <view class="task_text3">
+            <textarea maxlength="200" bindinput="stepdescribe" value='{{item.explain}}' placeholder="请输入步骤说明" data-index="{{index}}"></textarea>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+</view>
+<view class=" centered">
+  <view class="tpis ">
+    <text>提示：平台禁止发布黄赌毒、谣言及涉政等一切法律禁止之内容。发布限时任务之后，任务的管理和任务审核均在网页版管理后台进行操作，需要网页版后台，请联系客服获取，谢谢！</text>
+  </view>
+</view>
+<view class="sumbit-btn">
+  <button bindtap="sumbit">提交</button>
 </view>
 
 
 
-<view>
-
-  <button bindtap="sumbit">提交</button>
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+	<view class='cuIcon-loading2 text-orange'></view>
+	<view class='gray-text'>发布中...</view>
 </view>

@@ -73,9 +73,9 @@
     <view class="cu-time">第{{index + 1}}步</view>
     <view class="cu-item">
       <view class="content">
-        <text>{{item.explain}}</text>
+        <text>{{item.explain?item.explain:"无任务描述"}}</text>
       </view>
-      <view class="content">
+      <view class="content" wx:if="{{item.image}}">
         <image src="{{item.image}}"></image>
       </view>
     </view>

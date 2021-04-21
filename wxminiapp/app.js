@@ -30,42 +30,42 @@ App({
     })
   },
 
-  getUserInfo: function(e) {
-    var data = {
-      channel: e.query.channel || 0,
-      crowd_id: e.query.crowd_id || 0,
-      scene: e.scene,
-    }
-    common.register(data) //用户注册未授权
-  },
-
-
-  // oldgetUserInfo: function(e) {
-  //   let that = this;
+  // getUserInfo: function(e) {
   //   var data = {
   //     channel: e.query.channel || 0,
   //     crowd_id: e.query.crowd_id || 0,
   //     scene: e.scene,
   //   }
-  //   wx.getSetting({
-  //     success(res) {
-  //       if (res.authSetting['scope.userInfo']) {
-  //         // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-  //         wx.getUserInfo({
-  //           success(res) {
-  //             let userdata = Object.assign(data, res.userInfo);
-  //             common.authorized(userdata) //用户注册已经授权
-  //           },
-  //           fail(res) {
-  //             common.register(data) //用户注册已经授权但是未获取到信息
-  //           }
-  //         })
-  //       } else {
-  //         common.register(data) //用户注册未授权
-  //       }
-  //     }
-  //   })
+  //   common.register(data) //用户注册未授权
   // },
+
+
+  getUserInfo: function(e) {
+    let that = this;
+    var data = {
+      channel: e.query.channel || 0,
+      crowd_id: e.query.crowd_id || 0,
+      scene: e.scene,
+    }
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success(res) {
+              let userdata = Object.assign(data, res.userInfo);
+              common.authorized(userdata) //用户注册已经授权
+            },
+            fail(res) {
+              common.register(data) //用户注册已经授权但是未获取到信息
+            }
+          })
+        } else {
+          common.register(data) //用户注册未授权
+        }
+      }
+    })
+  },
 
 
   // onShow(options) {
