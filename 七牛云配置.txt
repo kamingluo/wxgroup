@@ -7,6 +7,11 @@ grouplongtime
 素材存放-平时一些设置类。推广类素材
 groupmaterial
 
+
+存储一年，用于一些发布类的。可以修改的
+grouponeyear
+1.发布限时任务的步骤图片
+
 华东
 60天存储-任务图片，聊天图片等短时效图片
 groupsixty

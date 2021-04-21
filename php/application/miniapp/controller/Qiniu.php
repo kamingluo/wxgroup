@@ -61,6 +61,19 @@ class Qiniu
     }
 
 
+    public function grouponeyear()
+    {
+      $accessKey = Config('newqiniuaccessKey');
+      $secretKey = Config('newqiniusecretKey');
+      $auth = new Auth($accessKey, $secretKey);
+      $bucket = 'grouponeyear';//七牛云空间名称
+      // 生成上传Token
+      $upToken  = $auth->uploadToken($bucket);
+      $ret = array('message' => "生成grouponeyear空间七牛上传Token成功",'uptoken' => $upToken);
+      return $ret;
+    }
+
+
 
 
 }
