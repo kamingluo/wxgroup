@@ -125,8 +125,7 @@
 }
 
 .goods-price text{
-  font-size: 30rpx;
-  color: red;
+  font-size: 25rpx;
   font-weight: 600;
 
 }

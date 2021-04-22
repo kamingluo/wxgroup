@@ -7,7 +7,7 @@
 
 <view class='score'>
 	<view class='score_text centered'>
-	
+
 		<text>当前积分为:</text>
 		<text decode="true" class="userscores">{{userdata.score}}</text><text class="jifentext">积分</text>
 	</view>
@@ -18,13 +18,14 @@
 	</view>
 </view>
 
-  <!-- 广点通视频广告开始-->
-  <view class='centered  video-body'>
-    <view class='gdtad' style="opacity: 0">
-      <ad capture-bind:tap="gdtvideoadclick"  ad-intervals="30" unit-id="adunit-deda238f6f300a99" ad-type="video" ad-theme="white"></ad>
-    </view>
-  </view>
-  <!--广点通视频广告结束-->
+<!-- 广点通视频广告开始-->
+<view class='centered  video-body'>
+	<view class='gdtad' style="opacity: 0">
+		<ad capture-bind:tap="gdtvideoadclick" ad-intervals="30" unit-id="adunit-deda238f6f300a99" ad-type="video"
+			ad-theme="white"></ad>
+	</view>
+</view>
+<!--广点通视频广告结束-->
 
 
 
@@ -34,6 +35,8 @@
 		<text>注：积分兑换奖品为群主自行设置奖品，与群记分团队无任何责任关系。如有疑问可联系空间群主沟通解决。</text>
 	</view>
 </view>
+
+
 
 
 
@@ -52,9 +55,11 @@
 					<view class='goods-introduce'>
 						<text>{{item.goodsname}}</text>
 					</view>
-					<view class='goods-price '>
-						<text> {{item.price}}</text>积分
+
+					<view class='goods-price'>
+						<text style="color:red">{{item.price}}</text> <text>积分</text>  <text style="margin-left:80rpx;">库存:{{item.stock&&item.stock!=999999999 || item.stock==0 ?item.stock:"不限量"}}</text>
 					</view>
+
 					<view class='line'></view>
 					<view class='exchange centered' bindtap='clickgoods' data-goodsdata="{{item}}">
 						<kaming-button>

@@ -141,6 +141,22 @@ Page({
 
   clickgoods:function(e){
    // console.log(this.data.userdata.score)
+
+   let stock = e.currentTarget.dataset.goodsdata.stock
+   if(stock != null || stock != "" || stock != 999999999 ){
+     console.log("要检查库存")
+     if(stock==0){
+       console.log("库存不足")
+       wx.showToast({
+        title: '商品库存不足',
+        icon: 'none',
+        duration: 2000,
+      })
+      return ;
+     }
+   }
+
+
     let price = e.currentTarget.dataset.goodsdata.price
     let user_score = this.data.userdata.score
     let good_id = e.currentTarget.dataset.goodsdata.id

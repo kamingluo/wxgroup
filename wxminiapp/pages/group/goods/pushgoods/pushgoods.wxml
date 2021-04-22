@@ -11,7 +11,7 @@
 <view class="centered">
   <view class="cu-form-group  shadow shadow-lg bg-white ">
     <view class="title">商品名称</view>
-    <input placeholder="请输入商品名称"  maxlength="40"  bindinput="groupname" ></input>
+    <input placeholder="请输入商品名称" maxlength="40" bindinput="groupname"></input>
   </view>
 </view>
 
@@ -19,7 +19,27 @@
 <view class="centered">
   <view class="cu-form-group  shadow shadow-lg bg-white ">
     <view class="title">商品积分</view>
-    <input placeholder="请输入兑换商品所需积分数"  maxlength="5"  type='number' bindinput="groupcode" ></input>
+    <input placeholder="请输入兑换商品所需积分数" maxlength="5" type='number' bindinput="groupcode" value="{{groupcode}}"></input>
+  </view>
+</view>
+
+
+<view class="centered">
+  <view class="cu-form-group  shadow shadow-lg bg-white ">
+  <view class="title">库存限量</view>
+  <picker bindchange="PickerChange" value="{{ifstock}}" range="{{picker}}">
+    <view class="picker">
+      {{ifstock?picker[ifstock]:'请选择方式'}}
+    </view>
+  </picker>
+</view>
+</view>
+
+
+<view class="centered" wx:if="{{ifstock==1}}">
+  <view class="cu-form-group  shadow shadow-lg bg-white ">
+    <view class="title">商品库存</view>
+    <input placeholder="请输入商品库存数" maxlength="5" type='number' bindinput="stock" value="{{stock}}"></input>
   </view>
 </view>
 
@@ -30,8 +50,9 @@
 <view class="centered">
   <view class='centered  '>
     <view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="{{index}}">
-      <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20" color="red" />
-      <image  bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
+      <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20"
+        color="red" />
+      <image bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
     </view>
     <view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}"></view>
   </view>
@@ -62,7 +83,7 @@
 
 
 
-<view class='cu-load load-modal'  wx:if="{{loadModal}}">
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
   <view class='cuIcon-loading2 text-orange'></view>
   <view class='gray-text'>发布中...</view>
 </view>

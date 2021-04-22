@@ -16,7 +16,10 @@ Page({
     grouptext: null,
     groupname: null,
     groupcode: null,
-    loadModal: false
+    loadModal: false,
+    picker: ['不限量兑换', '限制库存'],
+    ifstock:"0",
+    stock:null,
   },
   // 删除图片
   clearImg: function (e) {
@@ -94,9 +97,38 @@ Page({
     })
   },
 
+  stock:function(e){
+    this.setData({
+      stock: e.detail.value,
+    })
+  },
+
+  PickerChange(e) {
+    console.log(e.detail.value);
+    // 开奖方式，0是满人开奖，1是到时间开奖
+    this.setData({
+      ifstock: e.detail.value
+    })
+  },
+
   sumittask: function (e) {
-    // console.log(this.data.grouptext)
-    // console.log(this.data.groupname)
+
+    if(this.data.ifstock == 1){
+      console.log("设置了库存")
+      if(this.data.stock == null || this.data.stock < 1 ){
+        wx.showToast({
+          title: '请设置正确的库存',
+          icon: 'none',
+          duration: 2500,
+        })
+        return;
+      }
+      else{
+
+      }
+
+    }
+
     if (this.data.uploaderNum == 0 || this.data.groupname == null || this.data.groupcode == null) {
       wx.showToast({
         title: '信息不能为空',
@@ -126,6 +158,10 @@ Page({
     var crowd_id = this.data.crowd_id
     var groupcode = this.data.groupcode
     var groupname = this.data.groupname
+    var stock=999999999;
+    if(this.data.ifstock == 1){
+      stock=this.data.stock;
+    }
     var logo = logo
         request({
           service: 'group/groupgoods/pushgoods',
@@ -133,6 +169,7 @@ Page({
             crowd_id: crowd_id,
             price: groupcode,
             goodsname: groupname,
+            stock:stock,
             images: logo
           },
           success: res => {
