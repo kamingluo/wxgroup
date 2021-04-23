@@ -38,7 +38,7 @@ class Limittask
         $open =$request->param("open");
         if($open != 1 || $open != 0){
             //查询全部
-            $data =db('crowd_limit_tasks')->field('id,title,describe,score,number,limit,end_time,create_time,open')->where('crowd_id',$crowd_id)->order('id desc')->select(); 
+            $data =db('crowd_limit_tasks')->field('id,title,describe,score,number,limit,end_time,create_time,open')->where('crowd_id',$crowd_id)->where('open',0)->order('id desc')->select(); 
         } 
         else{
             $data =db('crowd_limit_tasks')->field('id,title,describe,score,number,limit,end_time,create_time,open')->where('crowd_id',$crowd_id)->where('open',0)->order('id desc')->select();
