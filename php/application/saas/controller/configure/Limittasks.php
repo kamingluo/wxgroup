@@ -111,7 +111,7 @@ class Limittasks
       }
       else{
         //审核不通过
-        $dbreturn= db('corwd_limit_task_record')->where('id',$limit_id)->update(['state' => 2,'result' => $result]);
+        $dbreturn= db('corwd_limit_task_record')->where('id',$id)->update(['state' => 2,'result' => $result]);
         $state=['state'   => '200','message'  => "审核完成，结果为不通过" ];
         $resdata=array_merge($state,array('taskstate'=>'err'));
         return $resdata;
