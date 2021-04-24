@@ -298,8 +298,8 @@ Page({
       })
       return;
     }
-    let groupdata = this.data.crowddata.groupdata;
-    if (groupdata == null || groupdata==""){
+    let newgroupdata = this.data.crowddata.groupdata || "";
+    if (newgroupdata == null || newgroupdata==""){
       wx.showToast({
         title: '程序错误返回首页',
         icon: 'none',
@@ -312,8 +312,8 @@ Page({
       }, 1500)
       return;
     }
-    let crowd_id = this.data.crowddata.groupdata.id
-    let crowd_name = this.data.crowddata.groupdata.crowd_name
+    let crowd_id = newgroupdata.id
+    let crowd_name = newgroupdata.crowd_name
     let user_type = this.data.user_type
     wx.navigateTo({
       url: joumurl + '?crowd_id=' + crowd_id + '&user_type=' + user_type + '&crowd_name=' + crowd_name,
@@ -415,7 +415,7 @@ Page({
 
 //跳转到签到页面
 jumpsigin: function() {
-  let groupdata = this.data.crowddata.groupdata;
+  let groupdata = this.data.crowddata.groupdata || "";
   if (groupdata == null || groupdata == "") {
     wx.showToast({
       title: '程序错误返回首页',

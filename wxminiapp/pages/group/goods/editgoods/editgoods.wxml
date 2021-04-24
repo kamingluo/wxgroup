@@ -1,0 +1,92 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}" >
+  <view slot="backText">返回</view>
+  <view slot="content">修改商品</view>
+</cu-custom>
+
+
+
+<view class="centered">
+  <view class="cu-form-group  shadow shadow-lg bg-white ">
+    <view class="title">商品名称</view>
+    <input placeholder="请输入商品名称" maxlength="40" bindinput="goodsname" value="{{goodsdata.goodsname}}"></input>
+  </view>
+</view>
+
+
+<view class="centered">
+  <view class="cu-form-group  shadow shadow-lg bg-white ">
+    <view class="title">商品积分</view>
+    <input placeholder="请输入兑换商品所需积分数" maxlength="5" type='number' bindinput="price" value="{{goodsdata.price}}"></input>
+  </view>
+</view>
+
+
+<view class="centered">
+  <view class="cu-form-group  shadow shadow-lg bg-white ">
+  <view class="title">库存限量</view>
+  <picker bindchange="PickerChange" value="{{ifstock}}" range="{{picker}}">
+    <view class="picker">
+      {{ifstock?picker[ifstock]:'请选择方式'}}
+    </view>
+  </picker>
+</view>
+</view>
+
+
+<view class="centered" wx:if="{{ifstock==1}}">
+  <view class="cu-form-group  shadow shadow-lg bg-white ">
+    <view class="title">商品库存</view>
+    <input placeholder="请输入商品库存数" maxlength="5" type='number' bindinput="stock" value="{{goodsdata.stock}}"></input>
+  </view>
+</view>
+
+
+<view class='ui_cell'>
+  <view class='ui_cell_bd'>商品图片</view>
+</view>
+<view class="centered">
+  <view class='centered  '>
+    <view class='ui_uploader_item' >
+      <!-- <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20"
+        color="red" /> -->
+      <image bindtap='showImg' data-index="{{index}}" src='{{goodsdata.images}}'></image>
+    </view>
+    <!-- <view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}"></view> -->
+  </view>
+</view>
+
+
+
+<view class='sumittask centered'>
+  <button bindtap="sumittask" class="bg-blue">修改商品</button>  <button bindtap="deletegoods" class="bg-red">删除商品</button>
+</view>
+
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <view class='cuIcon-loading2 text-orange'></view>
+  <view class='gray-text'>发布中...</view>
+</view>
+
+
+
+
+
+<view class="cu-modal show" wx:if="{{deletegoodsmodel}}">
+	<view class="cu-dialog">
+		<view class="cu-bar bg-white justify-end">
+			<view class="content">删除商品</view>
+			<view class="action" bindtap="hideModal">
+				<text class="cuIcon-close text-red"></text>
+			</view>
+		</view>
+		<view class="padding-xl">
+			确定要这个商品吗？
+		</view>
+		<view class="cu-bar bg-white justify-end">
+			<view class="action">
+				<button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+				<button class="cu-btn bg-green margin-left" bindtap="confirmdeletegoods">确定</button>
+			</view>
+		</view>
+	</view>
+</view>

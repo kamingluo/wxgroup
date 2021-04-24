@@ -47,6 +47,7 @@
     "pages/group/goods/exchange/special/special",
     "pages/group/goods/sortgoods/sortgoods",
     "pages/group/goods/exchangelist/exchangelist",
+    "pages/group/goods/editgoods/editgoods",
     "pages/group/user/emptyscore/emptyscore",
     "pages/group/user/userdetailed/userdetailed",
     "pages/group/user/userdetailed/usertasklist/usertasklist",

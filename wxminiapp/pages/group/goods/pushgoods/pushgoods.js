@@ -123,10 +123,6 @@ Page({
         })
         return;
       }
-      else{
-
-      }
-
     }
 
     if (this.data.uploaderNum == 0 || this.data.groupname == null || this.data.groupcode == null) {

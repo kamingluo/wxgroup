@@ -75,6 +75,12 @@
           "pathName": "pages/group/alltasklists/alltasklists",
           "query": "crowd_id=14",
           "scene": null
+        },
+        {
+          "name": "修改商品",
+          "pathName": "pages/group/goods/editgoods/editgoods",
+          "query": "id=535",
+          "scene": null
         }
       ]
     }

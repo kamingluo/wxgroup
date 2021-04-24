@@ -46,8 +46,11 @@
 			<block wx:for="{{goodslist}}" wx:key="item">
 
 				<view class='goods radius shadow bg-white  '>
-					<view class='clearicon' catchtap='deletegoods' data-id='{{item.id}}' wx:if="{{user_type==1}}">
+					<!-- <view class='clearicon' catchtap='deletegoods' data-id='{{item.id}}' wx:if="{{user_type==1}}">
 						<image class="clear" src="/images/common/delete.png" mode="aspectFix"></image>
+					</view> -->
+					<view class='clearicon' catchtap='updategoods' data-id='{{item.id}}' wx:if="{{user_type==1}}">
+						<image class="clear" src="/images/common/editblue.png" mode="aspectFix"></image>
 					</view>
 					<view class='goods-image'>
 						<image src='{{item.images}}'></image>

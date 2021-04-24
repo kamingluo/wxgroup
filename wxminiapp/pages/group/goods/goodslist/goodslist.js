@@ -59,6 +59,16 @@ Page({
   },
 
 
+  //跳转修改页面
+  updategoods:function(e){
+    console.log(e.currentTarget.dataset.id)
+    let id=e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/group/goods/editgoods/editgoods?id=' + id
+    })
+
+  },
+
 
 
 
