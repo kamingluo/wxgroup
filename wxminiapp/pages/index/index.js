@@ -15,15 +15,15 @@ Page({
    */
   data: {
     imageurl: 'https://group.gzywudao.top/php/public/',//默认图片链接
-    display:false,
-    swiperdata:[],//首页轮播图数据
+    display: false,
+    swiperdata: [],//首页轮播图数据
     modeldata: [],//首页弹框数据
-    usergrouplist:[],//用户加入群列表
-    ifauthorized:false,
-    banneradshow:true,
+    usergrouplist: [],//用户加入群列表
+    ifauthorized: false,
+    banneradshow: true,
     adtype: null,//展示广告类型
-    crowd_vip:false,//是否群vip
-    ifadspecialshow:false//是否强展示广告
+    crowd_vip: false,//是否群vip
+    ifadspecialshow: false//是否强展示广告
   },
 
   /**
@@ -36,7 +36,7 @@ Page({
       display: app.globalData.display || false,
       imageurl: imageurl,
     })
-    
+
   },
 
 
@@ -69,14 +69,14 @@ Page({
 
   //点击轮播图
   clickSwiper: function (e) {
-    console.log("点击轮播图",e)
+    console.log("点击轮播图", e)
     common.insidejump(e.currentTarget.dataset.data)
   },
 
 
   //用户加入群列表
-  usergroup:function(){
-    var that =this
+  usergroup: function () {
+    var that = this
     wx.login({
       success: res => {
         let user_id = wx.getStorageSync('userdata').id || 0;
@@ -96,11 +96,11 @@ Page({
             })
             wx.setStorageSync('crowd_vip', crowd_vip)
             wx.setStorageSync('ifadspecialshow', ifadspecialshow)
-            
-            if (res.usergrouplist.length < 2){
+
+            if (res.usergrouplist.length < 2) {
               setTimeout(function () {
                 that.usergroup2()
-              }, 2000)   
+              }, 2000)
             }
           },
         })
@@ -159,28 +159,28 @@ Page({
   },
 
 
-  clickusergrouplist:function(e){
+  clickusergrouplist: function (e) {
     wx.navigateTo({
       url: '/pages/group/groupdetails/groupdetails?id=' + e.currentTarget.dataset.data.id + '&user_type=' + e.currentTarget.dataset.data.user_type + '&score=' + e.currentTarget.dataset.data.score,
     })
   },
 
-  clickgroup:function(){
+  clickgroup: function () {
     wx.navigateTo({
       url: '/pages/creategroup/creategroup',
     })
   },
 
 
- //判断用户有没有授权
-  getUserInfoif:function(){
+  //判断用户有没有授权
+  getUserInfoif: function () {
     var that = this
     wx.getSetting({
       success(res) {
-        console.log("onshow拿到用户授权过的配置",res)
+        console.log("onshow拿到用户授权过的配置", res)
         if (res.authSetting['scope.userInfo']) {
           that.setData({
-            ifauthorized: true ,
+            ifauthorized: true,
           })
         }
       }
@@ -200,7 +200,7 @@ Page({
     }
     wx.getSetting({
       success(res) {
-        console.log("查看授权设置",res)
+        console.log("查看授权设置", res)
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success(res) {
@@ -217,7 +217,7 @@ Page({
     })
   },
 
-  
+
 
   //广告加载成功或者失败展示交互
   banneradsuccess: function () {
@@ -281,7 +281,7 @@ Page({
       }
     })
   },
-  
+
 
   //点击弹框广告跳转
   clickjump: function (e) {
@@ -293,9 +293,9 @@ Page({
   },
 
 
-  hideModal:function(){
+  hideModal: function () {
     this.setData({
-      modeldata:[],
+      modeldata: [],
     })
   },
   /**
@@ -310,14 +310,15 @@ Page({
     //   // imageUrl: 'https://material.gzywudao.top/image/group/groupicon.png',
     //   path: '/pages/index/index?channel=1005&ald_media_id=33542&ald_link_key=c99244f0802f9f06', // 路径，传递参数到指定页面。
     // }
-    
+
   },
 
-  onShareTimeline:function(){
+  onShareTimeline: function () {
     console.log("分享到朋友圈")
     return {
       title: "群记分小程序，一款好用的群管理工具。",
-      imageUrl: baseConfig.imageurl+'miniapp/images/appicon.png',
+      // imageUrl: baseConfig.imageurl+'miniapp/images/appicon.png',
+      imageurl: 'http://groupmaterial.gzywudao.top/fengmian.png',
       query: "这里是填写要携带的参数", // 路径，传递参数到指定页面。
     }
   }

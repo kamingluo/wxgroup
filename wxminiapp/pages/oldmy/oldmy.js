@@ -12,14 +12,14 @@ const baseConfig = require('./../../utils/config.js')//配置文件
 
 Page({
   data: {
-    userdata:'',
-    birthday:null,
+    userdata: '',
+    birthday: null,
     gdtaddisplay: false,
-    ifauthorized:false,
+    ifauthorized: false,
   },
 
   onLoad: function (e) {
-    if (e.exchangelist){
+    if (e.exchangelist) {
       this.exchangelist()
     }
     this.addisplay()
@@ -36,8 +36,8 @@ Page({
   },
 
 
- //获取用户信息
-  userdata:function(){
+  //获取用户信息
+  userdata: function () {
     wx.login({
       success: res => {
         request({
@@ -60,12 +60,12 @@ Page({
 
   //获取小U广告配置
 
-  xiaouad:function(){
+  xiaouad: function () {
     request({
       service: 'appdata/my/xiaouad',
       data: {},
       success: res => {
-        console.log("小U广告数据",res.data)
+        console.log("小U广告数据", res.data)
         this.setData({
           xiaouaddata: res.data,
         })
@@ -76,9 +76,9 @@ Page({
 
 
   //用户生日
-  birthday:function(e){
-    if(e){
-      var shijian  = e.replace(/\.|\-/g, '/')
+  birthday: function (e) {
+    if (e) {
+      var shijian = e.replace(/\.|\-/g, '/')
       var temp = new Date(shijian);
       var t = temp.getFullYear() + "/" + (temp.getMonth() + 1) + "/" + temp.getDate(); //去除时分秒
       this.setData({
@@ -89,15 +89,15 @@ Page({
 
 
 
-  business:function(e){
+  business: function (e) {
     let jumpid = e.currentTarget.dataset.jumpid;
-    if (jumpid ==1){
+    if (jumpid == 1) {
       var url = '/pages/business/gdtad/gdtad';
     }
-    else if (jumpid == 2){
+    else if (jumpid == 2) {
       var url = '/pages/business/exchange/exchange';
     }
-    else{
+    else {
       var url = '/pages/business/exchange_detailed/exchange_detailed';
     }
     wx.navigateTo({
@@ -105,9 +105,9 @@ Page({
     })
 
   },
- 
+
   //用户地址
-  myaddress:function(){
+  myaddress: function () {
     wx.navigateTo({
       url: '/pages/my/my_address/my_address'
     })
@@ -116,7 +116,7 @@ Page({
 
 
   //用户空间任务记录
-  usertasklist:function(){
+  usertasklist: function () {
     wx.navigateTo({
       url: '/pages/my/score_detailed/score_detailed'
     })
@@ -124,7 +124,7 @@ Page({
   },
 
   //跳转兑换记录页面
-  exchangelist:function(){
+  exchangelist: function () {
     wx.navigateTo({
       url: '/pages/my/exchangelist/exchangelist'
     })
@@ -140,30 +140,30 @@ Page({
   },
 
   gdtbanneradclick: function (e) {
-    let data={
-      'adtype':1,
-      'position':"我的页面"
+    let data = {
+      'adtype': 1,
+      'position': "我的页面"
     };
     common.clickgdtadstatistics(data)
   },
 
   mobanadclick: function (e) {
-    let data={
-      'adtype':5,
-      'position':"我的页面"
-    };
-    common.clickgdtadstatistics(data)
-  },
-  
-  gdtvideoadclick: function (e) {
-    let data={
-      'adtype':4,
-      'position':"我的页面"
+    let data = {
+      'adtype': 5,
+      'position': "我的页面"
     };
     common.clickgdtadstatistics(data)
   },
 
-//用户设置生日
+  gdtvideoadclick: function (e) {
+    let data = {
+      'adtype': 4,
+      'position': "我的页面"
+    };
+    common.clickgdtadstatistics(data)
+  },
+
+  //用户设置生日
   bindDateChange: function (e) {
     wx.login({
       success: res => {
@@ -179,7 +179,7 @@ Page({
               icon: 'none',
               duration: 2000,
             })
-             this.birthday(e.detail.value)//处理时间
+            this.birthday(e.detail.value)//处理时间
           },
         })
       }
@@ -188,13 +188,13 @@ Page({
   },
 
   //判断用户有没有授权
-  getUserInfoif:function(){
+  getUserInfoif: function () {
     var that = this
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
           that.setData({
-            ifauthorized: true ,
+            ifauthorized: true,
           })
         }
       }
@@ -205,7 +205,7 @@ Page({
   //用户注册
   getUserInfo: function (e) {
     let that = this;
-    channel=wx.getStorageSync('userdata').channel || 0
+    channel = wx.getStorageSync('userdata').channel || 0
     var data = {
       channel: channel,
       crowd_id: 0,
@@ -219,7 +219,7 @@ Page({
               //console.log("更新信息啦")
               let userdata = Object.assign(data, res.userInfo);
               common.authorized(userdata) //用户注册已经授权
-              setTimeout(function() {
+              setTimeout(function () {
                 that.userdata()//等注册完成，隔2秒拿一下新的信息
               }, 2000)
               that.setData({
