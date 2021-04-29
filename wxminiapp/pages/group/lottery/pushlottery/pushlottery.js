@@ -54,6 +54,8 @@ Page({
       goodsname: e.detail.value,
     })
   },
+
+  
   score:function(e){
     this.setData({
       score: e.detail.value,
