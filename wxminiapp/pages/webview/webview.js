@@ -13,7 +13,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    console.log("打印跳转的url")
+    console.log(options.url)
     let url=options.url;
     let newurl=decodeURIComponent(url)
     this.setData({

@@ -81,7 +81,7 @@ function sendEmail($data = []) {
   // $mail->From = '954087620@qq.com';  //发件人地址（也就是你的邮箱）
 
   $mail->Username = '3538187083@qq.com';  //你的邮箱 
-  $mail->Password = 'wkcvjqvxsjjpcijf';  //你的密码 
+  $mail->Password = 'aqnfvzndesorchch';  //你的密码 
   $mail->From = '3538187083@qq.com';  //发件人地址（也就是你的邮箱）
 
 
