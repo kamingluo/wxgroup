@@ -6,8 +6,9 @@
                     <div class="user-info">
                         <img src="../../assets/images/img.jpg" class="user-avator" alt="">
                         <div class="user-info-cont">
-                            <div class="user-info-name">{{name}}</div>
-                            <div>{{role}}</div>
+                            <!-- <div class="user-info-name">{{name}}</div> -->
+                            <div class="user-info-name">《群记分》小程序</div>
+                            <!-- <div>{{role}}</div> -->
                         </div>
                     </div>
                    <!-- <div class="user-info-list">上次登录时间：<span>2018-01-01</span></div>
@@ -81,41 +82,35 @@
                                     <div class="grid-num">{{statistics.builtcrowd}}</div>
                                     <div>今日创建群数</div>
                                 </div>
-                            </div>
-                        </el-card>
-                    </el-col>
-
-                      <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{padding: '0px'}">
-                            <div class="grid-content grid-con-1">
-                                <i class="el-icon-lx-friend grid-con-icon"></i>
-                                <div class="grid-cont-right">
+                                 <div class="grid-cont-right">
                                     <div class="grid-num">{{statistics.joincrowd}}</div>
-                                    <div>今日加入群数</div>
+                                    <div>今日加入群人数</div>
                                 </div>
                             </div>
                         </el-card>
                     </el-col>
 
-                      <el-col :span="8">
+
+                    <el-col :span="8">
+                        <el-card shadow="hover" :body-style="{padding: '0px'}">
+                            <div class="grid-content grid-con-1">
+                                <i class="el-icon-lx-favorfill grid-con-icon"></i>
+                                <div class="grid-cont-right">
+                                    <div class="grid-num">{{statistics.limit_task_record}}</div>
+                                    <div>今日提交限时任务数</div>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
+
+                   
+                    <el-col :span="8">
                         <el-card shadow="hover" :body-style="{padding: '0px'}">
                             <div class="grid-content grid-con-1">
                                 <i class="el-icon-lx-favorfill grid-con-icon"></i>
                                 <div class="grid-cont-right">
                                     <div class="grid-num">{{statistics.task_record}}</div>
-                                    <div>今日提交任务数</div>
-                                </div>
-                            </div>
-                        </el-card>
-                    </el-col>
-
-                      <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{padding: '0px'}">
-                            <div class="grid-content grid-con-1">
-                                <i class="el-icon-lx-newsfill grid-con-icon"></i>
-                                <div class="grid-cont-right">
-                                    <div class="grid-num">{{statistics.crowd_news}}</div>
-                                    <div>今日发布群消息数</div>
+                                    <div>今日提交普通任务数</div>
                                 </div>
                             </div>
                         </el-card>
@@ -134,6 +129,22 @@
                     </el-col>
 
 
+
+
+                      <el-col :span="8">
+                        <el-card shadow="hover" :body-style="{padding: '0px'}">
+                            <div class="grid-content grid-con-1">
+                                <i class="el-icon-lx-newsfill grid-con-icon"></i>
+                                <div class="grid-cont-right">
+                                    <div class="grid-num">{{statistics.ex_record}}</div>
+                                    <div>今日兑换商品数</div>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
+
+
+
                     <el-col :span="8">
                         <el-card shadow="hover" :body-style="{padding: '0px'}">
                             <div class="grid-content grid-con-1">
@@ -146,6 +157,19 @@
                         </el-card>
                     </el-col>
 
+
+                    <el-col :span="8">
+                        <el-card shadow="hover" :body-style="{padding: '0px'}">
+                            <div class="grid-content grid-con-1">
+                                <i class="el-icon-lx-rechargefill grid-con-icon"></i>
+                                <div class="grid-cont-right">
+                                    <div class="grid-num">{{statistics.showinterstitialad}}</div>
+                                    <div>插屏广告展示次数</div>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
+
                     <el-col :span="8">
                         <el-card shadow="hover" :body-style="{padding: '0px'}">
                             <div class="grid-content grid-con-1">
@@ -153,6 +177,19 @@
                                 <div class="grid-cont-right">
                                     <div class="grid-num">{{statistics.clickbanner}}</div>
                                     <div>今日点击banner广告去重数</div>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
+
+
+                    <el-col :span="8">
+                        <el-card shadow="hover" :body-style="{padding: '0px'}">
+                            <div class="grid-content grid-con-1">
+                                <i class="el-icon-lx-rechargefill grid-con-icon"></i>
+                                <div class="grid-cont-right">
+                                    <div class="grid-num">{{statistics.clickcustom}}</div>
+                                    <div>今日点击模板广告去重数</div>
                                 </div>
                             </div>
                         </el-card>
@@ -185,17 +222,6 @@
 
 
                     
-                    <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{padding: '0px'}">
-                            <div class="grid-content grid-con-1">
-                                <i class="el-icon-lx-rechargefill grid-con-icon"></i>
-                                <div class="grid-cont-right">
-                                    <div class="grid-num">{{statistics.clickcustom}}</div>
-                                    <div>今日点击模板广告去重数</div>
-                                </div>
-                            </div>
-                        </el-card>
-                    </el-col>
 
                     
                     <el-col :span="8">
@@ -210,17 +236,6 @@
                         </el-card>
                     </el-col>
 
-                    <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{padding: '0px'}">
-                            <div class="grid-content grid-con-1">
-                                <i class="el-icon-lx-rechargefill grid-con-icon"></i>
-                                <div class="grid-cont-right">
-                                    <div class="grid-num">{{statistics.showinterstitialad}}</div>
-                                    <div>插屏广告展示次数</div>
-                                </div>
-                            </div>
-                        </el-card>
-                    </el-col>
 
                      <!-- <el-col :span="8">
                         <el-card shadow="hover" :body-style="{padding: '0px'}">
@@ -313,7 +328,7 @@
                     bgColor: '#F5F8FD',
                     bottomPadding: 30,
                     topPadding: 30
-                }
+                },
             }
         },
         components: {
@@ -326,19 +341,19 @@
         },
        
         created(){
-            this.handleListener();
+            //this.handleListener();
             this.changeDate();
             this.todaydata();
             this.adminchanneldata();
             this.adminusersdata();
         },
         activated(){
-            this.handleListener();
+            //this.handleListener();
         },
-        deactivated(){
-            window.removeEventListener('resize', this.renderChart);
-            bus.$off('collapse', this.handleBus);
-        },
+        // deactivated(){
+        //     window.removeEventListener('resize', this.renderChart);
+        //     bus.$off('collapse', this.handleBus);
+        // },
         methods: {
             channelnumber:function(number){
                  var num =number / this.allusersnumber*100;
@@ -384,20 +399,20 @@
                     item.name = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`
                 })
             },
-            handleListener(){
-                bus.$on('collapse', this.handleBus);
-                // 调用renderChart方法对图表进行重新渲染
-                window.addEventListener('resize', this.renderChart)
-            },
-            handleBus(msg){
-                setTimeout(() => {
-                    this.renderChart()
-                }, 300);
-            },
-            renderChart(){
-                this.$refs.bar.renderChart();
-                this.$refs.line.renderChart();
-            }
+            // handleListener(){
+            //     bus.$on('collapse', this.handleBus);
+            //     // 调用renderChart方法对图表进行重新渲染
+            //     window.addEventListener('resize', this.renderChart)
+            // },
+            // handleBus(msg){
+            //     setTimeout(() => {
+            //         this.renderChart()
+            //     }, 300);
+            // },
+            // renderChart(){
+            //     this.$refs.bar.renderChart();
+            //     this.$refs.line.renderChart();
+            // }
         }
     }
 

@@ -66,7 +66,7 @@
         </el-table-column>
   <el-table-column prop="wxnumber" label="群主微信" width="200">
          <template slot-scope="scope">
-         <el-text >{{scope.row.wxnumber?scope.row.wxnumber:"未填写"}}</el-text>
+         <p >{{scope.row.wxnumber?scope.row.wxnumber:"未填写"}}</p>
          </template>
         </el-table-column>
         <el-table-column prop="create_time" label="创建时间" width="170">
@@ -101,7 +101,7 @@
      <!-- 编辑弹出框 -->
     <el-dialog title="删除群" :visible.sync="delVisible" width="30%">
       <el-form ref="form" label-width="120px">
-        <el-text>确认删除？？</el-text>
+        <p>确认删除？？</p>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="delVisible = false">取 消</el-button>
@@ -113,7 +113,7 @@
      <!-- 群二维码 -->
     <el-dialog title="群二维码" :visible.sync="qrcodeVisible" width="30%">
       <el-form ref="form" :model="qrcodedata" label-width="120px">
-       <div><el-text>群名称：{{qrcodedata.crowd_name}}   </el-text></div>
+       <div><p>群名称：{{qrcodedata.crowd_name}}   </p></div>
       
         <div>  <img class="qrcode"   :src="qrcodedata.imageurl"></img></div>
       </el-form>
@@ -128,12 +128,12 @@
     <!-- 群今日数据弹出框 -->
     <el-dialog title="群今日数据" :visible.sync="grouptodaydataVisible" width="30%">
       <el-form ref="form" :model="grouptodaydata" label-width="120px">
-       <div><el-text>今日注册人数：{{grouptodaydata.groupregister}}   </el-text></div>
-      <div> <el-text >今日活跃人数：{{grouptodaydata.groupactive}}</el-text></div>
-      <div> <el-text >今日签到人数：{{grouptodaydata.groupsigins}}</el-text></div>
-     <div>  <el-text >今日上传任务数：{{grouptodaydata.grouptasks}}</el-text></div>
-       <div><el-text >今日抽奖人数：{{grouptodaydata.grouplotterys}}</el-text></div>
-      <div> <el-text >今日兑换人数：{{grouptodaydata.groupexchanges}}</el-text></div>
+       <div><p>今日注册人数：{{grouptodaydata.groupregister}}   </p></div>
+      <div> <p>今日活跃人数：{{grouptodaydata.groupactive}}</p></div>
+      <div> <p>今日签到人数：{{grouptodaydata.groupsigins}}</p></div>
+     <div>  <p>今日上传任务数：{{grouptodaydata.grouptasks}}</p></div>
+       <div><p>今日抽奖人数：{{grouptodaydata.grouplotterys}}</p></div>
+      <div> <p>今日兑换人数：{{grouptodaydata.groupexchanges}}</p></div>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="grouptodaydataVisible = false">取 消</el-button>
