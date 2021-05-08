@@ -200,6 +200,15 @@ class Groupgoods
         $user_data=db('user')->where('openid',$openid)->find(); //拿到用户信息
         $goods_data=db('crowd_goods')->where('id',$goods_id)->find(); //拿到商品信息
 
+
+        //判断用户是否兑换过这个商品。用用户名称去查询
+        $exnumber=db('exchange_record')->where('crowd_id',$crowd_id)->where('user_id',$user_data["id"])->where('goodsname',$goods_data["goodsname"])->count();
+        if($exnumber > 0){
+          $state=['state'   => '400','message'  => "兑换失败，只能兑换一次！" ];
+          return $state;
+        }
+
+
         if($user_crowd_data["score"] >= $goods_data["price"] ){//判断用户记分大于商品价格
           //判断库存够
           $stock=$goods_data['stock'];
