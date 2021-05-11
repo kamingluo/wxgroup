@@ -72,6 +72,11 @@ export default {
         },
          {
           icon: "el-icon-lx-present",
+          index: "scorelist",
+          title: "积分流水",
+        },
+         {
+          icon: "el-icon-lx-present",
           index: "coupon",
           title: "优惠券",
         },

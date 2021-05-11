@@ -37,6 +37,11 @@ export default new Router({
           meta: { title: '处理限时任务',noActive:true  }
         },
         {
+          path: '/scorelist',
+          component: resolve => require(['../components/page/Scorelist.vue'], resolve),
+          meta: { title: '积分流水' }
+        },
+        {
           path: '/coupon',
           component: resolve => require(['../components/page/Coupon.vue'], resolve),
           meta: { title: '优惠券' }
