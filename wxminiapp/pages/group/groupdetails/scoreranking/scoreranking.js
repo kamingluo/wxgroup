@@ -13,12 +13,15 @@ Page({
     signinrankinglist: [],//签到排行榜
     pages: 1,//默认第一页
     count: 0,
+    score:null,//用户积分
+    rank:null//排行
   },
   onLoad: function (e) {
     this.setData({
       crowd_id: e.crowd_id,
     })
     this.signinrankinglist(1)//签到排行榜
+    this.usercrowdscore()  //群用户在群的积分排名
 
   },
 
@@ -43,6 +46,30 @@ Page({
         that.setData({
           signinrankinglist: newsigninrankinglist,
           count: res.count,
+        })
+      },
+    })
+  },
+
+
+  
+  //群用户在群的积分排名
+  usercrowdscore: function () {
+    var that = this
+    let crowd_id = this.data.crowd_id
+    let user_id = wx.getStorageSync('userdata').id
+    request({
+      service: 'group/score/usercrowdscore',
+      method: 'GET',
+      data: {
+        crowd_id: crowd_id,
+        user_id:user_id,
+      },
+      success: res => {
+        console.log("签到排行榜", res)
+        that.setData({
+          score: res.score,
+          rank: res.rank,
         })
       },
     })
