@@ -1,22 +1,23 @@
-<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"  wx:if="{{crowd_id}}">
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}" wx:if="{{crowd_id}}">
   <view slot="backText">返回</view>
   <view slot="content">积分记录</view>
 </cu-custom>
 
 
 
-<view class='cu-load load-modal'  wx:if="{{loadModal}}" >
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
   <image src='../../../../images/common/loading.svg' class='png' mode='aspectFit'></image>
-  <view  style='margin-top: 10rpx;'  class='gray-text'>加载中</view>
+  <view style='margin-top: 10rpx;' class='gray-text'>加载中</view>
 </view>
 
-  <!-- 广点通视频广告开始-->
-  <view class='centered  video-body' wx:if="{{userscorerecord.length > 3}}">
-    <view class='gdtad' style="opacity: 0">
-      <ad capture-bind:tap="gdtvideoadclick" ad-intervals="30" unit-id="adunit-deda238f6f300a99" ad-type="video" ad-theme="white"></ad>
-    </view>
+<!-- 广点通视频广告开始-->
+<view class='centered  video-body' wx:if="{{userscorerecord.length > 3}}">
+  <view class='gdtad' style="opacity: 0">
+    <ad capture-bind:tap="gdtvideoadclick" ad-intervals="30" unit-id="adunit-deda238f6f300a99" ad-type="video"
+      ad-theme="white"></ad>
   </view>
-  <!--广点通视频广告结束-->
+</view>
+<!--广点通视频广告结束-->
 
 <view>
 
@@ -32,7 +33,7 @@
     </view>
   </view>
 
-  
+
 
 
 
@@ -54,8 +55,8 @@
           <text>{{item.explain}}</text>
         </view>
         <view class='bootm_score'>
-        <text  class='jia' wx:if="{{item.state==0}}">加{{item.score}}</text>
-          <text  class='jian' wx:else>减{{item.score}}</text>
+          <text class='jia' wx:if="{{item.state==0}}">加{{item.score}}</text>
+          <text class='jian' wx:else>减{{item.score}}</text>
         </view>
         <view class='bootm_time'>
           <text>{{item.create_time}}</text>
@@ -70,6 +71,3 @@
 
 
 </view>
-
-
-

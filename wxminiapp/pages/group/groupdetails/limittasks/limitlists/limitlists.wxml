@@ -1,0 +1,47 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}"  >
+  <view slot="backText">返回</view>
+  <view slot="content">限时任务列表</view>
+</cu-custom>
+
+
+<view wx:if="{{datalist.length > 0}}">
+  <view class="cu-card article {{isCard?'no-card':''}}" wx:for="{{datalist}}" wx:key="item"
+    bindtap='clicklimittasklist' data-id='{{item.id}}'   data-title='{{item.title}}'>
+    <view class="cu-item shadow">
+      <view class="title">
+        <view class="text-cut">{{item.title}}</view>
+      </view>
+      <view class="content">
+        <image src="http://groupmaterial.gzywudao.top/onedayone.png" mode="aspectFill" wx:if="{{item.limit==1}}">
+        </image>
+        <image src="http://groupmaterial.gzywudao.top/userone.png" mode="aspectFill" wx:else></image>
+        <view class="desc">
+          <view class="text-content">{{item.describe}}</view>
+          <view>
+            <view class="cu-tag bg-green light sm round">{{item.number==0?"不限量":"限量:" +item.number}}</view>
+            <view class="cu-tag bg-red light sm round">结束时间:{{item.end_time}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='centered   bottomtips'>
+    <text>----已经到底了---</text>
+  </view>
+</view>
+
+<view wx:else>
+  <view>
+    <view class='default'>
+      <view>
+        <image src='http://littlebox.luojiaming.vip/default.png'></image>
+      </view>
+      <view>
+        <text>暂未发布限时任务！</text>
+      </view>
+      <view>
+      </view>
+    </view>
+  </view>
+</view>

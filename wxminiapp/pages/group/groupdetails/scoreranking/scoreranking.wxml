@@ -2,7 +2,12 @@
   <view slot="backText">返回</view>
   <view slot="content">积分排名</view>
 </cu-custom>
-
+<view class="cu-bar bg-white">
+  <view class="action">
+    <text class="cuIcon-title text-green"></text>
+    <text>我的排名：{{rank}} </text><text style="margin-left:70rpx;">我的积分：{{score}} </text>
+  </view>
+</view>
 
 <!-- 签到记录&榜单开始 -->
 

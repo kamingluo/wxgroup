@@ -77,8 +77,8 @@
         </view>
 
         <view class="shouquananniu" wx:elif="{{!ifauthorized}}">
-          <button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
-          <!-- <button style="opacity:0.8" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button> -->
+          <!-- <button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button> -->
+          <button style="opacity: 0" bindtap="getUserProfile"></button>
         </view>
 
         <view class='box-body shadow-warp bg-white' bindtap="clickusergrouplist" data-data='{{item}}'>

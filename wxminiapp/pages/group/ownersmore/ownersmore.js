@@ -30,6 +30,12 @@ Page({
         url: '/pages/group/lottery/lotterylist/lotterylist?crowd_id='
       },
       {
+        title: '审核限时任务',
+        img: 'http://groupmaterial.gzywudao.top/limittaskrukou.jpg',
+        introduce: "处理和审核群员提交的限时任务",
+        url: '/pages/group/groupdetails/limittasks/limitlists/limitlists?crowd_id='
+      },
+      {
         title: '任务提交排行榜',
         img: 'https://image.weilanwl.com/color2.0/plugin/cjkz2329.jpg',
         introduce: "查看群员的任务提交情况",

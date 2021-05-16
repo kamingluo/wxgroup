@@ -46,6 +46,8 @@ function authorized(e) {
         success: res => {
           // console.log('注册成功', res);
           wx.setStorageSync('userdata', res.userdata)
+          let timestamp = Date.parse(new Date());
+           wx.setStorageSync('updateAuthorization', timestamp)
         },
         fail: res => {
           //console.log('错误捕捉', res);
@@ -196,6 +198,22 @@ function clickgdtadstatistics(e) {
   })
 }
 
+//是否需要授权
+function ifauthorized(){
+  let nowtime=Date.parse(new Date());
+  let updateAuthorization=wx.getStorageSync('updateAuthorization') || 0 ;
+  let gender=wx.getStorageSync('userdata').gender || 4 ;
+  if(nowtime-updateAuthorization > 2592000000 || gender == 4)
+  {
+    return false;
+  }
+  else{
+    return true;
+  }
+
+
+}
+
 
 
 
@@ -214,5 +232,6 @@ module.exports = {
   havewxcode:havewxcode,
   recordmsg: recordmsg,
   echecktext: echecktext,
-  clickgdtadstatistics:clickgdtadstatistics
+  clickgdtadstatistics:clickgdtadstatistics,
+  ifauthorized:ifauthorized
 }

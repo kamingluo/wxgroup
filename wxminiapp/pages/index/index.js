@@ -172,25 +172,63 @@ Page({
   },
 
 
-  //判断用户有没有授权
-  getUserInfoif: function () {
-    var that = this
-    wx.getSetting({
-      success(res) {
-        console.log("onshow拿到用户授权过的配置", res)
-        if (res.authSetting['scope.userInfo']) {
-          that.setData({
-            ifauthorized: true,
-          })
-        }
-      }
-    })
+  //判断用户有没有授权旧的
+  // getUserInfoif: function () {
+  //   var that = this
+  //   wx.getSetting({
+  //     success(res) {
+  //       console.log("onshow拿到用户授权过的配置", res)
+  //       if (res.authSetting['scope.userInfo']) {
+  //         that.setData({
+  //           ifauthorized: true,
+  //         })
+  //       }
+  //     }
+  //   })
+  // },
 
+  //判断用户有没有授权新的
+  getUserInfoif: function () {
+    let ifauthorized = common.ifauthorized();
+    this.setData({
+      ifauthorized: ifauthorized,
+    })
+    console.log("判断手否需要授权")
+    console.log(ifauthorized)
   },
 
 
+  //旧的授权方法
+  // getUserInfo: function (e) {
+  //   let that = this;
+  //   let channel = wx.getStorageSync('userdata').channel || 0
+  //   var data = {
+  //     channel: channel,
+  //     crowd_id: 0,
+  //     scene: wx.getStorageSync('userdata').scene,
+  //   }
+  //   wx.getSetting({
+  //     success(res) {
+  //       console.log("查看授权设置", res)
+  //       if (res.authSetting['scope.userInfo']) {
+  //         wx.getUserInfo({
+  //           success(res) {
+  //             console.log("授权成功更新信息啦")
+  //             let userdata = Object.assign(data, res.userInfo);
+  //             common.authorized(userdata) //用户注册已经授权
+  //             that.setData({
+  //               ifauthorized: true,
+  //             })
+  //           }
+  //         })
+  //       }
+  //     }
+  //   })
+  // },
 
-  getUserInfo: function (e) {
+
+  //新的授权方法
+  getUserProfile: function (e) {
     let that = this;
     let channel = wx.getStorageSync('userdata').channel || 0
     var data = {
@@ -198,23 +236,32 @@ Page({
       crowd_id: 0,
       scene: wx.getStorageSync('userdata').scene,
     }
-    wx.getSetting({
-      success(res) {
-        console.log("查看授权设置", res)
-        if (res.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            success(res) {
-              console.log("授权成功更新信息啦")
-              let userdata = Object.assign(data, res.userInfo);
-              common.authorized(userdata) //用户注册已经授权
-              that.setData({
-                ifauthorized: true,
-              })
-            }
-          })
-        }
+    console.log("新的授权方法")
+
+    wx.getUserProfile({
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        console.log("授权成功更新信息啦",res)
+        let userdata = Object.assign(data, res.userInfo);
+        common.authorized(userdata) //用户注册已经授权
+        that.setData({
+          ifauthorized: true,
+        })
+        wx.showToast({
+          title: '授权成功！',
+          icon: 'success',
+          duration: 2500,
+        })
+      },
+      fail:(res)=> {
+        wx.showToast({
+          title: '授权失败！',
+          icon: 'none',
+          duration: 2500,
+        })
       }
     })
+
   },
 
 
