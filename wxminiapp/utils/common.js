@@ -198,20 +198,20 @@ function clickgdtadstatistics(e) {
   })
 }
 
-//是否需要授权
+//是否需要授权修改一下123123
 function ifauthorized(){
   let nowtime=Date.parse(new Date());
   let updateAuthorization=wx.getStorageSync('updateAuthorization') || 0 ;
-  let gender=wx.getStorageSync('userdata').gender || 4 ;
-  if(nowtime-updateAuthorization > 2592000000 || gender == 4)
+  let gender = wx.getStorageSync('userdata').gender;
+  console.log("拿到性别啦啦啦啦啦")
+  console.log(gender)
+  if(nowtime-updateAuthorization > 2592000000 || gender == null)
   {
     return false;
   }
   else{
     return true;
   }
-
-
 }
 
 
