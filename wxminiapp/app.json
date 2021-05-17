@@ -31,6 +31,7 @@
     "pages/webview/webview",
     "pages/group/alltasklists/alltasklists",
     "pages/group/alltasklists/taskdetailed/taskdetailed",
+    "pages/group/alltasklists/limittaskdetailed/limittaskdetailed",
     "pages/group/lottery/partake/partake",
     "pages/group/lottery/partakedata/partakedata",
     "pages/group/lottery/data/data",

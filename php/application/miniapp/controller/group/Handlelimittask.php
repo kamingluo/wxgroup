@@ -18,19 +18,41 @@ class Handlelimittask
           //有传pages
           $newpages= ($pages-1) * 20;//一页20条
           //$dballtasklists =db('corwd_limit_task_record')->where('crowd_id',$crowd_id)->where('nickName','like',$newkeyword)->order('id desc')->limit($newpages,20)->select();
-          $dballtasklists = db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName')->where('t1.user_id=t2.id')->where('t1.crowd_id',$crowd_id)->where('t2.nickName','like',$newkeyword)->order('id desc')->limit($newpages,20)->select();
+          $dballtasklists = db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t1.user_id=t2.id')->where('t1.crowd_id',$crowd_id)->where('t2.nickName','like',$newkeyword)->order('id desc')->limit($newpages,20)->select();
       }
       else{
           //兼容没有传页数，返回全部信息
-          $dballtasklists = db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName')->where('t1.user_id=t2.id')->where('t1.crowd_id',$crowd_id)->where('t2.nickName','like',$newkeyword)->order('id desc')->select();
+          $dballtasklists = db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t1.user_id=t2.id')->where('t1.crowd_id',$crowd_id)->where('t2.nickName','like',$newkeyword)->order('id desc')->select();
       }
 
-      $count =db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName')->where('t1.user_id=t2.id')->where('t1.crowd_id',$crowd_id)->where('t2.nickName','like',$newkeyword)->count();
+      $count =db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t1.user_id=t2.id')->where('t1.crowd_id',$crowd_id)->where('t2.nickName','like',$newkeyword)->count();
 
       $state=['state'   => '200','message'  => "查询该群的全部限时任务",'count'=>$count ];
       $resdata=array_merge($state,array('alltasklists'=>$dballtasklists));
       return $resdata ;
 
+    }
+
+    //根据任务id查询任务详情
+    public function querytaskdetails(Request $request)
+    {
+        $id =$request->param("id");//任务id
+        // $dbtaskdetails =db('task_record')->where('id',$id)->find();
+        $dbtaskdetails =db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t1.user_id=t2.id')->where('t1.id',$id)->find();
+        $state=['state'   => '200','message'  => "任务详情查询成功" ];
+        $ifdata=isset($dbtaskdetails);//判断检测变量是否已设置并且非 NULL
+        if( $ifdata){ //不为空
+            $images=json_decode($dbtaskdetails["images"]);//先取出值，反转义一下
+            unset($dbtaskdetails['images']);//去除原来数据里面的值
+            $taskdetails=array_merge($dbtaskdetails,array('images'=>$images));//再把转义后的值增加进去
+            $resdata=array_merge($state,array('taskdetails'=>$taskdetails));
+            return $resdata ;
+        }
+        else{ //数值为空
+            $resdata=array_merge($state,array('taskdetails'=>$dbtaskdetails));
+            return $resdata;
+        }
+    
     }
 
     //查询群的限时任务列表
@@ -53,7 +75,7 @@ class Handlelimittask
      {
          $crowd_id =$request->param("crowd_id");//群id
          $limit_id =$request->param("limit_id");//群id
-         $dbtaskdetails =db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName')->where('t1.user_id=t2.id')->where('t1.crowd_id',$crowd_id)->where('t1.limit_id',$limit_id)->where('t1.state=0')->order('t1.id asc')->find();
+         $dbtaskdetails =db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t1.user_id=t2.id')->where('t1.crowd_id',$crowd_id)->where('t1.limit_id',$limit_id)->where('t1.state=0')->order('t1.id asc')->find();
          $state=['state'   => '200','message'  => "查询群任务成功" ];
          $ifdata=isset($dbtaskdetails);//判断检测变量是否已设置并且非 NULL
          if( $ifdata){ //不为空

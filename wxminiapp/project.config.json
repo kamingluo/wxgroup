@@ -111,6 +111,12 @@
           "pathName": "pages/group/goods/pushgoods/pushgoods",
           "query": "crowd_id=14",
           "scene": null
+        },
+        {
+          "name": "pages/group/alltasklists/limittaskdetailed/limittaskdetailed",
+          "pathName": "pages/group/alltasklists/limittaskdetailed/limittaskdetailed",
+          "query": "id=110952",
+          "scene": null
         }
       ]
     }

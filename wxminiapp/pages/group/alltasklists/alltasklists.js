@@ -115,10 +115,13 @@ Page({
       })
     }
     else{
-      wx.showToast({
-        title: '请前往网页版后台审核和查看',
-        icon: 'none',
-        duration: 2000,
+      // wx.showToast({
+      //   title: '请前往网页版后台审核和查看',
+      //   icon: 'none',
+      //   duration: 2000,
+      // })
+      wx.navigateTo({
+        url: '/pages/group/alltasklists/limittaskdetailed/limittaskdetailed?id=' + id
       })
     }
    
