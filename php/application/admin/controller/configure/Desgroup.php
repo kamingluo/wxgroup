@@ -4,6 +4,7 @@ use think\Db;
 use think\Request;
 use think\Config;
 use qiniu\Deletefile;
+use think\Log;
 use app\miniapp\controller\Currency;//跨模块调用
 class Desgroup
 {
@@ -99,6 +100,14 @@ class Desgroup
    public function deletegroup(Request $request){
     $crowd_id =$request->param("id");
     $crowd_data =db('crowd')->where('id',$crowd_id)->find();
+
+    Log::record("管理后台调用删除群");
+    Log::record($crowd_id);
+    $state=['state'   => '400','message'  => "请联系管理员删除" ];
+    return $state;
+
+
+
     if($crowd_data == null ){
        $state=['state'   => '200','message'  => "不存在的群" ];
        return $state;

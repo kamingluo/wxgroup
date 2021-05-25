@@ -154,8 +154,17 @@ class Usergroup
     //删除群
     public function deletegroup(Request $request)
     {
+
          $crowd_id =$request->param("crowd_id");//群id
          $crowd_ownerid =$request->param("crowd_ownerid");//群主用户id
+
+         Log::record("调用删除群");
+         Log::record($crowd_id);
+         Log::record($crowd_ownerid);
+         $state=['state'   => '400','message'  => "请联系管理员删除" ];
+         return $state;
+
+
          $crowd_data =db('crowd')->where('id',$crowd_id)->where('crowd_ownerid',$crowd_ownerid)->find();
          if($crowd_data == null ){
             $state=['state'   => '200','message'  => "不存在的群" ];
