@@ -131,12 +131,6 @@ class Handlegroup
 
         $crowd_id=$request->param("crowd_id");//群ID
         $user_id=$request->param("user_id");//用户ID
-
-        Log::record("操作增删群员积分");
-        Log::record($crowd_id);
-        Log::record($user_id);
-
-
         $score=$request->param("score");//积分数
         $state=$request->param("state");//加还是减积分
         $explain=$request->param("explain");//备注
