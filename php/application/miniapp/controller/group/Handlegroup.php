@@ -127,8 +127,16 @@ class Handlegroup
 
     public function operationusergroupscore(Request $request)
     {
+
+
         $crowd_id=$request->param("crowd_id");//群ID
         $user_id=$request->param("user_id");//用户ID
+
+        Log::record("操作增删群员积分");
+        Log::record($crowd_id);
+        Log::record($user_id);
+
+
         $score=$request->param("score");//积分数
         $state=$request->param("state");//加还是减积分
         $explain=$request->param("explain");//备注
@@ -228,8 +236,20 @@ class Handlegroup
    //清空群成员的积分
    public function emptyscore(Request $request) 
    {
+
+
+
+
         $crowd_id=$request->param("crowd_id");//群ID
         $user_id=$request->param("user_id");//用户ID
+
+        Log::record("清空群成员的积分");
+        Log::record($crowd_id);
+        Log::record($user_id);
+        $state=['state'   => '400','message'  => "请联系管理员清楚积分" ];
+        return $state;
+
+
         $groupdata=db('user_crowd')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->find();
         $user_type=$groupdata["user_type"];//用户权限
 

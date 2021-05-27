@@ -136,7 +136,7 @@ class Limittask
 
         $end_time=$data["end_time"];
         if($time > $end_time ){
-            $state=['state'   => '200','message'  => "超过限时任务时间不能参加",'partake'=> $partake];
+            $state=['state'   => '200','message'  => "任务已结束不能参加",'partake'=> $partake];
             return $state;
         }
 
@@ -145,7 +145,7 @@ class Limittask
             //查询已经完成得任务数
             $recordnum=db('corwd_limit_task_record')->where('limit_id',$limit_id)->where('state','<>',2)->count();//拿到已经完成任务次数
             if($recordnum >= $number){
-                $state=['state'   => '200','message'  => "任务数量已经完成了，不能再做任务了",'partake'=> $partake];
+                $state=['state'   => '200','message'  => "任务数量已经做完了",'partake'=> $partake];
                 return $state;
             }
         }
@@ -156,14 +156,14 @@ class Limittask
             //查询用户是否完成过任务
             $userrecordnum=db('corwd_limit_task_record')->where('limit_id',$limit_id)->where('user_id',$user_id)->where('state','<>',2)->count();
             if($userrecordnum > 0){
-                $state=['state'   => '200','message'  => "只能完成一次，用户已经完成过任务了",'partake'=> $partake];
+                $state=['state'   => '200','message'  => "只能完成一次，你已经完成过任务了",'partake'=> $partake];
                 return $state;
             }
         }
         if($limit == 1){
             $usertodayrecordnum=db('corwd_limit_task_record')->where('limit_id',$limit_id)->where('user_id',$user_id)->where('state','<>',2)->whereTime('create_time', 'today')->count();
             if($usertodayrecordnum > 0){
-                $state=['state'   => '200','message'  => "任务每天只能完成一次，用户今天已经完成过任务了",'partake'=> $partake];
+                $state=['state'   => '200','message'  => "每天只能完成一次，你今天已经提交任务了",'partake'=> $partake];
                 return $state;
             }
         }
