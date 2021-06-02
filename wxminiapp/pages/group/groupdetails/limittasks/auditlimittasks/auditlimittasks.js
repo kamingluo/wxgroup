@@ -143,7 +143,7 @@ Page({
     var id = this.data.taskdata.taskdetails.id //任务id
     var result = this.data.taskerrtext //不合格说明
     request({
-      service: 'task/handletask/handletask',
+      service: 'group/Handlelimittask/handletask',
       data: {
         id: id,
         crowd_id: crowd_id,
