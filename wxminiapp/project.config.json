@@ -68,7 +68,6 @@
           "scene": null
         },
         {
-          "id": -1,
           "name": "打开设置",
           "pathName": "pages/group/chat/punchseting/punchseting",
           "query": "crowd_id=14",

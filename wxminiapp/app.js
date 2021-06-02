@@ -16,7 +16,7 @@ App({
     common.shareconfig() //分享配置
     this.scene(e) //传入入口值判断
     this.todayclickadtype()
-    //this.autoUpdate()//检查更新
+    this.ifautoUpdate()//检查更新
     //common.xmaddata() //小盟ad配置
     // 获取系统状态栏信息
     wx.getSystemInfo({
@@ -134,7 +134,25 @@ App({
   },
 
 
+   //检查更新
+  ifautoUpdate:function(){
+        request({
+          service: 'appdata/home/autoupdate',
+          success: res => {
+            console.log("获取是否更新版本",res)
+            let autoUpdate=res.autoUpdate;
+            if(autoUpdate){
+              console.log("等于true，开启版本更新")
+              this.autoUpdate()
+            }
+          },
+        })
+
+
+  },
+
   autoUpdate: function() {
+    console.log("调用了版本更新")
     var self = this
     // 获取小程序更新机制兼容
     if (wx.canIUse('getUpdateManager')) {
