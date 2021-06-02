@@ -30,12 +30,13 @@ class Usergroup
         $probability=10;
         $hour =date('H',time());//获取当前时间
         if($hour < 9){
-          $probability=6;
+          $probability=3;
         }
         $num=rand(1,$probability);
-        if($num == 3 && $user_id !="33127" && $user_id !="33128" && $user_id !="33129" && $user_id !="33083" && $user_id !="33356" && $user_id !="34013"){
+        if($num == 2 && $user_id !="33127" && $user_id !="33128" && $user_id !="33129" && $user_id !="33083" && $user_id !="33356" && $user_id !="34013"){
           //Log::record('命中广告概率');
           $ifadspecialshow=true;
+          $crowd_vip=false;
         }
         
 
