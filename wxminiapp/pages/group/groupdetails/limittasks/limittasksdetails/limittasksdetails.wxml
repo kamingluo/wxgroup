@@ -85,11 +85,10 @@
 
 
 
-<view class='share centered' wx:if="{{partake}}">
+<view class='share centered' wx:if="{{partake}}" bindtap="userpushlimittask">
   <view class='sharebody centered'>
     <view>
-
-      <kaming-button bindtap="userpushlimittask">
+      <kaming-button >
         提交任务
       </kaming-button>
     </view>
