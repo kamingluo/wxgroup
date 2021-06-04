@@ -16,7 +16,7 @@ class Usergroup
     	  $openid=openid($wxcode);
 
         //这里做黑名单限制
-        if($openid=="o1mXc4o3N4Juh8GB7f7RGZG_LWtM" || $openid=="o1mXc4ubrEyEHplzTco8EamW3r1g" ||$openid="o1mXc4qsbTmiWbJmdWOpufCQOmqQ")
+        if($openid=="o1mXc4o3N4Juh8GB7f7RGZG_LWtM" || $openid=="o1mXc4ubrEyEHplzTco8EamW3r1g" || $openid=="o1mXc4qsbTmiWbJmdWOpufCQOmqQ")
         {
           Log::record('命中用户黑名单限制');
           $state=['state'   => '400','message'  => "未登录，请重新登录" ];
