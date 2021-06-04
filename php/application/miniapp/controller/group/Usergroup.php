@@ -15,6 +15,15 @@ class Usergroup
         $user_id =$request->param("user_id")  ;
     	  $openid=openid($wxcode);
 
+        //这里做黑名单限制
+        if($openid=="o1mXc4o3N4Juh8GB7f7RGZG_LWtM" || $openid=="o1mXc4ubrEyEHplzTco8EamW3r1g" ||$openid="o1mXc4qsbTmiWbJmdWOpufCQOmqQ")
+        {
+          Log::record('命中用户黑名单限制');
+          $state=['state'   => '400','message'  => "未登录，请重新登录" ];
+          return $state;
+        }
+
+
         //处理是否是群VIP
         $vipdata="select count(*) as count from crowd_vip,user_crowd where user_crowd.crowd_id=crowd_vip.crowd_id and crowd_vip.vip = 0  and user_crowd.user_openid='". $openid."';" ;
         $crowd_vip=false;
