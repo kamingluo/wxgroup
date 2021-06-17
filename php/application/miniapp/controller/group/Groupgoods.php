@@ -259,8 +259,8 @@ class Groupgoods
           $score_record_id=db('score_record')->insert($score_record_data);
 
 
-          //下发消息
-          $jumpurl="packages/goods/detail/index?alias=2orxkfku082b3&shopAutoEnter=1";
+          //下发消息packages/goods/detail/index?alias=2xfj9oqstg0wv&shopAutoEnter=1
+          $jumpurl="packages/goods/detail/index?alias=2xfj9oqstg0wv&shopAutoEnter=1";
           //packages/goods/detail/index?alias=3evq5dnq8iq73&shopAutoEnter=1
           // $imagedata = [
           //   "https://material.gzywudao.top/couponexchange1.jpg",
