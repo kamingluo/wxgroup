@@ -114,6 +114,11 @@ class Exchangegoods
         $user_id=$exdata["user_id"];
         $openid=$exdata["openid"];
         $price=$exdata["price"];
+
+        //修改商品库存
+
+
+
         if($price > 0){
           $addscore= db('user_crowd')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->setInc('score',$price);//找到该用户的群账户加积分
           //加积分记录
