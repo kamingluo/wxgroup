@@ -75,6 +75,11 @@ export default {
           index: "scorelist",
           title: "积分流水",
         },
+        {
+          icon: "el-icon-lx-present",
+          index: "signin",
+          title: "签到查询",
+        },
          {
           icon: "el-icon-lx-present",
           index: "coupon",
