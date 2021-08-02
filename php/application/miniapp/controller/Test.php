@@ -11,7 +11,24 @@ class Test
     public function ceshi(Request $request)
     {
 
-        return "ceshi";
+        $crowd_id=3514;
+        $listdata =db('score_record')->where('crowd_id',$crowd_id)->where('id','>',369644)->where('id','<',370069)->where('explain','群限时任务奖励')->select(); //取出最近100条聊天记录
+        $count = count($listdata);//拿到数值条数
+        $num=1;
+        foreach($listdata as $count  => $data){
+            $user_id=$data["user_id"];
+            $score=$data["score"];
+            Log::record('---------------------------');
+            Log::record($num);
+            Log::record($user_id);
+            Log::record($score);
+            Log::record('---------------------------');
+            // $addscore= db('user_crowd')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->setInc('score',$score);
+            $num=$num +1;
+
+        }
+
+        return $listdata;
        
         // $lottery = new Lotterymsg();
         // $lottery_id=1;

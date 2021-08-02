@@ -204,6 +204,8 @@ class Handlegroup
    //删除群成员
    public function deletegroupuser(Request $request) 
    {
+    $state=['state'   => '400','message'  => "删除群员功能维护中，请联系管理人员操作！" ];
+    return $state ;
 
         $crowd_id=$request->param("crowd_id");//群ID
         $user_id=$request->param("user_id");//用户ID
