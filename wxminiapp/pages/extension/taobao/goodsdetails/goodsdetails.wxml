@@ -69,7 +69,7 @@
         </view>
       </view>
       <view class="flex-twice  padding-sm  centered ">
-        <button class="cu-btn bg-purple round sm shadow">复制淘口令</button>
+               <!-- <button class="cu-btn bg-purple round sm shadow">复制淘口令</button> -->
       </view>
     </view>
   </view>
@@ -114,6 +114,6 @@
     <view class="nav_name">收藏</view>
   </view>
 
-  <view class="add_cart goods_buy">	<kaming-button open-type='share'>分享</kaming-button></view>
-  <view class="now_buy goods_buy" bindtap="purchase">{{display?"复制淘口令":"立即购买"}}</view>
+  <!--<view class="add_cart goods_buy">	<kaming-button open-type='share'>分享</kaming-button></view>
+   <view class="now_buy goods_buy" bindtap="purchase">{{display?"复制口令":"立即购买"}}</view>-->
 </view>
