@@ -177,13 +177,23 @@ Page({
   },
   //icon位置数据
   icondata: function () {
-    let iconList = [{
+    let iconList = [
+    // {
+    //   id: 1,
+    //   iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/taobao.png',
+    //   jumpurl: '',
+    //   type: 3,
+    //   name: '领淘宝券'
+    // }, 
+
+    {
       id: 1,
-      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/taobao.png',
-      jumpurl: '',
-      type: 3,
-      name: '领淘宝券'
-    }, {
+      iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/rebang.jpg',
+      jumpurl: '/pages/web/web?specialUrl=1&src=https://mobile.yangkeduo.com/duo_transfer_channel.html?resourceType=4&pid=1979520_149719573&cpsSign=CE_200829_1979520_149719573_5221f3bb4bfd24893d894adcd31f5ef2&duoduo_type=2',
+      type: 1,
+      name: '热销排行'
+    },
+    {
       id: 2,
       iconurl: baseConfig.imageurl + 'miniapp/images/extensionicon/neigou.jpg',
       jumpurl: '/pages/web/web?specialUrl=1&src=https%3A%2F%2Fmobile.yangkeduo.com%2Fduo_transfer_channel.html%3FresourceType%3D39996%26pid%3D1979520_149719573%26_pdd_fs%3D1%26_pdd_tc%3Dffffff%26_pdd_sbs%3D1%26cpsSign%3DCE_200829_1979520_149719573_37e03227fdb9f493824fb7e240a93fb5%26duoduo_type%3D2',

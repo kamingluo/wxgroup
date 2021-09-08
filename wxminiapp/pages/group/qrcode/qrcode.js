@@ -44,10 +44,12 @@ Page({
       })
       return;
     }
+    let master_id = wx.getStorageSync('userdata').id || 0
     request({
       service: 'currency/getqrcode',
       data: {
         crowd_id: crowd_id,
+        master_id:master_id
       },
       success: res => {
         // console.log('生成二维码成功', res);

@@ -183,7 +183,8 @@
 <view class="cu-modal {{model?'show':''}}">
   <!-- <view class="cu-modal show"> -->
   <view class="cu-dialog">
-    <view class="bg-img padding-sm" style="background: url('https://yaoge.oss-accelerate.aliyuncs.com/myfiles/backiee-48541-portrait.jpg') center top no-repeat;height:480px;background-size: 100% auto">
+    <!-- <view class="bg-img padding-sm" style="background: url('https://yaoge.oss-accelerate.aliyuncs.com/myfiles/backiee-48541-portrait.jpg') center top no-repeat;height:480px;background-size: 100% auto"> -->
+       <view class="bg-img padding-sm" style="background: url('{{imageurl+ 'miniapp/images/siginbg.jpg'}}') center top no-repeat;height:480px;background-size: 100% auto">
       <view class="model_date">
         <text class="day">{{day}}</text>
         <text class="ym">{{month}}  {{year}}</text>

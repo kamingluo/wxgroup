@@ -2,6 +2,7 @@ const {
   request
 } = require('./../../../utils/request.js');
 const common = require('./../../../utils/common.js') //公共函数
+const baseConfig = require('./../../../utils/config.js')//配置文件
 const app = getApp();
 let preventShake = 0;
 let interstitialAd = null; //插屏广告
@@ -9,7 +10,7 @@ let interstitialAd = null; //插屏广告
 
 Page({
   data: {
-    
+    imageurl:'',
     tabSelect: 0,
     model: false,
     signinrankinglist:[],//签到排行榜
@@ -26,12 +27,14 @@ Page({
 
   },
   onLoad: function(e) {
+    let imageurl=baseConfig.imageurl;
     let user_id = wx.getStorageSync('userdata').id;
     let avatarUrl = wx.getStorageSync('userdata').avatarUrl;
     let nickName = wx.getStorageSync('userdata').nickName;
     let ifgroupvip = wx.getStorageSync('ifgroupvip') || false;
     let ifadspecialshow = wx.getStorageSync('ifadspecialshow') || false;//强制显示广告
     this.setData({
+      imageurl:imageurl,
       crowd_id: e.crowd_id,
       crowd_name: e.crowd_name,
       user_type:e.user_type,

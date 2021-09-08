@@ -12,6 +12,7 @@ class Downloadfile
     //下载兑换表格
     public function exchangelist(Request $request)
     {
+     set_time_limit(0);//设置超时时间
      $crowd_id=$request->param("crowd_id");//群id
      $state=$request->param("state");//兑换记录的状态，状态值：0，未发货，1，已发货，2，审核不通过
      $sendmode=$request->param("sendmode");//发送方式，0是直接下载列表。1是发送到邮箱

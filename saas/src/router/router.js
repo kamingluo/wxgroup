@@ -42,6 +42,11 @@ export default new Router({
           meta: { title: '积分流水' }
         },
         {
+          path: '/signin',
+          component: resolve => require(['../components/page/Signin.vue'], resolve),
+          meta: { title: '签到查询' }
+        },
+        {
           path: '/coupon',
           component: resolve => require(['../components/page/Coupon.vue'], resolve),
           meta: { title: '优惠券' }

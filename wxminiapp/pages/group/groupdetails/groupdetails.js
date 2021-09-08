@@ -677,13 +677,14 @@ Page({
     let log = this.data.crowddata.groupdata.logo || 'http://groupmaterial.gzywudao.top/fengmian.png';
     let userchannel = wx.getStorageSync('userdata').channel || 0
     let nickName = wx.getStorageSync('userdata').nickName
+    let master_id = wx.getStorageSync('userdata').id || 0
     let crowd_id = this.data.crowd_id
     let crowd_name = this.data.crowddata.groupdata.crowd_name
     return {
       title: nickName + "邀请你加入群" + "《" + crowd_name + "》",
       desc: nickName + "邀请你加入群" + "《" + crowd_name + "》",
       imageUrl: log,
-      path: '/pages/index/index?channel=1001&ald_media_id=33542&ald_link_key=c99244f0802f9f06' + '&crowd_id=' + crowd_id, // 路径，传递参数到指定页面。
+      path: '/pages/index/index?channel=1001&crowd_id=' + crowd_id + '&master_id=' + master_id, // 路径，传递参数到指定页面,群id跟用户id。
     }
 
   }

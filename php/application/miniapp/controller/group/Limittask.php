@@ -234,6 +234,22 @@ class Limittask
 
 
 
+        //用户删除自己的限时任务
+        public function userdeletelimittask(Request $request){
+            $id =$request->param("id");
+            $user_id=$request->param("user_id");
+            $clearrecord=db('corwd_limit_task_record')-> where('id',$id)-> where('user_id',$user_id)->delete();//删除限时任务已经完成记录
+    
+           if($cleardata ==1){
+                $state=['state'   => '200','message'  => "用户任务删除成功"];
+           }
+           else{
+                $state=['state'   => '400','message'  => "用户删除任务失败"];
+           }
+           return  $state;
+    
+        }
+
 
 
 
