@@ -151,11 +151,16 @@ Page({
 
 
     //用户确认删除限时任务
-    confirmdel: function() {
+    confirlimittasksmdel: function() {
       var that=this
       let task_id = this.data.detelelimittasksid;
       let crowd_id = this.data.crowd_id;
       let user_id = wx.getStorageSync('userdata').id
+      console.log("-----------------------")
+      console.log(task_id)
+      console.log(user_id)
+      console.log(crowd_id)
+      console.log("-----------------------")
       request({
         service: 'group/limittask/userdeletelimittask',
         data: {

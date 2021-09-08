@@ -140,12 +140,35 @@
       </view>
     </view>
     <view class="padding-xl">
-      确认是否该删除任务，一旦删除不能恢复！
+      确认删除该普通任务，一旦删除不能恢复！
     </view>
     <view class="cu-bar bg-white justify-end">
       <view class="action">
         <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
         <button class="cu-btn bg-green margin-left" bindtap="confirmdel">确定</button>
+
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<view class="cu-modal {{detelelimittasksModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">删除任务</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      确认删除该限时任务，一旦删除不能恢复！
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="confirlimittasksmdel">确定</button>
 
       </view>
     </view>
