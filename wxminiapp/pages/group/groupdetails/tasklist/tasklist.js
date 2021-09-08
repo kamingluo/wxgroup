@@ -150,7 +150,7 @@ Page({
   },
 
 
-    //确认删除限时任务
+    //用户确认删除限时任务
     confirmdel: function() {
       var that=this
       let task_id = this.data.detelelimittasksid;
