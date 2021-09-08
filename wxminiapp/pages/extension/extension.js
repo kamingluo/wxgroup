@@ -227,7 +227,7 @@ Page({
         type: 1,
         name: '热销排行'
       };
-      iconList[0] = data;
+      // iconList[0] = data;
     }
 
     this.setData({
