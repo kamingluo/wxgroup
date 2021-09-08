@@ -17,6 +17,8 @@ Page({
     crowd_id: null,
     deteleid: null,
     deteleModal: false,
+    detelelimittasksid: null,
+    detelelimittasksModal: false,
     pages: 1,
     count: 0,
     TabCur: 0,
@@ -104,13 +106,25 @@ Page({
 
   },
 
-  hideModal: function() {
+
+  deletelimittasksmode:function(e){
+    console.log("删除限时任务id", e.currentTarget.dataset.id)
     this.setData({
-      deteleModal: false,
+      detelelimittasksid: e.currentTarget.dataset.id,
+      detelelimittasksModal: true,
     })
   },
 
-  //确认删除
+  hideModal: function() {
+    this.setData({
+      deteleModal: false,
+      detelelimittasksModal:false,
+    })
+  },
+
+
+
+  //确认删除普通任务
   confirmdel: function() {
     var that=this
     let task_id = this.data.deteleid;
@@ -134,6 +148,32 @@ Page({
     })
 
   },
+
+
+    //确认删除限时任务
+    confirmdel: function() {
+      var that=this
+      let task_id = this.data.detelelimittasksid;
+      let crowd_id = this.data.crowd_id;
+      let user_id = wx.getStorageSync('userdata').id
+      request({
+        service: 'group/limittask/userdeletelimittask',
+        data: {
+          user_id: user_id,
+          crowd_id: crowd_id,
+          id: task_id
+        },
+        success: res => {
+          that.setData({
+            detelelimittasksModal: false,
+            pages:1,
+            usertasklist: []
+          })
+          that.havetasklist(1)
+        },
+      })
+  
+    },
 
   gdtvideoadclick: function(e) {
     let data = {
