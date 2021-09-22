@@ -50,6 +50,21 @@ class Limittasks
         return $state ;  
     }
 
+
+        //修改限时任务，标题，时间
+        public function updatetasks(Request $request)
+        {
+            $token=$request->param("token");
+            $crowd_id=havecrowdid($token);
+            $id =$request->param("id");
+            $title =$request->param("title");
+            $describe =$request->param("describe");
+            $end_time =$request->param("end_time");
+            $dbreturn= db('crowd_limit_tasks')->where('id',$id)->where('crowd_id',$crowd_id)->update(['title' => $title,'describe' => $describe,'end_time' => $end_time]);
+            $state=['state'   => '200','message'  => "修改限时任务成功" ];
+            return $state ;  
+        }
+
     
     //限时任务群员提交任务列表
     public function usertaskslist(Request $request){

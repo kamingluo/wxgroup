@@ -39,6 +39,7 @@
         <el-table-column label="操作" width="250" align="center">
           <template slot-scope="scope">
             <el-button type="text" icon="el-icon-edit" @click="audittask(scope.row)">去审核任务</el-button>
+            <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index,scope.row)">修改任务</el-button>
             <!-- <el-button type="text" icon="el-icon-delete" class="red" @click="handleDelete(scope.$index, scope.row)" >删除</el-button> -->
           </template>
         </el-table-column>
@@ -92,10 +93,22 @@
 
 
     <!-- 编辑弹出框 -->
-    <el-dialog title="审核通过" :visible.sync="editVisible" width="30%">
-      <el-form ref="form" :model="score" label-width="120px">
-        <el-form-item label="合格奖励积分">
-          <el-input v-model="score"></el-input>
+    <el-dialog title="编辑任务" :visible.sync="editVisible" width="40%">
+      <el-form ref="form"  label-width="120px">
+        <el-form-item label="任务标题">
+          <el-input v-model="form.title"></el-input>
+        </el-form-item>
+        <el-form-item label="任务描述">
+          <el-input v-model="form.describe"></el-input>
+        </el-form-item>
+
+        <el-form-item label="结束时间">
+          <el-date-picker
+          v-model="form.end_time"
+          type="datetime"
+          value-format="yyyy-MM-dd hh:mm:ss"
+          placeholder="选择日期时间">
+        </el-date-picker>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -196,6 +209,7 @@ export default {
       });
     },
 
+
     //调起删除
     handleDelete(index, row) {
       console.log("点击删除的id", row.id);
@@ -232,35 +246,32 @@ export default {
       this.imgVisible = true;
       this.yulanimg = e.target.src;
     },
-    handleEdit(index, row) {
+    handleEdit(index,row) {
       console.log("点击编辑", row);
       this.idx = index;
-      const item = this.tableData[index];
-      this.form = item;
+      // const item = this.tableData[index];
+      this.form = row;
+      console.log("11111111")
       this.editVisible = true;
     },
     // 保存编辑
     saveEdit() {
-      console.log("审核通过");
+      console.log("保存编辑");
       console.log(this.form);
+      //console.log("未处理的结束时间",end_time)
       //改变列表
       let data = this.form;
-      data.state = 1;
       this.$set(this.tableData, this.idx, this.form);
       this.editVisible = false;
 
-      let postdata = {};
-      postdata.score = this.score;
-      postdata.result = "任务合格";
-      postdata.id = data.id;
-      postdata.taskstate = 1;
-      postdata.user_id = data.user_id;
+      let postdata =this.form;
+      console.log("1231231")
       postdata.token = localStorage.getItem("token");
       console.log("提交修改信息", postdata);
       this.$message.success(`操作成功`);
-      this.$axios.post("configure/tasks/handletask", postdata).then((res) => {
+      this.$axios.post("configure/Limittasks/updatetasks", postdata).then((res) => {
         console.log("修改信息返回数据", res);
-        //this.getData();
+        this.getData();
       });
     },
   },
