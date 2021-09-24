@@ -192,7 +192,7 @@ export default {
       postdata.score = this.score;
       postdata.result = this.nopasstext;
       postdata.id = data.id;
-      postdata.taskstate = 1;
+      postdata.taskstate = 2;
       postdata.user_id = data.user_id;
       postdata.token = localStorage.getItem("token");
       console.log("提交修改信息", postdata);
