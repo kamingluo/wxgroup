@@ -1,6 +1,7 @@
 
 
-<cu-custom bindtap="gosearch" bgColor="bg-white" wx:if="{{iosdisplay}}">
+<!-- <cu-custom bindtap="gosearch" bgColor="bg-white" wx:if="{{iosdisplay}}"> -->
+  <cu-custom bindtap="gosearch" bgColor="bg-white" >
   <view slot="right">
     <view class="cu-bar search">
       <view class="search-form round">
@@ -13,11 +14,11 @@
 
 
 
-  <cu-custom bgColor="bg-red" wx:else>
+  <!-- <cu-custom bgColor="bg-red" wx:else>
     <view slot="content">
       <text style="color:white;">找优惠</text>
     </view>
-  </cu-custom>
+  </cu-custom> -->
 
 
 

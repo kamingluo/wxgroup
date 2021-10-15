@@ -52,8 +52,8 @@ public function recommend(Request $request){
       $p_id=Config('pdd_p_id');
       $data=array(
           "limit"=>20,
-          "cat_id"=>$newcat_id,
-          "channel_type"=>$channel_type,
+          // "cat_id"=>$newcat_id,
+          // "channel_type"=>$channel_type,
           "p_id"=>$p_id,
           "offset"=>$offset,
           "type"=>$type

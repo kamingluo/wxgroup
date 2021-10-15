@@ -272,18 +272,18 @@ Page({
   //tab数据
   tabdata: function () {
     let data = [
-      {
-        id: 1,
-        name: '今日爆款',
-        channel_type: 1,
-        cat_id: 20100,
-      },
-      {
-        id: 2,
-        name: '品牌好货',
-        channel_type: 2,
-        cat_id: 20100,
-      },
+      // {
+      //   id: 1,
+      //   name: '今日爆款',
+      //   channel_type: 1,
+      //   cat_id: 20100,
+      // },
+      // {
+      //   id: 2,
+      //   name: '品牌好货',
+      //   channel_type: 2,
+      //   cat_id: 20100,
+      // },
       // {
       //   id: 3,
       //   name: '百货',
