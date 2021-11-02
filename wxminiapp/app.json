@@ -100,12 +100,6 @@
         "selectedIconPath": "images/config/sindex.png"
       },
       {
-        "pagePath": "pages/extension/extension",
-        "text": "优惠",
-        "iconPath": "images/config/coupon.png",
-        "selectedIconPath": "images/config/scoupon.png"
-      },
-      {
         "pagePath": "pages/my/my",
         "text": "我的",
         "iconPath": "images/config/my.png",

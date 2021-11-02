@@ -54,6 +54,7 @@
 .exchangegood{
    font-size: 30rpx;
    color: #000000;
+   width: 430rpx;
 }
 
 .exchangstate{
@@ -65,3 +66,14 @@
 .deletebtn{
   margin-top: 20rpx;
 }
+
+.onetext{
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
