@@ -106,6 +106,12 @@ class Limittask
         $explain=$request->param("explain");
         $imagesdata =$request->param("images/a");
         $images =  json_encode($imagesdata);
+
+        if($explain=="用户未填写任务描述" && $images==null ){
+            $state=['state'   => '200','message'  => "提交的限时任务图片和说明都为空" ];
+            return $state;
+        }
+
         $state=0;
         $data=db('crowd_limit_tasks')->where('id',$limit_id)->find();
         $crowd_id=$data["crowd_id"];

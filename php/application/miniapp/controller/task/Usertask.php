@@ -63,6 +63,11 @@ class Usertask
         $crowd_id =$request->param("crowd_id");
         $crowd_name =$request->param("crowd_name");
         $imagesdata =$request->param("images/a");
+
+        if($explain=="用户未填写任务描述" && $images==null ){
+            $state=['state'   => '200','message'  => "提交的任务图片和说明都为空" ];
+            return $state;
+        }
         // $images= htmlspecialchars_decode($imagesdata);
         $images =  json_encode($imagesdata);
         $time =date('Y-m-d H:i:s',time());//获取当前时间
