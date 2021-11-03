@@ -108,7 +108,7 @@ class Limittask
         $images =  json_encode($imagesdata);
 
         if($explain=="用户未填写任务描述" && $images=='null' ){
-            $state=['state'   => '300','message'  => "网络繁忙,请重试" ];
+            $state=['state'   => '200','message'  => "任务图片和说明都为空，不存储" ];
             return $state;
         }
 

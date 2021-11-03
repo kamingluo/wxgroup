@@ -98,6 +98,15 @@ Page({
   },
 
   sumittask: function() {
+    if (this.data.uploaderList.length == 0 && (this.data.tasktext=="" ||  this.data.tasktext==null)) {
+      wx.showToast({
+        title: '图片和描述不能同时为空',
+        icon: 'none',
+        duration: 2000,
+      })
+      return;
+    }
+
     const nowTime = Date.now();
     if (nowTime - preventShake < 2000) {
       return
@@ -192,6 +201,15 @@ Page({
     var imgList = imgList
     var crowd_id = this.data.crowd_id
     var crowd_name = this.data.crowd_name
+    if (this.data.tasktext == null && imgList.length < 1 ) {
+      wx.showToast({
+        title: '图片和描述不能同时为空',
+        icon: 'none',
+        duration: 2000,
+      })
+      return;
+    }
+
     if (this.data.tasktext == null) {
       var explain = "用户未填写任务描述"
     } else {
