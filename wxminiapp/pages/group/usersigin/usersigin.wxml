@@ -165,7 +165,7 @@
         <view>连续签到奖励积分：{{signindata.continuity_signin_score}}分</view>
       </view>
       <view>签到开始时间：{{signindata.start_time}}</view>
-      <view>签到开始时间：{{signindata.end_time}}</view>
+      <view>签到结束时间：{{signindata.end_time}}</view>
     </view>
   </view>
 </view>
