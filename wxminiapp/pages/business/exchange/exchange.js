@@ -208,7 +208,7 @@ Page({
 
   exchangelist: function () {
     wx.navigateTo({
-      url: '/pages/my/exchangelist/exchangelist'
+      url: '/pages/business/exchange_detailed/exchange_detailed'
     })
 
   },
