@@ -62,5 +62,17 @@ class Userdata
 
 
 
+    //查询用户对应群积分列表数据
+    public function exlinks(Request $request)
+    {
+            $phone =$request->param("phone");
+            $resdata =db('ex_links')->where('phone',$phone)->find();
+            $state=['state'   => '200','message'  => "查询用户专属链接" ];
+            $resdata=array_merge($state,array('data'=>$resdata));
+            return $resdata ;
+    }
+
+
+
 
 }
