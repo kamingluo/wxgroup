@@ -32,6 +32,7 @@ Page({
     signintankuang: false, //签到弹框
     viewdata: false, //群员是否能看签到数据
     TabCur: 0, //下面tab切换
+    TabCurnum:3,//4是展示专属链接入口
     scrollLeft: 0,
     userdata: null,
     ififgroupvip: false
@@ -56,6 +57,13 @@ Page({
         crowd_id: options.id
       })
     }
+
+    if(options.id==3514){
+      this.setData({
+        TabCurnum: 4,
+      })
+    }
+
     // this.gdtinsertad()//加载插屏幕广告
     this.incondata()
     this.groupdata(options.id)
@@ -368,8 +376,11 @@ Page({
     else if (TabCur == 1) {
       this.crowdlotteryopenlist(crowd_id)//抽奖列表
     }
-    else {
+    else if (TabCur == 2)  {
       this.limittaskslist(crowd_id)//限时任务
+    }
+    else{
+      console.log("获取专属链接")
     }
   },
 
@@ -550,18 +561,30 @@ Page({
   tabSelect(e) {
     var crowd_id = this.data.crowd_id
     let TabCur = e.currentTarget.dataset.id;
-    this.setData({
-      TabCur: TabCur,
-      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
-    })
+    if(TabCur!=3){
+      this.setData({
+        TabCur: TabCur,
+        scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+      })
+
+    }
+
+
     if (TabCur == 0) {
       this.groupnewslist(crowd_id) //新闻列表
     }
     else if (TabCur == 1) {
       this.crowdlotteryopenlist(crowd_id)//抽奖列表
     }
-    else {
+    else if (TabCur == 2)  {
       this.limittaskslist(crowd_id)//限时任务
+    }
+    else {
+      console.log("获取专属链接")
+      wx.navigateTo({
+        url: '/pages/group/groupdetails/exlinks/exlinks',
+      })
+
     }
   },
 

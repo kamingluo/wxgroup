@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "defaultgraph": "/components/defaultGraph/index",
+    "cu-custom": "/colorui/components/cu-custom"
+  }
+}

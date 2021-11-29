@@ -140,9 +140,9 @@
 
   <scroll-view scroll-x class="bg-white nav">
     <view class="flex text-center">
-      <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{3}}" wx:key bindtap="tabSelect"
+      <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{TabCurnum}}" wx:key bindtap="tabSelect"
         data-id="{{index}}">
-        {{index==0?"群消息":index==1?"群抽奖":"限时任务"}}
+        {{index==0?"群消息":index==1?"群抽奖":index==2?"限时任务":"专属链接"}}
       </view>
     </view>
   </scroll-view>
@@ -262,7 +262,7 @@
     <!-- 群抽奖结束 -->
   </view>
 
-  <view wx:else>
+  <view wx:elif="{{TabCur == 2}}">
 
   <view wx:if="{{limittaskslist.length > 0}}">
     <view class="cu-card article {{isCard?'no-card':''}}" wx:for="{{limittaskslist}}" wx:key="item"  bindtap='clicklimittasklist' data-id='{{item.id}}' >
@@ -306,6 +306,9 @@
   </view>
 
 
+  </view>
+
+  <view wx:else>
   </view>
 
 

@@ -81,6 +81,12 @@
           "pathName": "pages/group/goods/editgoods/editgoods",
           "query": "id=535",
           "scene": null
+        },
+        {
+          "name": "pages/group/groupdetails/exlinks/exlinks",
+          "pathName": "pages/group/groupdetails/exlinks/exlinks",
+          "query": "",
+          "scene": null
         }
       ]
     }

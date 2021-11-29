@@ -1,0 +1,30 @@
+/* pages/group/groupdetails/exlinks/exlinks.wxss */
+page{
+  background-color: white;
+}
+
+.defaultgraph {
+  margin-top: 20rpx;
+  margin-bottom: 15rpx;
+}
+
+.cu-timeline>.cu-item {
+	padding: 2rpx 30rpx 10rpx 120rpx;
+	position: relative;
+	display: block;
+	z-index: 0;
+}
+
+.data{
+  margin-top: 30rpx;
+}
+
+.fubutton{
+  margin-top: 20rpx;
+}
+
+.fubutton button{
+  width: 280rpx;
+  background-color: orange;
+  color: whitesmoke;
+}

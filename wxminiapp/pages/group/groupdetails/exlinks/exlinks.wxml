@@ -1,0 +1,71 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">查询专属链接</view>
+</cu-custom>
+
+<view class="box">
+  <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="输入手机号查询你的专属链接" confirm-type="search" maxlength="11" type="number"
+        bindinput="inputphone"></input>
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-green shadow-blur round" bindtap="search">查询</button>
+    </view>
+  </view>
+</view>
+
+
+<view>
+
+  <view>
+    <view wx:if="{{state==0}}" class="defaultgraph">
+      <defaultgraph tips="请输入手机号点击查询按钮查询专属链接"></defaultgraph>
+    </view>
+  </view>
+
+  <view>
+    <view wx:if="{{state==1}}" class="data">
+
+      <view class="cu-timeline">
+        <view class="cu-item cur cuIcon-noticefill">
+          <view class="content bg-mauve shadow-blur">
+            <text>品名:</text>{{data.product}}
+          </view>
+        </view>
+        <view class="cu-item text-red cuIcon-attentionforbidfill">
+          <view class="content bg-purple shadow-blur">
+            姓名:{{data.name}}
+          </view>
+        </view>
+        <view class="cu-item text-grey cuIcon-evaluate_fill">
+          <view class="content bg-pink shadow-blur">
+            使用时间:{{data.usetime}}
+          </view>
+        </view>
+        <view class="cu-item text-blue">
+          <view class="bg-blue content">
+            <text>链接:</text>{{data.link}}
+          </view>
+        </view>
+      </view>
+
+      <view class="fubutton">
+      <button bindtap="fuzhi">复制专属链接</button>
+      </view>
+
+    </view>
+
+
+
+  </view>
+
+
+  <view>
+    <view wx:if="{{state==2}}" class="defaultgraph">
+      <defaultgraph tips="没搜到,换个词试试？"></defaultgraph>
+    </view>
+
+  </view>
+</view>

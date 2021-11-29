@@ -19,6 +19,7 @@
     "pages/group/groupdetails/limittasks/submittasks/submittasks",
     "pages/group/groupdetails/limittasks/auditlimittasks/auditlimittasks",
     "pages/group/groupdetails/limittasks/limitlists/limitlists",
+    "pages/group/groupdetails/exlinks/exlinks",
     "pages/group/uptask/uptask",
     "pages/group/audittasks/audittasks",
     "pages/group/pushnews/pushnews",
