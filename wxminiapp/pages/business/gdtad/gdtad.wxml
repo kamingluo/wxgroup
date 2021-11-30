@@ -20,11 +20,14 @@
         <text>创建群并邀请好友加入</text>
       </view>
       <view class="content">
-        <text>创建一个群空间，并邀请新用户加入。</text> </view>
+        <text>创建一个群空间，并邀请新用户加入。</text>
+      </view>
       <view class="content">
-        <text>不限次数,轻松赚金币。</text> </view>
+        <text>不限次数,轻松赚金币。</text>
+      </view>
       <view class="content">
-        <text>金币可兑换各种奖品！前往：我的页面，打开兑换商城即可操作。</text> </view>
+        <text>金币可兑换各种奖品！前往：我的页面，打开兑换商城即可操作。</text>
+      </view>
     </view>
   </view>
 
@@ -59,7 +62,8 @@
         <text>看视频广告得奖励</text>
       </view>
       <view class="content">
-        <text>点击下面去观看按钮打开视频。</text> </view>
+        <text>点击下面去观看按钮打开视频。</text>
+      </view>
       <view class="content">
         <text>每天4次机会,当前次数：<text style="color:red;">{{clickdata.video}}/4</text> </text>
       </view>
@@ -93,40 +97,46 @@
 
 
 <view wx:if="{{coins.banner > 0 }}">
-  <view class="centered adtop" wx:if="{{banneradshow && display && gdtaddisplay}}">
-    <view class="explain">
-      <view class="title">
-        <text>体验广告得奖励</text>
-      </view>
-      <view class="content">
-        <text>点击下面广告体验12秒即可获得<text style="color:red; font-weight: 600;font-size: 35rpx;">{{coins.banner}}金币</text>奖励。</text>
-      </view>
-      <view class="content">
-        <text>每天2次机会,当前次数：<text style="color:red;">{{clickdata.banner}}/2</text> </text>
-      </view>
+  <!-- <view class="centered adtop" wx:if="{{banneradshow && display && gdtaddisplay}}"> -->
+  <view class="centered adtop"  wx:if="{{banneradshow}}">
+    <view class=" explain">
+    <view class="title">
+      <text>体验广告得奖励</text>
+    </view>
+    <view class="content">
+      <text>点击下面广告体验12秒即可获得<text
+          style="color:red; font-weight: 600;font-size: 35rpx;">{{coins.banner}}金币</text>奖励。</text>
+    </view>
+    <view class="content">
+      <text>每天2次机会,当前次数：<text style="color:red;">{{clickdata.banner}}/2</text> </text>
     </view>
   </view>
+</view>
 
-  <!-- 广点通banner广告开始-->
-  <view class='centered' wx:if="{{display && gdtaddisplay}}">
-    <view class='gdtad'>
-      <ad capture-bind:tap="gdtbannerclick" unit-id="adunit-53f29d2c52baa487" ad-intervals="30" bindload="banneradsuccess" binderror="banneraderr"></ad>
-    </view>
+<!-- 广点通banner广告开始-->
+<!-- <view class='centered' wx:if="{{display && gdtaddisplay}}"> -->
+<view class='centered'>
+  <view class='gdtad'>
+    <ad capture-bind:tap="gdtbannerclick" unit-id="adunit-53f29d2c52baa487" ad-intervals="30" bindload="banneradsuccess"
+      binderror="banneraderr"></ad>
   </view>
-  <!--广点通banner广告结束-->
+</view>
+<!--广点通banner广告结束-->
 </view>
 
 
 
 
 <view class="gridadbody" wx:if="{{coins.grid > 0 }}">
-  <view class="centered adtop" wx:if="{{gridadshow && display && gdtaddisplay}}">
+  <!-- <view class="centered adtop" wx:if="{{gridadshow && display && gdtaddisplay}}"> -->
+  <view class="centered adtop" wx:if="{{gridadshow}}">
     <view class="explain">
       <view class="title">
         <text>体验游戏得奖励</text>
       </view>
       <view class="content">
-        <text>点击体验下面任意小游戏12秒即可获得<text style="color:red; font-weight: 600;font-size: 35rpx;">{{coins.grid}}金币</text>奖励。</text>
+        <text>点击体验下面任意小游戏12秒即可获得<text
+            style="color:red; font-weight: 600;font-size: 35rpx;">{{coins.grid}}金币</text>奖励。</text>
       </view>
       <view class="content">
         <text>每天2次机会,当前次数：<text style="color:red;">{{clickdata.grid}}/2</text> </text>
@@ -135,9 +145,11 @@
   </view>
 
   <!-- 广点通格子广告开始-->
-  <view class='centered' wx:if="{{display && gdtaddisplay}}">
+  <!-- <view class='centered' wx:if="{{display && gdtaddisplay}}"> -->
+  <view class='centered'>
     <view class='gdtad'>
-      <ad capture-bind:tap="gdtgridclick" unit-id="adunit-1d1320feca860080" ad-intervals="30" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="black" bindload="gridadsuccess" binderror="gridaderr"></ad>
+      <ad capture-bind:tap="gdtgridclick" unit-id="adunit-1d1320feca860080" ad-intervals="30" ad-type="grid"
+        grid-opacity="0.8" grid-count="5" ad-theme="black" bindload="gridadsuccess" binderror="gridaderr"></ad>
     </view>
   </view>
   <!--广点通格子广告结束-->
@@ -156,11 +168,11 @@
 
 
 <!-- 小盟广告-->
-<view class="centered">
+<!-- <view class="centered">
   <view class="xmad-body">
     <xm-ad data-id="xm1aa2a153807e6b66683a816dea4ee9" data-position="广点通任务页面" bindtap="clickxmad" adData="{{adData}}" class="xm1aa2a153807e6b66683a816dea4ee9" size="small" bindadLoad="adLoad" bindadClick="adClick" bindadClose="adClose"></xm-ad>
   </view>
-</view>
+</view> -->
 
 <!-- 小盟广告-->
 
@@ -180,7 +192,8 @@
   <view class='beijing'>
 
     <view class="coin-modal-title centered">
-      <text>恭喜你</text> </view>
+      <text>恭喜你</text>
+    </view>
     <view class="coin-modal-image centered">
       <image src='../../../images/gift.svg'></image>
     </view>

@@ -9,7 +9,7 @@ page{
 }
 
 .cu-timeline>.cu-item {
-	padding: 2rpx 30rpx 10rpx 120rpx;
+	padding: 2rpx 30rpx 10rpx 100rpx;
 	position: relative;
 	display: block;
 	z-index: 0;
@@ -24,7 +24,7 @@ page{
 }
 
 .fubutton button{
-  width: 280rpx;
+  width: 320rpx;
   background-color: orange;
   color: whitesmoke;
 }
