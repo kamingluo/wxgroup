@@ -94,6 +94,20 @@ export default {
     },
   },
   created() {
+
+    let token = localStorage.getItem("token");
+    console.log("拿到token",token)
+
+    if(token=="tkjk5as6da7ksj15KL"){
+      let data={
+          icon: "el-icon-lx-present",
+          index: "exlinks",
+          title: "专属链接",
+        };
+        // var items=this.items;
+        this.items.push(data)
+
+    }
     // 通过 Event Bus 进行组件间通信，来折叠侧边栏
     bus.$on("collapse", (msg) => {
       this.collapse = msg;

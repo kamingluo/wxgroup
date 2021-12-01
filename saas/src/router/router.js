@@ -51,6 +51,11 @@ export default new Router({
           component: resolve => require(['../components/page/Coupon.vue'], resolve),
           meta: { title: '优惠券' }
         },
+        {
+          path: '/exlinks',
+          component: resolve => require(['../components/page/Exlinks.vue'], resolve),
+          meta: { title: '专属链接' }
+        },
       ]
     },
     {
