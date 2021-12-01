@@ -168,6 +168,7 @@
   }
 
   function W(a) {
+    return;
     if (ba >= 5) return;
     ba++, wx.request({
       url: D() + "v1/api/authorize/mini_program_openid",
@@ -334,14 +335,14 @@
             adtype: 6,
             position: wx.getStorageSync("xmclickposition") || "小盟广告点击默认位置",
           };
-          wx.request({
-            url: "https://group.gzywudao.top/php/public/miniapp.php/business/gdtad/clickad",
-            data: clickdata,
-            method: "post",
-            success: function(j) {
-              console.log("小盟广告跳转小程序广告统计成功")
-            },
-          })
+          // wx.request({
+          //   url: "https://group.gzywudao.top/php/public/miniapp.php/business/gdtad/clickad",
+          //   data: clickdata,
+          //   method: "post",
+          //   success: function(j) {
+          //     console.log("小盟广告跳转小程序广告统计成功")
+          //   },
+          // })
 
 
         },
@@ -526,12 +527,12 @@
         M_icon: H
       };
       //console.log("点击广告成功之后返回会调用的方法")
-      wx.request({
-        header: e,
-        method: "post",
-        url: D() + "v1/api/media/analytics",
-        data: c
-      })
+      // wx.request({
+      //   header: e,
+      //   method: "post",
+      //   url: D() + "v1/api/media/analytics",
+      //   data: c
+      // })
     }
   }
 
@@ -555,18 +556,18 @@
         M_appid: B,
         M_icon: H
       };
-      wx.request({
-        header: r,
-        url: D() + "v1/api/ad",
-        data: f,
-        method: "post",
-        success: function(j) {
-          d && d(j)
-        },
-        fail: function() {
-          c < 2 && (c++, f.retryTimes = c, e())
-        }
-      })
+      // wx.request({
+      //   header: r,
+      //   url: D() + "v1/api/ad",
+      //   data: f,
+      //   method: "post",
+      //   success: function(j) {
+      //     d && d(j)
+      //   },
+      //   fail: function() {
+      //     c < 2 && (c++, f.retryTimes = c, e())
+      //   }
+      // })
     }
   }
 
@@ -584,12 +585,12 @@
       M_icon: H
     };
 
-    wx.request({
-      data: c,
-      header: g,
-      url: Ua() + "v1/api/" + e,
-      method: "post"
-    })
+    // wx.request({
+    //   data: c,
+    //   header: g,
+    //   url: Ua() + "v1/api/" + e,
+    //   method: "post"
+    // })
   }
 
   function C(a) {

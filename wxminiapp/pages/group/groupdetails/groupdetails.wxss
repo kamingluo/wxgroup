@@ -94,7 +94,7 @@
 .crowdright {
   position:absolute;
   margin-top: 1rpx;
-  margin-left: 270rpx;
+  margin-left: 530rpx;
   /* margin-left: 530rpx; */
   
 }
