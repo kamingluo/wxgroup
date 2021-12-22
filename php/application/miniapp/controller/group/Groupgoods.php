@@ -58,7 +58,7 @@ class Groupgoods
          Log::record("处理之前的stock数据11");
          Log::record($request->param("stock"));
 
-         $stock=$request->param("stock") || 999999999;
+         $stock=$request->param("stock") || '999999999';
 
          Log::record("处理之后的stock数据");
          Log::record($stock);
