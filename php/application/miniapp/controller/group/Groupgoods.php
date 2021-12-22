@@ -55,7 +55,14 @@ class Groupgoods
          $goodsname=$request->param("goodsname");
          $images=$request->param("images");
          $price=$request->param("price");
+         Log::record("处理之前的stock数据");
+         Log::record($request->param("stock"));
+
          $stock=$request->param("stock") || 999999999;
+
+         Log::record("处理之后的stock数据");
+         Log::record($stock);
+
          $time =date('Y-m-d H:i:s',time());//获取当前时间
          $data = ['id'=>'','goodsname' =>$goodsname,'images' => $images,'price' => $price,'crowd_id' => $crowd_id,'sort' => null,'stock' => $stock,'create_time' =>$time,'update_time' =>$time];
          $goods_id= db('crowd_goods')->insertGetId($data);//返回自增ID

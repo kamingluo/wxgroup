@@ -114,10 +114,13 @@ class Exchangegoods
         $user_id=$exdata["user_id"];
         $openid=$exdata["openid"];
         $price=$exdata["price"];
+        $goodsname=$exdata["goodsname"];
+        $stock=$exdata["stock"];
 
         //修改商品库存
-
-
+        if($stock != 999999999){
+            $addstock= db('crowd_goods')->where('crowd_id',$crowd_id)->where('goodsname',$goodsname)->setInc('stock',1);//找到该商品加库存
+        }
 
         if($price > 0){
           $addscore= db('user_crowd')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->setInc('score',$price);//找到该用户的群账户加积分
