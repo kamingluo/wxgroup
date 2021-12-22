@@ -55,7 +55,7 @@ class Groupgoods
          $goodsname=$request->param("goodsname");
          $images=$request->param("images");
          $price=$request->param("price");
-         Log::record("处理之前的stock数据");
+         Log::record("处理之前的stock数据11");
          Log::record($request->param("stock"));
 
          $stock=$request->param("stock") || 999999999;
