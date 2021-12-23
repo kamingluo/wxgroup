@@ -3,6 +3,7 @@ namespace app\miniapp\controller\group;
 use think\Db;
 use think\Request;
 use think\Config;
+use think\Log;
 
 class Exchangegoods
 {
@@ -115,12 +116,17 @@ class Exchangegoods
         $openid=$exdata["openid"];
         $price=$exdata["price"];
         $goodsname=$exdata["goodsname"];
-        $stock=$exdata["stock"];
 
+
+        $gooddata=db('crowd_goods')->where('crowd_id',$crowd_id)->where('goodsname',$goodsname)->find();
+        $stock=$gooddata["goodsname"];
+        Log::record("修改商品库存前");
         //修改商品库存
-        if($stock != 999999999){
+        if($stock != 999999999 || $stock != '999999999' ){
+            Log::record("修改商品库存中");
             $addstock= db('crowd_goods')->where('crowd_id',$crowd_id)->where('goodsname',$goodsname)->setInc('stock',1);//找到该商品加库存
         }
+        Log::record("修改商品库存后");
 
         if($price > 0){
           $addscore= db('user_crowd')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->setInc('score',$price);//找到该用户的群账户加积分
