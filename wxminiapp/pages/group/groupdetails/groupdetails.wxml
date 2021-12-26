@@ -29,9 +29,7 @@
 
 
     <view class="crowdright">
-      <!-- <view class='  signinseting ' wx:if="{{user_type == 1 ||user_type == 2 ? true:false }}" bindtap="signinseting">
-        <button class=" cu-btn bg-cyan  round  shadow signinbtn">签到设置</button>
-      </view> -->
+    <view>
       <view class="setting" wx:if="{{user_type == 1}}" bindtap="gosetting">
         <view class="setting-body centered">
           <image src="../../../images/setting.png"></image>
@@ -45,14 +43,11 @@
         <view class='signinseting ' bindtap="lotterydata">
           <button class=" cu-btn bg-cyan  round  shadow signinbtn">抽奖记录</button>
         </view>
-
       </view>
-
-
-      <!-- <view class='signindata' wx:if="{{user_type == 1 ||user_type == 2 || viewdata ? true:false }}" bindtap="signindata">
-				<button class="cu-btn bg-olive   round shadow signinbtn">签到记录</button>
-			</view> -->
     </view>
+  </view>
+
+    
 
   </view>
 </view>
@@ -140,8 +135,8 @@
 
   <scroll-view scroll-x class="bg-white nav">
     <view class="flex text-center">
-      <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{TabCurnum}}" wx:key bindtap="tabSelect"
-        data-id="{{index}}">
+      <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{TabCurnum}}" wx:key
+        bindtap="tabSelect" data-id="{{index}}">
         {{index==0?"群消息":index==1?"群抽奖":index==2?"限时任务":"专属链接"}}
       </view>
     </view>
@@ -264,33 +259,35 @@
 
   <view wx:elif="{{TabCur == 2}}">
 
-  <view wx:if="{{limittaskslist.length > 0}}">
-    <view class="cu-card article {{isCard?'no-card':''}}" wx:for="{{limittaskslist}}" wx:key="item"  bindtap='clicklimittasklist' data-id='{{item.id}}' >
-      <view class="cu-item shadow">
-        <view class="title">
-          <view class="text-cut">{{item.title}}</view>
-        </view>
-        <view class="content">
-        <image src="http://groupmaterial.gzywudao.top/onedayone.png" mode="aspectFill" wx:if="{{item.limit==1}}"></image>
-        <image src="http://groupmaterial.gzywudao.top/userone.png" mode="aspectFill" wx:else></image>
-          <view class="desc">
-            <view class="text-content">{{item.describe}}</view>
-          <view>
-            <view class="cu-tag bg-green light sm round">{{item.number==0?"不限量":"限量:" +item.number}}</view>
-            <view class="cu-tag bg-red light sm round">结束时间:{{item.end_time}}</view>
+    <view wx:if="{{limittaskslist.length > 0}}">
+      <view class="cu-card article {{isCard?'no-card':''}}" wx:for="{{limittaskslist}}" wx:key="item"
+        bindtap='clicklimittasklist' data-id='{{item.id}}'>
+        <view class="cu-item shadow">
+          <view class="title">
+            <view class="text-cut">{{item.title}}</view>
           </view>
+          <view class="content">
+            <image src="http://groupmaterial.gzywudao.top/onedayone.png" mode="aspectFill" wx:if="{{item.limit==1}}">
+            </image>
+            <image src="http://groupmaterial.gzywudao.top/userone.png" mode="aspectFill" wx:else></image>
+            <view class="desc">
+              <view class="text-content">{{item.describe}}</view>
+              <view>
+                <view class="cu-tag bg-green light sm round">{{item.number==0?"不限量":"限量:" +item.number}}</view>
+                <view class="cu-tag bg-red light sm round">结束时间:{{item.end_time}}</view>
+              </view>
+            </view>
           </view>
         </view>
       </view>
-    </view>
-    
-    <view class='centered   bottomtips'>
-        <text>----已经到底了---</text>
-    </view>
-  </view>
 
-   <view wx:else>
-    <view>
+      <view class='centered   bottomtips'>
+        <text>----已经到底了---</text>
+      </view>
+    </view>
+
+    <view wx:else>
+      <view>
         <view class='default'>
           <view>
             <image src='http://littlebox.luojiaming.vip/default.png'></image>
@@ -303,7 +300,7 @@
         </view>
       </view>
 
-  </view>
+    </view>
 
 
   </view>

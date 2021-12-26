@@ -172,8 +172,8 @@
 
 .clearicon{
   position:absolute;
-  margin-top: -230rpx;
-  margin-left: 150rpx;
+  margin-top: -430rpx;
+  margin-left: 280rpx;
 }
 
 .clear{

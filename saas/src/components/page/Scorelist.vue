@@ -40,14 +40,17 @@
           </template>
         </el-table-column>
         </el-table-column>
-        <el-table-column prop="explain" label="积分流水描述" width="220">
-        </el-table-column>p
-        <el-table-column prop="create_time" label="操作时间" width="160">
+        <el-table-column prop="score" label="积分数" width="220">
         </el-table-column>
+        <el-table-column prop="explain" label="积分流水描述" width="220">
+        </el-table-column>
+
         <el-table-column prop="state" label="积分类型" width="100">p
         <template slot-scope="scope">
         <p>{{scope.row.state==0?"增加积分":scope.row.state==1?"减少积分":"其他"}}</p>
          </template>
+        </el-table-column>
+        <el-table-column prop="create_time" label="操作时间" width="160">
         </el-table-column>
       </el-table>
        <!-- 换页 -->

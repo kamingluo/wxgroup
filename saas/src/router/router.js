@@ -22,6 +22,11 @@ export default new Router({
           meta: { title: '系统首页' }
         },
         {
+          path: '/userslist',
+          component: resolve => require(['../components/page/Userslist.vue'], resolve),
+          meta: { title: '用户列表' }
+        },
+        {
           path: '/tasks',
           component: resolve => require(['../components/page/Tasks.vue'], resolve),
           meta: { title: '任务审核' }
@@ -34,7 +39,12 @@ export default new Router({
         {
           path: '/auditlimittask',
           component: resolve => require(['../components/page/Auditlimittask.vue'], resolve),
-          meta: { title: '处理限时任务',noActive:true  }
+          meta: { title: '处理限时任务', noActive: true }
+        },
+        {
+          path: '/exlists',
+          component: resolve => require(['../components/page/Exlists.vue'], resolve),
+          meta: { title: '兑换列表', noActive: true }
         },
         {
           path: '/scorelist',

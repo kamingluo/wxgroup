@@ -10,9 +10,9 @@ import axios from "axios";
 
 let config = {
   //生产环境
-  baseURL: 'https://group.gzywudao.top/php/public/saas.php/',
+  //baseURL: 'https://group.gzywudao.top/php/public/saas.php/',
   //测试环境
-  //baseURL: 'http://127.0.0.1/myproject/wxgroup/php/public/saas.php/',
+  baseURL: 'http://127.0.0.1/myproject/wxgroup/php/public/saas.php/',
 
 
   //暂时用不到

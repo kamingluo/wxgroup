@@ -62,6 +62,11 @@ export default {
         },
         {
           icon: "el-icon-lx-present",
+          index: "userslist",
+          title: "用户列表",
+        },
+        {
+          icon: "el-icon-lx-present",
           index: "tasks",
           title: "任务审核",
         },
@@ -69,6 +74,11 @@ export default {
           icon: "el-icon-lx-present",
           index: "limittasks",
           title: "限时任务",
+        },
+        {
+          icon: "el-icon-lx-present",
+          index: "exlists",
+          title: "兑换列表",
         },
          {
           icon: "el-icon-lx-present",
@@ -79,11 +89,6 @@ export default {
           icon: "el-icon-lx-present",
           index: "signin",
           title: "签到查询",
-        },
-         {
-          icon: "el-icon-lx-present",
-          index: "coupon",
-          title: "优惠券",
         },
       ],
     };
@@ -104,8 +109,15 @@ export default {
           index: "exlinks",
           title: "专属链接",
         };
+
+      let data2={
+          icon: "el-icon-lx-present",
+          index: "coupon",
+          title: "优惠券",
+        };
         // var items=this.items;
         this.items.push(data)
+        this.items.push(data2)
 
     }
     // 通过 Event Bus 进行组件间通信，来折叠侧边栏

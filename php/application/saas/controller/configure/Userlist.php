@@ -3,12 +3,11 @@ namespace app\saas\controller\configure;
 use think\Db;
 use think\Request;
 use qiniu\Deletefile;
-class Other
+class userlist
 {
    
     //查询群用户列表
-   public function taskslist(Request $request){
-
+   public function userslist(Request $request){
         $token=$request->param("token");
         $pages=$request->param("pages");
         $nickName=$request->param("nickName");
@@ -21,7 +20,7 @@ class Other
             $number=($pages - 1)*10 ;
         }
         $data = db()->table(array('user_crowd'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t2.nickName','like',$newkeyword)->where('t2.id=t1.user_id')->where('t1.crowd_id',$id)->order('id ASC')->limit($number,10)->select();
-        $countnumber = db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t2.nickName','like',$newkeyword)->where('t2.id=t1.user_id')->where('t1.limit_id',$limit_id)->where('t1.crowd_id',$id)->count();
+        $countnumber = db()->table(array('user_crowd'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t2.nickName','like',$newkeyword)->where('t2.id=t1.user_id')->where('t1.crowd_id',$id)->count();
         $state=['state'   => '200','message'  => "查询群用户列表" ];
         $resdata=array_merge($state,array('countnumber'=>$countnumber),array('data'=>$data));
         return $resdata ;
@@ -41,7 +40,7 @@ class Other
         $time =date('Y-m-d H:i:s',time());//获取当前时间
         $user_data =db('user_crowd')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->find();
         $openid=$user_data["user_openid"];
-        if($state == 0){
+        if($state == 0 ||$state == "0"){
         //给用户相应的群积分账户加积分
         $addscore= db('user_crowd')->where('user_id',$user_id)->where('crowd_id',$crowd_id)->setInc('score',$score);
         //给用户增加积分记录
@@ -92,6 +91,26 @@ class Other
         return $resdata ;
       
     }
+
+
+    //把用户踢出群
+
+       //删除群成员
+   public function deletegroupuser(Request $request) 
+   {
+
+        $token=$request->param("token");
+        $crowd_id=havecrowdid($token);
+        $user_id=$request->param("user_id");//用户ID
+        $deleteuser=db('user_crowd')-> where('crowd_id',$crowd_id)-> where('user_id',$user_id)->delete();
+        if($deleteuser == 1 ){
+              $state=['state'   => '200','message'  => "删除群员成功" ];
+              return $state ;
+        }else{
+            $state=['state'   => '400','message'  => "删除群员失败" ];
+            return $state ;
+        }
+   }
 
 
 

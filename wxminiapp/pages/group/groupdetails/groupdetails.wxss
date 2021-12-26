@@ -29,6 +29,8 @@
   justify-content: space-around;
   align-items: center;
   color: #fff;
+  width: 20%;
+  margin-left: -60rpx;
 }
 
 .userAvatarurl {
@@ -47,8 +49,9 @@
   justify-content: space-around;
   align-items: left;
   flex-shrink: 0;
-  flex-basis: 400rpx;
-  margin-left: -50rpx;
+  /* flex-basis: 400rpx; */
+  width: 60%;
+  margin-left: -90rpx;
 }
 
 .userNickName {
@@ -85,22 +88,26 @@
 }
 .setting{
   margin-top: 15rpx;
- margin-left: 105rpx;
- margin-bottom: 35rpx;
+ margin-left: 110rpx;
+ margin-bottom: 45rpx;
 }
 .otherjump{
   margin-top: 100rpx;
 }
 .crowdright {
-  position:absolute;
+  display: flex;
+  position: relative;
+  margin-left: -300rpx;
+
+  /* position:absolute;
   margin-top: 1rpx;
-  margin-left: 530rpx;
+  margin-left: 530rpx; */
   /* margin-left: 530rpx; */
   
 }
 .crowdright image{
   width: 65rpx;
-  height: 65rpx;
+  height: 55rpx;
 }
 .signinbtn{
   left: 45rpx;
