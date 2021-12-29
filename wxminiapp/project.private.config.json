@@ -87,6 +87,12 @@
           "pathName": "pages/group/groupdetails/exlinks/exlinks",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/group/alltasklists/alltasklists",
+          "pathName": "pages/group/alltasklists/alltasklists",
+          "query": "crowd_id=14&user_type=1&crowd_name=kaming%E7%9A%84%E7%BE%A4",
+          "scene": null
         }
       ]
     }

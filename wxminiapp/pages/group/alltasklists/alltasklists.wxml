@@ -54,9 +54,14 @@
   <view class='centered' wx:for="{{alltasklists}}" wx:key="item">
     <view class='exchangelist  shadow-warp bg-white' bindtap='clicktasklist' data-id='{{item.id}}'>
       <view class='exchangedata connent'>
+
+        <view class='exchangegood' wx:if="{{item.title}}">
+          任务标题:
+          <text style='font-weight: 600; color:#1cbbb4 ; font-size:25rpx; '>{{item.title}}</text>
+        </view>
         <view class='exchangegood'>
           用户昵称:
-          <text style='font-weight: 600; color:#1cbbb4 ; font-size:30rpx; '>{{item.nickName}}</text>
+          <text style='font-weight: 600; color:#1cbbb4 ; font-size:25rpx; '>{{item.nickName}}</text>
         </view>
         <view class='exchangetime'>
           提交时间:{{item.create_time}}

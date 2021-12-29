@@ -34,7 +34,7 @@
   flex-wrap:wrap;
 
   width: 96%;
-  height: 150rpx;
+  height: 160rpx;
   margin-top: 10rpx;
 }
 
@@ -46,13 +46,13 @@
   
 }
 .exchangegood{
-   font-size: 30rpx;
-   margin-bottom: 20rpx;
+   font-size: 25rpx;
+   margin-bottom: 6rpx;
    color: #000000;
 }
 
 .exchangstate{
-  font-size: 32rpx;
+  font-size: 26rpx;
   font-weight: 600;
 
 }
