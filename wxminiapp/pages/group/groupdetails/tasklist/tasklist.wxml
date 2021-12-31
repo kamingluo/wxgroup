@@ -53,33 +53,43 @@
 <view wx:else>
 
   <view wx:if="{{TabCur==0}}">
-    <view class='centered' wx:for="{{usertasklist}}" wx:key="item">
-      <view class='exchangelist  shadow-warp bg-white' bindtap='clicktasklist' data-id='{{item.id}}'>
-        <view class='exchangedata '>
-          <view class='exchangegood onetext'>
-            任务群:
-            <text style='font-weight: 600; color:#1cbbb4 ; font-size:30rpx; '>{{item.crowd_name}}</text>
+    <view class='' wx:for="{{usertasklist}}" wx:key="item">
+      <view class="item-body centered">
+        <view class='exchangelist  shadow-warp bg-white' bindtap='clicktasklist' data-id='{{item.id}}'>
+          <view class='exchangedata '>
+            <view class='exchangegood onetext'>
+              任务群:
+              <text style='font-weight: 600; color:#1cbbb4 ; font-size:30rpx; '>{{item.crowd_name}}</text>
+            </view>
+            <view class='exchangetime'>
+              提交时间:{{item.create_time}}
+            </view>
+            <view style='color:red' class='exchangetime' wx:if="{{item.state == 2}}">
+              失败原因:{{item.result}}
+            </view>
+            <view style='color:green' class='exchangetime' wx:if="{{item.state == 1}}">
+              获得积分:{{item.score}}分
+            </view>
           </view>
-          <view class='exchangetime'>
-            提交时间:{{item.create_time}}
+          <view class='exchangedata exchangstate'>
+            <view class="centered">
+              <text style='color:#000000' wx:if="{{item.state == 0}}">待审核</text>
+              <text style='color:green' wx:elif="{{item.state == 1}}">审核成功</text>
+              <text style='color:red' wx:else>审核失败</text>
+            </view>
+            <view class="deletebtn" wx:if="{{item.state == 0}}"> <button class="cu-btn bg-blue round sm"
+                catchtap='deletemode' data-id='{{item.id}}'>删除任务</button> </view>
           </view>
-          <view style='color:red' class='exchangetime' wx:if="{{item.state == 2}}">
-            失败原因:{{item.result}}
-          </view>
-          <view style='color:green' class='exchangetime' wx:if="{{item.state == 1}}">
-            获得积分:{{item.score}}分
-          </view>
-        </view>
-        <view class='exchangedata exchangstate'>
-          <view class="centered">
-            <text style='color:#000000' wx:if="{{item.state == 0}}">待审核</text>
-            <text style='color:green' wx:elif="{{item.state == 1}}">审核成功</text>
-            <text style='color:red' wx:else>审核失败</text>
-          </view>
-          <view class="deletebtn" wx:if="{{item.state == 0}}"> <button class="cu-btn bg-blue round sm"
-              catchtap='deletemode' data-id='{{item.id}}'>删除任务</button> </view>
         </view>
       </view>
+      <view class='centered gdtadlist' wx:if="{{index==6|| index==22}}">
+        <view class='exchangelist '>
+          <!-- <newgdtad adtype="{{adtype}}"  position="任务记录页面"></newgdtad> -->
+          <ad capture-bind:tap="gdtbannerclick" unit-id="adunit-53f29d2c52baa487" ad-intervals="30"></ad>
+        </view>
+      </view>
+
+
     </view>
   </view>
 
@@ -89,7 +99,7 @@
         <view class='exchangedata '>
           <view class='exchangegood onetext'>
             标题:
-            <text style='font-weight: 600; color:#1cbbb4 ; font-size:27rpx; ' >{{item.title}}</text>
+            <text style='font-weight: 600; color:#1cbbb4 ; font-size:27rpx; '>{{item.title}}</text>
           </view>
           <view class='exchangetime'>
             提交时间:{{item.create_time}}
@@ -108,7 +118,7 @@
             <text style='color:red' wx:else>审核失败</text>
           </view>
           <view class="deletebtn" wx:if="{{item.state == 0}}"> <button class="cu-btn bg-blue round sm"
-              catchtap='deletelimittasksmode' data-id='{{item.id}}'>删除任务</button> </view> 
+              catchtap='deletelimittasksmode' data-id='{{item.id}}'>删除任务</button> </view>
         </view>
       </view>
     </view>

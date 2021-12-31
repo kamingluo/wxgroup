@@ -37,7 +37,7 @@
     "showES6CompileOption": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.17.0",
+  "libVersion": "2.21.2",
   "appid": "wx0e060ad90f7f41c4",
   "projectname": "group",
   "debugOptions": {
@@ -113,6 +113,12 @@
           "name": "pages/group/alltasklists/limittaskdetailed/limittaskdetailed",
           "pathName": "pages/group/alltasklists/limittaskdetailed/limittaskdetailed",
           "query": "id=110952",
+          "scene": null
+        },
+        {
+          "name": "pages/group/groupdetails/tasklist/tasklist",
+          "pathName": "pages/group/groupdetails/tasklist/tasklist",
+          "query": "crowd_id=14",
           "scene": null
         }
       ]

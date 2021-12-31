@@ -77,3 +77,9 @@
   -webkit-box-orient: vertical;
 }
 
+.item-body{
+  width: 100%;
+}
+.gdtadlist{
+  margin-bottom: 10rpx;
+}

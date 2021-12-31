@@ -228,6 +228,15 @@ Page({
 
   },
 
+  //点击banner广告
+  gdtbannerclick:function(){
+    let data={
+      'adtype':1,
+      'position':"任务记录页面"
+    };
+    common.clickgdtadstatistics(data)
+  },
+
   //显示插屏广告
   onshowgdtinsertad: function() {
     var state = 0;
