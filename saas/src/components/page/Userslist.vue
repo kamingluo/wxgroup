@@ -237,7 +237,7 @@ export default {
       let postdata = {};
       postdata.score = this.editdata.score;
       postdata.explain = this.editdata.score;
-      postdata.state = this.editdata.score;
+      postdata.state = this.editdata.state;
       postdata.user_id = this.form.user_id;
       postdata.token = localStorage.getItem("token");
       console.log("提交修改信息", postdata);
