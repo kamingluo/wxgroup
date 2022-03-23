@@ -106,7 +106,7 @@
           <el-date-picker
           v-model="form.end_time"
           type="datetime"
-          value-format="yyyy-MM-dd hh:mm:ss"
+          value-format="yyyy-MM-dd HH:mm:ss"
           placeholder="选择日期时间">
         </el-date-picker>
         </el-form-item>
