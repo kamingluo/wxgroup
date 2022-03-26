@@ -17,7 +17,7 @@ class News
       $number=0;
     }
     else{
-      $number=(($pages - 1)*10)-1 ;
+      $number=($pages - 1)*10);
     }
      if($id){
         $data=db('crowd_news')->where('crowd_id',$id)->order('id desc')->limit($number,10)->select();

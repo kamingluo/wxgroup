@@ -27,7 +27,7 @@ class Adminuser
              $number=0;
            }
            else{
-             $number=(($pages - 1)*10)-1 ;
+            $number=($pages - 1)*10);
            }
             
 

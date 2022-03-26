@@ -132,7 +132,7 @@ class Handletask
           $number=0;
         }
       else{
-        $number=(($pages - 1)*10)-1 ;
+        $number=($pages - 1)*10);
       }
       if($state == 0){
         $countnumber=db('task_record')->where('crowd_id',$crowd_id)->group('user_id')->count();//总任务数

@@ -23,7 +23,7 @@ class Datalist
           $number=0;
         }
         else{
-          $number=(($pages - 1)*10)-1 ;
+          $number=($pages - 1)*10);
         }
         if($crowd_name){
            //名称不为空
@@ -48,7 +48,7 @@ class Datalist
         $number=0;
       }
       else{
-        $number=(($pages - 1)*10)-1 ;
+        $number=($pages - 1)*10);
       }
     
        $countnumber=db('click_gdt_ad')->count();

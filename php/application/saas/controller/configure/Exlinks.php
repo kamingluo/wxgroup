@@ -91,7 +91,7 @@ class Exlinks
       $number=0;
     }
     else{
-      $number=(($pages - 1)*10)-1 ;
+      $number=($pages - 1)*10);
     }
     if($phone){
       $data=db('ex_links')->where('phone',$phone)->order('id DESC')->limit($number,10)->select();
