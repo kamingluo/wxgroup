@@ -17,7 +17,7 @@ class Examine
           return $resdata ;
         }
         else{
-          $number=($pages - 1)*10 ;
+          $number=(($pages - 1)*10)-1 ;
           $data=db('coin_exchange_record')->order('id desc')->limit($number,10)->select();
           $state=['state'   => '200','message'  => "兑换列表查询成功" ];
           $resdata=array_merge($state,array('countnumber'=>$countnumber),array('data'=>$data));

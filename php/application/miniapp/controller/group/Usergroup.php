@@ -51,7 +51,7 @@ class Usergroup
 
         //拿到用户的群数据
         sleep(0.5);
-    	  $sql = "select crowd.*,user_crowd.user_type,user_crowd.score from crowd ,user_crowd where user_crowd.crowd_id=crowd.id and user_crowd.user_openid='". $openid."';" ;
+    	  $sql = "select crowd.*,user_crowd.user_type,user_crowd.score from crowd ,user_crowd where crowd.open <> 4 and user_crowd.crowd_id=crowd.id and user_crowd.user_openid='". $openid."';" ;
         $data = Db::query($sql);
 
         //首页广告id
@@ -116,9 +116,10 @@ class Usergroup
         $wxcode =$request->param("code");
         $crowd_name =$request->param("crowd_name");
         $introduce =$request->param("introduce");
-        // $open =1;
-        $open =0;
-        // $open =$request->param("open") || 0;
+
+        $open =2;//0正常1审核，2体验3过期4删除
+        $end_time = date('Y-m-d', strtotime('+7 days')); //体验结束时间
+
         $logo=$request->param("logo");
         // $logo="https://material.gzywudao.top/image/group/groupicon.png";
         $wxnumber=$request->param("wxnumber");
@@ -130,7 +131,7 @@ class Usergroup
          $groupowner=db('user')->where('openid',$openid)->find(); //群主信息
          $time =date('Y-m-d H:i:s',time());//获取当前时间
              //创建群成功
-         $dbdata = ['id'=>'','crowd_name' =>$crowd_name,'crowd_ownerid' => $groupowner["id"],'introduce' => $introduce,'rule' => null,'logo' => $logo,'wxnumber' => $wxnumber,'create_time' =>$time,'open' =>$open];
+         $dbdata = ['id'=>'','crowd_name' =>$crowd_name,'crowd_ownerid' => $groupowner["id"],'introduce' => $introduce,'rule' => null,'logo' => $logo,'wxnumber' => $wxnumber,'create_time' =>$time,'open' =>$open,'end_time' =>$end_time];
          $groupid= db('crowd')->insertGetId($dbdata);//返回自增ID
       
           $joingroup = ['id'=>'','user_id' => $groupowner["id"],'user_openid' =>  $groupowner["openid"],'crowd_id' => $groupid,'user_type' => 1,'score' =>0,'create_time' =>$time];
@@ -167,6 +168,14 @@ class Usergroup
 
          $crowd_id =$request->param("crowd_id");//群id
          $crowd_ownerid =$request->param("crowd_ownerid");//群主用户id
+        //修改
+        $dbreturn= db('crowd')->where('id',$crowd_id)->where('crowd_ownerid',$crowd_ownerid)->update(['open' =>4]);//修改群信息
+
+
+         $state=['state'   => '200','message'  => "删除群成功" ];
+         return $state;
+
+
 
          Log::record("调用删除群");
          Log::record($crowd_id);

@@ -70,6 +70,11 @@ export default {
           index: "groups",
           title: "群列表",
         },
+                {
+          icon: "el-icon-lx-group",
+          index: "adminmanage",
+          title: "后台管理",
+        },
         {
           icon: "el-icon-lx-present",
           index: "tasks",

@@ -29,15 +29,6 @@
     </swiper>
   </view>
   <view class='cu-tabbar-height'></view>
-
-  <!-- 广点通视频广告开始-->
-  <view class='centered  video-body' wx:if="{{display}}">
-    <view class='gdtad' style="opacity: 0">
-      <!-- <view class='gdtad'> -->
-      <ad capture-bind:tap="gdtvideoadclick" ad-intervals="30" unit-id="adunit-87af8d1e88929372" ad-type="video" ad-theme="white"></ad>
-    </view>
-  </view>
-  <!--广点通视频广告结束-->
 </view>
 
 
@@ -76,10 +67,23 @@
           </button>
         </view>
 
+        <view class="shouquananniu" wx:elif="{{item.open==3 && item.user_type == 1}}">
+          <!-- <button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button> -->
+          <button style="opacity:0.9" bindtap="kefu">
+            <text>体验时长已经到期...</text>
+            <text>点击联系客服延长使用期!</text>
+          </button>
+        </view>
+
         <view class="shouquananniu" wx:elif="{{!ifauthorized}}">
           <!-- <button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button> -->
           <button style="opacity: 0" bindtap="getUserProfile"></button>
         </view>
+
+      <view class="experience" wx:if="{{item.open==2 && item.user_type == 1 }}">
+        <image src='/images/common/experience.png'></image>
+      </view>
+
 
         <view class='box-body shadow-warp bg-white' bindtap="clickusergrouplist" data-data='{{item}}'>
           <view class=' box-body-image centered '>

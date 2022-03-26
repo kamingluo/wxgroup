@@ -88,6 +88,21 @@ ad {
   line-height: 100rpx;
 }
 
+
+.experience{
+  position: absolute;/*这里一定要设置*/
+
+  z-index: 999999;/*这里是该元素与显示屏的距离，据说越大越好，因为没有它也是可以的*/
+  margin-left: -85%;
+  margin-top: -17%;
+
+}
+
+.experience image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
 .box {
   margin-top: 15rpx;
 }

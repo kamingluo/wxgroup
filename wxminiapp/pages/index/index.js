@@ -159,6 +159,11 @@ Page({
   },
 
 
+  kefu:function(){
+    wx.navigateTo({
+      url: '/pages/joinweChat/joinweChat',
+    })
+  },
   clickusergrouplist: function (e) {
     wx.navigateTo({
       url: '/pages/group/groupdetails/groupdetails?id=' + e.currentTarget.dataset.data.id + '&user_type=' + e.currentTarget.dataset.data.user_type + '&score=' + e.currentTarget.dataset.data.score,

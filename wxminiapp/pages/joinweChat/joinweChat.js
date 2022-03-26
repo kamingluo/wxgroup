@@ -17,10 +17,25 @@ Page({
     })
   },
 
+  fuzhi:function(){
+    wx.setClipboardData({
+      data: "qunjifen",
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '复制成功'
+            })
+          }
+        })
+      }
+    })
+  },
+
   
   dowloadimg: function () {
     var that = this
-    var imgSrc = this.data.imageurl + 'miniapp/images/weixinqun.jpg'
+    var imgSrc = this.data.imageurl + 'miniapp/images/kefu.png'
     wx.getSetting({
       success(res) {
         var writePhotosAlbum = wx.getStorageSync('writePhotosAlbum')

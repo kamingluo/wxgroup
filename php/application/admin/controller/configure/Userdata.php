@@ -22,7 +22,7 @@ class Userdata
        $number=0;
      }
      else{
-       $number=($pages - 1)*10 ;
+      $number=(($pages - 1)*10)-1 ;
      }
      $countnumber=db('user')->count();
      $data=db('user')->order('id desc')->limit($number,10)->select();

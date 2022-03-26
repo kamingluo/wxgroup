@@ -13,7 +13,7 @@ class Groupnews
     {
     	$crowd_id=$request->param("crowd_id");//群id
     	$pages=$request->param("pages");
-    	$number=($pages - 1)*10 ;
+    	$number=(($pages - 1)*10)-1 ;
         $data=db('crowd_news')->where('crowd_id',$crowd_id)->order('id desc')->limit($number,10)->select();
         $state=['state'   => '200','message'  => "群消息列表查询成功" ];
         $resdata=array_merge($state,array('data'=>$data));

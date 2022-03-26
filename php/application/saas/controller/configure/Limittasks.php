@@ -16,7 +16,7 @@ class Limittasks
       $number=0;
     }
     else{
-      $number=($pages - 1)*10 ;
+      $number=(($pages - 1)*10)-1 ;
     }
     $data=db('crowd_limit_tasks')->where('crowd_id',$id)->order('open ASC')->order('id DESC')->limit($number,10)->select();
     $countnumber=db('crowd_limit_tasks')->where('crowd_id',$id)->count();
@@ -79,7 +79,7 @@ class Limittasks
         $number=0;
       }
       else{
-        $number=($pages - 1)*10 ;
+        $number=(($pages - 1)*10)-1 ;
       }
 
       $data = db()->table(array('corwd_limit_task_record'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t2.nickName','like',$newkeyword)->where('t2.id=t1.user_id')->where('t1.limit_id',$limit_id)->where('t1.crowd_id',$id)->order('state ASC')->order('id ASC')->limit($number,10)->select();

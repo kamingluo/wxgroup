@@ -32,6 +32,11 @@ export default new Router({
           meta: { title: '群列表' }
         },
         {
+          path: '/adminmanage',
+          component: resolve => require(['../components/page/Adminmanage.vue'], resolve),
+          meta: { title: '后台管理' }
+        },
+        {
           path: '/tasks',
           component: resolve => require(['../components/page/Tasks.vue'], resolve),
           meta: { title: '任务记录' }

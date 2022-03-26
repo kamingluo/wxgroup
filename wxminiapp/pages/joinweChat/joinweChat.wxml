@@ -1,6 +1,6 @@
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}" >
   <view slot="backText">返回</view>
-  <view slot="content">加入我们</view>
+  <view slot="content">联系客服</view>
 </cu-custom>
 
 
@@ -9,16 +9,23 @@
 <view>
   <view class='container'>
     <view class='qrcode'>
-      <image  src='{{imageurl + "miniapp/images/weixinqun.jpg"}}'></image>
+      <image  src='{{imageurl + "miniapp/images/kefu.png"}}'></image>
     </view>
     <view class='dowload'>
       <kaming-button>
-        <button class=' bg-blue' bindtap='dowloadimg'>下载群二维码</button>
+        <button class=' bg-blue' bindtap='dowloadimg'>点击下载二维码</button>
       </kaming-button>
     </view>
+
+    <view class='dowload'>
+      <kaming-button>
+        <button class=' bg-blue' bindtap='fuzhi'>点击复制微信号</button>
+      </kaming-button>
+    </view>
+    
      <view class='dowload'>
       <kaming-button open-type="contact" >
-        <button class=' bg-blue'>联系客服加群</button>
+        <button class=' bg-blue'>点击联系客服</button>
       </kaming-button>
     </view>
   </view>
@@ -28,11 +35,11 @@
 <view  class='tips' >
   <view class='went'  >
     <view>
-      <text>1.加入《群记分》官方微信群，你提意见，我们修改。</text> </view>
+      <text>1.添加客服微信：qunjifen，你提意见，我们修改。</text> </view>
     <view>
-      <text>2.如群二维码满人或者失效，请联系客服入群。</text> </view>
+      <text>2.如二维码失效，请点击联系客服按钮。</text> </view>
     <view>
-      <text>3.有新的功能也会在群里预告哦。</text> </view>
+      <text>3.可以联系客服，开通网页版管理后台，操作更方便。</text> </view>
   </view>
 </view>
 
