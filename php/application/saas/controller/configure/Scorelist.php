@@ -18,7 +18,7 @@ class Scorelist
       $number=0;
     }
     else{
-      $number=($pages - 1)*10);
+      $number=($pages - 1)*10;
     }
 
     $data = db()->table(array('score_record'=>'t1','user'=>'t2'))->field('t1.id,t1.user_id,t2.nickName,t2.avatarUrl,t1.create_time,t1.score,t1.explain,t1.state')->where('t2.id=t1.user_id')->where('t1.crowd_id',$id)->where('t2.nickName','like',$newname)->order('id DESC')->limit($number,10)->select();

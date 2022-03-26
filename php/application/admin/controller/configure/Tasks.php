@@ -16,7 +16,7 @@ class Tasks
       $number=0;
     }
     else{
-      $number=($pages - 1)*10);
+      $number=($pages - 1)*10;
     }
      
     if($id){

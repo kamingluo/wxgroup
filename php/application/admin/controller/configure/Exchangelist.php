@@ -17,7 +17,7 @@ class Exchangelist
       $number=0;
     }
     else{
-      $number=($pages - 1)*10);
+      $number=($pages - 1)*10;
     }
      if($id){
         $data=db('exchange_record')->where('crowd_id',$id)->order('id desc')->limit($number,10)->select();

@@ -16,7 +16,7 @@ class Tasks
       $number=0;
     }
     else{
-      $number=($pages - 1)*10);
+      $number=($pages - 1)*10;
     }
     $data=db('task_record')->where('crowd_id',$id)->where('state',0)->order('id ASC')->limit($number,10)->select();
     $countnumber=db('task_record')->where('crowd_id',$id)->where('state',0)->count();

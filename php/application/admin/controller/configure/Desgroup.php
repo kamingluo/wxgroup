@@ -29,7 +29,7 @@ class Desgroup
              $number=0;
            }
            else{
-            $number=($pages - 1)*10);
+            $number=($pages - 1)*10;
            }
             
            $wxnumberif=$request->param("wxnumberif");
@@ -80,7 +80,7 @@ class Desgroup
    //        $number=0;
    //      }
    //      else{
-   //        $number=($pages - 1)*10);
+   //        $number=($pages - 1)*10;
    //      }
    //      if($crowd_name){
    //         //名称不为空
