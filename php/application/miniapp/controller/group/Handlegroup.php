@@ -248,7 +248,7 @@ class Handlegroup
         Log::record("清空群成员的积分");
         Log::record($crowd_id);
         Log::record($user_id);
-        $state=['state'   => '400','message'  => "请联系管理员清楚积分" ];
+        $state=['state'   => '400','message'  => "请联系客服清空积分" ];
         return $state;
 
 

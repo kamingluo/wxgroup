@@ -207,6 +207,17 @@ class Desgroup
 
 
 
+      //编辑群状态，过期时间
+      public function emptyscore(Request $request)
+      {
+   
+        $crowd_id=$request->param("id");//群ID
+        $updateres= db('user_crowd')->where('crowd_id',$crowd_id)->update(['score' => 0]);
+        $state=['state'   => '200','message'  => "清空群成员的积分成功" ];
+        return $state ;
+      }
+
+
 
 
 

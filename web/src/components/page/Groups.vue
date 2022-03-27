@@ -80,11 +80,12 @@
         <el-table-column prop="end_time" label="结束时间" width="170">
         </el-table-column>
 
-        <el-table-column label="操作" width="300" align="center">
+        <el-table-column label="操作" width="400" align="center">
           <template slot-scope="scope">
             <el-button type="text" icon="el-icon-edit" class="blue" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
           <el-button type="text"  class="blue" @click="getqrcode(scope.$index, scope.row)">群二维码</el-button>
             <el-button type="text" icon="el-icon-edit" class="green" @click="seetodaydata(scope.$index, scope.row)">查看今日数据</el-button>
+            <el-button type="text" icon="el-icon-edit" class="green" @click="emptyscore(scope.$index, scope.row)">清空积分</el-button>
             <el-button
               type="text"
               icon="el-icon-delete"
@@ -157,6 +158,18 @@
     </el-dialog>
 
 
+    <!-- 清空积分弹出框 -->
+    <el-dialog title="清空群积分" :visible.sync="emptyscorevisible" width="30%">
+      <el-form ref="form" label-width="120px">
+        <p>清空后不能恢复，确认清除？？</p>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="emptyscorevisible = false">取 消</el-button>
+        <el-button type="primary" @click="confirmemptyscore">确 定</el-button>
+      </span>
+    </el-dialog>
+
+
      <!-- 群二维码 -->
     <el-dialog title="群二维码" :visible.sync="qrcodeVisible" width="30%">
       <el-form ref="form" :model="qrcodedata" label-width="120px">
@@ -221,6 +234,8 @@ export default {
       qrcodedata:{},
       editformvisible: false,
       form: {},
+      emptyscorevisible:false,
+      emptyscoreid:null,
     };
   },
   created() {
@@ -385,6 +400,26 @@ export default {
         this.$message.success(`操作成功`);
         this.delVisible=false;
         this.gosearch();
+      });
+    },
+
+
+    emptyscore(index, row){
+          console.log("点击清空积分的id",row.id)
+        this.emptyscoreid=row.id;
+        this.emptyscorevisible=true;
+
+    },
+
+
+    confirmemptyscore(){
+      let id=this.emptyscoreid;
+      let url = "configure/desgroup/emptyscore?id=" + id;
+      this.$axios(url).then(res => {
+        console.log("清空群积分返回", res);
+        this.$message.success(`操作成功`);
+        this.emptyscorevisible=false;
+        // this.gosearch();
       });
     },
 

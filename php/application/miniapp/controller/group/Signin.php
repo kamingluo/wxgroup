@@ -214,7 +214,7 @@ public function usersignin(Request $request)
     public function signinrankinglist(Request $request){
         $crowd_id=$request->param("crowd_id");
 
-        $sql="select a.*,b.nickName,b.avatarUrl from sigin_user_crowd_data a,user b where a.user_id=b.id and a.crowd_id=".$crowd_id." ORDER BY a.all_signin_number DESC;";
+        $sql="select a.*,b.nickName,b.avatarUrl from sigin_user_crowd_data a,user b where a.user_id=b.id and a.crowd_id=".$crowd_id." ORDER BY a.all_signin_number DESC LIMIT 0,100;";
         $data = Db::query($sql); //拿到数据
         $state=['state'   => '200','message'  => "群的签到排行累计签到和连续签到和最后签到时间" ,'data' => $data];
         return $state;
