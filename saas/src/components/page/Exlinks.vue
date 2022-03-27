@@ -129,7 +129,7 @@
             console.log("专属列表信息", res);
             this.tableData = res.data.data;
             this.datapages = res.data.countnumber;
-          });
+        });
       },
 
 

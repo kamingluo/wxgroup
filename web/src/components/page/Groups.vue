@@ -64,15 +64,25 @@
         </el-table-column>
         <el-table-column prop="count" label="群人数" width="100">
         </el-table-column>
-  <el-table-column prop="wxnumber" label="群主微信" width="200">
+        <el-table-column prop="wxnumber" label="群主微信" width="200">
          <template slot-scope="scope">
          <p >{{scope.row.wxnumber?scope.row.wxnumber:"未填写"}}</p>
          </template>
         </el-table-column>
         <el-table-column prop="create_time" label="创建时间" width="170">
         </el-table-column>
-        <el-table-column label="操作" width="260" align="center">
+
+        <el-table-column prop="open" label="当前状态" width="150">
+        <template slot-scope="scope">
+        <p>{{scope.row.open==0?"无限制":scope.row.open==1?"审核中":scope.row.open==2?"体验中":scope.row.open==3?"体验过期":scope.row.open==4?"删除中":scope.row.open==5?"正常使用":"未知状态"}}</p>
+         </template>
+        </el-table-column>
+        <el-table-column prop="end_time" label="结束时间" width="170">
+        </el-table-column>
+
+        <el-table-column label="操作" width="300" align="center">
           <template slot-scope="scope">
+            <el-button type="text" icon="el-icon-edit" class="blue" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
           <el-button type="text"  class="blue" @click="getqrcode(scope.$index, scope.row)">群二维码</el-button>
             <el-button type="text" icon="el-icon-edit" class="green" @click="seetodaydata(scope.$index, scope.row)">查看今日数据</el-button>
             <el-button
@@ -97,8 +107,45 @@
       </div>
     </div>
 
+        <!-- 编辑弹框 -->
+    <el-dialog title="编辑" :visible.sync="editformvisible" width="20%">
+      <el-form ref="form" :model="form" label-width="120px">
+        <el-form-item label="群id">
+          <el-input v-model="form.id" :disabled="true"></el-input>
+        </el-form-item>
 
-     <!-- 编辑弹出框 -->
+        <el-form-item label="群状态">
+          <el-select
+          v-model="form.open"
+          placeholder="请选择群状态"
+          class="handle-select mr0 changdu"
+        >
+          <el-option key="0" label="无限制" value="0" ></el-option>
+          <el-option key="1" label="审核中" value="1"></el-option>
+          <el-option key="2" label="体验中" value="2"></el-option>
+          <el-option key="3" label="体验过期" value="3"></el-option>
+          <el-option key="4" label="删除中" value="4"></el-option>
+          <el-option key="5" label="正常使用" value="5"></el-option>
+        </el-select>
+        </el-form-item>
+
+        <el-form-item label="结束时间">
+          <el-date-picker
+            v-model="form.end_time"
+            type="date"
+            value-format="yyyy-MM-dd"
+            placeholder="选择日期">
+          </el-date-picker>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="editformvisible = false">取 消</el-button>
+        <el-button type="primary" @click="saveEdit">确 定</el-button>
+      </span>
+    </el-dialog>
+
+
+     <!-- 删除弹出框 -->
     <el-dialog title="删除群" :visible.sync="delVisible" width="30%">
       <el-form ref="form" label-width="120px">
         <p>确认删除？？</p>
@@ -171,7 +218,9 @@ export default {
       grouptodaydataVisible:false,
       qrcodeVisible:false,
       group_name:null,
-      qrcodedata:{}
+      qrcodedata:{},
+      editformvisible: false,
+      form: {},
     };
   },
   created() {
@@ -294,6 +343,31 @@ export default {
     },
 
 
+    handleEdit(index, row) {
+      console.log("点击编辑");
+      this.idx = index;
+      const item = this.tableData[index];
+      this.form = item;
+      this.form.open=String(this.form.open)
+      this.editformvisible = true;
+    },
+
+    // 保存编辑
+    saveEdit() {
+      console.log("提交修改信息", this.form);
+      this.$set(this.tableData, this.idx, this.form);
+      this.editVisible = false;
+      this.$axios
+        .post("configure/desgroup/updateopen", this.form)
+        .then((res) => {
+          console.log("修改信息返回数据", res);
+          this.$message.success(`操作成功`);
+          this.editformvisible=false;
+          this.gosearch();
+        });
+    },
+
+
     //调起删除
     handleDelete(index, row){
         console.log("点击删除的id",row.id)
@@ -324,8 +398,6 @@ export default {
         // this.$message.success(`操作成功`);
         this.grouptodaydataVisible=true;
       });
-
-
     },
    
 

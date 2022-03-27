@@ -192,6 +192,21 @@ class Desgroup
 
 
 
+   //编辑群状态，过期时间
+    public function updateopen(Request $request)
+   {
+
+      $crowd_id =$request->param("id");
+      $open =$request->param("open");
+      $end_time =$request->param("end_time");
+      //修改
+      $dbreturn= db('crowd')->where('id',$crowd_id)->update(['end_time' => $end_time,'open' => $open]);//修改群信息
+      $state=['state'   => '200','message'  => "修改后台管理信息成功" ];
+      return $state ;  
+   }
+
+
+
 
 
 

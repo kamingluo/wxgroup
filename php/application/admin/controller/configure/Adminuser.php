@@ -103,7 +103,7 @@ class Adminuser
       $time =date('Y-m-d',time());
       //判断当前时间跟结束时间对比
 
-      $open=0;//已经过期
+      $open=5;//先判断为正常使用的状态
       if($end_time < $time){
         //结束时间在之前，群状态为不可使用
         $open=3;
@@ -118,6 +118,17 @@ class Adminuser
       return $state ;  
    }
 
+
+
+  //检查是否体验期过期
+  public function checkendtime(Request $request){
+    //查询处于体验期但是结束时间小于当前时间的数据
+    $time =date('Y-m-d',time());
+    $dbreturn= db('crowd')->where('open',5)->where('end_time','< time',$time)->update(['open' => 3]);//修改群信息
+    $dbreturn= db('crowd')->where('open',2)->where('end_time','< time',$time)->update(['open' => 3]);//修改群信息
+    $state=['state'   => '200','message'  => "检查是否体验期过期并修改数值成功" ];
+    return $state ;  
+  }
 
 
 

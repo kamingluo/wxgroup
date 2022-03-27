@@ -32,6 +32,14 @@
         <!-- <p class="login-tips">Tips : 这是提示啊</p> -->
       </el-form>
     </div>
+
+
+
+           <!--联系客服弹框 -->
+    <el-dialog title="联系客服" :visible.sync="imgVisible" width="22%">
+       <img class="yulan " src="../../assets/images/kefu.png" />
+       <div class="tips"><p>扫码或添加客服微信:qunjifen,处理群使用问题</P></div>
+    </el-dialog>
   </div>
 </template>
 
@@ -39,6 +47,7 @@
 export default {
   data: function () {
     return {
+      imgVisible:false,
       ruleForm: {
         username: "",
         password: "",
@@ -63,19 +72,21 @@ export default {
           // this.datapages=res.data.countnumber;
           if(res.data.state == 200){
             this.$refs[formName].validate((valid) => {
-          if (valid) {
-            localStorage.setItem("ms_username", res.data.data.crowd_name);
-            localStorage.setItem("token", res.data.data.token);
-            localStorage.setItem("logo", res.data.data.logo);
-            this.$router.push("/");
-          } else {
-            console.log("error submit!!");
-            return false;
-          }
-        });
+            if (valid) {
+              localStorage.setItem("ms_username", res.data.data.crowd_name);
+              localStorage.setItem("token", res.data.data.token);
+              localStorage.setItem("logo", res.data.data.logo);
+              this.$router.push("/");
+            } else {
+              console.log("error submit!!");
+              return false;
+            }
+          });
           }
           else{
-            this.$message.error(`账号或者密码错误`);
+            this.imgVisible=true;
+            this.$message.error(res.data.message);
+            alert(res.data.message)
           }
       })
     },
@@ -84,6 +95,18 @@ export default {
 </script>
 
 <style scoped>
+
+.yulan{
+  width:500px;
+  height:600px;
+
+}
+
+.tips{
+  margin-top:30px;
+  font-size:25px;
+  color:red;
+}
 .login-wrap {
   position: relative;
   width: 100%;

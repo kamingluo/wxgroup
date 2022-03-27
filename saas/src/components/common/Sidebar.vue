@@ -100,8 +100,26 @@ export default {
   },
   created() {
 
+    //检查用户登录
+
+    this.url = "user/checklogin";
     let token = localStorage.getItem("token");
-    console.log("拿到token",token)
+    if(!token){
+      //token不存在
+      this.$router.push("/login");
+      return;
+    }
+    this.$axios
+      .post(this.url, {token: token})
+      .then((res) => {
+        //console.log("检查登录状态", res);
+        let state=res.data.state;
+        if(state!=200){
+          this.$message.error(res.data.message);
+          this.$router.push("/login");
+          return;
+        }
+    });
 
     if(token=="tkjk5as6da7ksj15KL"){
       let data={

@@ -49,9 +49,9 @@
         <el-table-column prop="password" label="密码" width="200">
         </el-table-column>
 
-        <el-table-column prop="open" label="当前状态" width="150">0正常1审核，2体验3过期4删除
+        <el-table-column prop="open" label="当前状态" width="150">
         <template slot-scope="scope">
-        <p>{{scope.row.open==0?"正常使用":scope.row.open==1?"审核中":scope.row.open==2?"体验中":scope.row.open==3?"体验过期":scope.row.open==4?"删除中":"正常使用"}}</p>
+        <p>{{scope.row.open==0?"无限制":scope.row.open==1?"审核中":scope.row.open==2?"体验中":scope.row.open==3?"体验过期":scope.row.open==4?"删除中":scope.row.open==5?"正常使用":"未知状态"}}</p>
          </template>
         </el-table-column>
 
@@ -344,7 +344,7 @@ saveAdd(){
           console.log("修改信息返回数据", res);
           this.$message.success(`操作成功`);
           this.editformvisible=false;
-          this.getData();
+          this.gosearch();
         });
     },
 
