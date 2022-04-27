@@ -25,7 +25,7 @@
 }
 
 .name-body {
-  margin: 8rpx 10rpx;
+  margin: 8rpx -30rpx;
 }
 
 .vip-button {
@@ -144,4 +144,9 @@
   width: 98%;
   margin-top: 20rpx;
   margin-bottom: 10rpx;
+}
+
+.userid{
+  font-size: 17rpx;
+
 }

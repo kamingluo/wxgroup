@@ -68,6 +68,35 @@ class Exchangegoods
         return $resdata ;
     }
 
+     //群主查看群兑换列表
+     public function newgroupexchangelist(Request $request)
+     {
+         $pages=$request->param("pages");//页数
+         $crowd_id=$request->param("crowd_id");//群id
+         $nickName=$request->param("nickName");//搜索名称
+         $newpages= ($pages-1) * 20;//一页20条
+         if($nickName){
+             //有传nickName
+             $data =db('exchange_record')->where('crowd_id',$crowd_id)->where('nickName','like',"%$nickName%")->order('id desc')->limit($newpages,20)->select();
+             $count =db('exchange_record')->where('crowd_id',$crowd_id)->where('nickName','like',"%$nickName%")->count();
+         }
+         else{
+          $data =db('exchange_record')->where('crowd_id',$crowd_id)->order('id desc')->limit($newpages,20)->select();
+          $count =db('exchange_record')->where('crowd_id',$crowd_id)->count();
+
+         }
+         
+       $state=['state'   => '200','message'  => "新的群兑换列表" ,'count'=>$count,'nickName'=>$nickName];
+         $resdata=array_merge($state,array('data'=>$data));
+         return $resdata ;
+     }
+ 
+
+
+
+
+
+
     //群兑换统计
     public function changestatistics(Request $request)
     {

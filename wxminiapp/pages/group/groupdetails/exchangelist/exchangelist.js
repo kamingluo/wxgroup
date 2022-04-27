@@ -19,7 +19,8 @@ Page({
     crowd_name: null,
     user_type: 0,
     pages:1,
-    count:0
+    count:0,
+    searchInput:"",
   },
   onLoad: function (options) {
 
@@ -31,6 +32,15 @@ Page({
     this.userexchangelist(1)
     this.changestatistics()
    
+  },
+
+    /**
+   * 输入框输入值
+   */
+  search: function (e) {
+    this.setData({
+      searchInput: e.detail.value
+    })
   },
 
 
@@ -53,17 +63,26 @@ Page({
     })
   },
 
+  clicksearch:function(){
+    this.setData({
+      pages: 1,
+      exchangelist: []
+    })
+    this.userexchangelist(1)
+  },
 
   //查询该群兑换列表
   userexchangelist: function (pages) {
     var that =this
     var crowd_id = that.data.crowd_id
+    var nickName = that.data.searchInput
     request({
-      service: 'group/exchangegoods/groupexchangelist',
+      service: 'group/exchangegoods/newgroupexchangelist',
       method: 'GET',
       data: {
         pages:pages,
         crowd_id: crowd_id,
+        nickName:nickName
       },
       success: res => {
         let exchangelist=that.data.exchangelist;

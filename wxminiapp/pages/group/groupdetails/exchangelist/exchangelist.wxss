@@ -42,5 +42,6 @@
 	height: 180rpx;
 	background-color: var(--white);
 	justify-content: flex-end;
-	align-items: center
+  align-items: center;
+  margin-top: 10rpx;
 }

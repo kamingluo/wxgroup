@@ -14,7 +14,11 @@ let interstitialAd = null; //插屏广告
 
 Page({
   data: {
-    userdata:{},//用户信息
+    userdata:{
+      id:null,
+      avatarUrl:null,
+      nickName:null,
+    },//用户信息
     imageurl:'https://group.gzywudao.top/php/public/',//默认图片链接
     xiaouad:[],//小U广告数据
     xiaouadtitle:"社群工具推荐",
@@ -179,23 +183,36 @@ Page({
 
   //获取用户信息
   userdata:function(){
-    wx.login({
-      success: res => {
-        request({
-          service: 'user/userdata',
-          data: {
-            code: res.code,
-          },
-          success: res => {
-            // this.birthday(res.userdata.birthday)
-            this.setData({
-              userdata: res.userdata,
-            })
-            wx.setStorageSync('userdata', res.userdata)
-          },
-        })
-      }
-    })
+
+    let userdata=wx.getStorageSync('userdata');
+    if(userdata){
+      console.log("拿到用户信息")
+      this.setData({
+        userdata:userdata,
+      })
+    }
+    else{
+      wx.login({
+        success: res => {
+          request({
+            service: 'user/userdata',
+            data: {
+              code: res.code,
+            },
+            success: res => {
+              // this.birthday(res.userdata.birthday)
+              this.setData({
+                userdata: res.userdata,
+              })
+              wx.setStorageSync('userdata', res.userdata)
+            },
+          })
+        }
+      })
+
+    }
+
+
 
   },
 
@@ -229,6 +246,9 @@ Page({
       console.log("时间未到不展示广告")
       return;
     }
+
+    console.log("不执行插屏广告")
+    return;
     var that=this;
     console.log("加载插屏广告")
     var insertad ='adunit-b8955104700af731';

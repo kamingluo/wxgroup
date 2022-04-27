@@ -21,59 +21,9 @@
         },
         {
           "id": -1,
-          "name": "打开设置",
-          "pathName": "pages/group/chat/punchseting/punchseting",
-          "query": "crowd_id=14",
-          "scene": null
-        },
-        {
-          "id": -1,
           "name": "群设置",
           "pathName": "pages/group/groupdetails/setting/setting",
           "query": "crowd_id=14&user_type=1",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "兑换特殊页面",
-          "pathName": "pages/group/goods/exchange/special/special",
-          "query": "code=111",
-          "scene": null
-        },
-        {
-          "name": "发布限时任务",
-          "pathName": "pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks",
-          "query": "crowd_id=14",
-          "scene": null
-        },
-        {
-          "name": "限时任务详情",
-          "pathName": "pages/group/groupdetails/limittasks/limittasksdetails/limittasksdetails",
-          "query": "id=1&crowd_id=14",
-          "scene": null
-        },
-        {
-          "name": "提交限时任务",
-          "pathName": "pages/group/groupdetails/limittasks/submittasks/submittasks",
-          "query": "limit_id=1&crowd_id=14",
-          "scene": null
-        },
-        {
-          "name": "任务记录",
-          "pathName": "pages/group/groupdetails/tasklist/tasklist",
-          "query": "crowd_id=14",
-          "scene": null
-        },
-        {
-          "name": "pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks",
-          "pathName": "pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks",
-          "query": "crowd_id=14",
-          "scene": null
-        },
-        {
-          "name": "全部任务",
-          "pathName": "pages/group/alltasklists/alltasklists",
-          "query": "crowd_id=14",
           "scene": null
         },
         {
@@ -83,21 +33,21 @@
           "scene": null
         },
         {
-          "name": "pages/group/groupdetails/exlinks/exlinks",
-          "pathName": "pages/group/groupdetails/exlinks/exlinks",
+          "name": "pages/creategroup/creategroup",
+          "pathName": "pages/creategroup/creategroup",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/group/alltasklists/alltasklists",
-          "pathName": "pages/group/alltasklists/alltasklists",
+          "name": "发布商品",
+          "pathName": "pages/group/goods/pushgoods/pushgoods",
+          "query": "crowd_id=14",
+          "scene": null
+        },
+        {
+          "name": "处理兑换",
+          "pathName": "pages/group/groupdetails/exchangelist/exchangelist",
           "query": "crowd_id=14&user_type=1&crowd_name=kaming%E7%9A%84%E7%BE%A4",
-          "scene": null
-        },
-        {
-          "name": "pages/joinweChat/joinweChat",
-          "pathName": "pages/joinweChat/joinweChat",
-          "query": "",
           "scene": null
         }
       ]

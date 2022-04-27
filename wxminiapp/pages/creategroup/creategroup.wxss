@@ -2,7 +2,7 @@
 
 
 .pages-body{
-  margin-bottom: 70rpx;
+  margin-bottom: 30rpx;
 }
 
 .video-body{
@@ -79,7 +79,7 @@
 .sumittask{
   width: 100%;
   bottom: 0;
-  margin-bottom: 30rpx;
+  margin-bottom: 10rpx;
   margin-top: 20rpx;
 }
 .sumittask button{
@@ -105,3 +105,33 @@
   font-size: 30rpx;
 }
 
+
+
+.tips-body{
+  width: 100%;
+  height: 180rpx;
+  background-color: #fadbd9;
+  margin-bottom: 60rpx;
+}
+.tips{
+  width: 98%;
+  height: 170rpx;
+  background-color: white;
+  
+}
+.tips-text{
+  margin-top: 5rpx;
+  width: 100%;
+  word-break:break-all; 
+  margin-bottom: 8rpx;
+ 
+  
+}
+.tips-textbody{
+  width: 96%;
+  
+
+}
+.tips-text text{
+  font-size: 28rpx;
+}

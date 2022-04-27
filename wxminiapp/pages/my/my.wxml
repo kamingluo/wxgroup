@@ -9,12 +9,14 @@
     <view class="flex  p-sm margin-bottom-sm mb-sm">
       <view class="flex-sub  margin-xs radius">
         <view bindlongpress="haveuserid">
-          <open-data class='userAvatarurl' type="userAvatarUrl"></open-data>
+         <image src="{{userdata.avatarUrl}}" class='userAvatarurl' wx:if="{{userdata.avatarUrl}}" ></image>
+          <open-data class='userAvatarurl' type="userAvatarUrl" wx:else></open-data>
         </view>
       </view>
       <view class="flex-treble  padding-xs name-body radius">
         <view class='userNickName' bindlongpress="ceshipage">
-          <open-data type="userNickName"></open-data>
+        <view> <text>{{userdata.nickName?userdata.nickName:"未授权"}}</text> <text class="userid">({{userdata.id}})</text></view>
+          <!-- <open-data type="userNickName"></open-data> -->
         </view>
         <view class='userNickName'>
           <button class="cu-btn bg-mauve round shadow">
@@ -167,11 +169,11 @@
 
 <!-- 小盟广告-->
 <!-- <view class="centered" wx:if="{{!crowd_vip}}"> -->
-<view class="centered" >
+<!-- <view class="centered" >
   <view class="xmad-body">
     <xm-ad data-id="xm686991b5279c34bac77e4720e9776b" data-position="我的页面" bindtap="clickxmad" adData="{{adData}}" class="xm686991b5279c34bac77e4720e9776b" size="small" bindadLoad="adLoad" bindadClick="adClick" bindadClose="adClose"></xm-ad>
   </view>
-</view>
+</view> -->
 
 <!-- 小盟广告-->
 

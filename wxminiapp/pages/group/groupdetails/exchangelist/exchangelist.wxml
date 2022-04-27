@@ -30,6 +30,16 @@
 	</view>
 </view>
 
+<view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="兑换人名称搜索"  bindinput='search' confirm-type="search"></input>
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-green shadow-blur round" bindtap="clicksearch">搜索</button>
+    </view>
+</view>
+
 
 <view class="cu-list menu-avatar" wx:if="{{exchangelist.length > 0}}">
 	<view class="cu-item " wx:for="{{exchangelist}}" wx:key="item" data-data="{{item}}" bindtap="clicklist">

@@ -16,8 +16,8 @@
     margin-right: 30rpx;
     margin-top: 15rpx;
     margin-bottom: 20rpx;
-    width: 500rpx;
-    height: 500rpx;
+    width: 300rpx;
+    height: 300rpx;
 }
 
 .ui_uploader {
@@ -26,8 +26,8 @@
     margin-top: 15rpx;
     margin-right: 25rpx;
     margin-bottom: 25rpx;
-    width: 400rpx;
-    height:400rpx;
+    width: 300rpx;
+    height:300rpx;
     border: 5rpx solid #d9d9d9;
     box-sizing: border-box;
 }
@@ -40,7 +40,7 @@
 }
 
 .cu-form-group{
-  margin-top: 20rpx;
+  margin-top: 10rpx;
   width: 96%;
 }
 

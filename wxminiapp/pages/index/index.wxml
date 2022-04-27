@@ -62,7 +62,7 @@
         <view class="shouquananniu" wx:if="{{item.open==1}}">
           <!-- <button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button> -->
           <button style="opacity:0.9" open-type="contact">
-            <text>群空间审核中...</text>
+            <text>群空间：{{item.id}}，审核中...</text>
             <text>点击联系客服马上审核!</text>
           </button>
         </view>
@@ -70,7 +70,7 @@
         <view class="shouquananniu" wx:elif="{{item.open==3 && item.user_type == 1}}">
           <!-- <button style="opacity: 0" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button> -->
           <button style="opacity:0.9" bindtap="kefu">
-            <text>体验时长已经到期...</text>
+            <text>群空间:{{item.id}}，体验时长已经到期...</text>
             <text>点击联系客服延长使用期!</text>
           </button>
         </view>

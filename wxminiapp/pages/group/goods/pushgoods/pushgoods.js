@@ -20,6 +20,12 @@ Page({
     picker: ['不限量兑换', '限制库存'],
     ifstock:"0",
     stock:null,
+
+    exchangepicker: ['不限制兑换', '每人兑换数量'],
+    ifexchange:"0",
+    exchange_num:null,
+
+
   },
   // 删除图片
   clearImg: function (e) {
@@ -103,11 +109,23 @@ Page({
     })
   },
 
+  exchangenum:function(e){
+    this.setData({
+      exchange_num: e.detail.value,
+    })
+  },
+
   PickerChange(e) {
     console.log(e.detail.value);
-    // 开奖方式，0是满人开奖，1是到时间开奖
     this.setData({
       ifstock: e.detail.value
+    })
+  },
+
+  PickerChangenum(e) {
+    console.log(e.detail.value);
+    this.setData({
+      ifexchange: e.detail.value
     })
   },
 
@@ -124,6 +142,21 @@ Page({
         return;
       }
     }
+
+    if(this.data.ifexchange == 1){
+      console.log("设置了库存")
+      if(this.data.exchange_num == null || this.data.exchange_num < 1 ){
+        wx.showToast({
+          title: '请设置正确的限制数量',
+          icon: 'none',
+          duration: 2500,
+        })
+        return;
+      }
+    }
+
+
+
 
     if (this.data.uploaderNum == 0 || this.data.groupname == null || this.data.groupcode == null) {
       wx.showToast({
@@ -154,41 +187,61 @@ Page({
     var crowd_id = this.data.crowd_id
     var groupcode = this.data.groupcode
     var groupname = this.data.groupname
+    var logo = logo
     var stock=999999999;
     if(this.data.ifstock == 1){
       stock=this.data.stock;
     }
-    var logo = logo
-        request({
-          service: 'group/groupgoods/pushgoods',
-          data: {
-            crowd_id: crowd_id,
-            price: groupcode,
-            goodsname: groupname,
-            stock:stock,
-            images: logo
-          },
-          success: res => {
-            this.setData({
-              loadModal: false,
-            })
-            wx.showToast({
-              title: '发布商品成功',
-              icon: 'none',
-              duration: 2500,
-            })
-            setTimeout(function () {
-              wx.navigateBack({
-                delta: 1
-              })
-            }, 1500) 
-          },
-          complete: res => {
-            this.setData({
-              loadModal: false,
-            })
-          },
+
+    var exchange_num=0;
+    if(this.data.ifstock == 1){
+      exchange_num=this.data.exchange_num;
+    }
+
+    var data={
+      crowd_id: crowd_id,
+      price: groupcode,
+      goodsname: groupname,
+      stock:stock,
+      exchange_num:exchange_num,
+      images: logo
+    }
+
+    console.log(data);
+    return
+
+
+    request({
+      service: 'group/groupgoods/pushgoods',
+      data: {
+        crowd_id: crowd_id,
+        price: groupcode,
+        goodsname: groupname,
+        stock:stock,
+        exchange_num:exchange_num,
+        images: logo
+      },
+      success: res => {
+        this.setData({
+          loadModal: false,
         })
+        wx.showToast({
+          title: '发布商品成功',
+          icon: 'none',
+          duration: 2500,
+        })
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 1500) 
+      },
+      complete: res => {
+        this.setData({
+          loadModal: false,
+        })
+      },
+    })
   },
 
 

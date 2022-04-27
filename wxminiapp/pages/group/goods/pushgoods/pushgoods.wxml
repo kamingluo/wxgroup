@@ -35,13 +35,36 @@
 </view>
 </view>
 
-
 <view class="centered" wx:if="{{ifstock==1}}">
   <view class="cu-form-group  shadow shadow-lg bg-white ">
     <view class="title">商品库存</view>
     <input placeholder="请输入商品库存数" maxlength="5" type='number' bindinput="stock" value="{{stock}}"></input>
   </view>
 </view>
+
+
+
+<view class="centered">
+  <view class="cu-form-group  shadow shadow-lg bg-white ">
+  <view class="title">兑换限制</view>
+  <picker bindchange="PickerChangenum" value="{{ifexchange}}" range="{{exchangepicker}}">
+    <view class="picker">
+      {{exchangepicker?picker[ifexchange]:'请选择方式'}}
+    </view>
+  </picker>
+</view>
+</view>
+
+<view class="centered" wx:if="{{ifexchange==1}}">
+  <view class="cu-form-group  shadow shadow-lg bg-white ">
+    <view class="title">限制数量</view>
+    <input placeholder="请输入每人兑换限制数" maxlength="5" type='number' bindinput="exchangenum" value="{{exchange_num}}"></input>
+  </view>
+</view>
+
+
+
+
 
 
 <view class='ui_cell'>

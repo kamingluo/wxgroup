@@ -382,6 +382,11 @@ Page({
       console.log("时间未到不展示广告")
       return;
     }
+
+    console.log("不执行插屏广告")
+    return;
+
+
     var that = this;
     console.log("加载插屏广告")
     var insertad = 'adunit-b8955104700af731';

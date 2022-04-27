@@ -89,6 +89,16 @@
 </view>
 
 
+<view class="tips-body centered shadow ">
+	<view class="tips centered ">
+  <view class="tips-textbody">
+  <view class="tips-text"> <text>1.新创建群空间7天体验期。</text></view>
+  <view class="tips-text"> <text>2.添加客服微信：qunjifen，开通时长。</text></view>
+  <view class="tips-text"> <text>3.可以联系客服，开通网页版管理后台，操作更方便。</text></view>
+  </view>
+</view>
+</view>
+
 
 
 
