@@ -25,6 +25,10 @@
         <el-button type="primary" icon="search" class="search" @click="newsearch"
           >重置</el-button
         >
+        <el-button type="primary" icon="search" class="search" @click="batchapproval"
+        >批量审批</el-button
+      >
+
 
 
 
@@ -39,11 +43,16 @@
           icon="delete"
           class="handle-del mr10"
           @click="delAll"
-          >批量删除</el-button
+          >批量审批</el-button
         >
       </div> -->
       <div class="handle-box"></div>
-      <el-table :data="tableData" border class="table" ref="multipleTable">
+
+      <!-- <el-table :data="tableData" border class="table" ref="multipleTable"> -->
+        <el-table :data="tableData" border class="table" ref="multipleTable" height="600" v-loading="loading"
+        @selection-change="handleSelectionChange">
+        <el-table-column type="selection" width="55" align="center"></el-table-column>
+
          <el-table-column prop="user_id" label="用户id" width="100">
          </el-table-column>
         <el-table-column prop="logo" label="任务图片" width="500">
@@ -131,6 +140,25 @@
       </span>
     </el-dialog>
 
+        <!-- 操作中提示框 -->
+        <el-dialog title="处理中....." :visible.sync="operationVisible" width="300px" center>
+          <div class="del-dialog-cnt">
+            <img class="operationimg" src="../../assets/images/timg.gif" />
+          </div>
+        </el-dialog>
+
+
+
+    <!-- 批量审批弹出框 -->
+    <el-dialog title="批量审批确认" :visible.sync="batchapprovalVisible" width="30%">
+        <p>选中任务批量审批通过，已经审批过的任务选中也不再执行批量审批通过操作</p>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="batchapprovalVisible = false">取 消</el-button>
+        <el-button type="primary" @click="confirmbatchapproval">确 定</el-button>
+      </span>
+    </el-dialog>
+
+
   </div>
 </template>
 
@@ -141,12 +169,15 @@ export default {
     return {
       url: "./static/vuetable.json",
       tableData: [],
+      loading:false,
       title: "这是任务标题",
       limit_id: null,
       cur_page: 1,
       multipleSelection: [],
       del_list: [],
       editVisible: false,
+      batchapprovalVisible:false,//批量审批弹出框
+      operationVisible: false, //操作动态 图片
       form: {},
       idx: -1,
       delVisible: false,
@@ -199,6 +230,7 @@ export default {
 
     //获取数据
     async getData() {
+      this.loading=true;
       let url = "configure/limittasks/usertaskslist";
       let token = localStorage.getItem("token");
       let params = {
@@ -220,8 +252,10 @@ export default {
           });
           console.log(res.message);
         }
+        this.loading=false;
       } catch (error) {
         console.log(error);
+        this.loading=false;
       }
     },
 
@@ -236,6 +270,78 @@ export default {
 
       this.getData();
     },
+
+    //多选
+    handleSelectionChange(val) {
+        this.multipleSelection = val;
+      },
+
+    //批量审批
+    batchapproval(){
+      console.log("点击批量审批")
+      let multipleSelection=this.multipleSelection;
+      console.log(multipleSelection)
+      if(multipleSelection.length < 1){
+        this.$message({
+            message:"未选择数据",
+            type: "error",
+          });
+
+      }
+      else{
+        console.log("弹出批量操作确认弹框")
+        this.batchapprovalVisible=true;
+      }
+    },
+
+    //确认批量审批
+    async confirmbatchapproval(){
+      this.operationVisible=true;
+      this.batchapprovalVisible=false;
+      //console.log("点击确认批量审批")
+      let data=this.multipleSelection;
+
+      for (let i = 0; i < data.length; i++) {
+        let newdata = JSON.parse(JSON.stringify(data[i]));
+        //console.log("循环拿到数据",newdata)
+        if(newdata.state==0){
+          //console.log("未审核")
+          let n = await this.batchapprovaldirectpass(newdata);
+          //console.log("确认审批完成返回数据",n)
+        }
+        else{
+          console.log("已经审核，放弃操作")
+        }
+      }
+
+      this.multipleSelection = [];
+      this.getData();
+      setTimeout(() => {
+          this.operationVisible = false;
+      }, 2000);
+
+    },
+
+    //批量审批调用接口
+    batchapprovaldirectpass(data) {
+        return new Promise((resolve, reject) => {
+          let postdata = {};
+          postdata.result = "任务合格";
+          postdata.id = data.id;
+          postdata.limit_id = data.limit_id;
+          postdata.state = 1;
+          postdata.token = localStorage.getItem("token");
+          //console.log("提交修改信息", postdata);
+          this.$axios
+            .post("configure/limittasks/audittask", postdata)
+            .then((res) => {
+              resolve(res)
+            }).catch(function (reason) {
+              resolve(400)
+            });
+        })
+    },
+
 
     //直接审核通过
     directpass(index, row) {
@@ -339,6 +445,17 @@ export default {
 </script>
 
 <style scoped>
+
+
+.del-dialog-cnt {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .operationimg {
+    height: 200px;
+    width: 150px;
+  }
 .yulan {
   width: 440px;
   height: 600px;
