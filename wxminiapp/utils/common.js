@@ -16,12 +16,14 @@ function register(e) {
         success: res => {
           // console.log('注册成功', res);
           wx.setStorageSync('userdata', res.userdata)
+          return true;
         },
         fail: res => {
           //console.log('错误捕捉', res);
         },
         complete: res => {
           // console.log('成功不成功都执行函数', res);
+          return true;
         },
       })
     }

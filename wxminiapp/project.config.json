@@ -39,7 +39,7 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.14.4",
+  "libVersion": "2.24.4",
   "appid": "wx0e060ad90f7f41c4",
   "projectname": "group",
   "debugOptions": {
@@ -61,65 +61,20 @@
     "miniprogram": {
       "list": [
         {
-          "id": -1,
-          "name": "测试页面",
-          "pathName": "pages/test/test",
-          "query": "",
+          "name": "群详情",
+          "pathName": "pages/group/groupdetails/groupdetails",
+          "query": "id=14",
           "scene": null
         },
         {
-          "name": "打开设置",
-          "pathName": "pages/group/chat/punchseting/punchseting",
-          "query": "crowd_id=14",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "群设置",
-          "pathName": "pages/group/groupdetails/setting/setting",
-          "query": "crowd_id=14&user_type=1",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "兑换特殊页面",
-          "pathName": "pages/group/goods/exchange/special/special",
-          "query": "code=111",
-          "scene": null
-        },
-        {
-          "name": "pages/group/groupdetails/limittasks/limittasksdetails/limittasksdetails",
+          "name": "限时任务详情",
           "pathName": "pages/group/groupdetails/limittasks/limittasksdetails/limittasksdetails",
-          "query": "id=1&crowd_id=14limit_id=1&crowd_id=14",
+          "query": "id=14",
           "scene": null
         },
         {
           "name": "pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks",
           "pathName": "pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks",
-          "query": "crowd_id=14",
-          "scene": null
-        },
-        {
-          "name": "pages/group/goods/goodslist/goodslist",
-          "pathName": "pages/group/goods/goodslist/goodslist",
-          "query": "crowd_id=14&user_type =1",
-          "scene": null
-        },
-        {
-          "name": "pages/group/goods/pushgoods/pushgoods",
-          "pathName": "pages/group/goods/pushgoods/pushgoods",
-          "query": "crowd_id=14",
-          "scene": null
-        },
-        {
-          "name": "pages/group/alltasklists/limittaskdetailed/limittaskdetailed",
-          "pathName": "pages/group/alltasklists/limittaskdetailed/limittaskdetailed",
-          "query": "id=110952",
-          "scene": null
-        },
-        {
-          "name": "pages/group/groupdetails/tasklist/tasklist",
-          "pathName": "pages/group/groupdetails/tasklist/tasklist",
           "query": "crowd_id=14",
           "scene": null
         }

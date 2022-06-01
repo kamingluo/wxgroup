@@ -23,7 +23,9 @@ Page({
     banneradshow: true,
     adtype: null,//展示广告类型
     crowd_vip: false,//是否群vip
-    ifadspecialshow: false//是否强展示广告
+    ifadspecialshow: false,//是否强展示广告
+    ifUserRegisterSetInter: '',//是否注册循环计时器
+    loadModal:true,//列表加载提示
   },
 
   /**
@@ -37,6 +39,9 @@ Page({
       imageurl: imageurl,
     })
 
+    //根据全局变量，查询用户加入群列表
+    // this.newusergroup()
+
   },
 
 
@@ -49,8 +54,29 @@ Page({
     this.setData({
       adtype: adtype,
     })
-    this.usergroup()
+    //this.usergroup()//旧的请求用户列表
+    this.newusergroup()
     this.getUserInfoif() //判断用户有没有授权
+  },
+
+
+  //根据全局变量，查询用户加入群列表
+  newusergroup: function() {
+    var that = this;
+    //将计时器赋值给setInter
+    that.data.ifUserRegisterSetInter = setInterval(
+      function() {
+        let ifUserRegister=app.globalData.ifUserRegister;
+        console.log("拿到用户是否登陆全局变量判断",ifUserRegister)
+        if (ifUserRegister) {
+          clearInterval(that.data.ifUserRegisterSetInter)
+          console.log('用户是否注册全局变量为true:',ifUserRegister);
+          that.usergroup();
+        }
+        else{
+          console.log('用户是否注册全局变量为false:',ifUserRegister);
+        }
+      }, 1000);
   },
 
   //查询轮播图首页数据
@@ -76,6 +102,7 @@ Page({
 
   //用户加入群列表
   usergroup: function () {
+    console.log("请求用户加入的群列表")
     var that = this
     wx.login({
       success: res => {
@@ -87,21 +114,23 @@ Page({
             user_id: user_id
           },
           success: res => {
+            console.log("请求用户加入群列表成功",res)
             let crowd_vip = res.crowd_vip || false;
             let ifadspecialshow = res.ifadspecialshow || false;//为true的话就展示广告
             that.setData({
               usergrouplist: res.usergrouplist,
               crowd_vip: crowd_vip,
-              ifadspecialshow: ifadspecialshow
+              ifadspecialshow: ifadspecialshow,
+              loadModal:false
             })
             wx.setStorageSync('crowd_vip', crowd_vip)
             wx.setStorageSync('ifadspecialshow', ifadspecialshow)
 
-            if (res.usergrouplist.length < 2) {
-              setTimeout(function () {
-                that.usergroup2()
-              }, 2000)
-            }
+            // if (res.usergrouplist.length < 2) {
+            //   setTimeout(function () {
+            //     that.usergroup2()
+            //   }, 2000)
+            // }
           },
         })
       }

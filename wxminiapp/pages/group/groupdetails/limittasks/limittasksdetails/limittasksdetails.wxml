@@ -18,19 +18,25 @@
         <view class="text-cut">{{taskdetails.title}}</view>
       </view>
       <view class="content">
-        <image src="http://groupmaterial.gzywudao.top/onedayone.png" mode="aspectFill" wx:if="{{taskdetails.limit==1}}"></image>
+        <image src="http://groupmaterial.gzywudao.top/onedayone.png" mode="aspectFill" wx:if="{{taskdetails.limit==1}}">
+        </image>
         <image src="http://groupmaterial.gzywudao.top/userone.png" mode="aspectFill" wx:else></image>
         <view class="desc">
           <view class="text-content">{{taskdetails.describe}}</view>
           <view>
-            <view class="cu-tag bg-green light sm round">{{taskdetails.number==0?"不限量":"限量:" +taskdetails.number}}</view>
+            <view class="cu-tag bg-green light sm round">{{taskdetails.number==0?"不限量":"限量:" +taskdetails.number}}
+            </view>
             <view class="cu-tag bg-red light sm round">结束时间:{{taskdetails.end_time}}</view>
           </view>
         </view>
       </view>
-
-      <view class="centered tips">
-        <text>*做任务请注意:打钱或涉及支付的任务千万别做*</text>
+      <view>
+        <view class="centered tips">
+          <text>*做任务请注意:打钱或涉及支付的任务千万别做*</text>
+        </view>
+        <view class="centered tips" bindtap="editpush" wx:if="{{user_type=='1' || user_type=='2'}}" >
+          <text style="color:blue">复制编辑此限时任务发布新的任务>>></text>
+        </view>
       </view>
     </view>
   </view>
@@ -42,20 +48,21 @@
 <view class="shuju">
   <view class="cu-list grid col-3 no-border  ">
     <view class="cu-item">
-      <view >
-        <text style="font-size:35rpx;font-weight: 700;color:#1cbbb4" >{{taskdata.surplusday}}</text>
+      <view>
+        <text
+          style="font-size:35rpx;font-weight: 700;color:#1cbbb4">{{taskdata.surplusday >= 0 ?taskdata.surplusday:"0"}}</text>
       </view>
       <text>剩余天数</text>
     </view>
     <view class="cu-item">
-      <view >
+      <view>
         <text style="font-size:35rpx;font-weight: 700; color:#f37b1d">{{taskdata.recordnum}}</text>
       </view>
       <text>已完成数</text>
     </view>
     <view class="cu-item">
-      <view >
-        <text style="font-size:35rpx;font-weight: 700; color:#0081ff" >{{taskdetails.score}}</text>
+      <view>
+        <text style="font-size:35rpx;font-weight: 700; color:#0081ff">{{taskdetails.score}}</text>
       </view>
       <text>奖励积分</text>
     </view>
@@ -68,18 +75,18 @@
 <view class="buzhou">
 
 
-<view wx:for="{{taskdetails.step}}" wx:key="item">
-  <view class="cu-timeline">
-    <view class="cu-time">第{{index + 1}}步</view>
-    <view class="cu-item">
-      <view class="content">
-        <text>{{item.explain?item.explain:"无任务描述"}}</text>
-      </view>
-      <view class="content" wx:if="{{item.image}}">
-        <image src="{{item.image}}"></image>
+  <view wx:for="{{taskdetails.step}}" wx:key="item">
+    <view class="cu-timeline">
+      <view class="cu-time">第{{index + 1}}步</view>
+      <view class="cu-item">
+        <view class="content">
+          <text>{{item.explain?item.explain:"无任务描述"}}</text>
+        </view>
+        <view class="content" wx:if="{{item.image}}">
+          <image src="{{item.image}}"></image>
+        </view>
       </view>
     </view>
-  </view>
   </view>
 </view>
 
@@ -88,7 +95,7 @@
 <view class='share centered' wx:if="{{partake}}" bindtap="userpushlimittask">
   <view class='sharebody centered'>
     <view>
-      <kaming-button >
+      <kaming-button>
         提交任务
       </kaming-button>
     </view>
@@ -99,7 +106,7 @@
 <view class='share centered' wx:else style="background-color:#6C6C6C">
   <view class='sharebody centered'>
     <view>
-      <kaming-button  >
+      <kaming-button>
         {{message}}
       </kaming-button>
     </view>
