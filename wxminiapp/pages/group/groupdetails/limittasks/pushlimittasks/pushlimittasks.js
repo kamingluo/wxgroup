@@ -74,7 +74,7 @@ Page({
         limit: limit,
         ifnumber:ifnumber,
       })
-      //wx.removeStorage({key: 'limittasksdetails'})
+      wx.removeStorage({key: 'limittasksdetails'})
     }
 
   },

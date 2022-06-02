@@ -98,7 +98,7 @@
 
 <view wx:if="{{coins.banner > 0 }}">
   <!-- <view class="centered adtop" wx:if="{{banneradshow && display && gdtaddisplay}}"> -->
-  <!-- <view class="centered adtop" wx:if="{{banneradshow}}">
+  <view class="centered adtop" wx:if="{{banneradshow}}">
     <view class=" explain">
       <view class="title">
         <text>体验广告得奖励</text>
@@ -111,7 +111,7 @@
         <text>每天2次机会,当前次数：<text style="color:red;">{{clickdata.banner}}/2</text> </text>
       </view>
     </view>
-  </view> -->
+  </view>
 
   <!-- 广点通banner广告开始-->
   <!-- <view class='centered' wx:if="{{display && gdtaddisplay}}"> -->

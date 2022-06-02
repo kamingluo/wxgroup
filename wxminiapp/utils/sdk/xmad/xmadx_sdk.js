@@ -94,15 +94,7 @@
     return new Promise(function(a) {
       wx.getSetting({
         success(b) {
-          b.authSetting["scope.userLocation"] ? wx.getLocation({
-            type: "wgs84",
-            success(d) {
-              a(d)
-            },
-            fail() {
-              a("")
-            }
-          }) : a("")
+         console.log("去除地理位置")
         },
         fail() {
           a("")

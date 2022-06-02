@@ -11,7 +11,7 @@
 
        <el-input
           v-model="nickName"
-          placeholder="用户昵称(支持模糊查询)"
+          placeholder="用户昵称或者用户id(支持模糊查询)"
           class="handle-input"
         ></el-input>
         <el-button type="primary" icon="search" class="search jianju" @click="search"

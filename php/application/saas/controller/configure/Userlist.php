@@ -19,8 +19,23 @@ class userlist
         else{
           $number=($pages - 1)*10;
         }
-        $data = db()->table(array('user_crowd'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t2.nickName','like',$newkeyword)->where('t2.id=t1.user_id')->where('t1.crowd_id',$id)->order('id ASC')->limit($number,10)->select();
-        $countnumber = db()->table(array('user_crowd'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t2.nickName','like',$newkeyword)->where('t2.id=t1.user_id')->where('t1.crowd_id',$id)->count();
+        // $data = db()->table(array('user_crowd'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')->where('t2.nickName','like',$newkeyword)
+        // ->where('t2.id=t1.user_id')->where('t1.crowd_id',$id)->order('id ASC')->limit($number,10)->select();
+        // $countnumber = db()->table(array('user_crowd'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')
+        // ->where('t2.nickName','like',$newkeyword)->where('t2.id=t1.user_id')->where('t1.crowd_id',$id)->count();
+
+
+        $data = db()->table(array('user_crowd'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')
+        ->where(function($query) use ( $newkeyword) {$query->where('t2.nickName','like',$newkeyword)->whereor('t2.id','like',$newkeyword);})
+        ->where('t2.id=t1.user_id')->where('t1.crowd_id',$id)->order('id ASC')->limit($number,10)->select();
+
+
+        $countnumber = db()->table(array('user_crowd'=>'t1','user'=>'t2'))->field('t1.*,t2.nickName,t2.avatarUrl')
+        ->where(function($query) use ( $newkeyword) {$query->where('t2.nickName','like',$newkeyword)->whereor('t2.id','like',$newkeyword);})
+        ->where('t2.id=t1.user_id')->where('t1.crowd_id',$id)->count();
+
+
+
         $state=['state'   => '200','message'  => "查询群用户列表" ];
         $resdata=array_merge($state,array('countnumber'=>$countnumber),array('data'=>$data));
         return $resdata ;
