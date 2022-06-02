@@ -152,7 +152,8 @@ Page({
       //   icon: 'none',
       //   duration: 2000,
       // })
-      this.uploadtask()
+      let imgList=[];
+      this.uploadtask(imgList)//传入一个空数组，避免报错
       this.setData({
         loadModal: true,
       })

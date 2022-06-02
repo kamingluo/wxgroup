@@ -306,7 +306,15 @@ Page({
       })
       return;
     }
-    let newgroupdata = this.data.crowddata.groupdata || "";
+    //解决this.data.crowddata为空的时候，拿newgroupdata值报错
+    let newgroupdata;
+    if(this.data.crowddata==null){
+      newgroupdata=null;
+    }
+    else{
+      newgroupdata = this.data.crowddata.groupdata || "";
+    }
+
     if (newgroupdata == null || newgroupdata == "") {
       wx.showToast({
         title: '程序错误返回首页',
@@ -698,7 +706,7 @@ Page({
 
   /**
    * 用户点击右上角分享
-   * pages/index/index?channel=1000&ald_media_id=26447&ald_link_key=6f92ad04b6256d10
+   * pages/index/index?channel=1000
    */
   onShareAppMessage: function () {
     let log = this.data.crowddata.groupdata.logo || 'http://groupmaterial.gzywudao.top/fengmian.png';

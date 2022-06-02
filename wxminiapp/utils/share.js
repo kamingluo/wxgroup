@@ -3,8 +3,6 @@ let baseConfig = require('./config.js')
 function share() {
   let title = wx.getStorageSync('shareconfig').title;
   let imageUrl = wx.getStorageSync('shareconfig').imageUrl;
-
-  // app.aldstat.sendEvent('分享好友', userdata);
    return {
       // title: "群记分小程序，一款好用的群管理工具。",
       // desc: "群记分小程序，一款好用的群管理工具。",
@@ -12,7 +10,7 @@ function share() {
       title: title,
       desc:title,
       imageUrl: imageUrl,
-     path: '/pages/index/index?channel=1005&ald_media_id=33542&ald_link_key=29cf9ebedb655247', // 路径，传递参数到指定页面。
+     path: '/pages/index/index?channel=1005', // 路径，传递参数到指定页面。
     }
 }
 

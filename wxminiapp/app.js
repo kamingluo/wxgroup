@@ -3,8 +3,6 @@ const common = require('./utils/common.js') //公共函数
 const {
   request
 } = require('./utils/request.js') //公共请求方法
-const ald = require('./utils/sdk/ald/ald-stat.js') //阿拉丁统计
-require('./utils/sdk/xmad/xmadx_sdk') //小盟广告
 
 App({
   globalData: {
@@ -93,24 +91,7 @@ App({
   // },
 
 
-  // onShow(options) {
-  //   wx.login({
-  //     success: function (res) {
-  //       request({
-  //         service: 'user/obtainopenid',
-  //         data: {
-  //           code: res.code,
-  //         },
-  //         success: res => {
-  //           wx.aldstat.sendOpenid(res.openid) //阿拉丁统计需要
-  //         },
-  //         fail: res => {
-  //           console.log("小程序启动onshow拿到的openid错误信息", res)
-  //         },
-  //       })
-  //     }
-  //   })
-  // },
+
 
 
   //入口值判断

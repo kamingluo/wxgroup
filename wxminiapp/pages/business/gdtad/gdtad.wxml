@@ -167,16 +167,6 @@
 
 
 
-<!-- 小盟广告-->
-<!-- <view class="centered">
-  <view class="xmad-body">
-    <xm-ad data-id="xm1aa2a153807e6b66683a816dea4ee9" data-position="广点通任务页面" bindtap="clickxmad" adData="{{adData}}" class="xm1aa2a153807e6b66683a816dea4ee9" size="small" bindadLoad="adLoad" bindadClick="adClick" bindadClose="adClose"></xm-ad>
-  </view>
-</view> -->
-
-<!-- 小盟广告-->
-
-
 <!-- 广点通模板广告开始-->
 <!-- <view class='centered custom'>
   <view class='gdtad'>
