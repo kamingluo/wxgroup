@@ -56,12 +56,12 @@
   </view>
 
 
-  <view class='domes_title_2'>创建者微信号</view>
+  <!-- <view class='domes_title_2'>创建者微信号</view>
   <view class="centered">
     <view class="cu-form-group  shadow shadow-lg  ">
       <input placeholder="请输入微信号(非必填)" maxlength="20" bindinput="wxnumber"></input>
     </view>
-  </view>
+  </view> -->
 
   <view class="agreement-body centered">
     <view class="agreement ">

@@ -49,6 +49,12 @@
           "pathName": "pages/group/groupdetails/exchangelist/exchangelist",
           "query": "crowd_id=14&user_type=1&crowd_name=kaming%E7%9A%84%E7%BE%A4",
           "scene": null
+        },
+        {
+          "name": "pages/group/goods/goodslist/goodslist",
+          "pathName": "pages/group/goods/goodslist/goodslist",
+          "query": "crowd_id=14&user_type=1&crowd_name=kaming%E7%9A%84%E7%BE%A4",
+          "scene": null
         }
       ]
     }

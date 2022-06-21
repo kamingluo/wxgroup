@@ -207,8 +207,8 @@ Page({
       images: logo
     }
 
-    console.log(data);
-    return
+    // console.log(data);
+    // return
 
 
     request({

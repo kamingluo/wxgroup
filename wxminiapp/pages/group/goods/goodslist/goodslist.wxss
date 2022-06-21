@@ -170,15 +170,23 @@
 }
 
 
-.clearicon{
+/* .clearicon{
   position:absolute;
   margin-top: -430rpx;
   margin-left: 280rpx;
+} */
+
+
+.clearicon{
+  display: flex;
+  position: absolute;
+  margin-left: 280rpx;
+  margin-bottom: 430rpx;
 }
 
 .clear{
-   position: relative;
+   /* position: relative; */
    z-index: 99;
-   width: 60rpx;
-   height: 60rpx;
+   width: 50rpx;
+   height: 50rpx;
 }
