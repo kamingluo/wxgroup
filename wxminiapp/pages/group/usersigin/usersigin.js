@@ -297,14 +297,6 @@ Page({
 
   },
 
-  //点击小盟广告
-  clickxmad: function (e) {
-    // console.log("点击小盟广告携带页面参数", e)
-    let position = e.currentTarget.dataset.position;
-    wx.setStorageSync("xmclickposition", position)
-  },
-
-
   //选择签到记录
   selectsigindata: function() {
     this.setData({
