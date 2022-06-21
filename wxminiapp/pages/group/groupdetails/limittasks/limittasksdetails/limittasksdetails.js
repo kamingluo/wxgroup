@@ -8,6 +8,7 @@ Page({
   data: {
     crowd_id:null,
     limit_id:null,
+    user_type:null,
     taskdetails:{},//任务详情
     taskdata:{},//任务数据
     partake:false,//用户是否可以参与任务
@@ -16,9 +17,11 @@ Page({
   },
 
   onLoad: function (options) {
+    console.log("进入任务详情携带参数",options)
     this.setData({
       crowd_id: options.crowd_id,
       limit_id:options.id,
+      user_type:options.user_type,
     })
     
   },
@@ -49,6 +52,22 @@ Page({
     })
   },
 
+  //复制发布新的限时任务
+  editpush:function(){
+    let data=this.data.taskdetails;
+    wx.setStorageSync('limittasksdetails', data)
+    wx.navigateTo({
+      url: '/pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks' + '?crowd_id=' + this.data.crowd_id,
+    })
+
+  },
+
+    //发布限时任务
+    pushlimittask: function () {
+      wx.navigateTo({
+        url: '/pages/group/groupdetails/limittasks/pushlimittasks/pushlimittasks' + '?crowd_id=' + this.data.crowd_id + '&crowd_name=' + this.data.crowddata.groupdata.crowd_name,
+      })
+    },
 
   //查询用户是否可以参与任务
   userifpartake:function(){

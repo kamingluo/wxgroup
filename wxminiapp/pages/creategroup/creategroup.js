@@ -185,7 +185,6 @@ Page({
 
   sumittask: function (e) {
     let userdata = wx.getStorageSync('userdata').openid;
-    app.aldstat.sendEvent('创建空间按钮', userdata);
     // console.log(this.data.grouptext)
     // console.log(this.data.groupname)
     // if (this.data.grouptext == null || this.data.groupname == null || this.data.groupcode == null) {

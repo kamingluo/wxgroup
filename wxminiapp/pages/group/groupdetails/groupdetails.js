@@ -306,7 +306,15 @@ Page({
       })
       return;
     }
-    let newgroupdata = this.data.crowddata.groupdata || "";
+    //解决this.data.crowddata为空的时候，拿newgroupdata值报错
+    let newgroupdata;
+    if(this.data.crowddata==null){
+      newgroupdata=null;
+    }
+    else{
+      newgroupdata = this.data.crowddata.groupdata || "";
+    }
+
     if (newgroupdata == null || newgroupdata == "") {
       wx.showToast({
         title: '程序错误返回首页',
@@ -332,9 +340,10 @@ Page({
   //跳转限时任务详情
   clicklimittasklist: function (e) {
     let crowd_id = this.data.crowd_id;
+    let user_type = this.data.user_type;
     console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
-      url: '/pages/group/groupdetails/limittasks/limittasksdetails/limittasksdetails?id=' + e.currentTarget.dataset.id + '&crowd_id=' + crowd_id,
+      url: '/pages/group/groupdetails/limittasks/limittasksdetails/limittasksdetails?id=' + e.currentTarget.dataset.id + '&crowd_id=' + crowd_id + '&user_type=' + user_type,
     })
 
   },
@@ -697,7 +706,7 @@ Page({
 
   /**
    * 用户点击右上角分享
-   * pages/index/index?channel=1000&ald_media_id=26447&ald_link_key=6f92ad04b6256d10
+   * pages/index/index?channel=1000
    */
   onShareAppMessage: function () {
     let log = this.data.crowddata.groupdata.logo || 'http://groupmaterial.gzywudao.top/fengmian.png';

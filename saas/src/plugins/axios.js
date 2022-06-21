@@ -32,7 +32,7 @@ _axios.interceptors.request.use(
         ...config.params
       }
     }
-    console.log("这是处理过后的请求", config)
+    //console.log("这是处理过后的请求", config)
     return config;
   },
   function (error) {

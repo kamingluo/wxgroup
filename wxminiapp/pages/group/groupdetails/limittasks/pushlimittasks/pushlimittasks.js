@@ -8,7 +8,7 @@ Page({
 
   data: {
     crowd_id: null,
-    title: "",
+    title: null,
     describe: "",
     score: null,
     //限量
@@ -24,7 +24,7 @@ Page({
       explain: "",
       image: ""
     }],
-    loadModal:false
+    loadModal: false
   },
 
   onLoad: function (options) {
@@ -32,6 +32,7 @@ Page({
       crowd_id: options.crowd_id
     })
     this.havetime()
+    this.initialization()//初始化数据
   },
 
   //获取年月日
@@ -45,6 +46,37 @@ Page({
     this.setData({
       end_time: nowtime,
     })
+  },
+
+  //初始化数据
+  initialization: function () {
+
+    console.log("进入发布限时任务初始化")
+    let data = wx.getStorageSync('limittasksdetails');
+    if (data) {
+      console.log("初始化数据存在", data)
+      let limit="0";
+      if(data.limit != 0 ){
+        limit="1";
+      }
+      let ifnumber="1";
+      if(data.number == 0 ){
+        ifnumber="0";
+      }
+
+
+      this.setData({
+        title: data.title,
+        describe: data.describe,
+        score: data.score,
+        step: data.step,
+        number: data.number,
+        limit: limit,
+        ifnumber:ifnumber,
+      })
+      wx.removeStorage({key: 'limittasksdetails'})
+    }
+
   },
 
   //标题
@@ -93,17 +125,17 @@ Page({
   },
 
   //结束时间
-  DateChange:function(e){
+  DateChange: function (e) {
     this.setData({
       end_time: e.detail.value
     })
 
   },
   //步骤文案输入
-  stepdescribe:function(e){
+  stepdescribe: function (e) {
     let index = e.currentTarget.dataset.index
-    let describe= e.detail.value
-    let data=this.data.step;
+    let describe = e.detail.value
+    let data = this.data.step;
     data[index].explain = describe
     this.setData({
       step: data
@@ -112,9 +144,9 @@ Page({
   },
 
   //新增一个步骤
-  addstep:function(){
-    let data=this.data.step;
-    let newdata={
+  addstep: function () {
+    let data = this.data.step;
+    let newdata = {
       explain: "",
       image: null
     };
@@ -128,8 +160,8 @@ Page({
   },
 
   //减少一个步骤
-  reducestep:function(){
-    let data=this.data.step;
+  reducestep: function () {
+    let data = this.data.step;
     data.pop()
     this.setData({
       step: data
@@ -183,7 +215,7 @@ Page({
     });
   },
 
-  wxtoast:function(text){
+  wxtoast: function (text) {
     wx.showToast({
       title: text,
       icon: 'none',
@@ -192,25 +224,25 @@ Page({
   },
 
   sumbit: function () {
-    var that=this
+    var that = this
     console.log("提交任务")
-    
-    let data=this.data;
-    if(data.title=="" || data.title==null ){
+
+    let data = this.data;
+    if (data.title == "" || data.title == null) {
       this.wxtoast("标题不能为空")
       return;
     }
-    if(data.describe=="" || data.describe==null ){
+    if (data.describe == "" || data.describe == null) {
       this.wxtoast("任务说明不能为空")
       return;
     }
 
-    if(data.score=="" || data.score==null || data.score== 0  ){
+    if (data.score == "" || data.score == null || data.score == 0) {
       this.wxtoast("奖励积分不能为空")
       return;
     }
 
-    if(data.step[0].image=="" && data.step[0].explain==""  ){
+    if (data.step[0].image == "" && data.step[0].explain == "") {
       this.wxtoast("任务步骤不能为空")
       return;
     }
@@ -219,21 +251,21 @@ Page({
       loadModal: true,
     })
 
-    let postdata={};
-    postdata.crowd_id=data.crowd_id;
-    postdata.title=data.title;
-    postdata.describe=data.describe;
-    postdata.score=data.score;
-    postdata.step=data.step;
-    postdata.limit=data.limit;
-    postdata.end_time=data.end_time + " " + "23:59:59";
-    postdata.open=0;
-    postdata.code="kaming";
-    if(this.data.ifnumber == 0){
-      postdata.number=0;
+    let postdata = {};
+    postdata.crowd_id = data.crowd_id;
+    postdata.title = data.title;
+    postdata.describe = data.describe;
+    postdata.score = data.score;
+    postdata.step = data.step;
+    postdata.limit = data.limit;
+    postdata.end_time = data.end_time + " " + "23:59:59";
+    postdata.open = 0;
+    postdata.code = "kaming";
+    if (this.data.ifnumber == 0) {
+      postdata.number = 0;
     }
-    else{
-      postdata.number=data.number;
+    else {
+      postdata.number = data.number;
     }
     console.log(postdata)
 
@@ -254,7 +286,7 @@ Page({
           wx.navigateBack({
             delta: 1
           })
-        }, 1500) 
+        }, 1500)
       }
     })
 

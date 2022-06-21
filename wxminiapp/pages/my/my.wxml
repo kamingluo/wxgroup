@@ -166,17 +166,6 @@
 
 
 
-
-<!-- 小盟广告-->
-<!-- <view class="centered" wx:if="{{!crowd_vip}}"> -->
-<!-- <view class="centered" >
-  <view class="xmad-body">
-    <xm-ad data-id="xm686991b5279c34bac77e4720e9776b" data-position="我的页面" bindtap="clickxmad" adData="{{adData}}" class="xm686991b5279c34bac77e4720e9776b" size="small" bindadLoad="adLoad" bindadClick="adClick" bindadClose="adClose"></xm-ad>
-  </view>
-</view> -->
-
-<!-- 小盟广告-->
-
 <!-- 广点通模板广告开始-->
 <!-- <view class='centered ' wx:if="{{!crowd_vip}}"> -->
 <view class='centered '>

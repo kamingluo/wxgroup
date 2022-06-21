@@ -4,7 +4,7 @@
 </cu-custom>
 <view class="cu-form-group">
   <view class="title">任务标题</view>
-  <input placeholder="请输入任务标题" bindinput="title"></input>
+  <input placeholder="请输入任务标题" bindinput="title" value="{{title}}"></input>
 </view>
 <view class="cu-form-group">
   <view class="title">奖励积分</view>

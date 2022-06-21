@@ -162,7 +162,7 @@ Page({
       title: nickName + "邀请你加入群" + "《" + crowd_name + "》",
       desc: nickName + "邀请你加入群" + "《" + crowd_name + "》",
       imageUrl: log,
-      path: '/pages/index/index?channel=1001&ald_media_id=33542&ald_link_key=c99244f0802f9f06' + '&crowd_id=' + crowd_id, // 路径，传递参数到指定页面。
+      path: '/pages/index/index?channel=1001' + '&crowd_id=' + crowd_id, // 路径，传递参数到指定页面。
     }
   }
 

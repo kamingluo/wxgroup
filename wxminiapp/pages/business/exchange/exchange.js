@@ -203,7 +203,6 @@ Page({
     //console.log("点击广点通banner广告", e.currentTarget)
     let userdata = wx.getStorageSync('userdata')
     let data = Object.assign(userdata, e.currentTarget.dataset); //将addata合并
-    app.aldstat.sendEvent('兑换页面点击广点通banner广告', data);
   },
 
   exchangelist: function () {

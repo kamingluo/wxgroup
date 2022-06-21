@@ -3,11 +3,10 @@ const common = require('./utils/common.js') //公共函数
 const {
   request
 } = require('./utils/request.js') //公共请求方法
-const ald = require('./utils/sdk/ald/ald-stat.js') //阿拉丁统计
-require('./utils/sdk/xmad/xmadx_sdk') //小盟广告
 
 App({
   globalData: {
+    ifUserRegister:false
     //一定要，删除报错
   },
   onLaunch: function(e) {
@@ -31,12 +30,33 @@ App({
   },
 
   getUserInfo: function(e) {
+    var that=this;
     var data = {
       channel: e.query.channel || 0,
       crowd_id: e.query.crowd_id || 0,
       scene: e.scene,
     }
-    common.register(data) //用户注册未授权
+    //common.register(data); //用户注册未授权
+    
+    wx.login({
+      success: res => {
+        data.code = res.code
+        request({
+          service: 'user/register',
+          data: data,
+          success: res => {
+            console.log('用户注册成功', res);
+            wx.setStorageSync('userdata', res.userdata)
+            // setTimeout(function() {
+            //   that.globalData.ifUserRegister = true;
+            // }, 10000);
+            this.globalData.ifUserRegister = true;
+          },
+        })
+      }
+    })
+
+
   },
 
 
@@ -71,26 +91,10 @@ App({
   // },
 
 
-  // onShow(options) {
-  //   wx.login({
-  //     success: function (res) {
-  //       request({
-  //         service: 'user/obtainopenid',
-  //         data: {
-  //           code: res.code,
-  //         },
-  //         success: res => {
-  //           wx.aldstat.sendOpenid(res.openid) //阿拉丁统计需要
-  //         },
-  //         fail: res => {
-  //           console.log("小程序启动onshow拿到的openid错误信息", res)
-  //         },
-  //       })
-  //     }
-  //   })
-  // },
 
 
+
+  //入口值判断
   scene: function(e) {
     let scene = e.scene;
     if (scene==1173){
@@ -116,6 +120,7 @@ App({
     }
   },
 
+  //用户今日点击广告状态
   todayclickadtype: function() {
     let nowDate = new Date();
     var year = nowDate.getFullYear();
@@ -132,7 +137,6 @@ App({
       wx.setStorageSync('todayclickad', data)
     }
   },
-
 
    //检查更新
   ifautoUpdate:function(){
@@ -151,6 +155,7 @@ App({
 
   },
 
+  //检查更新版本
   autoUpdate: function() {
     console.log("调用了版本更新")
     var self = this
