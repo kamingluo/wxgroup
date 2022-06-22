@@ -22,7 +22,8 @@ Page({
     userranking:0,
     adtype: null,
     ifgroupvip:false,
-    ifadspecialshow:false
+    ifadspecialshow:false,
+    kaming:false
 
 
   },

@@ -211,7 +211,8 @@
 
       <!-- 推广位置 -->
       <view wx:if="{{!ifgroupvip || ifadspecialshow}}">
-        <view class="qrcode flex align-center justify-center animation-{{kaming?'shake':''}}" wx:elif="{{adconfig.type==6}}">
+
+        <view class="qrcode flex align-center justify-center animation-{{kaming?'shake':''}}" wx:if="{{adconfig.type==6}}">
           <image class="head" lazy-load="true" mode="widthFix" src="{{avatarUrl}}"></image>
           <view class="flex-sub padding-sm">
             <text>{{adconfig.appid}}</text>

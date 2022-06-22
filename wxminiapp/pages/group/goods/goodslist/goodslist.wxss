@@ -180,8 +180,8 @@
 .clearicon{
   display: flex;
   position: absolute;
-  margin-left: 280rpx;
-  margin-bottom: 430rpx;
+  margin-left: 130rpx;
+  margin-top: -230rpx;
 }
 
 .clear{
