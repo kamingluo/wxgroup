@@ -63,6 +63,14 @@
 </view>
 
 
+<view class="cu-form-group">
+  <view class="title">截止日期</view>
+  <picker mode="date" value="{{start_time?start_time:''}}" start="20220-06-23" end="2025-09-01" bindchange="DateChange">
+    <view class="picker">{{start_time?start_time:''}}</view>
+  </picker>
+</view>
+
+
 
 
 

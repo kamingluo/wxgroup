@@ -50,7 +50,7 @@ App({
             // setTimeout(function() {
             //   that.globalData.ifUserRegister = true;
             // }, 10000);
-            this.globalData.ifUserRegister = true;
+            that.globalData.ifUserRegister = true;
           },
         })
       }

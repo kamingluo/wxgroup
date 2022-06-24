@@ -24,9 +24,32 @@ Page({
     exchangepicker: ['不限制兑换', '每人兑换数量'],
     ifexchange:"0",
     exchange_num:null,
+    start_time:null,//开始时间
 
 
   },
+
+
+  onLoad: function (e) { 
+    this.setData({
+      crowd_id: e.crowd_id
+    })
+    this.havetime()
+  },
+
+
+    //获取年月日
+    havetime: function () {
+      var date = new Date();
+      let year = date.getFullYear(); //获取完整的年份(4位)
+      let month = date.getMonth() + 1; //获取当前月份(0-11,0代表1月)
+      let day = date.getDate(); //获取当前日(1-31)
+      let nowtime = year + "-" + month + "-" + + day;
+      console.log("当前时间", nowtime)
+      this.setData({
+        start_time: nowtime,
+      })
+    },
   // 删除图片
   clearImg: function (e) {
     var nowList = []; //新数据
@@ -77,12 +100,7 @@ Page({
       }
     })
   },
-  onLoad: function (e) { 
-    this.setData({
-      crowd_id: e.crowd_id
-    })
 
-  },
 
   grouptext: function (e) {
     // console.log(e.detail.value)
@@ -128,6 +146,14 @@ Page({
       ifexchange: e.detail.value
     })
   },
+
+    //开始时间
+    DateChange: function (e) {
+      this.setData({
+        start_time: e.detail.value
+      })
+  
+    },
 
   sumittask: function (e) {
 
