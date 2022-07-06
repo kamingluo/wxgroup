@@ -161,7 +161,7 @@ class Downloadfile
         	$PHPSheet->setCellValue('D'.$i,''.$type);
         	$PHPSheet->setCellValue('E'.$i,''.$value['score']);
         	$PHPSheet->setCellValue('F'.$i,''.$value['joincrowd_time']);
-            $PHPSheet->setCellValue('F'.$i,''.$value['update_time']);
+            $PHPSheet->setCellValue('G'.$i,''.$value['update_time']);
         	$i++;
     	}
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel,"Excel2007");
