@@ -143,6 +143,7 @@ class Downloadfile
         $PHPSheet->setCellValue("D1","用户角色");
         $PHPSheet->setCellValue("E1","用户记分");
         $PHPSheet->setCellValue("F1","加入群时间");
+        $PHPSheet->setCellValue("G1","最后登录时间");
         $i = 2;
 		foreach($list as $key => $value){
             if($value['user_type']==0){
@@ -160,6 +161,7 @@ class Downloadfile
         	$PHPSheet->setCellValue('D'.$i,''.$type);
         	$PHPSheet->setCellValue('E'.$i,''.$value['score']);
         	$PHPSheet->setCellValue('F'.$i,''.$value['joincrowd_time']);
+            $PHPSheet->setCellValue('F'.$i,''.$value['update_time']);
         	$i++;
     	}
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel,"Excel2007");
