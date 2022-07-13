@@ -41,6 +41,18 @@
 </view>
 
 
+<view class="centered">
+  <view class="cu-form-group  shadow shadow-lg bg-white ">
+    <view class="title">开始时间</view>
+    <DatetimePicker mode="datetime" value="{{timeDivision}}" bindchange="selectDateSecondChange">
+    <view class="show-date-time-box">{{timeDivision?timeDivision:"请选择时间"}}</view>
+  </DatetimePicker>
+  </view>
+</view>
+
+
+
+
 <view class='ui_cell'>
   <view class='ui_cell_bd'>商品图片</view>
 </view>

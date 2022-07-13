@@ -1,3 +1,4 @@
+<wxs module="filters" src="goodslist.wxs"></wxs>
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}" wx:if="{{crowd_id}}">
 	<view slot="backText">返回</view>
 	<view slot="content">兑换商品</view>
@@ -60,15 +61,29 @@
 					</view>
 
 					<view class='goods-price'>
-						<text style="color:red">{{item.price}}</text> <text>积分</text>  <text style="margin-left:80rpx;">库存:{{item.stock&&item.stock!=999999999 || item.stock==0 ?item.stock:"不限量"}}</text>
+						<text style="color:red">{{item.price}}</text> <text>积分</text> <text
+							style="margin-left:80rpx;">库存:{{item.stock&&item.stock!=999999999 || item.stock==0
+							?item.stock:"不限量"}}</text>
 					</view>
 
 					<view class='line'></view>
-					<view class='exchange centered' bindtap='clickgoods' data-goodsdata="{{item}}">
+
+
+					<view> 
+						<view class='exchange centered' bindtap='notexchange' data-goodsdata="{{item}}"  wx:if="{{filters.toIftrue(item.start_time,now_time)}}">
+							<kaming-button>
+								<text style="color: darkgray;"> 未开始兑换 </text>
+							</kaming-button>
+						</view>
+
+						<view class='exchange centered' bindtap='clickgoods' data-goodsdata="{{item}}" wx:else>
 						<kaming-button>
 							<text> 立即兑换</text>
 						</kaming-button>
 					</view>
+					</view>
+
+
 				</view>
 			</block>
 		</view>
@@ -118,4 +133,22 @@
 			</view>
 		</view>
 	</view>
+</view>
+
+
+<view class="cu-modal show"  wx:if="{{notexchangeModal}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">商品未开始兑换</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+		<text>商品:{{notexchangedata.goodname}}，\n
+		 开始兑换时间为：{{notexchangedata.start_time}}\n 
+		 请到时间重新进入页面刷新列表进行兑换</text>
+    
+    </view>
+  </view>
 </view>

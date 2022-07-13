@@ -5,6 +5,7 @@ const {
   request
 } = require('./../../../../utils/request.js');
 let baseConfig = require('./../../../../utils/config.js')
+let common = require('./../../../../utils/common.js') //公共函数
 const app = getApp();
 
 Page({
@@ -15,6 +16,7 @@ Page({
     picker: ['不限量兑换', '限制库存'],
     ifstock: "0",
     goodsdata:{},//商品详情
+    timeDivision:''//开始时间
 
     // crowd_id: null,
     // uploaderList: [],
@@ -29,6 +31,14 @@ Page({
     // stock:null,
   },
 
+
+     // 时分秒的事件方法
+     selectDateSecondChange(e) {
+      console.log("选择的时间",e.detail.value)
+     this.setData({
+       timeDivision: e.detail.value
+     })
+   },
 
 
   // 删除图片
@@ -70,11 +80,26 @@ Page({
           ifstock="0";
           console.log("bu限量")
         }
+        this.havetime(res.data.start_time)
         this.setData({
           goodsdata: res.data,
           ifstock:ifstock
         })
       },
+    })
+
+  },
+
+
+  havetime:function(start_time){
+    let nowtime=common.getNowTime()
+    if(start_time){
+      console.log("时间不为空要处理",start_time)
+      nowtime=common.timestampToTime(start_time)
+    }
+    console.log("处理的时间",nowtime)
+    this.setData({
+      timeDivision: nowtime,
     })
 
   },
@@ -142,14 +167,18 @@ Page({
 
   updategoods: function (logo) {
     let data=this.data.goodsdata;
-    
+
+    var start_time=this.data.timeDivision;
+    var new_start_time=common.timestampGetTime(start_time);
+    data.start_time=new_start_time;
+
 
     if (this.data.ifstock == 0) {
       data.stock = 999999999;
     }
     console.log("提交的信息",data)
     request({
-      service: 'group/groupgoods/updategoods',
+      service: 'group/groupgoods/newupdategoods',
       data: data,
       success: res => {
         this.setData({

@@ -1,0 +1,35 @@
+
+var filters = {
+  toFix: function (value) {
+    return value.toFixed(2) // 此处2为保留两位小数，保留几位小数，这里写几    
+  },
+  toStr: function (value) {
+    return value.toString()
+  },
+  toNum: function (value) {
+    return value.toNumber()
+  },
+
+  toIftrue: function (value1,value2) {
+    data1=Number(value1)
+    console.log("数据1start_time",data1);
+    data2=Number(value2)
+    console.log("数据2nowtime",data2);
+     if(data1>data2){
+       return true
+     }
+     else{
+       return false
+     }
+  },
+
+
+}
+
+
+module.exports = {
+  toFix: filters.toFix,
+  toStr: filters.toStr,
+  toNum: filters.toNum,//暴露接口调用
+  toIftrue: filters.toIftrue,//暴露接口调用
+}

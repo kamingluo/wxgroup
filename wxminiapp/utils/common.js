@@ -219,11 +219,11 @@ function ifauthorized(){
 //将时间戳转换成日期格式
 
 function timestampToTime(timestamp,lengths=false) {
+  timestamp=Number(timestamp)
   var date = new Date(timestamp);//时间戳为13位的话不需乘1000
   if(lengths){
     var date = new Date(timestamp * 1000);//时间戳为10位需*1000
   }
-
   var Y = date.getFullYear() + '-';
   var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
   var D = date.getDate() + ' ';
@@ -231,6 +231,30 @@ function timestampToTime(timestamp,lengths=false) {
   var m = date.getMinutes() + ':';
   var s = date.getSeconds();
   return Y + M + D + h + m + s;
+}
+
+//将日期格式转换成时间戳
+
+function timestampGetTime(timestamp,lengths=false) {
+  let start_time=new Date(timestamp)
+  let newtime= Date.parse(start_time);//转换默认13位数
+  if(lengths){
+    newtime = new Date(newtime/1000);//时间戳为10位需除于1000
+  }
+  return newtime;
+}
+
+
+
+// 获取当前时间
+function getNowTime() {
+  const yy = new Date().getFullYear()
+  const MM = (new Date().getMonth() + 1) < 10 ? '0' + (new Date().getMonth() + 1) : (new Date().getMonth() + 1)
+  const dd = new Date().getDate() < 10 ? '0' + new Date().getDate() : new Date().getDate()
+  const HH = new Date().getHours() < 10 ? '0' + new Date().getHours() : new Date().getHours()
+  const mm = new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes()
+  const ss = new Date().getSeconds() < 10 ? '0' + new Date().getSeconds() : new Date().getSeconds()
+  return yy + '-' + MM + '-' + dd + ' ' + HH + ':' + mm + ':' + ss
 }
 
 
@@ -252,5 +276,7 @@ module.exports = {
   echecktext: echecktext,
   clickgdtadstatistics:clickgdtadstatistics,
   ifauthorized:ifauthorized,
-  timestampToTime:timestampToTime
+  timestampToTime:timestampToTime,
+  timestampGetTime:timestampGetTime,
+  getNowTime:getNowTime
 }

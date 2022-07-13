@@ -5,6 +5,7 @@ const {
   request
 } = require('./../../../../utils/request.js');
 let baseConfig = require('./../../../../utils/config.js')
+let common = require('./../../../../utils/common.js') //公共函数
 const app = getApp();
 
 Page({
@@ -26,6 +27,8 @@ Page({
     exchange_num:null,
     start_time:null,//开始时间
 
+    timeDivision: ''//时分秒，根据需要选择
+
 
   },
 
@@ -38,17 +41,32 @@ Page({
   },
 
 
+   // 时分秒的事件方法
+   selectDateSecondChange(e) {
+     console.log("选择的时间",e.detail.value)
+    this.setData({
+      timeDivision: e.detail.value
+    })
+  },
+
     //获取年月日
     havetime: function () {
-      var date = new Date();
-      let year = date.getFullYear(); //获取完整的年份(4位)
-      let month = date.getMonth() + 1; //获取当前月份(0-11,0代表1月)
-      let day = date.getDate(); //获取当前日(1-31)
-      let nowtime = year + "-" + month + "-" + + day;
-      console.log("当前时间", nowtime)
+
+      let nowtime=common.getNowTime()
+
       this.setData({
-        start_time: nowtime,
+        timeDivision: nowtime,
       })
+
+      // var date = new Date();
+      // let year = date.getFullYear(); //获取完整的年份(4位)
+      // let month = date.getMonth() + 1; //获取当前月份(0-11,0代表1月)
+      // let day = date.getDate(); //获取当前日(1-31)
+      // let nowtime = year + "-" + month + "-" + + day;
+      // console.log("当前时间", nowtime)
+      // this.setData({
+      //   start_time: nowtime,
+      // })
     },
   // 删除图片
   clearImg: function (e) {
@@ -157,6 +175,15 @@ Page({
 
   sumittask: function (e) {
 
+
+    // let start_time=this.data.timeDivision;
+    // let new_start_time=common.timestampGetTime(start_time);
+   
+    // console.log("转换时间戳后",new_start_time)
+
+    // return
+
+
     if(this.data.ifstock == 1){
       console.log("设置了库存")
       if(this.data.stock == null || this.data.stock < 1 ){
@@ -224,28 +251,20 @@ Page({
       exchange_num=this.data.exchange_num;
     }
 
-    var data={
-      crowd_id: crowd_id,
-      price: groupcode,
-      goodsname: groupname,
-      stock:stock,
-      exchange_num:exchange_num,
-      images: logo
-    }
-
-    // console.log(data);
-    // return
-
-
+    //开始时间处理
+    var start_time=this.data.timeDivision;
+    var new_start_time=common.timestampGetTime(start_time);
+   
     request({
-      service: 'group/groupgoods/pushgoods',
+      service: 'group/groupgoods/newpushgoods',
       data: {
         crowd_id: crowd_id,
         price: groupcode,
         goodsname: groupname,
         stock:stock,
         exchange_num:exchange_num,
-        images: logo
+        images: logo,
+        start_time:new_start_time
       },
       success: res => {
         this.setData({

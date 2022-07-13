@@ -73,6 +73,57 @@ class Groupgoods
 
 
 
+    //新发布群商品
+    public function newpushgoods(Request $request)
+    {
+        $crowd_id=$request->param("crowd_id");
+        $goodsname=$request->param("goodsname");
+        $images=$request->param("images");
+        $price=$request->param("price");
+        $start_time=$request->param("start_time");
+        Log::record("处理之前的stock数据11");
+        Log::record($request->param("stock"));
+
+        $stock=$request->param("stock");
+
+        Log::record("处理之后的stock数据");
+        Log::record($stock);
+
+        $time =date('Y-m-d H:i:s',time());//获取当前时间
+        $data = ['id'=>'','goodsname' =>$goodsname,'images' => $images,'price' => $price,'crowd_id' => $crowd_id,'sort' => null,'stock' => $stock,'create_time' =>$time,'update_time' =>$time,'start_time' =>$start_time];
+        $goods_id= db('crowd_goods')->insertGetId($data);//返回自增ID
+        $state=['state'   => '200','message'  => "发布群商品成功" ];
+        $resdata=array_merge($state,array('goods_id'=>$goods_id));
+        return $resdata ;
+    }
+
+
+
+
+
+
+
+
+    //修改群商品
+    public function newupdategoods(Request $request){
+      $id=$request->param("id");
+      $goodsname=$request->param("goodsname");
+      $price=$request->param("price");
+      $stock=$request->param("stock");
+      $start_time=$request->param("start_time");
+      $time =date('Y-m-d H:i:s',time());//获取当前时间
+
+      $updateres= db('crowd_goods')->where('id',$id)->update(['goodsname' => $goodsname,'price' => $price,'stock' => $stock,'update_time' => $time,'start_time' =>$start_time]);
+      if($updateres==1){
+        $state=['state'   => '200','message'  => "修改商品成功" ];
+      }
+      else{
+        $state=['state'   => '200','message'  => "修改商品失败" ];
+      }
+      return $state;
+    }
+
+
     //修改群商品
     public function updategoods(Request $request){
       $id=$request->param("id");

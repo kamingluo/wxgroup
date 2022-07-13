@@ -18,13 +18,23 @@ Page({
     goodslist:null,
     deletegoodsid: null,
     deletegoodsmodel: false,
+    now_time:"",//当前时间戳
+    notexchangeModal:false,
+    notexchangedata:{}
   },
 
   onLoad: function (options) {
+
+    let  now_time = Date.parse(new Date()) // 第三种，不推荐，精度差一些
+    console.log("当前时间戳",now_time)
+    console.log(typeof(now_time));
+
+
     this.setData({
       crowd_id: options.crowd_id,
       crowd_name: options.crowd_name,
-      user_type: options.user_type
+      user_type: options.user_type,
+      now_time:now_time
     })
   },
   onShow: function () {
@@ -45,6 +55,23 @@ Page({
   exchangelist:function(){
     wx.navigateTo({
       url: '/pages/group/goods/exchangelist/exchangelist' + '?crowd_id=' + this.data.crowd_id
+    })
+
+  },
+
+  notexchange:function(e){
+    let data = e.currentTarget.dataset.goodsdata
+
+    let goodname=data.goodsname;
+    let start_time=common.timestampToTime(data.start_time)
+    let notexchangedata={
+      goodname:goodname,
+      start_time:start_time
+    }
+
+    this.setData({
+      notexchangeModal:true,
+      notexchangedata:notexchangedata
     })
 
   },
@@ -113,6 +140,7 @@ Page({
   hideModal: function () {
     this.setData({
       deletegoodsmodel: false,
+      notexchangeModal:false
     })
   },
 

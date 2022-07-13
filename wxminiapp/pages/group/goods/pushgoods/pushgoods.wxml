@@ -63,11 +63,20 @@
 </view>
 
 
-<view class="cu-form-group">
-  <view class="title">截止日期</view>
+<!-- <view class="cu-form-group">
+  <view class="title">开始日期</view>
   <picker mode="date" value="{{start_time?start_time:''}}" start="20220-06-23" end="2025-09-01" bindchange="DateChange">
     <view class="picker">{{start_time?start_time:''}}</view>
   </picker>
+</view> -->
+
+<view class="centered">
+  <view class="cu-form-group  shadow shadow-lg bg-white ">
+    <view class="title">开始时间</view>
+    <DatetimePicker mode="datetime" value="{{timeDivision}}" bindchange="selectDateSecondChange">
+    <view class="show-date-time-box">{{timeDivision?timeDivision:"请选择时间"}}</view>
+  </DatetimePicker>
+  </view>
 </view>
 
 
