@@ -17,7 +17,7 @@ class Home
     //首页下面第三方小程序广告配置列表
     public function autoupdate()
     {
-        $autoUpdate=false;
+        $autoUpdate=true;
         $state=['state'   => '200','message'  => "是否开启更新版本",'autoUpdate' => $autoUpdate ];
         return $state ;
     }
