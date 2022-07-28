@@ -73,7 +73,7 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="socerrankingModel = false">取 消</el-button>
-        <el-button type="primary" @click="Downloadfile">确 定</el-button>
+        <el-button type="primary" @click="Downloadfile">下载数据</el-button>
       </span>
     </el-dialog>
 
@@ -137,13 +137,16 @@
         console.log("获取数据")
         let url = "configure/scorelist/userscorerecord";
         let token = localStorage.getItem("token");
+        let headers={
+          'Content-Type': 'application/octet-stream'
+        };
         let params = {
           pages: this.cur_page,
           nickName: this.nickName,
           token: token,
         };
         try {
-          const res = await this.$axios.post(url, params);
+          const res = await this.$axios.post(url, params,headers=headers);
           console.log(res.data)
           if (res.status == "200") {
             this.tableData = res.data.data;

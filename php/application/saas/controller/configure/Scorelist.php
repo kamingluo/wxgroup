@@ -3,6 +3,8 @@ namespace app\saas\controller\configure;
 use think\Db;
 use think\Request;
 use qiniu\Deletefile;
+use think\Controller;
+use think\Loader;
 class Scorelist
 {
    
@@ -35,27 +37,33 @@ class Scorelist
   public function socerranking(Request $request)
   {
     $token=$request->param("token");
-    $start_time=$request->param("start_time");
-    $end_time=$request->param("end_time");
+    $start_time="'" .$request->param("start_time")."'";
+    $end_time="'" .$request->param("end_time")."'";
     $crowd_id=havecrowdid($token);//群id
     $sendmode=0;//发送方式，0是直接下载列表。1是发送到邮箱
 
 
     //from score_record WHERE crowd_id=3514 and state=0 and create_time >" + $start_time + " create_time < "+  $end_time + " GROUP BY user_id) as e
 
-    $oldlist=$sql = "SELECT `user`.id,`user`.nickName,e.score 
-     FROM `user`,(select user_id,SUM(score) as score
-     from score_record WHERE crowd_id= "+ $crowd_id +" and state=0 and create_time between " + $start_time + " and "+ $end_time + " GROUP BY user_id) as e
-     WHERE e.user_id=`user`.id ORDER BY e.score  DESC ;";
+    $sql = "SELECT `user`.id,`user`.nickName,e.score FROM `user`,(select user_id,SUM(score) as score from score_record WHERE crowd_id= " .$crowd_id." and state=0 and create_time between " .$start_time. " and " .$end_time. " GROUP BY user_id) as e WHERE e.user_id =`user`.id ORDER BY e.score  DESC ;";
+
+    // return $oldlist;
+
+
+
      $list = Db::query($sql); //拿到数据
 
-	 $file_name = date('Y-m-d_His').'.xls';
+	   $file_name = date('Y-m-d_His').'.xls';
      $path = dirname(__FILE__); //找到当前脚本所在路径
      Loader::import('PHPExcel.php'); //加载所需的类文件，必须引入 use think\Loader;命名空间，否则loader无法加载
      Loader::import('PHPExcel.Reader.Excel2007'); 
 
-     $title="用户积分获取排名,开始计算时间:" + $start_time + "----结束计算时间" + $end_time;
 
+    //  $start_time_new=$request->param("start_time");
+    // $end_time_new=$request->param("end_time");
+    // $title="用户积分获取排名,开始计算时间:" .$start_time_new. "至结束计算时间" .$end_time_new;
+    // return $title;
+  $title="用户积分获取排名";
      $PHPExcel = new \PHPExcel();
         $PHPSheet = $PHPExcel->getActiveSheet();
         $PHPSheet->setTitle($title);
