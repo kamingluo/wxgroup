@@ -40,7 +40,7 @@ class Scorelist
     $start_time="'" .$request->param("start_time")."'";
     $end_time="'" .$request->param("end_time")."'";
     $crowd_id=havecrowdid($token);//群id
-    $sendmode=0;//发送方式，0是直接下载列表。1是发送到邮箱
+    $sendmode=1;//发送方式，0是直接下载列表。1是发送到邮箱
 
 
     //from score_record WHERE crowd_id=3514 and state=0 and create_time >" + $start_time + " create_time < "+  $end_time + " GROUP BY user_id) as e
@@ -91,12 +91,20 @@ class Scorelist
 
         }
         else{
-            $user_email=$request->param("user_email");//接受邮箱
-            $excelpath='./excel/'.$file_name;
-            $PHPWriter->save($excelpath);//保存到服务器指定路径
-            $emaildata=sendEmail([['user_email'=>$user_email,'content'=>'群记分群员积分获取排名','excel'=>$excelpath]]);
-            $state=['state'   => '200','message'  => "邮件发送成功，请注意查收",'emaildata'  => $emaildata];
-             return  $state;    
+              $excelpath='./excel/'.$file_name;
+              $PHPWriter->save($excelpath);//保存到服务器指定路径
+              $downloadurl='https://group.gzywudao.top/php/public/excel/'.$file_name;
+
+              $state=['state'   => '200','message'  => "用户积分获取排名列表下载 url",'downloadurl'  => $downloadurl];
+              return  $state;  
+
+
+            // $user_email=$request->param("user_email");//接受邮箱
+            // $excelpath='./excel/'.$file_name;
+            // $PHPWriter->save($excelpath);//保存到服务器指定路径
+            // $emaildata=sendEmail([['user_email'=>$user_email,'content'=>'群记分群员积分获取排名','excel'=>$excelpath]]);
+            // $state=['state'   => '200','message'  => "邮件发送成功，请注意查收",'emaildata'  => $emaildata];
+            // return  $state;    
         }
         
         

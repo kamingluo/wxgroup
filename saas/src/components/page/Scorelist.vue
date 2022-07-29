@@ -137,16 +137,13 @@
         console.log("获取数据")
         let url = "configure/scorelist/userscorerecord";
         let token = localStorage.getItem("token");
-        let headers={
-          'Content-Type': 'application/octet-stream'
-        };
         let params = {
           pages: this.cur_page,
           nickName: this.nickName,
           token: token,
         };
         try {
-          const res = await this.$axios.post(url, params,headers=headers);
+          const res = await this.$axios.post(url, params);
           console.log(res.data)
           if (res.status == "200") {
             this.tableData = res.data.data;
