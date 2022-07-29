@@ -40,7 +40,7 @@ class Scorelist
     $start_time="'" .$request->param("start_time")."'";
     $end_time="'" .$request->param("end_time")."'";
     $crowd_id=havecrowdid($token);//群id
-    $sendmode=1;//发送方式，0是直接下载列表。1是发送到邮箱
+    $sendmode=0;//发送方式，0是直接下载列表。1是发送到邮箱
 
 
     //from score_record WHERE crowd_id=3514 and state=0 and create_time >" + $start_time + " create_time < "+  $end_time + " GROUP BY user_id) as e

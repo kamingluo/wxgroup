@@ -66,9 +66,9 @@
 
     <!-- 下载弹出框 -->
     <el-dialog title="统计下载用户积分获取情况" :visible.sync="socerrankingModel" width="30%">
-      <el-form ref="form"  label-width="80px">
-        <el-date-picker v-model="timeslot"  type="datetimerange" value-format="yyyy-MM-dd HH:mm:ss" range-separator="至" start-placeholder="开始日期"
-          end-placeholder="结束日期">
+      <el-form ref="form" label-width="80px">
+        <el-date-picker v-model="timeslot" type="datetimerange" value-format="yyyy-MM-dd HH:mm:ss" range-separator="至"
+          start-placeholder="开始日期" end-placeholder="结束日期">
         </el-date-picker>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -168,16 +168,16 @@
 
       //下载数据
       async Downloadfile() {
-        let time=this.timeslot;
+        let time = this.timeslot;
         console.log("下载数据")
         console.log(time)
-        if(!time){
+        if (!time) {
           this.$message.error("请选择时间");
           return;
         }
 
-        let start_time=time[0];
-        let end_time=time[1];
+        let start_time = time[0];
+        let end_time = time[1];
 
         let url = "configure/scorelist/socerranking";
         let token = localStorage.getItem("token");
@@ -187,14 +187,45 @@
           token: token,
         };
         try {
-          const res = await this.$axios.post(url, params);
+          // const res = await this.$axios.post(url, params);
+          // console.log("获取下载链接")
+          // console.log(res.data.downloadurl)
+
+          // let downloadurl = res.data.downloadurl;
+
+          axios.post(url,params, { responseType: 'blob' })
+            .then(res => {
+              const elink = document.createElement('a');
+              elink.download = 'xxx1.xlsx';
+              elink.style.display = 'none';
+              const blob = new Blob([res], { type: 'application/vnd.ms-excel' });
+              const href = URL.createObjectURL(blob);
+              elink.href = href;
+              document.body.appendChild(elink);
+              elink.click();
+              document.body.removeChild(elink);
+              window.URL.revokeObjectURL(href);
+            })
+            .catch(err => {
+              throw new Error(err);
+            });
+
+
+
+
+
+
+          //const downloadurlres = await this.$axios.get(downloadurl, { responseType: 'blob' });
+
+
+
           this.$message.success(`下载完成`);
-          
+
         } catch (error) {
           console.log(error);
           this.$message.error("下载失败，请稍后重试或者联系管理人员");
         }
-        
+
       },
 
 
