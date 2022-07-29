@@ -53,7 +53,8 @@ class Scorelist
 
      $list = Db::query($sql); //拿到数据
 
-	   $file_name = date('Y-m-d_His').'.xls';
+	  //  $file_name = date('Y-m-d_His').'.xls';
+    $file_name = "用户积分获取排名表.xlsx";
      $path = dirname(__FILE__); //找到当前脚本所在路径
      Loader::import('PHPExcel.php'); //加载所需的类文件，必须引入 use think\Loader;命名空间，否则loader无法加载
      Loader::import('PHPExcel.Reader.Excel2007'); 

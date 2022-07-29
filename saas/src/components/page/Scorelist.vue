@@ -187,31 +187,13 @@
           token: token,
         };
         try {
-          // const res = await this.$axios.post(url, params);
-          // console.log("获取下载链接")
-          // console.log(res.data.downloadurl)
+          const res = await this.$axios.post(url, params);
+          console.log("获取下载链接")
+          console.log(res.data.downloadurl)
 
-          // let downloadurl = res.data.downloadurl;
+          let downloadurl = res.data.downloadurl;
 
-          axios.post(url,params, { responseType: 'blob' })
-            .then(res => {
-              const elink = document.createElement('a');
-              elink.download = 'xxx1.xlsx';
-              elink.style.display = 'none';
-              const blob = new Blob([res], { type: 'application/vnd.ms-excel' });
-              const href = URL.createObjectURL(blob);
-              elink.href = href;
-              document.body.appendChild(elink);
-              elink.click();
-              document.body.removeChild(elink);
-              window.URL.revokeObjectURL(href);
-            })
-            .catch(err => {
-              throw new Error(err);
-            });
-
-
-
+          window.open(downloadurl, '_self');
 
 
 
