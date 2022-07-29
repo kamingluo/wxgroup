@@ -60,18 +60,17 @@ class Scorelist
      Loader::import('PHPExcel.Reader.Excel2007'); 
 
 
-    //  $start_time_new=$request->param("start_time");
-    // $end_time_new=$request->param("end_time");
-    // $title="用户积分获取排名,开始计算时间:" .$start_time_new. "至结束计算时间" .$end_time_new;
-    // return $title;
-  $title="用户积分获取排名";
+     $start_time_new=$request->param("start_time");
+    $end_time_new=$request->param("end_time");
+    $title="开始计算时间:" .$start_time_new. "至结束计算时间" .$end_time_new;
      $PHPExcel = new \PHPExcel();
         $PHPSheet = $PHPExcel->getActiveSheet();
-        $PHPSheet->setTitle($title);
+        $PHPSheet->setTitle("用户积分获取排名");
         $PHPSheet->setCellValue("A1","排名");
         $PHPSheet->setCellValue("B1","用户id");
         $PHPSheet->setCellValue("C1","微信昵称");
         $PHPSheet->setCellValue("D1","获得积分总数");
+        $PHPSheet->setCellValue("E1",$title);
         $i = 2;
         $num = 1;
 		foreach($list as $key => $value){
