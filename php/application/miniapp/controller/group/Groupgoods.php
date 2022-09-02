@@ -207,7 +207,7 @@ class Groupgoods
 
         // }
 
-        if($goods_id == 2698 ){
+        if($goods_id == 2698 || $goods_id == '2698'  ){
           Log::record('是3514的群特殊兑换商品啊-->'.$crowd_id,'error');
           $exnumber=db('exchange_record')->where('crowd_id',$crowd_id)->where('user_id',$user_data["id"])->where('goodsname',$goods_data["goodsname"])->count();
           if($exnumber > 0){
