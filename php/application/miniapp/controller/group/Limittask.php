@@ -160,7 +160,7 @@ class Limittask
 
         if($limit == 0){
             //查询用户是否完成过任务
-            $userrecordnum=db('corwd_limit_task_record')->where('limit_id',$limit_id)->where('user_id',$user_id)->where('state','<>',2)->count();
+            $userrecordnum=db('corwd_limit_task_record')->where('limit_id',$limit_id)->where('user_id',$user_id)->where('state','<>',2)->where('limit_id','<>',1011)->count();
             if($userrecordnum > 0){
                 $state=['state'   => '200','message'  => "只能完成一次，你已经完成过任务了",'partake'=> $partake];
                 return $state;
