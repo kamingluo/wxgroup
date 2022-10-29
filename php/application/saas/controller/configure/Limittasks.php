@@ -61,8 +61,8 @@ class Limittasks
             $score =$request->param("score");
             $describe =$request->param("describe");
             $end_time =$request->param("end_time");
-            $dbreturn= db('crowd_limit_tasks')->where('id',$id)->where('crowd_id',$crowd_id)->update(['title' => $title,'describe' => $describe,'end_time' => $end_time]);
-            $state=['state'   => '200','message'  => "修改限时任务成功11" ];
+            $dbreturn= db('crowd_limit_tasks')->where('id',$id)->where('crowd_id',$crowd_id)->update(['title' => $title,'score' => $score,'describe' => $describe,'end_time' => $end_time]);
+            $state=['state'   => '200','message'  => "修改限时任务成功" ];
             return $state ;  
         }
 
