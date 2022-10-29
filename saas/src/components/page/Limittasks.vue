@@ -98,6 +98,9 @@
         <el-form-item label="任务标题">
           <el-input v-model="form.title"></el-input>
         </el-form-item>
+        <el-form-item label="任务积分">
+          <el-input v-model="form.score"></el-input>
+        </el-form-item>
         <el-form-item label="任务描述">
           <el-input v-model="form.describe"></el-input>
         </el-form-item>

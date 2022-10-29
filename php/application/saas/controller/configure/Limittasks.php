@@ -58,6 +58,7 @@ class Limittasks
             $crowd_id=havecrowdid($token);
             $id =$request->param("id");
             $title =$request->param("title");
+            $score =$request->param("score");
             $describe =$request->param("describe");
             $end_time =$request->param("end_time");
             $dbreturn= db('crowd_limit_tasks')->where('id',$id)->where('crowd_id',$crowd_id)->update(['title' => $title,'describe' => $describe,'end_time' => $end_time]);
