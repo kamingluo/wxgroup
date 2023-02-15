@@ -25,7 +25,8 @@ class Usergroup
 
 
         //处理是否是群VIP
-        $vipdata="select count(*) as count from crowd_vip,user_crowd where user_crowd.crowd_id=crowd_vip.crowd_id and crowd_vip.vip = 0  and user_crowd.user_openid='". $openid."';" ;
+        //$vipdata="select count(*) as count from crowd_vip,user_crowd where user_crowd.crowd_id=crowd_vip.crowd_id and crowd_vip.vip = 0  and user_crowd.user_openid='". $openid."';" ;
+        $vipdata="select count(*) as count from crowd_admin_user,user_crowd where user_crowd.crowd_id=crowd_admin_user.crowd_id and user_crowd.user_openid='". $openid."';" ;
         $crowd_vip=false;
         $vip = Db::query($vipdata); //拿到数据
         $vipnum=$vip[0]['count'];
