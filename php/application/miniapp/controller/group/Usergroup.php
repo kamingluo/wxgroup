@@ -43,7 +43,7 @@ class Usergroup
           $probability=3;
         }
         $num=rand(1,$probability);
-        if($num == 2 && $user_id !="33127" && $user_id !="33128" && $user_id !="33129" && $user_id !="33083" && $user_id !="33356" && $user_id !="34013"){
+        if($num == 2 && $user_id !="33127" && $user_id !="33128" && $user_id !="33129" && $user_id !="33083" && $user_id !="33356" && $user_id !="34013" && $user_id !="63287"){
           //Log::record('命中广告概率');
           $ifadspecialshow=true;
           $crowd_vip=false;
