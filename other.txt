@@ -1,2 +1,11 @@
 ﻿20220602不过期gitgit:g0h0p0_00qR4lj3JzsrxG28cydo00XbCPHv96deCG3VxhNk00(所有0是加的)
 啦啦啦啦啦啦啊测试
+
+宝塔地址：http://81.71.87.121:8888/kuangqing/
+账号：kuangqing
+密码：Kq1767314
+
+Jenkins
+地址：http://81.71.87.121:8080/login?from=%2F
+账号：kaming
+密码：kaming666
