@@ -1,9 +1,6 @@
 "use strict";
-
 import Vue from 'vue';
 import axios from "axios";
-
-
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
@@ -14,19 +11,12 @@ let config = {
   baseURL: 'https://group.gzywudao.top/php/public/admin.php/',
   //测试环境
   //baseURL: 'http://127.0.0.1/myproject/wxgroup/php/public/admin.php/',
-
-
   //暂时用不到
   // baseURL: process.env.baseURL || process.env.apiUrl || ""
   // timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
 };
-
 const _axios = axios.create(config);
-
-
-
-
 _axios.interceptors.request.use(
   function (config) {
     // Do something before request is sent
@@ -44,7 +34,6 @@ _axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
 // Add a response interceptor
 _axios.interceptors.response.use(
   function (response) {

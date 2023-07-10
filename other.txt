@@ -9,3 +9,7 @@ Jenkins
 地址：http://81.71.87.121:8080/login?from=%2F
 账号：kaming
 密码：kaming666
+
+七牛云
+账号：luojiaming@xmiles.cn
+密码：a3216953

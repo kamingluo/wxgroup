@@ -172,7 +172,7 @@ Page({
       return;
     }
     wx.requestSubscribeMessage({
-      tmplIds: ['SknRZZeUTqjuuOKPqxANRoZMl2jhUBJbwvd5P8JgjN8'],
+      tmplIds: ['SknRZZeUTqjuuOKPqxANRoZMl2jhUBJbwvd5P8JgjN81'],
       success(res) {
         console.log("兑换成功授权", res)
       },
